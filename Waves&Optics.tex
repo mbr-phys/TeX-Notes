@@ -1,53 +1,7 @@
 \documentclass[a4paper, 11pt, fleqn, normalem]{report}
 
-\usepackage[a4paper, left=1.85cm, right=1.85cm, top=1.85cm, bottom=1.85cm]{geometry}
-\setlength{\parskip}{1em}
-\setlength{\parindent}{0cm}
+\usepackage{../Notes}
 
-\usepackage{amsmath}
-\usepackage{kpfonts,baskervald} %baskerville font
-\usepackage[none]{hyphenat} %removes hyphenation at end of lines
-\usepackage{caption}
-\usepackage{graphics,graphicx,epsfig,ulem} % Makes sure all graphics works
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{fixltx2e} % Subscript Outside of Equations
-\usepackage{textgreek} % Greek Text Outside of Equations
-\usepackage{amssymb}
-\usepackage{multicol}
-\usepackage{float}
-\usepackage{enumitem}
-\setlist[itemize]{noitemsep, topsep=-8pt}
-
-\usepackage{color}   %May be necessary if you want to color links
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true, %set true if you want colored links
-    linktoc=all,     %set to all if you want both sections and subsections linked
-    linkcolor=blue,  %choose some color if you want links to stand out
-}
-
-\captionsetup{labelformat=empty}
-\usepackage{titlesec}
-	\titlespacing\section{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
-	\titlespacing\subsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
-	\titleformat{\section}{\fontsize{11}{15}\normalfont\scshape}{}{1em}{\uline}
-	\titleformat{\subsection}{\fontsize{10}{15}\bfseries\scshape}{\thesubsection}{1em}{}
-
-\usepackage{fancyhdr} %headings stuff
-\usepackage{titletoc}% http://ctan.org/pkg/titletoc
-\titlecontents{section}% <section-type>
-  [0pt]% <left>
-  {}% <above-code>
-  {}% <numbered-entry-format>
-  {}% <numberless-entry-format>
-  {\dotfill\contentspage}% <filler-page-format>
-\usepackage{etoolbox}
-
-\pagestyle{fancy}  % header
-\renewcommand{\headrulewidth}{0pt}
-\rhead{}
-\lhead{}
 \setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{1}
 

@@ -1,60 +1,7 @@
 \documentclass[a4paper, 11pt, fleqn, normalem]{report}
 
-\usepackage[a4paper, left=1.85cm, right=1.85cm, top=1.85cm, bottom=1.85cm]{geometry}
-\setlength{\parskip}{1em}
-\setlength{\parindent}{0cm}
+\usepackage{../Notes}
 
-\usepackage{amsmath}
-\usepackage{kpfonts,baskervald} %baskerville font
-\usepackage[none]{hyphenat} %removes hyphenation at end of lines
-\usepackage{caption}
-\usepackage{graphics,graphicx,epsfig,ulem} % Makes sure all graphics works
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{fixltx2e} % Subscript Outside of Equations
-\usepackage{textgreek} % Greek Text Outside of Equations
-\usepackage{amssymb}
-\usepackage{multicol}
-\usepackage{float}
-\usepackage{enumitem}
-\setlist{nosep}
-
-\usepackage{color}   %May be necessary if you want to color links
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true, %set true if you want colored links
-    linktoc=all,     %set to all if you want both sections and subsections linked
-    linkcolor=blue,  %choose some color if you want links to stand out
-}
-
-\captionsetup{labelformat=empty}
-\usepackage{titlesec}
-	\titlespacing\section{0pt}{4pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
-	\titlespacing\subsection{0pt}{4pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
-    \titlespacing\chapter{0pt}{2pt plus 2pt minus 2pt}{2pt plus 2pt minus 2pt}
-	\titleformat{\section}{\fontsize{11}{15}\normalfont\scshape}{\thesection}{1em}{\uline}
-	\titleformat{\subsection}{\fontsize{10}{15}\normalfont\scshape}{\thesubsection}{1em}{}
-    \titleformat{\chapter}{\fontsize{13}{15}\bfseries\normalfont}{\textbf{Lecture \thechapter}}{1em}{}
-
-\usepackage{fancyhdr} %headings stuff
-\usepackage{titletoc}% http://ctan.org/pkg/titletoc
-\titlecontents{chapter}% <section-type>
-  [0pt]% <left>
-  {}% <above-code>
-  {Lecture \thecontentslabel\quad}% <numbered-entry-format>
-  {}% <numberless-entry-format>
-  {\hfill\contentspage}% <filler-page-format>
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd{\l@chapter}
-{\hfill}
-{\leaders\hbox{\normalfont$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill}
-{}{}
-\makeatother
-
-\pagestyle{fancy}  % header
-\renewcommand{\headrulewidth}{0pt}
-\rhead{}
 \setcounter{tocdepth}{0}
 
 \title{Foundations of Physics Year 1 \\ Thermodynamics \vspace{-20pt}}
