@@ -1,0 +1,128 @@
+\documentclass[a4paper, 11pt, fleqn, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+
+\titlecontents{chapter}% <section-type>
+    [0pt]% <left>
+    {}% <above-code>
+    {Lecture \thecontentslabel\quad}% <numbered-entry-format>
+    {}% <numberless-entry-format>
+    {\dotfill\contentspage}% <filler-page-format>
+\titleformat{\chapter}{\fontsize{13}{15}\bfseries\normalfont}{\textbf{Lecture \thechapter}}{1em}{}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{1}
+
+\newcommand\answerbox{%%
+    \fbox{\rule{1in}{0pt}\rule[-0.5ex]{0pt}{3ex}}}
+
+\newcommand\halfbox{%%
+    \fbox{\rule{0.45in}{0pt}\rule[-0.25ex]{0pt}{3ex}}}
+
+\title{Foundations of Physics 2B \\ Thermodynamics \vspace{-20pt}}
+\author{Dr Peter Swift}
+\date{\vspace{-15pt}Michaelmas Term 2017}
+\rhead{\hyperlink{page.1}{Go to TOC}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\tableofcontents
+
+\chapter{}
+\section{1.}
+This course will frame concepts in concrete maths from last year
+
+Laws:
+\begin{itemize}
+  \item Zeroth establishes the meaning of temperature
+  \item First is a statement of energy conservation [we can only break even]
+  \item Second defines entropy -- why things do or do not happen
+  \begin{itemize}
+    \item[--] Entropy measures energy quality [you can only break even at 0 K]
+  \end{itemize}
+  \item Third doesn't define thermodynamic property; tells us we can't get to 0 K
+\end{itemize}
+
+Thermodynamics developed by engineers wanting to develop machines that turn heat to work \\
+Wanted most work for least effort \\
+Subject developed had a number of under-ranging consequences \\
+When it emerged, atoms were unknown -- considered average properties of bulk material \\
+There was no attention paid to what was inside \\
+Macroscopic approach to look at 'black box':
+\begin{itemize}
+  \item[--] This approach is general and difficult to 'see the point' \\
+  All good having relationships about heat capacities and expansicities but tells us nothing about the physics
+  \item[e.g.] why a material has a certain temperature dependence for its heat capacity
+\end{itemize}
+
+Opening the black box gets microscopic picture (atomic) but this can be very detailed ($N_A \approx 6 \times 10^23$) \\
+Statistical mechanics instead looks at average properties of all atoms in the thermodynamic limit
+
+\section{Example: Counting Molecules -- simpler than recording position and motion  as fewer DoFs}
+Lecture theatre has $10^29$ molecules ($3 \times 10^6$ litres of air) \\
+A 10GhZ processor can count $10^17$ molecules per year (each cycle counts one) $\approx 3 \times 10^11$ years to count all molecules \\
+Thermodynamic limit -- things tend to the average (to infinity)
+
+\subsection{Rains drops hit small and large roof:}
+Fluctuations in force smooth out, even through force increasing \\
+Consider pressure, $p = \frac{F}{A}$, same in both cases if you consider the average \\
+Thermodynamic limit -- $A \to \infty$
+
+\section{2. Thermo Systems and States}
+\begin{tabular}{c|c|c}
+     & Extensive -- System Extent & Intensive -- Independent \\
+     \hline
+     \answerbox & \shortstack{Volume, V \\ Energy, U} & \shortstack{Temp, T \\ Pressure, P} \\
+     \hline
+     \halfbox \halfbox & \shortstack{$V = V_A = V_B = \frac{V}{2}$ \\ $U = U_A = U_B = \frac{U}{2}$} & \shortstack{$T^* = T_A = T_B = T$ \\ $p^* = p_A = p_B = p$}
+\end{tabular}
+Relate properties by equation of state, $f(p,V,T) = 0$ \\
+Most well known as the ideal gas law: $pV = nRT$
+
+\section{Thermal Equilibrium (TE), Heat, and Temperature}
+Can prepare sample of gas by suitable treatment to take a range of values of pressure and volume
+\begin{equation*}
+    p_{1}V_{1} = a > b = p_{2}V_{2} \text{ -- Sample 1 is hotter than Sample 2}
+\end{equation*}
+Equation of state, $pV = f(T)$
+
+Heat is thermal energy in transit, heat transferred from hot to cold (under its own action) \\
+In transit is important -- can't say object contains an amount of heat \\
+Addition/subtraction of heat changes temperature \\
+If two objects have the same temperature, they're in TE
+
+Heat capacity -- $\Delta Q = mc\Delta T$ \\
+More rigorously, a small change, dT, in a substance's temperature, requires the addition/subtraction of a differention and of heat,  $\delta Q$:
+\begin{equation*}
+    \delta Q = mcdT
+\end{equation*}
+Capital C: Heat capacity of whole substance \\
+Lower c: Specific heat capacity per unit mass/mole \\
+$C = mc$
+
+Total heat energy to change temperature, $T_1 \to T_2$:
+\begin{equation*}
+    \Delta Q = \int_{T_{1}}^{T_{2}} \delta Q = \int_{T_1}^{T_2} mcdT
+\end{equation*}
+Most changes take place whilst some other property is held constant:
+\begin{gather*}
+    C_{V} = \Big(\frac{\partial Q}{\partial T}\Big)_{V};~~ C_{p} = \Big(\frac{\partial Q}{\partial T}\Big)_{p}
+    C_{p} > C_{V}
+\end{gather*}
+Work is needed to keep at constant pressure -- work is a form of energy so requires more heat energy in to get to the same temperature at constant pressure
+
+\section{Zeroth Law}
+\emph{"If two system are separately in TE with a third system, they must be in TE with each other"}
+
+
+
+
+
+
+
+
+
+
+\end{document}
