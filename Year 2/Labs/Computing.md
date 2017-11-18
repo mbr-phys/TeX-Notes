@@ -6,3 +6,5 @@
 * 1400 a week on Monday deadline
 ---
 #### Lecture 2
+##### Numerical Integration
+* 

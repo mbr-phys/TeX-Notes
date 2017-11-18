@@ -15,6 +15,15 @@
 
 \renewcommand{\arraystretch}{1.2}
 
+\newcommand\R{\mathbb{R}}
+\newcommand\p{\partial}
+\newcommand\ifnt{\int_{-\infty}^{\infty}}
+\newcommand\ofnt{\int_{0}^{\infty}}
+\newcommand\ifsum{\sum_{-\infty}^{\infty}}
+\newcommand\F{\mathcal{F}}
+\newcommand\La{\mathcal{L}}
+\newcommand\om{\omega}
+
 \title{Mathematical Methods \\ In Physics \vspace{-20pt}}
 \author{Dr Cristina Zambon}
 \date{\vspace{-15pt}Michaelmas Term 2017}
@@ -25,8 +34,9 @@
 \maketitle
 \tableofcontents
 
+\part{}
 \chapter{}
-\section{Geometrical Applications of Vectors in $\mathbb{R}^3$}
+\section{Geometrical Applications of Vectors in $\R^3$}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \begin{center}
         \includegraphics[scale=0.5]{Cart.png}
@@ -161,7 +171,7 @@ The summed-over subscripts are called dummy subscripts and the others, free subs
     a_{ij}b_{jk}c_{k} = \sum_{j = 1}^{3} \sum_{k = 1}^{3} a_{ij}b_{jk}c_{k} ~~~ \text{(Gives 9 terms)}
 \end{gather*}
 
-\section{Kronacker Delta in $\mathbb{R}^{3}$}
+\section{Kronacker Delta in $\R^{3}$}
 \begin{gather*}
     \delta_{ij} =
     \begin{cases}
@@ -181,7 +191,7 @@ The summed-over subscripts are called dummy subscripts and the others, free subs
     \vec{a} \cdot \vec{b} = a_{i}b_{i} = \delta_{ij}a_{i}b_{j}
 \end{gather*}
 
-\section{Levi-Civita Symbol in $\mathbb{R}^3$}
+\section{Levi-Civita Symbol in $\R^3$}
 \begin{gather*}
     \epsilon_{ijk} =
     \begin{cases}
@@ -209,7 +219,7 @@ The summed-over subscripts are called dummy subscripts and the others, free subs
 \end{enumerate}
 
 \chapter{}
-\section{Lines in $\mathbb{R}^3$}
+\section{Lines in $\R^3$}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \begin{center}
         \includegraphics[scale=0.5]{EqLine.png}
@@ -227,7 +237,7 @@ Note also that by taking the vector product with $\hat{b}$, we obtain another eq
     (\vec{r} - \vec{a}) \times \hat{b} = 0
 \end{equation*}
 
-\section{Equation of a plane in $\mathbb{R}^3$}
+\section{Equation of a plane in $\R^3$}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \vspace{-20pt}
     \begin{center}
@@ -292,7 +302,7 @@ The Axioms for a Vector Space are:
             \item $1\vec{v} = \vec{v}$
         \end{itemize}
 \end{enumerate}
-Note that by scalar, we usually mean $\in \mathbb{R}$ \\
+Note that by scalar, we usually mean $\in \R$ \\
 In this case, we refer to V as a \emph{real vector space}
 
 It is also possible for scalars $\in \mathbb{C}$ \\
@@ -300,8 +310,8 @@ in this case, we have \emph{complex vector spaces}
 
 \subsection{Examples}
 \begin{enumerate}
-    \item $\mathbb{R}$
-    \item Generalisation to $\mathbb{R}^n$ for Euclidean vector spaces
+    \item $\R$
+    \item Generalisation to $\R^n$ for Euclidean vector spaces
     \item Further generalised to $\mathbb{C}^n$
     \item The set of all real functions, $f(x)$, with no restrictions on x and with the usual (calculus) addition and scalar multiplication
         \begin{itemize}
@@ -322,6 +332,1409 @@ in this case, we have \emph{complex vector spaces}
         \end{itemize}
         The space of the solutions of such an equatino forms a vector space under the usual addition and scalar multiplication
 \end{enumerate}
+
+\chapter{}
+For k vectors, $\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_{k}\}$ in V, the expression $\{\alpha_{1}\vec{v}_{1},\alpha_{2}\vec{v}_{2},\cdots,\alpha_{k}\vec{v}_{k}\}$ is called a linear combination.
+
+The set of all linear combinations of $\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_{k}\}$ is called a span of $\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_{k}\}$:
+\begin{equation*}
+    \text{Span}(\vec{v}_{1},\cdots,\vec{v}_{n}) = \Bigg\{\sum_{i = 1}^{k} \alpha_{i}\vec{v}_{i} ~;~ \alpha_{i} \in \R / \mathbb{C} \Bigg\}
+\end{equation*}
+
+\subsection{Examples}
+\begin{enumerate}
+    \item A span of a single vector is the set of all scalar multiples of this vector
+        \begin{itemize}
+            \item it is a line through 0 in the direction of the vector
+        \end{itemize}
+    \item The span of two vectors, provided they are not multiples of each other, can be seen as the plane through 0 containing these vectors
+\end{enumerate}
+
+\section{Definition}
+A set of vectors, $\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_{k}\} \in V$ is called linearly independent if
+\begin{equation*}
+    \sum_{i = 1}^{k} \alpha_{i}\vec{v}_{i} = 0 \implies \alpha_{i} = 0 ~\forall~ i
+\end{equation*}
+Otherwise, the vectors are called linearly dependent \\
+That is, these vectors are linearly dependent if
+\begin{equation*}
+    \sum_{i = 1}^{k} \alpha_{i}\vec{v}_{i} = 0 \implies \alpha_{i} \neq 0 \text{ for one }i
+\end{equation*}
+
+\subsection{Claim}
+The vectors $\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_{k}\}$ are linearly dependent $\iff \vec{v}_{i}$ can be written as a linear combination of the other vectors
+
+\subsection{Examples}
+\begin{enumerate}
+    \item   \begin{gather*}
+                \vec{v}_{1} =
+                \begin{pmatrix}
+                    0 \\
+                    1 \\
+                    1
+                \end{pmatrix}
+                ~;~
+                \vec{v}_{2} =
+                \begin{pmatrix}
+                    0 \\
+                    1 \\
+                    2
+                \end{pmatrix}
+                ~;~
+                \vec{v}_{3} =
+                \begin{pmatrix}
+                    1 \\
+                    1 \\
+                    -1
+                \end{pmatrix} \\
+                \alpha_{1}\vec{v}_{1} + \alpha_{2}\vec{v}_{2} + \alpha_{3}\vec{v}_{3} =
+                \begin{pmatrix}
+                    \alpha_{3} \\
+                    \alpha_{1} + \alpha_{2} + \alpha_{3} \\
+                    \alpha_{1} + 2\alpha_{2} - \alpha_{3}
+                \end{pmatrix} = 0 \\
+                \alpha_{3} = 0 ~;~ \alpha_{1} = -\alpha_{2} ~;~ \alpha_{1} = \alpha_{2} = 0 \\
+                \text{These vectors are linearly independent}
+            \end{gather*}
+    \item   \begin{gather*}
+                \vec{v}_{1} =
+                \begin{pmatrix}
+                    -2 \\
+                    0  \\
+                    1
+                \end{pmatrix} ~;~
+                \vec{v}_{2} =
+                \begin{pmatrix}
+                    1 \\
+                    1 \\
+                    1
+                \end{pmatrix} ~;~
+                \vec{v}_{3} =
+                \begin{pmatrix}
+                    0 \\
+                    2 \\
+                    3
+                \end{pmatrix} \\
+                \alpha_{1}\vec{v}_{1} + \alpha_{2}\vec{v}_{2} + \alpha_{3}\vec{v}_{3} =
+                \begin{pmatrix}
+                    -2\alpha_{1} + \alpha_{2} \\
+                    \alpha_{2} + 2\alpha_{3}  \\
+                    \alpha_{1} + \alpha_{2} + 3\alpha_{3}
+                \end{pmatrix} = 0 \\
+                \alpha_{1} = 1 ~;~ \alpha_{2} ~;~ \alpha_{3} = -1 \\
+                \text{These vectors are linearly dependent}
+            \end{gather*}
+            Notice that $\vec{v}_{3} = \vec{v}_{1} + 2\vec{v}_{2}$ \\
+            Can calculate linear dependence using determinant:
+            \begin{equation*}
+                det(\vec{v}_{1},\vec{v}_{2},\vec{v}_{3}) = 0 \implies \text{linearly dependent}
+            \end{equation*}
+    \item   The set of polynomials of degree 2 or less with coefficients in $\R$ form a vector space \\
+    Consider these three polynomials:
+            \begin{gather*}
+                \Bigg\{\underbrace{1 + x + x^2}_{\vec{v}_1} ~;~ \underbrace{1 - x + 3x^2}_{\vec{v}_2} ~;~ \underbrace{1 + 3x - x^2}_{\vec{v}_3} \Bigg\} \\
+                \alpha_{1}\vec{v}_{1} + \alpha_{2}\vec{v}_{2} + \alpha_{3}\vec{v}_{3} = \alpha_{1}(1 + x + x^2) + \alpha_{1}(1 - x + 3x^2) + \alpha_{3}(1 + 3x - x^2) = 0 \\
+                x^{2}\underbrace{(\alpha_{1} + 3\alpha_2 - \alpha_3)}_{0} + x\underbrace{(\alpha_1 - \alpha_2 + 3\alpha_3)}_{0} + \underbrace{(\alpha_1 + \alpha_2 + \alpha_3)}_{0} = 0 \\
+                \alpha_1 = -2\alpha_2 ~;~ \alpha_3 = \alpha_2 ~;~ \alpha_2 = n,~n \in \R \\
+                \vec{v}_3 = 2\vec{v}_1 - \vec{v}_2
+            \end{gather*}
+\end{enumerate}
+
+\section{Definition}
+The minimal set of vectors that span a vector space is called a basis for that space.
+
+A set of vectors $\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_{k}\} \in V$ is called a basis $\iff$
+\begin{enumerate}
+    \item $\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_{k}\}$ are linearly independent
+    \item $V = \text{Span}(\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_{k}\})$
+\end{enumerate}
+
+Then we have that:
+\begin{itemize}
+    \item The number of vectors in a basis is the dimension of a vector space
+    \item If $\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_{k}\}$ is a basis in V, any $\vec{v}_n \in V$ can be written as a unique linear combination of the vectors in the basis, $\vec{v}_n = \alpha_i \vec{v}_i$
+        \begin{itemize}
+            \item Coefficients $\alpha_i$ are called the components of $\vec{v}$ wrt to the basis
+        \end{itemize}
+\end{itemize}
+
+\subsection{Examples}
+\begin{enumerate}
+    \item Previous example 2(i). It is a basis in $\R^3$ (dim 3)
+    \item For the 2x3 matrices with entries $\R$, a basis is given by:
+            \begin{gather*}
+                E_{11} =
+                \begin{pmatrix}
+                    1 & 0 & 0 \\
+                    0 & 0 & 0
+                \end{pmatrix} ~;~
+                E_{12} =
+                \begin{pmatrix}
+                    0 & 1 & 0 \\
+                    ) & 0 & 0
+                \end{pmatrix} \text{etc} \\
+                E_{ij},~ i = 1,2 ~;~ j = 1,2,3
+            \end{gather*}
+    \item Polynomials of degree 2 or less with coefficients in $\R$ \\
+          Basis is:
+            \begin{gather*}
+                \Bigg\{1 ~;~ x ~;~ x^2 \Bigg\} ~\text{(dim 3)}
+            \end{gather*}
+\end{enumerate}
+
+\section{Inner (or scalar) product}
+Consider a vector space, V \\
+The inner product of V is a scalar function denoted $\langle \vec{v} \mid \vec{w} \rangle$ that satisfies the following properties:
+\begin{enumerate}
+    \item $\langle \vec{v} \mid \vec{w} \rangle = \langle \vec{w} \mid \vec{v} \rangle^*$
+    \item $\langle \vec{v} \mid \alpha\vec{w} + \beta\vec{u} \rangle = \alpha\langle \vec{v} \mid \vec{w} \rangle + \beta\langle \vec{v} \mid \vec{u} \rangle$
+    \item $\langle \vec{v} \mid \vec{v} \rangle > 0,~ \vec{v} \neq 0$
+\end{enumerate}
+Notes:
+\begin{itemize}
+    \item Two vectors are orthogonal if $\langle \vec{v} \mid \vec{w} \rangle = 0$
+    \item Length of a vector (norm) is $|\vec{v}| = \sqrt{\langle \vec{v} \mid \vec{v} \rangle}$
+\end{itemize}
+
+\subsection{Examples}
+\begin{enumerate}
+    \item In $\R$, the dot product:
+            \begin{gather*}
+                \langle \vec{v} \mid \vec{w} \rangle = \vec{v}^{\dagger} \cdot \vec{w} =
+                \begin{pmatrix}
+                    v_1 & v_2 & v_3
+                \end{pmatrix}
+                \begin{pmatrix}
+                    w_1 \\
+                    w_2 \\
+                    w_3
+                \end{pmatrix} \\
+                \implies v_{1}w_{1} + v_{2}w_{2} + v_{3}w_{3}
+            \end{gather*}
+    \item In $\mathbb{C}$:
+            \begin{gather*}
+                \langle \vec{v} \mid \vec{w} \rangle = \vec{v}^{\dagger} \cdot \vec{w} = (\vec{v}^{\,T})^{*} \cdot \vec{w} =
+                \begin{pmatrix}
+                    v_{1}^{*} & v_{2}^{*} & v_{3}^{*}
+                \end{pmatrix}
+                \begin{pmatrix}
+                    w_1 \\
+                    w_2 \\
+                    w_3
+                \end{pmatrix} \\
+                \implies v_{1}^{*}w_{1} + v_{2}^{*}w_2 + v_{3}^{*}w_3 = v_{i}^{*}w_i
+                \implies |\vec{v}| = \sqrt{\langle \vec{v} \mid \vec{v} \rangle} = \sqrt{\vec{v}^{\,T} \cdot \vec{v}} \\
+                \text{E.g.} \\
+                \vec{v} =
+                \begin{pmatrix}
+                    1 \\
+                    0 \\
+                    i
+                \end{pmatrix} \implies |\vec{v}| =
+                \sqrt{  \begin{pmatrix}
+                            1 & 0 & -i
+                        \end{pmatrix}
+                        \begin{pmatrix}
+                            1 \\
+                            0 \\
+                            i
+                        \end{pmatrix}} = \sqrt{1 + 1} = \sqrt{2}
+            \end{gather*}
+\end{enumerate}
+
+\chapter{}
+\section{Matrices}
+From now on, we work in $\R$ or $\mathbb{C}$
+
+\subsection{Definition}
+\emph{An operator is an object that associates a vector to another vector}
+\begin{enumerate}
+    \item Matrices are good examples of operators:
+            \begin{equation*}
+                A\bar{a} = \bar{b} ~;~ A_{ij}a_j = b_i
+            \end{equation*}
+          $A_{ij}$ is an element of the matrix, A
+    \item Matrices are linear operators
+            \begin{gather*}
+                \mathbf{A}(\bar{a} + \bar{b}) = \mathbf{A}\bar{a} + \mathbf{A}\bar{b} \\
+                \mathbf{A}(\alpha\bar{a}) = \alpha \mathbf{A}\bar{a}
+            \end{gather*}
+\end{enumerate}
+
+\section{Operators with Matrices}
+\begin{enumerate}
+    \item Matrix addition and matrix multiplication \\
+          Note that matrix multiplication is not commutative: $\mathbf{AB} \neq \mathbf{BA}$
+    \item The transpose of a matrix:
+            \begin{gather*}
+                (\mathbf{A^{T}})_{ij} = \mathbf{A}_{ji} \\
+                \mathbf{(ABCD)^T} = \mathbf{D^{T}C^{T}B^{T}A^{T}}
+            \end{gather*}
+    \item The complex conjugation of a matrix:
+            \begin{gather*}
+                (\mathbf{A}^{*})_{ij} = (\mathbf{A}_{ij})^*
+            \end{gather*}
+    \item The Hermitian conjugate of a matrix: (adjoint)
+            \begin{equation*}
+                (\mathbf{A}^{\dagger})_{ij} = (\mathbf{A}_{ij})^{\dagger}
+            \end{equation*}
+    \item The trace of a square matrix: \\
+          \textit{It is the sum of diagonal elements}
+          \begin{equation*}
+              \text{Tr}(\mathbf{A}) = \mathbf{A}_{ii}
+          \end{equation*}
+          Notice that the trace is invariant under cyclic permutations, i.e.
+          \begin{gather*}
+              \text{Tr}(\mathbf{AB}) = \text{Tr}(\mathbf{BA}) \\
+              \text{Tr}(\mathbf{ABC}) = \text{Tr}(\mathbf{BCA}) = \text{Tr}(\mathbf{CAB})
+          \end{gather*}
+    \item The inverse of a square matrix: \\
+          The inverse of a matrix, $\mathbf{A}$, is a matrix denoted by $\mathbf{A}^{-1}$ such that $\mathbf{AA^{-1}} = \mathbf{A^{-1}A} = \mathbf{I}$
+          \begin{flalign*}
+              &\text{Identity Matrix:} &\mathbf{I}_{ij} &= \delta_{ij}&
+          \end{flalign*}
+          Note that a matrix, $\mathbf{A}$, could not have an inverse. If $\nexists ~\mathbf{A}^{-1}$, then matrix $\mathbf{A}$ is said to be singular
+\end{enumerate}
+
+\subsection{Properties of the Inverse}
+\begin{enumerate}
+    \item   \begin{gather*}
+                \mathbf{(ABCD)^{-1}} = \mathbf{D^{-1}C^{-1}B^{-1}A^{-1}}
+            \end{gather*}
+    \item   \begin{gather*}
+                (\mathbf{A^T})^{-1} = (\mathbf{A^{-1}})^T
+            \end{gather*}
+\end{enumerate}
+The most straight-forward way for calculating the inverse of a matrix is the \emph{Gauss-Jordan method}.
+
+This uses \emph{Elementary Row Operations}:
+\begin{itemize}
+    \item Multiply any row by a non-zero constant
+    \item Interchange any two rows
+    \item Add some multiple of one row to another
+\end{itemize}
+
+\subsection{Example}
+\begin{gather*}
+    A =
+    \begin{pmatrix}
+        1 & 2 & 4 \\
+        1 & 3 & 5 \\
+        2 & 2 & 7
+    \end{pmatrix}. ~~
+    \text{Find the inverse of }\mathbf{A} \text{ if it exists.} \\
+    \text{Use an augmented matrix of }\mathbf{A|\,I}: \\
+    \begin{array}{ccc|ccc}
+        1 & 2 & 4 & 1 & 0 & 0 \\
+        1 & 3 & 5 & 0 & 1 & 0 \\
+        2 & 2 & 7 & 0 & 0 & 1
+    \end{array} \implies
+    \begin{array}{ccc|ccc}
+        1 &  2 &  4 &  1 & 0 & 0 \\
+        0 &  1 &  1 & -1 & 1 & 0 \\
+        0 & -2 & -1 & -2 & 0 & 1 \\
+    \end{array} \implies
+    \begin{array}{ccc|ccc}
+        1 & 2 & 4 &  1 & 0 & 0 \\
+        0 & 1 & 1 & -1 & 1 & 0 \\
+        0 & 0 & 1 & -4 & 2 & 1
+    \end{array} \implies \\
+    \begin{array}{ccc|ccc}
+        1 & 0 & 2 &  3 & -2 & 0 \\
+        0 & 1 & 1 & -1 &  1 & 0 \\
+        0 & 0 & 1 & -4 &  2 & 1
+    \end{array} \implies
+    \begin{array}{ccc|ccc}
+        1 & 0 & 0 & 11 & -6 & -2 \\
+        0 & 1 & 0 &  3 & -1 & -1 \\
+        0 & 0 & 1 & -4 &  2 &  1
+    \end{array} \implies \\
+    \mathbf{A}^{-1} =
+    \begin{pmatrix}
+        11 & -6 & -2 \\
+         3 & -1 & -1 \\
+        -4 &  2 &  1
+    \end{pmatrix}
+\end{gather*}
+
+\section{Determinant of a square matrix}
+\subsection{Definition}
+The minor $\mathbf{|A_{ij}|}$ associated with element $\mathbf{A_{ij}}$ of a $(n \times m)$ matrix, $\mathbf{A}$, is the determinant of the $(n - 1) \times (n - 1)$ matrix obtained by removing all elements in the $i$th row and the $j$th column
+\begin{equation*}
+    |\mathbf{A}| = \text{det}(\mathbf{A}) = \mathbf{A_{11}|A_{11}|} - \mathbf{A_{12}|A_{12}|} + \mathbf{A_{13}|A_{13}|} \cdots + (-1)^{m - 1} \mathbf{A_{1m}|A_{1m}|}
+\end{equation*}
+This is called the Laplace expansion along the first column \\
+The Laplace expansion can be performed along any row or column
+
+\subsection{Example}
+\begin{enumerate}
+    \item   \begin{gather*}
+                \mathbf{A} =
+                \begin{pmatrix}
+                    \mathbf{A_{11}} & \mathbf{A_{12}} \\
+                    \mathbf{A_{21}} & \mathbf{A_{22}}
+                \end{pmatrix} \\
+                \mathbf{|A|} = \mathbf{A_{11}A_{22}} - \mathbf{A_{12}A_{21}}
+            \end{gather*}
+    \item   \begin{gather*}
+                \mathbf{A} =
+                \begin{pmatrix}
+                    \mathbf{A_{11}} & \mathbf{A_{12}} & \mathbf{A_{13}} \\
+                    \mathbf{A_{21}} & \mathbf{A_{22}} & \mathbf{A_{23}} \\
+                    \mathbf{A_{31}} & \mathbf{A_{32}} & \mathbf{A_{33}}
+                \end{pmatrix} \\
+                \mathbf{|A|} = \mathbf{A_{11}}
+                \begin{vmatrix}
+                    \mathbf{A_{22}} & \mathbf{A_{23}} \\
+                    \mathbf{A_{32}} & \mathbf{A_{33}}
+                \end{vmatrix} - \mathbf{A_{12}}
+                \begin{vmatrix}
+                    \mathbf{A_{21}} & \mathbf{A_{23}} \\
+                    \mathbf{A_{31}} & \mathbf{A_{33}}
+                \end{vmatrix} + \mathbf{A_{13}}
+                \begin{vmatrix}
+                    \mathbf{A_{21}} & \mathbf{A_{22}} \\
+                    \mathbf{A_{31}} & \mathbf{A_{32}}
+                \end{vmatrix} \\
+                \mathbf{|A|} = (\mathbf{A_{11}A_{22}A_{33}} + \mathbf{A_{12}A_{23}A_{31}} + \mathbf{A_{13}A_{21}A_{32}}) - (\mathbf{A_{11}A_{23}A_{32}} + \mathbf{A_{12}A_{21}A_{33}} + \mathbf{A_{13}A_{22}A_{31}}) \\
+                \mathbf{|A|} = \mathbf{A_{1i}A_{2j}A_{3k}}\epsilon_{ijk}
+            \end{gather*}
+\end{enumerate}
+
+\subsection{Properties of the Determinant}
+\begin{enumerate}
+    \item $$\mathbf{|ABCD|} = \mathbf{|A||B||C||D|} ~~ (\mathbf{|AB|} = \mathbf{|BA|})$$
+    \item   \begin{gather*}
+                \mathbf{|A|^T} = \mathbf{|A|} ~;~ \mathbf{|A^{*}|} = \mathbf{|A|^*} ~;~ \mathbf{|A^{\dagger}|} = \mathbf{|A|^*} \\
+                \mathbf{|A^{-1}|} = \mathbf{|A|^{-1}} \implies \mathbf{|A|} = 0 \to \nexists~ \mathbf{A^{-1}}
+            \end{gather*}
+    \item If two rows or columns are linearly dependent, then: $$\mathbf{|A|} = 0$$
+    \item If $\mathbf{B}$ is obtained from $\mathbf{A}$ by interchanging two rows or columns then:
+            \begin{gather*}
+                \mathbf{|B|} = -\mathbf{|A|}
+            \end{gather*}
+    \item If $\mathbf{B}$ is obtained from $\mathbf{A}$ by multiplying the elements of any row or column by $\alpha$, then:
+            \begin{gather*}
+                \mathbf{|B|} = \alpha\mathbf{|A|} \\
+                \mathbf{B} = \alpha\mathbf{A} \implies \mathbf{|B|} = \alpha^k \mathbf{|A|} ~;~ \text{k is number of rows or columns}
+            \end{gather*}
+\end{enumerate}
+
+\chapter{}
+\section{The Eigenvalue Problem}
+Consider an $(n \times n)$ matrix. We want to answer the following question:
+
+Are there any vectors $\bar{x} = 0$ which are transformed by $\mathbf{A}$ into multiples of themselves,
+\begin{equation*}
+    \mathbf{A}\bar{x} = \lambda\bar{x}
+\end{equation*}
+If it exists, $\bar{x}$ is an eigenvector, and $\lambda$ is its eigenvalue
+
+$(\mathbf{A} - \lambda\mathbf{I})\bar{x} = 0$ represents a set of homogeneous linear equations \\
+Such a set of equations will only have a non-trivial solution set if $|\mathbf{A} - \lambda\mathbf{I}| = 0$
+
+\subsection{Definition}
+$|\mathbf{A} - \lambda\mathbf{I}| = 0$ is called the characteristic equation, or polynomial of degree n
+
+The eigenvalues, $\lambda$, are the n solutions of this equation
+
+\subsection{Example}
+Construct the characteristic equation, $|\mathbf{A} - \lambda\mathbf{I}| = 0$:
+\begin{gather*}
+    \mathbf{A} =
+    \begin{pmatrix}
+        1 & 2 & 1 \\
+        2 & 1 & 1 \\
+        1 & 1 & 2
+    \end{pmatrix} \\
+    \begin{vmatrix}
+        1 - \lambda &           2 &           1 \\
+                  2 & 1 - \lambda &           1 \\
+                  1 &           1 & 2 - \lambda \\
+    \end{vmatrix} = 0 \\
+    \cdots \implies \\
+    \lambda = 1,4,-1
+\end{gather*}
+For $\lambda = 1$, solve $(\mathbf{A} - \mathbf{I})\bar{x} = 0$
+\begin{gather*}
+    \begin{pmatrix}
+        0 & 2 & 1 \\
+        2 & 0 & 1 \\
+        1 & 1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix} \implies
+    \begin{matrix*}
+        2x_2 + x_3 = 0 \\
+        2x_1 + x_3 = 0 \\
+        x_1 + x_2 + x_3 = 0
+    \end{matrix*} \\
+    \bar{x} =
+    \begin{pmatrix}
+          x_1 \\
+          x_1 \\
+        -2x_1
+    \end{pmatrix} \to e.g.~ \bar{x} =
+    \begin{pmatrix}
+         1 \\
+         1 \\
+        -2
+    \end{pmatrix} \implies \hat{x} = \frac{1}{\sqrt{6}}
+    \begin{pmatrix}
+         1 \\
+         1 \\
+        -2
+    \end{pmatrix}
+\end{gather*}
+Can repeat for other $\lambda$s
+
+Note that eigenvectors are generally linearly dependent \\
+Eigenvectors are mutually orthogonal in special cases
+
+If a $(n \times n)$ matrix, $\mathbf{A}$, has n distinct eigenvalues, then the set of corresponding eigenvectors represent a basis in the vector space on which the matrix acts
+
+If the eigenvectors are not all distint (i.e. degenerate), the basis may or may not exist
+
+If $\mathbf{A}$ has zero eigenvalues, then $\mathbf{A}$ must be singular $\implies |\mathbf{A} - \lambda\mathbf{I}| = |\mathbf{A}| = 0$
+
+\subsection{Example}
+\begin{gather*}
+    \mathbf{A} =
+    \begin{pmatrix}
+        -2 &  2 & -3 \\
+         2 &  1 & -6 \\
+        -1 & -2 &  0
+    \end{pmatrix} \implies |\mathbf{A} - \lambda\mathbf{I}| =
+    \begin{vmatrix}
+        -2 - \lambda &           2 &       -3 \\
+                   2 & 1 - \lambda &       -6 \\
+                  -1 &          -2 & -\lambda
+    \end{vmatrix} = 0 \\
+    \lambda^3 + \lambda^2 -21\lambda - 45 = 0 \implies \lambda = 5,-3,-3
+\end{gather*}
+Degenerate eigenvalue of $-3$
+
+For $\lambda = 5$, solve $(\mathbf{A} - 5\mathbf{I}) = 0$:
+\begin{gather*}
+    \bar{x} =
+    \begin{pmatrix}
+         1 \\
+         2 \\
+        -1
+    \end{pmatrix}
+\end{gather*}
+For $\lambda_2 = \lambda_3 = -3$, solve $(\mathbf{A} + 3\mathbf{I}) = 0$:
+\begin{gather*}
+    \begin{pmatrix}
+         1 &  2 & -3 \\
+         2 &  4 & -6 \\
+        -1 & -2 &  3
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix} \implies
+    \begin{matrix}
+         x_1 + 2x_2 - 3x_3 = 0 \\
+        2x_1 + 4x_2 - 6x_3 = 0 \\
+        -x_1 - 2x_2 + 3x_3 = 0
+    \end{matrix} \Bigg\}\; same \;equation \\
+    x_1 = -2x_2 + 3x_3 \implies \bar{x} =
+    \begin{pmatrix}
+        -2x_2 + 3x_3 \\
+                 x_2 \\
+                 x_3
+    \end{pmatrix}
+\end{gather*}
+This yields linearly independent eigenvectors
+
+\section{Special Matrices}
+\begin{enumerate}
+    \item Symmetric Matrix: $\mathbf{A} = \mathbf{A^T}$
+    \item Hermitian Matrix: $\mathbf{A} = \mathbf{A^{\dagger}}$
+    \item[] \textbf{Theorem:} The eigenvalues of an Hermitian or Symmetric matrix are real
+    \item Antisymmetric Matrix: $\mathbf{A^T} = -\mathbf{A}$
+    \item Anti-Hermitian Matrix: $\mathbf{A^{\dagger}} = -\mathbf{A}$
+    \item[] \textbf{Theorem:} The eigenvalues of an Antisymmetric or Anti-Hermitian matrix are purely imaginary or zero
+    \item Orthogonal Matrix: $\mathbf{A^T} = \mathbf{A^{-1}} \implies \mathbf{A^{T}A} = \mathbf{I}$
+    \item Unitary Matrix: $\mathbf{A^{\dagger}} = \mathbf{A^{-1}} \implies \mathbf{A^{\dagger}A} = \mathbf{I}$
+    \item[] \textbf{Theorem:} The eigenvalues of an Unitary or Orthogonal matrix have unit modulus, i.e $|\lambda|^{2} = 1$
+\end{enumerate}
+
+\chapter{}
+\section{Special Matrices Continued}
+\subsection{Theorem - Eigenvalues of a Hermitian or Symmetric Matrix are real}
+\vspace{-20pt}
+\begin{alignat*}{3}
+    \mathbf{A}\bar{x} &= \lambda\bar{x} \quad& \implies \quad& \bar{x}\mathbf{A^{\dagger}} &= \lambda^{*}\bar{x}^{\dagger} \\
+    & \Downarrow \quad& \implies \quad& \bar{x}^{\dagger}\mathbf{A} &= \lambda^{*}\bar{x}^\dagger \\
+    \bar{^\dagger}\mathbf{A}\bar{x} &= \lambda\bar{x}^\dagger \bar{x} \quad& \& \quad& \bar{x}^\dagger \bar{x} &= \lambda^{*}\bar{x}^\dagger \bar{x} \\
+    (\lambda^{*} - \lambda)&\bar{x}^{\dagger}\bar{x} = 0 \quad& \lambda^* = \lambda \quad& &\lambda \in \R
+\end{alignat*}
+
+\subsection{Theorem - Eigenvectors of special matrices are linearly independent}
+In addition, they can be chosen such that they are mutually orthogonal
+\vspace{-15pt}
+\subsubsection{Definition}
+Two matrices, $\mathbf{A}$ and $\mathbf{A}'$, are said to be similar if $\mathbf{A}' = \mathbf{S^{-1}AS}$ (similarity transformation)
+
+$\mathbf{A}$ and $\mathbf{A}'$ represent the same linear operator in different bases \\
+These bases are related by $\mathbf{S}$ \\
+$\mathbf{A}$ and $\mathbf{A}'$ share a few basis-independent properties:
+\begin{enumerate}
+    \item $\mathbf{|A|} = \mathbf{|A'|}$
+    \item $\text{Tr}(\mathbf{A}) = \text{Tr}(\mathbf{A'})$
+    \item $\{\lambda s \,of\, \mathbf{A}\} = \{ \lambda s \,of\, \mathbf{A}'\}$
+\end{enumerate}
+
+\section{Diagonalisation of a Matrix}
+If the new basis is chosen to be a set of eigenvectors of $\mathbf{A}$, then the matrix $\mathbf{A}' = \mathbf{D}$ is diagonal
+\begin{gather*}
+    \mathbf{D} = \mathbf{S^{-1}AS} \\
+    \mathbf{D} =
+    \begin{pmatrix}
+        \lambda_1 & & & \\
+        & \lambda_2 & & \\
+        & & \ddots &    \\
+        & & & \lambda_n
+    \end{pmatrix} ~;~ \mathbf{S}
+    \begin{pmatrix}
+        \vdots & \vdots & & \vdots \\
+        \bar{x}_1 & \bar{x}_2 & \cdots & \bar{x}_n \\
+        \vdots & \vdots & & \vdots \\
+        \vdots & \vdots & & \vdots
+    \end{pmatrix} \\
+    \begin{aligned}
+        \mathbf{AS} &=& \mathbf{A}
+        \begin{pmatrix}
+            \vdots & \vdots & & \vdots \\
+            \bar{x}_1 & \bar{x}_2 & \cdots & \bar{x}_n \\
+            \vdots & \vdots & & \vdots \\
+            \vdots & \vdots & & \vdots
+        \end{pmatrix} \\ &=&
+        \begin{pmatrix}
+            \vdots & \vdots & & \vdots \\
+            \mathbf{A}\bar{x}_1 & \mathbf{A}\bar{x}_2 & \cdots & \mathbf{A}\bar{x}_n \\
+            \vdots & \vdots & & \vdots \\
+            \vdots & \vdots & & \vdots
+        \end{pmatrix} \\ &=&
+        \begin{pmatrix}
+            \vdots & \vdots & & \vdots \\
+            \lambda_{1}\bar{x}_1 & \lambda_{2}\bar{x}_2 & \cdots & \lambda_{n}\bar{x}_n \\
+            \vdots & \vdots & & \vdots \\
+            \vdots & \vdots & & \vdots
+        \end{pmatrix} \\ &=&
+        \begin{pmatrix}
+            \vdots & \vdots & & \vdots \\
+            \bar{x}_1 & \bar{x}_2 & \cdots & \bar{x}_n \\
+            \vdots & \vdots & & \vdots \\
+            \vdots & \vdots & & \vdots
+        \end{pmatrix} \mathbf{D}
+    \end{aligned} \\
+    \mathbf{AS} = \mathbf{SD} \\
+    \mathbf{D} = \mathbf{S^{-1}AS}
+\end{gather*}
+\begin{enumerate}
+    \item $\mathbf{|A|} = \mathbf{|D|} = \prod_{i = 1}^{n} \lambda_i = \lambda_{1} \times \lambda_{2} \times \cdots \times \lambda_{n}$
+    \item $\text{Tr}(\mathbf{A}) = \text{Tr}(\mathbf{D}) = \sum_{i = 1}^{n} \lambda_i = \lambda_1 + \lambda_2 + \cdots + \lambda_n$
+\end{enumerate}
+
+\subsection{Example}
+\begin{gather*}
+    \mathbf{A} =
+    \begin{pmatrix}
+        5 & 4 \\
+        1 & 2
+    \end{pmatrix} \implies
+    \begin{aligned}
+        \lambda_1 &= 6 & \lambda_2 &= 1 \\
+        \bar{x}_1 &=
+        \begin{pmatrix}
+            4 \\
+            1
+        \end{pmatrix} & \bar{x}_2 &=
+        \begin{pmatrix}
+            1 \\
+            -1
+        \end{pmatrix}
+    \end{aligned} \\
+    \begin{aligned}
+        \mathbf{D} &=
+        \begin{pmatrix}
+            6 & 0 \\
+            0 & 1
+        \end{pmatrix} & \mathbf{S} &=
+        \begin{pmatrix}
+            4 & 1 \\
+            1 & -1
+        \end{pmatrix} & \mathbf{S^{-1}} &= \frac{1}{5}
+        \begin{pmatrix}
+            1 & 1 \\
+            1 & -4
+        \end{pmatrix}
+    \end{aligned} \\
+    \text{Tr}(\mathbf{A}) = 7 = \mathbf{D} \\
+    \mathbf{|A|} = 6 = \mathbf{|D|}
+\end{gather*}
+Consider special matrices \\
+Since it is always possible to find a basis of eigenvectors, then these matrices are always diagonisable
+
+Since the eigenvectors can be chosen to be an orthonormal set then the matrix $\mathbf{S}$ becomes unitary, i.e. $\mathbf{D} = \mathbf{S^{-1}AS}$ becomes $\mathbf{D} = \mathbf{S^{\dagger}AS} ~ (S^{-1} = S^{\dagger})$
+
+For an orthonormal set, $\{\bar{x}_1, \bar{x}_2, \cdots, \bar{x}_n\} \to \underline{\bar{x}_i \cdot \bar{x}_j = \delta_{ij}},~~ \mathbf{S^{\dagger}S} = \mathbf{I}$
+
+\begin{align*}
+    \mathbf{S^{\dagger}S} &=
+    \begin{pmatrix}
+        \cdots & \bar{x}_{1}^* & \cdots & \cdots \\
+        \cdots & \bar{x}_{2}^* & \cdots & \cdots \\
+               & \vdots        &        &        \\
+        \cdots & \bar{x}_{n}^* & \cdots & \cdots
+    \end{pmatrix}
+    \begin{pmatrix}
+        \vdots & \vdots & & \vdots \\
+        \bar{x}_1 & \bar{x}_2 & \cdots & \bar{x}_n \\
+        \vdots & \vdots & & \vdots \\
+        \vdots & \vdots & & \vdots
+    \end{pmatrix} \\ &=
+    \begin{pmatrix}
+        \bar{x}_{1}^{\dagger}\bar{x}_{1} & \bar{x}_{1}^{\dagger}\bar{x}_{2} & \cdots & \bar{x}_{1}^{\dagger}\bar{x}_{n} \\
+        \bar{x}_{2}^{\dagger}\bar{x}_{1} & \cdots & & \vdots \\
+        \vdots & \ddots & & \vdots \\
+        \bar{x}_{n}^{\dagger}\bar{x}_{1} & \cdots & \cdots & \bar{x}_{n}^{\dagger}\bar{x}_{n}
+    \end{pmatrix} \\ &=
+    \begin{pmatrix}
+        1 & 0 & \cdots & 0 \\
+        0 & \cdots & & \vdots \\
+        \vdots & \ddots & & \vdots \\
+        0 & \cdots & \cdots & 1
+    \end{pmatrix} = (\delta_{ij}) &
+\end{align*}
+
+\subsection{Example}
+For a symmetric matrix:
+\begin{gather*}
+    \begin{aligned}
+        A &=
+        \begin{pmatrix}
+            1  & 0 & 3 \\
+            0 & -2 & 0 \\
+            3 &  0 & 1
+        \end{pmatrix} & \lambda_1 &= 4 & \lambda_{2/3} &= -2 \\ \bar{x}_1 &=
+        \begin{pmatrix}
+            a \\
+            0 \\
+            a
+        \end{pmatrix} & \bar{x}_{2/3} &=
+        \begin{pmatrix}
+            b \\
+            c \\
+            -b
+        \end{pmatrix} \\
+        \bar{x}_1 &= \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1 \\
+            0 \\
+            1
+        \end{pmatrix} & \bar{x}_2 &= \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1 \\
+            0 \\
+            -1
+        \end{pmatrix} & \bar{x}_3 &=
+        \begin{pmatrix}
+            0 \\
+            1 \\
+            0
+        \end{pmatrix} \\ \mathbf{S} &= \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1 & 1 & 0 \\
+            0 & 0 & \sqrt{2} \\
+            1 & -1 & 0
+        \end{pmatrix} & \mathbf{S^{\dagger}} &= \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1 & 0 & 1 \\
+            1 & 0 & -1 \\
+            0 & \sqrt{2} & 0
+        \end{pmatrix}
+    \end{aligned} \\
+    \mathbf{D} =
+    \begin{pmatrix}
+        4 & 0 & 0 \\
+        0 & -2 & 0 \\
+        0 & 0 & -2
+    \end{pmatrix} = \frac{1}{2}
+    \begin{pmatrix}
+        1 & 0 & 1 \\
+        1 & 0 & -1 \\
+        0 & \sqrt{2} & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 & 3 \\
+        0 & -2 & 0 \\
+        3 & 0 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 1 & 0 \\
+        0 & 0 & \sqrt{2} \\
+        1 & -1 & 0
+    \end{pmatrix} = \mathbf{S^{\dagger}AS}
+\end{gather*}
+
+\section{Application: Power of Matrices}
+\begin{gather*}
+    \mathbf{A}^n = \underbrace{\mathbf{AA \cdots A}}_{\text{n times}} \text{ if } \mathbf{D} = \mathbf{S^{-1}AS} \text{ then } \\
+    \begin{aligned}
+        \mathbf{A} = \mathbf{SDS^{-1}} \implies \mathbf{A}^n &= (\mathbf{SDS^{-1}})^n \\
+        &= \underbrace{(\mathbf{SDS^{-1}})(\mathbf{SDS^{-1}})\cdots(\mathbf{SDS^{-1}})}_{\text{n times}} \\
+        &= \mathbf{SD^nS^{-1}}
+    \end{aligned} \\
+    \mathbf{D}^n =
+    \begin{pmatrix}
+        \lambda_{1}^n & & & \\
+        & \lambda_{2}^n & & \\
+        & & \ddots & \\
+        & & & \lambda_{n}^n
+    \end{pmatrix}
+\end{gather*}
+
+\chapter{}
+\section{Fourier Series (FS)}
+FS are series of $\cos$ and $\sin$ - trig series
+
+They are used to represent periodic functions \\
+A function f(x) is called periodic if $f(x + l) = f(x) ~\forall~ x$ \\
+$l > 0$, called the period
+
+The Fourier expansion of a periodic function, f(x), with period L is:
+\begin{align*}
+    f(x) &= \frac{a_0}{2} + \sum_{r = 1}^{\infty} \Bigg[a_r \cos\Big(\frac{2\pi rx}{L}\Big) + b_r \sin\Big(\frac{2\pi rx}{L}\Big)\Bigg] \\
+    a_r &= \frac{2}{L} \int_{x_0}^{x_0 + L} f(x)\cos\Big(\frac{2\pi rx}{L}\Big)\,dx,~ r = 0,1,2,\cdots \\
+    b_r &= \frac{2}{L} \int_{x_0}^{x_0 + L} f(x)\sin\Big(\frac{2\pi rx}{L}\Big)\,dx,~ r = 1,2,3,\cdots
+\end{align*}
+$x_0$ is arbitrary since the integral is a function with period L
+
+FS are infinite sums so need to be sure they converge
+
+An FS converges if f(x) satisfies the \underline{Dirichlet Conditions}
+
+\section{Dirichlet Conditions}
+In the interval L, the periodic function f(x)
+\begin{enumerate}
+    \item is single-valued $\forall~ x_0 \leq x \leq x_0 + L$
+    \item has a finite number of finite discontinuities
+    \item has a finite number of extreme values, i.e. maxima and minima
+        \begin{itemize}
+            \item This implies that we can represent non-continuous functions by FS
+        \end{itemize}
+\end{enumerate}
+The set of all periodic functions on the interval L that can be represented by FS forms a Vector Space:
+\begin{enumerate}
+    \item Operation: Standard addition and scalar multiplication
+    \item Basis:
+            \begin{align*}
+                1 && \sin\Big(\frac{2\pi rx}{L}\Big) && \cos\Big(\frac{2\pi rx}{L}\Big) && r > 0
+            \end{align*}
+        \begin{itemize}
+            \item Infinite number of elements, i.e. infinite dimension vector space
+        \end{itemize}
+    \item A general element of the space can be written as a linear combination of the basis elements:
+            \begin{equation*}
+                f(x) = \frac{a_0}{2} \cdot 1 + \sum_{r = 1}^{\infty} \Bigg[a_r \cos\Big(\frac{2\pi rx}{L}\Big) + b_r \sin\Big(\frac{2\pi rx}{L}\Big)\Bigg]
+            \end{equation*}
+    \item Inner product: $\langle f \,|\, g \rangle$
+            \begin{equation*}
+                \langle f \,|\, g \rangle = \frac{2}{L} \int_{0}^{L} f(x)g(x)\,dx \\
+            \end{equation*}
+            The basis is orthogonal so:
+            \begin{align*}
+                \langle f \,|\, g \rangle &= \frac{2}{L} \Bigg[ \\
+                & \int_{0}^{L} \sin\Big(\frac{2\pi rx}{L}\Big)\cos\Big(\frac{2\pi px}{L}\Big) \, dx = 0 \\
+                &+ \int_{0}^{L} \sin\Big(\frac{2\pi rx}{L}\Big)\sin\Big(\frac{2\pi px}{L}\Big) \, dx =
+                \begin{cases}
+                    0 & r \neq p \\
+                    \frac{L}{2} & r = p
+                \end{cases} \\
+                &+ \int_{0}^{L} \cos\Big(\frac{2\pi rx}{L}\Big)\cos\Big(\frac{2\pi px}{L}\Big) \, dx =
+                \begin{cases}
+                    0 & r \neq p \\
+                    \frac{L}{2} & r = p > 0 \\
+                    L & r = p = 0
+                \end{cases} \Bigg]
+            \end{align*}
+\end{enumerate}
+\begin{itemize}
+    \item  If f(x) is even, i.e. $f(-x) = f(x)$, then $b_r = 0 ~\forall~ r \in \mathbb{N}$
+    \item If f(x) is odd, i.e. $f(-x) = -f(x)$, then $a_r = 0 ~\forall~ r \in \mathbb{N}$
+\end{itemize}
+
+\subsection{Example}
+A function in the interval of $-\pi \leq x \leq \pi$:
+\begin{gather*}
+    f(x) =  \begin{cases}
+                -x & -\pi \leq x \leq 0 \\
+                x & 0 \leq x \leq \pi
+            \end{cases} \\
+    L = 2\pi
+\end{gather*}
+f(x) is even so $b_r = 0$
+\begin{align*}
+    a_r &= \frac{1}{\pi} \int_{-\pi}^{0} (-x)\cos(rx) \, dx + \frac{1}{\pi} \int_{0}^{\pi} x\cos(rx) \, dx \\
+    & = \frac{2}{\pi} \int_{0}^{\pi} x\cos(rx) \, dx
+\end{align*}
+Could choose the interval of $0 \leq x \leq 2\pi$ instead for the same function
+\begin{align*}
+    f(x) &= \begin{cases}
+                x & 0 \leq x \leq \pi \\
+                2\pi - x & \pi \leq x \leq 2\pi
+            \end{cases} \\
+    a_r &= \frac{1}{\pi} \int_{0}^{\pi} x\cos(rx) \, dx + \frac{1}{\pi} \int_{\pi}^{2\pi} (2\pi - x)\cos(rx) \, dx \\
+    &=
+    \begin{cases}
+        a_r = \frac{2}{\pi} \frac{(-1)^r - 1}{r^2} & r > 0 \\
+        a_0 = \pi &
+    \end{cases}
+\end{align*}
+
+\subsection{Example}
+\begin{gather*}
+    f(x) =  \begin{cases}
+                -1 & -\pi < x < 0 \\
+                1 & 0 < x < \pi
+            \end{cases}
+    L = 2\pi
+\end{gather*}
+f(x) is odd so $a_r = 0$
+\begin{align*}
+    b_r &= \frac{1}{\pi} \int_{0}^{\pi} \sin(rx) \, dx - \frac{1}{\pi} \int_{-\pi}^{0} \sin(rx) \, dx \\
+    &= \frac{2}{\pi} \sin(rx) \, dx = \frac{2}{r\pi} (1 - (-1)^r),~ r > 0 \\
+    b_r &=  \begin{cases}
+                0 & r \text{ even} \\
+                \frac{4}{r\pi} & r \text{ odd}
+            \end{cases} \\
+    f(x) &= \frac{4}{\pi} \sum_{r = 1}^{\infty} \frac{\sin((2r - 1)x)}{2r - 1}\\
+         &= \frac{4}{\pi} \Big(\sin(x) + \frac{\sin(3x)}{3} + \cdots \Big)
+\end{align*}
+Function at $x = n\pi$ is discontinuous - the value of the FS at these values is zero
+
+The sum of the FS at a jump (discontinuity), $x_0$, is equal to the avergae of the two function values on either side, i.e.
+\begin{equation*}
+    \frac{1}{2}\big[f(x_{0}^-) + f(x_{0}^+) \big]
+\end{equation*}
+
+\chapter{}
+\section{FS Continued}
+Sometimes we have functions that are defined only on a finite interval. In order to calculate the FS for this, we need to extend the function by means of functions that are periodic.
+
+\subsection{Example}
+\begin{equation*}
+    f(x) = x^2,~ 0 \leq x \leq 2
+\end{equation*}
+In order to calculate FS, we need to think of possible extensions:
+\begin{enumerate}
+    \item Extend to $x^2,~ -2 \leq x \leq 2$ - this is even and continuous
+    \item   \begin{gather*}
+                f(x) =  \begin{cases}
+                            x^2 & 0 \leq x < 2 \\
+                            -x^2 & -2 < x \leq 0
+                        \end{cases}
+            \end{gather*}
+            This is odd and non-continuous
+    \item Extend as $x^2,~ 0 < x < 2$ - this is non-continuous
+\end{enumerate}
+All these extensions are fine in the sense that they are a fine representation of the function $f(x) = x^2,~ 0 \leq x \leq 2$
+
+However, they have a different value at $x = 2$ \\
+In general, continuous extensions are preferable - Gibb's phenomenon at points of discontinuity
+
+FS evaluated at specific points can be used to calculate series of constant terms \\
+Consider Example 2 in Lecture 7:
+\begin{align*}
+    f(x) &= \begin{cases}
+                -1 & -\pi < x < 0 \\
+                1 & 0 < x < \pi
+            \end{cases} \\
+    f(x) &= \frac{4}{\pi} \Big(\sin x + \frac{\sin 3x}{3} + \frac{\sin 5x}{5} + \cdots \Big)
+\end{align*}
+Choose $f(x = \frac{\pi}{2}) = 1$:
+\begin{align*}
+    f(x = \frac{\pi}{2}) &= \frac{4}{\pi} (\sin \frac{\pi}{2} + \cdots) \\
+    1 &= \frac{4}{\pi} \Big(1 - \frac{1}{3} + \frac{1}{5} -\frac{1}{7} + \cdots \Big) \\
+    \frac{\pi}{4} &= 1 - \frac{1}{3} + \frac{1}{5} -\frac{1}{7} + \cdots \\
+    &= \sum_{n = 0}^{\infty} (-1)^n \frac{1}{2n + 1}
+\end{align*}
+
+\section{Calculus of FS}
+\begin{enumerate}
+    \item If we integrate a FS with respect to x, we get a power of r at the denominator of each coefficient. This results in a more rapid convergence, meaning a FS can always be integrated.
+    \item If we differentiate a FS with respect to x, we get a power of r at the numerator of each coefficient. This reduces the rate of convergence, so must be careful with differentiation.
+\end{enumerate}
+
+\subsection{Example}
+Consider $f(x) = x^2,~ 0 \leq x \leq 2$ \\
+In order to write FS, we need a periodic function
+
+Let's choose the even one looked at previously ($b_r = 0$):
+\begin{align*}
+    f(x) &= x^2,~ 2 \leq x \leq 2,~ L = 4 \\
+    f(x) &= \frac{4}{3} + 16\sum_{r = 1}^{\infty} \frac{(-1)^r}{(\pi r)^2}\cos\Big(\frac{\pi rx}{2}\Big) \equiv x^2,~ 0 \leq x \leq 2
+\end{align*}
+This FS represents the function $f(x) = x^2,~ 0 \leq x \leq 2$
+
+\section{Integrating FS}
+\begin{align*}
+    \int \frac{4}{3}dx + 16\sum_{r = 1}^{\infty} \frac{(-1)^r}{(\pi r)^2} \int \cos\Big(\frac{\pi rx}{2}\Big)\,dx &= \int x^2 dx \\
+    \frac{4}{3}x + 32\sum_{r = 1}^{\infty} \frac{(-1)^r}{(\pi r)^3}\sin\Big(\frac{\pi rx}{2}\Big) + C &= \frac{1}{3}x^3
+\end{align*}
+This is not a FS - C and $\frac{4}{3}x$ are not in terms of $\sin$ and $\cos$
+
+\section{Differentiating FS}
+\begin{align*}
+    \frac{d}{dx}\bigg(\frac{4}{3}\bigg) + 16\sum_{r = 1}^{\infty} \frac{(-1)^r}{(\pi r)^2} \frac{d}{dx}\bigg(\cos\Big(\frac{\pi rx}{2}\Big)\bigg) &= \frac{d}{dx}\bigg(x^2\bigg) \\
+    -8 \sum_{r = 1}^{\infty} \frac{(-1)^r}{\pi r} \sin\Big(\frac{\pi rx}{2}\Big) &= 2x \\
+    \implies -4\sum_{r = 1}^{\infty} \frac{(-1)^r}{\pi r} \sin\Big(\frac{\pi rx}{2}\Big) &= x
+\end{align*}
+Use this result in the integrated expression to resolve issues:
+\begin{align*}
+    -16\sum_{r = 1}^{\infty} \frac{(-1)^r}{\pi r} \sin\Big(\frac{\pi rx}{2}\Big) + 96\sum_{r = 1}^{\infty} \frac{(-1)^r}{(\pi r)^3}\sin\Big(\frac{\pi rx}{2}\Big) + C' &= x^3
+\end{align*}
+Almost have a FS for $g(x) = x^3,~ 0 \leq x \leq 2$
+\begin{align*}
+    g(0) = 0 \implies& C' = 0 \\
+    -16\sum_{r = 1}^{\infty} \frac{(-1)^r}{\pi r} \sin\Big(\frac{\pi rx}{2}\Big) + 96\sum_{r = 1}^{\infty} \frac{(-1)^r}{(\pi r)^3}\sin\Big(\frac{\pi rx}{2}\Big) &= x^3
+\end{align*}
+This is the FS of $g(x) = x^3,~ 0 \leq x \leq 2$
+
+\section{Complex FS}
+The FS's can be written in complex form:
+\begin{align*}
+    f(x) &= \frac{a_0}{2} + \sum_{r = 1}^{\infty} \bigg(a_r \cos\Big(\frac{2\pi rx}{L}\Big) + b_r \sin\Big(\frac{2\pi rx}{L}\Big)\bigg) \\
+    &= \frac{a_0}{2} + \sum_{r = 1}^{\infty} \Bigg(\frac{a_r}{2}\bigg(e^{i\tfrac{2\pi rx}{L}} + e^{-i\tfrac{2\pi rx}{L}}\bigg) + \frac{b_r}{2i}\bigg(e^{i\tfrac{2\pi rx}{L}} - e^{-i\tfrac{2\pi rx}{L}} \bigg)\Bigg) \\
+    &= \frac{a_0}{2} + \sum_{r = 1}^{\infty} \Bigg(e^{i\tfrac{2\pi rx}{L}} \Big(\frac{a_r}{2} + \frac{b_r}{2i}\Big) + e^{-i\tfrac{2\pi rx}{L}}\Big(\frac{a_r}{2} - \frac{b_r}{2i}\Big)\Bigg)
+\end{align*}
+\begin{gather*}
+    \frac{a_r - b_r i}{2} \equiv c_r ~;~ \frac{a_r + b_r i}{2} \equiv d_r \\
+    a_r = a_{-r} ~;~ b_r = b_{-r} \\
+    d_r = c_{-r}
+\end{gather*}
+\begin{align*}
+    f(x) &= \frac{a_0}{2} + \sum_{r = 1}^{\infty} \bigg(c_r e^{i\tfrac{2\pi rx}{L}} + c_{-r}e^{-i\tfrac{2\pi rx}{L}}\bigg) \\
+    &= \sum_{-\infty}^{\infty} c_r e^{i\tfrac{2\pi rx}{L}},~ c_0 = \frac{a_0}{2}
+\end{align*}
+
+\chapter{}
+\section{Integral Transforms}
+A function $g(y)$ defined by the equation
+\begin{equation*}
+    g(y) = \ifnt k(x,y)f(x)\,dx = I[f(x)](y)
+\end{equation*}
+is called the integral transform of $f(x)$
+\begin{enumerate}
+    \item The function $k(x,y)$ is called the kernel of the transform
+    \item I is linear, i.e.
+            \begin{equation*}
+                I[c_1 f_1 + c_2 f_2] = c_1 I[f_1] + c_2 I[f_2]
+            \end{equation*}
+    \item If I is given, can introduce the inverse, $I^-1$, such that
+            \begin{equation*}
+                I[f] = g \to I^{-1}[g] = f
+            \end{equation*}
+\end{enumerate}
+There are several types of ITs. Consider the Fourier and the Laplace transforms
+
+\section{Fourier Transforms (FTs)}
+FT of f is defined by
+\begin{equation*}
+    \mathcal{F}[f(t)](\om) = \hat{f}(\om) = \frac{1}{\sqrt{2\pi}}\ifnt f(t)\underbrace{e^{-i\om t}}_{k(x,y)}dt
+\end{equation*}
+The integral exists if:
+\begin{enumerate}
+    \item f has a finite number of finite discontinuities
+    \item $\ifnt |f(t)|\,dt$ is finite, i.e. it converges
+\end{enumerate}
+If f is continuous, can define the inverse FT as
+\begin{equation*}
+    \mathcal{F}^{-1}[\hat{f}(\om)](t) = f(t) = \frac{1}{\sqrt{2\pi}} \ifnt \hat{f}(\om) e^{i\om t}d\om
+\end{equation*}
+There are different forms for the FTs:
+\begin{enumerate}
+    \item   \begin{equation*}
+                \hat{f}(\om) = \ifnt f(t)e^{-i\om t}dt ~;~ f(t) = \frac{1}{2\pi} \ifnt \hat{f}(\om)e^{i\om t}d\om
+            \end{equation*}
+    \item   \begin{equation*}
+                \hat{f}(\om) = \frac{1}{\sqrt{2\pi}} \ifnt f(t)e^{i\om t}dt ~;~ f(t) = \frac{1}{\sqrt{2\pi}} \ifnt \hat{f}(\om)e^{-i\om t}d\om
+            \end{equation*}
+    \item   \begin{equation*}
+                \om = 2\pi v \to \hat{f}(v) = \ifnt f(t)e^{-i2\pi vt}dt ~;~ f(t) = \ifnt \hat{f}(v) e^{i2\pi vt}dv
+            \end{equation*}
+\end{enumerate}
+There are functions that are not periodic, therefore, cannot use FS for them. Can imagine that these functions are defined over an infinite interval.
+
+Consider complex FS:
+\begin{align*}
+    f(t) &= \ifsum c_n e^{i\tfrac{2\pi nt}{L}} = \ifsum \Bigg(\frac{1}{L}\int_{-\tfrac{L}{2}}^{\tfrac{L}{2}} f(t)e^{-i\tfrac{2\pi nt}{L}}dt \Bigg)e^{i\tfrac{2\pi nt}{L}} \\
+    \frac{2\pi n}{L} &= \om_n \implies \Delta \om = \om_{n + 1} - \om_n = \frac{2(n + 1)\pi}{L} - \frac{2\pi n}{L} = \frac{2\pi}{L} \\
+    f(t) &= \ifsum \Bigg(\frac{\Delta \om}{2\pi} \int_{-\tfrac{L}{2}}^{\tfrac{L}{2}} f(t)e^{-it\om_n}dt\Bigg) e^{it\om_n}
+\end{align*}
+As $L \to \infty$:
+\begin{itemize}
+    \item   \begin{equation*}
+                \Big[-\frac{L}{2},\frac{L}{2}\Big] \to (-\infty, \infty)
+            \end{equation*}
+    \item   \begin{equation*}
+                \om_n \to \om
+            \end{equation*}
+    \item   \begin{equation*}
+                \Delta \om \to d\om
+            \end{equation*}
+    \item   \begin{equation*}
+                \ifsum \to \ifnt
+            \end{equation*}
+\end{itemize}
+\begin{align*}
+    f(t) &= \ifnt \frac{d\om}{\sqrt{2\pi}}\underbrace{\Bigg(\ifnt \frac{1}{\sqrt{2\pi}} f(t)e^{-i\om t} dt\Bigg)}_{\hat{f}(\om)} e^{i\om t}
+\end{align*}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+            Fourier Series &     Fourier Transforms \\
+        \hline
+        Periodic functions & Non-periodic functions \\
+             Finite period &        Infinite period \\
+         Discrete spectrum &    Continuous spectrum \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Example}
+\begin{align*}
+    f(t) &=
+    \begin{cases}
+        0 & -\frac{L}{2} < t < -\frac{a}{2} \\
+        1 & -\frac{a}{2} < t < \frac{a}{2}  \\
+        0 & \frac{a}{2} < t < \frac{L}{2}
+    \end{cases} \\
+    f(t) &= f(t + L)
+\end{align*}
+FS is complex:
+\begin{align*}
+    c_n &= \frac{a}{L} \frac{\sin\big(\tfrac{n\pi a}{L}\big)}{\tfrac{n\pi a}{L}} \\
+    f(t) &= \ifsum \frac{a}{L} \frac{\sin\big(\tfrac{n\pi a}{L}\big)}{\tfrac{n\pi a}{L}} e^{i\tfrac{2\pi nt}{L}}
+\end{align*}
+The $c_n$, called the spectral coefficient of the $n^{th}$ harmonic, form a discrete complex spectrum
+\begin{equation*}
+    |c_n| \approx |\frac{\sin t_n}{t_n}|
+\end{equation*}
+As the period increases, the separation between the pulses increases as well. In the limit, $L \to \infty$, only a single pulse remains and the resulting function is:
+\begin{equation*}
+    f(t) =
+    \begin{cases}
+        1 & -\frac{a}{2} < t < \frac{a}{2} \\
+        0 & \text{otherwise}
+    \end{cases}
+\end{equation*}
+This is non-periodic \\
+The FT is:
+\begin{align*}
+    \hat{f}(\om) &= \frac{1}{\sqrt{2\pi}} \ifnt f(t)e^{-i\om t}dt = \frac{1}{\sqrt{2\pi}} \int_{-\tfrac{a}{2}}^{\tfrac{a}{2}} e^{-i\om t}dt \\
+    &= \frac{1}{\sqrt{2\pi}} \Bigg[\frac{e^{-i\om t}}{-i\om} \Bigg]_{-\tfrac{a}{2}}^{\tfrac{a}{2}} = \frac{2}{\sqrt{\pi}} \frac{1}{-2i\om} \Big(e^{-i\tfrac{\om a}{2}} - e^{i\tfrac{\om a}{2}}\Big) \\
+    &= \frac{a}{\sqrt{2\pi}} \frac{\sin\big(\tfrac{a\om}{2}\big)}{\tfrac{a\om}{2}}
+\end{align*}
+
+\chapter{}
+\section{Fourier Transforms Continued}
+\begin{align*}
+    \F[f(t)](\om) &= \hat{f}(\om) = \frac{1}{\sqrt{2\pi}} \ifnt f(t)e^{-i\om t}dt \\
+    \F^{-1}[\hat{f}(\om)](t) &= f(t) = \frac{1}{\sqrt{2\pi}} \ifnt \hat{f}(\om)e^{i\om t}d\om
+\end{align*}
+
+\subsection{Properties}
+\begin{itemize}
+    \item Scaling
+            \begin{align*}
+                \F[f(at)](\om) &= \frac{1}{\sqrt{2\pi}} \ifnt f(at)e^{-i\om t}dt, ~(at = t') \\
+                &= \frac{1}{|a|} \F[f(t')]\Big(\frac{\om}{a}\Big) = \frac{1}{|a|\sqrt{2\pi}} \ifnt f(t') e^{-i\om \tfrac{t'}{a}}dt' \\
+                &= \frac{1}{|a|} \hat{f}\Big(\frac{\om}{a}\Big)
+            \end{align*}
+    \item Transposition
+            \begin{equation*}
+                \F[f(t + a)](\om) = e^{i\om a} \F[f(t)](\om) = e^{i\om a}\hat{f}(\om)
+            \end{equation*}
+    \item Exponential Multiplication
+            \begin{equation*}
+                \F[e^{at}f(t)](\om) = \F[f(t)](\om + ia) = \hat{f}(\om + ia)
+            \end{equation*}
+\end{itemize}
+\subsection{Example}
+\begin{align*}
+    \F\Big[f\big(\frac{t}{2}\big)\cos(\alpha t)\Big](\om) &= \frac{1}{2}\F\Big[f\big(\frac{t}{2}\big)e^{i\alpha t}\Big](\om) + \frac{1}{2}\F[f\big(\frac{t}{2}\big)e^{-i\alpha t}](\om) \\
+    &= \frac{1}{2}\cdot2 \F[f(t)e^{2i\alpha t}](2\om) + \frac{1}{2}\cdot2 \F[f(t)e^{-2i\alpha t}](2\om) \\
+    &= \F[f(t)](2\om - 2\alpha) + \F[f(t)](2\om + 2\alpha)
+\end{align*}
+
+\section{Fourier Transform of a Derivative (differential rule)}
+\begin{align*}
+    \F[f'(t)](\om) &= i\om \hat{f}(\om) \\
+    \F[f''(t)](\om) &= -\om^2 \hat{f}(\om) \\
+    \F[f^{(n)}(t)](\om) &= (i\om)^n \hat{f}(\om)
+\end{align*}
+
+\section{Convolution}
+The convolution of two functions is defined as
+\begin{equation*}
+    h(y) = \ifnt f(x)g(y - x)\,dx = (f \star g)(y) = (g \star f)(y)
+\end{equation*}
+
+\section{Convolution Theorem}
+The FT of the convolution $h(y)$ is the product of the FTs of f and g:
+\begin{align*}
+    \hat{h}(k) &= \sqrt{2\pi} \hat{f}(k) \hat{g}(k) \\
+    \hat{h}(k) &= \frac{1}{\sqrt{2\pi}} \ifnt h(y)e^{-iyk}dy = \frac{1}{\sqrt{2\pi}} \ifnt \Bigg(\ifnt f(x)g(y - x)\,dx\Bigg)e^{-iyk}dy \\
+    &= \frac{1}{\sqrt{2\pi}} \ifnt f(x) \Bigg(\ifnt g(y - x)e^{-iyk}dy\Bigg)\,dx, ~ (y - x = z) \\
+    &= \frac{1}{\sqrt{2\pi}} \ifnt f(x) \Bigg(\ifnt g(z)e^{-i(z + x)k}dz\Bigg)\,dx \\
+    &= \frac{1}{\sqrt{2\pi}} \ifnt f(x)e^{-ixk}dx \Bigg(\frac{1}{\sqrt{2\pi}}\sqrt{2\pi} \ifnt g(z)e^{-izk}dz \Bigg) \\
+    &= \sqrt{2\pi} \hat{f}(k) \hat{g}(k)
+\end{align*}
+
+\subsection{Example}
+\begin{equation*}
+    \frac{d^2 f}{dt^2} + 2\frac{df}{dt} + f(t) = h(t)
+\end{equation*}
+Apply FT on both sides:
+\begin{gather*}
+    \F\Big[\frac{d^2 f}{dt^2}\Big](\om) + 2\F\Big[\frac{df}{dt}\Big](\om) + \F[f(t)](\om) = \F[h(t)](\om) \\
+    -\om^2 \hat{f}(\om) + 2i\om \hat{f}(\om) + \hat{f}(\om) = \hat{h}(\om) \\
+    \begin{aligned}
+        \hat{f}(\om) &= \frac{\hat{h}(\om)}{(1 + 2i\om - \om^2)} \\
+        &= \frac{\hat{h}(\om)}{(i\om + 1)^2}
+    \end{aligned}
+\end{gather*}
+\begin{enumerate}
+    \item   \begin{equation*}
+                f(t) = \F^{-1}\Bigg[\frac{\hat{h}(\om)}{(i\om + 1)^2}\Bigg]
+            \end{equation*}
+    \item   \begin{align*}
+                \hat{f}(\om) &= \frac{\hat{h}(\om)}{(i\om + 1)^2} = \sqrt{2\pi}\hat{h}(\om) \hat{g}(\om),~~ \Big[\hat{g}(\om) = \frac{1}{\sqrt{2\pi}} \frac{1}{(i\om + 1)^2} \\
+                f(t) &= \ifnt g(t')h(t - t')\,dt'
+            \end{align*}
+\end{enumerate}
+
+\section{Dirac $\delta$-function}
+Consider a pulse,
+\begin{equation*}
+    \delta_n (x) =  \begin{cases}
+                        n & -\tfrac{1}{2n} < x < \tfrac{1}{2n} \\
+                        0 & \text{otherwise}
+                    \end{cases}
+\end{equation*}
+If we take the duration of the pulse to decrease while at the same time retaining a unit area, then in the limit, we are lead to the notion of the Dirac $\delta$-function:
+\begin{align*}
+    \lim_{n \to \infty} \ifnt \delta_n (x)\,dx &= \ifnt \delta(x)\,dx = 1 \\
+    \lim_{n \to \infty} \ifnt \delta_n (x) f(x)\,dx &= \ifnt \delta(x)f(x)\,dx = f(0)
+\end{align*}
+$\delta$-function is not a standard function. It is a generalised function ditribution. \\
+It is defined as the limit of a sequence of functions (not a unique sequence)
+
+Its defining properties are:
+\begin{enumerate}
+    \item   \begin{equation*}
+                \delta(x - a) = 0,~ x \neq a
+            \end{equation*}
+    \item   \begin{equation*}
+                \int_{\alpha}^{\beta} f(x)\delta(x - a)\,dx =
+                \begin{cases}
+                    f(a) & \alpha < a < \beta \\
+                    0 & \text{otherwise}
+                \end{cases}
+            \end{equation*}
+\end{enumerate}
+
+\section{Example}
+\begin{enumerate}
+    \item   \begin{equation*}
+                \int_{-4}^{4} \delta(x - \pi)\cos(x)\,dx = \cos\pi = -1
+            \end{equation*}
+    \item   \begin{equation*}
+                \hat{\delta}(\om) = \frac{1}{\sqrt{2\pi}} \ifnt \delta(t)e^{-i\om t}dt = \frac{1}{\sqrt{2\pi}}
+            \end{equation*}
+\end{enumerate}
+
+\chapter{}
+\section{Integral Representation of the $\delta$-function}
+\begin{equation*}
+    \delta_n (t - x) = \frac{\sin(n(t - x))}{\pi(t - x)} = \frac{1}{2\pi} \int_{-n}^{n} e^{i\om(t - x)}d\om
+\end{equation*}
+Because this is a $\delta$-function sequence, we can write
+\begin{align*}
+    f(x) &= \ifnt \delta(t - x)f(t)\,dt = \lim_{n \to \infty} \frac{1}{2\pi} \ifnt f(t) \Bigg(\int_{-n}^{n} e^{i\om(t - x)}d\om\Bigg)\,dt \\
+    &= \ifnt f(t)\Bigg(\frac{1}{2\pi} \int_{-n}^{n} e^{i\om(t - x)} d\om\Bigg)\,dt \\
+    \implies \delta(t - x) &= \frac{1}{2\pi} \int_{-n}^{n} e^{i\om(t - x)} d\om
+\end{align*}
+
+\subsection{Example}
+Inverse FT of a constant, $\frac{1}{\sqrt{2\pi}}$:
+\begin{equation*}
+    \F^{-1}\Big[\frac{1}{\sqrt{2\pi}}\Big](t) = \frac{1}{\sqrt{2\pi}} \ifnt \frac{1}{\sqrt{2\pi}} e^{i\om t}d\om = \delta(t)
+\end{equation*}
+
+\subsection{Properties}
+\begin{enumerate}
+    \item   \begin{equation*}
+                \delta(x) = \delta(-x) \text{- even function}
+            \end{equation*}
+    \item   \begin{equation*}
+                \delta(g(x)) = \underbrace{\sum_{a} \frac{\delta(x - a)}{|g'(a)|}}_{g(a) = 0,~g'(a) \neq 0}
+            \end{equation*}
+\end{enumerate}
+
+
+\subsection{Example}
+Calculate
+\begin{equation*}
+    \ifnt \delta(x^2 - b^2)f(x)\,dx
+\end{equation*}
+Consider
+\begin{equation*}
+    \delta(x^2 - b^2) ~;~ g(x) = g(x)
+\end{equation*}
+$g(x)$ is a polynomial with two roots:
+\begin{align*}
+    x &= \pm b \\
+    g'(x) &= 2x \\
+    g'(\pm b) &= \pm 2b \neq 0
+\end{align*}
+So then:
+\begin{align*}
+    \delta(x^2 - b^2) &= \frac{\delta(x + b)}{|-2b|} + \frac{\delta(x - b)}{|2b|} \\
+    &= \frac{\delta(x - b) + \delta(x + b)}{2b} \\
+    \implies I &= \frac{1}{2b} \ifnt \delta(x - b)f(x)\,dx + \frac{1}{2b}\ifnt \delta(x + b)f(x)\,dx \\
+    &= \frac{1}{2b}(f(b) + f(-b))
+\end{align*}
+
+\section{Heaviside Step Function}
+This is also a distribution
+\begin{equation*}
+    H(x) =
+    \begin{cases}
+        1 & x \geq 0 \\
+        0 & x < 0
+    \end{cases}
+\end{equation*}
+This is also used as $\Theta(x)$
+\begin{align*}
+    \ifnt f(x)H'(x)\,dx &= \Big[f(x)H(x)\Big]_{-\infty}^{\infty} - \ifnt f'(x)H(x)\,dx \\
+    &= f(\infty) - \ofnt f'(x)\,dx = f(\infty) - f(\infty) + f(0) \\
+    &= f(0) = \ifnt f(x)\delta(x)\,dx
+\end{align*}
+
+\section{Laplace Transforms}
+Definition:
+\begin{equation*}
+    \La[f(t)](s) = \bar{f}(s) = \ofnt f(t)e^{-st}dt
+\end{equation*}
+We take s to be real
+
+\subsection{Examples}
+\begin{enumerate}
+    \item Consider $f(t) = t$
+            \begin{align*}
+                \bar{f}(s) &= \ofnt te^{-st}dt = \Big[\frac{te^{-st}}{-s}\Big]_{0}^{\infty} + \frac{1}{s} \ofnt e^{-st}dt \\
+                &= \frac{1}{s} \Big[\frac{e^{-st}}{-s}\Big]_{0}^{\infty} \\
+                &= \frac{1}{s^2},~ s > 0
+            \end{align*}
+    \item   \begin{align*}
+                f(t) &= \cosh(kt) \\
+                \implies \bar{f}(s) &= \frac{s}{s^2 - k^2},~ s > |k|
+            \end{align*}
+    \item Consider $H(t - a)$
+            \begin{align*}
+                \La[H(t - a)](s) &= \ofnt H(t - a)e^{-st}dt = \int_{a}^{\infty} e^{-st}dt \\
+                &= \Big[\frac{e^{-st}}{-s}\Big]_{a}^{\infty} \\
+                &= \frac{e^{-sa}}{s},~ s > 0
+            \end{align*}
+\end{enumerate}
+
+\subsection{Properties}
+\begin{enumerate}
+    \item   \begin{equation*}
+                \La[H(t - a)f(t - a)](s) = e^{-sa}\La[f(t)](s) = e^{-as}\bar{f}(s)
+            \end{equation*}
+    \item   \begin{equation*}
+                \La[e^{at}f(t)](s) = \La[f(t)](s - a) = \bar{f}(s - a)
+            \end{equation*}
+    \item   \begin{equation*}
+                \La[f(at)](s) = \frac{1}{|a|} \bar{f}(s),~ a \neq 0
+            \end{equation*}
+    \item   \begin{equation*}
+                \La[t^n f(t)](s) = (-1)^n \frac{d^n \bar{f}(s)}{ds^n}, n \in \mathbb{N}
+            \end{equation*}
+    \item Laplace transform of a derivative:
+            \begin{align*}
+                \La[f'(t)](s) &= \ofnt f'(t)e^{-st}dt = \Big[f(t)e^{-st}\Big]_{0}^{\infty} + s \ofnt f(t)e^{-st}dt \\
+                &= -f(0) + s\bar{f}(s),~ s > 0 \\
+                \La[f''(t)](s) &= s^2\bar{f}(s) - sf(0) - f'(0) \\
+                \La[f^{(n)}(t)](s) &= s^n \bar{f}(s) - s^{(n - 1)}f(0) - s^{(n - 2)}f^{(1)}(0) - \cdots - s^0 f^{(n - 1)}(0)
+            \end{align*}
+\end{enumerate}
+
+\subsection{Example}
+\begin{align*}
+    \La[\sinh(kt)](s) &= \La\bigg[\frac{d}{dt}\Big(\frac{\cosh(kt)}{k}\Big)\bigg] = -\frac{1}{k} + \frac{s}{k} \frac{s}{s^2 - k^2} \\
+    &= \frac{k}{s^2 - k^2},~ s > |k| \\
+    \La[t\sinh(kt)](s) &= (-1)\frac{d}{ds}\Big(\frac{k}{s^2 - k^2}\Big) \\
+    &= \frac{2ks}{s^2 - k^2},~ s > |k|
+\end{align*}
+
+\section{Convolution Theorem}
+If the functions $f$ and $g$ have LTs $\bar{f}(s)$ and $\bar{g}(s)$, then
+\begin{align*}
+    \La[(f \star g)](s) = \La[(g \star s)] &= \La\Big[\int_{0}^{t} f(u)g(t - u)\,du \Big](s) \\
+    &= \bar{f}(s)\bar{g}(s)
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
