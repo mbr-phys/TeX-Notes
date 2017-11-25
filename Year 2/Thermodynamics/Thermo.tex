@@ -1644,38 +1644,372 @@ Spin alignment becomes random
 Spin entropy has increased. No overall entropy change, so molecule entropy decreases by the same amount (molecules hold electron spin) \\
 More ordered molecules $\implies$ lower temperature
 
+\chapter{}
+\section{The Third Law of Thermodynamics}
+The Second Law tells us about entropy change between states:
+\begin{equation*}
+    C_p = T\Big(\frac{\p S}{\p T}\Big)_p
+\end{equation*}
+Separate variables and integrate:
+\begin{align*}
+    \Delta S &= \int_{T_A}^{T_B} \frac{C_p dT}{T} \\
+    &= S_B - S_A = S(T_0) + \int_{T_0}^{T_f} \frac{C_p dT}{T}
+\end{align*}
+What is $S(T_0)$?
+\begin{itemize}
+    \item[-] We can define this statiscally using $S = k_B \ln(\Omega)$
+    \item[-] Define at a fixed temperature, $S(T = 0)$
+\end{itemize}
+Nernst examined experimental data:
+\begin{align*}
+    \Delta H &> 0 \text{ - exothermic} \\
+    \Delta H &< 0 \text{ - endothermic}
+\end{align*}
+Enthalpy, $H = U + pV$ so $dH = T\,dS + V\,dp$ so at constant pressure, $dp = 0$, and $dH = T\,dS = \delta Q$
 
+In nature, minimise Gibbs function for maximum non-mechanical work, at equilibrium:
+\begin{align*}
+    \Delta G &= G_2 - G_1 < 0 \text{ - spontaneous process} \\
+    G &= U + pV - TS \\
+    \Delta G &= \Delta U + V_0 \Delta p - T_0 \Delta S
+\end{align*}
+Maximising $\Delta S$ minimises $\Delta G$
+\begin{align*}
+    G &= H - TS \\
+    \Delta G &= \Delta H - T_0 \Delta S
+\end{align*}
 
+\begin{wrapfigure}{l}{0.4\textwidth}
+    \begin{center}
+        \includegraphics[scale=0.4]{G-H.png}
+        \vspace{-30pt}
+    \end{center}
+\end{wrapfigure}
 
+Nernst noted that $\Delta G$ tends to $\Delta H$ asymptotically as you reach lower temperatures and approach absolute zero
 
+He also proposed that the rates of the changes of G and H tend to zero:
+\begin{equation*}
+    \lim_{T \to 0} \Big(\frac{\p \Delta G}{\p T}\Big)_p = 0 = \lim_{T \to 0} \Big(\frac{\p \Delta H}{\p T}\Big)_p
+\end{equation*}
+Total derivative of Gibbs is
+\begin{align*}
+    dG &= -S\,dT + V\,dp \\
+    \implies & \Big(\frac{\p G}{\p T}\Big)_p = -S
+\end{align*}
+As $\Delta G \to \Delta H$ as $T \to 0$:
+\begin{align*}
+    \lim_{T \to 0} T\Big(\frac{\p \Delta G}{\p T}\Big)_p = 0 &= \lim_{T \to 0} \Bigg[\Big(\frac{\p G_2}{\p T}\Big)_p - \Big(\frac{\p G_1}{\p T}\Big)\Bigg] \\
+    &= -\lim_{T \to 0}[S_2 - S_1]
+\end{align*}
+Neat to absolute zero, the entropy change of any reaction in a system (in internal equilibrium) is zero
 
+Planck strengthened this to: \\
+\emph{"The entropy change of all systems in internal equilibrium is the same at absolute zero, and may be taken to be zero"}
 
+Simon further considered the individual components of a system and how they contribute to the entropy (electrons, spins, etc) \\
+We just look at the component of entropy we're interested in, it will be zero
 
+The Third Law has consequences:
+\begin{itemize}
+    \item Heat capacities tend to zero as $T \to 0$
+    \item Thermal expansion stops
+    \item Gases do not remain ideal
+\end{itemize}
 
+\subsection{Adiabatic Volume Change, $V_1 \to V_2 > V_1$}
+Work must be done (negative) as expansion
+\begin{align*}
+    dU &= \delta Q + \delta W, ~~[\delta Q = 0 \\
+    &= \delta W \\
+    U_2 - U_1 &= -\int p\,dV < 0 \\
+    U_2 < U_1 &\implies T_2 < T_1
+\end{align*}
+Near $T = 0$K, entropy $\approx 0 \implies S = S(V, T)$
+\begin{align*}
+    \Delta S &= \int_{0}^{T} \frac{C_V dT}{T},~~ T_i \to T_f,\,T_i \to T_2 \\
+    \Delta S_1 = \int_{T_i}^{T_1} \frac{C_V dT}{T} &= \Delta S_2 = \int_{T_i}^{T_2} \frac{C_v dT}{T}
+\end{align*}
+If we keep expanding the gas, $T_2 \to 0$ and $\Delta S_2 = 0$, but if $C_V > 0$ and $T_1 > 0$, $\Delta S_1 \neq 0$ so we have a contradiction unless you can't get to $T = 0$K
 
+This leads to another statement of the Third Law: \emph{We can't get to $T = 0$K}
 
+\section{Thermodynamics In Action}
+As per Week 6's problem class, can look at thermodynamics of many other systems if:
+\begin{itemize}
+    \item The potential $pV$ is changed to $Xx$
+    \item The work does $-p\,dV$ goes to $X\,dx$
+\end{itemize}
+$X$ is generalised force \\
+$x$ is generalised displacement
+\begin{equation*}
+    \delta W: -p\,dV \to +f\,dx
+\end{equation*}
 
+\subsection{A Rod Placed Under Tension}
+Rod of area $A$, and length $x$ is placed under tension, $f$, causing $dx$ extension at constant T
 
+Young's Modulus:
+\begin{align*}
+    E_T &= \frac{Stress}{Strain} \\
+    Stress &= \frac{df}{A} ~;~ Strain = \frac{dx}{x} \\
+    E_T &= \frac{df}{A} \div \frac{dx}{x} = \frac{x}{A} \Big(\frac{df}{dx}\Big)_T
+\end{align*}
+How does the tension change with temperature at constant length?
+\begin{align*}
+    \Big(\frac{\p f}{\p T}\Big)_x &= -\Big(\frac{\p f}{\p x}\Big)_T \Big(\frac{\p x}{\p T}\Big)_f \\
+    \Big(\frac{\p f}{\p T}\Big)_x &= -\frac{AE_T}{x}\Big(\frac{\p x}{\p T}\Big)_f,~ \underbrace{\alpha_f = \frac{1}{x}\Big(\frac{\p x}{\p T}\Big)_f}_{\text{Expansicity - }\beta_p}
+\end{align*}
+The sign of $\Big(\frac{\p f}{\p T}\Big)_x$ depends on the sign of $\Big(\frac{\p x}{\p T}\Big)_f$: \\
+This is positive for most materials apart from rubber
 
+$\Big(\frac{\p f}{\p T}\Big)_x < 0$ for most things if $\frac{\Delta T}{\Delta f} > 0$ \\
+$\Delta T > 0 \implies \Delta f < 0$
 
+\subsection{Maxwell Equation}
+\begin{equation*}
+    \Big(\frac{\p f}{\p T}\Big)_x = -\Big(\frac{\p S}{\p x}\Big)_T
+\end{equation*}
+Use calculus for entropy
 
+\section{Real Gases}
+Real gases are also considered - molecules have size and are weakly attracted to each other \\
+Ideal gas: $pV = RT$ \\
+Use different equations of state and do all the same physics on real gases:
+\begin{enumerate}
+    \item Van Der Waal's:
+            \begin{equation*}
+                \Big(p + \frac{a}{V^2}\Big)\Big(V - b\Big) = RT
+            \end{equation*}
+    \item Virid Expansion:
+            \begin{equation*}
+                \frac{pV}{RT} = 1 + \frac{B}{V} + \frac{C}{V^2} + \cdots
+            \end{equation*}
+\end{enumerate}
 
+\begin{wrapfigure}{l}{0.4\textwidth}
+    \begin{center}
+        \includegraphics[scale=0.3]{IsoReal.png}
+    \end{center}
+\end{wrapfigure}
 
+Isotherms have changed shapes:
 
+Above $T_c$, real gases behave as ideal gases would
 
+At $T_c$, have point of inflection ($p_c, T_c, V_c$)
+\begin{equation*}
+    \Big(\frac{\p p}{\p V}\Big)_{T_c} = 0 = \Big(\frac{\p^2 p}{\p V^2}\Big)_{T_c}
+\end{equation*}
+Compressibility is
+\begin{equation*}
+    \kappa_T = -\frac{1}{V}\Big(\frac{\p V}{\p p}\Big)_T,~ \kappa_{T_c} \to \infty
+\end{equation*}
+Below $T_c$, $\kappa_T$ becomes negative because $\Delta p > 0$, we have $\Delta V > 0$, pressure fluctuations can increase volume - this is unstable
 
+\chapter{}
+\section{Statistical Mechanics}
+Full course at level 3, but subject is closely related to thermodynamics. Look at average atomic arrangements as opposed to behaviour of the bulk. \\
+We know it is impossible to look at all atoms individually so we consider the most probable behaviour.
 
+At thermal equilibrium, a material occupies the macrostate - has the highest number of microstates associated with it.
+\begin{itemize}
+    \item Macrostate - Description of material's average behaviour, i.e. what we observe
+    \item Microstate - Most detailed description we have, i.e. individual arrangements
+\end{itemize}
 
+\subsection{100 coins in a box}
+Open the lid after shaking, the coins are in one of $2^{100} \to 10^{30}$ arrangements. \\
+Each arrangement is equally likely, if each state can have a label $[1,2,\cdots,100]$, could identify the microstate.
 
+However, macrostate of number of heads and tails is simpler: $\approx 50H + 50T$
 
+Each macrostate has many microstates, but there is a greater chance of seeing some arrangements.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Macro & \multicolumn{2}{c|}{Number of Microstates} \\
+        \hline
+        $50H + 50T$ & $\frac{100!}{(50!\times50!)}$ & $\approx 4\times10^{27}$ \\
+        $53H + 47T$ & $\frac{100!}{(53!\times47!)}$ & $\approx 3\times10^{27}$ \\
+        $90H + 10T$ & $\frac{100!}{(90!\times10!)}$ & $\approx 10^{13}$ \\
+        $100H + 0T$ & $\frac{100!}{(100!\times0!)}$ & $1$ \\
+        \hline
+    \end{tabular}
+\end{table}
+To count distinguishable particles - number of microstates in the macrostate:
+\begin{equation*}
+    \Omega = \frac{N!}{\prod_{j} n_j!},~ \prod_{j}n_j! = n_1!\times n_2!\times n_3!\times\cdots\times n_n!
+\end{equation*}
+Total particles is $N = \sum n_j$, $n_j$ particles in a state with energy $\epsilon_j$
 
+$N!$ total arrangements:
+\begin{itemize}
+    \item First particle in $N$ places
+    \item Second particle in $N - 1$ places
+    \item etc
+\end{itemize}
+Don't care how particles are arranged in state j so divide $\prod n_j!$ \\
+Statistical temperature:
+\begin{equation*}
+    \beta = \frac{1}{k_B T} = \frac{d(\ln\Omega)}{dE}
+\end{equation*}
+At thermal equilibrium, the state which is most probable (highest number of microstates)
+\begin{equation*}
+    \text{Entropy, }S = k_B \ln\omega
+\end{equation*}
 
+\subsection{Joule Expansion of a gas}
+Example of Free expansion, removing partition: $V \to 2V$ \\
+One mole of gas with a constant temperature, $dU = 0$:
+\begin{align*}
+    dU &= \delta Q + \delta W \\
+    &= T\,dS - p\,dV \\
+    T\,dS &= p\,dV \\
+    \Delta S &= \int_{V_0}^{2V_0} \frac{p\,dV}{T},~ pV = RT \\
+    \Delta S &= \int_{V_0}^{2V_0} \frac{R}{V}\,dV = R\ln2
+\end{align*}
+Each molecule can now be arranged in twice the number of ways. For one mole, we have $2^{N_A}$ ways of placing the molecules so the number of microstates is $2^{N_A}$ larger:
+\begin{align*}
+    \Omega_{after} &= 2^{N_A}\Omega_{before} \\
+    S_{after} &= k_B \ln\Omega_{after} = k_B \ln(2^{N_A}\Omega_{before}) \\
+    &= k_B N_A \ln2 + k_B\ln\Omega_{before} \\
+    &= k_B N_A \ln2 + S_{before} \\
+    \Delta S &= k_B N_A \ln2 = R\ln2
+\end{align*}
+For even small systems, there are lots of microstates and factorials of large numbers. $\Omega$ has factorials of $N_A!$ \\
+Striling Approximation:
+\begin{equation*}
+    \ln(X)! \approx X\ln(X) - X
+\end{equation*}
 
+\section{Boltzmann Distribution}
+Boltzmann is a probability distribution telling us the probability of finding particle with $\epsilon_j$ at temperature T
+\begin{equation*}
+    P(\epsilon_j) \propto \exp\Big(\frac{-\epsilon_j}{k_B T}\Big) = \frac{\exp\big(\tfrac{-\epsilon_j}{k_B T}\big)}{\sum_{j} \exp\big(\tfrac{-\epsilon_j}{k_B T}\big)}
+\end{equation*}
+The sum on the bottom is the partition function:
+\begin{equation*}
+    Z = \sum_{j} \exp\Big(\frac{-\epsilon_j}{k_B T}\Big)
+\end{equation*}
+This ensure normalisation such that
+\begin{equation*}
+    \sum_{j} P(\epsilon_j) = 1
+\end{equation*}
+At thermal equilibrium, there are three conditions:
+\begin{enumerate}
+    \item Fixed particle number
+            \begin{equation*}
+                N = \sum_j n_j ~;~ dN = \sum dn_j = 0
+            \end{equation*}
+    \item Fixed total energy
+            \begin{equation*}
+                E = \sum_{j} \epsilon_j n_j ~;~ dE = \sum \epsilon_j dn_j = 0
+            \end{equation*}
+    \item The most probable macrostate has the most microstates so $d\Omega = 0$. This is equivalent to
+            \begin{equation*}
+                \sum_{j} (\ln n_j)\,dn_j = 0
+            \end{equation*}
+\end{enumerate}
+For all conditions, Lagrange multipliers solve having a number of conditions zero simultaneously
+\begin{align*}
+    \sum_{j}& (\alpha\,dn_j + \beta\epsilon_j\,dn_j + (\ln n_j)\,dn_j) = 0 \\
+    \sum_{j}& dn_j (\alpha + \beta\epsilon_j + \ln n_j) = 0
+\end{align*}
+To hold for all j:
+\begin{align*}
+    (\alpha &+ \beta\epsilon_j + \ln n_j) = 0 \\
+    n_j &= \exp(-\alpha - \beta\epsilon_j) = A\exp\Big(\frac{-\epsilon_j}{k_B T}\Big) \\
+    \beta &= \frac{1}{k_B T} ~;~ A = \frac{1}{Z} = \frac{1}{\sum_{j} \exp\big(\tfrac{-\epsilon_j}{k_B T}\big)}
+\end{align*}
 
+\section{Partition Function}
+$Z$ links the subjects. It is a zipped up version of all thermodynamic properties \\
+It can be shown that
+\begin{align*}
+    S &= k_B T\ln Z + \frac{U}{T} \\
+    U &= -\frac{d(\ln Z)}{d\beta} = k_B T^2 \frac{d(\ln Z)}{dT} ~;~ U \propto E = \sum_{j} n_j \epsilon_j
+\end{align*}
+This tells us that
+\begin{align*}
+    F &= -k_B T\ln Z \\
+    Z &= \exp(-\beta F)
+\end{align*}
 
+\section{Quantum Particles}
 
+\subsection{Wavefunctions}
+From Quantum mechanics, we have two types of indistinguishable particle, bosons and fermions.
+Look at their wavefunctions where swapping particles either leaves the wavefunction unchanged, or introduces an overall minus sign.
+In both cases, the probability of state occupation doesn't change. Considering the two particle wavefunction $\psi(1,2)$ where 1, 2 represent the coordinates of each particle.
+If the particles are indistinguishable, changing the patticle labels will not result in a change to the physical oberservables.
+The solution of the Schrodinger for the two particles can be written as the product of the one-particle wavefunctions, $\psi(1,2) = \psi_{a}(1)\psi_{b}(2)$, where $a$ and $b$ are the values of state label.
 
+Symmetry in Bosons, any number in a quantum state:
+\begin{equation*}
+    \psi_S (1,2) = \frac{1}{\sqrt{2}}[\psi_a(1)\psi_b(2) + \psi_a(2)\psi_b(1)]
+\end{equation*}
+Anti-symmetry in Fermions, from the Pauli exclusion principle, can only have one particle per quantum state (two per energy level as we have spin up and spin down)
+\begin{equation*}
+    \psi_A(1,2) = \frac{1}{\sqrt{2}}[\psi_a(1)\psi_b(2) - \psi_a(2)\psi_b(1)]
+\end{equation*}
+You can show that $\psi_S(1,2) = \psi_S(2,1)$ and $\psi_A(1,2) = -\psi_A(2,1)$
 
+\subsection{Arrangements of Indistinguishable Particles}
+If particles are indistinguishable, e.g. gases, it is better to consider distribution functions.
+Here we look at energy levels, as opposed to state.
+In other words, lots of energy levels are collected together into bundles with the $i^{th}$ bundle have $g_i$ states, or energy levels, containing $n_i$ particles associated with it.
 
+The Maxwell Boltzmann distribution for a classical gas:
+\begin{equation*}
+    f_{MB}(\epsilon) = A\exp\Big(\frac{-\epsilon}{k_B T}\Big)
+\end{equation*}
+We have many more energy levels, so $\epsilon$ is now continious \\
+$f(\epsilon)$ - distribution function, probability a state having energy $\epsilon$ is occupied \\
+$g(\epsilon)d\epsilon$ - density of states, how many energy levels are in the range, $d\epsilon$ \\
+$n(\epsilon)d\epsilon = f(\epsilon)g(\epsilon)d\epsilon$ - number of particles in the energy interval $d\epsilon$
 
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \begin{center}
+        \includegraphics[scale=0.6]{BoseEinstein.png} \\
+        \includegraphics[scale=0.5]{FermiDirac.png} \\
+        \includegraphics[scale=0.6]{Limits.png}
+    \end{center}
+\end{wrapfigure}
+
+\textbf{Bose-Einstein Distribution}
+\begin{equation*}
+    f_{BE}(\epsilon) = \frac{1}{\exp\big(\tfrac{\epsilon - \mu}{k_B T}\big) - 1}
+\end{equation*}
+$\mu$ is the chemical potential, i.e. the energy to add one particle \\
+As $T \to 0$, $\mu \to \epsilon_0$ of the lowest state:
+\begin{align*}
+    \lim_{T\to0}& \exp\Big(\frac{\epsilon - \mu}{k_B T}\Big) = 1 \\
+    f_{MB} &\to \frac{1}{0} \to \infty
+\end{align*}
+All particles migrate to the lowest energy state. \\
+2nd order phase change for heat capacity.
+
+\textbf{Fermi-Dirac Distribution}
+\begin{equation*}
+    f_{FD}(\epsilon) = \frac{1}{\exp\big(\tfrac{\epsilon - \epsilon_F}{k_B T}\big) + 1}
+\end{equation*}
+$\epsilon_F$ is the Fermi energy \\
+At $T = 0$K all states are occupied to the Fermi energy \\
+Raise T moves particlea above $\epsilon_F$ \\
+At $T = 0$K:
+\begin{equation*}
+    f_{FD}(\epsilon) =
+    \begin{cases}
+        \epsilon \leq \epsilon_F & = 1 \\
+        \epsilon > \epsilon_F & = 0
+    \end{cases}
+\end{equation*}
+
+\textbf{Classical Limits}
+
+Low probability of state occupation - many more states than particles, so quantum effects are irrelevant
+
+Fermi-Dirac $\propto$ Bose-Einstein tend towards Maxwell-Boltzmann
 \end{document}

@@ -1129,3 +1129,243 @@ $$
 $$
 
 * $H'(x', p_{x'})$ has no explicit time dependence so it is conserved but it is no longer the total energy
+
+## Lecture 12
+
+### Hamilton's Principle
+
+* **A mechanical system follows the path which minimises action, where action is $\int L\,dt$**
+
+### Canonical Transformations
+
+* A transformation is by definition _canonical_, if it preserves the structure of Hamilton's equations for all dynamical systems
+* In phase space, can consider new coords Q and momenta P as functions of the original coords and momenta:
+
+$$
+    Q = Q(q, p, t) ~;~ P = P(q, p, t)
+$$
+
+* Will need to define a new Hamiltonian, $H'$ for new Q and P
+* page 34 for Lagrangian equivalency
+
+### The Generating Function
+
+* $F(q, Q, t)$
+* $\frac{dF}{dt} = \frac{\partial F}{\partial q}\dot{q} + \frac{\partial F}{\partial Q}\dot{Q} + \frac{\partial F}{\partial t}$
+* see page 35
+
+$$
+    \frac{\partial L}{\partial \dot{q}} - \frac{\partial F}{\partial q} \implies p = \frac{\partial F}{\partial q} $$ $$
+    \frac{\partial L'}{\partial \dot{Q}} = -\frac{\partial F}{\partial Q} \implies P = -\frac{\partial F}{\partial Q}
+$$
+
+#### Tranformed Hamiltonian
+
+$$
+    H'(Q, P, t) = H(q, p, t) + \frac{\partial F(q, Q, t)}{\partial t}
+$$
+
+#### Example
+
+* SHO
+* For a mass m moving horizontally on a frictionless surface, attached to a spring of spring constant k, the Lagrangian can be written as:
+
+$$
+    L = \frac{1}{2}m\dot{q}^2 - \frac{1}{2}kq^2 = \frac{m}{2}(\dot{q}^2 - \omega^2 q^2),~ \omega^2 = \frac{k}{m}
+$$
+
+* The canonically conjugate momentum to coordinate q is
+
+$$
+    p = \frac{\partial L}{\partial \dot{q}} = m\dot{q}
+$$
+
+* Therefore, the Hamiltonian is:
+
+$$
+    \begin{aligned}
+    H &= p\dot{q} - L = \frac{p^2}{m} - \frac{p^2}{2m} + \frac{m\omega^2 q^2}{2} \\
+    &= \frac{1}{2}\Big(\frac{p^2}{m} + m\omega^2 q^2\Big)
+    \end{aligned}
+$$
+
+* Now consider the Generating Function:
+
+$$
+    F(q, Q) = \frac{1}{2}m\omega q^2 \cot(2\pi Q)
+$$
+
+* This yields:
+
+$$
+    P = -\frac{\partial F}{\partial Q} = \frac{m\pi\omega q^2}{\sin^2(2\pi Q)} $$ $$
+    p = \frac{\partial F}{\partial q} = m\omega q\cot(2\pi Q)
+$$
+
+* Eliminating q gives
+
+$$
+    p(P, Q) = \sqrt{\frac{m\omega P}{\pi}}\cos(2\pi Q)
+$$
+
+* This can then be used to give
+
+$$
+    q(P, Q) = \sqrt{\frac{P}{m\omega\pi}} \sin(2\pi Q)
+$$
+
+* Substituting these back into Hamiltonian:
+
+$$
+    H(q, p) = \frac{1}{2}\Big[\frac{\omega P}{\pi}\cos^2(2\pi Q) + \frac{\omega P}{\pi} \sin^2(2\pi Q)\Big] = \frac{\omega P}{2\pi} $$ $$
+    \frac{\partial F}{\partial t} = 0 \implies H'(Q, P) = H(q, p) = \frac{\omega P}{2\pi}
+$$
+
+* Q is an ignorable coordinate ($\frac{\partial H}{\partial Q} = 0$) and hence P is a constant of the motion
+* Hamilton's equations give:
+
+$$
+    \dot{Q} = \frac{\partial H'}{\partial P} = \frac{\omega}{2\pi} \implies Q(t) = \frac{\omega t}{2\pi}
+$$
+
+* Transforming back to (q, p) yields the familiar solution:
+
+$$
+    q = \sqrt{\frac{P}{\pi m \omega}}\sin(\omega t) $$ $$
+    p = \sqrt{\frac{m\omega P}{\pi}}\cos(\omega t) $$ $$
+    \sqrt{P} \propto \text{amplitude of oscillation} $$ $$
+    P \propto \text{energy of oscillator} $$ $$
+    Q \propto \text{phase of oscillator}
+$$
+
+#### Forms of Generating Functions
+
+* forms are shown on page 36
+
+#### Poisson Brackets
+
+* page 36 again
+* For N DoFs, Poisson bracket is defined as:
+
+$$
+    \{ F, G \} \equiv \sum_{k = 1}^{N} \Bigg(\frac{\partial F}{\partial q_k}\frac{\partial G}{\partial p_k} - \frac{\partial F}{\partial p_k}\frac{\partial G}{\partial q_k}\Bigg)
+$$
+
+* Can rewrite Hamilton's equations of motion:
+
+$$
+    \dot{q} = \{q, H\} ~;~ \dot{p} = \{p, H\} $$ $$
+    F(q, p, t) \to \dot{F} = \{F, H\} + \frac{\partial F}{\partial t}
+$$
+
+## Lecture 13
+
+### Rotating Reference Frames
+
+#### Accelerating Reference Frames
+
+* page 38
+
+* changing from an inertial frame of reference, $S$, to a linearly accelerating one, $B$:
+
+$$
+    m\underline{\ddot{r}}_B = m(\underline{\ddot{r}}_S - \underline{\ddot{R}}) = \underbrace{\underline{F}}_{\text{true force}} - \underbrace{m\underline{\ddot{R}}}_{\text{fictitious force}}
+$$
+
+#### Rotated Reference Frames in 2D
+
+1. In frame $S$, position vector has postive x and y components
+A new fixed reference frame, $B$, is defined wrt an original reference frame by an anticlockwise rotation through angle $\theta$
+
+2. In frame $B$, $\underline{r}$ has a postive x component and a negative y component
+
+3. An observer who changes their observation frame from $S$ to $B$ finds that $\underline{r}$ appears to have rotated clockwise through an angle $\theta$, from $\underline{r}_S$ to $\underline{r}_B$
+
+* 2D rotation matrix:
+
+$$
+    R = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} $$ $$
+    R_=\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix} ~;~ R_=\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} -\sin\theta \\ \cos\theta \end{pmatrix} $$ $$
+    R^{-1} = \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{pmatrix}
+$$
+
+#### Rotations in 3D
+
+* rotational operations in 3D **do not commute**
+* page 39 has derivation leading to the rotation formula:
+
+$$
+    \underline{r}_B = \underline{r}_S \cos\theta + (\underline{n} \cdot \underline{r}_S)\underline{n}[1 - \cos\theta] + (\underline{r}_S \times \underline{n})\sin\theta
+$$
+
+#### Infinitesimal Rotations
+
+* page 40
+* fixed in frame $S$
+* take the small angle limit for $d\theta$, and rotation formula becomes:
+
+$$
+    \underline{r} + d\underline{r} = \underline{r} + (\underline{r} \times \underline{n})d\theta
+$$
+
+* velocity in $B$ relative to $S$
+
+$$
+    \Big[\frac{dr}{dt}\Big]_{in\,B_{}} = -\Big(\underline{n}\frac{d\theta}{dt}\Big) \times \underline{r} = -\underbrace{\underline{\omega}}_{\text{angular velocity}} \times \underline{r}
+$$
+
+##### Example: Pseudo-vectors
+
+* Consider vectors in a particular coordinate system:
+    * $\underline{r}_1 = (x_1, y_1, z_1)$
+    * $\underline{r}_2 = (x_2, y_2, z_2)$
+    * $\underline{u} = \underline{r}_1 \times \underline{r}_2$
+* If the coordinate system is reflected such that $x'$ is in the direction of $-x$ and similarly with the other coordinates, then in this reflected coordinate system, vector $\underline{r}_1$ will have components:
+    * $\underline{r}_{1}' = (-x_1, -y_1, -z_1)$
+* However, $\underline{u}' = \underline{r}_{1}' \times \underline{r}_{2}'$, has components that are the same as $\underline{u}$
+    * it has not changed under relection
+* $\underline{u}$ is a pseudo-vector
+    - it behaves like a vector under rotation but is invariant under reflection
+
+#### Velocity and Acceleration
+
+* must account for time-dependence in frame $S$:
+
+$$
+    \underbrace{\Big[\frac{d\underline{r}}{dt}\Big]_{in\,B_{}}}_{\text{velocity in B}} = \underbrace{\Big[\frac{d\underline{r}}{dt}\Big]_{in\,S_{}}}_{\text{velocity in S}} - \underbrace{\underline{\omega} \times \underline{r}}_{\text{motion due to motion of B relative to S}}
+$$
+
+* Use $\Big[\frac{d}{dt}\Big]_{in\,B_{}}$ as operator
+
+$$
+    \Big[\frac{d}{dt}\Big]_{in\,B_{}} = \Bigg(\Big[\frac{d}{dt}\Big]_{in\,S_{}} - \underline{\omega} \times \Bigg)
+$$
+
+* Use this to find the acceleration:
+
+$$
+    \Big[\frac{d\underline{v}_B}{dt}\Big]_{in\,B_{}} = \underline{a}_S - 2\underline{\omega} \times \underline{v}_B - \underline{\omega} \times (\underline{\omega} \times \underline{r}) - \underline{\dot{\omega}} \times \underline{r}
+$$
+
+#### Inertial Forces in a Rotating Frame
+
+$$
+    m\underline{\ddot{r}} = \underline{F} - \underbrace{2m\underline{\omega} \times \underline{\dot{r}}}_{\text{coriolis force}} - \underbrace{m\underline{\omega} \times (\underline{\omega} \times \underline{r})}_{\text{centrifugal force}} - \underbrace{m\underline{\dot{\omega}} \times \underline{r}}_{\text{Euler force}}
+$$
+
+##### Tying back into Central Forces
+
+* Comparing to Central Forces:
+
+$$
+    E = \underbrace{\overbrace{\frac{1}{2}m\dot{r}^2}^{T_{eff}} + \frac{1}{2}mr^2 \dot{\phi}^2}_{T} + \underbrace{V_{int}(r)}_{V}
+$$
+
+* Angular momentum barrier, $\frac{1}{2}mr^2\dot{\phi}^2$ is
+
+$$
+    -\nabla (\frac{1}{2}mr^2 \dot{\phi}^2) = -m\dot{\phi}^2r
+$$
+
+* This is just the centrifugal force
+* Can consider the effective 1D problem as having been set in a rotating, non-inertial frame

@@ -1004,3 +1004,76 @@ $$
 $$
 
 * To first order, $\psi_n \approx \psi_{n}^0 + \lambda\psi_{n}^1$
+
+### 15. Degenerate Perturbation Theory
+
+* $E_n - E_m \neq 0$ isn't always the case
+
+#### Twofold Degeneracy
+
+* Suppose energy level with exactly two states, $\psi_{a}^0$ and $\psi_{b}^0$, giving same energy of $E^0$
+    * any linear combination of these gives $E^0$
+    * e.g. in Hydrogen, $l = 0,\, m = 0,\, m_s = \pm \frac{1}{2}$
+
+* The perturbation $\lambda H'$ breaks the degeneracy, we want to find these unperturbed states
+
+* Same first order correction:
+
+$$
+    H^0 \psi^1 + \lambda H'\psi^0 = E^0 \psi^1 + \lambda E^1 \psi^0
+$$
+
+* multiply by conjugate of one of the states, $\psi_{a}^{0*}$, or $\langle \psi_{a}^0 |$, and integrate
+
+$$
+    \langle \psi_{a}^0 | H' | \psi^0 \rangle  = E^1 \langle \psi_{a}^0 | \psi^0 \rangle
+$$
+
+* full derivation on page 55
+* use $\psi^0 = \alpha \psi_{a}^0 + \beta \psi_{b}^0$:
+
+$$
+    \alpha \langle \psi_{a}^0 | H' | \psi_{a}^0 \rangle + \beta \langle \psi_{a}^0 | H' | \psi_{b}^0 = E^1 \alpha $$ $$
+    \alpha W_{aa} + \beta W_{ab} = \alpha E^1 $$ $$
+    W_{ij} = \langle \psi_{i}^0 | H' | \psi_{j}^0 \rangle = \int \psi_{i}^{0*} H' \psi_{j}^0 dx
+$$
+
+* can assemble this into eigenvalue matrix equation:
+
+$$
+    \begin{pmatrix} W_{aa} & W_{ab} \\ W_{ba} & W_{bb} \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \end{pmatrix} = E^1 \begin{pmatrix} \alpha \\ \beta \end{pmatrix} $$ $$
+    \implies (W_{aa} - E^1)(W_{bb} - E^1) - W_{ab}W_{ba} = 0 $$ $$
+    \implies (E^1)^2 - (W_{aa} + W_{bb})E^1 + (W_{aa}W_{bb} - |W_{ab}|^2) = 0 \because W_{ab} = W_{ba}^* $$ $$
+    E_{\pm}^1 = \frac{1}{2} \Bigg[W_{aa} + W_{bb} \pm \sqrt{(W_{aa} - W_{bb})^2 + 4|W_{ab}|^2}\Bigg]
+$$
+
+* If two states are degenerate, both having the same energy, any linear combination also has the same energy
+* A small perturbation $H'$ cause a small change in energy and the first order approximation for this, $E^1$ is given by the solution of a matrix equation
+
+* _see pages 56 & 57 for examples on this_
+
+### 16. Degenerate Perturbation Theory II
+
+#### Link to non-degenerate perturbation theory
+
+* page 58
+
+#### Higher-order degeneracy
+
+* For n-fold degeneracy, get $n \times n$ matrix, with n roots
+    * some roots may be zero
+
+#### Example in 3D Square Well
+
+* page 58 and 59
+* integration n stuff
+
+$$
+    \begin{pmatrix} 1 - \omega & \kappa & 0 \\ \kappa & 1 - \omega & 0 \\ 0 & 0 & 1 - \omega \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}, \omega = \frac{4E^1}{V_0}
+$$
+
+#### Meaning of Vector components
+
+* $\alpha, \beta, \gamma$ are the amplitudes of the states $\psi_{211}, \psi_{121}, \psi_{112}$ in a general superposition state
+
+* page 60 has eigenvector stuff

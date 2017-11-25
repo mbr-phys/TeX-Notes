@@ -1572,8 +1572,8 @@ Its defining properties are:
 Because this is a $\delta$-function sequence, we can write
 \begin{align*}
     f(x) &= \ifnt \delta(t - x)f(t)\,dt = \lim_{n \to \infty} \frac{1}{2\pi} \ifnt f(t) \Bigg(\int_{-n}^{n} e^{i\om(t - x)}d\om\Bigg)\,dt \\
-    &= \ifnt f(t)\Bigg(\frac{1}{2\pi} \int_{-n}^{n} e^{i\om(t - x)} d\om\Bigg)\,dt \\
-    \implies \delta(t - x) &= \frac{1}{2\pi} \int_{-n}^{n} e^{i\om(t - x)} d\om
+    &= \ifnt f(t)\Bigg(\frac{1}{2\pi} \ifnt e^{i\om(t - x)} d\om\Bigg)\,dt \\
+    \implies \delta(t - x) &= \frac{1}{2\pi} \ifnt e^{i\om(t - x)} d\om
 \end{align*}
 
 \subsection{Example}
@@ -1596,11 +1596,11 @@ Inverse FT of a constant, $\frac{1}{\sqrt{2\pi}}$:
 \subsection{Example}
 Calculate
 \begin{equation*}
-    \ifnt \delta(x^2 - b^2)f(x)\,dx
+    I = \ifnt \delta(x^2 - b^2)f(x)\,dx
 \end{equation*}
 Consider
 \begin{equation*}
-    \delta(x^2 - b^2) ~;~ g(x) = g(x)
+    \delta(x^2 - b^2) ~;~ g(x) = x^2 - b^2
 \end{equation*}
 $g(x)$ is a polynomial with two roots:
 \begin{align*}
@@ -1694,41 +1694,236 @@ We take s to be real
 If the functions $f$ and $g$ have LTs $\bar{f}(s)$ and $\bar{g}(s)$, then
 \begin{align*}
     \La[(f \star g)](s) = \La[(g \star s)] &= \La\Big[\int_{0}^{t} f(u)g(t - u)\,du \Big](s) \\
-    &= \bar{f}(s)\bar{g}(s)
+    &= \bar{f}(s)\bar{g}(s) \\
+    \bar{f}(s)\bar{g}(s) &= \ofnt f(u)e^{-su}du \ofnt g(v)e^{-sv}dv \\
+    &= \ofnt \ofnt e^{-s(u + v)}f(u)f(v)\, du\,dv,~ (u + v = t) \\
+    &= \ofnt du \ofnt e^{-st}f(u)f(t - u)\,dt
+\end{align*}
+Can choose for integration:
+\begin{tabular}{c|c}
+    Vertical Strips & Horizontal Strips \\
+    $0 < u < \infty$ & $0 < t < \infty$ \\
+    $u < t < \infty$ & $0 < u < t$
+\end{tabular}
+\begin{align*}
+    \bar{f}(s)\bar{g}(s) &= \ofnt e^{-st} \Bigg(\int_{0}^{t} f(u)g(t - u)\, du\Bigg)\,dt \\
+    &= \La\bigg[\int_{0}^{t} f(u)g(t - u)\,du\bigg](s)
 \end{align*}
 
+\chapter{}
+\section{Inverse of a LT}
+\begin{equation*}
+    \La^{-1}[\bar{f}(s)](t) = f(t)
+\end{equation*}
+The general method requires complex analysis, however, it is possible to perform the inverse of a LT by:
+\begin{enumerate}
+    \item Inspection - use partial fraction decomposition and LT properties and table of tansforms
+    \item Convolution Theorem
+\end{enumerate}
 
+\subsection{Table of Laplace Transforms}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c}
+        $f(t)$ & $\bar{f}(s)$ & $s_0 (s > s_0)$ \\
+        \hline
+        $c$ & $\frac{c}{s}$ & $0$ \\
+        $e^{at}$ & $\frac{1}{s - a}$ & $a$ \\
+        $ct^n$ & $\frac{cn!}{s^{n + 1}}$ & $0$ \\
+        $t^n e^{at}$ & $\frac{n!}{(s - a)^{n + 1}}$ & $a$
+    \end{tabular}
+\end{table}
 
+\subsection{Examples}
+\begin{enumerate}
+    \item Partial Fractions decomposition: \\
+          Find $f(t)$ if $\bar{f}(s) = \frac{s + 3}{s(s + 1)}$
+            \begin{align*}
+                \bar{f}(s) = \frac{s + 3}{s(s + 1)} &= \frac{3}{s} - \frac{2}{s + 1} = \bar{f}_{1}(s) + \bar{f}_2 (s) \\
+                \La^{-1}[\bar{f}_1 (s)](t) &= 3,~ s > 0 \\
+                \La^{-1}[\bar{f}_2 (s)](t) &= -2e^{-t},~ s > -1 \\
+                \implies \La^{-1}[\bar{f}(s)](t) &= 3 - 2e^{-t},~ s > 0
+            \end{align*}
+    \item Convolution Theorem
+          Find $f(t)$ if $\bar{f}(s) = \frac{2}{s^2 (s + 1)^2}$
+            \begin{align*}
+                \bar{f}(s) = \frac{2}{s^2} \cdot \frac{1}{(s + 1)^2} &= \bar{f}_1 (s) \cdot \bar{f}_2 (s) \\
+                \La^{-1}[\bar{f}_1 (s)](t) &= 2t,~ s > 0 \\
+                \La^{-1}[\bar{f}_2 (s)](t) &= te^t, ~ s > 1 \\
+                \implies \La^{-1}[\bar{f}(s)](t) &= \int_{0}^{t} 2(t - u)ue^{-u}du \\
+                &= 2e^{-t}(t + 2) + 2(t - 2)
+            \end{align*}
+    \item The LTs are used to solve ODEs:
+            \begin{align*}
+                \frac{df}{dt} &+ 2f = e^{-t},~ f(0) = 3 \\
+                \text{Apply LT}&\text{ across ODE} \\
+                \implies& \La\Big[\frac{df}{dt}\Big](s) + 2\La[f](s) = \La[e^{-t}](s) \\
+                \implies& -f(0) + s\bar{f}(s) + 2\bar{f}(s) = \frac{1}{s + 1} \\
+                \implies& \bar{f}(s) = \frac{3s + 4}{(s + 2)(s + 1)} = \frac{1}{s + 1} + \frac{2}{s + 2} \\
+                \implies& f(t) = e^{-t} + 2e^{-2t}
+            \end{align*}
+    \item The Hamiltonian for a harmonic oscillator
+            \begin{align*}
+                H(p, x) &= \frac{p^2}{2m} + \frac{1}{2} m\om^2 x^2 = E \\
+                -\frac{\hbar^2}{2m}\frac{d^2 \Psi(x)}{dx^2} &+ \frac{1}{2}m\om^2 x^2 \Psi(x) = E\Psi(x) \\
+                \Psi_{0}(x) &= e^{-\frac{m\om}{2\hbar}x^2},~ E_0 - \frac{\hbar}{2}\om
+            \end{align*}
+          What is the wavefunction in momentum-space? \\
+          In order to see that, apply Fourier analysis, $x \to k,~ p = \hbar k$
+            \begin{align*}
+                g_0(p) = \hat{\Psi}(k) &= \frac{1}{\sqrt{2\pi}} \ifnt e^{-\frac{m\om}{2\hbar}x^2}e^{-ikx}dx \\
+                &= e^{-\frac{p^2}{2\hbar m\om}} \\
+                \Psi_0(x) = e^{-\frac{m\om}{2\hbar}x^2} ~,&~ g_0(p) = e^{-\frac{p^2}{2\hbar m\om}}
+            \end{align*}
+          The width of a Gaussian, $e^{-\frac{x^2}{\sigma^2}}$, is $\sqrt{\frac{\sigma^2}{2}}$:
+            \begin{equation*}
+                \Delta x = \sqrt{\frac{\hbar}{m\om}} ~;~ \Delta p = \sqrt{\hbar m\om}
+            \end{equation*}
+          This is a Quantum Mechanical effect and shows the Uncertainty Principle:
+            \begin{equation*}
+                \Delta x \Delta p = \hbar
+            \end{equation*}
+\end{enumerate}
 
+\chapter{}
+\section{Vector Calculus/Vector fields}
+These are vectors whose components are functions of one or more variables.
+\begin{equation*}
+    \bar{a}(u) = a_x (u)\hat{i} + a_y (u)\hat{j} + a_z (u)\hat{k}
+\end{equation*}
+A vector function defines a vector field.
 
+\subsection{Derivative of a Vector Function}
+The derivative is obtained by differentiating each component.
+\begin{equation*}
+    \bar{a}'(u) = \frac{d\bar{a}}{du} = \frac{da_x}{du}\hat{i} + \frac{d\bar{a}_y}{du}\hat{j} + \frac{d\bar{a}_z}{du}\hat{k}
+\end{equation*}
+Note that in Cartesian coordinates, the vectors $\hat{i}, \hat{j}, \hat{k}$ are constant.
 
+\section{Rules of Differentiation}
+\begin{enumerate}
+    \item   \begin{equation*}
+                \frac{d}{du}(\phi \bar{a}) = \frac{d\phi}{du}\bar{a} + \phi \frac{d\bar{a}}{du}
+            \end{equation*}
+    \item   \begin{equation*}
+                \frac{d}{du}(\bar{a} \cdot \bar{b}) = \frac{d\bar{a}}{du}\bar{b} + \bar{a}\frac{d\bar{b}}{du}
+            \end{equation*}
+    \item   \begin{equation*}
+                \frac{d}{du}(\bar{a} \times \bar{b}) = \frac{d\bar{a}}{du} \times \bar{b} + \bar{a} \times \frac{d\bar{b}}{du}
+            \end{equation*}
+    \item   \begin{equation*}
+                \frac{d\bar{a}}{du}(\phi(u)) = \frac{d\bar{a}}{d\phi}\frac{d\phi}{du}
+            \end{equation*}
+\end{enumerate}
 
+\subsection{Differential of a Vector Function}
+\begin{equation*}
+    d\bar{a} = \frac{\bar{a}}{du}du = \bar{a}'(u)du
+\end{equation*}
+If the vector function depends on more than one variables, then:
+\begin{equation*}
+    \bar{a}(u,v,\cdots) = a_x (v, u, \cdots) \hat{i} + a_y (u, v, \cdots) \hat{j} + a_z (u, v, \cdots)\hat{k}
+\end{equation*}
+Derivative:
+\begin{equation*}
+    \frac{\p \bar{a}}{\p u} = \frac{\p \bar{a}_x}{\p u}\hat{i} \cdots ~;~ \frac{\p \bar{a}}{\p v} = \cdots
+\end{equation*}
+Differential:
+\begin{equation*}
+    d\bar{a} = \frac{\p \bar{a}}{\p u} du + \frac{\p \bar{a}}{\p v}dv + \cdots
+\end{equation*}
 
+\subsection{Example}
+\begin{align*}
+    \bar{a} = \bar{r} &= x\hat{i} + y\hat{j} + z\hat{k} \\
+    \frac{\p \bar{r}}{\p x} &= \hat{i} ~;~ \frac{\p \bar{r}}{\p y} \cdots \\
+    d\bar{r} &= \hat{i}dx + \hat{j}dy + \hat{k}dz
+\end{align*}
 
+\section{Curve and Vector Fields}
+A curve, C, can be represented by a vector function of the type:
+\begin{equation*}
+    \bar{r}(u) = x(u)\hat{i} + y(u)\hat{j} + z(u)\hat{k}
+\end{equation*}
+This is called a parametric representation of the curve, C, and u is the parameter of the representation.
 
+\subsection{Examples}
+\begin{enumerate}
+    \item
+            \begin{align*}
+                y &= -x,~ -1 \leq x \leq 1 \\
+                \implies \bar{r}(u) &= u\hat{i} - u\hat{j},~ -1 \leq u \leq 1
+            \end{align*}
+    \item
+            \begin{align*}
+                x^2 &+ y^2 = 4 \\
+                \bar{r}(u) = (3\cos(u))\hat{i} &+ (2\sin(u))\hat{j},~ 0 \leq u \leq 2\pi
+            \end{align*}
+    \item
+            \begin{align*}
+                \frac{x^2}{4} + y^2 &= 1,~ y \geq 0,~ z = 3 \\
+                \bar{r}(u) = (2\cos(u))\hat{i} &+ (\sin(u))\hat{j} + 3\hat{k},~ 0 \leq u \leq 2\pi
+            \end{align*}
+\end{enumerate}
 
+\subsection{Features of the Curve}
+\begin{itemize}
+    \item The derivative $\bar{r}'(u)$ is a vector tangent to the curve at each point.
+            \begin{equation*}
+                \frac{d\bar{r}}{du} = \bar{r}'(u) = x'(u)\hat{i} + y'(u)\hat{j} _ z'(u)\hat{k}
+            \end{equation*}
+    \item The arc length, S, measured along C from some fixed points satisfies:
+            \begin{equation*}
+                \Big(\frac{dS}{du}\Big)^2 = \frac{d\bar{r}}{du} \cdot \frac{d\bar{r}}{du} \implies dS = \pm \sqrt{\Big(\frac{d\bar{r}}{du} \cdot \frac{d\bar{r}}{du} \Big)} \,du
+            \end{equation*}
+            The sign fixes the direction of measuring, for increasing or decreasing u.
+\end{itemize}
 
+\subsection{Examples}
+Consider a helix:
+\begin{equation*}
+    \bar{r}(u) = 3\cos u\hat{i} + 3\sin u\hat{j} + 4u\hat{k}
+\end{equation*}
+We want to measure the arc length between $u = 0$ and $u = 4$:
+\begin{align*}
+    \bar{r}'(u) &= -3\sin u\hat{i} + 3\cos u\hat{j} + 4\hat{k} \\
+    dS &= \sqrt{( + 16)}\,du = 5\,du \\
+    \implies S &= \int_{0}^{4} 5\,du = 20
+\end{align*}
+The parameterisation can be changed from $u \to v$ then:
+\begin{equation*}
+    \frac{d\bar{r}}{dv} = \frac{d\bar{r}}{du}\frac{du}{dv}
+\end{equation*}
+The tangent vector changes size but not direction. \\
+If $v = S$, then
+\begin{equation*}
+    \frac{d\bar{r}}{dS} = \frac{d\bar{r}}{du}\frac{du}{dS} = \frac{\bar{t}}{|t|} = \hat{t}
+\end{equation*}
+$dS$ is the line element of C
 
+Since $\hat{t} = \frac{d\bar{r}}{dS}$ is a unit tangent vector, if we take the derivative of $\hat{t}^2 = \hat{t} \cdot \hat{t} = 1 \implies$
+\begin{equation*}
+    \hat{t} \cdot \hat{t}' = 0 \implies \hat{t} \perp \hat{t}'
+\end{equation*}
+That is
+\begin{equation*}
+    \frac{d^2\bar{r}}{dS^2} = \hat{t}'
+\end{equation*}
+defines a direction perpendicular to C at each point
+\begin{equation*}
+    \frac{d^2\bar{r}}{dS^2} = \frac{d\hat{t}}{dS} = \frac{\hat{n}}{\rho}
+\end{equation*}
+where $\hat{n}$ is called the principal normal and $\rho$ is the radius of curvature.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Consider a helix
+\begin{align*}
+    \bar{r} &= 3\cos u\hat{i} + 3\sin u \hat{j} + 4u\hat{k} \\
+    \frac{d\bar{r}}{du} &= \bar{t} = -3\sin u\hat{i} + 3\cos u\hat{j} + 4\hat{k}\\
+    \implies \hat{t} &= \frac{d\bar{r}}{dS} = \frac{d\bar{r}}{du}\frac{du}{dS} = (-3\sin u\hat{i} + 3\cos u\hat{j} + 4\hat{k})\frac{1}{5} \\
+    \hat{t} &= - \frac{3}{5} \sin(\frac{S}{5}) \hat{i} + \frac{3}{5} \cos (\frac{S}{5})\hat{j} + \frac{4}{5}\hat{k} \\
+    \frac{d\hat{t}}{dS} &= \frac{d\hat{t}}{du}\frac{du}{dS} = -\frac{3}{25}\cos(\frac{S}{5})\hat{i} -\frac{S}{25}\sin(\frac{5}{5})\hat{j} = \frac{\hat{n}}{\rho} \\
+    \frac{1}{\rho} &= \frac{3}{25} \implies \rho = \frac{25}{3}
+\end{align*}
 
 
 

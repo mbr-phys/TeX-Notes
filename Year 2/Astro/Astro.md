@@ -601,3 +601,85 @@ $$
 
 * $i \approx 90^\circ$
 * don't need any corrections etc
+
+## Lecture 4
+
+$$
+    P = \underbrace{\frac{\rho kT}{\mu m_H}}_{\text{ideal gas law}} + \frac{1}{3}aT^4
+$$
+
+* Hydrostatic Equilibrium:
+    * Pressure force = Gravitational force
+
+$$
+    \begin{aligned}
+        P\,on\,dA &= [P(r + dr) - P(r)]dA \\
+        &= dP\,dA \\
+        Gravitational &= g\,\underbrace{\underbrace{dA\, dr}_{volume} \rho}_{mass},~ g = \frac{GM_r}{r^2} \\
+        dP\,dA &= -g\rho\, dA\, dr \\
+        \frac{dP}{dr} &= -\frac{GM_r \rho}{r^2} \\
+        \frac{dM_r}{dr} &= 4\pi r^2 \rho \\
+        M_r &= \frac{4}{3}\pi r^2 \rho \\
+        \frac{dP}{dr} &= -G \frac{4}{3}\pi r \rho^2 \\
+        \int_{P_s}^{P_c} dP &= -\frac{4}{3}\pi G \rho^2 \int_{R}^{0} r\,dr \\
+        P_c &= \frac{2}{3}\pi G \rho^2 r^2,~ P_s = 0 \,at\, r = R\\
+        &= \frac{2}{3}\pi Gr^2 \Big[\frac{3}{4}\frac{M}{\pi r^3}\Big]^2 \\
+        &= \frac{3}{8\pi}\frac{GM^2}{R^4}
+    \end{aligned}
+$$
+
+* Example for our sun:
+
+$$
+    M = 2\times10^{30} kg ~;~ R \approx 7\times10^8 m $$ $$
+    P_c \approx 10^{14} N\,m^{-2} $$ $$
+    P_{c,\, true} \approx 2\times10^{16} N\,m^{-2}
+$$
+
+* out as assumed uniform density
+
+## Lecture 5
+
+### Virial Theorem
+
+$$
+    \begin{aligned}
+        \frac{dP}{dr} &= -\frac{GM\rho}{r^2} \times V = \frac{4}{3}\pi r^3 \\
+        V\frac{dP}{dr} &= -\frac{GM\rho}{r^2}\frac{4}{3}\pi r^3 \\
+        &- \text{plug in }\frac{dm}{dr} = 4\pi r^2 \rho \\
+        V\frac{dP}{dr} &= \frac{1}{3}\frac{GM}{r}\frac{dm}{dr} \\
+        \int_{0}^{P(R)} V\,dP &= -\frac{1}{3} \underbrace{\int_{0}^{M} \frac{GM}{r}dm}_{\text{Total GPE} = U} \\
+        LHS: \int U\,dV &= UV - \int V\,dU \\
+        \int_{0}^{P(R)} V\,dP &= \underbrace{[PV]_{0}^{R_{0}}}_{= 0} - \int_{0}^{V(R)} P\,dV = -\frac{1}{3} U \\
+        -3 \int_{0}^{V(R)} P\,dV &= U, ~ dV = \frac{dm}{\rho} \implies \\
+        -3 \int_{0}^{M} \frac{P}{\rho} dm &= U ~ \text{ - generalised form of Virial Theorem} \\
+        \text{Ideal Gas: } P &= nkT = \frac{\rho kT}{\mu m_{H}} \\
+        \text{Average KE: } &= \frac{3}{2}kT \\
+        \text{KE per kilo: } &= \frac{3}{2} \frac{kT}{\mu m_{H}} \\
+        E_{KE} &= \frac{3}{2} \frac{kT}{\mu m_{H}} = \frac{3}{2}\frac{P}{\rho} \\
+        -3 \int_{0}^{M}\frac{P}{\rho}dm &= U,~ \frac{P}{\rho} = \frac{2}{3}E_{KE} \\
+        \underbrace{\int_{0}^{M} E_{KE} \,dm}_{\text{Total KE, assume ideal gas}} &= -\frac{1}{2} U \\
+        \implies K &= -\frac{1}{2}U
+    \end{aligned}
+$$
+
+### Energy from Gravitational Collapse
+
+$$
+    \begin{aligned}
+        dU_{g,i} &= -\frac{GM_{r}dm_{i}}{r} \text{ - GPE of point mass} \\
+        \text{Consider }& \text{shells of material} \\
+        dm &= 4\pi r^2 \rho dr \\
+        dU_{g} &= -\frac{GM_r 4\pi r^2 \rho}{r}dr \text{ - GPE of a shell} \\
+        U_g &= -4\pi G \int_{0}^{R} M_r \rho_r dr \\
+        M_r &= \frac{4}{3}\pi r^3 \bar{\rho} \text{ - avg density isn't too bad here} \\
+        U_g &= -\frac{16}{3}\pi^2 G\bar{\rho}^2 \int_{0}^{R} r^4 dr \\
+        &= -\frac{16}{15}\pi^2 G\bar{\rho}^2 R^5 \\
+        \text{Convert} &\text{ back to mass} \\
+        U &= -\frac{9}{15}\frac{GM^2}{R} \text{ - GPE of the star} \\
+        K &= -\frac{1}{2} U \\
+        \implies E &= \frac{3}{10}\frac{GM^2}{R} \\
+        E &\approx \frac{3}{10} GM^2 \Big[\frac{1}{R} - \frac{1}{R_{initial}}\Big] \\
+        &= \frac{3}{10}\frac{GM^2}{R} \iff R << R_{initial}
+    \end{aligned}
+$$
