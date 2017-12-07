@@ -23,6 +23,8 @@
 \newcommand\F{\mathcal{F}}
 \newcommand\La{\mathcal{L}}
 \newcommand\om{\omega}
+\newcommand\veca{\vec{a}(\vec{r})}
+\newcommand\veru{\vec{r}(u)}
 
 \title{Mathematical Methods \\ In Physics \vspace{-20pt}}
 \author{Dr Cristina Zambon}
@@ -1925,8 +1927,296 @@ Consider a helix
     \frac{1}{\rho} &= \frac{3}{25} \implies \rho = \frac{25}{3}
 \end{align*}
 
+\chapter{}
+\section{Scalar Functions and Fields}
+A scalar function defines a scalar field, e.g. $\phi(u, v), \phi(x,y,x), \phi(r), r = |\vec{r}| = \sqrt{x^2 + y^2 + z^2}$
 
+\subsection{Gradient of a Scalar Function in Cartesian Coordinates}
+This operation allows us to establish a relation between scalar and vector functions. \\
+For a given scalar field, $\phi(x,y,z)$, the gradient of $\phi$ is:
+\begin{equation*}
+    \text{grad}\phi = \nabla\phi = \frac{\p \phi}{\p x}\hat{i} + \frac{\p\phi}{\p y}\hat{j} + \frac{\p\phi}{\p z}\hat{k}
+\end{equation*}
 
+\subsection{Properties of Del}
+\begin{enumerate}
+    \item $\nabla = $del, or nabla, operator: $\frac{\p}{\p x}\hat{i} + \frac{\p}{\p y}\hat{j} + \frac{\p}{\p z}\hat{k}$ \\
+    It is a vector differential operator.
+    \item $\nabla\phi$ is a vector function
+    \item
+            \begin{equation*}
+                \nabla(\phi + \psi) = \nabla\phi + \nabla\psi
+            \end{equation*}
+    \item
+            \begin{equation*}
+                \nabla(\phi\psi) = \phi\nabla\psi + \psi\nabla\phi
+            \end{equation*}
+    \item
+            \begin{equation*}
+                \nabla(\psi(\phi)) = \psi'(\phi)\nabla\phi
+            \end{equation*}
+    \item Special cases: $r = |\vec{r}| = \sqrt{x^2 + y^2 + z^2}$
+            \begin{equation*}
+                \nabla r = \frac{\vec{r}}{r} ~;~ \nabla\Big(\frac{1}{r}\Big) = -\frac{\vec{r}}{r^3} ~;~ \nabla(\phi(r)) = \phi'(r)\nabla r
+            \end{equation*}
+\end{enumerate}
+
+\subsubsection{Example}
+\begin{align*}
+    \nabla r &= \frac{\p}{\p x}r\hat{i} + \frac{\p}{\p y}r\hat{j} + \frac{\p}{\p z}r\hat{k} \\
+    &= \frac{x}{\sqrt{x^2 + y^2 + z^2}}\hat{i} + \frac{y}{\sqrt{x^2 + y^2 + z^2}}\hat{j} + \frac{z}{\sqrt{x^2 + y^2 + z^2}}\hat{k} \\
+    &= \frac{1}{r}(x\hat{i} + y\hat{j} + z\hat{k}) = \frac{\vec{r}}{r}
+\end{align*}
+
+\section{Surfaces and Vector Fields}
+A surface S can be represented by a vector function of the type
+\begin{equation*}
+    \vec{r}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}
+\end{equation*}
+This is called a parametric representation of the surface S
+
+\subsection{Features}
+\begin{itemize}
+    \item $\frac{\p \vec{r}}{\p u}$ and $\frac{\p \vec{r}}{\p v}$ are tangent vectors to a curve C on S with v and u constant respectively. \\
+    These vectors are linearly independent, and their cross-product defines a vector, $\vec{n}$, which is normal to S.
+            \begin{equation*}
+                \vec{n} = \frac{\p \vec{r}}{\p u} \times \frac{\p \vec{r}}{\p v} \neq 0
+            \end{equation*}
+    \item The small changes $du$ and $dv$ produce a small parallelogram on S. We have:
+            \begin{equation*}
+                dS = \Bigg|\frac{\p \vec{r}}{\p u} \times \frac{\p \vec{r}}{\p v}\Bigg|\,du\,dv = |\vec{n}|\,du\,dv
+            \end{equation*}
+            This is called the scalar area element.
+    \item The vector area element is:
+            \begin{equation*}
+                dS = \Bigg(\frac{\p \vec{r}}{\p u} \times \frac{\p \vec{r}}{\p v}\Bigg)\,du\,dv = \vec{n}\;du\,dv
+            \end{equation*}
+    \item The order of the parameters u and v specifies an orientation for S, which is equivalent to a choice of normal, $\vec{n}$.
+\end{itemize}
+A surface S is said to be orientable if the vector $\vec{n}$ is determined everywhere by a choice of sign.
+
+A surface can be represented by the equation $\phi(\vec{r}) = c$ \\
+Consider any curve $\veru$ in S, i.e.
+\begin{align*}
+    \phi(\veru) &= c, ~ \veru = x(u)\hat{i} + y(u)\hat{j} + z(u)\hat{k} \\
+    \frac{d\phi}{du} &= \nabla\phi \cdot \frac{d\vec{r}}{du} = 0 \\
+    d\phi &= \frac{\p \phi}{\p x}dx + \frac{\p\phi}{\p y}dy + \frac{\p\phi}{\p z}dz \\
+    &= \Big(\hat{i}\frac{\p\phi}{\p x} + \hat{j}\frac{\p\phi}{\p y} + \hat{k}\frac{\p\phi}{\p z}\Big) \cdot (dx\hat{i} + dy\hat{j} + dz\hat{k}) \\
+    &= \nabla\phi \cdot d\vec{r} = 0
+\end{align*}
+Hence $\nabla\phi \perp$ to any vector tangent to the surface. $\nabla\phi$ is normal to the surface.
+
+\subsection{Example}
+\begin{align*}
+    \phi(\vec{r}) &= x^2 + y^2 + z^2 = c \text{ - sphere with radius }\sqrt{c} \\
+    \nabla\phi &= 2x\hat{i} + 2y\hat{j} + 2z\hat{k} = 2\vec{r}
+\end{align*}
+
+\subsection{Definition}
+A surface can be defined to have a boundary, $\p S$, consisting of a smooth closed curve.
+A surface is bounded if it can be contained within some solid sphere.
+A bounded surface with no boundary is closed.
+
+\chapter{}
+\section{Divergence of a Vector Field in Cartesian Coordinates}
+Consider a vector field $\vec{a}(x,y,z)$, then the divergence is defined as
+\begin{equation*}
+    \nabla \cdot \vec{a} = \text{div}\vec{a} = \frac{\p}{\p x}\vec{a}_x + \frac{\p}{\p y}\vec{a}_y + \frac{\p}{\p z}\vec{a}_z
+\end{equation*}
+
+\subsection{Properties}
+\begin{enumerate}
+    \item
+            \begin{equation*}
+                \nabla \cdot (\vec{a} + \vec{b}) = \nabla\cdot\vec{a} + \nabla\cdot\vec{b}
+            \end{equation*}
+    \item
+            \begin{equation*}
+                \nabla\cdot(\phi\vec{a}) = \nabla\phi \cdot \vec{a} + \phi\nabla\vec{a}
+            \end{equation*}
+    \item
+            \begin{equation*}
+                \nabla (\vec{a} \times \vec{b}) = \vec{b}(\nabla \times \vec{a}) - \vec{a}(\nabla\times\vec{b})
+            \end{equation*}
+    \item
+            \begin{align*}
+                \vec{r} &= x\hat{i} + y\hat{j} + z\hat{k} \\
+                \nabla &\cdot \vec{r} = 3
+            \end{align*}
+\end{enumerate}
+
+\section{Laplacian of a Scalar Field}
+\begin{align*}
+    \nabla(\nabla\cdot\phi) &= \nabla^2\phi = \frac{\p^2}{\p x^2}\phi + \frac{\p^2}{\p y^2}\phi + \frac{\p^2}{\p z^2}\phi \\
+    \nabla^2 &= \frac{\p^2}{\p x^2} + \frac{\p^2}{\p y^2} + \frac{\p^2}{\p z^2}
+\end{align*}
+It is a scalar differential operator
+
+\section{Curl of a Vector Field}
+\begin{equation*}
+    \nabla \times \vec{a} = \text{curl}\vec{a} = \hat{i}\Big(\frac{\p}{\p y}\vec{a}_z - \frac{\p}{\p z}\vec{a}_y\Big) + \hat{j}\Big(\frac{\p}{\p z}\vec{a}_x - \frac{\p}{\p x}\vec{a}_z\Big) + \hat{k}\Big(\frac{\p}{\p x}\vec{a}_y - \frac{\p}{\p y}\vec{a}_x\Big)
+\end{equation*}
+
+\subsection{Properties}
+\begin{enumerate}
+    \item
+            \begin{equation*}
+                \nabla \times (\vec{a} + \vec{b}) = \nabla \times \vec{a} + \nabla \times \vec{b}
+            \end{equation*}
+    \item
+            \begin{equation*}
+                \nabla \times (\phi \vec{a}) = \nabla\phi \times \vec{a} + \phi(\nabla\times\vec{})
+            \end{equation*}
+    \item
+            \begin{equation*}
+                \nabla\times(\vec{a}\times\vec{b}) = (\vec{b}\cdot\nabla)\vec{a} - (\nabla\cdot\vec{a})\vec{b} - (\vec{a}\cdot\nabla)\vec{b} + (\nabla\cdot\vec{b})\vec{a}
+            \end{equation*}
+    \item
+            \begin{equation*}
+                \nabla \times \vec{r} = 0
+            \end{equation*}
+\end{enumerate}
+Important point to remember:
+\begin{itemize}
+    \item Since $\nabla$ is an operator, ordering is important, i.e.
+            \begin{align*}
+                \underbrace{\nabla\cdot\vec{a}}_{\text{scalar}} &\neq \underbrace{\vec{a}\cdot\nabla}_{\text{scalar differential operator}} \\
+                \underbrace{\nabla \times \vec{a}}_{\text{vector}} &\neq \underbrace{\vec{a}\times\nabla}_{\text{vector differential operator}}
+            \end{align*}
+\end{itemize}
+
+\section{Line Integrals}
+Consider a smooth curve, C, ion space or a plane defined by an equation of $\veru$ with end points $\vec{r}(\alpha) = \vec{A}, \vec{r}(\beta) = \vec{B}$. A direction along C must be specified, e.g. $\vec{A} \to \vec{B}$. We have an oriented curve.
+
+The line integral of a vector field $\veca$ along C is
+\begin{equation*}
+    \int_C \veca \cdot d\vec{r} = \int_{\alpha}^{\beta} \vec{a}(\veru) \cdot \frac{d\vec{r}}{du}du
+\end{equation*}
+
+\subsection{Example}
+Consider
+\begin{equation*}
+    \veca = xe^y \hat{i} + z^2 \hat{j} + xy\hat{k}
+\end{equation*}
+Evaluate
+\begin{equation*}
+    \int_C \veca \cdot d\vec{r}
+\end{equation*}
+Consider different paths that can be taken in $\mathbb{R}$
+\begin{enumerate}
+    \item
+            \begin{align*}
+                \veru &= u\hat{i} + u\hat{j} + u\hat{k},~ 0 \leq u \leq 1 \\
+                \veca &= ue^u \hat{i} + u^2 \hat{j} + u^2 \hat{k} \\
+                \frac{d\vec{r}}{du} &= \vec{r}'(u) = \hat{i} + \hat{j} + \hat{j} \\
+                \veca \cdot \frac{d\vec{r}}{du} &= ue^u + 2u^2 \\
+                \int_{C_1} \veca \cdot d\vec{r} &= \int_{0}^{1} (ue^u + 2u^2)\,du = \frac{5}{3}
+            \end{align*}
+    \item
+            \begin{align*}
+                \veru &= u\hat{i} + u^2 \hat{j} + u^3 \hat{k},~ 0 \leq u \leq 1 \\
+                \veca &= ue^{u^2}\hat{i} + u^6 \hat{j} + u^3 \hat{k} \\
+                \vec{r}'(u) &= \hat{i} + 2u\hat{j} + 3u^2 \hat{k} \\
+                \veca \cdot \frac{d\vec{r}}{du} &= ue^{u^2} + 2u^7 + 3u^5 \\
+                \int_{C_2} \veca \cdot d\vec{r} &= \int_{0}^{1} (ue^{u^2} + 2u^7 + 3u^5)\,du = \frac{e}{2} + \frac{1}{4}
+            \end{align*}
+\end{enumerate}
+
+\subsection{Properties}
+\begin{enumerate}
+    \item Integral, $\int_C \veca \cdot d\vec{r}$, in general depends not only on the end points $\vec{a}$ and $\vec{B}$ but also on the path C itself.
+    \item If C is a curve with an orientation, $\vec{A} \to \vec{B}$, then -C is a curve with orientation $\vec{B} \to \vec{A}$ and:
+            \begin{equation*}
+                \int_{-C} \veca \cdot d\vec{r} = \int_{\beta}^{\alpha} \veca \cdot d\vec{r} = -\int_C \veca \cdot d\vec{r}
+            \end{equation*}
+    \item If $C = C_1 + C_2 + C_3 + \cdots$, then
+            \begin{equation*}
+                \int_C \veca \cdot d\vec{r} = \int_{C_1} \veca \cdot d\vec{r} + \int_{C_2} \veca \cdot d\vec{r} + \cdots
+            \end{equation*}
+            Each curve, $C_i$, needs to have:
+            \begin{itemize}
+                \item a regular parameterisation,
+                \item the end points of successive segments need to coincide,
+                \item and there is a compatible choice of parameterisations
+            \end{itemize}
+            Each parameterisation can be chosen independently. \\
+            This allows for useful constructions that rely on segments with opposite orientations that cancel.
+    \item Other kinds of line integral are possible:
+            \begin{equation*}
+                \int_C \phi\;d\vec{r} ~;~ \int_C \vec{a} \times d\vec{r} ~;~ \int \phi\;dS ~;~ \int \vec{a}\;dS
+            \end{equation*}
+            If $\phi = 1$, then $\int dS$ is the length of the curve
+\end{enumerate}
+
+\chapter{}
+\section{Line Integrals Continued}
+\begin{equation*}
+    \int_C \vec{a} \cdot d\vec{r} = \int \veca \cdot \frac{d\vec{r}}{du}du,~ \vec{r} = \veru
+\end{equation*}
+
+\subsection{Example}
+Evaluate $\int_C \phi dS$, where $\phi(\vec{r}) = (x - y)^2$
+\begin{align*}
+    \veru &= a\cos u \hat{i} + a\sin u \hat{j},~ 0 \leq u \leq \pi \\
+    \phi(\veru) &= (a\cos u - a\sin u)^2 = a^2(\cos u - \sin u)^2 \\
+    dS &= \sqrt{\frac{d\vec{r}}{du}\cdot\frac{d\vec{r}}{du}}\; du = \sqrt{(-a\sin u \hat{i} + a\cos u \hat{j})(-a\sin u \hat{i} + a\cos u \hat{j})}\;du \\
+    &= a\,du \\
+    \implies \int_C \phi dS &= \int_0^\pi a^3 (\cos u - \sin u)\,du = \pi a^3
+\end{align*}
+
+\subsection{Simple Connection}
+A region D is simply connected if every closed path within D can be shrunk to a point without leaving the region, i.e. the region D does not have any holes.
+
+\subsection{Theorem}
+Consider a vector function $\veca$ and a path C in a region D which is simply connected. Then the following statements are equivalent:
+\begin{enumerate}
+    \item The integral $I = \int_C \veca \cdot d\vec{r}$ is independent of C for some given end points and orientation.
+    \item $\veca = \nabla \phi$ for some scale field $\phi(\vec{r})$
+    \item $\nabla \times \veca = 0$
+\end{enumerate}
+The vector field $\veca$ is said to be conservative and $\phi$ is said to be its potential.
+
+In addition,
+\begin{align*}
+    I &= \int_C \veca \cdot d\vec{r} = \int_C \nabla \phi \cdot d\vec{r} \\
+    &= \int_C \nabla \phi \cdot \frac{d\vec{r}}{du}du = \int_\alpha^\beta \frac{d}{du}(\phi(\veru))\,du \\
+    &= [\phi(\veru)]_{\alpha}^{\beta} = \underbrace{\phi(\vec{B}) - \phi(\vec{A})}_{\vec{r}(\alpha) = \vec{A}~ \vec{r}(\beta) = \vec{B}}
+\end{align*}
+That is, the integral depends only on the end points, not the path C joining them.
+
+When C is closed, $I = \oint_C \veca \cdot d\vec{r} = 0$ \\
+For a conservative force, $\vec{r} = -\nabla V$, where $V(\vec{r})$ is the potential, we have
+\begin{equation*}
+    W = \int_C \vec{F}\cdot d\vec{r} = V(\vec{A}) - V(\vec{B})
+\end{equation*}
+The work done is equal to the loss in potential energy.
+
+\subsection{Example}
+Consider a vector field, $\veca = (xy^2 + z)\hat{i} + (x^2 y + 2)\hat{j} + xhat{k}$. Show that it is conservative and find its potential, $\phi$.
+\begin{align*}
+    \nabla \times \veca &= \hat{i}\Big(\frac{\p}{\p y}\vec{a}_z - \frac{\p}{\p z}\vec{a}_y\Big) + \hat{j}\Big(\frac{\p}{\p z}\vec{a}_x - \frac{\p}{\p x}\vec{a}_z\Big) + \hat{k}\Big(\frac{\p}{\p x}\vec{a}_y - \frac{\p}{\p y}\vec{a}_x\Big) \\
+    &= (0 - 0)\hat{i} + (1 - 1)\hat{j} + (2xy - 2xy)\hat{k} = 0 \\
+    \veca &= \nabla \phi = \frac{\p }{\p x}\phi \hat{i} + \frac{\p}{\p y}\phi \hat{j} + \frac{\p}{\p z}\phi \hat{k} \\
+    \implies &\frac{\p \phi}{\p x} = xy^2 + z \to \phi = \frac{x^2y^2}{2} + zx + f(y,z) \\
+    \implies &\frac{\p \phi}{\p y} = x^2y + 2 \to f(y,z) = 2y + h(z) \\
+    \implies &\phi = \frac{x^2y^2}{2} + 2x + 2y + h(z) \\
+    \implies &\frac{\p \phi}{\p z} = x \to h(z) = c \\
+    \implies &\phi = \frac{x^2y^2}{2} + 2x + 2y + c
+\end{align*}
+Evaluate $I = \int_C \veca \cdot d\vec{r}$ along C
+\begin{align*}
+    \veru &= \epsilon u \hat{i} + \frac{\epsilon}{u}\hat{j} + h\hat{k} \\
+    \vec{A} &= (\epsilon, \epsilon, h) ~;~ \vec{B} = (2\epsilon, \frac{\epsilon}{2}, h) \\
+    I = \int_C \veca \cdot d\vec{r} = \phi(\vec{B}) - \phi(\vec{A}) &= \frac{(2\epsilon)^2}{2}(\frac{\epsilon}{2})^2 + 2\epsilon h + \epsilon + c - (\frac{\epsilon^4}{2} + \epsilon h + 2\epsilon + c) = \epsilon (h - 1)
+\end{align*}
+Evaluate the integral explicitly
+\begin{align*}
+    \veca &= (\epsilon u\frac{\epsilon^2}{u^2} + h)\hat{i} + (\epsilon^2 u^2 \frac{\epsilon}{u} + 2)\hat{j} + \epsilon u \hat{k} \\
+    \veru &= \epsilon \hat{i} - \frac{\epsilon}{u^2}\hat{j} \\
+    \vec{a}(\veru) \cdot \vec{r}'(u) &= (\frac{\epsilon^4}{u} + h\epsilon) - \frac{\epsilon^4}{u} - \frac{2\epsilon}{u^2} \\
+    I &= \int_{u = 1}^{u = 2} (h\epsilon - \frac{2\epsilon}{u^2})\, du \\
+    &= \epsilon (h - 1)
+\end{align*}
 
 
 

@@ -1369,3 +1369,450 @@ $$
 
 * This is just the centrifugal force
 * Can consider the effective 1D problem as having been set in a rotating, non-inertial frame
+
+## Lecture 14
+
+### Homework Example
+
+* Sketch
+
+$$
+    V_{eff}(r) = \frac{J^2}{2mr^2} - \frac{k}{r}e^{-\frac{r}{a}}
+$$
+
+* Sketch parts independently then add together
+    * exponential not as significant so more similar to first term
+
+### Intertial Forces on Earth
+
+#### Local Coordinate System
+
+* page 41
+
+1. Model Earth as perfect solid sphere and require an appropriate coordinate system to describe motion near a point on its surface
+    * Start with cartesian coordinates with z running through poles
+
+2. Rotate coordinate system around x axis so that z emerges at a chose point on Earth's surface
+    * In new coordinates, looks like a rotation of $-\theta$ about x
+    * in local frame, $\omega$ has y and z components with trig resolutions
+
+$$
+    \underline{\omega} = \begin{pmatrix} 0 \\ \omega\sin\theta \\ \omega\cos\theta \end{pmatrix}
+$$
+
+3. Displace origin of coordinate system by $\underline{R}$ to the point where the local z emerges from the Earth's surface
+
+##### Intertial Forces
+
+* need to substitute in $\underline{r} = \underline{r}' + \underline{R}$
+
+### Forces
+#### Centrifugal Forces
+
+* $-m\underline{\omega} \times (\underline{\omega} \times \underline{r})$
+* must be perpendicular to all terms above
+* points directly away from the axis of rotation
+
+* page 42 for diagrams
+* largest at equator, decreases smoothly as a trig function towards poles
+* adding gravity and centrifugal together gives almost standard gravity map but decreased
+    * centrifugal is not acting radially
+    * effect of gravity is shifted slightly from exactly in the middle
+
+##### The Deviation of a Plumb Bob
+
+* Set $\underline{r}' = (0, 0, 0)$ and $\underline{R} = (0,0,R)$, where R is radius of Earth
+* use
+
+$$
+    \underline{\omega} = \begin{pmatrix} 0 \\ \omega\sin\theta \\ \omega\cos\theta \end{pmatrix}
+$$
+
+* obtain centrifugal force on plumb bob of mass m:
+
+$$
+    \begin{aligned}
+    \underline{F}_{c} &= -m\underline{\omega} \times [\underline{\omega} \times (\underline{r}' + \underline{R})] \\
+    &= -m\omega\underline{\omega} \times \begin{vmatrix} \underline{i} & \underline{j} & \underline{k} \\
+    0 & \sin\theta & \cos\theta \\
+    0 & 0 & R \end{vmatrix} \\
+    &= -m\omega^2 \begin{vmatrix} \underline{i} & \underline{j} & \underline{k} \\ 0 & \sin\theta & \cos\theta \\ R\sin\theta & 0 & 0\end{vmatrix} \\
+    &= -m\omega^2R(0, \sin\theta\cos\theta, -\sin^2\theta)
+    \end{aligned}
+$$
+
+* Incorporating the effect of gravity, one obtains
+
+$$
+    m\underline{\ddot{r}}' = -m(0, \omega^2R\sin\theta\cos\theta, g - \omega^2R\sin^2\theta)
+$$
+
+* Now consider the deflection angle, $\phi_d$, defined through
+
+$$
+    \tan\phi_d = \frac{\omega^2R\sin\theta\cos\theta}{g - \omega^2R\sin^2\theta} \approx \underbrace{\frac{\omega^2R\sin\theta\cos\theta}{g}}_{g >> \omega^2R\sin^2\theta}
+$$
+
+* For $\theta = \frac{\pi}{4}, \frac{3\pi}{4},~ \phi_d$ is maximised at 1.7 milliradians
+* Buildings at colatitude $\frac{\pi}{4}$ are therefore tilted by this amount from the true vertical if aligned with a plumb bob, or a spirit level
+* Note that $\omega = \frac{2\pi}{86400} \text{rad }s^{-1}$, $R \approx 6400\,km \implies \frac{\omega^2 r}{g} = 0.003$
+
+#### Coriolis Force
+
+* page 43
+* Coriolis force is given by
+
+$$
+    -2m\underline{\omega} \times \underline{\dot{r}}' = -2m\omega(\dot{z}\sin\theta - \dot{y}\cos\theta, \dot{x}\cos\theta, -\dot{x}\sin\theta)
+$$
+
+* only affects moving systems, depends on velocities
+* often considered to be constrained in a plane, so ignore z dimension and simplify equation
+
+##### Example in Coriolis Force
+
+* particle with mass, m, moves with constant relative speed, v, around the rim of a wheel of radius, b
+* wheel rolls along a fixed straight line with uniform velocity, u
+* taking wheel as frame of reference, find centrifugal and coriolis forces
+* relative to the inertial frame, moving right with speed, u, and has its origin at O, the rotating wheel frame has angular velocity, $\underline{\omega}$:
+
+$$
+    \underline{\omega} = \frac{u}{b} \text{ - into the page} $$ $$
+    \begin{aligned}
+    \underline{F}_c &= -m\underline{\omega} \times (\underline{\omega} \times \underline{r}) \\
+    &= m\omega^2b \underline{\hat{r}} \\
+    &= \frac{mu^2}{b}\underline{\hat{r}}
+    \end{aligned}
+$$
+
+* Coriolis force:
+
+$$
+    \begin{aligned}
+    \underline{F}_{cor} &= -2m\underline{\omega} \times \overbrace{\underline{\dot{r}}}^{= \underline{v}} \\
+    &= 2m\frac{uv}{b}\underline{\hat{r}} \\
+    &= \frac{2v}{u}\underline{F}_c
+    \end{aligned}
+$$
+
+#### Loose Ends
+
+* Euler force is not zero on Earth, but tends to be negligible
+* In rotating reference frame that is also accelerating translationally, $\underline{\ddot{R}}$, general EoM given by:
+
+$$
+    m\underline{\ddot{r}} = \underline{F} - 2m\underline{\omega} \times \underline{\dot{r}} - m\underline{\omega} \times (\underline{\omega} \times \underline{r}) - m\underline{\dot{\omega}} \times \underline{r} - m\underline{\ddot{R}}
+$$
+
+## Lecture 15
+
+### Examples in the Coriolis Force
+
+$$
+    \underline{F}_{cor} = -2m\underline{\omega} \times \underline{\dot{r}}
+$$
+
+#### Weather Systems
+
+* Storm rotating clockwise is a cyclone, in the southern hemisphere
+    * coriolis force pushes to the left
+* $\underline{\omega} \times \underline{\dot{r}}$ is West, so $-\underline{\omega} \times \underline{\dot{r}}$ is East
+* As pressure gradient pushes air north towards the centre of low pressure, the coriolis force deflects it East.
+* In the northern hemisphere, coriolis force acts to the right of the motion; in the southern hemisphere, it acts to the left of the motion.
+
+#### Foucault's Pendulum
+
+* Local coordinate frame:
+    * $\underline{i}$ corresponding to east,
+    * $\underline{j}$ is north,
+    * $\underline{k}$ is radially outwards
+* In local frame,
+
+$$
+    \underline{\omega} = \omega\sin\theta\underline{j} + \omega\cos\theta\underline{k}
+$$
+
+* $\theta$ is the colatitude
+* $\underline{\dot{\omega}} \approx 0$ for Earth and
+
+$$
+    \omega^2 \ll \omega_0^2 = \frac{g}{l}
+$$
+
+* Will neglect the Euler and centrifugal forces respectively
+* For the coriolis force:
+
+$$
+    \begin{aligned}
+    \underline{F}_{cor} &= -2m\underline{\omega} \times \underline{\dot{r}} \\
+    \underline{\omega} \times \underline{\dot{r}} &= \begin{vmatrix} \underline{i} & \underline{j} & \underline{k} \\ 0 & \omega\sin\theta & \omega\cos\theta \\ \dot{x} & \dot{y} & \dot{z} \end{vmatrix} \\
+    &= \omega\begin{pmatrix} \dot{z}\sin\theta - \dot{y}\cos\theta \\ \dot{x}\cos\theta \\ -\dot{x}\sin\theta \end{pmatrix}
+    \end{aligned}
+$$
+
+* Motion is largely in $\underline{i}-\underline{j}$ plane for small angle oscillations, $\therefore \dot{z} \approx 0$
+* Include force due to gravity:
+
+$$
+    \underline{F} = -m\omega_0^2 (x\underline{i} + y\underline{j})
+$$
+
+* Then, ignoring vertical motion,
+
+$$
+    \begin{aligned}
+    m\underline{\ddot{r}} = -m\omega_0^2 (x\underline{i} &+ y\underline{j}) - 2m\omega(-\dot{y}\cos\theta\underline{i} - \dot{x}\cos\theta\underline{j}) \\
+    \begin{pmatrix} \ddot{x} \\ \ddot{y} \end{pmatrix} &= \begin{pmatrix} 2\omega\dot{y}\cos\theta - \omega_0^2 x \\ -2\omega\dot{x}\cos\theta - \omega_0^2 y \end{pmatrix}
+    \end{aligned}
+$$
+
+* Set $\zeta(t) = x(t) + iy(t)$, then
+
+$$
+    \begin{aligned}
+    \ddot{\zeta} &= \ddot{x} + i\ddot{y} \\
+    &= 2\omega\cos\theta\underbrace{(-i\dot{x} + \dot{y})}_{-i\dot{\zeta}} - \omega_0^2\underbrace{(x + iy)}_{\zeta} \\
+    &= -2i\omega\cos\theta \dot{\zeta} - \omega_0^2 \zeta \\
+    \ddot{\zeta} &+ 2i\omega\cos\theta\dot{\zeta} + \omega_0^2 \zeta = 0
+    \end{aligned}
+$$
+
+* This looks like a damped oscillator with complex damping.
+* Try a solution, $\zeta = e^{\lambda t}$
+
+$$
+    \begin{aligned}
+    \lambda^2 &+ 2i\omega\cos\theta\lambda + \omega_0^2 = 0 \\
+    \implies \lambda &= -i\omega\cos\theta \pm \sqrt{-\omega^2\cos^2\theta - \omega_0^2} \\
+    &= i\bigg(-\omega\cos\theta \pm \sqrt{\omega^2\cos^2\theta + \omega_0^2}\bigg) \\
+    &= i\bigg(-\hat{\omega} \pm \sqrt{\hat{\omega} + \omega_0^2}\bigg),~ \hat{\omega} = \omega\cos\theta \ll \omega_0 \\
+    &\approx i(-\hat{\omega} \pm \omega_0) \\
+    \therefore \zeta = x + iy &= \underbrace{e^{-i\hat{\omega}t}}_{\text{precession of the}\\\text{plane of oscillation}}\underbrace{(\alpha e^{i\omega_0 t} + \beta e^{-i\omega_0 t})}_{\text{normal pendulum motion}} \\
+    \text{Precession rate } &= \hat{\omega} = \omega\cos\theta = \omega\underbrace{\sin\lambda}_{\text{latitude}}
+    \end{aligned}
+$$
+
+### The Euler Force
+
+* The moon moves away by about 4 cm a year by taking orbital angular momentum from the spin angular momentum of the earth
+    * Earth's days are slowing down due to this
+    * In 100 years, days on Earth will be about 2 ms longer
+    * $\underline{\dot{\omega}} < 0$ - difference between two $\omega$ vectors, points out the south pole
+
+## Lecture 16
+
+### Rotational Inertia, Angular Momentum, and Kinetic Energy
+
+* See pages 44-46
+
+$$
+    I = \sum_{k = 1}^N m_k|(\underline{r}_k \cdot \underline{n})\underline{n} - \underline{r}_k|^2 = \sum_{k = 1}^\infty m_k [r_k^2 - (\underline{r}_k \cdot \underline{n})^2]
+$$
+
+#### Defining the Inertia Tensor, $\hat{I}$
+
+$$
+    \begin{aligned}
+    \underline{J} &= \sum_{k = 1}^N m_k [r_k^2\underline{\omega} - (\underline{r}_k\cdot \underline{\omega})\underline{r}_k] \\
+    J_x &= \sum_{k = 1}^N m_k (r_k^2 - x_k^2)\omega_x - m_kx_ky_k\omega_y - m_kx_kz_k\omega_z \\
+    J_x &= \sum_{k = 1}^N m_k (r_k^2 - y_k^2)\omega_y - m_kx_ky_k\omega_x - m_ky_kz_k\omega_z \\
+    J_x &= \sum_{k = 1}^N m_k (r_k^2 - z_k^2)\omega_z - m_kx_kz_k\omega_x - m_ky_kz_k\omega_y \\
+    \underbrace{\begin{pmatrix} J_x \\ J_y \\ J_z \end{pmatrix}}_{\underline{J}} &= \underbrace{\begin{pmatrix} I_{xx} & I_{xy} & I_{xz} \\ I_{yx} & I_{yy} & I_{yz} \\ I_{zx} & I_{zy} & I_{zz} \end{pmatrix}}_{\hat{I}}\underbrace{\begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix}}_{\underline{\omega}} \\
+    I_{\alpha\beta} &= \sum_k^N m_k(r_k^2 \delta_{\alpha\beta} - r_{k\alpha}r_{k\beta})
+    \end{aligned}
+$$
+
+* A ratio of vectors is called a Tensor
+* The Inertial tensor is the ratio of $\underline{J}$ to $\underline{\omega}$
+* For continuous rigid bodies:
+
+$$
+    I_{\alpha\beta} = \int_V dx\;dy\;dz\;\rho(x,y,z)(r^2\delta_{\alpha\beta} - r_\alpha r_\beta)
+$$
+
+##### Example of Inertia Tensor
+
+* Consider the Inertia tensor for a uniform cube of length a, mass m, with origin at the centre of mass
+* This is a uniform cube so it has a density
+
+$$
+    \rho = \frac{M}{a^3}
+$$
+
+$$
+    \begin{aligned}
+    I_{xx} &= \int_{-\frac{a}{2}}^{\frac{a}{2}} dx \int_{-\frac{a}{2}}^{\frac{a}{2}} dy \int_{-\frac{a}{2}}^{\frac{a}{2}} dz\; \rho\underbrace{(r^2 \cdot 1 - x^2)}_{y^2 + z^2} \\
+    &= \frac{M}{a^3}a = \int_{-\frac{a}{2}}^{\frac{a}{2}} dy \Bigg[y^2z + \frac{z^3}{3}\Bigg]_{-\frac{a}{2}}^{\frac{a}{2}} \\
+    &= \frac{M_{}}{a^2} \int_{-\frac{a}{2}}^{\frac{a}{2}} dy \cdot 2 \Bigg(\frac{y^2 a}{2} + \frac{a^3}{24}\Bigg) \\
+    &= \frac{M}{a^2} \Bigg[\frac{y^3 a}{3} + \frac{a^3 y}{12} \Bigg]_{-\frac{a}{2}}^{\frac{a}{2}} \\
+    &= \frac{2M_{}}{a^3} \Bigg[\frac{a^4}{24} + \frac{a^4}{24}\Bigg] = \frac{Ma^4}{6}
+    \end{aligned}
+$$
+
+* From symmetry, $I_{xx} = I_{yy} = I_{zz}$
+
+$$
+    \begin{aligned}
+    I_{xy} &= \int_{-\frac{a}{2}}^{\frac{a}{2}} dx \int_{-\frac{a}{2}}^{\frac{a}{2}} dy \int_{-\frac{a}{2}}^{\frac{a}{2}} dz\;\rho(r^2 \cdot 0 - xy) \\
+    &= -\rho a \int_{-\frac{a}{2}}^{\frac{a}{2}} dx \; \underbrace{\Bigg[\frac{xy^2}{2}\Bigg]_{-\frac{a}{2}}^{\frac{a}{2}}}_{\text{even fn of y}} = 0
+    \end{aligned}
+$$
+
+* From symmetry, all off-diagonal elements are zero.
+* Hence,
+
+$$
+    \hat{I} = \frac{Ma^2}{6}\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+* If origin of coordinates is at one corner of the cube, then
+
+$$
+    \begin{aligned}
+    I_{xx} = I_{yy} = I_{zz} &= \rho \int_0^a dx \int_0^a dy \int_0^a dz \;(y^2 + z^2) \\
+    &= \frac{M}{a^2} \int_0^a dy \; \Bigg[y^2 a + \frac{a^3}{3}\Bigg] \\
+    &= \frac{M}{a^2} \Bigg[\frac{y^3 a}{3} + \frac{a^3 y}{3}\Bigg]_{0}^{a_{}} = \frac{2Ma^2}{3} \\
+    I_{xy} &= -\rho \int_0^a dx \int_0^a dy \int_0^a dz \cdot xy \\
+    &= -\rho a \int_0^a dx \; \Bigg[\frac{xa^2}{2}\Bigg] = -\frac{M}{a^2}\frac{a^2}{2}\frac{a^2}{2} \\
+    &= -\frac{Ma^2}{2}
+    \end{aligned}
+$$
+
+* Hence,
+
+$$
+    \hat{I} = \frac{Ma^2}{12 }\begin{pmatrix} 8 & -3 & -3 \\ -3 & 8 & -3 \\ -3 & -3 & 8 \end{pmatrix}    
+$$
+
+* The inertia tensor of an object is with respect to rotations about a particular point
+* Inertia tensors will always be symmetric
+
+#### Rotational Kinetic Energy
+
+$$
+    T = \frac{1}{2}\underline{\omega} \cdot \underbrace{\underline{J}}_{\hat{I}\underline{\omega}}
+$$
+
+$$
+    T = \frac{\omega^2}{2}\underline{n}^T \hat{I} \underline{n}
+$$
+
+* $\underline{n}^T \hat{I} \underline{n}$ is the moment of the inertia, $I$ about the axis defined by $\underline{n}$
+
+## Lecture 17
+
+#### Angular Momentum and KE
+
+* page 46 - 47
+* Define CoM position and time derivative
+* Total Momentum $P = \sum_{k = 1}^N m_k\underline{\dot{r}}_k$
+* Use
+
+$$
+    \underline{J} = \sum_{k = 1}^N m_k(\underline{r}_k \times \underline{\dot{r}}_k)
+$$
+
+* follow derivations in notes
+
+
+### Parallel and Principal Axis Theorems    
+
+#### Displaced Axis Theorem
+
+* Can convert Inertia Tensor into other form using CoM position:
+
+$$
+    I_{\alpha\beta} = \sum_{k = 1}^N m_k(r_{k}'\delta_{\alpha\beta} - r_{k,\alpha}'r_{k,\beta}') + M(R_C^2\delta_{\alpha\beta} - R_{C,\alpha}R_{C,\beta})
+$$
+
+* full derivation on page 48
+
+$$
+    \hat{I} = \hat{I}_{CoM} + M\hat{A}
+$$
+
+* $\hat{A}$ can be represented as a matrix, the elements of which are determined by the elements of the CoM position vector
+
+$$
+    A_{\alpha\beta} = R_C^2\delta_{\alpha\beta} - R_{C,\alpha}R_{C,\beta}
+$$
+
+
+##### Example 1
+
+$$
+    \begin{aligned}
+    A_{xx} &= R_C^2 - x_C^2 = y_C^2 + z_C^2 \\
+    A_{xy} &= -x_Cy_C \\
+    \hat{A} &= \begin{pmatrix} y_C^2 + z_C^2 & -y_Cx_C & -z_Cx_C \\ -x_Cy_C & z_C^2 + x_C^2 & -z_Cy_C \\ -x_Cz_C & -y_Cz_C & x_C^2 + y_C^2 \end{pmatrix}
+    \end{aligned}
+$$
+
+* The moment of inertia for rotations about the z axis through the centre of mass:
+
+$$
+    I_z = \underline{\hat{z}}^T \hat{I}_{CoM} \underline{\hat{z}}
+$$
+
+* $\underline{\hat{z}}$ is a unit vector in the z direction
+* For a parallel axis is a distance $d = \sqrt{x_C^2 + y_C^2}$ away, the moment of inertia is $I_d$, where
+
+$$
+    \begin{aligned}
+    \underline{\hat{z}}^T \hat{I}_{d} \underline{\hat{z}} &= \underline{\hat{z}}^T \hat{I}_{CoM} \underline{\hat{z}} + M\underline{\hat{z}}^T \hat{A} \underline{\hat{z}} \\
+    I_d &= I_z + M\underline{\hat{z}}^T \hat{A} \underline{\hat{z}} \\
+    &= I_z + M \begin{pmatrix} 0 & 0 & 1 \end{pmatrix}\begin{pmatrix} & \hat{A} & \\ & & \\ \end{pmatrix}\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \\
+    &= I_z + M \begin{pmatrix} 0 & 0 & 1 \end{pmatrix}\begin{pmatrix} -z_cx_C \\ -z_Cy_C \\ x_C^2 + y_C^2 \end{pmatrix} \\
+    &= I_z + M(x_C^2 + y_C^2) \\
+    &= I_z + Md^2
+    \end{aligned}
+$$
+
+##### Example 2
+
+* Calculate $\hat{I}$ about the centre of mass for the 3 mass point system shown.
+* Triangular system, two masses of mass $m_1$ and one of $m_2$
+* First fine $\hat{I}$ for the two masses at $m_1$ about their CoM, a point X
+* Choice of axes takes advantage of symmetry, hence
+
+$$
+    \begin{aligned}
+    I_{xx} &= \sum_{k = 1}^2 m_k (x_k^2 - x_k^2) = 0 \\
+    I_{yy} &= \sum_{k = 1}^2 m_k (\overbrace{x_k^2}^{\pm a/2} - \overbrace{y_k^2}^{0}) = \frac{m_1 a^2}{2} \\
+    \implies & I_{zz} = I_{yy}
+    \end{aligned}
+$$
+
+* All of-diagonal elements will be 0
+    * they involve the product of two different components and only $x_k$ is non-zero
+
+$$
+    \hat{I}_{2m_1,X} = \frac{m_1 a^2}{2} \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+$$
+
+* CoM of triangle is at $x = 0, z= 0, y = \frac{m_2 h}{m_2 + 2m_1}$
+
+$$
+    \underline{R}_C = \begin{pmatrix} 0 \\ \frac{m_2 h}{m_2 + 2m_1} \\ 0 \end{pmatrix}
+$$
+
+* Therefore, the inertia tensor defined wrt CoM of the triangle for these 2 masses is
+
+$$
+    \begin{aligned}
+    \hat{I}_{2m_1} &= \frac{m_1 a^2}{2} \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} + 2m_1 \begin{pmatrix} R_C^2 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & R_C^2 \end{pmatrix} \\
+    &= m_2 \begin{pmatrix} 2R_C^2 & 0 & 0 \\ 0 & \frac{a^2}{2} & 0 \\ 0 & 0 & \frac{a^2}{2} + 2R_C^2 \end{pmatrix}
+    \end{aligned}
+$$
+
+* Inertia Tensor wrt CoM of triangle:
+
+$$
+    \begin{aligned}
+    \hat{I}_{m_2} &= m_2 \begin{pmatrix} (h - R_C)^2 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & (h - R_C)^2 \end{pmatrix} \\
+    h - R_C &= \frac{h(m_2 + 2m_1) - m_2h}{m_2 + m_1} = \frac{2m_1 h}{m_2 + 2m_1} \\
+    R_C^2 &= \frac{(m_1 h)^2}{(m_2 + 2m_1)^2} \\
+    \therefore \hat{I} = \hat{I}_{2m_1} + \hat{I}_{m_2} &= \begin{pmatrix} 2m_1R_C^2 + m_2(h - R_C)^2 & 0 & 0 \\ 0 & \frac{m_1 a^2}{2} & 0 \\ 0 & 0 & \frac{m_1 a^2}{2} + 2m_1R_C^2 + m_2(h - R_C)^2 \end{pmatrix} \\
+    &= \begin{pmatrix} \frac{2m_1m_2 h^2}{m_2 + 2m_1} & 0 & 0 \\ 0 & \frac{m_1 a^2}{2} & 0 \\ 0 & 0 & \frac{2m_1m_2 h^2}{m_2 + 2m_1} + \frac{m_1 a^2}{2} \end{pmatrix}
+    \end{aligned}
+$$

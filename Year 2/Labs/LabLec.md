@@ -13,13 +13,13 @@ Components:
 * Careers (not assessed, bullshit)
 
 
-* Hughes & Hase used again
-    * Chapters 1 - 5 assumed known
-    * Chapters 6 - 8 to be learned
+Hughes & Hase used again
+* Chapters 1 - 5 assumed known
+* Chapters 6 - 8 to be learned
 
 
-* [Labs website](https://www.dur.ac.uk/physics/students/labs/level2)
-    * Interactive experiments online to practice beforehand
+[Labs website](https://www.dur.ac.uk/physics/students/labs/level2)
+* Interactive experiments online to practise beforehand
 
 
 ###### Module Breakdown

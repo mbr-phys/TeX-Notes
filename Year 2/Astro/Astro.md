@@ -1,8 +1,14 @@
-### Observational
+---
+title: "Stars and Galaxies"
+author: "Mark Swinbank and David Alexander"
+date: "Michaelmas 2017 - Epiphany 2018"
+---
+
+# Observational
 
 _other stuff in notebook_
 
-##### Lecture 3
+## Lecture 3
 
 * Parts of atmosphere are opaque due to water vapour, $O_3$, etc
 * Correcting for atmospheric absorption:
@@ -95,7 +101,7 @@ $$
     * excellent stability
     * still not enough pixels
 
-##### Lecture 4
+## Lecture 4
 
 ###### Back to CCDs:
 
@@ -132,7 +138,7 @@ $$
     * so use Poisson errors for easy error in counts
 * Small error associated with read out
 
-###### Basic Data Reduction to Correct for Background in CCD
+#### Basic Data Reduction to Correct for Background in CCD
 
 * Bias
     * a zero second readout whihc results in a constant offset
@@ -156,7 +162,7 @@ $$
     \implies \text{Final Frame} = \frac{\text{Object Frame} - \text{Sky Frame}}{\text{Flat Field} - \text{(dark+bias)}}
 $$
 
-###### Noise Sources
+#### Noise Sources
 
 * Basic sources of noise are:
     1. Readout noise, $\sigma_{rd}$ electrons (Gaussian)
@@ -184,7 +190,7 @@ $$
 * gain can be set to more than 1
     * confuses simple SNR eqn and changes what you plug in
 
-###### SNR Approximations
+#### SNR Approximations
 
 * Common approximations:
     1. Photon noise limited on the object
@@ -194,9 +200,9 @@ $$
     3. Read Noise Limited
         * read background dominates, only count read term
 
-#### Lecture 5
+## Lecture 5
 
-##### Spectroscopy
+### Spectroscopy
 
 * Most useful tool in astro
 * measurement of intensity of a light source
@@ -237,7 +243,7 @@ $$
     \frac{d\lambda}{dx} = \frac{d\lambda}{d\theta}\frac{d\theta}{dx} = \frac{d}{f_{cam}n}\cos\theta
 $$
 
-###### Grating Equation
+#### Grating Equation
 
 * For angles of incidence to grating
 * For diffraction grating or reflection
@@ -247,7 +253,7 @@ $$
     n\lambda\rho = \sin\alpha + \sin\beta ~;~ \rho = \frac{1}{d}
 $$
 
-###### Resolving Power
+#### Resolving Power
 
 * Recall angle for blurred star
 
@@ -278,16 +284,16 @@ $$
 * Second equation above is for a practical spectrograph
     * At most wavelengths, this value of R is much less than that given by $nN$
 
-###### CDs, DVDs, and Blu-Rays
+#### CDs, DVDs, and Blu-Rays
 
 * basically diffractions gratings
 * DVDs store more info than CDs based on diffraction types
 * Blu-Rays need UV light to make sense
 
 
-#### Lecture 6
+## Lecture 6
 
-##### Measuring Stars
+### Measuring Stars
 
 * Black  body radiation
 
@@ -307,7 +313,7 @@ $$
     *  define 1 parsec as distance corresponding to parallax of $\theta = 1"$
     * 1 psc $= 206265 AU$
 
-##### Interferometry
+### Interferometry
 
 * Combines light from two telescopes   
     * makes it possible to measure stars
@@ -327,13 +333,13 @@ $$
     * path length will not change between two telescopes, if they come over parallel
     * Will have a 'y' pattern of telescope arrays so that path length will always be changing no matter what way it is passing over the sky
 
-#### Lecture 7
+## Lecture 7
 
 * Zero-point mag gives one count
 
 * **See example sheet from Lecture 6 for some good notes**
 
-##### Multi-Wavelength Techniques
+### Multi-Wavelength Techniques
 
 * Missing a huge fraction of images outside visual
     * how do we see the rest of it?
@@ -399,9 +405,9 @@ $$
         * easy to build big telescopes for radio without this concern
     * very difficult to get a high resolution radio telescope
 
-#### Lecture 8
+## Lecture 8
 
-##### Radios Ctd
+### Radios Ctd
 
 * Biggest telescope is FAST
     * 500m diameter
@@ -418,7 +424,7 @@ $$
         * probability adds up to observe this
         * pointing radio telescopes sees this
 
-##### Telescope Tech
+### Telescope Tech
 
 * 'Twinkling star'
     * caused by atmosphere moving around and bumping image around
@@ -445,7 +451,7 @@ $$
     * shine lasers up to $15\,km$ into atmosphere to focus
         * this creates a fake star for corrections - 'natural guide star'
 
-##### Exoplanets
+### Exoplanets
 
 * How do we observe planets against photon noise of stars?
     * observe stellar spectrum and planet spectrum for comparison
@@ -454,9 +460,11 @@ $$
     * detecting $O_3$ would be a key trigger for life
         * not able to do it yet
 
-## Stars
+# Stars
 
-### Lecture 1
+_see DUO for pdf slides_
+
+## Lecture 1
 
 * Black body emission curve
     * LHS from peak lambda is Rayleigh Jeans tail
@@ -469,7 +477,7 @@ $$
     \lambda_{max, Bel} = 3.0 \times 10^{-7} m \implies T \approx 9400\,K
 $$
 
-### Lecture 2
+## Lecture 2
 
 #### Excitation Energies
 
@@ -683,3 +691,222 @@ $$
         &= \frac{3}{10}\frac{GM^2}{R} \iff R << R_{initial}
     \end{aligned}
 $$
+
+## Lecture 6
+
+### Binding Energies of Fusion
+
+$$
+    \begin{aligned}
+    E_b(Z,N) &= \Delta mc^2 = [Zm_p + Nm_n - m(Z, N)]c^2 \\
+    E_b(4,0) &= [4m_p - m_{He,4}]c^2 = 26.731\,MeV \\
+    \frac{4m_p}{m_{He,4}} &= 1.007 \implies  e = 0.7\% \\
+    E_{\odot} &= (0.1\times M_\odot)\times0.007\times c^2  \\
+    &= 1.3\times10^{44}J \\
+    t &\approx \frac{E_\odot}{L_\odot} = 10^{10}yr
+    \end{aligned}
+$$
+
+### Coulomb Barrier
+
+* looking at probability that two particles are close enough for nuclear force to be important
+* see figure on page 7 of slides
+* using classical physics, we get
+
+$$
+    \begin{aligned}
+    E &= \frac{1}{2}mv^2 = \frac{3}{2}kT = \frac{1}{4\pi\epsilon_0}\frac{Z_1Z_2e^2}{r} \\
+    T &= \frac{1}{6\pi\epsilon_0}\frac{Z_1Z_2e^2}{rk} = \underbrace{1.1\times10^{10}K}_{r = 10^{-15}m ~;~ Z_1 = Z_2 = 1}
+    \end{aligned}
+$$
+
+* too high for our Sun
+* use deBroglie wavelength and consider quantum effects
+
+$$
+    \begin{aligned}
+    \lambda &= \frac{h}{p},~ p = mv ~[m = \mu_m] \\
+    E &= \frac{1}{2}mv^2 ~;~ v^2 = \frac{p^2}{m^2} \\
+    E &= \frac{p^2}{2m} \\
+    p^2 &= \Big(\frac{h}{\lambda}\Big)^2 \\
+    E &= \frac{(\frac{h}{\lambda})^2}{2m} = \frac{h^2}{\lambda^2}\frac{1}{2m} \\
+    &= \frac{1}{4\pi \epsilon_0}\frac{Z_1Z_2e^2}{\lambda} = \frac{h^2}{\lambda^2}\frac{1}{2m} \\
+    \frac{1}{\lambda} &= \frac{2}{4\pi\epsilon_0}\frac{Z_1Z_2e^2 m}{h^2} \\
+    \text{replace }&\frac{1}{r} \text{ with }\frac{1}{\lambda} \\
+    T &= \frac{1}{12\pi^2 \epsilon_{0}^2} \frac{Z_1^2Z_2^2e^4 m}{kh^2} = 9.8\times10^6 K
+    \end{aligned}
+$$
+
+* this happens due to quantum tunneling
+
+### Probability of Nuclear Reactions
+
+* see graph on page 13 of slides
+* nuclear reaction probability is the product of Maxwell-Boltzmann and Tunneling Probability
+
+## Lecture 7
+
+### Nuclear Conservation Rules
+
+1. electric charge must be conserved
+2. nucleon umber must be conserved
+    * $p, n = + 1$
+3. lepton number must be conserved
+    * $e^\mp = \pm 1$
+    * $\nu_{e}^\mp = \pm 1$
+
+$$
+    ^{A}_{Z}X
+$$
+
+* A - atomic number for element X (nucleon number)
+* Z - number of protons (electric charge)
+
+### Proton-Proton Chains
+
+$$
+    \begin{aligned}
+    {}^{1}_{1}H &+ {}^{1}_{1}H \to {}^{2}_{1}H + e^+ + \nu_e \\
+    {}^{2}_{1}H &+ {}^{1}_{1}H \to {}^{3}_{2}He + \gamma \\
+    {}^{3}_{2}He &+ {}^{3}_{2}He \to {}^{4}_{2}He + {}^{1}_{1}H + {}^{1}_{1}H \\
+    \implies 4{}^{1}_{1}H &\to {}^{4}_{2}He + \underbrace{2e^+ + 2\nu_e + 2\gamma}_{26.7\,MeV}
+    \end{aligned}
+$$
+
+### CNO Cycle
+
+$$
+    \begin{aligned}
+    {}^{12}_{6}C &+ {}^{1}_{1}H \to {}^{13}_{7}N + \gamma \\
+    {}^{13}_{7}N  &\to \underbrace{{}^{13}_{6}C + e^+ + \nu_e}_{\beta\text{ decay}} \\
+    {}^{13}_{6}C &+ {}^{1}_{1}H \to {}^{14}_{7}N + \gamma \\
+    {}^{14}_{7}N &+ {}^{1}_{1}H \to {}^{15}_{8}O + \gamma \\
+    {}^{15}_{8}O &\to \underbrace{{}^{15}_{7}N + e^+ \nu_e}_{\beta\text{ decay}} \\
+    {}^{15}_{7}N &+ {}^{1}_{1}H \to {}^{12}_{6}C + {}^{4}_{2}He \\
+    \text{Total: }4{}^{1}_{1}H &\to {}^{4}_{2}He + \underbrace{2e^+ + 2\nu_e + 3\gamma}_{E = 26.7\,MeV}
+    \end{aligned}
+$$
+
+## Lecture 8
+
+### Energy produced in Stars
+
+$$
+    \begin{aligned}
+    dL &= \epsilon\,dm ~~ [W] \\
+    \epsilon_{i,X} &= \epsilon_0 X_i X_X \rho^\alpha T^\beta ~~ [W\,kg^{-1}] \\
+    dm &= 4\pi r^2\rho\,dr \\
+    \implies \frac{dL}{dr} &= 4\pi r^2 \rho \epsilon
+    \end{aligned}
+$$
+
+#### Slide 5 diagram
+
+ * Solid line just to do with fusion then no fusion
+ * Dashed line has that shape as volume increase so dL/dr does but then temperature starts falling so fusion decreases
+
+### Energy Seen on Earth
+
+* Electrons lose energy travelling through sun
+
+$$
+    \frac{\lambda_{surface}}{\lambda_{core}} \approx 3\times10^6
+$$
+
+### Mean Free Paths
+
+* $vt$ - distance travelled
+* $n$ - particles per unit volume
+* $nvt$ - particle per unit area
+* $n\sigma vt$ - number of interactions
+
+$$
+    \begin{aligned}
+    l &= \frac{vt}{n\sigma vt} \\
+    &= \frac{1}{n\sigma}
+    \end{aligned}
+$$
+
+* This is the mean distance before a collision
+
+$$
+    \begin{aligned}
+    d &= \sum_i l_i \\
+    d^2 &= d \cdot d \\
+    &= \sum_j \sum_i l_i \cdot l_j
+    \end{aligned}
+$$
+
+* When $i \neq j$, $l_i \cdot l_j = 0$
+
+$$
+    \begin{aligned}
+    d^2 &= Nl^2 \\
+    \implies N = \bigg(\frac{d}{l}\bigg)^2
+    \end{aligned}
+$$
+
+* Use ideal gas law to help in questions of this
+
+$$
+    \begin{aligned}
+    t_{total} &= t_{travel} + Nt_{scatter} \\
+    &= \frac{Nl}{c} + N\times 10^8 \\
+    &= 5700\;yrs + \cdots = 10^6 \, yrs
+    \end{aligned}
+$$
+
+### Radiation
+
+$$
+    \begin{aligned}
+    P &= \frac{1}{3}a T^4 \\
+    \frac{dP}P{dr} &= \frac{dP}{dT}\frac{dT}{dr} \\
+    \frac{dP}{dr} &= \frac{4}{3}a T^3 \frac{dT}{dr} \\
+    \frac{dP}{dr} &= -\frac{\kappa\rho}{c}F_{rad} \\
+    \kappa rho &= n\sigma \\
+    \frac{dT}{dr} &= -\frac{3}{4ac}\frac{\kappa\rho F_{rad}}{T^3} \\
+    L &= 4\pi r^2 F_{rad} \\
+    \frac{dT}{dr} &= -\frac{3}{16\pi ac}\frac{\kappa\rho L_r}{T^3 r^2}
+    \end{aligned}
+$$
+
+## Lecture 9
+
+### Opacity
+
+$$
+    \begin{aligned}
+    dI_\lambda &= - \kappa_\lambda \rho I_{\lambda} ds \\
+    \int_{I_{\lambda, 0}}^{I_{\lambda, f}} \frac{dI_{\lambda}}{I_{\lambda}} &= - \int \kappa_{\lambda} \rho ds \\
+    \implies I_{\lambda, f} &= I_{\lambda, 0}e^{-\int_0^s \kappa_{\lambda}\rho ds} \\
+    I_{\lambda, f} &= I_{\lambda, 0}\underbrace{e^{-\kappa_\lambda \rho s}}_{\text{optical depth, }\tau} \\
+    &= I_{\lambda, 0}e^{-\tau}, ~ \tau = \kappa_{\lambda}\rho s
+    \end{aligned}
+$$
+
+* $\tau < 1$ - optically thin
+* $\tau > 1$ - optically thick
+
+#### Different sources of Opacity
+
+* Two classes of opacity:
+    1. Absorption - photon energy lost of KE of gas or degraded
+    2. Scattering - photon reemitted at different direction, sometimes degraded
+
+1. Bound-Bound transitions
+    * typical temperature roughly $\leq 10^5$K
+    * most effective for neutral gas
+    * scattering and absorption
+2. Bound-free transitions
+    * typical temperature of $10^4 \to 10^6$K
+    * partially ionised gas
+    * absorption
+3. Free-free emission
+    * typical temperature of $10^4 \to 10^6$K
+    * partially ionised gas
+    * absorption
+4. Electron scattering
+    * dominant at roughly $\geq 10^6$K
+    * fully ionised gas
+    * scattering
