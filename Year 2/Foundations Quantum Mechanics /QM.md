@@ -5,15 +5,12 @@ date: "Michaelmas 2017"
 ---
 
 ### 1. Basics of QM
-
 * Useless so just read notes
 * Particles described by wave functions, psi
 * $P(x) dx = \psi^2 dx = \psi^* \psi dx$
     * $\int_{-\infty}^{\infty} = 1$
 
-
 ### 2. Operators and Expectation Values
-
 * Expectation value is average value
     * $\langle x \rangle  = \int_{-\infty}^{\infty} xP(x) dx$
     * Doesn't always mean most expected value, just average
@@ -30,8 +27,6 @@ date: "Michaelmas 2017"
     * probably won't need it
     * page 9
 
-
-
 ### 3. The Origin Of Uncertainty
 * Page 10
 * Complex conjugate operators of position, momentum, etc operate on the function immediately to the right
@@ -41,7 +36,7 @@ date: "Michaelmas 2017"
 * Expectation value only real if it is Hermitian
 * Can use Hermitian to show uncertainty principle
     * try finding $\langle xp\rangle$
-    * will not got $= \langle xp\rangle*$
+    * will not get the complex conjugate
 * $\hat{x}\hat{p} \neq \hat{p}\hat{x}$
     * they do not commute
 * Page 11
@@ -52,8 +47,6 @@ date: "Michaelmas 2017"
     * the difference between the two double commutators for x and p is ihbar which is where the hbar/2 comes from for uncertainty
 * Use a Gaussian function and find EVs for $\langle x \rangle , \langle p \rangle , \langle x^2 \rangle , \langle p^2 \rangle$ to get minimum Heisenberg values
 * Ehrenfest's Theorem fulfils Newton's second law with EVs
-
-
 
 ### 4. Schrodinger Equation and Eigenfunctions
 * page 14
@@ -149,8 +142,6 @@ $$
 * **Superposed states are not stationary states**
 * It is still normalised, $\int P(x,t) = 1$, as orthogonality of eigenfns makes last two terms zero when integrated over x
 
-
-
 ### 6. Superposition of eigenstates and transitions
 * page 21
 * All expectation values are constant in time for single eigenfn
@@ -174,11 +165,8 @@ $$
     * find the overlap of f with the wavefn
     * $\sum_{n} c_n \delta_{nm} = c_m$
 
-
-
 ### 7. Eigenfunctions of various potentials
 * page 22
-
 * Consider infinite square well, symmetric about the origin
 
 ##### Infinite Square Well
@@ -283,16 +271,12 @@ $$
     * E.g. $[x, p] = i\hbar$
 * **See page 25 for commutator identity proofs**
 $$
-    [A,A] = AA - AA = 0
-$$
-$$
-    (A + B, C) = [A, C] + [B, C]
-$$
-$$
-    (AB, C) = A[B, C] + [A,C]B
-$$
-$$
-    (A,BC) = [A,B]C + B[A,C]
+    \begin{aligned}
+    [A,A] = AA - AA = 0 \\
+    [A + B, C] = [A, C] + [B, C] \\
+    [AB, C] = A[B, C] + [A,C]B \\
+    [A,BC] = [A,B]C + B[A,C]
+    \end{aligned}
 $$
 
 ##### Consequences of non-commutation
@@ -807,8 +791,10 @@ $$
 * page 47
 
 $$
-    L_{\pm} = L_x \pm iL_y $$ $$
+    \begin{aligned}
+    L_{\pm} = L_x \pm iL_y \\
     [L^2, L_+] = 0
+    \end{aligned}
 $$
 
 * same principle as other ladder operators
@@ -831,14 +817,16 @@ $$
 * $\mu$ can take half-integer values
     * comes from addition of intrinsic and extrinsic
 
-#### Overview of general angular momentum, $\underline{J}$
+#### Overview of general angular momentum, J
 
 * $\underline{J}$ is angular momentum if its operator components, $J_x, J_y, J_z$ satisfy
 
 $$
-    [J_x, J_y] = i\hbar J_z ~;~ [J_z, J_x] = i\hbar J_y $$ $$
-    J^2 = J_{x}^2 + J_{y}^2 + J_{z}^2 $$ $$
-    [J^2, J_x] = 0
+    \begin{aligned}
+    [J_x, J_y] &= i\hbar J_z ~;~ [J_z, J_x] = i\hbar J_y \\
+    J^2 &= J_{x}^2 + J_{y}^2 + J_{z}^2 \\
+    [J^2, J_x] &= 0
+    \end{aligned}
 $$
 
 * Common eigenfunctions of $J^2$ and $J_z$
@@ -1025,7 +1013,7 @@ $$
     H^0 \psi^1 + \lambda H'\psi^0 = E^0 \psi^1 + \lambda E^1 \psi^0
 $$
 
-* multiply by conjugate of one of the states, $\psi_{a}^{0*}$, or $\langle \psi_{a}^0 |$, and integrate
+* multiply by conjugate of one of the states, $\psi_{a}^{0*}$, or $\langle \psi_{a}^0|$, and integrate
 
 $$
     \langle \psi_{a}^0 | H' | \psi^0 \rangle  = E^1 \langle \psi_{a}^0 | \psi^0 \rangle
@@ -1053,6 +1041,7 @@ $$
 * A small perturbation $H'$ cause a small change in energy and the first order approximation for this, $E^1$ is given by the solution of a matrix equation
 
 * _see pages 56 & 57 for examples on this_
+
 
 ### 16. Degenerate Perturbation Theory II
 
@@ -1267,3 +1256,120 @@ $$
 * Arises from proton's spin
     * interaction with electron's magnetic dipole changes potential
     * page 70
+
+### 20. Formalities and the Correspondence Principle
+
+#### Marginal Probability Distributions
+
+* Recap of probability distributions for 1D and 3D wavefunctions on page 71
+* For wavefunctions split into radial wavefunctions and spherical harmonics, $\psi(r,\theta, \phi) = R(r)Y(\theta,\phi)$
+    * The probability distributions for the radial wavefunction and for the spherical harmonic can be separated enitrely
+
+#### Time-energy uncertainty principle
+
+$$
+    \begin{aligned}
+    \Delta t = \frac{\Delta x}{v} &= \frac{m\Delta x}{p} \\
+    E = \frac{p^2}{2m} &\therefore \Delta E = \frac{2p\Delta p}{2m} \\
+    \Delta t \Delta E = \frac{m\Delta x}{p}\frac{2p\Delta p}{2m} &= \Delta x \Delta p \geq \frac{\hbar}{2}
+    \end{aligned}
+$$
+
+* Note that position, momentum, and energy are all dynamical variables
+    * i.e. measurable characteristics of the system
+* Time is not a dynamical variable
+    * $\Delta t$ is the time it takes for the system to change substantially
+    * **Time is not an operator belonging to the particle, it is a parameter describing the evolution of the system**
+* A state existing for a short time cannot have a definite energy
+    * $E = \hbar\omega$, so the frequency of the system must be accurately known for the energy to be definite
+    * accurately-known frequency requires the system to be around for a long period of time
+    * short time $\implies$ unknown frequency $\implies$ high error in energy
+* This is essentially
+
+$$
+    \Delta t = \Delta \langle B \rangle \Big/\Big(\frac{dB}{dt}\Big)
+$$
+
+* where B is some dynamical operator
+
+#### The time evolution of expectation values
+
+* Will use Dirac Notation here as:
+    * a ket, $|\psi\rangle$, can be thought of as a column vector;
+    * a bra, $\langle \psi | = (|\psi\rangle)^\dagger$, as the Hermitian conjugate of a ket, i.e. a row vector;
+    * Hermitian operators as square Hermitian matrices
+
+* Take the time derivative of the expectation value of a Hermitian operator, Q, in general:
+
+$$
+    \frac{d\langle Q \rangle}{dt} = \frac{d}{dt}\langle\psi |Q|\psi\rangle = \bigg(\frac{\partial \langle\psi |}{\partial t}\bigg)Q|\psi\rangle + \langle\psi | \frac{\partial Q}{\partial t}|\psi\rangle + \langle\psi |Q \bigg(\frac{\partial |\psi\rangle}{\partial t}\bigg)
+$$
+
+* Full derivation on page 72, using
+
+$$
+    \begin{aligned}
+    \frac{\partial |\psi\rangle}{\partial t} &= \bigg(-\frac{iH}{\hbar}\bigg)|\psi\rangle ~;~ \frac{\partial \langle \psi |}{\partial t} = \langle\psi |\bigg(\frac{iH}{\hbar}\bigg) \\
+    \implies \frac{d\langle Q \rangle}{dt} &= \frac{i}{\hbar}\langle[H, Q]\rangle + \bigg\langle \frac{\partial Q}{\partial t}\bigg\rangle
+    \end{aligned}
+$$
+
+#### Formalism
+
+##### Ehrenfest Theorems
+
+* If $Q = x$, then
+
+$$
+    \frac{d\langle x \rangle}{dt} = \frac{i}{\hbar}\langle[H, x]\rangle + \bigg\langle \frac{\partial x}{\partial t}\bigg\rangle
+$$
+
+* $H = \frac{p^2}{2m} + V(x)$ so $[H, x] = -i\hbar\frac{p}{m}$
+* The operator has no explicit time dependence, similarly to a coordinate system, as it is not the actual location of the particle
+* Hence, the First Ehrenfest Theorem:
+
+$$
+    \frac{d\langle x \rangle}{dt} = \frac{i}{\hbar}\bigg\langle -i\hbar\frac{p}{m}\bigg\rangle = \frac{\langle p \rangle}{m}
+$$
+
+* The second Ehrenfest Theorem can be proven similarly to get:
+
+$$
+    \frac{d\langle p \rangle}{dt} = -\bigg\langle\frac{dV}{dx}\bigg\rangle
+$$
+
+* Can combine these two together to get a correspondence to the classical $F = ma$:
+
+$$
+    m\frac{d^2 \langle x \rangle}{dt^2} = \langle F \rangle
+$$
+
+##### Virial Theorem
+
+* Let $Q = xp$:
+
+$$
+    \begin{aligned}
+    \frac{d\langle xp\rangle}{dt} &= \frac{i}{\hbar}\langle[H, xp]\rangle + \bigg\langle\frac{\partial \langle xp \rangle}{\partial t}\bigg\rangle \\
+    [H, p] = i\hbar\frac{dV}{dx} \implies& [H, xp] = [H, x]p + x[H, p] = [-\frac{i\hbar}{m}p]p + x[i\hbar\frac{dV}{dx}] \\
+    &= \frac{i}{\hbar}\bigg\langle -\frac{i\hbar}{m}p^2 + i\hbar x \frac{dV}{dx}\bigg\rangle \\
+    &= \bigg\langle \frac{p^2}{m} - x\frac{dV}{dx}\bigg\rangle
+    \end{aligned}
+$$
+
+* In equilibrium, i.e. for a stationary state, expectation values do not change with time
+    * the time derivative is zero
+
+$$
+    \bigg\langle \frac{p^2}{m} \bigg\rangle = \bigg\langle x\frac{dV}{dx}\bigg\rangle \iff \langle T \rangle = \frac{1}{2}\bigg\langle x \frac{dV}{dx}\bigg\rangle
+$$
+
+
+#### The Correspondence Principle
+
+The correspondence principle states that the behaviour of systems described by the theory of quantum mechanics reproduces classical physics in the limit of large quantum numbers.
+
+In other words, it says that for large orbits and for large energies, quantum
+calculations must agree with classical calculations.
+
+Classical quantities appear in quantum mechanics in the form of expected values of observables, and as such the Ehrenfest theorems (which predict the time evolution of the expected values) is an example of the correspondence principle.
