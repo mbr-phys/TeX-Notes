@@ -910,3 +910,60 @@ $$
     * dominant at roughly $\geq 10^6$K
     * fully ionised gas
     * scattering
+
+## Lecture 10
+
+### Schwarzchild Criterion for Convection
+
+* slide 4 - 9
+
+$$
+    \gamma = \frac{C_p}{C_V} = \frac{s + 2}{s}
+$$
+
+* s is degrees of freedom
+
+$$
+    \begin{aligned}
+    P &= k_a \rho^\gamma \\
+    \frac{dP}{P} &= \frac{\gamma d\rho}{\rho} \\
+    \gamma &= \frac{\rho}{P}\frac{dP}{d\rho} \\
+    \text{Surrou}&\text{nding gas} \\
+    P &= nkT = \frac{\rho kT}{\mu m_H} \\
+    \frac{dP}{P} &= \frac{d\rho}{\rho} + \frac{dT}{T} \\
+    \frac{d\rho}{\rho} &= \frac{dP}{P} - \frac{dT}{T} \\
+    \frac{dP}{d\rho}_{sur} &> \frac{dP}{d\rho}_{adiab} \Bigg[\times \frac{\rho}{P} \\
+    \frac{\rho}{P}\frac{dP}{d\rho}_{sur} &> \frac{\rho}{P} \frac{dP}{d\rho}_{adiab} \\
+    \frac{\rho}{P}\frac{dP}{d\rho}_{sur} &> \gamma_{ad} \\
+    \frac{P}{dP}\Big(\frac{dP}{P} &- \frac{dT}{T}\Big)_{sur} < \frac{1}{\gamma_{adiab}} \\
+    \frac{P}{dP}\frac{dP}{P} &- \frac{P}{dP}\frac{dT}{T} < \frac{1}{\gamma_{adiab}} \\
+    1 - \Big(\frac{P}{dP}&\frac{dT}{T}\Big)_{sur} < \frac{1}{\gamma_{adiab}} \\
+    \frac{T}{P} \Big(\frac{dP}{dT}\Big)_{sur} &< \frac{\gamma_{adiab}}{\gamma_{adiab} - 1} \\
+    \Big|\frac{dT}{dr}\Big|_{sur} &> \Big(\frac{\gamma_{adiab} - 1}{\gamma_{adiab}}\Big)\frac{T}{P} \Big|\frac{dP}{dr}\Big|_{sur_{}}
+    \end{aligned}
+$$
+
+#### Convection in the Sun
+
+For the sun:
+
+$$
+    \begin{aligned}
+    -\frac{3}{16\pi a c}\frac{k\rho L_r}{T^3 r^2} &>  \Big(\frac{\gamma_{} - 1}{\gamma_{}}\Big)\frac{T}{P} \frac{dP}{dr} \\
+    \frac{dP}{dr} &= -\frac{GM_r \rho}{r^2} \\
+    \frac{L_r}{M_r} &> \frac{16 \pi a c G}{\kappa\rho} \frac{aT^4}{3} \frac{\gamma - 1}{\gamma} \\
+    &> \frac{16 \pi acG}{\kappa\rho}P_{rad}\frac{\gamma - 1}{\gamma} \\
+    &> 1.9\times10^{-3}\,W\,kg^{-1}
+    \end{aligned}
+$$
+
+#### Mixing length
+
+$$
+    \begin{aligned}
+    l &= \alpha Hp \\
+    \frac{dP}{dr} = - \frac{GM_r \rho}{r^2} &\implies \frac{1}{Hp} = -\frac{1}{P}\frac{dP}{dr} \\
+    Hp &= \frac{Pr^2}{GM_r \rho} \\
+    l&= \frac{\alpha Pr^2}{GM_r \rho}
+    \end{aligned}
+$$
