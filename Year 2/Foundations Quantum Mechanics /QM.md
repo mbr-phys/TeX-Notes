@@ -1,8 +1,10 @@
 ---
-title: "Foundations of Physics A Quantum Mechanics"
+title: "Foundations of Physics 2A"
 author: "Shaun Cole"
 date: "Michaelmas 2017"
 ---
+
+# Quantum Mechanics
 
 ### 1. Basics of QM
 * Useless so just read notes

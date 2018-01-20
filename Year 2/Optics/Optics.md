@@ -1,8 +1,10 @@
 ---
-title: "Optics"
+title: "Foundations of Physics 2B"
 author: "Charles Adams"
 date: "Michaelmas 2017 - Epiphany 2018"
 ---
+
+# Optics
 
 ## Lecture 1
 
@@ -324,3 +326,246 @@ $$
 #### Cylindrical Waves (Young's Slits)
 
 * page 50 for the **Fresnel approximation**
+
+## Lecture 11
+
+### Fraunhofer Diffraction
+
+Fresnel Diffraction Integral (field uniform in y direction):
+
+$$
+    \begin{aligned}
+    \mathcal{E}^{(z)} &= \frac{\mathcal{E}_0}{\sqrt{i\lambda z}} \int_{-\infty}^{\infty} f(x') e^{ikr_p}\,dx' \\
+    r &= [(x - x') + z^2]^2 \\
+    r_p &= z + \frac{(x - x')^2}{2z} \\
+    z &> |x - x'| \\
+    r_p &= z + \frac{x^2}{2z} - \frac{xx'}{z} + \frac{x'^2}{2z}
+    \end{aligned}
+$$
+
+For the Fraunhofer Approximation, there are two cases:
+
+1. Far-field -
+
+$$
+    z > |x'| \implies \frac{x'^2}{2z} \approx 0 \implies e^{\frac{ikx'^2}{2z}} \approx 1
+$$
+
+2. Focal plane of a lens -
+
+$$
+    f(x') \to f(x') e^{-\frac{ikx'^2}{2f}}
+$$
+
+So at $z = f$, the $x'^2$ term cancels.
+
+* In case 1, can write the intensity at z as
+
+$$
+    \mathcal{I}^{(z)} = \frac{\mathcal{I}_0}{\lambda z} \int_{-\infty}^{\infty} f(x')e^{-\frac{ikxx'}{z}} dx'
+$$
+
+* In case 2, the intensity at z = f in the focal plane of a lens is
+
+$$
+    \mathcal{I}^{(f)} = \frac{\mathcal{I}_0}{\lambda f} \int_{-\infty}^{\infty} f(x')e^{-\frac{ikxx'}{f}}dx'
+$$
+
+#### Example: Slit
+
+For a slit of width $a$,
+
+$$
+    \begin{aligned}
+    f(x') = \begin{cases} 1 & |x| \leq \frac{a}{2} \\ 0 & x > \frac{a}{2} \end{cases} \\
+    f(x') = \text{rect}\Big(\frac{x'}{a}\Big)
+    \end{aligned}
+$$
+
+#### Fraunhofer diffraction formula
+
+$$
+    \begin{aligned}
+    \mathcal{I}^{(z)} &= \frac{\mathcal{I}_0}{\lambda z} \Bigg| \int_{-\infty}^{\infty} f(x')e^{-\frac{ikxx'}{z}}dx'\Bigg|^2 \\
+    &= \frac{\mathcal{I}_0}{\lambda z} \Bigg|\int_{-\frac{a}{2}}^{\frac{a}{2}} e^{-\frac{ikxx'}{z}}dx'\Bigg|^2 \\
+    \int_{-\frac{a}{2}}^{\frac{a}{2}} e^{-\frac{ikxx'}{z}}dx' &= \frac{z}{-ikx}e^{-\frac{ikxx'}{z}} \Bigg|^{\frac{a}{2}}_{-\frac{a}{2}} = \frac{z}{-ikx} (e^{-\frac{ikxa}{2az}}-e^{\frac{ikxa}{2a}}) \\
+    &= \frac{\lambda z}{\pi x} \frac{1}{2i}(e^{\frac{ikxa}{2az}}-e^{-\frac{ikxa}{2a}}) \\
+    &= \frac{\lambda z}{\pi x} \sin\Big(\frac{kxa}{2z}\Big) \\
+    &= a\text{sinc}\Big(\frac{\pi xa}{\lambda z}\Big) ~[\text{sinc}\alpha = \frac{\sin\alpha}{\alpha}] \\
+    \mathcal{I}^{(z)} &= \frac{\mathcal{I}_0}{\lambda z} a^2 \text{sinc}^2\bigg(\frac{\pi a x}{\lambda z}\bigg) ~[\lim_{\alpha \to 0}\text{sinc}\alpha = 1] \\
+    x &= \pm \bigg(\frac{\lambda}{a}\bigg)z ~~ [\text{1st zero}]
+    \end{aligned}
+$$
+
+Considering fringe pattern, $\Delta\theta$ from middle of pattern is
+
+$$
+    \Delta\theta = \frac{\lambda}{a}
+$$
+
+The angular spread of the diffraction pattern ($\Delta\theta$) is inversely proportional to the initial width, $a$.  
+Intensity on axis is proportional to $a^2$:  
+* One factor of $a$ from more light for wider slit and another factor because it spreads out less
+
+## Lecture 12   
+
+Fraunhofer diffraction is a special case of Fresnel
+
+2 cases:
+
+### 1. Far field
+
+$z \gg x',y'$
+
+$$
+    \mathcal{I}^{(z)} = \frac{\mathcal{I}_0}{\lambda z} \Bigg[\int_{-\infty}^{\infty} f(x)e^{-i2\pi xx'/\lambda z}dx'\Bigg]^2
+$$
+ This is a Fourier transform of $f(x')$ where the Fourier variable is $u = \frac{x}{\lambda z}$
+
+$$
+    \int_{-\infty}^{\infty} f(x')e^{-i2\pi ux'}dx = \mathcal{F}[f(x')](u)
+$$
+
+Fraunhofer diffraction pattern is proportional to the Fourier transform of the input field all squared.
+
+#### Example
+
+slid of width $a$
+
+$$
+    \begin{aligned}
+    f(x') &= \begin{cases} 1 & |x'| \leq \frac{a}{2} \\ 0 & |x| > \frac{a}{2} \end{cases} \\
+    \mathcal{I}^{(z)} &= \frac{\mathcal{I}_0 a^2}{\lambda z}\text{sinc}^2\bigg(\frac{\pi ax}{\lambda z}\bigg) \\
+    \Delta\theta &= \frac{x_{bb?}}{z} = \frac{\frac{\lambda}{a}z}{z} = \frac{\lambda}{a}
+    \end{aligned}
+$$
+
+These results are valid in the Far-field.  
+How is Far-field defined?
+
+The Far-field is when the angular spread due to diffraction dominates over the initial size.  
+Cross over between initial size determines width of light distribution and diffraction determines width of light distribution when width due to diffraction, $\Delta\theta z = a$
+
+Rayleigh distance:
+
+$$
+    \begin{aligned}
+    \Delta\theta &= \frac{\lambda}{a}, ~ z = d_R \\
+    \Delta\theta d_R &= a \\
+    d_R &= \frac{a^2}{\lambda}
+    \end{aligned}
+$$
+
+1. $z < d_R$ - near field, use Fresnel diffraction integral
+2. $z \gg d_R$ - far-field, Fraunhofer approximation and diffraction formula applies
+
+### Case 2 of Fraunhofer diffraction
+
+Focal plane of a lens
+
+$$
+    \mathcal{I}^{(z)} = \frac{\mathcal{I}_0}{\lambda z} a^2 \text{sinc}^2\bigg(\frac{\pi ax}{\lambda f}\bigg)
+$$
+
+Applies when $z = f$
+
+Width of diffraction pattern is now smaller than initial size.
+
+### Double slit
+
+$$
+    \mathcal{I}^{(z)} = \frac{\mathcal{I}_0}{\lambda z} \Bigg[\int_{-\infty}^{\infty} f(x)e^{-i2\pi xx'/\lambda z}dx'\Bigg]^2
+$$
+
+For slit at $x' = \frac{d}{2}$, integral is
+
+$$
+    \int_{\frac{d}{2}-\frac{a}{2}}^{\frac{d}{2}+\frac{a}{2}} e^{-i2\pi xx'/\lambda z}dx'
+$$
+
+By shifting x' axis by $\frac{d}{2}$, we find
+
+$$
+    \begin{aligned}
+    &= e^{-i\pi xd/\lambda z}\int_{-\frac{a}{2}}^{\frac{a}{2}} e^{-i2\pi xx'/\lambda z}dx' \\
+    \int_{-\infty}^{\infty} f(x')e^{-i2\pi xx'/\lambda z}dx' &= (e^{i\pi xd/\lambda z} + e^{-i\pi xd/\lambda z})a\text{sinc}\bigg(\frac{\pi a x}{\lambda z}\bigg) \\
+    \mathcal{I}^{(z)} &= \frac{4\mathcal{I}_0}{\lambda z}a^2\cos^2\bigg(\frac{\pi dx}{\lambda z}\bigg)\text{sinc}^2\bigg(\frac{\pi a x}{\lambda z}\bigg)
+    \end{aligned}
+$$
+
+Missing order in the interference pattern at $m = \frac{d}{a}$, envelope plot from last year
+
+## Lecture 13
+
+The electric field of a laser beam in the $z = 0$ plane is:
+
+$$
+    \mathcal{E}^{(0)} = \mathcal{E}_0 e^{-(x'^2 + y'^2)/w_0^2}
+$$
+
+This is called a Gaussian beam  
+The radius of the laser is $w_0$  
+The intensity of the laser is:
+
+$$
+    \mathcal{I}^{(0)} = \mathcal{I}_0 e^{-2(x'^2 + y'^2)/w_0^2}
+$$
+
+$w_0$ is the distance at which the intensity falls to $\frac{\mathcal{I}_0}{e^2}$ ($\frac{1}{e^2}$ radius)  
+Calculate far-field intensity of a laser beam using Fraunhofer diffraction  
+Diffraction in both x and y dimensions (2D Fraunhofer)
+
+$$
+    \begin{aligned}
+    \mathcal{I}^{(z)} &= \frac{\mathcal{I}_0}{\lambda^2z^2}\left[\int_{-\infty}^{\infty} f(x',y')e^{-i2\pi(xx'+yy')/\lambda z}dx'\,dy' \right]^2
+    \end{aligned}
+$$
+
+If we can write $f(x',y') = g(x')h(y')$ then the diffraction pattern is _cartesian separable_
+
+$$
+    \begin{aligned}
+    \mathcal{I}^{(z)} &= \frac{\mathcal{I}_0}{\lambda^2z^2} \left[\int_{-\infty}^{\infty} g(x')e^{-i2\pi xx'/\lambda z}dx'\right]^2 \left[\int_{-\infty}^{\infty}h(y')e^{-i2\pi yy'/\lambda z}dy'\right]^2
+    \end{aligned}
+$$
+
+For laser:
+
+$$  
+    f(x',y') = e^{-(x'^2 + y'^2)/w_0^2} = e^{-\frac{x'^2}{w_0^2}}e^{-\frac{y'^2}{w_0^2}} = g(x')h(y')
+$$
+
+x' integral:
+
+$$
+    \begin{aligned}
+    \int_{-\infty}^{\infty} g(x')e^{-i2\pi xx'/\lambda z}dx' &= \int_{-\infty}^{\infty} e^{-\frac{x'^2}{w_0^2}}e^{-i2\pi xx'/\lambda z}dx' \\
+    q &= \frac{x'}{w_0} + \frac{i\pi w_0x}{\lambda z} \\
+    q^2 &= \frac{x'^2}{w_0^2} + \frac{-2\pi xx'}{\lambda z} - \frac{\pi^2 w_0^2 x^2}{\lambda^2z^2} \\
+    w_0e^{-\frac{\pi^2w_0^2x^2}{\lambda^2z^2}}\int_{-\infty}^{\infty} e^{-q^2} dq &= \sqrt{\pi}w_0 e^{-\frac{\pi^2w_0^2x^2}{\lambda^2z^2}}
+    \end{aligned}
+$$
+
+For y' integral:
+
+$$
+    \begin{aligned}
+    &= \sqrt{\pi}w_0e^{-\frac{\pi^2w_0^2y^2}{\lambda^2z^2}} \\
+    \mathcal{I}^{(z)} &= \frac{\mathcal{I}_0}{\lambda^2z^2} \pi^2w_0^4 e^{-2\pi^2w_0^2(x^2 + y^2)/\lambda^2z^2} \\
+    &= \frac{\mathcal{I}_0}{\lambda^2z^2} \pi^2w_0^4 e^{-2(x^2 + y^2)/w^2}
+    \end{aligned}
+$$
+
+where $w$ is the far-field laser beam radius, i.e. from the slit to the position of observation
+
+$$
+    w = \frac{\lambda}{\pi w_0}z
+$$
+
+The angular spread of the laser:
+
+$$\Delta\theta = \frac{w}{z} = \frac{\lambda}{\pi w_0}$$
+
+Compare slit of width $a$ where
+
+$$\Delta\theta = \frac{\lambda}{a}$$

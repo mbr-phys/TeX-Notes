@@ -1,0 +1,297 @@
+\documentclass[Maths.tex]{subfiles}
+
+\begin{document}
+
+\part{}
+\chapter{}
+\section{Introduction}
+This part of the course will mainly deal with differential equations.
+\subsection{Classes of Differential Equation}
+\begin{itemize}
+    \item Ordinary Differential Equations, e.g.
+        \begin{equation*}
+            \frac{dy}{dx} + f(x, y) = 0
+        \end{equation*}
+    \item Partial Differential Equations, e.g.
+        \begin{equation*}
+            \frac{\p g(x, y)}{\p x} + \frac{\p g(x, y)}{\p y} = 0
+        \end{equation*}
+\end{itemize}
+
+\subsection{Order of ODEs}
+The order of an ODE is the value of the highest derivative present.
+\begin{align}
+    \frac{dy}{dx} + y^2 + \sqrt{xy} &= 0 \tag{1st Order} \\
+    \frac{d^2y}{dx^2} + \frac{dy}{dx} + f(x, y) &= 0 \tag{2nd Order}
+\end{align}
+
+\subsection{Degree of ODEs}
+The degree of an ODE is the power of the highest order term after all the derivatives have been rationalised.
+\begin{align}
+    \bigg(\frac{d^2y}{dx^2}\bigg)^2 + \bigg(\frac{dy}{dx}\bigg)^3 + f(x, y) &= 0 \tag{2nd Degree} \\
+    \bigg(\frac{d^2y}{dx}\bigg) + \left(\frac{dy}{dx}\right)^{3/2} + y &= 0 \tag{4th Degree} \\
+    \frac{d^2y}{dx^2} + \sqrt{xy} &= 0 \tag{2nd Degree}
+\end{align}
+
+\subsection{Solution to ODEs}
+\begin{itemize}
+    \item The most general function that solves the equation.
+    \item "General solution" contains integration constants that are not fixed by the equation.
+    \item These constants can be fixed by boundary conditions which leads to a "particular solution".
+    \item An $n$th order ODE has $n$ integration constants.
+\end{itemize}
+
+\section{1st Order, 1st Degree ODEs}
+\begin{equation*}
+    \frac{dy}{dx} = f(x,y) \to A(x,y)\,dx + B(x,y)\,dy = 0
+\end{equation*}
+
+\subsection{Separable Equations}
+\begin{align*}
+    f(x,y) &= f(x)g(y) \\
+    \dy &= f(x)g(y) \\
+    \int \frac{dy}{g(y)} &= \int f(x)\,dx
+\end{align*}
+
+\begin{example}
+    \begin{align*}
+        x^2 \dy &= 1 + y \\
+        \dy &= \frac{1 + y}{x^2} = (1 + y) \cdot \frac{1}{x^2} \\
+        \int \frac{dy}{1 + y} &= \int \frac{dx}{x^2} \\
+        \ln(1 + y) &= -\frac{1}{x} + c \\
+        1 + y &= Ae^{-\frac{1}{x}} \\
+        y &= Ae^{-\frac{1}{x}} - 1
+    \end{align*}
+\end{example}
+
+\subsection{Exact Equations}
+\begin{align*}
+    A(x,y)\,dx &+ B(x,y)\,dy = 0 \\
+    \p_yA(x,y) &= \p_xB(x,y) \\
+    U(x,y) \to dU &= \p_xU\,dx + \p_yU\,dy \\
+    dU = 0 &\to U = c \\
+    A(x,y) &= \p_xU \to U(x,y) = \int A(x,y)\,dx + F(y) \\
+    B(x,y) &= \p_yU  \\
+    \p_yU &= \p_y \left[\int A(x,y)\,dx \right] + F'(y) = B(x,y)
+\end{align*}
+
+\begin{example}
+    \begin{align*}
+        \frac{x}{2}\dy + x^2 + \frac{y}{2} &= 0 \\
+        A = x^2 + \frac{y}{2} ~&;~ B = \frac{x}{2} \\
+        \p_yA = \frac{1}{2} ~&;~ \p_xB = \frac{1}{2} \implies \text{Exact} \\
+        x^2 + \frac{y}{2} = \frac{\p U}{\p x} &\to U(x,y) = \frac{x^3}{3} + \frac{xy}{2} + F(y) \\
+        \p_yU(x,y) = \frac{x}{2} + F'(y) = \frac{x}{2} &\implies F'(y) = 0 \to F(y) = c \\
+        U(x,y) &= \frac{x^3}{3} + \frac{xy}{2} = d \\
+        y &= -\frac{2}{3}x^2 + \frac{2d}{x}
+    \end{align*}
+\end{example}
+
+\subsection{The Integrating Factor}
+\begin{align*}
+    A(x,y)\,dx + B(x,y)\,dy &= 0 \\
+    \p_yA \neq \p_xB &\to \mu(x,y)A(x,y)\,dx + \mu(x,y)B(x,y)\,dy = 0 \\
+    \p_y[\mu A] &= \p_x[\mu B]
+\end{align*}
+$\mu$ is called the integrating factor
+\begin{itemize}
+    \item If $\mu = \mu(x)$:
+        \begin{align*}
+            \p_y[\mu A] &= \mu \p_yA = \mu'B + \mu\p_xB \\
+            \frac{d\mu}{\mu} &= \frac{1}{B}(\p_yA - \p_xB) = f(x)
+        \end{align*}
+    \item If $\mu = \mu(y)$:
+        \begin{equation*}
+            \frac{d\mu}{\mu} = \frac{1}{A}(\p_xB - \p_yA) = g(y)
+        \end{equation*}
+    \item Special case: linear equations
+        \begin{align*}
+            \dy + P(x)y &= Q(x) \\
+            A = P(x)y - Q ~&;~ B = 1 \\
+            \frac{1}{B}(\p_yA - \p_xB) &= \frac{1}{1}(P - 0) = P(x) \\
+            \frac{d\mu}{\mu} = P(x) &\to \mu = e^{\int P(x)\,dx}
+        \end{align*}
+\end{itemize}
+
+\begin{example}
+    \begin{align*}
+        \dy + xy + x^2 &= 0 \\
+        dy + \left(\frac{y}{x} + x^2\right)\,dx &= 0 \\
+        \mu = e^{\int \frac{dx}{x}} &= x \\
+        x\,dy + (y + x^3)\,dx &= 0 \\
+        \p_xB = 1 ~;~ \p_yA &= 1
+    \end{align*}
+\end{example}
+
+\chapter{}
+
+\section{Simplifying Equations by Change of Variables}
+\subsection{Homogeneous Equations}
+\begin{align*}
+    \dy &= f\left(\frac{y}{x}\right), \to y = v\cdot x \\
+    y' &= v'x + v = f(v) \implies \frac{dx}{x} = \frac{dv}{f(v) - v} \\
+    f(x, y) &= \frac{A(x,y)}{B(x,y)} \to \begin{cases} A(\lambda x, \lambda y) &= \lambda^{n}A(x,y) \\
+    B(\lambda x, \lambda y) &= \lambda^n B(x,y) \end{cases}
+\end{align*}
+
+\begin{example}
+\begin{align*}
+    xy\dy &+ 3x^2 - y^2 = 0 \\
+    \dy &= \frac{y^2 - 3x^2}{xy} \to y = vx \\
+    xv' + v &= \frac{v^2x^2 - 3x^2}{vx^2} + v = \frac{v^2 - 3}{v} + v = -\frac{3}{v} \\
+    \frac{dv}{dx}x &= -\frac{3}{v} \to v\,dv = -3\frac{dx}{x} \\
+    \frac{v^2}{2} &= -3\ln{x} + c \to v^2 = d - 6\ln{x} \\
+    v &= \pm \sqrt{d - 6\ln{x}}
+\end{align*}
+\end{example}
+
+\subsection{Isobaric Equations}
+\begin{itemize}
+    \item Give $x\,dx$ weight 1
+    \item Give $y\,dy$ weight m
+    \item If everywhere is the same power, again separable: $y = vx^m$
+\end{itemize}
+
+\begin{align*}
+    (\underbrace{1}_{0} &+ \underbrace{xy}_{1\;m})\underbrace{dy}_{m} + \underbrace{y^2}_{2m}\underbrace{dx}_{1} = 0 \\
+    m &= 2m + 1 \to m = -1 \to y = \frac{v}{x} \\
+    \dy &= \frac{v'}{x} - \frac{1}{x^2}v \\
+    (1 &+ v)\left(\frac{v'}{x} - \frac{1}{x^2}v\right) + \frac{v^2}{x^2} = 0 \\
+    \frac{v'}{x}(1 + v) &= \frac{v}{x^2} \to dv\left(\frac{1}{v} + 1\right) = \frac{dx}{x} \\
+    \ln{v} + v &= \ln{x} + c \to \ln{y} + \cancel{\ln{x}} + xy = \cancel{\ln{x}} + c \\
+    \ln{y} &+ xy = c
+\end{align*}
+
+\subsection{Bernoulli Equation}
+\begin{align*}
+    \dy &+ P(x)y = Q(x)y^n \to v = y^{1 - n} \\
+    v' &= (1 - n)y^{-n} = (1 - n)y^{-n}\left[Q(x)y^n - P(x)y\right] \\
+    &= (1-n)Q(x) - P(x)(1 - n) \times y^{1-n} \therefore \text{Linear}
+\end{align*}
+
+\section{Linear Higher Order ODEs}
+\begin{align*}
+    a_n(x)\frac{d^ny}{dx^n} &+ a_{n - 1}(x)\frac{d^{n-1}y}{dx^{n-1}} + \cdots + a_1(x)\dy + a_0(x)y = f(x) \\
+    f(x) & \begin{cases} = 0 & \text{homogeneous} \\ \neq 0 & \text{inhomogeneous} \end{cases}
+\end{align*}
+
+\begin{itemize}
+    \item General solution will have n integration constants
+    \item There are n independent solutions
+    \item To solve:
+    \begin{enumerate}
+        \item Set $f(x) = 0$ to get the complementary equation
+        \item Solve the complementary equation for n independent solutions
+        \item Most general solution, $\{y_i\}$:
+            \begin{equation*}
+                y_c = c_1y_1 + c_2y_2 + \cdots + c_ny_n
+            \end{equation*}
+            You will have n linearly independent solutions
+        \item $\{y_i\}$ linearly independent?
+            \begin{equation*}
+                \sum_{i = 1}^{n}c_iy_i = 0 \iff c_i = 0 \;\forall i \in N
+            \end{equation*}
+            How do you check? The Wronskian Technique:
+            \begin{equation*}
+                \sum c_iy_i = 0 ~;~ \sum c_iy'_i = 0 ~;~ \sum c_iy''_i = 0
+            \end{equation*}
+            Can be written in matrix form to solve:
+            \begin{align*}
+                \begin{pmatrix}
+                    y_1 & y_2 & \cdots & y_n \\
+                    y'_1 & y'_2 & \cdots & y'_n \\
+                    \vdots & & & \\
+                    v^{(n - 1)}_{1} & \cdots & \cdots & y^{n - 1}_{n}
+                \end{pmatrix}
+                \begin{pmatrix}
+                    c_1 \\
+                    c_2 \\
+                    \vdots \\
+                    c_n
+                \end{pmatrix} = \vec{0} \\ \vec{W} \cdot \vec{C} = \vec{0}
+            \end{align*}
+            If $\vec{W}$ is invertible:
+            \begin{align*}
+                \vec{c} = (W^{-1})\cdot \vec{0} = 0 \\
+                \text{det}W = |W| \neq 0
+            \end{align*}
+            This leads to linearly independent
+            \item Solve full equation
+            \item Find any solution of the full equation, the particular solution
+            \item The most general solution is
+                \begin{equation*}
+                    y + y_p + y_c
+                \end{equation*}
+                if $y_p$ and $y_c$ are linearly independent
+    \end{enumerate}
+    \item
+    \begin{align*}
+        \sum_{i = 1}^{n} a_i y^(i) = 0, ~ a_i \in \R
+    \end{align*}
+    Try $y = Ae^{\lambda x}$:
+    \begin{align*}
+        y' &= \lambda y \to y'' \lambda^2 y \cdots \\
+        \sum_{i = 1}^n a_i \lambda^i y &= 0 \to \sum_{i = 1}^n a_i \lambda^i = 0
+    \end{align*}
+    This is the auxiliary equation.
+    \item $\{\lambda_i\}_{i = 1\cdots n}$ roots
+    \item If all roots $\neq$: There are n solutions using equation above
+    \item If some roots repeat: $\{\lambda_1,\lambda_1, \cdots\}$ \\
+    This is two-fold degenerate
+    \item $e^{\lambda x},\;xe^{\lambda_nx} \to$ k-fold degree
+        \begin{equation*}
+            \{e^{\lambda ix},xe^{\lambda ix},x^2e^{\lambda ix},\cdots,x^{k-1}e^{\lambda ix}\}
+        \end{equation*}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,6 +1,6 @@
 ---
 title: "Theoretical Physics"
-author: "Dr Eke"
+author: "Dr Vincent Eke"
 date: "Michaelmas 2017"
 ---
 
@@ -736,7 +736,7 @@ $$
     J = |\underline{J}| = J_z = \mu r^2 \dot{\phi}
 $$
 
-### Lecture 9
+## Lecture 9
 
 ##### Kepler's Second Law
 
@@ -1587,7 +1587,7 @@ $$
     &= i\bigg(-\omega\cos\theta \pm \sqrt{\omega^2\cos^2\theta + \omega_0^2}\bigg) \\
     &= i\bigg(-\hat{\omega} \pm \sqrt{\hat{\omega} + \omega_0^2}\bigg),~ \hat{\omega} = \omega\cos\theta \ll \omega_0 \\
     &\approx i(-\hat{\omega} \pm \omega_0) \\
-    \therefore \zeta = x + iy &= \underbrace{e^{-i\hat{\omega}t}}_{\text{precession of the}\\\text{plane of oscillation}}\underbrace{(\alpha e^{i\omega_0 t} + \beta e^{-i\omega_0 t})}_{\text{normal pendulum motion}} \\
+    \therefore \zeta = x + iy &= \underbrace{e^{-i\hat{\omega}t}}_{\text{\shortstack{precession of the \\ plane of oscillation}}}\underbrace{(\alpha e^{i\omega_0 t} + \beta e^{-i\omega_0 t})}_{\text{normal pendulum motion}} \\
     \text{Precession rate } &= \hat{\omega} = \omega\cos\theta = \omega\underbrace{\sin\lambda}_{\text{latitude}}
     \end{aligned}
 $$
@@ -1816,3 +1816,205 @@ $$
     &= \begin{pmatrix} \frac{2m_1m_2 h^2}{m_2 + 2m_1} & 0 & 0 \\ 0 & \frac{m_1 a^2}{2} & 0 \\ 0 & 0 & \frac{2m_1m_2 h^2}{m_2 + 2m_1} + \frac{m_1 a^2}{2} \end{pmatrix}
     \end{aligned}
 $$
+
+## Lecture 18
+
+### Symmetry of Inertia Tensor
+
+* $I_{\alpha\beta} = I_{\beta\alpha}$
+
+### Orthogal Matrices
+
+* page 49
+* Orthogonal matrices have the transpose as their inverse:
+    * $A^{-1} = A^T$
+* 2D rotation matrix is orthogonal
+
+### Principal Axis Theorem
+
+* $\hat{I}$ is represented by a 3x3 matrix so has three eigenvalues.
+    * These are the principal moments of inertia
+* The eigenvectors from this form the principal axes
+
+#### Transforming $\hat{I}$ under rotations
+
+* The rotational KE is invariant under rotations
+    * prime indicates rotated coordinates
+
+$$
+    \begin{aligned}
+    T_{rot} &= \frac{1}{2}\underline{\omega}^T \hat{I}\underline{\omega} = \frac{1}{2}\underline{\omega}'^T \hat{I}' \underline{\omega}' \\
+    \underline{\omega}' = \hat{U} \underline{\omega}
+    \end{aligned}
+$$
+
+* $\hat{U}$ is an orthogonal matrix representing a general rotation
+
+$$
+    \begin{aligned}
+    \underline{\omega}'^T &= \underline{\omega}^T \hat{U}^T \\
+    T_{rot} &= \frac{1}{2} (\underline{\omega}^T \hat{U}^T) \hat{I}' (\hat{U} \underline{\omega}) \\
+    &= \frac{1}{2}\underline{\omega}^T (\hat{U}^T \hat{I}' \hat{U}) \underline{\omega} \\
+    \implies \hat{I} &= \hat{U}^T \hat{I}' \hat{U} \\
+    \implies \hat{I}' &= \hat{U}\hat{I}\hat{U}^T
+    \end{aligned}
+$$
+
+#### Inertia Tensor of a Dumbbell
+
+* Find the inertia tensor for a dumbbell
+    * two uniform spheres of mass $m_1$ and $m_2$ with radii a and b respectively, separated by a massless rigid rod of length R
+* From the symmetry of the dumbbell, one of the principal axes lies along the line connecting the masses
+    * choose one axis lying along this direction
+* Place origin at CoM
+* Then the centres of $m_1$ and $m_2$ respectively are at
+
+$$
+    \begin{aligned}
+    \frac{m_2 R}{m_1 + m_2}\hat{k} ~;~ \frac{-m_1 R}{m_1 + m_2}\hat{k}
+    \end{aligned}
+$$
+
+* First calculate the inertia tensor for a sphere of mass $m_1 = \frac{4}{3}\pi a^3 \rho$, which by symmetry has $I_1 = I_2 = I_3$
+* take u to be distance to axis of rotation of mass dm
+
+$$
+    \begin{aligned}
+    dI_{3,a} &= u^2\,dm \\
+    dm &= \rho\,dV = \rho (r^2 \sin\theta \;dr\,d\theta\,d\phi) \\
+    u &= r\sin\theta \\
+    I_{3,a} &= \int_0^{2\pi} d\phi \int_0^\pi \int_0^a r^4\sin\theta (1 - \cos^2\theta) \rho\;d\theta\,dr \\
+    &= \frac{8}{15}\rho \pi a^5 = \frac{2}{5}m_1 a^2
+    \end{aligned}
+$$
+
+* Similarly for the other sphere,
+
+$$
+    I_{3, b} = \frac{2}{5}m_2 b^2
+$$
+
+* To find the inertia tensor fore the dumbbell, use the displaced axis theorem:
+
+$$
+    \begin{aligned}
+    I_1 = I_2 &= \frac{2}{5}m_1 a^2 + m_1 \frac{m_2 R}{m_1 + m_2} + \frac{2}{5}m_2 b^2 + m_2 \frac{m_1 R}{m_1 + m_2} \\
+    I_3 &= \frac{2}{5}m_1 a^2 + \frac{2}{5}m_2 b^2
+    \end{aligned}
+$$
+
+* Now that we have the inertia tensor for the principal axis frame, we can find it for any other rotated frame by applying the transformation $\hat{I}' = \hat{P}\hat{I}\hat{P}^T$
+* For instance, the inertia tensort for a dumbbell in a set of axes rotated through an angle $\theta$ about the 1 axis can be found using the rotation matrix
+
+$$
+    \begin{aligned}
+    \hat{P}_x &= \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta \end{pmatrix} \\
+    \hat{I}' = \hat{P}_x \hat{I} \hat{P}^T &= \hat{P}_x \begin{pmatrix} I_1 & 0 & 0 \\ 0 & I_2 & 0 \\ 0 & 0 & I_3 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta \end{pmatrix} \\
+    &= \cdots = \begin{pmatrix} I_1 & 0 & 0 \\ 0 & I_1\cos^2\theta + I_3\sin^2\theta & (I_3 - I_1)\sin\theta\cos\theta \\ 0 & (I_3 - I_1)\sin\theta\cos\theta & I_1\sin^2\theta + I_3\cos^2\theta \end{pmatrix}
+    \end{aligned}
+$$
+
+## Lecture 19
+
+### Rigid Body Dynamics
+
+#### Euler's Equations of Motion
+
+* page 51
+* take time derivative of angular momentum, $\underline{J}$
+    * gives torque, $\underline{N}$
+
+$$
+    \begin{aligned}
+    \Big(\frac{d\underline{J}}{dt}\Big)_{B} + \underline{\omega_{}} \times \underline{J} &= \underline{N} \\
+    I_1\dot{\omega}_1 - \omega_2\omega_3(I_2 - I_3) &= N_1 \\
+    I_2\dot{\omega}_2 - \omega_3\omega_1(I_3 - I_1) &= N_2 \\
+    I_3\dot{\omega}_3 - \omega_1\omega_2(I_1 - I_2) &= N_3
+    \end{aligned}
+$$
+
+#### Torque-Free Motion
+
+* If there are no external torques, then set Ns to 0
+    * no torques when force is all through centre of rotation
+
+* Diagram on page 52
+    * contour lines map kinetic energy
+    * away from 1-2 equator, higher KE; closer to, smaller KE
+
+##### Motion of a Torque-free symmetric top
+
+* Consider a symmetric top with $I_1 = I_2 \neq I_3$
+    * Isolated from external torques
+    * Spinning freely
+* As $\underline{N} = 0$, the total angular momentum and rotational KE are conserved as viewed from an inertial frame.
+* However, in the frame fixed with the principal axes of the top,
+
+$$
+    \begin{aligned}
+    I_1 \dot{\omega}_1 &= (I_1 - I_3)\omega_2\omega_3 \\
+    I_1\dot{\omega}_2 &= (I_3 - I_1)\omega_1\omega_3 \\
+    I_3\dot{\omega}_3 &= 0
+    \end{aligned}
+$$
+
+* Evidently, $\omega_3$ is a constant
+* Differentiating the other equations wrt time leads to
+
+$$
+    \begin{aligned}
+    I_1\ddot{\omega}_1 &= (I_1 - I_3)\omega_3\dot{\omega}_2 \\
+    \implies I_1\ddot{\omega}_1 &= -\frac{(I_1 - I_3)^2}{I_1} \omega_3^2 \omega_1 \\
+    \therefore \ddot{\omega}_1 &= -\Bigg[\frac{I_1 - I_3}{I_1}\omega_3 \Bigg]^2 \omega_1
+    \end{aligned}
+$$
+
+* Therefore, $\omega_{1/2}$ undergoes SHM with an angular frequency
+
+$$
+    \begin{aligned}
+    \Omega_b &= \frac{|I_1 - I_3|}{I_1}\omega_3
+    \end{aligned}
+$$
+
+* Thus, in the non-inertial frame attached to the principal axes of the top, the angular velocity, $\underline{\omega}$, traces out a circular path around the 3 axis, at fixed $\omega_3$
+* The rate of this precession of $\underline{\omega}$ is given by $\Omega_b$
+* In an inertial ('space'-coordinates) frame, without loss of generality, can assume that the angular momentum, $\underline{J}$, lies in the plane of body axes 2 and 3.
+
+##### Example 2
+
+* Now assume a prolate symmetric top such that $I_1, I_2 > I_3$
+* Choice of axes implies that $\phi_1(t = 0) = 0$
+* Hence, Euler's equations imply
+
+$$
+    \begin{aligned}
+    I_1\dot{\omega}_1 &= (I_1 - I_3)\omega_2\omega_3 \\
+    I_1\dot{\omega}_2 = 0
+    \end{aligned}
+$$
+
+* The instantaneous change in $\underline{\omega}$ is entirely in one direction
+* If we consider $d\underline{\omega}(t = 0) = d\omega_1$ in the plane perpendicular to $\underline{J}$
+    * i.e. looking down the $\underline{J}$ axis
+    * call the angle between the $\omega$ and $\underline{J}$ directions $\theta_S$
+
+$$
+    \begin{aligned}
+    \Omega_Sdt &= \frac{d\omega_1}{\omega\sin\theta_S}
+    \end{aligned}
+$$
+
+* Therefore, as viewed in the inertial frame, the 3 axis precesses around the angular momentum vector, $\underline{J}$, with angular frequency
+
+$$
+    \begin{aligned}
+    \Omega_S &= \frac{\dot{\omega}_1}{\Big(\frac{|\underline{\omega} \times \underline{J}}{|\underline{J}|} \Big)} \\
+    \underline{\omega} \times \underline{J} &= \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ 0 & \omega_2 & \omega_3 \\ 0 & I_1\omega_2 & I_3\omega_3 \end{vmatrix} = \begin{pmatrix} I_3\omega_2\omega_3 - I_1\omega_2\omega_3 \\ 0 \\ 0 \end{pmatrix} \\
+    |\underline{\omega} \times \underline{J}| &= (I_1 - I_3)\omega_2\omega_3,~ (I_1 > I_3) \\
+    \implies \Omega_S &= \frac{I_1 - I_3}{I_1}\omega_2\omega_3 \Bigg/ \Bigg[\frac{(I_1 - I_3)\omega_2\omega_3}{J}\Bigg] \\
+    &= \frac{J}{I_1}
+    \end{aligned}
+$$
+
+# Quantum Theory 2
