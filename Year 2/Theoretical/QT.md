@@ -90,3 +90,78 @@ $$
 
 * Two vectors are said to be orthogonal if $(v,w) = 0$
     * orthonormal if there are orthogonal and have a unit norm $(||v|| = ||w|| = 1)$
+
+## Lecture 3
+
+### Hilbert Spaces
+
+Wave function of a harmonic oscillator:
+
+$$
+    \int_{-\infty}^\infty |\psi(x)|^2dx = 1
+$$
+
+Wave function of atomic hydrogen:
+
+$$
+    \int_{-\infty}^\infty r^2dr \int_{0}^\pi \sin\theta\,d\theta \int_0^{2\pi} d\phi \; |\psi(r,\theta,\phi)|^2 = 1
+$$
+
+* Wave functions must be square-integrable  
+* The set of all functions forms a vector space  
+    * The set of all square-integrable functions also forms a vector space, a subset of the above space (a subspace)
+    * A subspace is a vector space which is a subset of another vector space
+
+* A squre-integrable function refers to using the Leberque integration
+
+Hilbert space: a complete vector space with an inner product, e.g. the vector space of square-integrable functions on $(-\infty, \infty)$
+
+The inner product is:
+
+$$
+    (\phi, \psi) = \int_{-\infty}^\infty \phi^* (x)\psi(x)dx
+$$
+
+### Bases
+
+1. Span of a set of vectors: the set of all linear combinations of these vectors, e.g. the span of
+
+$$
+    \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}
+$$
+
+is the set of linear combinations,
+
+$$
+    a\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + b\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + c\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} a \\ b \\ c \end{pmatrix}
+$$
+
+The span of those three vectors is the set of all 3-component column vectors, were $a, b, c \in \mathbb{C}$
+
+2. A set of N vectors is said to be linearly independent if it is not possible to write a vector from that set as a linear combination of the other vectors.
+
+$$
+    \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}
+$$
+
+is a linearly independent set since it is not possible to find $\alpha$ and $\beta$ such that
+
+$$
+    \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \alpha\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + \beta\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+$$
+
+Orthogonal vectors are always linearly independent.  
+The dimension of a finite-dimensional vector space is the max number of vectors forming a linearly-independent set.  
+An infinite-dimensional vector space is one in which there is no upper bound on the size of the linearly-independent sets.
+
+#### Example
+
+Functions of the form $e^{inx}, n \in \mathbb{N}$  
+These functions form a linearly-independent set since any two such functions are orthogonal.
+
+$$
+    \int_0^{2\pi} \left(e^{inx}\right)^* e^{imx} dx = 0, n \neq m
+$$
+
+3. A basis is a set of linearly-independent vectors spanning the whole vector space.  
+An orthonormal basis is a basis whose vectors are orthonormal.

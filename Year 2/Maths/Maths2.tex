@@ -244,13 +244,116 @@ $\mu$ is called the integrating factor
         \end{equation*}
 \end{itemize}
 
+\chapter{}
+\section{Linear Higher Order ODEs with Constant Coefficients}
+\begin{equation*}
+    \sum_{i = 0}^\R a_i y^{(i)} = f(x)
+\end{equation*}
+\begin{enumerate}
+    \item Look at $y_c$:
+        \begin{equation*}
+            \sum_{i=0}^\N a_i y^{(i)} = 0
+        \end{equation*}
+    \item Try $y_c = Ae^{\lambda x}$ (auxiliary equation for lambda):
+        \begin{equation*}
+            \sum_{i=0}^\N a_i \lambda^i = 0
+        \end{equation*}
+    \begin{enumerate}
+        \item All roots are different, $\{\lambda_i\}_{i \in \N}, \lambda_i \neq \lambda_j$:
+            \begin{equation*}
+                y_c = \sum c_i e^{\lambda_i x}, ~ \{e^{\lambda_i x}\}\text{ are independent}
+            \end{equation*}
+        \item Some root is repeated:
+            \begin{align*}
+                \{\lam_1,\lam_2,\underbrace{\lam_3,\lam_3,\cdots,\lam_3}_{\times K},\lam_4,\cdots\} \\
+                \{e^{\lam_3 x},xe^{\lam_3 x},x^2e^{\lam_3 x},\cdots\}
+            \end{align*}
+    \end{enumerate}
+\end{enumerate}
 
+\begin{example}
+\begin{align*}
+    \dyy - 5\dy + 6y = 0
+\end{align*}
+Try $y = Ae^{\lam x}$:
+\begin{align*}
+    \lam^2 Ae^{\lam x} &- 5\lam e^{\lam x} + 6Ae^{\lam x} = 0 \\
+    \lam^2 &- 5\lam + 6 = 0 \\
+    \lam &= \frac{5 \pm \sqrt{25 - 24}}{2} = 3,2 \\
+    (\lam &- 3)(\lam - 2) = 0 \\
+    y_1 &= e^{3x},~ y_2 = e^{2x}
+\end{align*}
+Now check for independence (Wronskian):
+\begin{align*}
+    W &= \Bigg|\begin{pmatrix} y_1 & y_2 \\ y'_1 & y'_2 \end{pmatrix}\Bigg| = \begin{vmatrix} e^{3x} & e^{2x} \\ 3e^{3x} & 2e^{2x} \end{vmatrix} \\
+    &= 2e^{2x}e^{3x} - 3e^{3x}e^{2x} = -e^{5x} \neq 0 \\
+    y_c &= c_1 e^{3x} + c_2 e^{2x}
+\end{align*}
+\end{example}
 
+\begin{example}
+\begin{align*}
+    \dyy &- 2\dy + 2y = 0 \\
+    \lam^2 &- 2\lam + 2 = 0 \\
+    \lam &= \frac{1 \pm \sqrt{1 - 2}}{1} = 1 \pm i
+\end{align*}
+$\lam$ and $\lam^*$ are solutions
+\begin{align*}
+    y_c &= c_1 e^{(1 + i)x} + c_2 e^{(1 - i)x} \\
+    e^{(1 \pm i)x} &= e^x [\cos(x) \pm i\sin(x)] \\
+    y_c &= e^x [A\cos(x) + B\sin(x)] \\
+    A &= c_1 + c_2, ~ B = i(c_1 - c_2)
+\end{align*}
+$y_c \in \R$ if boundary conditions are real \\
+Use Wronskian to check independence again:
+\begin{align*}
+    y_1 &= e^x \cos(x), ~ y_2 = e^x \sin(x) \\
+    y'_1 &= e^x\cos(x) - e^2\sin(x), ~ y'_2 = e^x\sin(x) + e^x\cos(x) \\
+    W &= \begin{vmatrix} y_1 & y_2 \\ y'_1 & y'_2 \end{vmatrix} = \begin{vmatrix} e^x \cos(x) & e^x \sin(x) \\ e^x\cos(x) - e^2\sin(x) & e^x\sin(x) + e^x\cos(x) \end{vmatrix} \\
+    &= e^{2x} \neq 0
+\end{align*}
+\end{example}
 
+N.B. - Three equivalent ways of writing $y_c$:
+\begin{align*}
+    y_c &= e^x (A\cos(x) + B\sin(x)) \\
+    &= e^x \alpha \cos(x + \beta) = e^x \alpha [\cos(x)\cos(\beta) + \sin(x)\sin(\beta)], ~(A = \alpha\cos(\beta), B = \alpha\sin(\beta)) \\
+    &= e^x \alpha\sin(x + \beta) = e^x \alpha [\sin(x)\cos(\beta) + \cos(x)\sin(\beta)], ~(A = \alpha\sin(\beta), B = \alpha\cos(\beta))
+\end{align*}
 
+\begin{example}
+\begin{align*}
+ \dyy &- 4\dy + 4y = 0 \\
+ \lam^2 &- 4\lam + 4 = 0  \\
+ (\lam &- 2)^2 = 0 \implies \lam = 2, (\text{2-fold soln})
+\end{align*}
+$\{e^{2x},xe^{2x}\}$ are solutions
+\begin{align*}
+    y_1 &= e^{2x}, ~ y_2 = xe^{2x} \\
+    y'_1 &= 2e^{2x}. ~ y'_2 = e^{2x}(1 + 2x) \\
+    W &= \begin{vmatrix} y_1 & y_2 \\ y'_1 & y'_2 \end{vmatrix} = \begin{vmatrix} e^{2x} & xe^{2x} \\ 2e^{2x} & e^{2x}(1 + 2x) \end{vmatrix} \\
+    &= e^{4x} = 0
+\end{align*}
+\end{example}
 
-
-
+\section{Finding Particular Solutions}
+\begin{itemize}
+    \item Try simple functions similar to $f(x)$
+    \begin{example}
+    \begin{align*}
+        \dyy &- 5\dy + 6y = e^x \\
+        y &= y_c + y_p = c_1 e^{2x} + c_2e^{3x} + y_p
+    \end{align*}
+    Try $y_p = Ae^x$:
+    \begin{align*}
+        Ae^x &- 5Ae^x + 6Ae^x = e^x \\
+        A(1 &- 5 + 6) = 1 \implies A = \frac{1}{2} \\
+        y_p &= \frac{1}{2}e^x
+    \end{align*}
+    $y_c,y_p$ must be linearly independent
+    \end{example}
+    \item If $f(x)$ already features in $y_c$, try $xf(x)$
+\end{itemize}
 
 
 

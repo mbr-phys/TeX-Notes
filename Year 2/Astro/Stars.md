@@ -536,7 +536,7 @@ $$
     \text{const } p &\implies \mu = \frac{4}{3}\pi r^3 \rho \\
     \frac{dP}{dr} &= -\frac{4}{3}G\pi r \rho^2 \\
     dP &= -\frac{4}{3}G\pi\rho^2 \int_0^R r\,dr \\
-    P(r) &= -\frac{4}{3}G\pi\rho^2 \bigg[\frac{R^2}{2} - \frac{r^2}{2}\bigg] \\
+    P(r) &= \frac{4}{3}G\pi\rho^2 \bigg[\frac{R^2}{2} - \frac{r^2}{2}\bigg] \\
     \Pi &= 2 \int_0^R \frac{dr}{V_s} \\
     &= 2\int_0^R \frac{dr}{\sqrt{\frac{2}{3}\gamma G\rho (R^2 - r^2)}} \\
     &= 2\sqrt{\frac{3}{2\gamma\pi G \rho}} \Bigg[\sin^{-1} \bigg(\frac{r}{R}\bigg)\Bigg]^{R}_{0} \\
@@ -583,3 +583,99 @@ $$
     * pressure increase
     * temperature increase
     * Slow contraction (Kelvin-Helmholtz timescale)
+
+## Lecture 14
+
+### Stellar Evolution
+
+1. Increase in $\mu$ (mean molecular mass) with time:
+
+$$
+    P = nkT = \frac{\rho kT}{\mu m_H}
+$$
+
+As $\mu$ increases, $\rho$ and T also increase for the pressure to remain constant.
+
+Recall:
+
+$$
+    \epsilon_{i,X} = \epsilon_0 X_i X_X \rho^\alpha T^\beta, \alpha \approx 1
+$$
+
+For proton-proton chain, $\beta \approx 4$  
+For CNO, $\beta \approx 17$
+
+Luminosity increases with time.
+
+### Lifetime of Nuclear Fusion
+
+$$
+    \begin{aligned}
+    t &= \frac{E_{tot}}{L} = \frac{X\zeta Mc^2}{L} \\
+    \zeta_{pp} &= \frac{4m_p - m_{He}}{m_{He}} \approx 0.007 \\
+    t_{\odot} &= 10^{10} \text{ yrs} \\
+    L_{ms} &= L_\odot \left(\frac{M_\odot}{M}\right)^{\alpha} \\
+    t_{ms} &= \frac{X\zeta Mc^2}{L_\odot}\left(\frac{M_\odot}{M}\right)^{\alpha} \\
+    &= 10^{10}\frac{M}{M_\odot}\left(\frac{M_\odot}{M}\right)^{\alpha} \\
+    \therefore t_{ms} &= 10^{10}\left(\frac{M_\odot}{M}\right)^{\alpha - 1}
+    \end{aligned}
+$$
+
+## Lecture 15
+
+### Eddington Limit
+
+$$
+    \begin{aligned}
+    L_{Edd} &= \frac{4\pi cGM}{\kappa}, M = 100M_\odot, \kappa = \kappa_{es} = 0.04\,kg\,m^{-2} \\
+    &= 3\times10^6 L_{\odot}
+    \end{aligned}
+$$
+
+### Photodisintegration
+
+$$
+    \begin{aligned}
+    \lambda_{max} &= \frac{2.9\times10^{-3}}{T}, ~ E = \frac{hc}{\lambda} \\
+    T_c &\geq 3\times10^9 K \implies E \geq 1\,MeV
+    \end{aligned}
+$$
+
+#### Last Days of Fusion
+
+* Shell fusion
+* Silicon to Iron in Core
+* $P_{core} =$ high
+
+#### Endothermic Release
+
+* Iron breaking down into Helium and Helium breaking down in protons and neutrons
+* still shell fusion ongoing
+* $P_{core} =$ rapidly decreasing
+
+#### Electron capture
+
+* very high density
+* shell fusion
+* $p + e^- \implies n + \nu_e$
+* $P_{core} =$ rapidly decreasing
+* neutrino burst
+
+#### Rapid core collapse
+
+* shell fusion
+* $P_{core} \approx 0$
+
+#### Core rebound
+
+* shell fusion
+* $\rho > 8\times10^{18}\,kg\,m^{-3}$
+* the strong force repels collapse and rebounds outwards
+
+#### Supernova
+
+* previous step drives supernova
+* strong force drives high energy pushing
+* generates a shock wave - more photodisintegration
+* electron capture repeats and another neutrino burst
+* nuclear synthesis of heavier elements, including beyond iron (endothermic)

@@ -205,7 +205,7 @@ $$
 ## Lecture 3
 
 * Plane waves - unique $\underline{k}$
-* Spherical waves - isotropic $\underline{k} \perp $ to wavefront
+* Spherical waves - isotropic $\underline{k} \perp$ to wavefront
 
 ### Paraxials
 
@@ -569,3 +569,80 @@ $$\Delta\theta = \frac{w}{z} = \frac{\lambda}{\pi w_0}$$
 Compare slit of width $a$ where
 
 $$\Delta\theta = \frac{\lambda}{a}$$
+
+## Lecture 14
+
+Define far-field 'width' due to diffraction $\Delta\theta z$, it becomes larger than initial width, $w_0$.  
+Cross-over between near- and far-field as:
+
+$$
+    \begin{aligned}
+    \Delta\theta z_R &= w_0 \\
+    \frac{\lambda}{\pi w_0} z_R &= w_0 \\
+    z_R &= \frac{\pi w_0^2}{\lambda}
+    \end{aligned}
+$$
+
+This is the Rayleigh range of a laser beam.  
+Analagous to Rayleigh distance, $d_R = \frac{a^2}{\lambda}$, for slit width, $a$.
+
+### 2D Fraunhofer Diffraction
+
+1. Cartesian Separable:  
+$$
+    \begin{aligned}
+    \mathcal{E}^(0) &= \mathcal{E}_0f(x',y') \\
+    f(x',y') &= g(x')h(y') \\
+    \mathcal{I}^{(z)} &= \frac{\mathcal{I}_0}{\lambda^2 z^2} \Bigg|\int_{-\infty}^{\infty} g(x')e^{-i2\pi xx'/\lambda z}dx'\Bigg|^2 \Bigg|\int_{-\infty}^{\infty} h(y')e^{-i2\pi yy'/\lambda z}dy'\Bigg|^2
+    \end{aligned}
+$$
+
+#### Example: 2D Rectangular Aperture of width a and height b assuming uniform illumination
+
+For y direction:
+
+$$
+    \begin{aligned}
+    h(y') &= \begin{cases} 1 & y \leq \frac{b}{2} \\ 0 & y > \frac{b}{2} \end{cases} \\
+    \int_{-\infty}^{\infty} h(y')e^{-i2\pi yy'/\lambda z}dy' &= \int_{-\frac{b}{2}}^{\frac{b}{2}} e^{-2\pi yy'/\lambda z}dy' \\
+    &= b\text{sinc}\bigg(\frac{\pi by}{\lambda z}\bigg)
+    \end{aligned}
+$$
+
+For x direction:
+
+$$
+    \begin{aligned}
+    \int_{-\infty}^{\infty} g(x')e^{-i2\pi xx'/\lambda z}dx' &= a\text{sinc}\bigg(\frac{\pi ax}{\lambda z}\bigg)
+    \end{aligned}
+$$
+
+Far-field intensity:
+
+$$
+    \mathcal{I}^{(z)} = \frac{\mathcal{I}_0}{\lambda^2z^2}a^2b^2\text{sinc}^2\bigg(\frac{\pi ax}{\lambda z}\bigg)\text{sinc}^2\bigg(\frac{\pi by}{\lambda z}\bigg)
+$$
+
+Far-field: $z \gg d_R$, where $d_R = \frac{a^2}{\lambda}$ or $d_R = \frac{b^2}{\lambda}$, which ever is larger.
+
+According to the Fraunhofer formula, translating input leaves diffraction unchanged.
+
+$$
+    \begin{aligned}
+    \int_{-\infty}^{\infty} g(x' - d)e^{-i2\pi xx'/\lambda z}dx' &= e^{-i2\pi dx/\lambda z}\int_{-\infty}^\infty g(x')e^{-i2\pi xx'/\lambda z}dx'\\
+    \Bigg|\int_{-\infty}^{\infty} g(x' - d)e^{-i2\pi xx'/\lambda z}dx'\Bigg|^2 &= \Bigg|\int_{-\infty}^\infty g(x')e^{-i2\pi xx'/\lambda z}dx'\Bigg|^2
+    \end{aligned}
+$$
+
+Fraunhofer diffraction pattern is unchanged by translation.   
+Assuming is far-field.
+
+In the focal plane of a lens, Fraunhofer is exact.
+
+### Circular vs Square Airy Patterns
+
+The average width of a circular aperture is less than that of a square, which pushes its Airy pattern to diffract more.
+
+$$
+    \frac{\lambda}{a}z \text{ vs } 1.22\frac{\lambda}{a}z
+$$

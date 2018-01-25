@@ -26,6 +26,7 @@
 \newcommand\hj{\hat{j}}
 \newcommand\hk{\hat{k}}
 \newcommand\hn{\hat{n}}
+\newcommand\hr{\hat{r}}
 
 \title{Foundations of Physics 2A \\ Electromagnetism \vspace{-20pt}}
 \author{Professor D P Hampshire}
@@ -42,6 +43,8 @@
 \tableofcontents
 
 \chapter{}
+
+\textit{Summary sheets are provided on DUO to go with these}
 
 \section{Maxwell's Equations and Classical Physics}
 Feynman claims that there are seven equations that describe all of classical physics; the first four of these are Maxwell's Equations:
@@ -198,30 +201,136 @@ Just as with Hooke's Law, experimentation shows us that M\RN{1} is true under al
 
 The $\uE$-field resulting from any charge distribution gives $\del \cdot \uE = 0$ in the local regions where there is no charge.
 
+\chapter{}
+\section{Applying M\RN{1} to a Capacitor Plate}
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \begin{center}
+        \vspace{-20pt}
+        \includegraphics[scale=0.4]{cap.png}
+        \vspace{-90pt}
+    \end{center}
+\end{wrapfigure}
+There is no charge density so:
+\begin{align*}
+    \del\cdot\uE &= \frac{\p E_x}{\p x} + \frac{\p E_y}{\p y} + \frac{\p E_z}{\p z} \\
+    \del\cdot\uE &= \frac{1}{r^2}\frac{\p}{\p r}(\underbrace{r^2 E_r}_{= 0\text{ (Coulomb)}}) + \frac{1}{r\sin\theta}\frac{\p}{\p \theta}\left[E_\theta\sin\theta\right] + \frac{1}{r\sin\theta}\frac{\p}{\p \phi}(E_\phi) = 0
+\end{align*}
 
+\subsection{Comments}
+\begin{itemize}
+    \item $\del\cdot\uE$ describes the spatial dependence of the $\uE$-field
+    \item $\del\cdot\uE = 0$ is true at every point where there is no charge
+    \item $\del\cdot\uE = 0$ does not necessarily imply $\uE = 0$
+    \item $\del\cdot\uE = 0$ can result from any superposition of diverging $\uE$-fields from isolated charges where $\uE$ is exactly proportional to $\frac{1}{r^2}$
+    \item Understanding the physics helps to understand the mathematics
+\end{itemize}
 
+\section{Maxwell \RN{2} (No magnetic monopole)}
+\subsection{Ampere's Law}
+Ampere found that two parallel straight wires carrying currents $I_1$ and $I_2$ in the same direction lead to a force $F_2$ on a length L of the wire carrying $I_2$ where
+\begin{equation}
+    \unl{F}_2 = -\frac{\mu_0 I_1 I_2 L}{2\pi d}\hr_{1\to2} \tag{A}
+\end{equation}
+and d is the separation between the wires.
 
+We can introduce a magnetic field, where
+\begin{equation}
+    \unl{F} = q(\unl{v}\times\uB). \tag{B}
+\end{equation}
+Given that the definition of current is the charge that passes per second,
+\begin{equation}
+    I = Q_L\cdot v \tag{C}
+\end{equation}
+where $Q_L$ is the charge per unit length, and v is the velocity of charges. \\
+Comparing A and B with C:
+\begin{equation}
+    \int \uB \cdot d\unl{l} = \mu_0 I \tag{Ampere's Law}
+\end{equation}
+where I is the current that passes through the surface that is bounded by the path integral of the magnetic field.
+\begin{align*}
+    \int \uB\cdot d\unl{l} &= \uB\cdot2\pi r = \mu_0 I \\
+    \implies \uB &= \frac{\mu_0 I}{2\pi r}\hat{\phi} \\
+\end{align*}
 
+\subsection{Maxwell \RN{2} from the Biot-Savart Law}
+Ampere's Law can be written in the form of the Biot-Savart Law that describes the small field ($\delta\uB$) produced by a small length of a current element ($I\,d\unl{l}$) where:
+\begin{align*}
+    \delta \uB = \frac{\mu_0 I}{4\pi r^2}\delta\unl{l} \times \hr &= \frac{\mu_0 I}{4\pi r^2}\sin\theta\,dl\,\hat{\phi} \\
+    \del \cdot (\delta\uB) = \frac{1}{\rho}\frac{\p(\rho\,\delta B_\rho)}{\p \rho} &+ \frac{1}{\rho}\underbrace{\frac{\p\, \delta B_\phi}{\p \phi}}_{= 0 \text{ (B-S)}} + \frac{1}{r\sin\theta} \frac{\p}{\p \theta}(\delta B_z) = 0 \\
+    \del\cdot(\delta\uB) &= 0 \\
+    \sum \delta\uB &= \uB
+\end{align*}
+This leads to Maxwell's second equation:
+\begin{equation}
+    \del\cdot\uB = 0 \tag{M\RN{2}}
+\end{equation}
+The net flux through both surfaces is zero. \\
+Integrating Maxwell \RN{2}:
+\begin{equation*}
+    \int \del\cdot\uB\,dV = \int 0\cdot dV \implies \int \uB\cdot d\unl{S} = 0
+\end{equation*}
+Hence in all experiments to date, we have found that the net magnetic flux through any closed surface is zero.
 
+\chapter{}
+\section{Maxwell \RN{3} from Faraday's Law}
+\subsection{Faraday's Fabulous Experiments}
+\begin{itemize}
+    \item \unl{Inductive Electromotive Force}: \\
+    The voltage difference across a single loop wrapped around a coil (or solenoid) is:
+    \begin{equation}
+        V = \frac{d\uB}{dt}\unl{S} = \frac{\p \phi_{\B}}{\p t}, \tag{Faraday's Law of Induction}
+    \end{equation}
+    where $\phi_\B$ is the flux of the magnetic field.
+    Outside the loop, the $\uB$-field is zero, but the changing magnetic field inside the solenoid generates an $\uE$-field outside and inside the solenoid.
+    \item \unl{Motional Electromotive Force}: \\
+    A loop of wire moving with velocity, $\unl{u}$, down through the homogeneous field produced between the two magnetic pole pieces.
+    Using Faraday's Law of Induction,
+    \begin{equation*}
+        V = \frac{\p \phi_{\B}}{\p t} = \B\frac{\p S(t)}{\p t} = \B\unl{u}\omega,
+    \end{equation*}
+    where $S(t)$ is the instantaneous partial area of the loop with magnetic field, $\uB$, passing through it.
+    Alternatively, we can think about the Lorentz force on the free positive charges in the wire in the horizontal (bottom) part of the loop of wire.
+    The charges build up at one end of wire and the net force on free positive charges is
+    \begin{equation*}
+        \unl{F} = q(\uE + \unl{v}\times\uB).
+    \end{equation*}
+    In equilibrium,
+    \begin{equation*}
+        \uE = -\unl{v}\times\uB.
+    \end{equation*}
+    Therefore the net voltage produced is
+    \begin{equation*}
+        V = -\omega \E = \B u \omega
+    \end{equation*}
+    Maxwell was the first to point out (leading Einstein to relativity) that the voltage generated in the experiment can be explained using two completely different physical explanations.
+\end{itemize}
+Faraday's experiments demonstrate that the law of induction is correct no matter why the flux changes; whether the loop moves or the pole pieces move.
 
+\subsection{Using Faraday's Law to find Maxwell \RN{3}}
+Faraday's Law:
+\begin{align*}
+    \zeta_t &= -\frac{\p \phi_\B}{\p t} \\
+    \zeta_t &= \int \uE \cdot d\unl{l} = -V,
+\end{align*}
+where $\zeta_t$ is the electromotive force (the tangential force per unit charge, integrated over length, once around the complete circuit). \\
+Using Faraday's Law,
+\begin{equation*}
+    \zeta_t = \int \uE\cdot d\unl{l} = -\frac{\p \phi_\B}{\p t} = -\frac{\p}{\p t}\int \uB \cdot d\unl{S}.
+\end{equation*}
+Then using Stoke's Theorem:
+\begin{equation*}
+    \int (\del \times \uE) \cdot d\unl{S} = -\frac{\p}{\p t}\int \uB \cdot d\unl{S}
+\end{equation*}
+Therefore, the integrands can be equated to get:
+\begin{equation}
+    \del \times \uE = -\frac{\p \uB}{\p t} \tag{M\RN{3}}
+\end{equation}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsection{Comments}
+\begin{enumerate}
+    \item The curl of $\uE$ is zero outside the coil, but $\uE$ is not zero.
+    \item Maxwell \RN{3} is true at all space and time.
+\end{enumerate}
 
 
 
