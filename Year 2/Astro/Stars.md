@@ -679,3 +679,63 @@ $$
 * generates a shock wave - more photodisintegration
 * electron capture repeats and another neutrino burst
 * nuclear synthesis of heavier elements, including beyond iron (endothermic)
+
+## Lecture 16
+
+### Electron Degeneracy Pressure
+
+$$
+    \begin{aligned}
+    \Delta x\Delta p_x &\approx \hbar \\
+    p_min &\approx \Delta p_x \approx \frac{\hbar}{\Delta x} \\
+    P &\approx \frac{1}{2}n_e pv \\
+    n_e &= \frac{\# e}{vol} = \frac{Z}{A} \frac{\rho}{m_H} \\
+    p_x &= \Delta p_x = \frac{\hbar}{\Delta x} \\
+    \Delta x &= n_e^{-1/3} \implies p_x = \hbar n_e^{1/3} \\
+    p^2 &= p_x^2 + p_y^2 + p_z^2 = 3p_x^2 \\
+    \implies p &= \sqrt{3}p_x = \sqrt{3}\hbar n_e^{1/3} \\
+    p &= mv = m_e v \\
+    \implies v &= \frac{p}{m_e} = \frac{\sqrt{3}}{m_e}\hbar n_e^{1/3} \\
+    P &= \frac{1}{3}n_e pv \\
+    p &= \sqrt{3}\hbar \left[\left(\frac{Z}{A}\right)\frac{\rho}{m_H}\right]^{1/3} \\
+    v &= \frac{\sqrt{3}}{m_e}\hbar \left[\left(\frac{Z}{A}\right) \frac{\rho}{m_H}\right]^{1/3} \\
+    \therefore P &= \frac{\hbar^2}{m_e}\left[\left(\frac{Z}{A}\right) \frac{\rho}{m_H}\right]^{5/3}
+    \end{aligned}
+$$
+
+### White Dwarf Cooling
+
+$$
+    \begin{aligned}
+    t_{cool} = \frac{E_{WD}}{L_{WD}} = \left(\frac{3kT_{c,WD}}{2}\right) \left(\frac{M_{WD}}{Am_H}\right) \left(\frac{1}{L_{WD}}\right)
+    \end{aligned}
+$$
+
+## Lecture 17
+
+### Rotation Period of Pulsars
+
+$$
+    \begin{aligned}
+    \text{Centripetal Acceleration} &= \text{Gravitational Acceleration} \\
+    \omega^2_{max}R &= \frac{GM}{R} \\
+    M &= \frac{4}{3}\pi R^3\rho \\
+    \omega_{max}^2 R &= G \frac{4}{3}\pi R \rho \\
+    \omega &= 2\pi f = \frac{2\pi}{P} \\
+    \frac{4\pi^2}{P^2}R &= \frac{4}{3}G\pi R\rho \\
+    P_{min} &= \left(\frac{3\pi}{G\rho}\right)^{1/2}
+    \end{aligned}
+$$
+
+### Stellar Core Rotation
+
+Conservation of angular momentum:
+
+$$
+    \begin{aligned}
+    I_i\omega_i &= I_f\omega_f, ~ I = CMR^2 \\
+    CMR_i^2\omega_i &= CMR_f^2\omega_f, ~ \omega = \frac{2\pi}{P} \\
+    \frac{2\pi}{P_f} &= \frac{2\pi}{P_i}\left(\frac{R_i}{R_f}\right)^2 \\
+    P_f &= P_i\left(\frac{R_f}{R_i}\right)^2
+    \end{aligned}
+$$

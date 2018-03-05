@@ -1,0 +1,9 @@
+pandoc --filter=pandoc-crossref --filter=pandoc-citeproc --smart --listings --number-sections --standalone file.md -o file.pdf
+
+ pandoc -f markdown QM.md -o QM.pdf
+
+pandoc -f markdown+tex_math_dollars+pipe_tables QM.md -o QM.pdf
+
+pandoc -f markdown+tex_math_dollars+pipe_tables --toc -V geometry:margin=1in Theory.md -o Theory.pdf
+
+pandoc -f markdown+tex_math_dollars+pipe_tables --toc -V geometry:margin=1in -V toc-depth=6 -V documentclass=report Theory.md -o Theory.pdf

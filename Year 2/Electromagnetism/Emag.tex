@@ -27,6 +27,16 @@
 \newcommand\hk{\hat{k}}
 \newcommand\hn{\hat{n}}
 \newcommand\hr{\hat{r}}
+\newcommand\vk{\unl{k}}
+\newcommand\om{\omega}
+\newcommand\J{\unl{J}}
+\newcommand\M{\unl{M}}
+\newcommand\er{\epsilon_r}
+\newcommand\e{\epsilon}
+\newcommand\lam{\lambda}
+\newcommand\pen{\lambda_L}
+\newcommand\tx{\tilde{x}}
+\newcommand\tv{\tilde{v}}
 
 \title{Foundations of Physics 2A \\ Electromagnetism \vspace{-20pt}}
 \author{Professor D P Hampshire}
@@ -51,7 +61,7 @@ Feynman claims that there are seven equations that describe all of classical phy
 \begin{enumerate}
     \item From Coulomb's Law:
         \begin{equation}
-            \del\cdot\uE = \frac{\rho}{\epsilon_0} \tag{M\RN{1}}
+            \del\cdot\uE = \frac{\rho}{\eno} \tag{M\RN{1}}
         \end{equation}
     \item Given no magnetic monopoles have been observed:
         \begin{equation}
@@ -63,7 +73,7 @@ Feynman claims that there are seven equations that describe all of classical phy
         \end{equation}
     \item From Ampere's Law:
         \begin{equation}
-            \del \times \uB = \mu_0 \unl{J} + \mu_0 \eno \frac{\p \E}{\p t} \tag{M\RN{4}}
+            \del \times \uB = \mu_0 \J + \mu_0 \eno \frac{\p \E}{\p t} \tag{M\RN{4}}
         \end{equation}
         where the symbol $\del$ denotes the vector operator 'del':
         \begin{equation*}
@@ -73,7 +83,7 @@ Feynman claims that there are seven equations that describe all of classical phy
             \item $\uE$ - electric field ($V\,m^{-1}$)
             \item $\uB$ - magnetic field ($T$)
             \item $\rho$ - total charge density ($C\,m^{-3}$)
-            \item $\unl{J}$ - total current density ($A\,m^{-2}$)
+            \item $\J$ - total current density ($A\,m^{-2}$)
         \end{itemize}
     \item Force on a moving charge in a magnetic and electric field:
         \begin{equation*}
@@ -309,13 +319,13 @@ Faraday's experiments demonstrate that the law of induction is correct no matter
 \subsection{Using Faraday's Law to find Maxwell \RN{3}}
 Faraday's Law:
 \begin{align*}
-    \zeta_t &= -\frac{\p \phi_\B}{\p t} \\
-    \zeta_t &= \int \uE \cdot d\unl{l} = -V,
+    \xi_t &= -\frac{\p \phi_\B}{\p t} \\
+    \xi_t &= \int \uE \cdot d\unl{l} = -V,
 \end{align*}
-where $\zeta_t$ is the electromotive force (the tangential force per unit charge, integrated over length, once around the complete circuit). \\
+where $\xi_t$ is the electromotive force (the tangential force per unit charge, integrated over length, once around the complete circuit). \\
 Using Faraday's Law,
 \begin{equation*}
-    \zeta_t = \int \uE\cdot d\unl{l} = -\frac{\p \phi_\B}{\p t} = -\frac{\p}{\p t}\int \uB \cdot d\unl{S}.
+    \xi_t = \int \uE\cdot d\unl{l} = -\frac{\p \phi_\B}{\p t} = -\frac{\p}{\p t}\int \uB \cdot d\unl{S}.
 \end{equation*}
 Then using Stoke's Theorem:
 \begin{equation*}
@@ -332,30 +342,884 @@ Therefore, the integrands can be equated to get:
     \item Maxwell \RN{3} is true at all space and time.
 \end{enumerate}
 
+\chapter{}
+\section{Maxwell \RN{4} from Ampere's Law}
+\subsection{Maxwell's Correction to Ampere's Law}
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \begin{center}
+        \vspace{-40pt}
+        \includegraphics[scale=0.4]{cap4.png}
+    \end{center}
+\end{wrapfigure}
+The surfaces bounded by path $A$ and $C$ each have a current $I$ that threads through them.
+Path $B$ has no current threading through it. \\
+If Paths $A,B,$ and $C$ are distant from the wire and capacitor, one finds experimentally that the magnetic field is the same at all three. \\
+Hence if the moving charges generate both an $\uE$-field and a $\uB$-field (as in the circuit shown), Ampere's Law breaks down. \\
+Using Gauss' Law for the $\uE$-field inside the capacitor and consider the volume $D$ that encloses the capacitor plate:
+\begin{equation*}
+    \int \uE \cdot d\unl{S} = \int \frac{\rho}{\eno}dV = \frac{Q}{\eno}
+\end{equation*}
+For the capacitor, using conservation of charge:
+\begin{equation*}
+    I = \frac{dQ}{dt}
+\end{equation*}
+Consider Path $B$:
+\begin{align*}
+    \oint \E \cdot dS &= \int \E \cdot dS \\
+    \implies \frac{\p}{\p t} \int \uE \cdot d\unl{S} &= \frac{1}{\eno}\frac{\p Q}{\p t} = \frac{I}{\eno}
+\end{align*}
+Hence, a general equation for Paths $A,B,$ and $C$ is of the form
+\begin{equation*}
+    \int \uB \cdot d\unl{l} = \mu_0 \int \J \cdot d\unl{S} + \mu_0\eno\frac{\p}{\p t} \int \uE \cdot d\unl{S}
+\end{equation*}
+Using Stokes' Theorem:
+\begin{equation*}
+    \int \del \times \uB \cdot d\unl{S} = \mu_0 \int \J \cdot d\unl{S} + \mu_0\eno\frac{\p}{\p t} \int \uE\cdot d\unl{S}
+\end{equation*}
+Given this is true for any surface:
+\begin{equation}
+    \del \times \uB = \mu_0\J + \mu_0\eno\frac{\p \uE}{\p t} \tag{M\RN{4}}
+\end{equation}
+where by definition, $\J_{disp} = \eno\frac{\p\uE}{\p t}$, and $\J_{disp}$ is defined as the displacement current density.
 
+From Maxwell's four equations, if we know the charges present and the currents flowing, we can calculate all the $\uE$-fields and $\uB$-fields in a system.
 
+\section{Transverse Electromagnetic Waves and Charge Conservation}
+\subsection{Electromagnetic wave in a vacuum}
+If we assume that there are no charges or currents present,
+\begin{align*}
+    \del \cdot \uE &= \frac{\rho}{\eno} = 0 \\
+    \del \cdot \uB &= 0 \\
+    \del \times \uE &= -\frac{\p \uB}{\p t} \\
+    \del \times \uB &= \mu_0\eno\frac{\p\uE}{\p t}
+\end{align*}
+Take the curl of Maxwell \RN{3}:
+\begin{equation*}
+    \del \times \del \times \uE = -\frac{\p}{\p t} \del \times \uB
+\end{equation*}
+Use the vector identity:
+\begin{align*}
+    \del \times \del \times \uE &= \del(\del\cdot\uE) - \nabla^2\uE \\
+    \nabla^2 &= \frac{\p^2}{\p x^2} + \frac{\p^2}{\p y^2} + \frac{\p^2}{\p z^2} \\
+    \implies \nabla^2\uE &= \mu_0 \frac{\p^2 \uE}{\p t^2} \\
+    \implies c &= \frac{1}{\sqrt{\mu_0\eno}}
+\end{align*}
+Maxwell used measurements from Weber and Kohlrausch available and found that
+\begin{equation*}
+    c_{Maxwell} = 3.11\times10^8 \,m\,s^{-1}
+\end{equation*}
+The best optical data (Foucault) gave
+\begin{equation*}
+    c_{Foucault} = 2.98\times10^8\,m\,s^{-1}
+\end{equation*}
 
+\chapter{}
+Using the curl of Maxwell \RN{4}:
+\begin{equation*}
+    \nabla^2\uB = \mu_0\eno\frac{\p^2\uB}{\p t^2}
+\end{equation*}
 
+\section{The Vectorial Nature of Electromagnetic Waves}
+Given that $\uE$ and $\uB$ are plane waves of the form:
+\begin{align*}
+    \uE(\vec{r},t) &= \uE_0\exp(i[\vk\cdot\vec{r}-\omega t]) \\
+    \uB(\vec{r},t) &= \uB_0\exp(i[\vk\cdot\vec{r}-\omega t])
+\end{align*}
+$\uE_0$ and $\uB_0$ are the polarisation vectors for $\uE$ and $\uB$, and $\vk$ gives the magnitude of the wave-vector and direction of propagation. \\
+There are non-trivial (i.e. real) solutions only if $\omega$ and $\vk$ are the same for $\uE$ and $\uB$.
+The solution for the wave equation for electromagnetic waves can be written as:
+\begin{align*}
+    \vk\cdot\vk &= k^2 = \omega^2\mu_0\eno \\
+    \implies v_{phase} &= f\lam = \frac{\omega}{k} = \sqrt{\frac{1}{\mu_0\eno}}
+\end{align*}
+Substituting the plane wave solutions into Maxwell \RN{3}:
+\begin{align*}
+    \del \times \uE = i\vk \times \uE &= -\frac{\p\uB}{\p t} = i\omega\uB \\
+    \implies i\vk\times\uE_0 &= i\omega\uB_0
+\end{align*}
+Similarly from Maxwell \RN{4}:
+\begin{equation*}
+    \vk \times \uB_0 = -\mu_0\eno\omega\uE_0
+\end{equation*}
 
+\subsection{Implication}
+\begin{itemize}
+    \item $\uE, \uB,$ and $\vk$ are all orthogonal to each other in a vacuum
+    \item $|\uB_0|$ is a factor of $c$ smaller than $|\uE_0|$
+    \item $\uE_0\times\uB_0$ is in the direction of $\vk$ which is the direction of propagation
+\end{itemize}
 
+\section{Dispersive and Ballistic Motion of Waves}
+\begin{itemize}
+    \item Ballistic motion does not change as it moves through space (ball flying through air)
+    \item Dispersive motion changes as it moves through space (ripple on pond)
+\end{itemize}
+\begin{enumerate}
+    \item The phase velocity (of each component of a disturbance) is:
+    \begin{equation*}
+        v_{phase} = f\lam = \frac{\omega}{k},~ k \in \mathbb{R}
+    \end{equation*}
+    \item The group velocity for a disturbance is determined by how the peak of the disturbance moves through space as a function of time.
+    \begin{equation*}
+        v_{group} = \frac{\p\omega}{\p k}\Bigg|_{k = k_0}, ~ k_0 = \text{average value}
+    \end{equation*}
+    \item If the motion is ballistic:
+    \begin{equation*}
+        \frac{\p^2\omega}{\p k^2} = 0
+    \end{equation*}
+    If the motion is dispersive:
+    \begin{equation*}
+        \frac{\p^2 \omega}{\p k^2} \neq 0
+    \end{equation*}
+\end{enumerate}
 
+\section{Electromagnetic Waves in Insulators and Conductors}
+We can use Maxwell's equations and Ohm's Law to describe electromagnetic waves propagating through metals. \\
+Taking the curl of Maxwell \RN{3}:
+\begin{equation*}
+    \del \times \del \times \uE = -\frac{\p}{\p t}\del \times \uB
+\end{equation*}
+Substituting Ohm's Law ($\J = \sigma_N\uE$) into Maxwell \RN{4} gives:
+\begin{align*}
+    \del\times\uB &= \mu_0\J + \mu_0\eno\frac{\p \uE}{\p t} \\
+    &= \mu_0\sigma_N\uE + \mu_0\eno\frac{\p\uE}{\p t} \\
+    \del \times \del \times \uE &= -\mu_0\sigma_N\frac{\p\uE}{\p t} - \mu_0\eno\frac{\p^2\uE}{\p t^2}
+\end{align*}
+Using the vector identity:
+\begin{align*}
+    \del\times\del\times\uE &= \cancel{\del(\del\cdot\uE)} - \nabla^2\uE \\
+    \implies \nabla^2\uE &= \mu_0\sigma_N\frac{\p\uE}{\p t} + \mu_0\eno\frac{\p^2\uE}{\p t}
+\end{align*}
+We assume:
+\begin{equation*}
+    \uE(\vec{r},t) = \uE_0\exp(i[\vk\cdot\vec{r}-\omega t])
+\end{equation*}
+Note: $\omega$ is always real and constant. \\
+We allow $\vk$ to be a complex vector.
+When $\vk$ has both real and imaginary parts, the wave is both oscillating and decaying. \\
+Substituting into the wave equation:
+\begin{equation}
+    k^2 = \mu_0\eno\omega^2 + i\omega\mu_0\sigma_N \tag{Dispersion Relation}
+\end{equation}
+A dispersion relation is one that gives us $\omega$ vs $\vk$.
 
+\begin{enumerate}
+    \item For a highly insulating material,
+    \begin{align*}
+        \sigma_N &\to 0 \\
+        \implies k^2 &= \mu_0\eno\omega^2 \\
+        \implies k &= \sqrt{\mu_0\eno}\omega \\
+        \implies v_{phase} &= \frac{\omega}{k} = \frac{1}{\sqrt{\mu_0\eno}}
+    \end{align*}
+    \item For a highly conducting material,
+    \begin{align*}
+        \sigma_N &\to \infty \\
+        \implies k^2 &= i\omega\mu_0\sigma_N \\
+        \sqrt{i} &= \frac{1 + i}{\sqrt{2}} \\
+        \implies k &= (1 + i)\sqrt{\frac{\omega\mu_0\sigma_N}{2}} = \frac{1 + i}{\delta}, ~\delta = \sqrt{\frac{2}{\omega\mu_0\sigma_N}}
+    \end{align*}
+    The solution is found by simply substituting back into the plane wave equation:
+    \begin{align*}
+        \uE &= \uE_0\exp\left[i\left(\left(\frac{1 + i}{\delta}\right)x - \omega t\right)\right] \\
+        &= \uE_0\exp\left[i\left(\frac{x}{\delta} - \omega t\right)\right]\exp\left(-\frac{x}{\delta}\right)
+    \end{align*}
+\end{enumerate}
 
+\chapter{}
+\begin{align*}
+    k &= (1 + i)\sqrt{\frac{\om\mu_0\sigma_N}{2}} = \frac{1 + i}{\delta} \\
+    \uE &= \uE_0 \exp\left[i(kx - \om t)\right] \\
+    &= \uE_0\exp\left[i\left(\frac{1+i}{\delta}x - \om t\right)\right] \\
+    &= \uE_0\exp\left[i\left(\frac{x}{\delta} - \om t\right)\right]\exp\left(-\frac{x}{\delta}\right)
+\end{align*}
+We extract the important physics by taking the real of imaginary part of $\uE$.\\
+The real part:
+\begin{equation*}
+    \uE = \uE_0\cos\left(\frac{x}{\delta}- \om t\right)\exp\left(-\frac{x}{\delta}\right)
+\end{equation*}
+The wavelength, $\lam = \frac{2\pi}{k_{real}} = 2\pi\delta$, and the decay length (known as the 'skin depth' for highly conducting materials), $\delta = \frac{1}{k_{\mathbb{C}}}$
 
+For copper at optical frequencies:
+\begin{equation*}
+    \delta = \sqrt{\frac{2}{\om\mu_0\sigma_N}} = 4\,nm
+\end{equation*}
 
+\section{The continuity equation and charge conservation}
+Maxwell \RN{4}:
+\begin{align*}
+    \del\times\uB &= \mu_0\J + \mu_0\eno\frac{\p\uE}{\p t} \\
+    \del\cdot\del\times\uB &= \mu_0\del\cdot\J + \mu_0\eno\frac{\p}{\p t}\del\cdot\uE \\
+    \implies \del\cdot\J &= -\mu_0\eno\frac{\p}{\p t}\underbrace{\del\cdot\uE}_{M\RN{1}}
+\end{align*}
+\begin{equation}
+    \del\cdot\J = -\frac{\p\rho}{\p t} \tag{Continuity Equation}
+\end{equation}
+Take the volume integral of both sides:
+\begin{align*}
+    \int \del\cdot\J\;dV &= -\int \frac{\p\rho}{\p t}\,dV \\
+    \int \J \cdot d\unl{S} &= -\int \frac{\p\rho}{\p t}\,dV \\
+    \text{Charge flowing out through the surface every second } &= \text{ Change in total charge inside the volume every second}
+\end{align*}
+Hence the continuity equation is equivalent to conservation of charge $\implies$ Maxwell's equations require the conservation of charge.
 
+\section{Maxwell and Einstein}
+\subsection{The Collapse of Newtonian/Galilean Physics}
+\begin{enumerate}
+    \item observer P: stationary with respect to positive charges, sits on positive charges and watches negative charges move past with velocity, $v$
+    \begin{equation*}
+        \unl{F} = q(\uE + \unl{v}\times\uB)
+    \end{equation*}
+    For a charge-neutral wire and an external charge that is not moving, $\unl{F} = 0$, this implies the test charge does not move.
+    \item observer N: stationary with respect to the negative charges, observes positive charges move past with velocity, $v$
+    \begin{equation*}
+        \unl{F} = q(\uE + \unl{v}\times\uB)
+    \end{equation*}
+    For a charge-neutral wire, we again assume the electric field is zero.
+    However, $\unl{v}$ and $\uB$ are non-zero, so N concludes that Maxwell's equations predict the positive test charge moves towards the wire.
+\end{enumerate}
+If we assume the wire is charge-neutral in both frames, Maxwell's equations give a contradiction. \\
+Assume that for observer N, the wire is charge-neutral (i.e. in the rest frame of the battery).
+\begin{align*}
+    I &= n_1ev \\
+    \uB &= \frac{\mu_0I}{2\pi r}\hat{\phi} = \frac{\mu_0 n_1ev}{2\pi r}\hat{\phi} \\
+    F &= q\unl{v}\times\uB \\
+    \implies \unl{F}_N &= -\frac{\mu_0 qn_1ev^2}{2\pi r}\hr
+\end{align*}
 
+\chapter{}
+For Observer P, there is a Lorentz contraction of the moving negative charges:
+\begin{equation*}
+    \lam_{-ve} = -\gamma n_2e
+\end{equation*}
+where $\lam$ is the charge per unit length, $\gamma = \frac{1}{\sqrt{1 - \tfrac{v^2}{c^2}}}$. \\
+Observer P also says that given there is charge neutralily for Observer N,
+\begin{align*}
+    \lam_{+ve} &= \frac{n_1 e}{\gamma} \\
+    \implies \lam_{total} &= -\gamma n_2e \left(1 - \frac{1}{\gamma^2}\right) = -\gamma n_2e\frac{v^2}{c^2}
+\end{align*}
+From Gauss' Law:
+\begin{align*}
+    \implies \uE_p &= \frac{\lam_{total}\hr}{2\pi\eno r} \implies \uE_p = -\frac{\gamma \mu_0n_2ev^2}{2\pi r}\hr \\
+    \implies F_p &= q\uE_p = \gamma q\unl{v} \times \uB = \gamma \unl{F}_n
+\end{align*}
+The force that was purely magnetic for observer N is purely electrostatic for observer P.
+They both agree the positive charge crashes into the wire.
 
+Observer N is in the non-accelerating rest frame:
+\begin{align*}
+    \delta t_N &= \gamma \delta t_P \\
+    F_p &= \frac{\p P_p}{\p t_p} ~;~ F_N = \frac{\p P_N}{\p t_N} \\
+    \implies \delta P_p &= \delta P_N
+\end{align*}
+The two observers agreees that the change in momentum is the same in the direction orthogonal to the motion, as required by relativity.
 
+There are parallels between the roles of the charges and the battery with Einstein's twin paradox.
+Observer N is in the rest frame of the battery.
+This is analagous to the twin that stays at home.
 
+Coulomb's law can be regarded as fundamental with magnetic forces and induced EMF being relativistic corrections to this.
 
+\section{Bulk Properties of Conductors, Dielectrics, and Magnetic Materials}
+\subsection{Electrical Conductors}
+\subsubsection{Microscopic properties for conductors}
+\begin{itemize}
+    \item Drude Model is that the electric field accelerates the charges which then collide with the scattering sites.
+    \item Take $N$ to be the number of charges per unit volume; $q$ to be the charge on each carrier; and $\tau$ as the scattering time:
+    \begin{equation*}
+        \rho_N = \frac{m}{Nq^2\tau}
+    \end{equation*}
+\end{itemize}
 
+\subsubsection{Extensive and Intensive Variables}
+\begin{equation}
+    V = IR \tag{Ohm's Law}
+\end{equation}
+\begin{itemize}
+    \item[R] - extensive property which depends on the amount and the shape of the material being measured.
+\end{itemize}
+Rewriting Ohm's Law:
+\begin{align*}
+    \frac{V}{L} &= \frac{I}{A} \cdot \frac{RA}{L} \\
+    E &= J \rho_N
+\end{align*}
+This defines resistivity as an intensive variable \\
+By definition, $\rho_N = \frac{1}{\sigma_N}$, where $\sigma_N$ is the conductivity.
 
+\subsubsection{Current Densities and Charge Densities}
+\begin{equation}
+    \J = \sigma_N \uE \tag{Current Density}
+\end{equation}
+In general, the movement of bulk charge density in conductors is so fast that we can assume to a good approximation that $\rho = 0.$
 
+Using Ohm's Law, Maxwell \RN{1}, and the continuity equation, we can use a dimensionality argument to find
+\begin{equation*}
+    \tau = \rho_N\eno
+\end{equation*}
+For copper, $\rho_N \approx 10^{-8}\,\Omega m$, we find that $\tau$ (characteristic time for charge density to change) is $\approx 10^{-20}\,s$.
+This can be compared to the inverse frequency for light - $3\times10^{-15}\,s$
 
+\chapter{}
+\section{Dielectrics}
+\subsection{Microscopic Properties and Definitions for Dielectrics}
+\begin{enumerate}
+    \item \unl{Polar Dielectrics}: e.g. water
+    \begin{itemize}
+        \item A permanent dipole moment.
+        \item Increasing the $\uE$-field increases the number of dipoles that overcome the randomising effects of temperature so they rotate into the direction of the applied field.
+    \end{itemize}
+    \item \unl{Non-Polar Dielectrics}: e.g. Ar, CO$_2$
+    \begin{itemize}
+        \item Increasing the $\uE$-field causes separation of positive and negative charges.
+    \end{itemize}
+\end{enumerate}
+Dielectrics produce their own electric field, with the fundamental response of a dialectric:
+\begin{equation*}
+    p = q\unl{d}
+\end{equation*}
+This is the definition of the elementary dipole moment, $\unl{p}$
+\begin{equation*}
+    \unl{P} = N\unl{p}
+\end{equation*}
+This is the definition of polarisation ($C\,m^{-2}$), where $N$ is the number of dipole moments per unit volume.
 
+How we characterise bulk dialectric materials is a matter of taste:
+\begin{enumerate}
+    \item Definition of relative dialectric constant, $\er$ (dimensionless)
+    \begin{equation*}
+        \unl{P} = \eno(\er - 1)\uE
+    \end{equation*}
+    \item Definition of electric susceptibility, $\chi_e$ (dimensionless)
+    \begin{equation*}
+        \unl{P} = \eno\chi_e\uE
+    \end{equation*}
+\end{enumerate}
+$\unl{D}$ is a useful shorthand used in many calculations (no new Physics)
+\begin{equation*}
+    \unl{D} = \eno\uE + \unl{P}
+\end{equation*}
+This is the definition of $\unl{D}$, the electric displacement field
 
+\subsection{Current Density and Charge Density in Dielectrics}
+In an applied $\uE$-field, we can consider negative charges as displaced.
+The positive in the sheet at $(x+\delta x, y, z)$ is:
+\begin{equation*}
+    Q_{+ve} = \underbrace{Nq}_{C/V} \cdot \underbrace{Sd}_{V \text{ of }+ve}
+\end{equation*}
+which can be written in terms of surgave charge density, $\sigma$:
+\begin{equation*}
+    \sigma = \frac{Q_{+ve}}{S} = Nqd = \unl{P}
+\end{equation*}
+More generally, the surface charge density is:
+\begin{equation*}
+    \sigma = \unl{P}\cdot\hn
+\end{equation*}
 
+Consider a cube of non-uniform polarisation:
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\centering
+	\includegraphics[scale=0.38]{dibox.png}
+\end{wrapfigure}
+
+The negative charge that leaves the cube across the interface at $x$ is given by:
+\begin{equation*}
+    Q_{out} = -P(x)\,\Delta y \,\Delta z
+\end{equation*}
+The negative charge that moves into the cube from the neighbouring cube is:
+\begin{equation*}
+    Q_{in}(x+\delta x) = -P(x+\delta x)\,\Delta y \, \Delta z
+\end{equation*}
+The net increase in (positive) charge in the cube is:
+\begin{equation*}
+    Q_{net} = -\left[P(x_\delta x)-P(x)\right]\,\Delta y\,\Delta z = -\frac{\p P}{\p x} \delta x \, \delta y \, \delta z
+\end{equation*}
+Using similar logic for the y and z directions, the (bound) charge density is:
+\begin{equation*}
+    \rho = -\frac{\p P_x}{\p x} - \frac{\p P_y}{\p y} - \frac{\p P_z}{\p z} = -\del\cdot\unl{P}
+\end{equation*}
+
+\chapter{}
+\begin{equation*}
+    \underbrace{\rho_b}_{\text{bound}} = -\del\cdot\unl{P}
+\end{equation*}
+Consider an arbitrary volume of polarised material.
+If the polarisation changes as a function of time, the moving charges are equivalent to the current.
+The charge flowing out of the arbitrary volume is
+\begin{align*}
+    \frac{\p Q_{out}}{\p t} &= -\int \frac{\p \rho_{in}}{\p t}dV \\
+    &= \frac{\p}{\p t} \int \del\cdot\unl{P}\,dV = \frac{\p}{\p t}\int \unl{P}\cdot d\unl{S} \\
+    &= \frac{\p}{\p t} \int \unl{P} \cdot d\unl{S} - \int \J_b \cdot d\unl{S}, ~ \J_b - \frac{\p \unl{P}}{\p t}
+\end{align*}
+Summary: \\
+For a dielectric, once we have $\unl{P}$, we have
+\begin{align*}
+    \sigma &= \unl{P}\hn = \eno(\er - 1)\uE\cdot \hn \\
+    \rho_b &= -\del\cdot\unl{P} = -\eno(\er - 1)\del\cdot\uE \\
+    \J_b &= \frac{\p \unl{P}}{\p t} = \eno(\er - 1)\frac{\p\uE}{\p t}
+\end{align*}
+How are these results useful? M\RN{3} \& \RN{4}:
+\begin{align*}
+    \del\times\uE &= -\frac{\p\uB}{\p t} \\
+    \del\times(\del\times\uE) &= -\frac{\p}{\p t}\del\times\uB \\
+    \del\times\uB &= \mu_0\J + \mu_0\eno\frac{\p \uE}{\p t} \\
+    &=\mu_0\left(\sigma_N\uE + \eno(\er - 1)\frac{\p\uE}{\p t}\right) + \mu_0\eno\frac{\p \uE}{\p t}
+\end{align*}
+Substituting and using the vector identity for $\del\times\del\times\uE \implies$
+\begin{equation}
+    \del^2\uE = \mu_o\sigma_N \frac{\p\uE}{\p t} + \mu_0\eno\er\frac{\p^2\uE}{\p t^2}
+\end{equation}
+This is the wave equation for a conducting dielectric.
+
+\section{Magnetic Materials}
+\subsection{Microscopic Properties and Definitions}
+
+A magnetic material produces its own magnetic field.
+
+Consider Ampere's model for a magnetic material:
+\begin{itemize}
+    \item Each atom has electrons orbiting that produce a small magnetic field
+    \item Applying a magnetic field tends to align the magnetic moments with the applied $\uB$-field
+\end{itemize}
+A quantum mechanical picture gives some similar ideas where we consider the occupation of quantum states with different magnetic properties.
+\begin{equation*}
+    \unl{m} = IS\hn
+\end{equation*}
+\textbf{Note:} \textit{$\unl{m}$ is the magnetic moment, be careful of getting confused with other $m$s in Physics.}
+
+The fundamental response of magnetic material:
+\begin{equation*}
+    \unl{m} = IS\hn
+\end{equation*}
+This is the definition of the magnetic dipole moment, where a current $I$ flows around a loop of area $S$.
+\begin{equation*}
+    \unl{M} = N\unl{m}
+\end{equation*}
+This is the definition of magnetisation ($\unl{M}$), where $N$ is the number of dipoles per unit volume.
+
+\textbf{Note:} \textit{$\unl{H}$ is a useful shorthand commonly used in calculations (no new Physics).}
+\begin{equation*}
+    \uB = \mu_0(\unl{H} + \unl{M})
+\end{equation*}
+This is the definition of $\unl{H}$, the magnetic field strength.
+
+How we characterise bulk magnetic materials is a matter of taste:
+\begin{enumerate}
+    \item Definition of susceptibility, $\chi$:
+    \begin{equation*}
+        \unl{M} = \chi \unl{H}
+    \end{equation*}
+    \item Definition of permeability, $\mu_r$:
+    \begin{equation*}
+        \uB = \mu_0\mu_r\unl{H}
+    \end{equation*}
+\end{enumerate}
+For a magnetised cylinder,
+\begin{align*}
+    \uB &= \uB_{\text{applied}} + \underbrace{\mu_0\unl{M}}_{\text{material field}} \\
+    \implies \mu_0\unl{H} &= \uB_{\text{applied}}
+\end{align*}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{magbox1.png}
+	\includegraphics[scale=0.3]{magbox2.png}
+\end{figure}
+
+Consider the currents flowing:
+\begin{align*}
+    m_z(x) &= M_z(x)\,\Delta x\,\Delta y\,\Delta z \\
+    &= I_1(x)S = I_1(x)\,\Delta x\,\Delta y \\
+    \implies I_1(x) &= M_z(x)\,\Delta z
+\end{align*}
+
+\chapter{}
+\begin{align*}
+    m_z(x) &= M_z(x)\,\Delta x\,\Delta y\,\Delta z \\
+    &= I_1(x)S = I_1(x)\,\Delta x\,\Delta y \\
+    \implies I_1(x) &= M_z(x)\,\Delta z
+\end{align*}
+The current flowing along the interface between the cubes ($I_{net}$):
+\begin{align*}
+    I_{net} &= M_z\,\Delta z - [M_z(x + \Delta x)\,\Delta z] = -\Delta M_z\,\Delta z \\
+    &= -\frac{\Delta M_z}{\Delta x} \Delta x\, \Delta z \\
+    \implies J_y &= \frac{I_{net}}{\Delta x\,\Delta z} = - \frac{\Delta M_z}{\Delta x} \\
+    \implies J_y &= -\frac{\p M_z}{\p x}
+\end{align*}
+There is also a contribution to $J_y$ if $M_x$ varies given by:
+\begin{equation*}
+    J_y = \frac{\p M_x}{\p z}
+\end{equation*}
+Hence, in general,
+\begin{equation*}
+    \J = \del \times \unl{M}
+\end{equation*}
+
+For a uniformly magnetised material, there is a discontinuous change in $\unl{M}$ at the surface.
+The current through the rectangle can equally well be considered as a surface current per unit length or a bulk current density ($\J$) where:
+\begin{align*}
+    \int \J\cdot d\unl{S} &= I_LL \\
+    \J &= \del \times \unl{M} \\
+    \int \J\cdot d\unl{S} &= \int (\del\times\unl{M})\cdot d\unl{S} = \int \unl{M}\cdot d\unl{l} \\
+    &= ML = I_LL \\
+    \implies M &= I_L \\
+    \implies \unl{I}_L &= \unl{M}\times\hn
+\end{align*}
+Hence, if we know $\unl{M}$, we know the surface current per unit length, $\M \times \hn$, and the bulk current density, $\del\times\M$
+
+\section{Propagation of Transverse EM Waves in Materials}
+\subsection{General Dispersion Relation for an Infinite Linear Isotropic Homogeneous Medium}
+We can derive the general dispersion relation using Maxwell \RN{4}:
+\begin{align*}
+    \del\times\uB &= \mu_0\J + \mu_0\eno\frac{\p\uE}{\p t}
+\end{align*}
+The total current density (for ILIH):
+\begin{align*}
+    \J_{\text{total}} &= \J_{\text{free}} + \J_{\text{bound}} \\
+    \J_{\text{free}} &= \J_{\text{Ohm}} + \J_{\text{experiment}} \\
+    \J_{\text{bound}} &= \frac{\p \unl{P}}{\p t} + \del\times\M
+\end{align*}
+Charge density ($C\,m^{-3}$): Insulating dielectrics give a surface charge density ($\unl{P}\cdot\hn$) and a volume charge density ($-\del\cdot\unl{P}$).\\
+For a wave travelling through an ILIH medium, in general we can write:
+\begin{align*}
+    \del\cdot\uE &= \frac{\rho_{\text{free}}+\rho_{\text{bound}}}{\eno} = \frac{\rho_{\text{free}}}{\eno} - (\er - 1)\del\cdot\uE \\
+    \implies \del\cdot\uE &= \frac{\rho_{\text{free}}}{\er\eno} = 0
+\end{align*}
+This condition holds as long as the frequency of the wave is sufficiently low that the charge density associated with the conducting medium is zero.
+
+Maxwell \RN{4} can be written as
+\begin{equation*}
+    \del\times\uB = \mu_0\underbrace{\left(\sigma_N \uE + \frac{\p \unl{P}}{\p t} + \del\times\M\right)}_{\J_{\text{total}}} + \mu_0\eno\frac{\p \uE}{\p t}
+\end{equation*}
+This can be rearranged:
+\begin{align*}
+    \del\times(\uB - \mu_0\M) = \mu_0\sigma_N\uE + \mu_0\frac{\p}{\p t}(\unl{P} + \eno\uE)
+\end{align*}
+Using the materials' definitions:
+\begin{align*}
+    \unl{P} &= \eno(\er - 1)\uE \\
+    \uB &= \mu_0(\unl{H}+\M) = \mu_0\mu_r\unl{H}
+\end{align*}
+Maxwell \RN{4} can be rewritten as
+\begin{equation*}
+    \del\times\frac{\uB}{\mu_r} = \mu_0\sigma_N\uE + \mu_0\frac{\p}{\p t} (\eno\er\uE)
+\end{equation*}
+Now substitute this into the curl of Maxwell \RN{3} to find:
+\begin{align*}
+    \del\times(\del\times\uE) = -\frac{\p}{\p t}(\del\times\uB) = -\frac{\p}{\p t}\left[\mu_0\mu_r\left(\sigma_N\uE + \eno\er\frac{\p \uE}{\p t}\right)\right]
+\end{align*}
+Using $\del\times\del\times\uE = \del(\del\cdot\uE) - \del^2\uE$:
+\begin{align*}
+    \del^2\uE - \mu_0\mu_r\sigma_N\frac{\p \uE}{\p t} - \mu_0\mu_r\eno\er\frac{\p^2\uE}{\p t^2} = 0
+\end{align*}
+
+\chapter{}
+
+\begin{itemize}
+    \item $\mu_0\mu_r \to \mu$
+    \item $\eno\er to \e$
+\end{itemize}
+\begin{equation*}
+    \del^2\uE - \mu\sigma_N\frac{\p \uE}{\p t} - \mu\e\frac{\p^2\uE}{\p t^2} = 0
+\end{equation*}
+Equally taking the curl of M\RN{4} gives:
+\begin{equation*}
+    \del^2\uB - \mu\sigma_N \frac{\p \uB}{\p t} - \mu\e\frac{\p^2\uB}{\p t^2} = 0
+\end{equation*}
+We can substitute a plane wave solution into the wave equation:
+\begin{align*}
+    \uE &= \E_0 \exp(i[kx - wt]) \\
+    \implies -k^2 &= iw\mu\sigma_N + \mu\e w^2 = 0 \\
+    \implies k^2 &= \mu\e w^2 + iw\mu\sigma_N
+\end{align*}
+This is the general dispersion relation for an infinite, linear, isotropic, homogeneous medium.
+
+\begin{example}[Electromagnetic Waves in Conducting/Dielectric/Magnetic Materials]
+Use the general dispersion relation to calculate the approximate decay length, wave-vector, and wavelength of a wave of frequency $10^{15}Hz$ propagating through Tungsten ($\rho_N = 1\,m\Omega\,cm$).
+Tungsten is neither magnetic nor a dielectric. \\
+Given $f = 10^{15}Hz,\;\rho_N \approx 10^{-5}\Omega\,m,\;\sigma_N = 10^5\,\Omega^{-1}m^{-1},\;\mu=\mu_0,\;\e=\eno$:
+\begin{align*}
+    k^2 &= 4\pi\times10^{-7}\cdot8.85\times10^{-12}\cdot(2\pi\times10^{15})^2 + i(2\pi\times10^{15})\cdot4\pi\times10^{-7}\times10^5 \\
+    &= 4.4\times10^{14} + i7.9\times10^{14}
+\end{align*}
+Note: Tungsten cannot be considered either as a good insulator or as a good conductor \\
+Use an argand diagram and find the magnitude of k:
+\begin{align*}
+    \tan\phi &= \frac{7.9}{4.4} \implies \phi = 60.8^\circ \implies \frac{\phi}{2} = 30.4^\circ \\
+    |k| &= \Big|(4.4\times10^14)^2 + (7.9\times10^{14})^2\Big|^{1/4} = 3.0\times10^7 \\
+    k &= |k|\cos\frac{\phi}{2} + i|k|\sin\frac{\phi}{2} \\
+    &= 2.59\times10^7 + i\,1.52\times10^7 \\
+    \uE &= \E_0 \exp(i[(2.59\times10^7 + i\,1.52\times10^7)x - wt]) \\
+    &= \E_0 \exp(i[2.59\times10^7x - wt])\exp(-1.52\times10^7x)
+\end{align*}
+Taking either the real or imaginary parts gives:
+\begin{equation*}
+    \uE = \E_0 \cos(2.59\times10^7 - wt)\exp(-1.52\times10^7x)
+\end{equation*}
+The wave-vector is the real part of $k$, $2.59\times10^7m^{-1}$ and wavelength, $\lam = \frac{2\pi}{k_{real}} = 2.4\times10^{-7}m$ \\
+The decay length is the distance for $\uE$ to decrease by $\frac{1}{e} \implies \delta = \frac{1}{k_{imag}} = 66\,nm$
+\end{example}
+
+\section{Advanced Microscopic Descriptions of Normal Conductors, Superconductors, and Dielectrics}
+\subsection{Conducting Materials - Metal and Plasma}
+We use a stable one-dimensional, scalar, Drude model to describe the scattering of charge carriers.
+In the Drude model, the charge carriers accelerate for an average time, $\tau$.
+They then scatter and instantaneously stop.
+The fraction of charge carriers that scatter in a time $\delta t$ is $\frac{\delta t}{\tau}$, and the remaining fraction that don't scatter is $\left(1 - \frac{\delta t}{\tau}\right)$.
+Hence, the momentum of the charge carriers at time $t+\delta t$ is given by:
+\begin{equation*}
+    p(t+\delta t) = \left(1 - \frac{\delta t}{\tau}\right)p(t) + \left(1 - \frac{\delta t}{\tau}\right)f(t)\,\delta t + f(t)\delta t \frac{\delta t}{\tau}
+\end{equation*}
+Three terms:
+\begin{enumerate}
+    \item Initial momentum at time $t$ of the the charge are not scattered
+    \item Increase in momentum during the time interval of $\delta t$ of the unscattered carriers
+    \item An upper bound for the momentum of the carriers scattered at some point in time during $\delta t$
+\end{enumerate}
+\begin{align*}
+    \delta p &= p(t+\delta t) - p(t) \\
+    \frac{\delta p}{\delta t} = -\frac{p(t)}{\tau} + f(t) + \cancel{O(\delta t)}
+\end{align*}
+The general expression for the force on a charge carrier:
+\begin{equation*}
+    \unl{F} = m\frac{dp}{dt} = q(\uE + \unl{v}\times\uB)
+\end{equation*}
+In an electromagnetic wave, $\uB \approx \frac{|\E|}{c}$, so $\unl{v}\times\uB \ll \uE$ unless the charge carriers are moving close to the speed of light.
+Hence, we neglect the $\unl{v}\times\uB$ term in the expression for the Lorentz force.
+Using $F = qE$ and $p = mv$:
+\begin{equation}
+    m\frac{dv}{dt} = qE - \frac{mv}{\tau} \tag{Equation of Motion}
+\end{equation}
+where $\frac{mv}{\tau}$ can be considered as a frictional damping term \\
+Using $\J = Nq\unl{v}$, where $N$ is the number of charges per unit volume, $q$ is the charge on each carrier, and $\unl{v}$ is the velocity of the carriers, can rewrite as
+
+\chapter{}
+\begin{equation*}
+    m\frac{dJ}{dt} = Nq^2E - \frac{m}{\tau}J
+\end{equation*}
+We assume complex oscillating solutions of the form:
+\begin{equation*}
+    \uE = \uE_0\exp(-i\omega t),~ \J = \J_0\exp(-i(\omega t - \delta))
+\end{equation*}
+where $\delta$ is the phase shift between $\uE$ and $\J$. The differential equation of motion gives
+\begin{equation*}
+    \J = \frac{Nq^2}{m(\tau^{-1} - i\omega)}\uE
+\end{equation*}
+Comaparing this expression to the definition for conductivity: $\J = \sigma_N\uE$, gives a complex conductivity:
+\begin{equation*}
+    \sigma_N = \frac{Nq^2}{m(\tau^{-1} - i\omega)}
+\end{equation*}
+\begin{itemize}
+    \item Metals (short scattering time): \\
+    In the short scattering time limit ($\tau \ll \omega^{-1}$), we find the Drude expression:
+    \begin{equation*}
+        \sigma_N = \frac{Nq^2\tau}{m}
+    \end{equation*}
+    \item Plasma (long scattering time- low density plasma) \\
+        A low density plasma is a net neutral system of charged particle (ions and electrons) in which the density of the charged carriers is sufficiently small that the charged carriers don't often collide \\
+        Examples:
+        \begin{itemize}
+            \item Ionised gas in fluorescent lights;
+            \item the ionosphere which is a region 100 km to 600 km above the Earth's surface, which is ionised by the radiation from the sun;
+            \item the plasma in a fusion energy tokamak;
+            \item and some other interstellar media
+        \end{itemize}
+        Usually, we ignore the response of ions because they are much slower than the electrons to react. In the long scattering time limit:
+        \begin{equation*}
+            \sigma_N = \frac{-Nq^2}{m_ei\omega} = +\frac{iNq^2}{m_e\omega}
+        \end{equation*}
+        Using the dispersion relation
+        \begin{equation*}
+            k^2 = \mu\e\omega^2 + i\omega\mu\sigma_N
+        \end{equation*}
+        Since the plasma is not contained in a magnetic or dielectric medium so $\er = 1$ and $\mu_r = 1$. Hence,
+        \begin{align*}
+            k^2 &= \mu_0\eno\omega^2 + i\omega\mu_0\frac{iNe^2}{m_e\omega} = \mu_0\eno\omega^2 - \frac{\mu_0Ne^2}{m_e} \\
+                &= \frac{\omega^2}{c^2}\left(1 - \left(\frac{\omega_p}{\omega}\right)^2\right),~ \omega_p = \sqrt{\frac{Ne^2}{m_e\eno}}
+        \end{align*}
+        The dispersion relation has two regimes:
+        \begin{enumerate}
+            \item $\omega > \omega_p$: $k$ is real and the electromagnetic waves propagate without attentuation through the plasma
+                \begin{equation*}
+                    v_{phase} = \frac{c}{\sqrt{1 - \left(\frac{\omega_p}{\omega}\right)^2}} > c
+                \end{equation*}
+            \item $\omega < \omega_p$: $k$ is imaginary and there is an attenuated propagation of the electromagnetic wave
+                \begin{equation*}
+                    v_{group} = c\sqrt{1 - \left(\frac{\omega_p}{\omega}\right)^2} < c
+                \end{equation*}
+        \end{enumerate}
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{phasegroup.png}
+	\includegraphics[scale=0.4]{plasma.png}
+\end{figure}
+
+\section{Superconducting Materials}
+Applications:
+\begin{itemize}
+    \item MRI body scanners;
+    \item Particle accelerators;
+    \item fusion energy tokamaks;
+    \item voltage standards;
+    \item in the future, power transmission
+\end{itemize}
+There is no simple model for zero resistivity in superconductivity.
+We can think about superconductors as the condensation of the normal electrons of a metal into a ground state.
+The ground state has an associated energy.
+The superelectrons are not scattered (i.e. zero resistivity).
+We can think of a superconductor as being like an enormous atom with a (macroscopic) wavefunction that can be kilometres long.
+
+\chapter{}
+\section{The material properties and definitions for superconductors}
+The two London equations describe superconductors in low magnetic fields.
+They are motivated by the two fundamental properties:
+\begin{enumerate}
+	\item Zero resistivity: \\
+	If we assume there is no scattering of the charge carriers, we have:
+	\begin{equation*}
+		m\unl{a} = m\frac{d\unl{v}}{dt}
+	\end{equation*}
+	Using $\unl{F} = q\uE$ amd $\J = Nq\unl{v}$, we find the first London equation:
+	\begin{equation*}
+		\uE = \mu_0\lambda_L^2\frac{\p \J}{dt}
+	\end{equation*}
+	where the London penetration depth, $\pen = \sqrt{\frac{m_e}{\mu_0N_se^2}}$, $N_s$ is the denisty of superelectrons
+	\item The Meissner state - exclusion of magnetic flux \\
+	The second London equation is given by
+	\begin{equation*}
+		\uB = -\mu_0\pen^2\del\times\J
+	\end{equation*}
+	Substituting Maxwell \RN{4} for $\J$, where $\frac{\p\uE}{\p t} = 0$, into the second London equation gives
+	\begin{align*}
+		\uB &= -\pen^2\del\times\del\times\uB \\
+		\implies \del\times\del\times\uB &= \del(\del\cdot\uB) - \del^2\uB \\
+		\implies \del^2\uB &= \frac{1}{\pen^2}\uB \\
+		\implies \B(x) &= \B_0\exp\left(\frac{-x}{\pen}\right)
+	\end{align*}
+	for a semi-infinite slab.
+\end{enumerate}
+Zero resistance implies that low energy EM waves cannot travel through the bulk of superconductors. \\
+Microscopically, superelectrons are paired, so very high energy photons can pass through the superconductor if the photon energy is high enough to destroy the superconductivity.
+
+\section{Dielectrics}
+To describe how the bound charges in a dielectric behave as a function of time, we add a restoring force ($-m\om_0^2x$) associated with simple harmonic vibrations to the equation of motion  used for conductors.
+This gives:
+\begin{align*}
+	m\frac{d\unl{v}}{dt} &= q\uE - \frac{m\unl{v}}{\tau} - m\om_0^2x
+\end{align*}
+In the standard description for dielectrics, the negative charges in the dielectric are fixed in space and the positive charges respond to any applied $\uE$-field.
+The variable $x$ represents the displacement between the positive and negative charges and $v$ represents the velocity of the positive charges.
+Using $\tx = x_0e^{-i\om t}$, which $\tv = \frac{d\tx}{dt} = -i\om \tx$, and $\frac{d\tv}{dt} = -\om^2\tx$ (the tilde denotes complex variables).
+The complex equation of motion for the bound but moving charges is the linearised:
+\begin{align*}
+	-\om^2\tx m = q\tilde{\E} &+ \frac{i\om\tx}{\tau} - m\om_0^2\tx \\
+	\implies m\left(\om_0^2 - \om^2 - \frac{i\om}{\tau}\right)\tx &= q\tilde{\E}
+\end{align*}
+Using Euler's equation, we can rearrange this complex equation to give:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{pyth.png}
+\end{figure}
+\begin{align*}
+	\frac{\tx}{\tilde{\E}} &= \frac{qe^{i\theta}}{m\sqrt{(\om_0^2 - \om^2) + \left(\frac{\om}{\tau}\right)^2}} \\
+	\tan\theta &= \frac{\om}{\tau(\om_0^2 - \om^2)} \\
+	\cos\theta &= \frac{\om^2 - \om_0^2}{\sqrt{(\om^2 - \om_0^2)^2 + \left(\frac{\om}{\tau}\right)^2}} \\
+	\sin\theta &= \frac{\om}{\tau\sqrt{(\om^2 - \om_0^2) + \left(\frac{\om}{\tau}\right)^2}}
+\end{align*}
+Writing the definition of $\unl{P}$ (polarisation), and $\er$ (permittivity) in complex form:
+\begin{equation*}
+	\tilde{\unl{P}} = (\er - 1)\eno\tilde{\uE} = Nq\tx
+\end{equation*}
+Using $e^{i\theta} = \cos\theta + i\sin\theta$, the real and imaginary parts of the relative permittivity are:
+\begin{align*}
+	\e_{real} &= 1 + \frac{Nq^2}{m\eno}\left(\frac{\om_0^2 - \om^2}{(\om_0^2 - \om^2)^2 + \left(\frac{\om}{\tau}\right)^2}\right) \\
+	\e_{im} &= -\frac{Nq^2}{m\eno\tau}\frac{\om}{(\om_0^2 - \om^2) + \left(\frac{\om}{\tau}\right)^2}
+\end{align*}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{angfreq.png}
+\end{figure}
+
+\chapter{}
+\section{Auxiliary Fields and the Poynting vector}
+\subsection{Electric Displacement Field}
+\begin{equation*}
+	\unl{D} = \eno\uE + \unl{P}
+\end{equation*}
+Rewriting this in differential form:
+\begin{equation*}
+	\del\cdot\unl{D} = \del\cdot(\eno\uE+\unl{P}) = \rho_{total} - \rho_{dielectric} = \rho_{free}
+\end{equation*}
+So we can rewrite Maxwell \RN{1} in terms of $\unl{D}$ and $\rho_{free}$:
+\begin{equation*}
+	\del\cdot\unl{D} = \rho_{free}
+\end{equation*}
+In general, we tend to use the relative permittivity to characterise a dielectric.
+However, we can use $\unl{P}$ or $\unl{D} = \eno\uE + \unl{P} = \er\eno\uE$ if it simplifies calculations.
+
+\subsection{Magnetic Field Strength}
+\begin{equation*}
+	\uB = \mu_0(\unl{H}+\unl{M})
+\end{equation*}
+Maxwell \RN{4} is
+\begin{equation*}
+	\del\times\uB = \mu_0\J + \mu_0\eno\frac{\p \uE}{\p t}
+\end{equation*}
+The current density produced by conducting, magnetic, and dielectric materials is given by
+\begin{equation*}
+	\J = \J_{free} + \frac{\p\unl{P}}{\p t} + \del\times\unl{M}
+\end{equation*}
+which can be rearranged as
+\begin{equation*}
+	\del\times(\uB-\mu_0\unl{M}) = \mu_0\J_{free} + \mu_0\frac{\p}{\p t}(\unl{P} + \eno\uE)
+\end{equation*}
+So we can rewrite Maxwell \RN{4} as:
+\begin{equation*}
+	\del\times\unl{H} = \J_{free} + \frac{\p\unl{D}}{\p t}
+\end{equation*}
+Again, we tend to use $\mu_r$ to characterise a magnetic material, however we can use $\unl{H}$ or $\unl{M}$ if it simplifies calculations.
+\begin{align*}
+	\del\cdot\unl{D} &= \rho_{free} \tag{M\RN{1}} \\
+	\del\cdot\uB &= 0 \tag{M\RN{2}} \\
+	\del\times\uE &= -\frac{\p\uB}{\p t} \tag{M\RN{3}} \\
+	\del\times\unl{H} &= \J_{free} + \frac{\p\unl{D}}{\p t} \tag{M\RN{4}}
+\end{align*}
+\section{The Poynting Vector}
+The direction of propagation for an electromagnetic waves is $\uE\times\unl{H}$.
+Poynting suggested that the instantaneous power per unit area for electromagnetic waves is given by $\unl{N}$ where:
+\begin{equation*}
+	\unl{N} = \uE\times\unl{H}
+\end{equation*}
+\subsection{General Proof}
+If $\unl{N}$ is the instantaneous power per unit area associated with electromagnetic fields, then the total energy per unit time radiating out of an arbitrary volume ($P_{rad}$) is
+\begin{equation*}
+	P_{rad} = \int \unl{N}\cdot d\unl{S} = \int (\uE\times\unl{H})\cdot d\unl{S}
+\end{equation*}
+Using the divergence theorem:
+\begin{equation*}
+	P_{rad} = \int \del\cdot\unl{N}\,dV = \int \del\cdot(\uE\times\unl{H})\,dV
+\end{equation*}
+Use the vector identity
+\begin{equation*}
+	\del\cdot(\uE\times\unl{H}) = \unl{H}\cdot(\del\times\uE) - \uE\cdot(\del\times\unl{H})
+\end{equation*}
+Hence, we have
+\begin{equation*}
+	P_{rad} = \int \unl{H}\cdot(\del\times\uE)\,dV - \int \uE\cdot(\del\times\unl{H})\,dV
+\end{equation*}
+From Maxwell's equations
+\begin{align*}
+	\del\times\uE &= -\frac{\p\uB}{\p t} = -\mu_0\mu_r\frac{\p\unl{H}}{\p t} \\
+	\del\times\unl{H} &= \J_{free} + \frac{\p \unl{D}}{\p t} = \J_{free} + \er\eno\frac{\p\uE}{\p t} \\
+	P_{rad} &= \int \unl{H}\cdot\mu_r\mu_0\frac{\p\unl{H}}{\p t}\,dV - \int \uE\cdot\left(\J_{free} + \eno\er\frac{\p\uE}{\p t}\right)\,dV \\
+	&= -\frac{\p}{\p t}\int \left(\frac{1}{2}\mu_r\mu_0H^2(t) + \frac{1}{2}\eno\er E^2(t)\right)\,dV - \int \uE\cdot\J\,dV \\
+	\implies P_{rad} + \int \underbrace{\uE\cdot\J\,dV}_{\text{\shortstack{Power dissipated \\ as Joule heat}}} &= -\frac{\p}{\p t}\int \underbrace{\left(\frac{1}{2}\mu_r\mu_0H^2(t) + \frac{1}{2}\eno\er E^2(t)\right)\,dV}_{\text{\shortstack{Energy stored per unit volume in \\ the magnetic and electric fields}}}
+\end{align*}
+The interpretation of the equation for $P_{rad}$ is:
+\begin{itemize}
+	\item The reduction in the potential energy stored in the electric and magnetic fields per unit time is equal to the net flow of power out through the surface plus the power dissipated as heat within the volume.
+	\item The deivation is a self-consistent statement of the conservation of energy, so $\unl{N}$ correctly represents the instantaneous power per unit area.
+\end{itemize}
 
 
 

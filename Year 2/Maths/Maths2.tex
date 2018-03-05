@@ -355,13 +355,1006 @@ $\{e^{2x},xe^{2x}\}$ are solutions
     \item If $f(x)$ already features in $y_c$, try $xf(x)$
 \end{itemize}
 
+\chapter{}
+\begin{example}
+\begin{align*}
+    \dyy &- 2\dy - 3y + 3x^2 - 2x + 12 = 0 \\
+    y_c &\to \dyy -2\dy -3y = 0 \\
+    \lam^2 &- 2\lam - 3 = 0 \\
+    \lam &= 1 \pm \sqrt{1 + 3} = 3,-1 \\
+    y_c &= c_1e{-x} + c_2e^{3x}
+\end{align*}
+What about the particular solution? \\
+Try:
+\begin{align*}
+    y_p &= \alpha x^2 \beta x + \gamma \\
+    y'_p &= 2\alpha x + \beta \\
+    y''_p &= 2\alpha \\
+    \implies 2\alpha & -2[2\alpha x + \beta] - 3[\alpha x^2 + \beta x + \gamma] + 3x^2 - 2x + 12 = 0
+\end{align*}
+This solution must be valid $\forall\; x$
+\begin{align*}
+    x^2[3 - 3\alpha] &+ x[-4\alpha - 3\beta - 2] + [2\alpha -2\beta -3\gamma + 12] =  0 \\
+    \alpha &= 1 \implies \beta = -2 \implies \gamma = 6 \\
+    y_p &= x^2 - 2x + 6 \\
+    y &= c_1e^{-x} + c_2e^{3x} + x^2 - 2x + 6
+\end{align*}
+Now fix $c_i$ by requiring $y(0) = y'(0) = 0$:
+\begin{align*}
+    y(0) &= c_1 + c_2 + 6 = 0 \\
+    y'(0) &= -c_1 + 3c_2 - 2 = 0 \\
+    y(0) + y'(0) &= 4c_2 + 4 = 0 \\
+    \implies c_2 &= -1 \to c_1 = -5 \\
+    y &= -5e^{-x} - e^{3x} + x^2 -2x + 6
+\end{align*}
+\end{example}
 
+\section{Laplace Transforms}
+For a function, $f(x)$:
+\begin{align*}
+    \La[f(x)] = \bar{f}(s) = \ofnt f(x) e^{-sx}dx
+\end{align*}
+The Laplace Transform is invertible so can go back and forth across the map.
 
+\begin{example}
+\begin{align*}
+    \La[e^{ax}] &= \frac{1}{s - a} ~;~ \bar{f}(s) = \frac{1}{s - 3} \to f(x) = e^{3x} \\
+    \La[x^n] &= \frac{n!}{n^{1 + x}} \\
+    \La[\cos(\alpha x)] &= \frac{s}{\alpha^2 + s^2}
+\end{align*}
+\end{example}
 
+\begin{example}
+\begin{equation*}
+    \bar{f}(s) = \frac{1}{(s + 1)(s + 3)} \to f(x)?
+\end{equation*}
+Use partial fractions to find $f(x)$:
+\begin{align*}
+    \bar{f}(s) &= \frac{A}{s + 1} + \frac{B}{s + 3} \\
+    \frac{(s + 1)}{(s + 1)(s + 3)} &= \left(\frac{A}{s + 1} + \frac{B}{s + 3}\right)(s + 1) \\
+    \frac{1}{s + 3} &= A + B\frac{s + 1}{s + 3} \underbrace{\implies}_{s = -1} \frac{1}{-1 + 3} = A \to A = \frac{1}{2} \\
+    \frac{s + 3}{(s + 1)(s + 3)} &= A\frac{s + 3}{s + 1} + B \underbrace{\implies}_{s = -3} \frac{1}{-3 + 1} = B \to B = -\frac{1}{2} \\
+    \implies \frac{1}{(s + 1)(s + 3)} &= \frac{1}{2}\frac{1}{s + 1} - \frac{1}{2}\frac{1}{s + 3} \\
+    f(x) &= \La^{-1}[\frac{1}{2}\frac{1}{s + 1}] - \La^{-1}[\frac{1}{2}\frac{1}{s + 3}] = \frac{1}{2}\La^{-1}[\frac{1}{s + 1}] - \frac{1}{2}\La^{-1}[\frac{1}{s + 3}] \\
+    &= \frac{1}{2}e^{-x} - \frac{1}{2}e^{-3x}
+\end{align*}
+\end{example}
 
+\subsection{Laplace Transform of a Derivative}
+\hyperlink{page.39}{See previous notes on this in Part \RN{1}}
+\begin{align*}
+    \sum_{i = 0}^n a_i y^{(i)} &= f(x) \\
+    \La\left[\sum_{i = 0}^n a_i y^{(i)}\right] &= \sum_{i = 0}^n \La\left[a_i y^{(i)}\right] = \sum_{i = 0}^n a_i \La\left[y^{(i)}\right] = \La[f] \\
+    \left(\sum_{i = 0}^n k_i s^i\right)\bar{f}(s) &= g(s)
+\end{align*}
 
+\begin{example}
+\begin{align*}
+    \dyy &- 5\dy + 4y = 9e^{-2x}, ~ y(0) = y'(0) = 0
+\end{align*}
+Perform Laplace transforms on this:
+\begin{align*}
+    s^2 \bar{y} &- 5(s\bar{y}) + 4\bar{y} = \frac{9}{s + 2} \\
+    \bar{y} [s^2 &- 5s + 4] = \frac{9}{s + 2} \implies \bar{y} = \frac{9}{(s + 2)(s^2 - 5s + 4)} \\
+    \bar{y} &= \frac{9}{(s + 2)(s - 4)(s - 1)} = \frac{A}{s + 2} + \frac{B}{s - 4} + \frac{C}{s - 1} \\
+    \implies A &= \frac{1}{2} ~;~ B = \frac{1}{2} ~;~ C = -1 \\
+    \bar{y} &= \frac{1}{2}\frac{1}{s + 2} + \frac{1}{2}\frac{1}{s - 4} - \frac{1}{s - 1} \\
+    y(x) &= \frac{1}{2}e^{-2x} + \frac{1}{2}e^{4x} - e^x
+\end{align*}
+\end{example}
 
+\chapter{}
+\section{Techniques for Linear ODEs, with Generic Coefficients}
+\begin{itemize}
+    \item In general, there is no universal technique
+\end{itemize}
 
+\subsection{Legendre (Euler) Linear ODEs}
+\begin{equation*}
+    a_n(\alpha x + \beta)^n y^{(n)} + a_{n - 1}(\alpha x + \beta)^{n-1}y^{(n-1)} + \cdots + a_1(\alpha x + \beta)y' + a_0y = f(x) \tag{Legendre}
+\end{equation*}
+When $\alpha = 1, \beta = 0$, it becomes the Euler equation
+
+Change of variables leads to constant coefficients:
+\begin{align*}
+    \alpha x &+ \beta = e^t \\
+    t &= \ln(\alpha x + \beta) \\
+    \dy &= \frac{dy}{dt}\frac{dt}{dx} = \frac{dy}{dt}\left[\frac{\alpha}{\alpha x + \beta}\right] \\
+    \dyy &= \frac{d}{dx}\left[\frac{\alpha}{\alpha x + \beta} \frac{dy}{dt}\right] = -\frac{\alpha^2}{(\alpha x + \beta)^2}\frac{dy}{dt} + \frac{\alpha^2}{(\alpha x + \beta)^2}\frac{d^2 y}{dt^2} \\
+    \frac{d^3y}{dx^3} &= \frac{\alpha^3}{(\alpha x + \beta)^3}\frac{d}{dt}\left[\frac{d}{dt} - 1\right]\left[\frac{d}{dt} - 2\right]y \\
+    \frac{d^ny}{dx^n} &= \frac{\alpha^n}{(\alpha x + \beta)^n}\frac{d}{dt}\left[\frac{d}{dt} - 1\right]\left[\frac{d}{dt} - 2\right]\cdots\left[\frac{d}{dt} - (n - 1)\right]y
+\end{align*}
+After this change of variable:
+\begin{equation*}
+    \tilde{a}_n \frac{d^ny}{dt^n} + \cdots + y(t) = f(x)
+\end{equation*}
+
+\begin{example}
+\begin{align*}
+    (x + 1)^2y'' &+ 4(x+1)y' + 2y = \ln(x+1) + \frac{3}{2} \\
+    t &= \ln(x+1) \\
+    (x+1)^2\frac{1}{(x+1)^2}\frac{d}{dt}&\left[\frac{d}{dt}-1\right]y + 4(x+1)\frac{1}{(x+1)}\frac{dy}{dt} + 2y = t + \frac{3}{2} \\
+    \ddot{y} &- \dot{y} + 4\dot{y} + 2y = t + \frac{3}{2} \\
+    \ddot{y} &+ 3\dot{y} + 2y = t + \frac{3}{2} \\
+    \lam^2 &+ 3\lam + 2 = 0 \implies (\lam + 2)(\lam + 1) = 0 \\
+    y_c &= c_1e^{-t} + c_2e^{-2t} \\
+    y_p &= a + bt,~ y'_p = b, ~ y''_p = 0 \implies y_p = \frac{t}{2} \\
+    y(t) &= c_1e^{-t} + c_2e^{-2t} + \frac{t}{2} \\
+    y(x) &= c_1\frac{1}{1+x} + c_2\frac{1}{(1+x)^2} + \frac{\ln(1+x)}{2}
+\end{align*}
+\end{example}
+
+\section{Variation of Parameters}
+Imagine you know the complementary equation, but can't find the particular solution:
+\begin{align*}
+    \sum_{i=0}^n a_i(x)y^{(i)} &= f(x) \\
+    y_c = c_1y_1 + c_2y_2 &+ \cdots + c_ny_n
+\end{align*}
+Use the trick: $c_i \to c_i(x)$
+\begin{equation*}
+    \tilde{y} = c_1(x)y_1 + \cdots + c_n(x)y_n
+\end{equation*}
+Clearly $\tilde{y}$ does not solve homogeneous problem \\
+Can we choose $c_i(x)$ such that they solve the inhomogeneous problem? \\
+$\{c_i(x)\} \to$ n functions \\
+1 constant (solve DE) $\to (n-1)$ free conditions \\
+Choose $c'_i = 0$
+\begin{align*}
+    c'_1y_1 &+ c'_2y_2 + \cdots + c'_ny_n = 0 \\
+    c'_1y'_1 &+ c'_2y'_2 + \cdots + c'_ny'_n = 0 \\
+    c'_1y''_1 &+ c'_2y''_2 + \cdots + c'_ny''_n = 0 \\
+    \vdots ~ &(n-1) \text{ constraints on }c_1 \\
+    c'_1y^{(n-2)}_1 &+ c'_2y^{(n-2)}_2 + \cdots + c'_ny^{(n-2)}_n = 0 \\
+    & --------- \\
+    \tilde{y}' &= \left[\sum c_iy_i\right]' = \cancel{\sum c'_iy_i} + \sum c_iy'_i \\
+    \tilde{y}'' &= \cancel{\sum c'_iy'_i} + \sum c_iy''_i \\
+    \tilde{y}^{(n-2)} &= \sum c_iy_i^{(n-2)} \\
+    \tilde{y}^{(n-1)} &= \sum c'_iy^{(n-2)} + \sum c_iy^{(n-1)}
+\end{align*}
+Plug in to differential equation:
+\begin{align*}
+    a_n(x)\left[c'_1y_1^{(n-1)} + \cdots + c'_ny_n^{(n-1)}\right] &= f(x) \\
+    \begin{pmatrix} y_1 & y_2 & \cdots & y_n \\ y'_1 & \cdots & & \\ \vdots & & & \\ y_1^{(n-1)} & y_2^{(n-1)} & \cdots & y_n^{(n-1)}\end{pmatrix} \begin{pmatrix} c'_1 \\ c'_2 \\ \vdots \\ c'_n \end{pmatrix} &= \begin{pmatrix} 0 \\ 0 \\ \vdots \\ \frac{f(x)}{a_n(x)} \end{pmatrix} \\
+    \begin{pmatrix} c'_1 \\ \vdots \\ c'_n \end{pmatrix} = M_W^{-1} \cdot& \begin{pmatrix} 0 \\ \vdots \\ \frac{f(x)}{a_n(x)} \end{pmatrix}
+\end{align*}
+Found $c_i(x)$ that solve inhomogeneous problem
+
+\begin{example}[2nd Order]
+Second Order $\to 2\times2$ Wronskian
+\begin{align*}
+    y_c &= c_1y_1 + c_2y_2 \to c_i = c_i(x) \\
+    M_W &= \begin{pmatrix} y_1 & y_2 \\ y'_1 & y'_2 \end{pmatrix}\begin{pmatrix} c'_1 \\ c'_2 \end{pmatrix} = \begin{pmatrix} 0 \\ \frac{f(x)}{a_2(x)} \end{pmatrix} \\
+    M_W^{-1} &= \frac{1}{W} \begin{pmatrix} y'_2 & -y_2 \\ -y'_1 & y_1 \end{pmatrix} \begin{pmatrix} c'_1 \\ c'_2 \end{pmatrix} = \begin{pmatrix} 0 \\ \frac{f(x)}{a_2} \end{pmatrix} \\
+    \frac{1}{W}&\begin{pmatrix} y'_2 & -y_2 \\ -y'_1 & y_1 \end{pmatrix}\cdot \begin{pmatrix} 0 \\ \frac{f(x)}{a_2} \end{pmatrix} = \begin{pmatrix} c'_1 \\ c'_2 \end{pmatrix} \\
+    \begin{pmatrix} c'_1 \\ c'_2 \end{pmatrix} &= \frac{1}{W}\begin{pmatrix} -y_2\frac{f(x)}{a_2} \\ y_1\frac{f(x)}{a_2} \end{pmatrix}
+\end{align*}
+General solution:
+\begin{align*}
+    y_p &= c_1y_1 + c_2y_2 \\
+    y_p &= -y_1\int \left(\frac{y_2}{W}\frac{f(x)}{a_2}\right)\,dx + y_2\int \left(\frac{y_1}{W}\frac{f(x)}{a_2}\right)\,dx
+\end{align*}
+This is the Wronskian tehcnique.
+\end{example}
+
+\chapter{}
+\section{Linear ODEs Continued}
+\begin{itemize}
+    \item Found $y_c = c_1y_1 + \cdots + c_ny_n$, $c_i$ are constants
+    \item inhomogeneous problem?
+    \item try $c_i \to c_i(x)$
+    \item $\tilde{y} = \sum \tilde{c}_i(x)y_i(x)$ - no longer a solution of the homogeneous problem
+    \item $\{c_i(x)\}, i \in N$ "$tilde{y}$ in $1$" is a solution of the differential equation
+    \item useful constraint:
+    \begin{align*}
+        c'_1y_1 &+ c'_2y_2 + \cdots + c'_ny_n = 0 \\
+        c'_1y'_1 &+ c'_2y'_2 + \cdots + c'_ny'_n = 0 \\
+        c'_1y''_1 &+ c'_2y''_2 + \cdots + c'_ny''_n = 0 \\
+        \vdots ~ &(n-1) \text{ constraints on }c_1 \\
+        c'_1y^{(n-2)}_1 &+ c'_2y^{(n-2)}_2 + \cdots + c'_ny^{(n-2)}_n = 0 \\
+        & ------------ \\
+        c'_1y^{(n-1)} &+ c'_2y^{(n-1)}_2 + \cdots + c'_ny^{(n-1)}_n = 0 \\
+        &\begin{pmatrix} y_1 & y_2 & \cdots & y_n \\ y'_1 & \cdots & & \\ \vdots & & & \\ y_1^{(n-1)} & y_2^{(n-1)} & \cdots & y_n^{(n-1)}\end{pmatrix} \begin{pmatrix} c'_1 \\ c'_2 \\ \vdots \\ c'_n \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ \frac{f(x)}{a_n(x)} \end{pmatrix}
+    \end{align*}
+\end{itemize}
+
+\section{Second Order Equations}
+\begin{align*}
+    \begin{pmatrix} y_1 & y_2 \\ y'_! & y'_2 \end{pmatrix} & \begin{pmatrix} c'_1 \\ c'_2 \end{pmatrix} = \begin{pmatrix} 0 \\ \frac{f(x)}{a_2(x)} \end{pmatrix} \\
+    \begin{pmatrix} c'_1 \\ c'_2 \end{pmatrix} &= \frac{1}{W} \begin{pmatrix} y'_2 & -y_2 \\ y'_1 & y_1 \end{pmatrix} \begin{pmatrix} 0 \\ \frac{f(x)}{a_2(x)} \end{pmatrix} = \frac{1}{W}\begin{pmatrix} -y_2\frac{f(x)}{a} \\ y_1\frac{f(x)}{a} \end{pmatrix} \\
+    c'_1 &= -\frac{y_2f}{Wa} ~;~ c'_2 = \frac{y_1f}{Wa}
+\end{align*}
+
+\begin{example}
+Solve with variation of parameters
+\begin{align*}
+    \dyy &- \dy - 2y = e^{2x} \\
+    \lam^2 &- \lam - 2 = 0 \implies (\lam-2)(\lam+1) = 0 \\
+    y_c &= c_1e^{-x} + c_2e^{2x} \\
+    \tilde{y} &= c_1(x)e^{-x} + c_2(x)e^{2x} \\
+    y_1 &= e^{-x},~ y_2 = e^{2x},~ f = e^{2x},~ a = 1,~ W = 3e^x \\
+    c_1 &= -\int \frac{e^{2z}e^{2z}}{e^{3z}}dz = -\int \frac{e^{3z}}{3}dz = -\frac{e^{3z}}{9} \\
+    c_2 &= \int \frac{e^{-z}e^{2z}}{3e^z}dz = \int \frac{dz}{3} = \frac{x}{3} \\
+    y_p &= -\frac{e^{3x}}{9}e^{-x} + \frac{x}{3}e^{2x} \\
+    &= e^{2x}\left(\frac{x}{3} - \frac{1}{9}\right)
+\end{align*}
+\end{example}
+
+\section{Green's Functions}
+
+\begin{itemize}
+    \item It is important to only be dealing with linear problems
+    \item
+    \begin{align*}
+        \sum_{i=0}^n a_i(x)y^{(i)} &= f(x) \\
+        \sum_{i=0}^n \left[a_i(x)\frac{d^n}{dx^n}\right]y(x) &= f(x)
+    \end{align*}
+    \item Use Laplace transform as an operator on $y$
+    \begin{equation*}
+        \La \cdot y = f
+    \end{equation*}
+    \item
+    \begin{align*}
+        \hat{\La} G(x,z) &= \delta(x-z) \\
+        y &= \int G(x,z)f(z)\,dz \\
+        \hat{\La} y &= \int \left[\hat{\La}G(x,z)\right] f(z)\,dz = \int \delta(x-z)f(z)\,dz = f(x)
+    \end{align*}
+    \item Boundary conditions:
+    \begin{itemize}
+        \item Homogeneous conditions:
+        \begin{equation*}
+            y(a) = 0,~ y'(a) = 0
+        \end{equation*}
+        Always $y \to a\tilde{y} +$ polynomial
+        \begin{align*}
+            y(x) &= G(x,z)f(z)\,dz \\
+            y(a) &= \int G(a,z)f(z)\,dz = 0, ~[G(a,z) = 0]
+        \end{align*}
+        Identical for $\p_x G(x,z)|_{x=a} = 0$
+    \end{itemize}
+    \item $G^{(n)}(x,z)$ contains $\delta$
+    \item
+    \begin{align*}
+        \grint \sum_{i=0}^n a_i(x)G^{(i)}(x,z)\,dx &= \grint \delta(x-z)\,dx = 1,~ \e \to 0 \\
+        \grint a_n(x)G^{(n)}(x,z)\,dx &= \grint \frac{d}{dx}\left[a_nG^{(n-1)}\right]\,dx - \grint \cancel{\left(\frac{d}{dx}a_n\right)}G^{(n-1)} \\
+        &= a_nG^{(n-1)}\Big|_{z-\e}^{z+\e} = 1
+    \end{align*}
+    \item
+    \begin{align*}
+        \hat{\La}\left[G(x,z)\right] &= \delta(x-z) \\
+        a_nG(x,z)\Big|_{z-\e}^{z+\e} &= 1
+    \end{align*}
+    $G$ has same boundary conditions in $x$ and in $y$
+\end{itemize}
+
+\begin{example}
+\begin{align*}
+    \dyy &= y = f(x) \\
+    \hat{\La} &= \frac{d^2}{dx^2} + 1 \\
+    \hat{\La}\left[G(x,z)\right] &= \delta(x-z) = 0 \iff x \neq z \\
+    \implies y_c &= c_1\sin(x) +c_2\cos(x) \\
+    G(x,z) &= \begin{cases} A_1(z)\sin(x) + A_2(z)\cos(x) & x > z \\ B_1(z)sin(x) + B_2(z)\cos(x) & x > z \end{cases} \\
+    \implies G(x,z) &= \begin{cases} A_1(z)\sin(x) & x > z \\ B_2(z)\cos(x) & x > z \end{cases}
+\end{align*}
+G is continuous in $x = z \implies A_1(x)\sin(z) = B_2(x)\cos(z)$ \\
+G' has unit disc in $x = z \implies -B_2\sin(x) - A_1\cos(x) = 1$
+\begin{align*}
+    G(x,z) &= \begin{cases} -\cos(z)\sin(x) & x > z \\ \sin(z)\cos(x) & x > z \end{cases} \\
+    y(x) &= \int_0^{\frac{\pi}{2}} G(x,z)f(x)\,dz
+\end{align*}
+Constant limit of linear sup?
+\end{example}
+
+\chapter{}
+\section{Linear Second Order Homogeneous Equations}
+\begin{align*}
+    a_2(x)\dyy &+ a_1(x)\dy + a_0(x)y = 0 \\
+    \implies \dyy &+ p(x)\dy + q(x)y = 0
+\end{align*}
+
+\subsection{Series Solutions}
+For $x \approx x_0:$
+\begin{equation*}
+    y = \sum_{i=0}^\infty a_i(x-x_0)^i
+\end{equation*}
+Can we find $a_i$? \\
+In general, $f(x)$ is not a Taylor expansion around $x_0$, e.g. $\frac{1}{x}$
+
+Let's assume series solution expansion ($y$ is smooth enough) \\
+If y admits a series representation around $x = x_0 \implies p,q$ smooth in $x_0$ \\
+If $p,q$ are smooth, then the series expansion exists
+
+What if $p,q$ not regular in $x_0$? \\
+Consider $y = \sqrt{x}, x \approx 0$, regular in $0$ \\
+$\implies y' = \frac{1}{\sqrt{x}}$, not regular in $0$
+
+One can define a generalisation of Taylor expansion - "Frobenius Expansion":
+\begin{equation*}
+    f = x^\sigma \sum_{i=0}^\infty a_i x^i, ~ \sigma \in \C, ~ [a_0 \neq 0]
+\end{equation*}
+e.g., $\sqrt{x}\sin(x)$
+
+If $y$ is Frobenius expansion in $x = x_0 = 0$:
+\begin{align*}
+    y &= x^\sigma \sum_{i=0}^\infty a_ix^i, ~ x \to 0, ~ y \approx x^\sigma \\
+    y' &\approx \sigma x^{\sigma - 1} \\
+    y'' &\approx x^{\sigma-2}
+\end{align*}
+If $y$ is well defined in $0 \implies x^\sigma to c \implies xy', x^2y''$ are well defined
+
+If $y = x^\sigma \sum a_ix^i$:
+\begin{equation*}
+    \overbrace{\dyy}^{x^{\sigma-2}} + \overbrace{p(x)\dy}^{x^{\sigma-1}} + \overbrace{q(x)y}^{x^\sigma} = 0, ~ y = x^\sigma \sum a_ix^i
+\end{equation*}
+\newpage
+\begin{itemize}
+    \item If $p,q$ in $x = x_0 \implies$ Taylor series solution
+    \item If $p,q$ are singular in $x = x_0 \implies$
+    \begin{enumerate}
+        \item If $\lim_{x\to x_0} (x-x_0)p(x)$ is finite and
+        \item If $\lim_{x \to x_0} (x-x_0)^2q(x)$ is finite
+    \end{enumerate}
+    \item Solution as a Frobenius series exists - $x_0$ "regular singular point"
+    \item else $x_0$ "essential singular point" - irregular
+\end{itemize}
+
+\begin{example}
+Find all singular points and classify
+\begin{align*}
+    (1-x^2)\dyy &- 2x\dy + ky = 0 \\
+    \dyy &- \frac{2x}{(1-x^2)}\dy + \frac{k}{(1-x^2)}y = 0 \implies x = \pm 1
+\end{align*}
+Singular point at $x = 1$:
+\begin{align*}
+    p &= \frac{2x}{(1-x)(1+x)} & q &= \frac{k}{(1-x)(1+x)} \\
+    \implies &= \lim_{x\to 1} \cancel{(x-1)}\frac{2x}{\cancel{(1-x)(1+x)}} = \text{finite} & &= \lim_{x\to1}(x-1)^2\frac{k}{(1-x)(1+x)} = 0
+\end{align*}
+This implies $x = \pm 1$ as a regular singular point
+
+$x \to \infty$:\\
+Consider $x \to \frac{1}{w}, w = 0$ is a singular point?
+\begin{align*}
+    \dy &= \frac{dy}{dw}\frac{dw}{dx} = -\frac{1}{x^2}\frac{dy}{dw} = -w^2\frac{dy}{dw} \\
+    \dyy &= \frac{d}{dx}\left[-\frac{1}{x^2}\frac{dy}{dw}\right] = \frac{2}{x^3}\frac{dy}{dw} + \frac{1}{x^4} \frac{d^2y}{dw^2} = 2w^3\frac{dy}{dw} + w^3\frac{d^2y}{dw^2} \\
+    \left(1 - \frac{1}{w^2}\right)w^3&\left[2\frac{dy}{dw} + w\frac{d^y}{dw^2}\right] + \frac{2}{w}w^2\frac{dy}{dw} + ky = 0 \\
+    w^2\left(w^2-1\right)&\frac{d^2y}{dw^2} + 2w^3\frac{dy}{dw} + ky = 0 \\
+    \frac{d^y}{dw^2} &+ 2\frac{w}{w^2-1}\frac{dy}{dw} + \frac{k}{w^2(w^2-1)} = 0 \\
+    p(w) &= \frac{2w}{w^2-1}, ~ w\cdot p \to^{w \to 0} 0 \\
+    q(w) &= \frac{k}{w^2(w^2-1)}, ~ w^2q \to^{w \to 0} -k \text{ (finite)}
+\end{align*}
+Regular singular point
+\end{example}
+
+\begin{example}
+\begin{equation*}
+    \dyy + y = 0
+\end{equation*}
+Series around $x=0$
+\begin{align*}
+    y &= \sum_{i=0}^\infty a_ix^i & \dy &= \sum_{i=0}^\infty ia_ix^{i-1} & \dyy &= \sum_{i=0}^\infty i(i-1)a_ix^{i-2}
+\end{align*}
+\begin{align*}
+    \sum_{i=0}^\infty &\left[i(i-1)a_xx^{i-2} + a_ix^i\right] = 0 \\
+    \sum_{i=2}^\infty &i(i-1)a_ix^{i-2} = \sum_{i=0}^\infty (i+2)(i+1)a_{i+2}x^i \\
+    \sum_{i=0}^\infty &\left[(i+1)(i+2)a_{i+2}+ a_i\right]x^i = 0 \\
+    \implies a_{i+2} &= -\frac{a_i}{(i+1)(i+2)}
+\end{align*}
+A regular relation
+\begin{itemize}
+    \item Odd/even terms are independent:
+    \begin{itemize}
+        \item $a_0 = 0, a_1 = 1 \implies a_{2n} = 0$
+        \begin{equation*}
+            \implies y = x - \frac{x^3}{3!} + \frac{x^5}{5!} + \cdots = \sin(x)
+        \end{equation*}
+        \item $a_0 = 1, a_1 = 0 \implies a_{2n+1} = 0$
+        \begin{equation*}
+            \implies y = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \cdots = \cos(x)
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+\end{example}
+
+\chapter{}
+\begin{equation*}
+    \dyy + p(x)\dy + q(y)y = 0
+\end{equation*}
+The structure of $y$ depends on singularity structure of $p,q$ \\
+If $p,q$ are regular in $x=x_0$, $y = \sum_{i=0}^\infty a_ix^i$
+
+\begin{itemize}
+    \item Is it possible to find a polynomial solution?
+    \begin{equation*}
+        y = \sum_{i=0}^\infty a_ix^i,~ a_i = 0 \forall i > N
+    \end{equation*}
+\end{itemize}
+
+\begin{example}
+\begin{align*}
+    (1-x^2)\dyy &- 2x\dy + ky = 0,~ x \approx 0 \\
+    (1-x^2)\sum_{i=0}^\infty \left(i(i-1)a_ix^{i-2}\right) &- 2x\sum_{i=0}^\infty ia_ix^{i-1} + k\sum_{i=0}^\infty a_ix^i = 0 \\
+    \sum((i+2)(i+1)a_{i+2} &- i(i-1)a_i - 2ia_i + ka_i)x^i = 0 \\
+    (i+2)(i+1)a_{i+2} &- a_ii(i+1) + ka_i = 0 \\
+    a_{i+2} &= a_i \frac{i(i+1)-k}{(i+1)(i+2)}
+\end{align*}
+Can the series terminate? \\
+This always happens if $k = \lam(\lam+1), \lam \in \N$ - series terminates at $O(\lam)$
+\end{example}
+
+\section{Regular Singular Points}
+\begin{align*}
+    \dyy &+ p(x)\dy + q(y)y = 0 \\
+    \text{If: } \lim_{x\to x_0} p(x) &\text{ Or } \lim_{x\to x_0} q(x) \nexists \implies \text{ singular point} \\
+    \text{If: } \lim_{x \to x_0} (x-x_0)p(x) &\text{ and } \lim_{x\to x_0} (x-x_0)^2q(x) \exists \implies \text{ regular singular point}
+\end{align*}
+From now on, $x_0 = 0$:
+\begin{align*}
+    xp &\equiv s ~;~ x^2q \equiv t,~ \text{regular in }0 \\
+    \dyy &+ \frac{s(x)}{x}\dy + \frac{t(x)}{x^2}y = 0 \\
+    y &= s^\sigma \sum_{i=0}^\infty a_ix^i,~ a_0 \neq 0 \\
+    y &= \sum_{i=0}a_ix^{i+\sigma} \\
+    \sum_{i=0}^\infty &\left[(i+\sigma)(i+\sigma-1)a_ix^{i+\sigma-2} + \frac{s(x)}{x}(i+\sigma)a_ix^{i+\sigma-1}+ \frac{t(x)}{x^2}a_ix^{i+\sigma}\right] = 0 \\
+    \sum_{i=0}^\infty & \left[(i+\sigma)(i+\sigma-1)+s(x)(i+\sigma)+t(x)\right]a_ix^{i+\sigma-2} = 0 \\
+    \sum_{i=0}^\infty & \left[(i+\sigma)(i+\sigma-1) + s(x)(i+\sigma)+t(x)\right]a_ix^i = 0,~ \forall x \\
+    x = 0 &\implies [\sigma(\sigma-1) + s(0)\sigma + t(0)]a_0 = 0
+\end{align*}
+This is the indicial equation.
+\begin{align*}
+    \sigma(\sigma &- 1) + s(0)\sigma + t(0) = 0 \\
+    (\sigma &- \sigma_1)(\sigma - \sigma_2) = 0
+\end{align*}
+Solutions:
+\begin{enumerate}
+    \item $\sigma_1 = \sigma_2 \implies$ one solution
+    \item $\sigma_1 \neq \sigma_2 \implies$:
+    \begin{enumerate}
+        \item the largest root leads to solution $[\sigma_1],~ (\sigma_1 > \sigma_2)$
+        \item if $\sigma_1 - \sigma_2 \notin \N$, then $\sigma_2$ also leads to independent solution:
+        \begin{equation*}
+            y_1 \approx x^{\sigma_1},~ y_2 \approx x^{\sigma_2},~ \frac{y_2}{y_1} \approx x^{[\sigma_2 - \sigma_1]}
+        \end{equation*}
+        \item if $\sigma_1 - \sigma_2 \in \N$, $\sigma_2$ sometimes leads to independent solution, sometimes not
+    \end{enumerate}
+\end{enumerate}
+
+\begin{example}
+\begin{align*}
+    4x\dyy &+ 2\dy + y = 0,~ x \approx 0 \\
+    \dyy &+ \frac{1}{2x}\dy + \frac{1}{4x}y = 0 \\
+    \implies s &= \frac{1}{2},~ t = \frac{x}{4} \\
+    y &= x^\sigma \sum_{i=0}^\infty a_ix^i \\
+    \sum_{i=0}^\infty & \left[(\sigma+1)(\sigma+i-1) + \frac{1}{2}(\sigma+i) + \frac{x}{4}\right]x^{\sigma+i-2}a_i = 0 \\
+    \sigma(\sigma-1)&+\frac{1}{2}\sigma = 0 = \sigma\left(\sigma-\frac{1}{2}\right) = \begin{cases} \sigma_1 & = \frac{1}{2} \\ \sigma_2 & = 0 \end{cases} \\
+    [(\sigma &+ i)(\sigma+i-1) + \frac{1}{2}(\sigma+i)]a_i + \frac{1}{4}a_{i-1} = 0 \\
+    y(x,\sigma) &\equiv x^\sigma \sum_{i=0}^\infty a_i(\sigma)x^i
+\end{align*}
+If $\sigma = \sigma_1, \sigma_2,~ y(\sigma,x)$ solves one
+\begin{align*}
+    \left[\frac{d^2}{dx^2}+\frac{1}{2x}\frac{d}{dx}+ \frac{1}{4x}\right]&x^\sigma \sum_{i=0}^\infty a_i(\sigma)x^i = \cdots \\
+    \implies \sum_{i=0}^\infty  \left[(\sigma+i)\left(\sigma+i-\frac{1}{2}\right)\right]a_ix^{\sigma+i-2} &+ \sum_{i=1}\infty \frac{x^{\sigma+i-2}a_{i-1}}{4} \\
+    \implies \left[\sigma\left(\sigma-\frac{1}{2}\right)\right] a_0x^{\sigma-2} &+ \cancel{\sum_{i=1}^\infty \left[(\sigma+1)(\sigma + i - \frac{1}{2})a_i + \frac{a_{i-1}}{4}\right]}x^{\sigma+i-2} \\
+    \left[\frac{d^2}{dx^2} + \frac{1}{2x}\frac{d}{dx} + \frac{1}{4x}\right]y(x,\sigma) &= \sigma\left(\sigma - \frac{1}{2}\right)a_0 x^{\sigma-2} \propto \sigma\left(\sigma-\frac{1}{2}\right)x^{\sigma} \\
+    \La y(x,\sigma) &= (\sigma - \sigma_1)(\sigma - \sigma_2)a_0 x^{\sigma - 2}
+\end{align*}
+Solve Recursion for $\sigma - \{\sigma_1,\sigma_2\}$ \\
+$\sigma_1 = \frac{1}{2}:$
+\begin{align*}
+    \left[(\frac{1}{2}+i)(\frac{1}{2}+i-1) + \frac{1}{2}(\frac{1}{2}+i)\right]&a_i + \frac{1}{4} a_{i-1} = 0 \\
+    2i(2i+1)&a_i + a_{i-1} = 0 \\
+    a_i &= -\frac{a_{i-1}}{2i(2i+1)} \\
+    y &= x^\sigma \sum_{i=0}^\infty a_ix^i = \sqrt{x}\left[1 - \frac{x}{3!} + \frac{x^2}{5!} - \cdots \right] \\
+    &= \sqrt{x} - \frac{(\sqrt{x})^3}{3!} + \frac{(\sqrt{x})^6}{5!} - \cdots \\
+    &= \sin(\sqrt{x})
+\end{align*}
+Do the same for $\sigma = \sigma_2 \implies y = \cos(\sqrt{x})$
+\begin{equation*}
+    y = c_1\sin\sqrt{x} + c_2\cos\sqrt{x}
+\end{equation*}
+\end{example}
+
+\chapter{}
+
+\begin{example}[Singular Points]
+\begin{align*}
+    x(x-1)\dyy &+ 3x\dy + y = 0 \\
+    \dyy &+ \frac{3}{x-1}\dy + \frac{1}{x(x-1)}y = 0 \\
+    y &= x^\sigma \sum_{i=0}^\infty a_ix^i, ~ a_0 \neq 0 \\
+    (x-1)\dyy &+ 3\dy + \frac{1}{x}y = 0 \\
+    (x-1)\sum_{i=0}^\infty [a_i(\sigma + i &- 1)x^{\sigma + i -2} + 3(\sigma + i)a_ix^{\sigma + i - 1} + a_ix^{\sigma+i - 1}] = 0 \\
+    \sum_{i=0}^\infty [a_i(\sigma+i)(\sigma+i-1)x^{\sigma+i-1} &- a_i(\sigma+i)(\sigma+i-1)x^{\sigma+i-2} + 3(\sigma+i)a_ix^{\sigma+i-1} + x^{\sigma+i-1}a_i] = 0
+\end{align*}
+So the indicial equation is
+\begin{align*}
+    \sigma(\sigma - 1) &= 0 \implies \sigma = 0,1 \\
+    a_{i-1}[(\sigma+i)^2] &- \cancel{[\sigma+i]}[\sigma+i-1]a_i = 0 \\
+    \implies a_i &= \frac{\sigma+i}{\sigma+i-1}a_{i-1} \\
+    \sigma_1 = 1 &\implies a_i = \frac{1+i}{i}a_{i-1} \\
+    \implies y &= x\sum_{i=0}^\infty (1 + 2x + 3x^2 + 4x^3 + \cdots) = x\frac{1}{(1-x)^2} \\
+    \sigma_2 = 0 &\implies a_i = \frac{i}{i-1}a_{i-1} \implies \nexists
+\end{align*}
+How can we find the second solution then?
+\begin{enumerate}
+    \item Wronskian method:
+    \begin{align*}
+        W &= \begin{vmatrix} y_1 & y_2 \\ y'_1 & y'_2 \end{vmatrix} = y_1y'_2 - y_2y'_1 \\
+        W' &= \cancel{y'_1y'_2} + y_1y''_2 - \cancel{y'_2y'_1} - y_2y''_1 \\
+        &= y_1(-py'_2 - qy_2) - y_2(-py'_1 - qy_2) \\
+        &= -p(y_1y'_2 - y_2y'_1) = -pW \\
+        \frac{W'}{W} &= -p \implies W = ce^{-\int p(x)dx} \\
+        \frac{W}{y_1^2} &= \frac{y'_2}{y_1} - y_2\frac{y'_1}{y_1^2} = \frac{d}{dx}\left[\frac{y_2}{y_1}\right] = \frac{y'_2}{y_1} + y_2\left(-\frac{1}{y_1^2}y'_1\right) \\
+        \frac{y_2}{y_1} &= \int \frac{W}{y_1^2}dx = \int \frac{1}{y_1^2}e^{-\int p\,dx}dx \\
+        \implies y_2 &= y_1\int \frac{1}{y_1^2(x)}e^{-\int p\,dx}dx \\
+        y_1 &= \frac{x}{(1-x)^2} \to p = \frac{3}{x-1} \to e^{-\int p} = e^{-\int \frac{3}{x-1}dx} = e^{-3\ln(x-1)} = \frac{1}{(x-1)^3} \\
+        y_2 &= \frac{x}{(1-x)^2} \int \frac{(1-x)^4}{x^2} \frac{1}{(z-1)^3}dx = \frac{x}{(1-x)^2}\int \frac{x-1}{x^2}dx = \int \left(\frac{1}{x} - \frac{1}{x^2}\right) dx \\
+        \implies y_2 = \frac{x}{(1-x)^2}\left[\ln(x) + \frac{1}{x}\right]
+    \end{align*}
+    \item Derivative technique \\
+    Consider when $\sigma_1 = \sigma_2$, indicial equation in $(\sigma - \sigma_1)^2 = 0$
+    \begin{align*}
+        y(x,\sigma) &= x^\sigma \sum_{i=0}^\infty a_i(\sigma)x^i \\
+        \La_x[y(x,\sigma)] &= (\sigma - \sigma_1)^2 x^\sigma \\
+        \frac{\p}{\p \sigma}\left(\La_x[y(x,\sigma)]\right) &= 2(\sigma-\sigma_1)x^\sigma + (\sigma-\sigma_1)^2\ln(x)x^\sigma \\
+        \La_x\left[\frac{\p}{\p \sigma}y(x,\sigma)\right] &=  2(\sigma-\sigma_1)x^\sigma + (\sigma-\sigma_1)^2\ln(x)x^\sigma \\
+        \sigma \to \sigma_1 &\implies \La_x\left[\lim_{\sigma\to\sigma_1} \frac{\p}{\p\sigma}y(x,\sigma)\right]= 0 \\
+        y_2 &= \lim_{\sigma\to\sigma_1}\left[\frac{\p}{\p\sigma}y(x,\sigma)\right]
+    \end{align*}
+    This is a solution.
+\end{enumerate}
+\end{example}
+
+\chapter{}
+\section{Special Functions}
+\begin{itemize}
+    \item Legendre equation:
+    \begin{equation*}
+        (1-x^2)\dyy - 2x\dy + l(l+1)y = 0
+    \end{equation*}
+    \item $\del^2$ in polar coordinates $\to \theta,\, \cos\theta \equiv x$
+    \item $x=0$ regular point, $x = \pm 1$ regular singularities
+    \item Can immediately get two solutions from:
+    \begin{equation*}
+        a_{n+2} = \frac{n(n+1) - l(l+1)}{(n+1)(n+2)}a_n
+    \end{equation*}
+    (Convergence radius of $|x| < 1$)
+    \begin{enumerate}
+        \item $a_0 = 1, [a_{i,\text{odd}} \to 0]$
+        \begin{equation*}
+            y_1 = 1 - \frac{l(l+1)}{2!}x^2 + \frac{(l-2)l(l+1)(l+3)}{4!}x^4 + \cdots
+        \end{equation*}
+        \item $a_0 = 0, [a_{i,\text{even}} \to 0,a_1 = 1]$
+        \begin{equation*}
+            y_2 = x - \frac{(l-1)(l+2)}{3!}x^3 + \frac{(l-3)(l-1)(l+2)(l+4)}{5!}x^5 + \cdots
+        \end{equation*}
+    \end{enumerate}
+    \item if $l$ is an integer,
+    \begin{itemize}
+        \item polynomial solution
+        \begin{equation*}
+            P_l(x) = \begin{cases} l\text{ odd} & y_2 \\ l\text{ even} & \to y_1 \end{cases}
+        \end{equation*}
+        \item non-polynomial solution
+        \begin{equation*}
+            Q_l(x) = \begin{cases} l\text{ odd} & y_1 \\ l\text{ even} & \to y_2 \end{cases}
+        \end{equation*}
+    \end{itemize}
+    \item $P_l(1) = 1$ - choice of parameterisation? $[P_l(-1) = (-1)^l]$
+    \item Need the following in Quantum Mechanices, but not in this course:
+    \begin{align*}
+        Q_l &= \begin{cases} l \text{ even} & \to \alpha_ly_2 \\ l\text{ odd} & \to \beta_ly_1 \end{cases} \\
+        \alpha_l &= (-1)^{\frac{l}{2}}2^l \frac{\left[\left(\frac{l}{2}\right)!\right]^2}{l!} \\
+        \beta_l &= (-1)^{\frac{l+1}{2}}2^{l-1}\frac{\left[\left(\frac{l-1}{2}\right)!\right]}{l!}
+    \end{align*}
+    \item Rodrigueis' Formula (solves Legendre's Equation)
+    \begin{equation*}
+        P_l(x) = \frac{1}{2^l l!}\frac{d^l}{dx^l}(x^2 - 1)^l
+    \end{equation*}
+    \begin{itemize}
+        \item Proof:
+        \begin{align*}
+            u &= (x^2 - 1)^l \\
+            u' &= 2xl(x^2 - 1)^{l-1} = \frac{2xlu}{x^2 - 1} \\
+            \implies (x^2 - 1)u' &- 2xlu = 0
+        \end{align*}
+        Differentiate $l+1$ times
+        \begin{align*}
+            \frac{d^k}{dx^k} (a\cdot b) &= \sum_{i=0}^k a^{(i)}b^{(k-i)}\frac{k!}{i!(k-i)!} \\
+            l = 0 &\to ab^{(k)}\frac{k!}{0!(k)!} = ab^{(k)} \\
+            l = 1 &\to a'b^{(k-1)}\frac{k!}{1!(k-1)!} = ka'b^{(k-1)} \\
+            l = 2 &\to a''b^{(k-2)}\frac{k!}{2!(k-2)!} = \frac{1}{2}k(k-1)a''b^{(k-2)} \\
+            [(x^2 -1)u^{(l+2)} &+ 2x(l+1)u^{(l+1)} + u^{(l)}(l+1)l] - 2l[xu^{(l+1)} + u^{(l)}(l+1)] = 0 \\
+            (x^2 - 1)[u^{(l)}]'' &+ 2x[u^{(l)}]' - l(l+1)[u^{(l)}] = 0
+        \end{align*}
+        This is the Legendre equation, and therefore Rodrigueis's formula is related to Legendre.
+    \end{itemize}
+    \item Check normalisation, $x\to1$:
+    \begin{align*}
+        \frac{d^k}{dx^k} (x^2 - 1)^k\Big|_{x=1} &\to 2x(x^2 - 1)^{k-1} \to 2^kk!
+    \end{align*}
+\end{itemize}
+\begin{equation*}
+    \int_{-1}^1 P_l(x)P_m(x)\,dx = \frac{2}{2l+1}\delta_{lm}
+\end{equation*}
+How to prove:
+\begin{enumerate}
+    \item
+    \begin{equation*}
+        \int_{-1}^1 P_l(x)P_m(x)\,dx = \frac{2}{2l+1}
+    \end{equation*}
+    \begin{enumerate}
+        \item use Rodrigueis
+        \item integrate by parts
+    \end{enumerate}
+    \item
+    \begin{align*}
+        \int_{-1}^1 &P_l(x)P_m(x)\,dx = 0, l\neq m \\
+        (1-x^2)P''_l &_ 2xP'_l + l(l+1)P_l = 0 \\
+        [(1-x^2)P_l]' &+ l(l+1)P_l = 0 \\
+        \int_{-1}^1 &P_m[(1-x^2)P'_l]'dx = -l(l+1)\int_{-1}^1 P_mP_l\,dx \\
+        [P_m(1-x^2)&P'_l]_{-1}^1 - \int_{-1}^1 P'_mP'_l(1-x^2)\,dx \\
+        &= -l(l+1)\int_{-1}^1 P_l(x)P_m(x)\,dx \\
+        \int_{-1}^1 &P'_lP'_m(1-x^2)\,dx = l(l+1)\int_{-1}^1 P_l(x)P_m(x)\,dx
+    \end{align*}
+    Symmetric under exchange of $l$ and $m$ \\
+    Also equal to
+    \begin{equation*}
+        m(m+1)\int_{-1}^1 P_l(x)P_m(x)\,dx
+    \end{equation*}
+    So
+    \begin{align*}
+        \underbrace{l(l+1)}_{N_1}\int_{-1}^1 P_l(x)P_m(x)\,dx = \underbrace{m(m+1)}_{N_2}\int_{-1}^1 P_l(x)P_m(x)\,dx
+    \end{align*}
+    As $l\neq m, N_1 \neq N_2$ so
+    \begin{equation*}
+        \int_{-1}^1 P_l(x)P_m(x)\,dx = 0, l\neq m
+    \end{equation*}
+\end{enumerate}
+This tells us any function between $-1$ and $1$ can be expanded in Legendre polynomials:
+\begin{align*}
+    \int_{-1}^1 &P_l(x)P_m(x)\,dx = \alpha_l \delta_{lm} \\
+    f(x),~ x\in [-1,1] &\to f(x) = \sum_{l=0}^\infty k_lP_l(x) \\
+    \int_{-1}^1 &f(x)P_m(x) = \sum_{l=0}^\infty \int_{-1}^1 k_lP_lP_m = k_ma_m \\
+    \implies k_m &= \int_{-1}^1 \frac{f(x)P_m(x)}{a_m}dx
+\end{align*}
+
+\chapter{}
+\section{Legendre Equation}
+\begin{align*}
+    (1-x^2)\dyy &- 2x\dy + l(l+1)y = 0 \to P_l(x), P_l(x) = 1
+\end{align*}
+\section{Generating Function}
+\begin{align*}
+    G(x,h) &\equiv \frac{1}{\sqrt{1-2xh+h^2}} = \sum_{i=0}^\infty P_i(x)h^i
+\end{align*}
+\begin{itemize}
+    \item contains all information about $P_l$
+    \item can manipulate $[\p]$ both sides to find nice properties
+\end{itemize}
+\begin{align*}
+    \p_xG &= (1-2xh+h^2)^{-3/2}h = \sum_{i=0}^\infty P'_i(x)h^i
+\end{align*}
+\begin{equation*}
+    \boxed{hG = \frac{h}{\sqrt{1-2xh+h^2}} = (1-2xh+h^2)\sum_{i=0}^\infty P'_i(x)h^i}
+\end{equation*}
+\begin{equation*}
+    \boxed{h\sum_{i=0} P_i(x)h^i = (1-2xh+h^2)\sum_{i=0}P'_i(x)h^i}
+\end{equation*}
+\begin{equation*}
+    \boxed{\p_hG = \frac{x-h}{(1-2xh+h^2)^{3/2}} = \frac{x-h}{1-2xh+h^2}G(x,h) = \sum_{l=0}^\infty lP_lh^{l-1}}
+\end{equation*}
+\begin{equation*}
+    \boxed{P_i = P'_{i+1} - 2xP'_i + P'_{i-1}}
+\end{equation*}
+\begin{align*}
+    \sum_{i=0}^\infty P'_ih^i &= \frac{h}{1-2xh+h^2}G = \frac{h}{x-h}\sum_{i=0}^\infty iP_ih^{i-1} \\
+    \implies (x-h)\sum_{i=0}^\infty P'_ih^i &= h\sum_{i=0}^\infty iP_ih^{i-1}
+\end{align*}
+\begin{equation}
+    \boxed{iP_i = xP'_i - P'_{i-1}}
+\end{equation}
+Substitute $P'_{i-1}$:
+\begin{align*}
+    (i+1)P_i &= P'_{i+1} + xP'_i,~ [l = i+1] \\
+    lP_{l-1} &= P'_l - xP'_{l-1}
+\end{align*}
+Remove $P_{l-1}$
+\begin{equation*}
+    \boxed{l(P_{l-1} - xP_l) = (1-x^2)P'_l}
+\end{equation*}
+Act with $\p_x$:
+\begin{equation*}
+    l[P'_{l-1}-P_l -xP'_l] = (1-x^2)P''_l - 2xP'_l
+\end{equation*}
+\begin{equation*}
+    \boxed{-l(l+1)P_l = (1-x^2)P''_l - 2xP'_l}
+\end{equation*}
+Check normal, $P_l(1) = 1$
+\begin{align*}
+    G(1,h) &= \frac{1}{\sqrt{1-2h+h^2}} = \frac{1}{1-h} \\
+    &= \sum_{i=0}^\infty h^i = \sum_{i=0}^\infty P_i(1)h^i \\
+    \implies P_i(1) &= 1
+\end{align*}
+
+\section{Recursion Relation}
+\begin{align*}
+    \p_hG \to (x-h)\sum_{l=0}^\infty P_lh^l &= (1-2xh+h^2)\sum_{l=0}^\infty lP_lh^{l-1} \\
+    xP_l - P_{l-1} &= (l+1)P_{l-1} -2xlP_l + (l-1)P_{l-1} \\
+    (l+1)P_{l-1} &= x(1+2l)P_l - lP_{l-1}
+\end{align*}
+
+\section{Spherical Harmonics}
+Associated Legendre Equation:
+\begin{align*}
+    (1-x^2)\dyy &- 2x\dy + \left[l(l+1) - \frac{m^2}{1-x^2}\right]y = 0 \implies P_l^m(x),~ |m| < |l| \\
+    Y_{l,m}(\theta,\phi) &= P_l^m(\cos\theta)e^{im\phi} \times N_{ml} \\
+    Y_{l,-m}(\theta,\phi) &= (-1)^m Y_{l,m}^*(\theta,\phi) \\
+    \int_{-1}^1 d\cos\theta \int_0^{2\pi} Y_{l,m}Y_{l',m'}^*d\phi = \delta_{ll'}\delta_{mm'}
+\end{align*}
+Spherical harmonics are an orthonormal set over the spherical system
+\begin{align*}
+    f(\theta,\phi) &= \sum_{l=0}^\infty \sum_{m=-l}^l a_{l,m}Y_{l,m}(\theta,\phi) \\
+    a_{l,m} &= \int_{-1}^1 d\cos\theta \int_0^{2\pi} f(\theta,\phi)Y_{l,m}^*d\phi
+\end{align*}
+
+\chapter{}
+\section{Bessel Functions}
+\begin{align*}
+	z^2\dyy + z\dy + (z^2 - v^2)y = 0
+\end{align*}
+\begin{itemize}
+	\item $v$ is a constant
+	\item $z \to 0$ is a regular singular point
+	\begin{equation*}
+		y = x^\sigma \sum_{i=0}^\infty a_ix^i
+	\end{equation*}
+	\item Recursion relation:
+	\begin{itemize}
+		\item $x^0 \to a_0[\sigma^2 - v^2] = 0$
+		\item $x^1 \to a_1[(\sigma+1)^2 - v^2] = 0$
+		\item $x^i \to a_i[(\sigma+i)^2 - v^2] + a_{n-2} = 0$
+		\item $\sigma = \pm v$
+	\end{itemize}
+	\item $v \notin \Z \to v-[-v] = 2v \notin \Z \to$ 2 independent solutions
+	\item Exception: $v = \frac{n}{2} \to v - (-v) \in \Z \to$ we may or may not find 2 solutions
+	\item
+	\begin{align*}
+		\tilde{J}_{\pm v} &= z^{\pm v}\left[1 - \frac{z^2}{2(2\pm2v)} + \frac{z^4}{2\cdot4(2\pm2v)(4\pm2v)} + \cdots\right] \\
+		\tilde{J}_{\pm v} &= z^{\pm v},~ J_{\pm v} = \tilde{J}_{\pm v}\frac{1}{2^{\pm v}\Gamma(1\pm v)}
+	\end{align*}
+	\begin{itemize}
+		\item
+		\begin{align*}
+			\Gamma(1+n) &= n!,~ n \in \N \\
+			\Gamma(1+n) &= \Gamma(n)n \forall n \in \C
+		\end{align*}
+	\end{itemize}
+	\item
+	\begin{equation}
+		J_v(z) = \sum_{i=0}^\infty \frac{(-1)^i}{i!\Gamma(v+i+1)}\left(\frac{z}{2}\right)^{v+2i} \tag{Bessel \RN{1}}
+	\end{equation}
+	\item General solution
+	\begin{equation*}
+		y = c_1J_{+v} + c_2J_{-v}
+	\end{equation*}
+	\item If $v$ is an integer:
+	\begin{equation*}
+		J_{-v}(z) = (-1)^vJ_v(z)
+	\end{equation*}
+	\item What about other solution? Define
+	\begin{equation*}
+		y_v = \frac{J_v(z)\cos(\pi v) - J_{-v}(z)}{\sin(\pi v)}
+	\end{equation*}
+	\begin{enumerate}
+		\item Not defined if $v \in \Z$
+		\item Obviously, solution of Bessel
+	\end{enumerate}
+	\item If v is an integer, define $y_v$ as limit $[v+\e, \e \to 0]$
+	\item It turns out $\forall v, y_v$ and $J_v$ are independent
+	\item "$y_v$" - Bessel function of 2nd Kind
+	\item $v > 0$:
+	\begin{itemize}
+		\item $J_v$ is well defined in $[0,\infty]$
+		\item $y_v$ is ill-defined in $z \to 0$ (not good)
+	\end{itemize}
+\end{itemize}
+
+\subsection{Properties of $J_v$}
+\begin{itemize}
+	\item From definition:
+	\begin{equation*}
+		\frac{d}{dz}[z^vJ_v] = z^vJ_{v-1}
+	\end{equation*}
+	\item Orthonormal:
+	\begin{equation*}
+		\int_{a}^{b} zJ_v(\lambda z)J_v(\mu z)\,dz = 0,~ \mu \neq \lam
+	\end{equation*}
+	\item
+	\begin{equation*}
+		f(z) = \sum_{i=0}^\infty c_iJ_v(\lam_i z),~ \lam_i \text{ s.t. } J_v(\lambda_i a) = 0
+	\end{equation*}
+	\item Generating function
+	\begin{align*}
+		\exp\left[\frac{z}{2}\left(h - \frac{1}{h}\right)\right] &= \sum_{i=0}^\infty J_ih^i \\
+		\implies J_{v-1} + J_{v+1} &= \frac{2v}{2}J_v
+	\end{align*}
+\end{itemize}
+
+\section{Linear Partial Differential Equations}
+\begin{itemize}
+	\item Physics - 2nd Order
+	\item For simplicity, mostly focus on 2 variable case, $(x,y)$
+	\item
+	\begin{equation*}
+		f(x,y) \to \p_x^2f - x\p_y^2f + xy\p_x\p_yf = g(x,y)
+	\end{equation*}
+\end{itemize}
+
+\begin{example}[Classify functions of 2 variables]
+\begin{align*}
+	f_1 &= x^4 + 4(x^2y + y^2 + 1) & f_1(x^2+2y = p) &= p^2 + 4 \\
+	f_2 &= \sin(x^2 + 2y) & f_2(x^2+2y = p) &= \sin(p) \\
+	f_3 &= \frac{x^2 + 2y + 2}{3x^2 + 6y + 5} & f_3(x^2+2y=p) &= \frac{p+2}{2p+5}
+\end{align*}
+Differentiating:
+\begin{align*}
+	\p_xf_i &= \p_xf_i(p(x,y)) = \frac{df_i}{dp}\p_xp \\
+	\p_yf_i &= \frac{df_i}{dp}\p_y p \\
+	\p_xf_i\frac{\p p}{\p y} &= \p_xf_i \frac{\p p}{\p x}
+\end{align*}
+$\implies f_1,f_2,f_3$ obey the same differential equation
+\end{example}
+
+\begin{itemize}
+	\item A single PDE admits infinite solutions
+	\item Looking for solution - look for functional forms
+	\item higher order:
+	\begin{itemize}
+		\item 2nd order $\to$ 2 functional forms
+		\item nth order $\to$ $n$ functional forms
+	\end{itemize}
+\end{itemize}
+
+\subsection{First Order, 2 Variables}
+\begin{equation*}
+	A\p_xf + B\p_yf + Cf = D
+\end{equation*}
+\begin{itemize}
+	\item $A,B,C,D$ are functions of $x,y$
+	\item $D = 0$ - "homogeneous"
+	\begin{itemize}
+		\item Technical definition: \\
+		An equation is said to the homogeneous if $f$ is a solution then $\lam f$ is also a solution ($\lam$ constant)
+	\end{itemize}
+	\item
+	\begin{equation*}
+		A\p_xf + B\p_yf = 0
+	\end{equation*}
+\end{itemize}
+
+\chapter{}
+\section{Linear PDEs continued}
+\subsection{Homogeneous First Order, 2 Variables}
+\begin{equation*}
+	A\p_xf + B\p_yf + Cf = 0
+\end{equation*}
+\begin{itemize}
+	\item $f[p(x,y)]$ are solutions
+	\item Start from $C=0$:
+	\begin{equation*}
+		A(x,y)\p_xf + B(x,y)\p_yf = 0
+	\end{equation*}
+	\begin{itemize}
+		\item The goal is to find the functional form, $p$:
+		\begin{align*}
+			f(x,y) &= f(p),~ p = p(x,y) \\
+			\implies A\frac{df}{dx}\p_xp &+ B\frac{df}{dp}\p_yp = 0
+		\end{align*}
+		\item Find "surfaces" of constant $p \implies$
+		\begin{align}
+			dp = 0 &= \p_xp\,dx + \p_yp\,dy \tag{1} \\
+			\implies \frac{dy}{dx} &+ \frac{\p_xp}{\p_yp} = 0 \tag{2} \\
+			\implies \frac{df}{dp}&\left[\frac{B}{A} + \frac{\p_xp}{\p_yp}\right] = 0 \tag{3} \\
+			(2) = (3) &\to \frac{dy}{dx} = \frac{B}{A} \tag{4}
+		\end{align}
+	\end{itemize}
+\end{itemize}
+
+\begin{example}
+Solve:
+\begin{align*}
+	x\p_xf &- 2y\p_yf = 0 \\
+	A &= x, B = -2y \\
+	\frac{dy}{dx} &= \frac{-2y}{x} \implies \frac{dy}{y} = -2\frac{dx}{x} \\
+	\implies \ln(y) &= -2\ln(x) + C \\
+	\implies y &= \frac{\tilde{c}}{x^2} \implies x^2y \text{ constant}
+\end{align*}
+Generic solution is $f(p(x,y)) = f(x^2y)$. Substitute in:
+\begin{align*}
+	xf'2x &- 2yf'x^2 = f'[2x^2 - 2x^2] = 0
+\end{align*}
+Now impose boundary conditions:
+\begin{enumerate}
+	\item $f=2y+1$ on the line $x=1$:
+	\begin{align*}
+		f(x^2y) &\to f(1\cdot y) = f(y) = 2y+1 \\
+		f(\alpha) &= 2\alpha + 1
+	\end{align*}
+	General solution plus boundary condition:
+	\begin{align*}
+		f(x^2y) = 2[x^2y] + 1
+	\end{align*}
+	\item $f(1,1) - 4$:
+	\begin{align*}
+		f(x,y) = 4 + g(x^2y),~ g(1) = 0
+	\end{align*}
+	This is also a solution, but more arbitrary
+\end{enumerate}
+\end{example}
+
+\begin{itemize}
+	\item Add the $C$ term back now:
+	\begin{equation*}
+		A\p_xf + B\p_yf + Cf = 0
+	\end{equation*}
+	\item $f(p(x,y))$ does not work now, look for $f = h(x,y)\tilde{f}(p(x,y))$
+	\item $h$ must be any solution of differential equation
+	\item take $f = h(x,y)\tilde{f}(p)$ and substitute:
+	\begin{align*}
+		\tilde{f}[A\p_xh + B\p_yh] &+ h[A\p_x\tilde{f} + B\p_y\tilde{f}] + Ch\tilde{f} = 0 \\
+		\implies \tilde{f}\cancel{[A\p_xh + B\p_yh + Ch]} &+ h[A\p_x\tilde{f} + B\p_y\tilde{f}] = 0
+	\end{align*}
+\end{itemize}
+
+\begin{example}
+\begin{align*}
+	x\p_xu &+ 2\p_yu - 2u = 0,~ u = h(x,y)f(p)
+\end{align*}
+\begin{enumerate}
+	\item Solve:
+	\begin{align*}
+		A\p_xf &+ B\p_yf = 0 \\
+		\frac{dy}{dx} &= \frac{B}{A} = \frac{2}{x} \\
+		\implies \frac{dy}{2} &= \frac{dx}{x} \implies \frac{y}{2} = \ln(x) + c \\
+		\implies x &= Ae^{\frac{y}{2}} \text{ - constant at } xe^{-\frac{y}{2}} \\
+		f &= f\left(xe^{-\frac{y}{2}}\right)
+	\end{align*}
+	\item Find any $h$ that solve equation. Try $h = h(x)$:
+	\begin{align*}
+		xh' - 2h = 0 \implies h = x^2
+	\end{align*}
+	\item General solution is:
+	\begin{equation*}
+		u = hf = x^2\left(xe^{-\frac{y}{2}}\right	)
+	\end{equation*}
+	\setcounter{enumi}{1}
+	\item Let's find another $h$, e.g. look for $h = h(y)$:
+	\begin{align*}
+		2h' &- 2h = 0 \implies h = e^y \\
+		\implies u = e^yf\left(xe^{-\frac{y}{2}}\right)
+	\end{align*}
+\end{enumerate}
+\textbf{Warning:} \textit{"You should not get emotionally attached to what you call 'f'"}
+\end{example}
+
+\subsection{Terminology}
+\begin{itemize}
+	\item "Homogeneous problem" -
+	\begin{enumerate}
+		\item An equation is said to the homogeneous if $f$ is a solution then $\lam f$ is also a solution ($\lam$ constant)
+		\item boundary is homogeneous - if $f$ satisfies bounda conditions, $\lam f$ also does
+	\end{enumerate}
+	\item Solution of inhomogeneous problem:
+	\begin{equation*}
+		f = f_{\text{homogeneous}}^{\text{generic}} + g^{\text{particular}}
+	\end{equation*}
+	\begin{example}
+	\begin{equation*}
+		\p_xu - x\p_yu + u = f,~ u(0,y) = g(y)
+	\end{equation*}
+	\begin{enumerate}
+		\item Solve homogeneous problem
+		\item Find any particular solution which respects boundary conditions
+	\end{enumerate}
+	\end{example}
+\end{itemize}
 
 
 
