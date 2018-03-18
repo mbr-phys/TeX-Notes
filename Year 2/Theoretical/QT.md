@@ -938,6 +938,105 @@ $$
     \end{aligned}
 $$
 
+## Lecture 12
+
+* Infinite square well:
+    * The Hamiltonian has infinite many discrete energy levels
+* Linear harmonic oscillator:
+    * Also has infinite many discrete energy levels
+* Free particle in 1D:
+    * continuum of energy levels, $0 < E < \infty$
+
+    $$
+        H = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}
+    $$
+
+* atom of hydrogen
+    * infinitely many discrete energy levels, corresponding to bound states
+    * and a continuum of energy levels corresponding to unbound states
+    * $-13.6\,eV = T + V$
+    * $r$ must be such that $-13.6\,eV > V(r)$
+    * an electron with positive energy is in an unbound state
+* in general, we have two classes - discrete and bound
+1. discrete energy levels:
+
+$$
+    \begin{aligned}
+    H\phi_j &= E_j\phi_j \\
+    \int \phi_i^* \phi_j d^3r &= \delta_{ij}
+    \end{aligned}
+$$
+
+2. continuum of energy levels
+$$
+    \begin{aligned}
+    H\phi_{\vec{k}} &= E_{\vec{k}}\phi_{\vec{k}} \\
+    \int \phi_{\vec{k}}^*(\vec{r})\phi_{\vec{k}'}\,d^3r &= \delta(\vec{k} - \vec{k}') \\
+    \int \phi_i(\vec{r})\phi_{\vec{k}}(\vec{r})\,d^3r &= 0
+    \end{aligned}
+$$
+
+* A complete set of eigenfunctions of $H$ necessarily include a continnum eigenfunctions if $H$ has a continuous spectrum:
+
+$$
+    \psi(\vec{r}) = \sum_j c_j\phi_j(\vec{r}) + \int c_{\vec{k}}\phi_{\vec{k}}(\vec{r})\,d^3k
+$$
+
+* Since the $\phi_j$ and $\phi_{\vec{k_{}}}$ are orthonormal
+
+$$
+    \begin{aligned}
+    c_j &= \int \phi_j^*(\vec{r}')\psi(\vec{r}')\,d^3r' \\
+    c_{\vec{k}} &= \int \phi_{\vec{k}}^*(\vec{r})\psi(\vec{r}')\,d^3r' \\
+    \psi(\vec{r}) &= \int d^3r' \underbrace{\left[\sum_j \phi_j(\vec{r})\phi_j^*(\vec{r}') + \int d^3k \phi_{\vec{k}}(\vec{r})\phi_{\vec{k}}(\vec{r}')\right]}_{=\delta(\vec{r}-\vec{r}')}\psi(\vec{r})
+    \end{aligned}
+$$
+
+* Must be true for any $\vec{r}$, and any $\psi$
+* completeness relation from lecture 8
+* In Dirac notation:
+
+$$
+    \langle\vec{r}|\sum_j|\phi_j\rangle\langle\phi_j| + \int d^3k |\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}| = \hat{I}|\vec{r}'\rangle|\phi_j\rangle \\
+    \langle\phi_j|\psi\rangle
+$$
+
+* In position representation:
+
+$$
+    \begin{aligned}
+    \langle\vec{r}|\phi_j\rangle &= \phi_j(\vec{r}) = \rangle\phi_j|\vec{r}\rangle^* \\
+    \langle\phi_j|\vec{r}'\rangle &= \phi_j^*(\vec{r}') \\
+    \langle\vec{r}|\hat{I}|\vec{r}'\rangle &= \delta(\vec{r}-\vec{r}')
+    \end{aligned}
+$$
+
+* About bra vectors
+
+$$
+    \begin{aligned}
+    |A\psi\rangle &= \hat{A}|\psi\rangle \\
+    \langle A\psi| &= \langle\psi|\hat{A}^\dagger,~ \langle A\psi|\phi\rangle = \langle\psi|\hat{A}^\dagger|\phi\rangle \\
+    \langle A\psi|\phi\rangle &= \langle\phi|A\psi\rangle^* = \langle\phi|\hat{A}|\psi\rangle^* = \langle\psi|\hat{A}^\dagger|\phi\rangle
+    \end{aligned}
+$$
+
+### Unitary Transformations
+
+* 2 orientations for $2p_m = 0$
+* Relate the two by:
+
+$$
+    \begin{aligned}
+    |\psi'\rangle &= \hat{R}_x(\theta)|\psi\rangle \\
+    |\phi'\rangle &= \hat{R}_x(\theta)|\phi\rangle \\
+    \langle\phi'|\psi'\rangle &= \langle\phi|\psi\rangle
+    \end{aligned}
+$$
+
+* The transformation is an isometry
+* In fact, it is also a unitary transformation
+
 ## Lecture 13
 
 ### Unitary Operators
@@ -1044,3 +1143,340 @@ $$
 $$
 
 if $\hat{A}$ is time-independent.
+
+## Lecture 14
+
+$$
+    \begin{aligned}
+    \hat{U}^\dagger &= \hat{U}^{-1} \\
+    |\psi'\rangle &= \hat{U}|\psi\rangle \\
+    \hat{A}' &= \hat{U}\hat{A}\hat{U}^\dagger
+    \end{aligned}
+$$
+
+* The eigenvalues of a unitary operator are real or complex numbers of modulus 1
+* The eigenvectors of a unitary operator corresponding to different eigenvalues are orthogonal to each other
+
+$$
+    \begin{aligned}
+    \langle A\rangle(t) &= \langle\Psi(t)|\hat{A}|\Psi(t)\rangle \\
+    &= \langle\Psi(t_0)|\hat{A}_H(t)|\Psi(t_0)\rangle \\
+    \hat{A}_H(t) &= \hat{U}(t_0,t)\hat{A}\hat{U}^\dagger(t_0,t) \\
+    i\hbar\frac{d\hat{A}_H}dt &= [\hat{A}_H,\hat{H}_H] = \hat{U}(t_0,t)[\hat{A},\hat{H}]\hat{U}^\dagger(t_0,t)
+    \end{aligned}
+$$
+
+* If $[\hat{A},\hat{H}] = 0$, then $\hat{A}_{H_{}}$ is constant in time
+    * $\langle A\rangle(t)$ is also constant for any $|\Psi\rangle$
+    * $A$ is a "constant of motion"
+
+$$
+    \begin{aligned}
+    |\psi'\rangle &= \hat{R}_x(\theta)|\psi\rangle \\
+    \langle\psi'|H|\psi'\rangle &= \langle\psi|\hat{H}|\psi\rangle \\
+    \langle\psi|\hat{R}_x(-\theta)\hat{H}\hat{R}_x(\theta)|\psi\rangle &= \langle\psi|\hat{H}|\psi\rangle \\
+    \hat{R}_x^\dagger(theta) &= \hat{R}_x^{-1}(\theta = \hat{R}_x(-\theta) \\
+    \langle\psi'| &= \langle\psi|\hat{R}_x^\dagger (\theta) \\
+    &= \langle\psi|\hat{R}_x(-\theta)
+    \end{aligned}
+$$
+
+* Now look at the limit when $\theta \to \epsilon$, where $\epsilon$ is near zero
+
+$$
+    \begin{aligned}
+    \hat{R}_x(\pm\epsilon) &= \hat{I} \mp i\epsilon\frac{\hat{J}_x}{\hbar} \\
+    \langle\psi|\left(\hat{I} + i\frac{\epsilon}{\hbar}\hat{J}_x\right)\hat{H}\left(\hat{I} - \frac{i\epsilon}{\hbar}\hat{J}_x\right)|\psi\rangle &= \langle\psi|\hat{H}|\psi\rangle \\
+    \langle\psi|\hat{H}|\psi\rangle + \langle\psi|\frac{i\epsilon}{\hbar}\hat{J}_x\hat{H}|\psi\rangle + \langle\psi|\frac{-i\epsilon}{\hbar}\hat{H}\hat{J}_x|\psi\rangle &= \langle\psi|\hat{H}|\psi\rangle + \frac{i\epsilon}{\hbar}\langle\psi|[\hat{J}_x,\hat{H}]|\psi\rangle \\
+    &= \langle\psi|\hat{H}|\psi\rangle \text{ for any } \psi \\
+    \implies [\hat{J}_x,\hat{H}] &= 0
+    \end{aligned}
+$$
+
+* The requirement that the state of the atom is invariant under a rotation means that $\vec{J}$ is a constant
+
+### unitary transformations and change of bases
+
+* dimension of the Hilbert space, $N$
+* Consider two different orthonormal bases for that space:
+
+$$
+    \begin{aligned}
+    \{|\phi_1\rangle,|\phi_2\rangle,&\cdots,|\phi_N\rangle\} \\
+    \{|\psi_1\rangle,|\psi_2\rangle,&\cdots,|\psi_N\rangle\} \\
+    \langle\phi_i|\phi_j\rangle &= \delta_{ij},~ \langle\psi_i,\psi_j\rangle = \delta_{ij}
+    \sum_{i=1}^N |\phi_i\rangle\langle\phi_i| &= \hat{I},~ \sum_{i=1}^N |\psi_i\rangle\langle\psi_i| = \hat{I}
+    \end{aligned}
+$$
+
+* The last line is the Completeness relation
+* An operator $\hat{A}$ is represented by a matrix $\underline{\underline{A}}$ in the $\{|\phi\rangle\}$ basis, $\underline{\underline{A}}'$ in the $\{|\psi\rangle\}$ basis
+
+$$
+    \begin{aligned}
+    A_{ij} &= \langle\phi_i|\hat{A}|\phi_j\rangle \\
+    A'_{ij} &= \langle\psi_i|\hat{A}\\psi_j\rangle
+    \end{aligned}
+$$
+
+* Because the $\{|\phi\rangle\}$ vectors are a basis, one can always write each of the $|\psi_j\rangle$ vectors as a linear combination of the $|\phi_i\rangle$ vectors:
+
+$$
+    \begin{aligned}
+    |\psi_j\rangle &= \sum_i U_{ji}^* |\phi_i\rangle \\
+    U_{ji}^\dagger &= \langle\phi_i|\psi_j\rangle = \langle\psi_j|\phi_i\rangle^* \\
+    U_{ji} &= \langle\psi_j|\phi_i\rangle \\
+    \underline{\underline{U}} &= \begin{pmatrix} U_{11} & U_{12} & \cdots & U_{1N} \\ \vdots & \ddots & & \vdots \\ U_{N1} & \cdots & \cdots & U_{NN} \end{pmatrix} \\
+    \underline{\underline{U}}\underline{\underline{U}}^\dagger &= \underline{\underline{I}} \\
+    (\underline{\underline{U}}\underline{\underline{U}}^\dagger)_{ij} &= \sum_k U_{ik}U_{kj}^\dagger \\
+    &= \sum_k \langle\psi_i|\phi_k\rangle\langle\phi_k|\psi_j\rangle \\
+    &= \langle\psi|\underbrace{\sum_k |\phi_k\rangle\langle\phi_k|}_{\hat{I}}|\psi_j\rangle \\
+    &= \langle\psi_i|\psi_j\rangle = \delta_{ij}
+    \end{aligned}
+$$
+
+$$
+    \begin{aligned}
+    \hat{A}' &= \hat{U}\hat{A}\hat{U}^\dagger & |\chi\rangle &= \sum_i c_i|\phi_i\rangle \\
+    \hat{c}' &= \hat{U}\hat{c} & &= \sum_i c_i'|\psi_i\rangle
+    \end{aligned}
+$$
+
+## Lecture 15
+
+### Spectral Decomposition
+
+Recall that $\sum_n |\phi_n\rangle\langle\phi_n| + \int d^3k |\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}| = \hat{I}$ if and only if $\{|\phi_n,|\phi_{\vec{k}_{}}\rangle\}$ is complete.
+
+$$
+    \begin{aligned}
+    \hat{A}|\phi_n\rangle &= a_n|\phi_n\rangle & \langle\phi_i|\phi_j\rangle &= \delta_{ij} \\
+    \hat{A}|\phi_{\vec{k}}\rangle &= a_{\vec{k}}|\phi_{\vec{k}}\rangle & \langle \phi_{\vec{k}}|\phi_{\vec{k}'}\rangle &= \delta(\vec{k}-\vec{k}')
+    \end{aligned}
+$$
+
+* $\hat{A}$ is a Hermitian operator
+
+$$
+    \begin{aligned}
+    \hat{A} &= \hat{A}\hat{I} \\
+            &= \sum_n \hat{A}|\phi_n\rangle\langle\phi_n| + \int d^3k \hat{A}|\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}| \\
+            &= \sum_n a_n|\phi_n\rangle\langle\phi_n| + \int d^3k a_{\vec{k}}|\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}|
+    \end{aligned}
+$$
+
+* This is the spectral decompostion of $\hat{A}$
+
+### Projectors
+
+For example,
+
+$$
+    \begin{aligned}
+    \hat{\mathcal{P}}_{\phi} &= |\phi\rangle\langle\phi| \text{ with } \langle\phi|\phi\rangle = 1 \\
+    \hat{\mathcal{P}}_{\phi}|\psi\rangle &= |\phi\rangle\langle\phi|\psi\rangle = \langle\phi|\psi\rangle|\phi\rangle
+    \end{aligned}
+$$
+
+In position representation:
+
+$$
+    \begin{aligned}
+    \mathcal{P}_{\phi}\psi(\vec{r}) &= \left[\int \phi^*(\vec{r}')\psi(\vec{r}') d^3r\right]\phi(\vec{r}) \\
+    \mathcal{P}_{\phi} &\equiv \phi^*(\vec{r}')\phi(\vec{r}')
+    \end{aligned}
+$$
+
+in the sense that when $\mathcal{P}_{\phi_{}}$ acts on a wave function, $\psi(\vec{r})$, the result is as above
+
+$$
+    \begin{aligned}
+    \hat{\mathcal{P}}_\phi &= |\phi\rangle\langle\phi| \\
+    \hat{\mathcal{P}}^2_\phi &= \hat{\mathcal{P}}_\phi\hat{\mathcal{P}}_\phi = |\phi\rangle\langle\phi|\phi\rangle\langle\phi| \\
+    &= \phi\rangle\langle\phi| = \hat{\mathcal{P}}_\phi
+    \end{aligned}
+$$
+
+* $\hat{\mathcal{P}}_{\phi_{}}$ is idempotent
+    * operators $\hat{A}$ such that $\hat{A}^2 = \hat{A}$ are said to be idempotent
+* $\hat{\mathcal{P}}_{\phi_{}}$ is also Hermitian:
+
+$$
+    \begin{aligned}
+    \langle\psi'|\hat{\mathcal{P}}_{\phi}|\psi\rangle &= \langle\psi|\hat{\mathcal{P}}_{\phi}|\psi'\rangle^{ * } \\
+    &= \langle\psi'|\phi\rangle\langle\phi|\psi\rangle \\
+	&= \langle\phi|\psi\rangle\langle\psi'|\phi\rangle \\
+    &= \langle\psi|\phi\rangle^{ * }\langle\phi|\phi'\rangle^{ * } \\
+	&= [\langle\psi|\phi\rangle\langle\phi|\psi'\rangle]^{ * }
+    \end{aligned}
+$$
+
+More generally, any operator which is both idempotent and Hermitian is a projector.
+
+Consider a vector, $\vec{v}$ in 3D space:  
+* $\vec{v} = v_x\hat{x} + v_y\hat{y} + v_z\hat{z}$
+* $\vec{w} = v_x\hat{x} + v_y\hat{y}$ - this is the projection of $\vec{v}$ in the x-y plane
+* $\vec{w} = (\hat{x}\hat{x} + \hat{y}\hat{y})\cdot\vec{v} = \hat{x}\cdot\vec{v} \hat{x} + \hat{y}\cdot\vec{v} \hat{y}$
+* $(\hat{x}\cdot\vec{v}$ is the same as $|\hat{x}\rangle\langle\hat{x}|\vec{v}\rangle$
+* The projection in the plane is affected by $|\hat{x}\rangle\langle\hat{x} + |\hat{y}\rangle\langle\hat{y}|$
+* If $|\phi\rangle$ and $|\psi\rangle$ are linearly independent, $\langle\phi|\psi\rangle = 0, \langle\phi|\phi\rangle = \langle\psi|\psi\rangle = 1$
+* $|\psi\rangle\langle\phi| + |\psi\rangle\langle\psi|$ projectos in the subspace spanned by $|\phi\rangle$ and $|\psi\rangle$
+
+$$
+    \sum_n |\phi_n\rangle\langle\phi_n| + \int d^3k |\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}| = \hat{I}
+$$
+
+* $\hat{\mathcal{P}}_{\phi} = |\phi\rangle\langle\phi_{}|$ is Hermitian
+* $|\langle\phi|\psi\rangle|^2$ is the probability of finding the system in a state $|\phi\rangle$ if it was in the state $|\psi\rangle$ before measurement
+* If $|\eta\rangle$ is an eigenvector of $\hat{\mathcal{P}}_{\phi}$ with eigenvalue $\eta_{}$:
+
+$$
+    \begin{aligned}
+    \hat{\mathcal{P}}_{\phi}|\eta\rangle &= \eta|\eta\rangle \\
+    |\phi\rangle\langle\phi|\eta\rangle &= \eta|\eta\rangle \\
+    \langle\phi|\eta\rangle|\phi\rangle &= \eta|\eta\rangle \\
+    \implies |\phi\rangle &= |\eta\rangle,~ \eta = 0,\langle\phi|\eta\rangle = 0,1
+    \end{aligned}
+$$
+
+The eigenvalues of $\hat{\mathcal{P}}_{\phi_{}}$ are 0 and 1  
+* For $\eta =1$ - $|\eta\rangle = |\phi\rangle$
+* For $\eta = 0$ - $|\eta\rangle$ can be any vector orthogonal to $|\phi\rangle$
+
+* Observable here - $\hat{\mathcal{P}}_{\phi_{}}$
+* Possible outcomes - $\eta = 0,1$
+* Probability of finding $\eta = 1$ - $|\langle\phi|\psi\rangle|^2$
+
+#### Revision of ladder operator
+
+* $\hat{a}_{-} = \hat{a}$, and $\hat{a}_{+} = \hat{a}^\dagger$
+* subscript with dimension being used in - x,y,z
+
+$$
+    \begin{aligned}
+    [\hat{a}_i,\hat{a}_i^\dagger] &= 1 \\
+    [\hat{a}_i,\hat{a}_j^\dagger] &= 0
+    \end{aligned}
+$$
+
+## Lecture 16
+
+### Comments on Homework
+
+* $[\hat{H}.\hat{U}(t,t_0)] = 0$ because if $\hat{H}$ is time-independent, $\hat{U}(t,t_0) = \exp[-i\hat{H}(t-t_0)/\hbar]$
+
+### Operators and Spin States
+
+* Consider operators belonging to orthogonal directions, i.e. ladder operators  
+* We then define the Hamiltonian, $\hat{H} = \hbar\omega(\hat{a}_{x}^\dagger\hat{a}_{} + \frac{1}{2})$
+* This then leads to $E_n = \hbar\omega(n + \frac{1}{2}), n = 0,1,2 \implies \hat{a}_{x_{}}|\phi_n\rangle = \sqrt{n}|\phi_{n-1_{}}\rangle, \hat{a}_{x_{}}|\phi_0\rangle = 0$
+* $\hat{a}_{x_{}}^\dagger|\phi_n\rangle = \sqrt{n+1}|\phi_{n+1_{}}$
+
+### Angular Momentum
+
+* The orbital angular momentum operator is $\vec{L} = \hat{L}_{x}\hat{i} + \hat{L}_{y}\hat{j} + \hat{L}_z\hat{k}_{}$
+
+$$
+    \begin{aligned}
+    \vec{L} &= \vec{r} \times \vec{p},~ \vec{r} = \hat{x}\hat{i} + \hat{y}\hat{j} + \hat{z}\hat{k},~ \hat{p} = \hat{p}_x\hat{i} + \hat{p}_y\hat{j} + \hat{p}_z\hat{k} \\
+    \vec{L} &= \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ \hat{x} & \hat{y} & \hat{z} \\ \hat{p}_x & \hat{p}_y & \hat{p}_z \end{vmatrix} \\
+    \implies \hat{L}_x &= \hat{y}\hat{p}_z - \hat{z}\hat{p}_y \\
+    \implies \hat{L}_y &= \hat{z}\hat{p}_x - \hat{x}\hat{p}_z \\
+    \implies \hat{L}_z &= \hat{x}\hat{p}_y - \hat{y}\hat{p}_x \\
+    \implies \hat{L}_z &= -i\hbar\left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right) = -i\hbar\frac{\partial}{\partial \phi}
+    \end{aligned}
+$$
+
+* Another example is the spin operator, i.e. $\vec{s} = \hat{s}_x\hat{i} + \hat{s}_y\hat{j} + \hat{s}_z\hat{k}_{}$
+* An operator $\vec{J}$ is an angular momentum operator if $\hat{J}_x,\hat{J}_y,\hat{J}_{z_{}}$ are Hermitian and $[J_x,J_y] = i\hbar J_z$, etc
+* The $J_i$s all commute with $\vec{J}^2 = \vec{J}\cdot\vec{J} = J_x^2 + J_y^2 + J_z^2$
+* $J_n = \hat{n}\cdot\vec{J}$ where $\hat{n}$ is a unit vector in a given direction
+* $[J_n,J_n] \neq 0$ is $\hat{n} \neq \hat{n}$, $[J_n,\vec{J}^2] = 0 \forall \hat{n}$
+
+Consider the Hilbert space $\mathcal{H}$ spanned by the eigenvector of $\vec{J}^2$. Since $\vec{J}^2$ and $J_n$ commute, one can always contruct a basis of $\mathcal{H}$ with simultaneous eigenvectors of these two operators.
+However, since $[J_n,J_m] \neq 0$ if $\hat{n} \neq \hat{m}$, there is no basis of simultaneous eigenvectors of $\vec{J}^2, J_n, J_m$.
+The simultaneous eigenvectors of $\vec{J}^2$ and $J_z$ are $|jm\rangle$
+
+Consider the ladder operators $J_{+} = J_x + iJ_y,~ J_{-} = J_x - iJ_y,~ J_{+} = I_{-}^\dagger$   
+$[J_{\pm},\vec{J_{}}^2] = 0$ but $[J_{+},J_{-}] \neq 0$. We find through algebraic methods,
+
+1. $$\begin{aligned}
+     J_{+}|j,m\rangle &\propto \hbar|j,m+1\rangle,~ J_{+}|jj\rangle = 0 \\
+     J_{-}|j,m\rangle &\propto \hbar|j,m-1\rangle,~ J_{-}|j-j\rangle = 0
+     \end{aligned}$$
+2. The eigenvalues for $\vec{J}^2$ are $j(j+1)\hbar^2$ with $j = 0,\frac{1}{2},1,\frac{3}{2},\cdots$
+3. The eigenvectors of $J_z$ are $m\hbar$ with $m = 0,\pm\frac{1}{2},\pm 1,\pm\frac{3}{2},\cdots$
+4. For simultaneous eigenvector $|jm\rangle$ of $\vec{J}^2$ and $J_z$, the values of $m$ and $j$ are restricted by the requirement that $m$ in the range $-j \leq m \leq j$
+
+* The eigenvectors $|jm\rangle$ are orthonormal, $\langle j'm'|jm\rangle = \delta_{jj'}\delta_{mm'}$
+* $\langle jm|jm\rangle$ has been chosen to equal 1 by choice of normalisation
+* For orbital angular momentum, $\vec{L}$:
+    * The joint eigenfunctions of $\vec{L}^2$ and $L_z$ are $Y_{lm}(\theta_{},\phi)$
+    * $L_zf(\phi) = -i\hbar\partial_{\phi}(f_{}(\phi)) = m\hbar f(\phi) \to f(\phi) \propto e^{im\phi}$
+    * Because $\phi$ is a position angle, $e^{im(\phi + 2\pi)} = e^{im\phi}$ therefore m must be an integer
+    * $\vec{L}^2Y_{lm} = \hbar^2_{}l(l+1)Y_{lm_{}}$ and $L_zY_{lm_{}} = \hbar mY_{lm_{}}$ for $-l \leq m \leq l$
+
+## Lecture 17
+
+Consider $[J_n,\vec{J}^2] = 0$. $J_n$ transforms any eigenvector of $\vec{J}^2$ into an eigenvector of $\vec{J}^2$ belonging to the same value of $j$, i.e. $J^2$ is invariant under $J_n$.   
+Simlarly consider a rotatoin about an axis $\hat{n}$ by an angle $\theta i$:   
+* $|jm\rangle \to \hat{R}_n(\theta_{})|jm\rangle$
+* For an infinitesimal transformation - $\hat{R}_n(\epsilon_{}) = \hat{I} - i\epsilon\frac{\hat{J}_n}{\hbar_{}}$
+* For a finite rotation - $\hat{R}_n(\theta_{}) = \exp[-i\theta\hat{J}_{n_{}}/\hbar]$
+* Under a rotation, an eigenstate $|jm\rangle$ transforms into a superposition of $|j'm'\rangle$ with $j=j'$
+    * $\langle j'm'|J_n|jm\rangle = 0$ when $j \neq j'$
+
+What is the matrix representation of an angular momentum operator?   
+The $\{|jm\rangle\}$ vectors form an orthonormal basis.
+For a given value of j, $J_n$ is represented by a $(2j+1)\times(2j+1)$ matrix, since for a given j, m can take $2j + 1$ different values and $J_n$ does not couple states of different values of j.
+
+E.g.: For $j = \frac{1}{2}$, all the angular momentum operators are represented by a $2\times 2$ matrix.
+Usually, the basis is chosen to be $\left\{|-\frac{1}{2},\frac{1}{2}\rangle,|\frac{1}{2},-\frac{1}{2}\rangle\right\}$ which can be represented by $|+\rangle,|-\rangle$   
+* $J_z|+\rangle = \frac{\hbar}{2}|+\rangle$ where $m = +\frac{1}{2}$ and its state is spin up
+* $J_z|-\rangle = -\frac{\hbar}{2}|-\rangle$ where $m = -\frac{1}{2}$ and its state is spin down
+
+In this basis, $J_z$ is represented by the matrix:
+
+$$
+    \frac{\hbar}{2}\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+$$
+
+Similarly,
+
+$$
+    J_x \to \frac{\hbar}{2}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix};~ J_y \to \frac{\hbar}{2}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+$$
+
+These can be represented using the Pauli Matrices, i.e. $\sigma_x,\sigma_y,\sigma_z$, so $J_i = \frac{\hbar}{2}\sigma_i$
+
+$|+\rangle$ is represented by
+
+$$
+    \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+$$
+
+and $|-\rangle$ is represented by
+
+$$
+    \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+$$
+
+so an arbitrary spin state can be expressed as
+
+$$
+    \alpha|+\rangle + \beta|-\rangle = \begin{pmatrix} \alpha \\ \beta \end{pmatrix}
+$$
+
+### 2 Electron System
+
+Consider 2 electrons $|+\rangle_1$ and $|-\rangle_2$.
+The system is expressed as $\alpha|+\rangle_1|+\rangle + \beta|+\rangle_1|-\rangle_2 + \gamma|-\rangle_1|+\rangle_2 + \delta|-\rangle_1|-\rangle_2 = |\psi\rangle_{12_{}}$, where $\alpha,\beta,\gamma,\delta$ are complex numbers.
+More generally, the joint angular momentum state of two particles 1 and is:
+
+$$
+    \begin{aligned}
+    |\psi\rangle_{12} &= \sum_{j_1,m_1,j_2,m_2} c_{j_1m_1j_2m_2}|j_1m_1\rangle_1|j_2m_2\rangle_2 \\
+    \vec{J}_1 &= (J_{1x},J_{1y},J_{1z}) \text{ acts only on } |j_1m_1\rangle_1 \\
+    \vec{J}_2 &= (J_{2x},J_{2y},J_{2z}) \text{ acts only on } |j_2m_2\rangle_2
+    \end{aligned}
+$$

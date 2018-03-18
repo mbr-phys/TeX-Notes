@@ -758,3 +758,237 @@ $$
 
 * specific heat capacity is modified from classical value by bracketed factor
 * electronic specific heat capacity is proportional to temperature
+
+## Lecture 11
+
+### magnetic properties of free electrons
+
+* Free electron model can predict magnetic properties
+* how does metal respond when placed in magnetic field?
+
+#### magnetic susceptibility of metals
+
+* metals develop an induced magnetic moment in magnetic fields
+* interactions between B-feild and electron spin
+* it is known all materials show a weak paramagnetism which is independent of temperature
+    * this is parallel to apllied field
+* use free electron model to demonstrate this observed effect 
+* electrons have a magnetic moment due to spin:
+
+$$
+    \mu_B = \frac{e\hbar}{2m_e} = 9.27\times10^{-24}\,J\,T^{-1}
+$$
+
+* energy of electron will change in field by $\pm \mu_B$ depending on spin
+* assume equal numbers of $\pm$ spin for electons 
+    * parallel
+    * anti-parallel
+* when B field applied:
+    * half of electrons increase energy by:
+
+    $$
+        + \frac{e\hbar}{2m_e}B \text{ - antiparallel}
+    $$
+
+    * half of electrons reduce energy by:
+
+    $$
+        - \frac{e\hbar}{2m_e}B \text{ - parallel}
+    $$
+
+* total energy of system can be reduced if some electrons reverse spins
+* a proportion of electrons with antiparallel spins can reverse spins to reduce overall energy
+* how many electrons reverse spin?
+    * need to have the same Fermi energy for spin up and spin down electrons
+* density of states function evaluated at $E_F$ multiplied by change in energy gives number of electrons
+* number of electrons within $\mu_BB$ of the original Fermi energy: $ne = \frac{1}{2}n(E_F)\mu_BB$
+* difference in population: $n(E_F)\mu_BB$ - number of electrons with spin up increased by this amount
+* net magnetic moment: $n(E_F)\mu_B^2B$ - produces net magnetic moment per unit volume
+
+$$
+    M = \frac{\mu_B^2Bn(E_F)}{V}
+$$
+
+* paramagnetic susceptibility, a measure of how easy it is to magnetise system:
+
+$$
+    \begin{aligned}
+    \chi &= \frac{\partial M}{\partial H}, H = \frac{M}{\mu_0}
+    \chi &= \mu_0\mu_B^2\frac{n(E_F)}{V}
+    \end{aligned}
+$$
+
+* this is called the Pauli Paramagnetism - it is independent of temperature
+* at finite temperatures, temperature dependence of Fermi distribution will lead to a small temperature dependence
+
+### hall effect
+
+* observed in 1879
+* consider current density, $j$, flowing along bar in $x$ direction:
+* apply perpendicular magnetic field, $B$
+* electrons experience Lorentz force - $F = e(v\times B + E)$
+* electrons are pushed to one side of metal bar by this force
+* electric field will compensate for motion due to Lorentz force - $eE_y = -F \implies E_y = -v\times B$
+* current density, $j = nev$
+
+$$
+    E_y = -\frac{1}{ne}j\times B, \frac{1}{ne} = R_H
+$$
+
+* $R_H$ is the Hall coefficient
+* the sign of the Hall coefficient shows the charge on the carriers
+    * some metals, however, have positive Hall coefficient
+
+## Lecture 12
+
+### nearly free electron model
+
+* free electron model - ignored some interactions:
+    1. electron-atoms - free electron approximation
+    2. electron-electron - independent electron approximation
+* nearly free electron model includes electron-atom interactions
+* failures of free electron model:
+    * temperature dependence of conductivity
+    * some metals have a positive Hall coefficient
+* interaction between electrons and crystal lattices?
+    * lattice $\underline{R} = n_1\underline{a}_1 + n_2\underline{a}_2 + n_3\underline{a}_3$, where $\underline{a}_1,\underline{a}_2,\underline{a}_3$ are lattice vectors
+
+### bloch theorem
+
+* this is a consequence of periodic properties of crystals 
+    * provides insights into behaviour of electrons in periodic potnetial Bloch states
+    * describes electrons moving in periodic potential
+* consider a 10 crystal (line of atoms). $\psi(x)$ is solution satisfying time-independent Schrodinger equation
+    * Schrodinger equation has periodic potential $V(x)$ representing atoms
+    * energy eigenvalues, $\sigma$
+* schrodinger equation evaluated at $(x+R)$ must give same solution as as $(x)$
+    * local electronic environment at $x$ and $x+R$ are identical
+    * have second solution $\phi(x)$ which also satisfies the Schrodinger equation with energy $E$
+    * Assume $\psi$ and $\phi$ are unique solutions, can write $\phi(x) = \psi(x+R)$
+    * $R$ is lattice vector $=na$
+    * $\psi(x+R) = c(R)\psi(x)$ where $c(R)$ is a constant equal to $1$
+* using series of lattice translations, $c(R_1+R_2) = c(R_1)c(R_2)$
+    * therefore $c(nR) = [c(R)]^n,~ n \in \mathbb{N}$
+* wavefunction must satisfy boundary conditions (periodic over M lattice translation where $Ma = l$, the length of 10 crystals)
+* bloch theorem brings together two requirements to satisfy both periodic bonding conditions and lattice translation by $n_1a_1$ where $n_1$ is an integer
+* from this we have $\psi(x+Ma) = \psi(x) \implies [c(a)]^M = 1$
+    * a functions that satisfies replacement for $c(a) = \exp[ika]$, where $ka = \frac{2\pi l}{M}$ ($l \in \mathbb{Z}$)
+* for any lattice translation, $\underline{R} = m\underline{a}$ ($m \in \mathbb{Z},\underline{a}$ is lattice constant)
+    * $c(R) = [c(a)]^M \equiv \exp[iMka] = \exp[ikR], R = \frac{2\pi l}{L}$ - $l \in \mathbb{Z}$, $L$ is the total dimensino of sample
+* these statments set oit bloch's theorem - they explain the difference between free electron and nearly free electron models
+* free electron model $\psi(x) = C\exp[ikx]$ - plane wave with constant energy $E$, $k$ is the electron wavevector
+* nearly free electron model $\psi(x+R) = C\exp[ik(x+R)] = C\exp[ikR]\psi(x) = Cu_k(R)\psi(x),~ u_k(R)$ is the bloch function
+* the bloch theorem tellls us that nearly free electron wavefunctions (weak periodic potential) are composed of two parts:
+    1. plane wave free electron behaviour, $C\exp[ikx]$
+    2. modulated in intensity by bloch function, $u_k(R)$, has periodicity of lattice
+    * fundamental nature of $\psi$ is still free electron behaviour, but with a modification
+
+#### consequences of bloch theorem
+
+* adding multiples of $\frac{2\pi}{a}$ to bloch wavevectors does not alter solution $\psi$
+    * only $k$ values in $\frac{2\pi}{a}$ range are physically distinct
+    * all other values can be mapped into unique range 
+* convention is to define this as $-\frac{\pi}{a} \to \frac{\pi}{a}$
+    * this corresponds to the first brillouin zone
+
+#### energy band diagrams
+
+* shows electron behaviour in terms of energy and wavevector - free electron model $E = \frac{\hbar^2k^2}{2m_e}$
+* branches of $E(k)$ curve are moved into first brillouin zone
+
+## Lecture 13
+
+### nearly free electron energy bands
+
+* physical origin of energy gaps and energy bands:
+    1. bragg reflection - electronw aves can scatter from planes of atoms. Weak periodic potentiation Schrodinger equation. Gives corresponding values for energy gaps at $k = \frac{n\pi}{a}$
+    2. interference at certain wavelengths, get interference between electron waves and atoms
+
+#### energy bands
+
+* describe relationship between eenrgy and wavevector
+* electrons of different '$k$' propagate at different velocities - dispersion
+* travelling wave group velocity:
+
+$$
+    v_g = \frac{d\omega}{dk}
+$$
+
+* For electron:
+
+    $$
+    v_g = \frac{1}{\hbar}\frac{dE(k)}{dk}
+    $$
+
+* velocity of Block electrons (know $E = \frac{\hbar^2k^2}{2m_e}$). This gives:
+
+$$
+    v_g = \frac{1}{\hbar}\frac{d}{dk}\left(\frac{\hbar^2k^2}{2m_e}\right) = \frac{\hbar k}{m_e} = \frac{p}{m} = vk
+$$
+
+_$\hbar k$ is the crystal momentum_
+
+* crystal momentum is the momentum an electron has as a result of interacting with periodic potential   
+  exhibits different physical parameters
+
+#### current carried by energy bands
+
+* we know that the current density is $j = ne\langle v\rangle$, where $n \equiv$ electron density, $\langle v\rangle \equiv$ average velocity
+
+$$
+    \langle v\rangle = \frac{1}{\hbar}\int_{k=-\frac{\pi}{a}}^{k=\frac{\pi}{a}} \frac{dE}{dk}dk\,\frac{a}{2\pi}
+$$
+
+* consider $k = \frac{\pi}{a}$ nd $k = -\frac{\pi}{a}$  
+  these are physically equivalent states (from Block theorem)  
+    * tells us that $E\left(\frac{\pi}{a}\right) = 0 = E\left(-\frac{\pi}{a}\right)$
+
+$$
+    \langle v\rangle = \frac{a}{2\pi\hbar}\left[E\left(\frac{\pi}{a}\right) - E\left(-\frac{\pi}{a}\right)\right] = 0
+$$
+
+* above implies average velocity of fulled energy band is zero, as is current density
+* completely filled energy band carries no electrical current (insulators)
+* current carried by partially filled bands (metals or semiconductors)
+
+### equation of motoin for block electrons
+
+* consider force $F$ applied to electron - $Fv_g =$ rate of work being done
+
+$$
+    \begin{aligned}
+    Fv_g &= \frac{dE}{dt} = \frac{dE}{dk}  \times \frac{dk}{dt} \\
+    v_g &= \frac{1}{\hbar}\frac{dE}{dk} \\
+    \implies F &= \hbar\frac{dk}{dt}
+    \end{aligned}
+$$
+
+* can predict how electron will respond in electric field
+
+### effective mass
+
+* electrons in bloch states move as though the mass of electron is different form free electron masses
+* consider $E(k)$ relationship near band edge at $k = k_0$ where $\frac{dE}{dk} = 0$ (i.e. zero group velocity)
+* general form given by $E = E(k_0) + \frac{1}{2}A(k - k_0)^2$  
+  group velocity: $v_g(k) = \frac{A(k-k_0)}{\hbar}$ - compare with free electrons, where we have $v_{free} = \frac{p}{m_e} = \frac{\hbar k}{m_e}$
+* electrons behave as though they have an effective mass of $m_{eff} = \frac{\hbar^2}{A_{}}$
+* from taylor's theorem, we can show that $A = \frac{d^2E}{dk^2}\Big|_{k=k_0}$
+
+$$
+    m_{eff} = \hbar^2\left[\frac{d^E}{dk^2}\right]^{-1}_{k=k_0}
+$$
+
+* second derivative is curvature - when $E \propto k^2$ then $m_{eff_{}}$ is constant  
+  some regions of $m_{eff_{}}$ are positive, some regions are negative  
+  negative mass $\implies$ electrons slow down in electric field, force is in opposite direction
+
+### electrons and holes
+
+* an energy band which is nearly filled has some vacant energy states near top of energy band   
+  consider vacant states of holes - charge of $+e$   
+  equivalent to negative effective mass   
+  hole wavevector $k_h = -k_e$, energy $E(k_h) = - E(k_e), v_h = v_e$
+
+1. if energy band is full there is no current
+2. if energy band is partially full then electrons with $m_{eff_{}} describe electrical response
+3. if energy band is almsot completely filled, then holes with negative $m_{eff_{}}$, positive charge
