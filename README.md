@@ -6,6 +6,4 @@
 
 	- images needed for docs located in folders beside them
 
-	- more to come for second year and beyond
-
-	- second year mainly coming in markdown format, using [markdown-preview-enhanced](https://atom.io/packages/markdown-preview-enhanced) for LaTeX maths 
+	- second year using markdown format as well, using [markdown-preview-enhanced](https://atom.io/packages/markdown-preview-enhanced) for LaTeX maths viewing in atom and [pandoc](https://pandoc.org) for conversion to pdf

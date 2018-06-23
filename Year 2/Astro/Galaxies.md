@@ -63,3 +63,15 @@ $$
 * A halo around a galaxy has a very small density of stars
     * this is often too faint to see
 
+## Revision Lecture
+
+### Important Points
+
+- Dark matter:
+    - evidence of dark matter in each of the following
+    - Milky Way, other galaxies, clusters of galaxies
+- Galaxy properties:
+    - spiral
+    - elliptical
+    - irregular
+    - stars and gas and other constituents

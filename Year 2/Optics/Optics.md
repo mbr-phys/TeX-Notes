@@ -646,3 +646,7 @@ The average width of a circular aperture is less than that of a square, which pu
 $$
     \frac{\lambda}{a}z \text{ vs } 1.22\frac{\lambda}{a}z
 $$
+
+## Revision Lecture
+
+- Fresnel zones and polarization in exam but small part

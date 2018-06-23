@@ -975,7 +975,7 @@ $$
 * from taylor's theorem, we can show that $A = \frac{d^2E}{dk^2}\Big|_{k=k_0}$
 
 $$
-    m_{eff} = \hbar^2\left[\frac{d^E}{dk^2}\right]^{-1}_{k=k_0}
+    m_{eff} = \hbar^2\left[\frac{d^2E}{dk^2}\right]^{-1}_{k=k_0}
 $$
 
 * second derivative is curvature - when $E \propto k^2$ then $m_{eff_{}}$ is constant  
