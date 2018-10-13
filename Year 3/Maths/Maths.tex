@@ -1,0 +1,258 @@
+\documentclass[a4paper, 11pt, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+\usepackage{subfiles}
+
+\titlecontents{chapter}% <section-type>
+    [0pt]% <left>
+    {}% <above-code>
+    {Lecture \thecontentslabel\quad}% <numbered-entry-format>
+    {}% <numberless-entry-format>
+    {\dotfill\contentspage}% <filler-page-format>
+\titleformat{\chapter}{\fontsize{15}{17}\bfseries\normalfont}{\textbf{Lecture \thechapter}}{1em}{}
+\titleformat{\subsubsection}{\fontsize{10}{13}\bfseries\scshape}{\textbf{\thesubsubsection}}{1em}{}
+\setcounter{tocdepth}{4}
+% \setcounter{secnumdepth}{1}
+
+\renewcommand{\arraystretch}{1.2}
+
+\newcommand\R{\mathbb{R}}
+\newcommand\N{\mathbb{N}}
+\newcommand\C{\mathbb{C}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\Rl{\mathsf{Re}}
+\newcommand\Iy{\mathsf{Im}}
+\newcommand\p{\partial}
+\newcommand\ifnt{\int_{-\infty}^{\infty}}
+\newcommand\ofnt{\int_{0}^{\infty}}
+\newcommand\ifsum{\sum_{-\infty}^{\infty}}
+\newcommand\F{\mathcal{F}}
+\newcommand\La{\mathcal{L}}
+\newcommand\K{\mathcal{K}}
+\newcommand\om{\omega}
+\newcommand\veca{\vec{a}(\vec{r})}
+\newcommand\veru{\vec{r}(u)}
+\newcommand\vr{\vec{r}}
+\newcommand\vs{\vec{S}}
+\newcommand\va{\vec{a}}
+\newcommand\hn{\hat{n}}
+\newcommand\hr{\hat{r}}
+\newcommand\he{\hat{e}}
+\newcommand\dy{\frac{dy}{dx}}
+\newcommand\df{\frac{df}{dx}}
+\newcommand\dyy{\frac{d^2 y}{dx^2}}
+\newcommand\dff{\frac{d^2 f}{dx^2}}
+\newcommand\dz{\frac{df}{dz}}
+\newcommand\lam{\lambda}
+\newcommand\e{\epsilon}
+\newcommand\del{\nabla}
+\newcommand\grad{\vec{\nabla}}
+
+\title{Mathematics Workshop \vspace{-20pt}}
+\author{Professor Ruth Gregory}
+\date{\vspace{-15pt}Michaelmas Term 2018 - Epiphany Term 2019}
+\rhead{\hyperlink{page.1}{Contents}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{Complex Analysis}
+\chapter{The Complex Plane}
+\section{Basics}
+Course will use Riley, Hobson and Bence Chapters 3, 24, 25
+
+Recall $i = \sqrt{-1}$ allows us to extend our notion of numbers as we go from a $\R$eal to the $\C$omplex plane.
+\begin{equation}
+    \C = \{z = x + iy\;|\;x,y \in \R\}
+\end{equation}
+We represent the complex plane with an argand diagram.
+\begin{align}
+    x &= \Rl(z) = \frac{z + \bar{z}}{2} \\
+    y &= \Iy(z) = \frac{z - \bar{z}}{2} \\
+    r &= \mathrm{mod}(z) = \sqrt{x^2 + y^2} \\
+    \theta &= \mathrm{Arg}(z) = \arctan\left(\frac{y}{x}\right)
+\end{align}
+Notice that $e^{i\theta} = e^{i\theta + 2i\pi}$, so $\theta$ is not uniquely defined, so choose a range for $\theta$, e.g. $\theta \in [0, 2\pi), \theta \in (-\pi,\pi]$.
+
+\section{Complex Functions}
+\begin{itemize}
+    \item $\C \to \C$
+    \item $z \to f(z) = u(x,y) + iv(x,y)$
+    \item Like two functions of real variables, e.g. $f(z) = z^2 = (x + iy)^2 = (x^2 - y^2) + 2ixy$
+    \begin{itemize}
+        \item $u(x,y) = x^2 - y^2$
+        \item $v(x,y) = 2xy$
+    \end{itemize}
+\item Exponential: $e^z, \mathrm{exp}(z) = \sum_{n=0}^{\infty} \frac{z^n}{n!}$
+\end{itemize}
+
+\section{Branch Cuts}
+For real numbers, $1^2 = (-1)^2 = 1$, you have two roots; but functions should be single valued. \\
+$\sqrt{}$ is fine on the Real line - choose a root and stick to it, but for the Complex plane, say $\sqrt{1} = 1$, the disc around $z = 1$ means a loss of continuity. 
+\begin{align}
+    z &= re^{i\theta} \\
+    \sqrt{z} &= \sqrt{r}e^{i\theta/2}, \theta \in (0, 2\pi)
+\end{align}
+We can choose this branch, but must cut the complex plane along the reals so that $\theta$ can't run higher than $2\pi$, or could choose
+\begin{equation}
+    \sqrt{z} = \sqrt{r}e^{i\theta/2 +i\pi} 
+\end{equation}
+but still need the same cut, so no ambiguity in definition of the function's square root. 
+Here, the function's square root is double valued.
+\begin{equation}
+    \log(re^{i\theta}) = \log(r) + i\theta
+\end{equation}
+$\theta$ is not unique, $\theta + 2n\pi$ is also a legitimate answer. 
+Again, cut the plane somewhere, decide on the branch of the log. 
+Can cut on the positive reals or negatives. 
+Branch choices appear around zeroes because polar coordinates are singular there: $\theta$ is not specified at $r = 0$.
+We say $z=0$ is a branch point, indicated with a wavy line. 
+Branch cuts from branch point either to infinity or another branch point. 
+
+\begin{example}
+\begin{equation}
+    f(z) = \sqrt{z^4 + 1}
+\end{equation}
+Think of this through two steps: $z \to z^4 + 1 \to \sqrt{z^4 + 1}$. 
+There is a branch cut around $z^4 + 1 = 0$. 
+There are four branch points:
+\begin{align}
+    z^4 &= -1 \\
+    z &= e^{i\pi/4}...
+\end{align}
+Around a branch point:
+\begin{align}
+    z &= e^{i\pi/4} + \epsilon e^{i\theta + 3i\pi/4} \\
+    z^4 &= -1 + 4\epsilon e^{i\theta +3i\pi/4} \\
+    \sqrt{z^4 + 1} &= 2\sqrt{\epsilon}e^{i\theta/2 + 3i\pi/8}
+\end{align}
+This gives rise to the same problem as circling the origin for $\sqrt{z}$.
+This example has other choices for branch cuts, some may be able to limit ambiguities to limits. 
+\end{example}
+
+\section{Trig and Hyperbolic Functions}
+Trig functions can be generalised to include complex numbers, and can be expressed as exponentials in the usual way, similarly with hyperbolics. 
+$\sinh$ and $\cosh$ have periodicity of $2\pi i$.
+\begin{align}
+    \cos(z) &= \cosh(iz) \\
+    \sin(z) &= i\sinh(iz)
+\end{align}
+
+\chapter{Complex Differentiation and Cauchy-Riemann}
+\section{Continuity}
+Definition:
+\begin{equation}
+    \lim_{z\to z_0} f(z) = w \in \C \iff \forall \e > 0 \;\exists \;\delta > 0 \; s.t.\; |z-z_0| < \delta \implies |f(z) - w| < \e
+\end{equation}
+\emph{If you are close to a point $z_0$, then f(z) is close to $f(z_0)$.}
+f is continuous at $z_0 \iff \lim_{z\to z_0} f(z) = f(z_0)$.
+
+Note that the limit must be path independent, and the real and imaginary parts must be continuous. 
+
+\section{Differentation}
+Recall
+\begin{equation}
+    \df = \lim_{h\to 0} \frac{f(x+h) - f(x)}{h}
+\end{equation}
+For $\C$ having two $\R$ dimensions, we have $\grad, \grad\cdot, \grad\times$. 
+\begin{itemize}
+    \item[X] Grad - acts on scalars ($\R$)
+    \item[X] Div - acts on vectors ($\C$), gives scalar
+    \item[X] Curl - in 3D
+\end{itemize}
+Try 
+\begin{equation}
+    \frac{df}{dz} = \lim_{\delta\to 0} \frac{f(z+\delta) - f(z)}{\delta}, \delta, z \in \C
+\end{equation}
+Require limit independent of direction.
+
+\begin{example}
+$f(z) = z^2$:
+\begin{align}
+    & \lim_{\delta\to 0} \frac{(z+\delta)^2 - z^2}{\delta} \\
+    \implies & \lim_{\delta\to 0} \frac{\cancel{z^2} + 2z\cancel{\delta} + \delta^{\cancel{2}} - \cancel{z^2}}{\cancel{\delta}} = 2z
+\end{align}
+What about $f(z) = \bar{z}$?
+\begin{equation}
+    \frac{\bar{z} + \bar{\delta} - \bar{z}}{\delta} = \frac{\bar{\delta}}{\delta} = \exp{(-2i\mathrm{Arg}(\delta))}
+\end{equation}
+Not path independent, so no limit. 
+\end{example}
+
+$\frac{df}{dz}$ is the complex derivative of f at z, and f is differentiable at z if this limit exists. 
+
+\section{Analytic Functions}
+An analytic function is a complex function that is differentiable, at least in some region. 
+
+Definition: A neighbourhood of $z \in \C$ is an open set U such that $z \in U$.
+
+Definition: $f: \C \to \C$ is analytic/holomorphic at $z_0 \in \C$ if $\exists$ a neighbourhood U of $z_0$ on which f is differentiable $\forall \; z \in U$.
+
+\begin{example}
+    \begin{align}
+        |z|^2 &= z\bar{z} \\
+        \lim_{\delta\to 0} \frac{(z+\delta)(\bar{z} + \bar{\delta}) - z\bar{z}}{\delta} &= \bar{z} + \frac{\bar{\delta}}{\delta}z
+    \end{align}
+If $z \neq 0$, no limit, but $z = 0$ has limit, 0, $\implies$ differentiable at $z = 0$, \underline{but not analytic.}
+\end{example}
+$z^n$ is differentiable everywhere, so analytic on all $\C$.
+
+\section{Cauchy-Riemann Equations}
+We have
+\begin{align}
+    f(z) &= f(x + iy) \\
+         &= u(x,y) + iv(x,y)
+\end{align}
+Derivation:
+\begin{align}
+    \frac{f(z_0 + \delta) - f(z_0)}{\underbrace{\delta}_{z - z_0}} &= \frac{u(x_0 + \delta x, y_0 + \delta y) - u(x_0,y_0)}{\delta x + i\delta y} + i\frac{v(x_0 + \delta x, y_0 + \delta y) - v(x_0,y_0)}{\delta x + i\delta y} \\
+                                                                   &= \frac{u(x_0,y_0) + \delta x \frac{\p u}{\p x}|_0 + \delta y \frac{\p u}{\p y}|_0 - u_0}{\delta x + i\delta y} + i\frac{v_0 + \delta x \frac{\p v}{\p x}|_0 + \delta y\frac{\p v}{\p y} - v_0}{\delta x + i\delta y} \\
+                                                                   &= \frac{\left(\frac{\p u}{\p x} + i\frac{\p v}{\p x}\right)\delta x + i\left(\frac{\p v}{\p y} - i\frac{\p u}{\p y}\right)\delta y}{\delta x + i\delta y}
+\end{align}
+For complex differentiation, limit must be independed of $\delta x + i\delta y$, so the numerator must factorise as $() \times (\delta x + i\delta y)$.
+\begin{equation}
+    \implies \frac{\p u}{\p x} + i\frac{\p v}{\p x} = \frac{\p v}{\p y} - i\frac{\p u}{\p y}
+\end{equation}
+This gives the C-R relations:
+\begin{align}
+    \frac{\p u}{\p x} &= \frac{\p v}{\p y} \\
+    \frac{\p v}{\p x} &= -\frac{\p u}{\p y} 
+\end{align}
+Check with $z^2 = (x^2 - y^2) + 2ixy$:
+\begin{align}
+    \frac{\p u}{\p x} &= 2x & \frac{\p v}{\p y} &= 2x \\
+    \frac{\p u}{\p y} &= -2y & \frac{\p v}{\p x} &= 2y 
+\end{align}
+Note:
+\begin{equation}
+    \frac{\p u}{\p x} = \frac{\p v}{\p y} \implies \frac{\p^2 u}{\p x^2} = \frac{\p^2 v}{\p x \p y} = -\frac{\p^2 u}{\p y^2}
+\end{equation}
+Or 
+\begin{equation}
+    \frac{\p^2 u}{\p x^2} + \frac{\p^2 u}{\p y^2} = \del^2 u = 0
+\end{equation}
+Suppose we regard z and $\bar{z}$ as independed variables. 
+\begin{equation}
+    x = \frac{z + \bar{z}}{2},~ y = \frac{z - \bar{z}}{2i} 
+\end{equation}
+\begin{align}
+    \frac{\p}{\p \bar{z}} &= \frac{\p x}{\p \bar{z}}\frac{\p}{\p \p x} + \frac{\p y}{\p \bar{z}}\frac{\p}{\p y} = \frac{1}{2}\left(\frac{\p}{\p x} + i\frac{\p}{\p y}\right) \\
+    \frac{\p}{\p z} &= \frac{\p x}{\p z}\frac{\p}{\p x} + \frac{\p y}{\p z}\frac{\p}{\p y} = \frac{1}{2}\left(\frac{\p}{\p x} - i\frac{\p}{\p y}\right) \\
+    \frac{\p f}{\p \bar{z}} &= \frac{1}{2}\left(\frac{\p u}{\p x} + i\frac{\p v}{\p x} + i\frac{\p u}{\p y} - \frac{\p v}{\p y}\right) \\
+                    &= \frac{1}{2}\left(\left(\frac{\p u}{\p x} - \frac{\p v}{\p y}\right) + i\left(\frac{\p v}{\p x} + \frac{\p u}{\p y}\right) \right) \\
+                    &= 0 \iff \text{CR satisfied}
+\end{align}
+Can express analytically/differentiable as $\frac{df}{d\bar{z}} = 0$.
+
+
+
+
+
+
+
+
+
+
+\end{document}

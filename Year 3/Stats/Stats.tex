@@ -1,0 +1,222 @@
+\documentclass[a4paper, 11pt, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+\usepackage{subfiles}
+
+\titlecontents{chapter}% <section-type>
+    [0pt]% <left>
+    {}% <above-code>
+    {Lecture \thecontentslabel\quad}% <numbered-entry-format>
+    {}% <numberless-entry-format>
+    {\dotfill\contentspage}% <filler-page-format>
+\titleformat{\chapter}{\fontsize{15}{17}\bfseries\normalfont}{\textbf{Lecture \thechapter}}{1em}{}
+\titleformat{\subsubsection}{\fontsize{10}{13}\bfseries\scshape}{\textbf{\thesubsubsection}}{1em}{}
+\setcounter{tocdepth}{4}
+% \setcounter{secnumdepth}{1}
+
+\renewcommand{\arraystretch}{1.2}
+
+\newcommand\R{\mathbb{R}}
+\newcommand\N{\mathbb{N}}
+\newcommand\C{\mathbb{C}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\p{\partial}
+\newcommand\ifnt{\int_{-\infty}^{\infty}}
+\newcommand\ofnt{\int_{0}^{\infty}}
+\newcommand\ifsum{\sum_{-\infty}^{\infty}}
+\newcommand\F{\mathcal{F}}
+\newcommand\La{\mathcal{L}}
+\newcommand\K{\mathcal{K}}
+\newcommand\om{\omega}
+\newcommand\veca{\vec{a}(\vec{r})}
+\newcommand\veru{\vec{r}(u)}
+\newcommand\vr{\vec{r}}
+\newcommand\vs{\vec{S}}
+\newcommand\va{\vec{a}}
+\newcommand\hn{\hat{n}}
+\newcommand\hr{\hat{r}}
+\newcommand\he{\hat{e}}
+\newcommand\dy{\frac{dy}{dx}}
+\newcommand\dyy{\frac{d^2 y}{dx^2}}
+\newcommand\lam{\lambda}
+\newcommand\e{\epsilon}
+\newcommand\grint{\int_{z-\e}^{z+\e}}
+\newcommand\del{\nabla}
+
+\title{Statistical Physics \vspace{-20pt}}
+\author{Dr Stewart Clark}
+\date{\vspace{-15pt}Michaelmas Term 2018}
+\rhead{\hyperlink{page.1}{Contents}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{}
+\section{Introduction}
+We use probability theory with large numbers to gain insight into real systems.
+With N large, we get "information overload" when looking at each particle.
+Interference effects from Quantum Mechanics canle out for large N, e.g.
+\begin{align}
+    |\alpha\psi_1 + \beta\psi_2|^2 &= |\alpha\psi_1|^2 + |\beta\psi_2|^2 + \underbrace{\alpha\psi_1\beta\psi_2 + \beta\psi_2\alpha\psi_1}_{\to 0 \text{ for large N}}
+\end{align}
+
+\section{Probability}
+A summary:
+\begin{itemize}
+    \item P(A or B) = P(A) + P(B) for independent events A and B    
+    \item P(A and B) = P(A)P(B)
+    \item Counting events: the number of ways of splitting N objects into 2 piles of size r and (N-r) is
+        \begin{equation}
+            \begin{pmatrix} N \\ r \end{pmatrix} = \frac{N!}{r!(N-r)!}
+        \end{equation}
+\end{itemize}
+
+\section{Probability}
+Let's have a system containing three objects which can have spin up or down. 
+Will create a distribution of 1/8, 3/8, 3/8, 1/8, of likelihood of being in a state of All Up, 2 Up One Down, 2 Down One Up, All Down. 
+
+\section{Distributions}
+\subsection{Discrete}
+\begin{itemize}
+    \item A variable x can take a number of specific discrete values, $\{x_1, x_2, \dots, x_n\}$, and let the probability of each be $p_i$.
+    \item Normalisation gives $\sum_i p_i = 1$.
+    \item Mean, $\langle x\rangle = \bar{x} = \sum_i p_ix_i$.
+    \item Variance, $\sigma^2 = \bar{x^2} - \bar{x}^2 = \sum_i p_ix_i^2 - \left(\sum_i p_ix_i\right)^2$
+    \item Standard deviation, $\sigma$
+\end{itemize}
+
+\subsection{Binomial distribution}
+This applies when a system has two likely outcomes of probability - p and (1-p).
+If we have N trials, then the probability of event p occurring k times ((1-p) occurring (N-k) times) is
+\begin{equation}
+    P_N(k) = \frac{N!}{k!(N-k)!}p^k(1-p)^{N-k}.
+\end{equation}
+The normalisation is
+\begin{equation}
+    \sum_{k=0}^{N} P_N(k) = 1
+\end{equation}
+and the variance is
+\begin{equation}
+    \sigma^2 = Np(1-p)
+\end{equation}
+
+\subsection{Continuous distribution}
+When a variable x takes on any value, $-\infty\leq x <\infty$ (or any range within), then the probability that x equals some value $x_0$ does not make sense. 
+Instead probability is found in a range, $a\leq x\leq b$, so the continuous distribution is $f(x)$, then,
+\begin{equation}
+    P(a\leq x\leq b) = \int_{a}^{b} f(x)\,dx
+\end{equation}
+and the normalisation, 
+\begin{equation}
+    \int_{-\infty}^{\infty} f(x)\,dx = 1.
+\end{equation}
+
+A common continuous distribution is the Normal (Gaussian) distribution which is
+\begin{equation}
+    f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/2\sigma^2}
+\end{equation}
+\begin{itemize}
+    \item $\sigma$ essentially changes the width of the distribution
+    \item $\mu$ shifts the centre of the distribution to $x=\mu$
+\end{itemize}
+
+\section{Probabilities}
+If we perform an experiment N times and event i occurs $n_i$ times, then the frequency of occurrence is $F(n_i, N) = \frac{n_i}{N}$.
+Now if we take N copies of the experiment, and perform it once on each experiment, does is yield the same result?
+If the experiment is probabilistic, i.e. every experiment, then no. 
+TO make sense of this, we introduce probability as
+\begin{equation}
+    P_{n_i} = \lim_{N\to\infty} F(n_i, N)
+\end{equation}
+When we do this, the above two statements mean the same thing and it is known as the ergodic hypothesis.
+
+\chapter{}
+Thermodynamics is very powerful and provides information on bulk systems - it provides minimal information. 
+Microscopic predictions give information about every particle in the system (subject to level of theory, e.g. classical or qm); this leads to information overload. 
+
+\section{Important Definitions}
+\begin{itemize}
+    \item Macrostate/ensembles: specification of the state of a system based on macroscopic properties, e.g. N - particle number, V - volume, U - energy, T - temperature, p - pressure, M - magnetisation, B - magnetic field, etc.
+        \begin{itemize}
+            \item Constant particle number, energy, volume (N,U,V ensemble); this is the microcanonical ensemble.
+            \item Constant particle number, temperature, volume (N,T,V ensemble); this is the canonical ensemble.
+            \item Constant chemical potential, temperature, volume ($\mu$,T,V ensemble); this is the grand canonical ensemble.
+        \end{itemize}
+    \item Microstate: complete specification of the state of the system, consistent with theory, i.e. what every particle is doing.
+\end{itemize}
+A macrostate has a very large number of microstates, $\approx N!$.
+We must assign likelihoods (probabilities) of any particle being in any state. 
+In the microcanonical ensemble, we can assign probabilities - as energy is not changing, then the probabilities must be equal. 
+
+We need to figure out how to count the microstates - we define distributions. 
+
+\begin{example}
+Let's take 4 particles, called A,B,C,D. 
+Now distribute them amongst some energy levels, $\e_n = 0, \e, 2\e, \dots, n\e$.
+If we looks at the microcanonical ensemble (N,U,V) $\to (4,4\e,V)$.
+
+Distribution $D_1$: 3 particles in $\e_0$, 1 particle in $\e_4$ - four configurations of this.
+\begin{equation}
+    \Omega(D_1) = \frac{4!}{3!1!} = 4
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c||c|c|c|c|c||c|}
+    \hline
+    Distribution, $D_i$ & $n_0$ & $n_1$ & $n_2$ & $n_3$ & $n_4$ & No. of Microstates, $\Omega(D_i)$ \\
+    \hline
+    $D_1$ & 3 & 0 & 0 & 0 & 1 & $\frac{4!}{3!1!} = 4$ \\
+    $D_2$ & 2 & 1 & 0 & 1 & 0 & $\frac{4!}{2!1!1!} = 12$ \\
+    $D_3$ & 1 & 2 & 1 & 0 & 0 & $\frac{4!}{1!2!1!} = 12$ \\
+    $D_4$ & 2 & 0 & 2 & 0 & 0 & $\frac{4!}{2!2!} = 6$ \\
+    $D_5$ & 0 & 4 & 0 & 0 & 0 & $\frac{4!}{4!} = 4$ \\
+    \hline
+    Average & $\frac{60}{35}$ & $\frac{40}{35}$ & $\frac{24}{35}$ & $\frac{12}{35}$ & $\frac{4}{35}$ & $\Omega_{tot} = 35$ \\
+    \hline
+    Probability & 0.43 & 0.29 & 0.17 & 0.09 & 0.03 & \\
+    \hline
+\end{tabular}
+\end{table}
+\textbf{Image plot in here}
+
+Classical particles. How will they distribute amongst energy levels? Boltzmann distribution appears - $\approx \exp{-\frac{\e}{k_BT}}$.
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
