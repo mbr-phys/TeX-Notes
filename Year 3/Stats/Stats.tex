@@ -181,17 +181,71 @@ Distribution $D_1$: 3 particles in $\e_0$, 1 particle in $\e_4$ - four configura
 \end{table}
 \textbf{Image plot in here}
 
-Classical particles. How will they distribute amongst energy levels? Boltzmann distribution appears - $\approx \exp{-\frac{\e}{k_BT}}$.
+These are classical particles, so how will they distribute amongst energy levels? Boltzmann distribution appears - $\approx \exp{-\frac{\e}{k_BT}}$.
 \end{example}
 
+\chapter{}
+From the last example, we see that for the macrostate (N,U,V) that some distributions are more likely than others. 
+From thermodynamics, remember that the most likely state of a system is the one that maximises entropy. 
+So, is there a connection between microscopic state probabilities and entropy?
+Boltzmann concluded that the number of possible microstates, $\Omega$, leads to entropy, i.e.
+\begin{equation}
+    S = S(\Omega)
+\end{equation}
+but what is the form of $S(\Omega)$? 
+We know for independent systems A and B that the probabilities multiply, i.e. $\Omega_{AB} = \Omega_A\Omega_B$.
+However for these two systems, we have entropy $S_A$ and $S_B$ and so
+\begin{equation}
+    S_{AB} = S_A + S_B.
+\end{equation}
+Boltzmann noted this and proposed that entropy is given by
+\begin{equation}
+    S = k_B\ln(\Omega).
+\end{equation}
+This is the link between microscopic and macroscopic quantities. 
 
+Consider Stirling's approximation:
+\begin{align}
+    \ln(N!) &= \sum_{k=1}^N \ln(k) \approx \int_1^N \ln(k)\,dk \\
+            &= [k\ln(k) - k]_1^N \\
+    \implies \ln(N!) &\approx N\ln(N) - N
+\end{align}
 
-
-
-
-
-
-
+\section{Probable Distributions}
+A large number of microstates, $\Omega(n_i)$, corresponds to each distribution when N is large, where $\sum_i n_i = N$ and $\Omega = \sum_i \Omega(n_i)$.
+The number of microstates in a distribution is similar to the binomial distribution - the most likely massively dominates over the others.
+For large N, we have that
+\begin{equation}
+    \Omega \approx \Omega\{n^{max}\}.
+\end{equation}
+We need to seek the most probable distribution - this is the distribution that contains the most microstates, and hence maximises entropy. 
+We need the distribution satisfying the constraints of constant particle number and constant energy, i.e. $\sum_i n_i = N$ and $\sum_i n_i\e_i = U$.
+We want to maximise 
+\begin{align}
+    \Omega(\{n_i\}) &= \frac{N!}{\prod_i n_i!} \\
+    S(\{n_i\}) &= k_B\ln\left(\frac{N!}{\prod_i n_i!}\right) \\
+    \frac{S(\{n_i\})}{k_B} &= \ln(N!) - \ln\left(\prod_i n_i\right) = \ln(N!) - \sum_i \ln(n_i!) \\
+                           &= (N\ln(N) - N) - \sum_i (n_i\ln(n_i) - n_i) \\
+                           &= N\ln(N) - \sum_i n_i\ln(n_i) \\
+                           &= \sum_i n_i\ln(N) - \sum_i n_i\ln(n_i) \\
+                           &= -\sum_i n_i\left[\ln(n_i) - \ln(N)\right] \\
+                           &= -\sum_i n_i\ln\left(\frac{n_i}{N}\right)
+\end{align}
+If we define $p_i = \frac{n_i}{N}$ being the probability of finding $n_i$ particles in state i with energy $\e_i$, then we have
+\begin{align}
+    \frac{S(\{n_i\})}{Nk_B} &= -\sum_i \frac{n_i}{N}\ln\left(\frac{n_i}{N}\right) \\
+    \implies S(\{p_i\}) &= -Nk_B\sum_i p_i\ln(p_i).
+\end{align}
+The statistical entropy by Boltzmann 
+\begin{equation}
+    S = k_B\ln\Omega \geq 0
+\end{equation}
+and also, 
+\begin{equation}
+    S(\{p_i\}) = -Nk_B\sum_i p_i\ln(p_i).
+\end{equation}
+This is the link between macroscopic and microscopic entropy.
+For probability, this means that the system is in the distribution that maximises entropy, most of the time. 
 
 
 

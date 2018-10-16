@@ -103,10 +103,58 @@ These are the Landau levels.
 
 Single valued: $e^{ik\phi$ soln, $e^{ik(\phi + 2\pi)} = e^{ik\phi}$. k is integer. 
 
+# Lecture 4
 
+## Particle moving on ring, radius b in xy plane
 
+Without magnetic field:
+\begin{align}
+    H &= -\frac{\hbar^2}{2mb^2}\frac{\partial^2}{\partial\phi^2} \\
+    \implies E\Psi(\phi) &= -\frac{\hbar^2}{2mb^2}\frac{\partial^2}{\partial\phi^2}\Psi(\phi) \\
+    \frac{L_z^2}{2I}, \Psi(\phi) &= \frac{e^{2n\phi}}{\sqrt{2\pi}}, 0 \leq \phi \leq 2\pi \\
+    e^{in(\phi+2\pi)} &= e^{in\phi} \\
+    \implies e^{in2\pi} &= 1 \impies n \in \mathbb{Z} \\
+    \Psi_n(\phi) &= \frac{e^{in\phi}}{\sqrt{2\pi}} \\
+    E_n &= \frac{\hbar^2n^2}{2mb^2}
+\end{align}
 
+With magnetic field:
+\begin{align}
+    \vec{A} &= \begin{cases} \frac{\Phi\dot\rho}{2\pi a^2}\hat{\phi} & \rho < a \\ \frac{\Phi}{2\pi a}\hat{\phi} & \rho > a \end{cases} \\
+    \rho < a, \vec{\nabla}\times\vec{A} &= \frac{\hat{z}}{\rho} \frac{\partial}{\partial \rho}(\rho A_\phi) \\
+    &= \hat{z}\frac{\Phi}{\pi a^2} = \hat{z}B
+    \rho > a, \vec{\nabla}\times\vec{A} &= 0 \implies B = 0 \\
+    H &= \frac{1}{2m}\left[\left(-i\hbar\frac{1}{\rho}\frac{\partial}{\partial\phi} - q\frac{\Phi}{2\pi a^2}\right)\hat{\phi}\right]^2 \\
+    &= \frac{\hbar^2}{2mb^2}\left[-\frac{\partial^2}{\partial\phi^2} + 2i\frac{q\Phi}{h}\frac{\partial}{\partial\phi} + \left(\frac{q\Phi}{h}\right)^2\right] \\
+    H\Psi(\phi) &= E\Psi(\phi) \\
+    E_n &= \frac{\hbar^2}{2mb^2}\left[n^2 - 2\frac{q\Phi n}{h} + \left(\frac{q\Phi}{h}\right)^2\right] \\
+    &= \frac{\hbar^2}{2mb^2}\left(n - \frac{q\Phi}{h}\right)^2
+\end{align}
+Energy will be parabolas with minimum of zero on a plot of flux and energy. 
+Increasing n will shift the centre of parabola along axis. 
 
+## Guage Invariance
+
+1. The same $\vec{E},\vec{B}$ can be given from different $\phi$,\vec{A}$
+
+\begin{align}
+    \vec{E} &= -\vec{\nabla} - \frac{\partial}{\partial t}\vec{A} \\
+    \vec{B} &= \vec{\nabla}\times\vec{A} \\
+    \phi' &= \phi - \frac{\partial A}{\partial t} \\
+    \vec{A}' &= \vec{A} + \vec{\nabla}A
+\end{align}
+
+2. Same $\vec{E},\vec{B}$ have different H, so different wavefns
+
+3. Do measurable quantities depend on choice of guage?
+
+\begin{align}
+    \rho(r,t) &= |\Psi(r,t)|^2 \\
+    j(r,t) &= \text{ probability current density} \\
+    \frac{\partial\rho(r,t)}{\partial t} + \vec{\nabla}\dot\vec{j}(r,t) = 0 \\
+    \int dx \left[\frac{\partial\rho}{\partial t} + \frac{d}{dx}j(x)\right] &= \frac{\partial}{\partial t} \int_A^B \rho(x)\,dx + \int_A^B \frac{d}{dx}j\,dx = 0 \\
+    \frac{\partial}{\partial t}N_{AB} = j(A) - j(B) 
+\end{align}
 
 
 

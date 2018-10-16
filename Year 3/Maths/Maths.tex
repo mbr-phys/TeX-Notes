@@ -246,13 +246,107 @@ Suppose we regard z and $\bar{z}$ as independed variables.
 \end{align}
 Can express analytically/differentiable as $\frac{df}{d\bar{z}} = 0$.
 
+\chapter{Complex Integration and Cauchy's Theorem}
+\section{Subsets of the Plane - Curves and Domains}
+A continuous curve, $\gamma$, in $\C$ is a map.
+\begin{equation}
+    \gamma:~ [a,b] \subset \R \to \C
+\end{equation}
+$[a,b]$ is an interval, $\gamma(a)$ is the starting point, and $\gamma(b)$ is the final point. 
+$-\gamma$ is the 'opposite' curve - it is the same path but opposite direction. 
+\begin{equation}
+    \gamma:~ x \in [0,2\pi] \to \C,~ z = e^{ix}
+\end{equation}
+This is a unit circle anti-clockwise. 
+$e^{-ix}$ is $-\gamma$, a unit circle but clockwise. 
 
+An open set G is said to be split if
+\begin{equation}
+    G = G_1 \cup G_2
+\end{equation}
+such that $G_1$, $G_2$ are open, not empty, and 
+\begin{equation}
+    G_1 \cap G_2 = \phi
+\end{equation}
+G is connected if it does not split. 
+This means that any two points in G can be connected by a curve lying in G. 
+\begin{equation}
+    z_1,z_2 \in G: \exists\; \gamma \; s.t. \; \gamma_i = z_1, \gamma_f = z_2, \gamma \subset G.
+\end{equation}
+G is simply connected if any pair of curves connecting any pair of points in G can be continuously deformed into each other without leacing G.
 
+\section{Complex Integration}
+For real integration, there was no ambiguity in the path. For complex integration however, we have many paths. 
 
+We must specify the curve of integration,
+\begin{align}
+    \int_\gamma f(z)\,dz &= \int_\gamma (u+iv)(dx + idy) \\
+                         &= \int_\gamma (u\,dx - v\,dy) + i(v\,dx + u\,dy)
+\end{align}
+$dx$ and $dy$ are determined y $\gamma$.
+\begin{align}
+    dx &= x'(t)\,dt \\
+    dy &= y'(t)\,dt 
+\end{align}
+$t \in [a,b]$, parameterising $\gamma$.
 
+\begin{example}
+    Find $\int_\gamma z^2\,dz$ for $\gamma: [0,\pi] \to \C, t \to e^{it}$.
+    \begin{align}
+        x &= \cos t \\
+        y &= \sin t \\
+        u &= \cos^2t - \sin^2t = \cos 2t \\
+        v &= 2\sin t\cos t = \sin 2t \\
+        \implies dx &= -\sin t\, dt \\
+        \implies dy &= \cos t\,dt \\
+        \int_\gamma u\,dx - v\,dy &= \int_{0}^{\pi} [-\cos 2t \sin t - \sin 2t\cos t]\,dt \\
+                                  &= -\int_{0}^{\pi} \sin 3t\,dt \\
+                                  &= \left[\frac{1}{3}\cos 3t\right]_{0}^{\pi} \\
+                                  &= -\frac{2}{3} \\
+        \int_\gamma v\,dx + u\,dy &= \int_{0}^{\pi} [-\sin 2t\sin t + \cos 2t\cos 2]\,dt \\
+                                  &= \int_{0}^{\pi} \cos 3t\,dt \\
+                                  &= 0
+    \end{align}
+    Note: $\int_{-1}^{1} x^2\,dx = [\frac{1}{3}x^3]_{-1}^{1} = -\frac{2}{3}$. 
+    Also, $-\frac{2}{3}$ if $\gamma$ is lower semi-circle - the result seems to be path independent.
+\end{example}
 
+\section{Cauchy's Theorem}
+Let $D \subset \C$ be a simply connected open subset of $\C$, and if $f: D \to \C$ is analytic on D, then for any closed curve $C \subset D$:
+\begin{equation}
+    \oint_C f(z)\,dz = 0.
+\end{equation}
+C indicates a closed curve. $\oint$ indicates integral round closed curve.
+$\oint$ is a contour integral and C the contour of integration. 
+Justify with real analysis. 
 
+Recall Green's theorem:
+\begin{equation}
+    \oint_C \left[A\,dx + B\,dy\right] = \iint_S \left[\frac{\p B}{\p x} - \frac{\p A}{\p y}\right]\,dx\,dy
+\end{equation}
+Then 
+\begin{align}
+    \oint_C f(z)\,dz &= \oint_C [u\,dx - v\,dy] + i[u\,dy + v\,dx] \\
+                     &= \iint_S \left[-\frac{\p v}{\p x} - \frac{\p u}{\p y}\right] - i\left[\frac{\p v}{\p y} - \frac{\p u}{\p x}\right].
+\end{align}
+Here, we use simple-connectedness.
+But f is analytic in D, so analytic in S, hence by CR relations, this integral is 0. 
+Note, if $\gamma_1,\gamma_2$ are 2 curves from $z_1 \to z_2$, $\gamma_1 - \gamma_2$ is a closed curve, hence
+\begin{equation}
+    \int_{\gamma_1} f = \int_{\gamma_2} f, \text{ for analytic f.}
+\end{equation}
+$C = \gamma_2 - \gamma_1$ closed. 
 
+\emph{The integral of analytic functions are independent of the path.}
 
+This also allows us to define an integral function as we now know it is path independent:
+\begin{equation}
+    F(z_2) - F(z_1) = \int_\gamma f\,dz,~ \frac{dF}{dz} = f.
+\end{equation}
+Finally, if $C_1$ and $C_2$ are closed contours enclosing surfaces $D_1$ and $D_2$, then if f is analytic on $D = D_2 - D_1$,
+\begin{equation}
+    \oint_{C_1} f(z_1)\,dz = \oint_{C_2}f(z)\,dz.
+\end{equation}
+Note that f doesn't need to be analytic on $D_1$ or $D_2$, e.g. $C_1 = e^{it}, C_2 = 2e^{it}, t \in [0,2\pi], f(z) = \frac{1}{z^2}$. This is not analytic on $D_1$ or $D_2$, but it is on $D_2 - D_1$.
 
 \end{document}
