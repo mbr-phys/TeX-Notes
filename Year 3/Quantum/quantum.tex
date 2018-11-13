@@ -1,10 +1,20 @@
----
-title: "Quantum Mechanics 3"
-author: "Dr Gidopoulos"
-date: "Michaelmas 2018"
----
+\documentclass[a4paper, 11pt, normalem]{report}
 
-# Lecture 1
+\usepackage{../../../LaTeX-Templates/Notes}
+\usepackage{subfiles}
+
+\title{Foundations of Physics 3A \vspace{-20pt}}
+\author{Dr Nikitas Gidopoulos}
+\date{\vspace{-15pt}Michaelmas Term 2018}
+\rhead{\hyperlink{page.1}{Contents}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{Quantum Mechanics}
+\chapter{}
 
 1. Hilbert spaces
 2. von Neumanns axioms
@@ -13,31 +23,30 @@ date: "Michaelmas 2018"
 5. 1 particle in 3D
 6. Ang momentum ops, commutators, spin angular momentumo
 
-## von Neumanns axioms
+\section{von Neumanns axioms}
 
-1. In QM, every observable is represented by a Hermitian operator. 
+1. In QM, every observable is represented by a Hermitian operator.
 2. The state of the system is represented by a wavefunction.
-    - Scalar multiple of the wavefunction still represents system, convenient to choose to be normalised though.  
+    - Scalar multiple of the wavefunction still represents system, convenient to choose to be normalised though.
 3. Usual bra-ket stuff
-$$
-    \begin{align}
+\begin{align}
     \langle\psi|Q\psi\rangle &= \int dx \psi^{*}(x)\left(Q\psi(x)\right) \\
     \langle\psi|Q\psi\rangle^{*} = \langle Q\psi|\psi\rangle &= \int dx \left(Q\psi(x)\right)^{*}\psi(x) \\
     \langle Q\rangle &= \langle\psi|Q\psi\rangle = \langle Q\psi|\psi\rangle = \langle\psi|Q|\psi\rangle
-    \end{align}
-$$
+\end{align}
+
 4. Usual orthonormal eigen stuff
 
-### Example
+\subsection{Example}
 
 See Pauli spin operators and stuff
 Find result of $\omega = \gamma B$, the angular momentum around a magnetic field
 
-# Lecture 2
+\chapter{}
 
 nothing
 
-# Lecture 3
+\chapter{}
 
 1. Study motion of charged particle in magnetic fields
 2. Study means to solve S.E. - we need H for B, E, $H = \frac{1}{2m}\left(-i\hbar\nabla - qA\right)^2 + q\phi$
@@ -47,15 +56,15 @@ nothing
     1. 2D motion of q in uniform mag field (cyclotron freq)
     2. Explore A vs B - 1D example where $B = 0, A \neq 0$
 
-## Guage freedom
+\section{Guage freedom}
 \begin{align}
     \vec{A} &= \frac{B}{2}(-y\hat{x} + x\hat{y} \implies \vec{\nabla} \times\vec{A} = B\hat{z} \\
     \vec{A}' &= -By\hat{x} \implies \vec{\nabla}\times\vec{A}' = B\hat{z} \\
     \vec{A} - \vec{A}' &= \frac{By}{2}\hat{x} + \frac{Bx}{2}\hat{y} = \vec{\nabla}\left(-\frac{Bxy}{2}\right) \implies \vec{A} = \vec{A}' + \vec{\nabla}\times(x,y,z) \\
-    \vec{\nabla} \times \vec{A} &= \vec{\nabla} \times \vec{A} + \cancel{\vec{\nabla} \times \vec{\nabla}\times(\vec{r}) 
+    \vec{\nabla} \times \vec{A} &= \vec{\nabla} \times \vec{A} + \cancel{\vec{\nabla}} \times \vec{\nabla}\times(\vec{r})
 \end{align}
 
-### Time deriv of fn
+\subsection{Time deriv of fn}
 \begin{align}
     \phi' &= \phi + \frac{\partial}{\partial t}\times(r,t) \\
     \vec{A}' &= \vec{A} + \vec{\nabla}\times(r,t) \\
@@ -63,7 +72,7 @@ nothing
 \end{align}
 Convenient to choose $\vec{A}$ s.t. $\vec{\nabla}\cdot\vec{A} = 0$.
 
-## 2D motion (x,y) of q in mag field, B along z
+\section{2D motion (x,y) of q in mag field, B along z}
 
 \begin{align}
     H &= \frac{1}{2m}\left(-i\hbar\vec{\nabla} - q\vec{A}\right)^2 \\
@@ -78,7 +87,7 @@ Convenient to choose $\vec{A}$ s.t. $\vec{\nabla}\cdot\vec{A} = 0$.
 This is Simple harmonic motion with $\frac{qB}{m} = \omega$, and energy $E = \left(n + \frac{1}{2}\right)\hbar\omega$.
 These are the Landau levels.
 
-### Periodic boundary conditions
+\subsection{Periodic boundary conditions}
 
 \begin{align}
     e^{-ik(x + L)} = e^{-ikx} \\
@@ -93,7 +102,7 @@ These are the Landau levels.
     j_{max} = \frac{\Phi}{h/q}
 \end{align}
 
-## A vs B, Aharanov-Bohm
+\section{A vs B, Aharanov-Bohm}
 
 \begin{align}
     H = \frac{L_z^2}{2I} &= -\frac{\hbar^2}{2mb^2}\frac{\partial^2}{\partial \phi^2} \\
@@ -101,11 +110,10 @@ These are the Landau levels.
     E &= \frac{\hbar^2 k^2}{2mb^2}
 \end{align}
 
-Single valued: $e^{ik\phi$ soln, $e^{ik(\phi + 2\pi)} = e^{ik\phi}$. k is integer. 
+Single valued: $e^{ik\phi}$ soln, $e^{ik(\phi + 2\pi)} = e^{ik\phi}$. k is integer.
 
-# Lecture 4
-
-## Particle moving on ring, radius b in xy plane
+\chapter{}
+\section{Particle moving on ring, radius b in xy plane}
 
 Without magnetic field:
 \begin{align}
@@ -113,7 +121,7 @@ Without magnetic field:
     \implies E\Psi(\phi) &= -\frac{\hbar^2}{2mb^2}\frac{\partial^2}{\partial\phi^2}\Psi(\phi) \\
     \frac{L_z^2}{2I}, \Psi(\phi) &= \frac{e^{2n\phi}}{\sqrt{2\pi}}, 0 \leq \phi \leq 2\pi \\
     e^{in(\phi+2\pi)} &= e^{in\phi} \\
-    \implies e^{in2\pi} &= 1 \impies n \in \mathbb{Z} \\
+    \implies e^{in2\pi} &= 1 \implies n \in \mathbb{Z} \\
     \Psi_n(\phi) &= \frac{e^{in\phi}}{\sqrt{2\pi}} \\
     E_n &= \frac{\hbar^2n^2}{2mb^2}
 \end{align}
@@ -130,12 +138,12 @@ With magnetic field:
     E_n &= \frac{\hbar^2}{2mb^2}\left[n^2 - 2\frac{q\Phi n}{h} + \left(\frac{q\Phi}{h}\right)^2\right] \\
     &= \frac{\hbar^2}{2mb^2}\left(n - \frac{q\Phi}{h}\right)^2
 \end{align}
-Energy will be parabolas with minimum of zero on a plot of flux and energy. 
-Increasing n will shift the centre of parabola along axis. 
+Energy will be parabolas with minimum of zero on a plot of flux and energy.
+Increasing n will shift the centre of parabola along axis.
 
-## Guage Invariance
+\section{Guage Invariance}
 
-1. The same $\vec{E},\vec{B}$ can be given from different $\phi$,\vec{A}$
+1. The same $\vec{E},\vec{B}$ can be given from different $\phi,\vec{A}$
 
 \begin{align}
     \vec{E} &= -\vec{\nabla} - \frac{\partial}{\partial t}\vec{A} \\
@@ -153,12 +161,66 @@ Increasing n will shift the centre of parabola along axis.
     j(r,t) &= \text{ probability current density} \\
     \frac{\partial\rho(r,t)}{\partial t} + \vec{\nabla}\dot\vec{j}(r,t) = 0 \\
     \int dx \left[\frac{\partial\rho}{\partial t} + \frac{d}{dx}j(x)\right] &= \frac{\partial}{\partial t} \int_A^B \rho(x)\,dx + \int_A^B \frac{d}{dx}j\,dx = 0 \\
-    \frac{\partial}{\partial t}N_{AB} = j(A) - j(B) 
+    \frac{\partial}{\partial t}N_{AB} = j(A) - j(B)
 \end{align}
 
-# Lecture 5
+\chapter{}
+\section{Equation for conservation of probability}
+\begin{align}
+    \Psi^*(\vr)i\hbar\frac{\p\Psi(\vr,t)}{\p t} &= \Psi^*(\vr)\left(\frac{-\hbar^2}{2m}\right)\left(\del^2\Psi(\vr,t)\right) + \Psi^*(\vr)V(r)\Psi(\vr,t) \\
+    i\hbar\left[\Psi^*\frac{\p\Psi}{\p t} + \Psi\frac{\p\Psi^*}{\p t}\right] &= -\frac{\hbar^2}{2m}\left[\Psi^*\left(\del^2\Psi\right) - \Psi\left(\del^2\Psi^*\right)\right] \\
+                                                                             &= \frac{i\hbar i\hbar}{2m}\del\cdot\left[\Psi^*\left(\del\Psi\right) - \Psi\left(\del\Psi^*\right)\right] \\
+    \frac{\p}{\p t}\rho(\vr,t) &+ \del\left(\frac{-i\hbar}{2m}\right)\left[\Psi\left(\del\Psi\right) - \Psi\left(\del\Psi^*\right)\right] = 0
+\end{align}
+
+\section{Rayleigh-Ritz variational principle}
+\begin{enumerate}
+    \item Approximation method (useful and powerful). Find approx. for solution of S.E.
+    \item Powerful theoretical tool/concept. Equivalent to S.E.
+\end{enumerate}
+
+For one particle,
+\begin{align}
+    H &= -\frac{\hbar^2}{2m}\del^2 + V(r) \\
+    H&\Psi_n(\vr) = E_n\Psi_n(\vr) \\
+    \Psi(\vr) &= \sum_n c_n\Psi_n(\vr) \\
+    \Psi^*(\vr) &= \sum_m c^*_m\Psi^*_m(\vr) \\
+    \langle\Psi|H|\Psi\rangle &\geq E_0 \\
+                              &= \int d^3r \Psi^*(r) H \Psi(r) = \int d^3r \sum_m c^*_m\Psi^*(r) H \sum_nc_n\Psi_n(r) \\
+                              &= \sum_{m,n} c_m^*c_n \int d^3r \Psi^*_m(r) \left(H\Psi_n(r)\right) = \sum_{m,n} c_m^*c_nE_n \int d^3r \Psi^*_m(r)\Psi_n(r) \\
+    \langle\Psi|H|\Psi\rangle &= \sum_n |c_n|^2E_n \delta_{nm} = |c_0|^2E_0 + |c_1|^2E_1 + \dots \geq E_0\sum_n |c_n|^2 \\
+    \implies \langle\Psi|H|\Psi\rangle &\geq E_0\sum_n |c_n|^2 \\
+                                       &\geq E_0 ~\forall ~ \Psi
+\end{align}
+For Lagrange multipliers, see notes on DUO.
+
+\chapter{}
+Find the minimum of
+\begin{align}
+    G[\phi] &= \left[\langle\phi|H|\phi\rangle - \lambda\langle\phi|\phi\rangle\right] \\
+    \lim_{\e\to 0}& \frac{G[\phi + \e u] - G[\phi]}{\e} = 0, ~\forall\; u(\vr) \\
+    G[\phi + \e u] &= \langle\phi+\e u|H|\phi+\e u\rangle - \lambda\langle\phi+\e u|\phi+\e u\rangle \\
+                   &= \int dr (\phi^*(\vr) + \e u^*(\vr))H(\phi(\vr)+\e u(\vr)) - \lambda\int dr |\phi(\vr) + \e u(\vr)|^2 \\
+    \begin{split}
+                   &= \left[\int d^3r \phi^*(\vr)H\phi(\vr) - \lambda\int dr |\phi(r)|^2\right] + \e\left[\int dr \;u^*(\vr)H\phi(\vr) - \lambda\int dr\; u^*(\vr)\phi(\vr)\right] \\
+                   &+ \e\left[\int dr \phi^*(\vr)Hu(\vr) - \lambda\int dr\;\phi^*(\vr)u(\vr)\right]
+    \end{split} \\
+                   &= G[\phi] + \e(\langle u|H\phi\rangle -\lambda\langle u|\phi\rangle) + \e(\langle\phi|H|u\rangle -\lambda\langle\phi|u\rangle) + O(\e^2) \\
+    \frac{G[\phi+\e u] - G[\phi]}{\e} &= \lim_{\e\to 0} \frac{\e(\langle u|H|\phi\rangle - \lambda\langle u|\phi\rangle) + \e(\langle\phi|H|u\rangle - \lambda\langle\phi|u\rangle)}{\e} \\
+    \implies& \int dr\;u^*(\vr)[H\phi(\vr) - \lambda\phi(\vr)] = 0 \\
+    \implies& H\phi(\vr) - \lambda\phi(\vr) = 0
+\end{align}
+
+\chapter{}
+\textit{there may be one or two missing lectures here}
+
+\begin{enumerate}
+    \item Example - 2 electrons without repulsion, ground and first excited states
+    \item Switch on electron interaction
+    \item N electrons, no interaction - Slater determinants
+    \item Introduce interaction, electron strucutre theory, many body
+    \item mean field, Hartree-Fock
+\end{enumerate}
 
 
-
-
-
+\end{document}

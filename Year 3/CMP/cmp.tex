@@ -1,0 +1,295 @@
+\documentclass[a4paper, 11pt, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+
+\title{Condensed Matter \\ Physics 3 \vspace{-20pt}}
+\author{Dr Michael Hunt}
+\date{\vspace{-15pt}Michaelmas Term 2018 - Epiphany Term 2019}
+\rhead{\hyperlink{page.1}{Contents}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\part{Symmetry, Structure, and Excitations}
+\chapter{}
+\textbf{use alongside lecture notes given}
+
+\begin{itemize}
+    \item Solid:
+        \begin{itemize}
+            \item Can support sheer stress
+            \item Doesn't flow
+        \end{itemize}
+
+    \item Liquid:
+        \begin{itemize}
+            \item Incompressible
+            \item Can't support sheer stress
+            \item Flows the fill volume, subject to remaining pressure
+            \item Weaker forces ($\approx k_B T$)
+            \item Less dense atoms/molecules
+        \end{itemize}
+\end{itemize}
+
+A gas, liquid, or amorphous solid is rotationally invariant
+
+N particles in a shell, what is $g(r)$?
+\begin{equation}
+    g(r) = \frac{N}{4\pi r^2\delta r\langle n\rangle}
+\end{equation}
+
+For an ideal gas (point particles), $g(r)$ is just 1:
+\begin{itemize}
+    \item $\int_V \langle n \rangle g(r)\,dV = (N' - 1)$
+    \item $\langle n \rangle V g(r) = (N' - 1) \implies g(r) = 1 - \frac{1}{N'}$
+    \item Despite rigidity of ice, it can be seen to flow.
+    \item For enough stress, it will plastically deform (creep).
+    \item "Enough" is about 5 orders of magnitude less than expected for a perfect crystal.
+    \item Ice flows due to the motion of topological defects called dislocations. Electrons can scatter off them too.
+    \item The pdf does not enable us to easily extinguish between a liquid and amorphous solid. The difference is one of timscale for flow.
+    \item Therefore an arbitrary definition: "A solid is a material whose shear viscosity exceeds $10^{13.6} N\,s\,m^{-2}$"
+    \item this corresponds to a relaxation time of about a day
+\end{itemize}
+
+\chapter{}
+
+\section{Bonding in Condensed Matter}
+In general, inter-particle interactions produce a potential with the same type of form, usual potential well plot with repulsive and attractive forces.
+\textbf{image here from notes}
+
+\subsection{van der Waals bonding}
+
+Fluctuations (instantaneous in time) can lead to instantaneous dipole moments.
+Such dipoles create an electric field:
+\begin{equation}
+    E = \frac{p_1}{4\pi\epsilon_0 r^3},
+\end{equation}
+where $p_1$ is the fluctuating dipole.
+On a neighbouring atom, this field induces a dipole,
+\begin{align}
+    p_2 &= \alpha|E| \\
+    p_2 &= \alpha \frac{p_1}{4\pi\epsilon_0 r^3}
+\end{align}
+where $\alpha$ is the atomic polarisability.
+We have a dipole-dipole potential:
+\begin{equation}
+    U(r) = \frac{|p_1||p_2|}{4\pi\epsilon_0 r^3} = \frac{\alpha|p_1|^2}{(4\pi\epsilon_0)^2r^6}
+\end{equation}
+Note that $|p_1|^2$ does not average to zero even though p does, which implies that $U(r) \neq 0$.
+
+If we have attractive interactions alone, our solid would collapse into a singularity.
+We need repulsion as well.
+Repulsion arises from the Pauli exclusion principle - no electrons (fermions) can have the same set of quantum numbers.
+Born and Mayer parameterised this repulsion as
+\begin{equation}
+    U_{rep} = B_{ij}\exp{-\frac{r_{ij}}{p_{ij}}}
+\end{equation}
+where $r_{ij}$ is distance between atom i and j. $p_{ij}$ and $B_{ij_{}}$ are constants.
+
+Buckingham potential - Historically, a potential varying as $r^{-n}$ is easier to deal with and reasonably reproduces $f^n$ form.
+Lennard-Jones potential constants $\epsilon$ and $\sigma$ - parameters which can be found by experiment
+
+\subsection{Ionic Bonding}
+
+When it's energetically favourable to transfer one or more electrons to a neighbour to acheive a closed shell configuration.
+
+$U_{\text{Madelung}_{}}$ is attractive interaction per mole of formular unit.
+
+Born-Mayer is very short-ranged
+
+\subsection{Metallic bonding}
+
+Metallic bonding resutls from delocalisation of electrons.
+
+The coulomb energy (attractive) can be found from a lattice sum (with negative charge background) and is $\propto \frac{1}{r}$.
+Two results from FoP2B are required to understand the electronic contribution to energy.
+The average energy electron is
+\begin{align}
+    \frac{E}{n} &= \frac{3}{5}E_F = \frac{3\hbar^2 k_{F}^2}{10m_e} \\
+    k_F &= \left(3\pi^2\frac{N}{V}\right)^{1/3} \\
+    k_F &\propto V^{-1/3} \\
+    \implies \frac{E}{n} &\propto r_{0}^{-2} (\because V \propto r_{0}^{3}) \\
+    U_{metal} &= U_{coul} + U_{kin} \\
+    &= -\frac{a}{r_0} + \frac{b}{r_0^2}
+\end{align}
+Metallic crystal cohesive energy is of order of a few eV per atom.
+
+\chapter{}
+
+\textbf{check DUO for these}
+
+\chapter{}
+
+Thomson formula:
+\begin{equation}
+    \frac{d\sigma}{d\Omega} = r_e^2\frac{1 + \cos^2\theta}{2}
+\end{equation}
+
+Scattering amplitude
+\begin{equation}
+    \langle k'|V|k\rangle = \langle k'|r_e(r)|k\rangle
+\end{equation}
+
+\begin{itemize}
+    \item Introduce $q = k' - k$, note vector relation, the scattering wavevector
+
+    \item Fourier transforms used - atomic scattering factor (scattering potential of each atom, summed over all)
+
+    \item $I(q)$ depends on structure, $|f_a|^2$ depends on atoms
+
+    \item $\frac{I(q)}{N} = S(q)$ - the target structure factor
+\end{itemize}
+
+\section{Xray scattering and pair distribution}
+
+\begin{itemize}
+    \item Assume homogeneous material, translationally variant
+    \item There is a '-1' due to avoidance of counting "oneself" - reference atom
+    \item $\langle n(x_i)\rangle = \langle n(x_2)\rangle = n$
+\end{itemize}
+
+\section{Xray scattering in periodic lattice}
+
+The expression
+\begin{equation}
+    I(q) = \sum_{j,l} \langle e^{iq \cdot R_{jl}}
+\end{equation}
+$R_{jl} = R_j - R_l$.
+Summing over all atoms yields $N^2$ terms.
+If $R_j - R_i$ is random, this sums to 0 as $N \to \infty$.
+Therefore, for non-zero $I(q)$, we must have $q\dot R_{jl} = 2m\pi_{}$ where m integer.
+
+We can express the lattice points in terms of three basis vectors.
+\begin{equation}
+    R_{jl} = U\vec{a} + V\vec{b} + W\vec{c}
+\end{equation}
+Since $R_j - R_l$ must be a lattice vector.
+
+For non-zero $I(q)$, let's define a set of vectors $\vec{a}^{*}, \vec{b}^{*}, \vec{c}^{*}$.*
+
+Atoms in the unit cell for the convolution
+
+Written Fourier transform of lattice.
+For electrons in an atom, we have shown above that F.T. is atomic scattering amplitude, $f_j$.
+An atom at position $r_j$ in a unit cell can be represented as delta fn, which has F.T. exp.
+For more than one atom in unit cell, can sum over them so last two terms in F(structure) become
+\begin{equation}
+    \sum_j f_j e^{iq\dot r_j}
+\end{equation}
+We can write position of atoms within the unit cell in fractional coordinates.
+
+Lattice is only non-zero when $q = G_{hkl_{}}$.
+We can therefore write the lattice structure factor
+
+\begin{equation}
+    F(hkl) = \sum_j f_j(q)e^{2\pi i(hx + ky + lz)}
+\end{equation}
+
+\chapter{}
+
+\begin{align}
+    \vec{k}\cdot\vec{G} &= \sin\theta = -\vec{k}'\cdot\vec{G} \\
+    G &= \frac{2\pi}{\lambda}\Delta k \\
+    |G| &= \frac{2\pi}{\lambda}(2\sin\theta) \\
+    \lambda &= 2\left(\frac{2\pi}{|G|}\right)\sin\theta \\
+    &= 2d\sin\theta
+\end{align}
+
+\chapter{}
+
+\begin{itemize}
+    \item Neutron scattering factors can allow access to information complementary to xray scattering
+        (very little angular dependence in $b_i$ due to small size of nucleus)
+    \item Point symmetry operations are those carried about a point, they do not involve translation
+    \item The identity operation is given the symbol 1 in "International Notation". [However, in Schoenflies Notation, it has the symbol E.]
+    \item An n-fold rotation axis exists if a rotation of $360/n$ brings an object back into coincidence with itself.
+    \item \textit{see notes for images of rotation axes}
+    \item \textit{see notes for various rotation stuff}
+    \item Rotoinversion axes consist of two steps:
+        \begin{enumerate}
+            \item Rotation, followed by
+            \item Inversion
+        \end{enumerate}
+        \vspace{8pt}
+        An n-fold rotoinversion axis is given the symbol $\bar{n}$.
+        The simplest rotoinversion axis is $\bar{1}$ - the centre of inversion symmetry.
+    \item In practice, we find that we need to combine symmetry operations.
+        Consider a mirror plane which is perpendicular to a 2-fold rotation axis.
+    \item Combinations can generate other symmetry operations.
+    \item Note that you don't need commutativity - AB not necessarily equal to BA
+\end{itemize}
+
+\chapter{}
+
+\section{Lattices and Symmetry}
+Recall from section 2.1.5, Lecture 4, we can define translation vectors $\vec{a},\vec{b},\vec{c}$ and that these enable us to mathematically define a lattice.
+\begin{equation}
+    \La(\vr) = \sum_{u,v,m} \delta(\vr - (U\vec{a} + V\vec{b} + W\vec{c}))
+\end{equation}
+We can use these vectors to define a parallelepiped with sides a, b, c (moduli of vectors) and angles $\alpha, \beta, \gamma$.
+
+Symmetry imposes constraints on our choice of basis, or lattice, vectors $\vec{a},\vec{b},\vec{c}$.
+In the above case the 4-axis (conventionally along c) means that $a=b$ and $\alpha=\beta=\gamma=\SI{90}{\degree}$.
+
+For a lattice with mirror plane:\\
+One axis must be perpendicular to mirror plane (let's define as $\vec{c}$).
+Other two aces must be in the plane of the mirror.
+This constrains us to $\alpha=\beta=\SI{90}{\degree}$.
+
+Once we build a 3D crystal by stacking planes something something something he moved the slides away
+
+\section{The 14 Bravais Lattices}
+It's often usful to consider non-primitive unit cells (cells with more than one lattice point) so that we can group structures of similar defining symmetry.
+The complete set of lattices which can be derived from our 7 crystal systems are the 14 Bravais lattices.
+
+These lattices are labelled as followed:
+\begin{itemize}
+    \item P - primitive
+    \item I - body-centred
+    \item F - face-centred (for all faces)
+    \item R - rhombohedral
+    \item A,B,C - face-centred (on one face A, B, or C only)
+\end{itemize}
+A crystal structure is generated by placing a group of atoms or molecules - a motif (or basis) - at each lattice point.
+This is a convolution.
+\begin{equation}
+    \La(\vr) \ast \text{motif}
+\end{equation}
+Motif being the positions given by fractional co-ordinates within cell.
+
+\section{Translation Symmetry and Space Groups}
+
+A screw axis involves a $\frac{\SI{360}{\degree}}{n}$ rotation followed by translation along the axis by a fraction of a lattice vector, $\frac{1}{t}$.
+This is labelled
+\begin{equation}
+    n_m,~ m = \frac{n}{t}, n = \text{rotation axis}
+\end{equation}
+
+Screw axis shown is a $2_1$ axis.
+
+We can have a,b,c glide planes where the label indicates the direction of translation.
+We can also define an n-glide which involves translation along $\frac{1}{2}(\vec{a}+\vec{b})$ and a d-glide (diamond glide) which involes translation along the diagonal of the unit cell.
+
+We label the space group of a crystal by combining the symbol for the conventional lattice with the symbols for the symmetry operations, e.g. the face-centred cubic structure with full symmetry would be:
+\begin{equation}
+    Fm\bar{3}m
+\end{equation}
+Consider a rhombohedral crystal, with: an n-glide plane along (100); a mirror with reflection in (010); and an a glide with reflection in (001).
+This would have space group
+\begin{equation}
+    Pnma.
+\end{equation}
+
+\section{Symmetry and Diffraction}
+Recall our expression for the lattice structure factor (Lecture 4, Section 2.1.5)
+\begin{equation}
+    F(hkl) = \sum_{\text{unit cell}} f_j(\vec{q}_{hkl})e^{2\pi i(hx_j + ky_j + lz_j)}
+\end{equation}
+By inspection, for real $f_j$, $F(\bar{h},\bar{k},\bar{l}) = F^*(hkl)$.
+In a scattering experiment, we detect $|F|^2$, and $|F(hkl)|^2 = |F(\bar{h}\bar{k}\bar{k})|^2$, i.e. all diffraction patterns (where there's no anomalous scattering) have a centre of symmetry.
+This means that the point group symmetry measured - the Laue symmetry is the real symmetry plus a centre of inversion.
+
+
+
+\end{document}

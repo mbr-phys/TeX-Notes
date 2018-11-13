@@ -1,0 +1,1071 @@
+\documentclass[a4paper, 11pt, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+\usepackage{subfiles}
+
+\title{Mathematics Workshop \vspace{-20pt}}
+\author{Prof R Gregory, Dr D Cerdeno, and Prof T Theuns}
+\date{\vspace{-15pt}Michaelmas Term 2018 - Epiphany Term 2019}
+\rhead{\hyperlink{page.1}{Contents}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{Complex Analysis}
+\chapter{The Complex Plane}
+\section{Basics}
+Course will use Riley, Hobson and Bence Chapters 3, 24, 25
+
+Recall $i = \sqrt{-1}$ allows us to extend our notion of numbers as we go from a $\R$eal to the $\C$omplex plane.
+\begin{equation}
+    \C = \{z = x + iy\;|\;x,y \in \R\}
+\end{equation}
+We represent the complex plane with an argand diagram.
+\begin{align}
+    x &= \Rl(z) = \frac{z + \bar{z}}{2} \\
+    y &= \Iy(z) = \frac{z - \bar{z}}{2} \\
+    r &= \mathrm{mod}(z) = \sqrt{x^2 + y^2} \\
+    \theta &= \mathrm{Arg}(z) = \arctan\left(\frac{y}{x}\right)
+\end{align}
+Notice that $e^{i\theta} = e^{i\theta + 2i\pi}$, so $\theta$ is not uniquely defined, so choose a range for $\theta$, e.g. $\theta \in [0, 2\pi), \theta \in (-\pi,\pi]$.
+
+\section{Complex Functions}
+\begin{itemize}
+    \item $\C \to \C$
+    \item $z \to f(z) = u(x,y) + iv(x,y)$
+    \item Like two functions of real variables, e.g. $f(z) = z^2 = (x + iy)^2 = (x^2 - y^2) + 2ixy$
+    \begin{itemize}
+        \item $u(x,y) = x^2 - y^2$
+        \item $v(x,y) = 2xy$
+    \end{itemize}
+\item Exponential: $e^z, \mathrm{exp}(z) = \sum_{n=0}^{\infty} \frac{z^n}{n!}$
+\end{itemize}
+
+\section{Branch Cuts}
+For real numbers, $1^2 = (-1)^2 = 1$, you have two roots; but functions should be single valued. \\
+$\sqrt{}$ is fine on the Real line - choose a root and stick to it, but for the Complex plane, say $\sqrt{1} = 1$, the disc around $z = 1$ means a loss of continuity.
+\begin{align}
+    z &= re^{i\theta} \\
+    \sqrt{z} &= \sqrt{r}e^{i\theta/2}, \theta \in (0, 2\pi)
+\end{align}
+We can choose this branch, but must cut the complex plane along the reals so that $\theta$ can't run higher than $2\pi$, or could choose
+\begin{equation}
+    \sqrt{z} = \sqrt{r}e^{i\theta/2 +i\pi}
+\end{equation}
+but still need the same cut, so no ambiguity in definition of the function's square root.
+Here, the function's square root is double valued.
+\begin{equation}
+    \log(re^{i\theta}) = \log(r) + i\theta
+\end{equation}
+$\theta$ is not unique, $\theta + 2n\pi$ is also a legitimate answer.
+Again, cut the plane somewhere, decide on the branch of the log.
+Can cut on the positive reals or negatives.
+Branch choices appear around zeroes because polar coordinates are singular there: $\theta$ is not specified at $r = 0$.
+We say $z=0$ is a branch point, indicated with a wavy line.
+Branch cuts from branch point either to infinity or another branch point.
+
+\begin{example}
+\begin{equation}
+    f(z) = \sqrt{z^4 + 1}
+\end{equation}
+Think of this through two steps: $z \to z^4 + 1 \to \sqrt{z^4 + 1}$.
+There is a branch cut around $z^4 + 1 = 0$.
+There are four branch points:
+\begin{align}
+    z^4 &= -1 \\
+    z &= e^{i\pi/4}...
+\end{align}
+Around a branch point:
+\begin{align}
+    z &= e^{i\pi/4} + \epsilon e^{i\theta + 3i\pi/4} \\
+    z^4 &= -1 + 4\epsilon e^{i\theta +3i\pi/4} \\
+    \sqrt{z^4 + 1} &= 2\sqrt{\epsilon}e^{i\theta/2 + 3i\pi/8}
+\end{align}
+This gives rise to the same problem as circling the origin for $\sqrt{z}$.
+This example has other choices for branch cuts, some may be able to limit ambiguities to limits.
+\end{example}
+
+\section{Trig and Hyperbolic Functions}
+Trig functions can be generalised to include complex numbers, and can be expressed as exponentials in the usual way, similarly with hyperbolics.
+$\sinh$ and $\cosh$ have periodicity of $2\pi i$.
+\begin{align}
+    \cos(z) &= \cosh(iz) \\
+    \sin(z) &= i\sinh(iz)
+\end{align}
+
+\chapter{Complex Differentiation and Cauchy-Riemann}
+\section{Continuity}
+Definition:
+\begin{equation}
+    \lim_{z\to z_0} f(z) = w \in \C \iff \forall \e > 0 \;\exists \;\delta > 0 \; s.t.\; |z-z_0| < \delta \implies |f(z) - w| < \e
+\end{equation}
+\emph{If you are close to a point $z_0$, then f(z) is close to $f(z_0)$.}
+f is continuous at $z_0 \iff \lim_{z\to z_0} f(z) = f(z_0)$.
+
+Note that the limit must be path independent, and the real and imaginary parts must be continuous.
+
+\section{Differentation}
+Recall
+\begin{equation}
+    \df = \lim_{h\to 0} \frac{f(x+h) - f(x)}{h}
+\end{equation}
+For $\C$ having two $\R$ dimensions, we have $\grad, \grad\cdot, \grad\times$.
+\begin{itemize}
+    \item[X] Grad - acts on scalars ($\R$)
+    \item[X] Div - acts on vectors ($\C$), gives scalar
+    \item[X] Curl - in 3D
+\end{itemize}
+Try
+\begin{equation}
+    \frac{df}{dz} = \lim_{\delta\to 0} \frac{f(z+\delta) - f(z)}{\delta}, \delta, z \in \C
+\end{equation}
+Require limit independent of direction.
+
+\begin{example}
+$f(z) = z^2$:
+\begin{align}
+    & \lim_{\delta\to 0} \frac{(z+\delta)^2 - z^2}{\delta} \\
+    \implies & \lim_{\delta\to 0} \frac{\cancel{z^2} + 2z\cancel{\delta} + \delta^{\cancel{2}} - \cancel{z^2}}{\cancel{\delta}} = 2z
+\end{align}
+What about $f(z) = \bar{z}$?
+\begin{equation}
+    \frac{\bar{z} + \bar{\delta} - \bar{z}}{\delta} = \frac{\bar{\delta}}{\delta} = \exp{(-2i\mathrm{Arg}(\delta))}
+\end{equation}
+Not path independent, so no limit.
+\end{example}
+
+$\frac{df}{dz}$ is the complex derivative of f at z, and f is differentiable at z if this limit exists.
+
+\section{Analytic Functions}
+An analytic function is a complex function that is differentiable, at least in some region.
+
+Definition: A neighbourhood of $z \in \C$ is an open set U such that $z \in U$.
+
+Definition: $f: \C \to \C$ is analytic/holomorphic at $z_0 \in \C$ if $\exists$ a neighbourhood U of $z_0$ on which f is differentiable $\forall \; z \in U$.
+
+\begin{example}
+    \begin{align}
+        |z|^2 &= z\bar{z} \\
+        \lim_{\delta\to 0} \frac{(z+\delta)(\bar{z} + \bar{\delta}) - z\bar{z}}{\delta} &= \bar{z} + \frac{\bar{\delta}}{\delta}z
+    \end{align}
+If $z \neq 0$, no limit, but $z = 0$ has limit, 0, $\implies$ differentiable at $z = 0$, \underline{but not analytic.}
+\end{example}
+$z^n$ is differentiable everywhere, so analytic on all $\C$.
+
+\section{Cauchy-Riemann Equations}
+We have
+\begin{align}
+    f(z) &= f(x + iy) \\
+         &= u(x,y) + iv(x,y)
+\end{align}
+Derivation:
+\begin{align}
+    \frac{f(z_0 + \delta) - f(z_0)}{\underbrace{\delta}_{z - z_0}} &= \frac{u(x_0 + \delta x, y_0 + \delta y) - u(x_0,y_0)}{\delta x + i\delta y} + i\frac{v(x_0 + \delta x, y_0 + \delta y) - v(x_0,y_0)}{\delta x + i\delta y} \\
+                                                                   &= \frac{u(x_0,y_0) + \delta x \frac{\p u}{\p x}|_0 + \delta y \frac{\p u}{\p y}|_0 - u_0}{\delta x + i\delta y} + i\frac{v_0 + \delta x \frac{\p v}{\p x}|_0 + \delta y\frac{\p v}{\p y} - v_0}{\delta x + i\delta y} \\
+                                                                   &= \frac{\left(\frac{\p u}{\p x} + i\frac{\p v}{\p x}\right)\delta x + i\left(\frac{\p v}{\p y} - i\frac{\p u}{\p y}\right)\delta y}{\delta x + i\delta y}
+\end{align}
+For complex differentiation, limit must be independed of $\delta x + i\delta y$, so the numerator must factorise as $() \times (\delta x + i\delta y)$.
+\begin{equation}
+    \implies \frac{\p u}{\p x} + i\frac{\p v}{\p x} = \frac{\p v}{\p y} - i\frac{\p u}{\p y}
+\end{equation}
+This gives the C-R relations:
+\begin{align}
+    \frac{\p u}{\p x} &= \frac{\p v}{\p y} \\
+    \frac{\p v}{\p x} &= -\frac{\p u}{\p y}
+\end{align}
+Check with $z^2 = (x^2 - y^2) + 2ixy$:
+\begin{align}
+    \frac{\p u}{\p x} &= 2x & \frac{\p v}{\p y} &= 2x \\
+    \frac{\p u}{\p y} &= -2y & \frac{\p v}{\p x} &= 2y
+\end{align}
+Note:
+\begin{equation}
+    \frac{\p u}{\p x} = \frac{\p v}{\p y} \implies \frac{\p^2 u}{\p x^2} = \frac{\p^2 v}{\p x \p y} = -\frac{\p^2 u}{\p y^2}
+\end{equation}
+Or
+\begin{equation}
+    \frac{\p^2 u}{\p x^2} + \frac{\p^2 u}{\p y^2} = \del^2 u = 0
+\end{equation}
+Suppose we regard z and $\bar{z}$ as independed variables.
+\begin{equation}
+    x = \frac{z + \bar{z}}{2},~ y = \frac{z - \bar{z}}{2i}
+\end{equation}
+\begin{align}
+    \frac{\p}{\p \bar{z}} &= \frac{\p x}{\p \bar{z}}\frac{\p}{\p \p x} + \frac{\p y}{\p \bar{z}}\frac{\p}{\p y} = \frac{1}{2}\left(\frac{\p}{\p x} + i\frac{\p}{\p y}\right) \\
+    \frac{\p}{\p z} &= \frac{\p x}{\p z}\frac{\p}{\p x} + \frac{\p y}{\p z}\frac{\p}{\p y} = \frac{1}{2}\left(\frac{\p}{\p x} - i\frac{\p}{\p y}\right) \\
+    \frac{\p f}{\p \bar{z}} &= \frac{1}{2}\left(\frac{\p u}{\p x} + i\frac{\p v}{\p x} + i\frac{\p u}{\p y} - \frac{\p v}{\p y}\right) \\
+                    &= \frac{1}{2}\left(\left(\frac{\p u}{\p x} - \frac{\p v}{\p y}\right) + i\left(\frac{\p v}{\p x} + \frac{\p u}{\p y}\right) \right) \\
+                    &= 0 \iff \text{CR satisfied}
+\end{align}
+Can express analytically/differentiable as $\frac{df}{d\bar{z}} = 0$.
+
+\chapter{Complex Integration and Cauchy's Theorem}
+\section{Subsets of the Plane - Curves and Domains}
+A continuous curve, $\gamma$, in $\C$ is a map.
+\begin{equation}
+    \gamma:~ [a,b] \subset \R \to \C
+\end{equation}
+$[a,b]$ is an interval, $\gamma(a)$ is the starting point, and $\gamma(b)$ is the final point.
+$-\gamma$ is the 'opposite' curve - it is the same path but opposite direction.
+\begin{equation}
+    \gamma:~ x \in [0,2\pi] \to \C,~ z = e^{ix}
+\end{equation}
+This is a unit circle anti-clockwise.
+$e^{-ix}$ is $-\gamma$, a unit circle but clockwise.
+
+An open set G is said to be split if
+\begin{equation}
+    G = G_1 \cup G_2
+\end{equation}
+such that $G_1$, $G_2$ are open, not empty, and
+\begin{equation}
+    G_1 \cap G_2 = \phi
+\end{equation}
+G is connected if it does not split.
+This means that any two points in G can be connected by a curve lying in G.
+\begin{equation}
+    z_1,z_2 \in G: \exists\; \gamma \; s.t. \; \gamma_i = z_1, \gamma_f = z_2, \gamma \subset G.
+\end{equation}
+G is simply connected if any pair of curves connecting any pair of points in G can be continuously deformed into each other without leacing G.
+
+\section{Complex Integration}
+For real integration, there was no ambiguity in the path. For complex integration however, we have many paths.
+
+We must specify the curve of integration,
+\begin{align}
+    \int_\gamma f(z)\,dz &= \int_\gamma (u+iv)(dx + idy) \\
+                         &= \int_\gamma (u\,dx - v\,dy) + i(v\,dx + u\,dy)
+\end{align}
+$dx$ and $dy$ are determined y $\gamma$.
+\begin{align}
+    dx &= x'(t)\,dt \\
+    dy &= y'(t)\,dt
+\end{align}
+$t \in [a,b]$, parameterising $\gamma$.
+
+\begin{example}
+    Find $\int_\gamma z^2\,dz$ for $\gamma: [0,\pi] \to \C, t \to e^{it}$.
+    \begin{align}
+        x &= \cos t \\
+        y &= \sin t \\
+        u &= \cos^2t - \sin^2t = \cos 2t \\
+        v &= 2\sin t\cos t = \sin 2t \\
+        \implies dx &= -\sin t\, dt \\
+        \implies dy &= \cos t\,dt \\
+        \int_\gamma u\,dx - v\,dy &= \int_{0}^{\pi} [-\cos 2t \sin t - \sin 2t\cos t]\,dt \\
+                                  &= -\int_{0}^{\pi} \sin 3t\,dt \\
+                                  &= \left[\frac{1}{3}\cos 3t\right]_{0}^{\pi} \\
+                                  &= -\frac{2}{3} \\
+        \int_\gamma v\,dx + u\,dy &= \int_{0}^{\pi} [-\sin 2t\sin t + \cos 2t\cos 2]\,dt \\
+                                  &= \int_{0}^{\pi} \cos 3t\,dt \\
+                                  &= 0
+    \end{align}
+    Note: $\int_{-1}^{1} x^2\,dx = [\frac{1}{3}x^3]_{-1}^{1} = -\frac{2}{3}$.
+    Also, $-\frac{2}{3}$ if $\gamma$ is lower semi-circle - the result seems to be path independent.
+\end{example}
+
+\section{Cauchy's Theorem}
+Let $D \subset \C$ be a simply connected open subset of $\C$, and if $f: D \to \C$ is analytic on D, then for any closed curve $C \subset D$:
+\begin{equation}
+    \oint_C f(z)\,dz = 0.
+\end{equation}
+C indicates a closed curve. $\oint$ indicates integral round closed curve.
+$\oint$ is a contour integral and C the contour of integration.
+Justify with real analysis.
+
+Recall Green's theorem:
+\begin{equation}
+    \oint_C \left[A\,dx + B\,dy\right] = \iint_S \left[\frac{\p B}{\p x} - \frac{\p A}{\p y}\right]\,dx\,dy
+\end{equation}
+Then
+\begin{align}
+    \oint_C f(z)\,dz &= \oint_C [u\,dx - v\,dy] + i[u\,dy + v\,dx] \\
+                     &= \iint_S \left[-\frac{\p v}{\p x} - \frac{\p u}{\p y}\right] - i\left[\frac{\p v}{\p y} - \frac{\p u}{\p x}\right].
+\end{align}
+Here, we use simple-connectedness.
+But f is analytic in D, so analytic in S, hence by CR relations, this integral is 0.
+Note, if $\gamma_1,\gamma_2$ are 2 curves from $z_1 \to z_2$, $\gamma_1 - \gamma_2$ is a closed curve, hence
+\begin{equation}
+    \int_{\gamma_1} f = \int_{\gamma_2} f, \text{ for analytic f.}
+\end{equation}
+$C = \gamma_2 - \gamma_1$ closed.
+
+\emph{The integral of analytic functions are independent of the path.}
+
+This also allows us to define an integral function as we now know it is path independent:
+\begin{equation}
+    F(z_2) - F(z_1) = \int_\gamma f\,dz,~ \frac{dF}{dz} = f.
+\end{equation}
+Finally, if $C_1$ and $C_2$ are closed contours enclosing surfaces $D_1$ and $D_2$, then if f is analytic on $D = D_2 - D_1$,
+\begin{equation}
+    \oint_{C_1} f(z_1)\,dz = \oint_{C_2}f(z)\,dz.
+\end{equation}
+Note that f doesn't need to be analytic on $D_1$ or $D_2$, e.g. $C_1 = e^{it}, C_2 = 2e^{it}, t \in [0,2\pi], f(z) = \frac{1}{z^2}$. This is not analytic on $D_1$ or $D_2$, but it is on $D_2 - D_1$.
+
+\chapter{Cauchy's Integral Formula and Taylor Series}
+Last time:
+\begin{equation}
+    \oint_C f(z)\,dz = 0
+\end{equation}
+if f is analytic inside C, and
+\begin{equation}
+    \oint_{C_1} = \oint_{C_2}
+\end{equation}
+if f is analytic between $C_1$ and $C_2$. \\
+Apply this to $f(z) = \frac{1}{z}$. Let $C_R$ be a circular contour $|z| = R$.
+\begin{align}
+    C_R &= \left\{z | z = Re^{i\theta}\right\} \\
+    \oint_{C_R} \frac{dz}{z} &= \int_0^{2\pi} \frac{Re^{i\theta}i\;d\theta}{Re^{i\theta}} = 2\pi i
+\end{align}
+This result is independent of R.
+
+\section{Cauchy's Integral Formula}
+Let $f(z)$ be analytic on a simply-connected domain D, $C = \p D$ is the contour formed by the boundary of D.
+Then for $z_0 \in D$,
+\begin{equation}
+    f(z_0) = \frac{1}{2\pi i}\oint_C \frac{f(z)}{z - z_0}\,dz.
+\end{equation}
+Note: this says that the value of a harmonic function in a domain is specified by the values on its boundary.
+
+\subsection{Proof}
+\begin{equation}
+    \frac{f(z)}{z - z_0}
+\end{equation}
+is not analytic on D, but on $D - z_0$.
+
+Define $D_\e = \{z\, |\, |z-z_0| \leq \e\} \subset D$.
+$(D - D_\e$ f is analytic on, hence
+\begin{align}
+    \oint_C \frac{f(z)}{z - z_0}\,dz &= \oint_{C_\e} \frac{f(z)}{z - z_0}\,dz \\
+                                     &= \int_{0}^{2\pi} \frac{f(z_0 + \e e^{i\theta})i\e e^{i\theta}}{\e e^{i\theta}}\,d\theta
+\end{align}
+But f is analytic in D, so differentiable at $z_0$, hence continuous at $z_0$.
+By the definition of continuity,
+\begin{align}
+    |f(z_0 + \e e^{i\theta}) &- f(z_0)| < \delta_{(\e)} \\
+    \implies f(z_0 + \e e^{i\theta}) &= f(z_0) + O(\e) \\
+    \implies \oint_{C} \frac{f(z)}{z - z_0}\,dz &= 2\pi if(z_0) + O(\e)
+\end{align}
+Taking $\e \to 0$ gives result.
+
+\begin{example}[Checking]
+    \begin{align}
+        f(z) &= z+a,z_0 = 0 \\
+        \oint_{C_1} \frac{f(z)}{z}\,dz &= \oint_{C_1} \left(1 + \frac{a}{z}\right)\,dz \\
+                                       &= 2\pi ia = 2\pi if(0)
+    \end{align}
+\end{example}
+
+What about $f'$?
+\begin{align}
+    f'(z_0) &= \lim_{\delta \to 0} \frac{f(z_0 + \delta) - f(z_0)}{\delta} \\
+            &= \lim_{\delta \to 0} \frac{1}{2\pi i\delta}\oint_C \left(\frac{f(z)}{z-(z_0+\delta)} - \frac{f(z)}{z - z_0}\right)\,dz \\
+            &= \lim_{\delta\to 0} \frac{1}{2\pi i\delta} \oint_C \frac{f(z)\,dz\;\delta}{(z-z_0)(z-z_0-\delta)} \\
+            &= \lim_{\delta\to 0} \frac{1}{2\pi i} \oint_C \frac{f(z)\,dz}{(z-z_0)(z-z_0-\delta)} \\
+    f'(z_0) &= \frac{1}{2\pi i} \oint_C \frac{f(z)}{(z-z_0)^2}\,dz
+\end{align}
+Can repeat and prove by induction, that
+\begin{equation}
+    f^{(n)}(z_0) = \frac{n!}{2\pi i} \oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz
+\end{equation}
+Every analytic function is infinitely differentiable.
+
+\begin{example}
+Check formula for $f'$, $f = e^{2z}, C = 2e^{i\theta}, z_0 = 1$:
+    \begin{align}
+        \oint_{C_2} \frac{e^{2z}}{(z-1)^2}\,dz &= \oint_{C_\e} \frac{e^{2(w+1)}}{w^2}\,dw,~ w = z-1, C_2 \to C_{\e} = 1 + \e e^{i\theta} \\
+                                               &= \int_{0}^{2\pi} \frac{i\e e^{i\theta}\,d\theta \times e^{2 + 2\e e^{i\theta}}}{(\e e^{i\theta})^2} \\
+        e^{2\e e^{i\theta}} &= e^{2\e(\cos\theta + i\sin\theta)} \\
+                            &= e^{2\e\cos\theta(\cos(2\e\sin\theta) + i\sin(2\e\sin\theta))} \\
+                            &= (1 + 2\e\cos\theta + \cdots)(1 + 2i\e\sin\theta + O(\e^2)) \\
+                            &= 1 + 2\e\cos\theta + 2i\e\sin\theta + \cdots \\
+                            &= 1 + 2\e e^{i\theta} + O(\e^2) \\
+        \oint_{C_2} \frac{e^{2z}}{(z-1)^2}\,dz &= \int_0^{2\pi} \frac{e^2i\,d\theta\,(1 + 2\e e^{i\theta})}{\e e^{i\theta}} \\
+                                               &= 2\pi i \cdot \underbrace{2e^2}_{f'(1)}
+    \end{align}
+\end{example}
+
+\section{Taylor Series}
+Let f be analytic on a simply-connected domain D.
+Then for every $z_0 \in D$, there is a radius r such that for $|z - z_0| < r$,
+\begin{equation}
+    f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(z_0)}{n!} (z - z_0)^n.
+\end{equation}
+
+\subsection{Proof}
+Uses
+\begin{align}
+    \frac{1}{1 - \e} &= \sum_0^\infty \e^n ~\forall \;|\e| < 1 \\
+    \sum_{n=0}^\infty \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n &= \sum_0^\infty \frac{1}{2\pi i} \oint_C \frac{f(\zeta)\,d\zeta}{(\zeta - z_0)^{n+1}}(z - z_0)^n \\
+                                                       &= \frac{1}{2\pi i}\sum_{n=0}^\infty \oint_C \frac{f(\zeta)}{\zeta - z_0} \left(\frac{z - z_0}{\zeta - z_0}\right)^n\,d\zeta
+\end{align}
+Make sure to take C such that $|\zeta - z_0| > |z - z_0|$.
+Swap $\oint$ and $\sum$:
+\begin{align}
+    \sum_{n=0}^\infty \frac{f^{(n)}(z_0)}{n!} (z-z_0)^n &= \frac{1}{2\pi i} \oint_C \frac{f(\zeta)}{\zeta - z_0} \frac{1}{\left(1 - \frac{z-z_0}{\zeta-z_0}\right)}\,d\zeta \\
+    &= \frac{1}{2\pi i} \oint_C \frac{f(\zeta)}{\zeta - z}\,d\zeta = f(z)
+\end{align}
+Note that while a finite polynomial in z is an entire function, an infinite series may not be.
+
+If
+\begin{equation}
+    \mathcal{P}(z) = \sum_{n=0}^\infty a_nz^n
+\end{equation}
+then $\mathcal{P}(z)$ converges if
+\begin{equation}
+    \lim_{n\to\infty} \bigg|\frac{a_{n+1}}{a_n}z\bigg| = |z|\lim_{n\to\infty}\bigg|\frac{a_{n+1}}{a_n}\bigg| < 1
+\end{equation}
+which gives us a radius of convergence
+\begin{align}
+    R &= \frac{1}{\lim_{n\to\infty}\big|\frac{a_{n+1}}{a_n}\big|} \\
+    \mathcal{P}(z) &= \sum_0^\infty z^n, \frac{a_{n+1}}{a_n} = 1, R = 1 \\
+    e^z &= \sum_0^\infty \frac{z^n}{n!}, R = \infty
+\end{align}
+
+\chapter{Zeros and Poles}
+\section{Liouville Theorem}
+Recall:
+\begin{align}
+    f(z) &= \sum_{n=0}^\infty \frac{f^{(n)}(z_0)}{n!}(z - z_0)^n \tag{Taylor Series} \\
+    f^{(n)}(z_0) &= \frac{n!}{2\pi i} \oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz \tag{Cauchy Int Form}
+\end{align}
+Liouville: \emph{Every bounded entire function is constant.}
+
+\subsection{Proof}
+Consider
+\begin{align}
+    f^{(n)}(z_0) &= \frac{n!}{2\pi i}\oint_{C_R} \frac{f(z)}{(z-z_0)^{n+1}}\,dz \\
+    C_R &= \{z\; |\; z = z_0 + Re^{i\theta}\}, R > |z_0|
+\end{align}
+Since f is bounded, $\exists\,M$ such that $|f(z)| < M$ on $\C$.
+\begin{align}
+    |f^{(n)}(z_0)| &= \frac{n!}{2\pi}\bigg|\oint_{C_R} \frac{f(z)}{(z-z_0)^{n+1}}\,dz\bigg| < \frac{n!}{2\pi}\oint_{C_R} \frac{|f|\;|dz|}{|z-z_0|^{n+1}} \\
+                   &< \frac{n!}{2\pi} \int_{0}^{2\pi} d\theta\; \frac{M}{R^n} = \frac{n! M}{R^n}
+\end{align}
+but RHS $\to 0$ as $R \to \infty$, hence
+\begin{equation}
+    f^{(n)}(z_0) \equiv 0
+\end{equation}
+for all $n \geq 1$.
+The only Taylor series coefficient left is $n=0$, i.e. f is constant.
+
+\section{Zeros and Singularities}
+An analytic function has a zero at $z_0$ if we can write (around $z_0$)
+\begin{equation}
+    f(z) = (z-z_0)^n g(z)
+\end{equation}
+where $g(z) \neq 0$, g is analytic in a region around $z_0$.
+This zero has multiplicity n, or "a zero of order n."
+
+\underline{Zeros of an analytic function are isolated.}
+Suppose there exists a subset around zero of f that is also zero ($f(z_0) = 0$).
+\begin{equation}
+    f'(z_0) = \lim_{\delta\to 0} \frac{f(z_0 + \delta) - f(z_0)}{\delta}
+\end{equation}
+Choose to take $\delta$ along the path, so that $f(z_0 + \delta) = f(z_0) = 0$.
+This gives $f'(z_0) = 0$ since the limit is path independent.
+By iteration, all derivatives, $f^{(n)}(z_0) = 0$.
+Therefore, f is a constant around $z_0$, i.e. 0.
+Either f is identically zero, or zeros are isolated.
+
+\underline{Definition}: Let f be analytic in a domain $D - \{z_0\}$, then f has a pole at $z_0$ if we can write
+\begin{equation}
+    f(z) = \frac{g(z)}{(z-z_0)^m}, g(z_0) \neq 0
+\end{equation}
+g is analytic at $z_0$.
+The order of the pole is m.
+
+A function is \underline{meromorphic} if it is analytic/holomorphic except for isolated poles or singularities.
+
+Note:
+\begin{align}
+    \oint_C \frac{dz}{z} &= 2\pi i \\
+    \oint \frac{dz}{z^2} &= 0
+\end{align}
+Contour integration picks out the "$\frac{1}{z}$" piece.
+For analytic g:
+\begin{equation}
+    g(z) = g(z_0) + g'(z_0)(z-z_0) + \frac{g''(z_0)}{2}(z-z_0)^2 + \cdots
+\end{equation}
+Construct meromorphic f:
+\begin{align}
+    f(z) &= \frac{g(z)}{(z-z_0)^2} = \frac{g(z_0)}{(z-z_0)^2} + \frac{g'(z_0)}{(z-z_0)} + \frac{g''(z_0)}{2} + \cdots \\
+    \oint_C f(z)\,dz &= \oint_C \frac{g(z_0)}{(z-z_0)^2} + \frac{g'(z_0)}{(z-z_0)} + \cdots
+\end{align}
+This leads to a general theorem about contour integration.
+Suppose f has a simple pole at $z_0$ (order 1), then
+\begin{align}
+    \oint_C f(z)\,dz &= 2\pi i\lim_{z\to z_0} (z-z_0)f(z) \\
+    f(z) &= \frac{g(z)}{z-z_0}
+\end{align}
+For a simple pole, hence
+\begin{equation}
+    (z-z_0)f = g
+\end{equation}
+g is analytic, so
+\begin{align}
+    g(z) &= g(z_0) + O(z-z_0) \\
+    \implies \oint_C f(z)\,dz &= \oint_C \frac{g(z_0) + \cdots}{(z-z_0)}\,dz = 2\pi ig(z_0)
+\end{align}
+
+\begin{example}
+    \begin{align}
+        \oint_{C_2} \frac{dz}{z(z-1)} \\
+        \frac{1}{z(z-1)} &= \frac{1}{z-1} - \frac{1}{z} \\
+        f_1(z) &= \frac{1}{z-1} \to \oint_{C_2} \frac{dz}{z-1} = 2\pi i \\
+        \oint_{C_2} \frac{dz}{z} &= 2\pi i \\
+        \implies \oint_{C_2} f\,dz &= 0
+    \end{align}
+    But for pole at $z = 1$,
+    \begin{equation}
+        \lim_{z\to 1} (z-1)f = \lim_{z\to 1} \frac{1}{z} = 1
+    \end{equation}
+    and for pole at $z=0$,
+    \begin{equation}
+        \lim_{z\to 0} zf = \lim_{z\to 0} \frac{1}{z-1} = -1
+    \end{equation}
+    Sum of these is 0.
+    Call this coefficient of $\frac{1}{z-z_0}$ the residue.
+\end{example}
+
+\begin{example}
+    \begin{align}
+        \oint_C \frac{e^{2z}}{z^2 - 4}\,dz &= 2\pi i \times (z = 2) \\
+        \lim_{z\to 2} (z-2)f(z) &= \lim_{z\to 2} \frac{e^{2z}}{z+2} = \frac{e^4}{4}
+    \end{align}
+\end{example}
+
+Next time: Laurent Series
+\begin{equation}
+    f(z) = \sum_{n\to 0}^{\infty} a_n(z - z_0)^n
+\end{equation}
+where
+\begin{equation}
+    a_n = \frac{1}{2\pi i} \oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz
+\end{equation}
+
+\chapter{Meromorphic Functions and Laurent Series}
+Recall: A meromorphic function in a domain D is holomorphic except for isolated poles.
+
+\section{Laurent's Theorem}
+Let $f(z)$ be holomorphic in the annulus $\{|z-z_0|\,\in\, (r_1,r_2)\}, f(z)$ undefined at $z_0$.
+Then
+\begin{align}
+    f(z) &= \sum_{n=-\infty}^\infty a_n(z-z_0)^n \\
+         &= \underbrace{\sum_0^\infty a_n(z-z_0)^n}_{\text{Taylor}} + \underbrace{\sum_1^\infty a_{-n}(z-z_0)^{-n}}_{\text{Principal part}} \\
+    a_n &= \frac{1}{2\pi i}\oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz
+\end{align}
+C is any simply-closed, noncontractible curve in the annulus.
+
+\subsection{Proof}
+Without loss of generality, take $z_0 = 0, c_1 = r_1e^{i\theta}, c_2 = r_2e^{i\theta}$.
+By Cauchy,
+\begin{align}
+    f(z) &= \frac{1}{2\pi i}\oint_{C'} \frac{f(\zeta)}{\zeta - z}\,d\zeta \\
+         &= \frac{1}{2\pi i}\Bigg[\underbrace{\oint_{C_2} \frac{f(\zeta)}{\zeta - z}\,d\zeta}_{f_2} - \underbrace{\oint_{C_1} \frac{f(\zeta)}{\zeta-z}\,d\zeta}_{f_1}\Bigg] \\
+    f_2(z) &= \frac{1}{2\pi i}\oint_{C_2} \frac{f(\zeta)}{\zeta-z}\,d\zeta,~ (\zeta - z) = \zeta\left(1 - \frac{z}{\zeta}\right) \\
+           &= \frac{1}{2\pi i}\oint_{C_2} \frac{f(\zeta)}{\zeta} \sum_0^\infty \left(\frac{z}{\zeta}\right)^n d\zeta \\
+           &= \frac{1}{2\pi i}\oint_{C_2} \frac{f(\zeta)}{\zeta} \sum_0^N \left(\frac{z}{\zeta}\right)^nd\zeta + \frac{1}{2\pi i}\oint_{C_2} \frac{f(\zeta)}{\zeta} \sum_{N+1}^\infty \left(\frac{z}{\zeta}\right)^n d\zeta \\
+           &= \sum_0^N a_nz^n + \frac{1}{2\pi i} \oint_{C_2}\left(\frac{z}{\zeta}\right)^{N+1} \frac{f(\zeta)}{\zeta - z} d\zeta \\
+    \bigg| \oint_{C_2} \left(\frac{z}{\zeta}\right)^{N+1} \frac{f(\zeta)}{\zeta - z}d\zeta\bigg| &< \oint_{C_2} \bigg|\frac{z}{\zeta}\bigg|^{N+1} \bigg|\frac{f(\zeta)}{\zeta - z}\bigg|\,|d\zeta| \\
+    f_2(z) &= \sum_0^N a_nz^n  \\
+    f_1(z) &= -\frac{1}{2\pi i} \oint_{C_1} \frac{f(\zeta)}{\zeta - z}d\zeta \\
+           &= \frac{1}{2\pi i}\oint_{C_1} \frac{f(\zeta)}{z} \sum_{0}^\infty \left(\frac{\zeta}{z}\right)^n d\zeta \\
+           &= \sum_0^\infty \frac{1}{2\pi i} \oint_{C_1} f(\zeta) \zeta^n z^{-(n+1)} d\zeta \\
+           &= \sum_{m=1}^\infty \frac{1}{2\pi i} \oint_{C_1} \frac{f(\zeta)}{\zeta^{1-m}}d\zeta\,z^{-m} \\
+           &= \sum_{m=1}^\infty a_mz^{-m} \\
+    f(z) &= f_1(z) + f_2(z) = \sum_{-\infty}^\infty a_nz^n
+\end{align}
+Clearly, if $f(z)$ has a pole at $z_0$, the Laurent series terminates at some finite negative n, the other of the pole.
+If the series does not terminate at negative n, then f has an \unl{essential singularity} at $z_0$.
+
+\begin{example}
+    \begin{align}
+        f(z) &= \exp\left(\frac{1}{z}\right) \\
+             &= \sum_0^\infty \frac{1}{n!z^n},~ (x\to 0^+, f\to \infty) \\
+             &= \sum_{-\infty}^0 \frac{z^n}{n!},~ (x\to 0^-, f\to 0)
+    \end{align}
+    The singularity is "nasty" and f takes all values (except possibly one) in any neighbourhood of $z=0$.
+\end{example}
+
+\section{Integration of meromorphic functions}
+The poles or singularities of a meromorphic function are isolated.
+Can now use Laurent series to identify contour integrals.
+\begin{align}
+    \oint_C f(z)\,dz &= \oint_C \Bigg[-\sum_{-\infty}^{-1} a_n(z-z_0)^n + \underbrace{\sum_0^\infty a_n(z-z_0)^n}_{0\text{, by Cauchy}}\Bigg] \\
+    \oint_C (z-z_0)^n\,dz &= 0, \text{ unless } n = -1 \\
+    \oint_C f(z)\,dz &= 2\pi i a_{-1}
+\end{align}
+This is the definition of $a_{-1}$, the \unl{residue} or $f(z)$ at $z_0$.
+
+\subsection{Calculating Residues}
+Techniques depend on the situation:
+\begin{itemize}
+    \item Simple poles:
+        \begin{equation}
+            f(z) = \frac{g(z)}{z-z_0}
+        \end{equation}
+        g is holomorphic at $z_0$, so
+        \begin{equation}
+            \text{Res}(f,z_0) = g(z_0) = \lim_{z\to z_0} (z-z_0)f(z)
+        \end{equation}
+    \item Pole of order N
+        \begin{equation}
+            f(z) = \frac{g(z)}{(z-z_0)^N}
+        \end{equation}
+        g is holomorphic at $z_0$, and $\neq 0$.
+        Need the $(N-1)^{th}$ coefficient of Taylor series of g.
+        \begin{align}
+            \text{Res}(f,z_0) &= \frac{1}{(N-1)!} g^{(N-1)}(z_0) \\
+                              &= \frac{1}{(N-1)!} \lim_{z\to z_0} \frac{d^{N-1}}{dz^{N-1}} \left[(z-z_0)^Nf\right]
+        \end{align}
+    \item
+        \begin{align}
+            f(z) &= \frac{g(z)}{h(z)} \\
+            \text{Res}(f,z_0) &= \frac{g(z_0)}{h'(z_0)}
+        \end{align}
+        g, h are holomorphic, h has a simple zero at $z_0$.
+\end{itemize}
+If not a simple pole, safest to series expand.
+\begin{example}
+    Pole or order 2 at $z=0$:
+    \begin{align}
+        f(z) &= \frac{1}{z\sin z} \\
+        \sin z &= z - \frac{z^3}{3!} + \frac{z^5}{5!} + \cdots \\
+        f(z) &= \frac{1}{z^2(1 - \frac{z^2}{6} + \cdots)} = \frac{1 + \frac{z^2}{6} + \cdots}{z^2} \\
+        \text{Res}(f,z_0) &= 0
+    \end{align}
+\end{example}
+
+\section{Residue Theorem}
+Let f be meromorphic in a domain D, with poles at $\{z_i\}$.
+Then,
+\begin{equation}
+    \oint_C f(z)\,dz = 2\pi i \sum \text{Res}(f,z_i)
+\end{equation}
+
+\chapter{Contour Integration}
+
+\section{Examples}
+
+\begin{example}[1]
+    \begin{align}
+        f(z) &= \frac{\cos(\pi z)}{z^2(1-z)}
+    \end{align}
+    Poles at $z=1$ (simple), and $z=0$ (double).
+
+    \begin{itemize}
+        \item Look at $z=1$:
+            \begin{align}
+                \text{Res} &= \lim_{z\to 1} (z-1)f(z) \\
+                           &= \lim_{z\to 1} -\frac{\cos(\pi z)}{z^2} = 1
+            \end{align}
+        \item Look at $z=0$:
+            \begin{align}
+                \text{Res} &= \lim_{z\to 0} \frac{d}{dz}[z^2f(z)] \\
+                           &= \lim_{z\to 0} \frac{d}{dz} \left[\frac{\cos(\pi z)}{(1-z)}\right] \\
+                           &= \lim_{z\to 0} \left[-\frac{\pi\sin(\pi z)}{1-z} + \frac{\cos(\pi z)}{(1-z)^2}\right] \\
+                           &= 1
+            \end{align}
+        \item Missing pole at $z=1$:
+            \begin{align}
+                I &= \oint_{C_{1/2}} f(z)\,dz \\
+                  &= 2\pi i (\text{Res}(f,0)) = 2\pi i
+            \end{align}
+        \item Including pole at $z=1$:
+            \begin{align}
+                I &= \oint_{C_2} f(z)\,dz \\
+                  &= 2\pi i(\text{Res}(f,0) + \text{Res}(f,1)) = 4\pi i
+            \end{align}
+    \end{itemize}
+\end{example}
+
+\begin{example}[2]
+    \begin{align}
+        f(z) &= \frac{e^z}{z^2 + z + 1} \\
+    \end{align}
+    The first job is to identify poles:
+    \begin{align}
+        z^2 + z + 1 &= 0 \\
+        \implies z &= -\frac{1}{2} \pm \frac{1}{2} \sqrt{1-4} \\
+                   &= -\frac{1}{2} \pm \frac{i\sqrt{3}}{2} \\
+                   &= e^{\pm 2\pi i/3}
+    \end{align}
+    Now for the residues:
+    \begin{enumerate}
+        \item
+            \begin{align}
+                \text{Res}(f,e^{2\pi i/3}) &= \lim_{z\to e^{2\pi i/3}} \frac{e^z}{\left(z + \frac{1}{2} + \frac{i\sqrt{3}}{2}\right)} \\
+                                           &= \frac{e^{-1/2}e^{i\sqrt{3}/2}}{i\sqrt{3}}
+            \end{align}
+        \item
+            \begin{align}
+                \text{Res}(f,e^{-2\pi i/3}) &= \lim_{z\to e^{-2\pi i/3}} \frac{e^z}{z+\frac{1}{2}-\frac{i\sqrt{3}}{2}} \\
+                                            &= \frac{e^{-1/2}e^{-i\sqrt{3}/2}}{-i\sqrt{3}}
+            \end{align}
+    \end{enumerate}
+    \begin{align}
+        \oint_{C_2} f(z)\,dz &= 2\pi i \times \left[\text{Res}(f,e^{2\pi i/3} + \text{Res}(f,e^{-2\pi i/3}\right] \\
+                             &= 2\pi i \left[\frac{e^{-1/2}e^{i\sqrt{3}/2}}{i\sqrt{3}} - \frac{e^{-1/2}e^{-i\sqrt{3}/2}}{i\sqrt{3}}\right] \\
+                             &= 4\pi \frac{e^{-1/2}}{\sqrt{3}} \sin\left(\frac{\sqrt{3}}{2}\right)
+    \end{align}
+\end{example}
+
+\section{Zeros and Poles Theorem}
+Let f be a meromorphic function inside $\C$, then
+\begin{align}
+    \frac{1}{2\pi i}\oint_C \frac{f'(z)}{f(z)}\,dz = n_{zeros} - n_{poles}
+\end{align}
+Inside the contour, you count multiplicity for these.
+
+\subsection{Proof}
+If f has a pole at $z_0$, so does $f'$ (Laurent expansion or expression for pole).
+Also, clearly if f has a zero at $z_0$, $\frac{1}{f}$ has a pole there, i.e. for a zero $z_0$,
+\begin{align}
+    f &= (z-z_0)^n g(z) \\
+    f' &= (z-z_0)^n g' + n(z-z_0)^{n-1} g \\
+    \implies \frac{f'}{f} &= \underbrace{\frac{g'}{g}}_{\text{regular}} + \underbrace{\frac{n}{z-z_0}}_{\text{pole (simple), Res = n}}
+\end{align}
+Similarly, at a pole,
+\begin{align}
+    f &= \frac{g}{(z-z_0)^m} \\
+    \frac{f'}{f} &= \underbrace{\frac{g'}{g}}_{\text{regular}} - \underbrace{\frac{m}{z-z_0}}_{\text{simple pole, Res = m}}
+\end{align}
+
+\section{Trigonometric Integrals}
+Consider an integral pf the form
+\begin{align}
+    I &= \int_0^{2\pi} R(\cos(m\theta),\sin(n\theta))\,d\theta
+\end{align}
+R is a rational function - a ratio of polynomials.
+Can reinterpret as a complex integral on
+\begin{align}
+    C_1:\; z &= e^{i\theta} \implies d\theta = -i\frac{dz}{z} \\
+    \cos(m\theta) &= \frac{e^{im\theta} + e^{-im\theta}}{2} = \frac{z^m + z^{-m}}{2} \\
+    \sin(n\theta) &= \frac{z^n - z^{-n}}{2i}
+\end{align}
+Since R is a rational function, transforming to a complex integral in z, we see our integrand is a rational function of z, hence meromorphic.
+\begin{align}
+    I &= -i \oint_C \frac{dz}{z} R\left(\frac{z^m + z^{-m}}{2}, \frac{z^n - z^{-n}}{2i}\right)
+\end{align}
+
+\begin{example}
+    \begin{align}
+        I &= \int_0^{2\pi} \frac{d\theta}{2 - \cos\theta} \\
+          &= -i \oint_{C_1} \frac{dz}{z} \frac{1}{2 - \frac{z + z^{-1}}{2}} \\
+          &= \oint_{C_1} \frac{2i\,dz}{z^2 - 4z + 1}
+    \end{align}
+    Integrand has poles where $z^2 - 4z + 1 = 0$:
+    \begin{align}
+        z &= 2 \pm \sqrt{4 - 1} = 2\pm \sqrt{3}
+    \end{align}
+    Pole at $2 -\sqrt{3}$ is inside unit circle, so calculate residue:
+    \begin{align}
+    \text{Res} &= \lim_{z\to 2-\sqrt{3}} \frac{\cancel{(z - 2+\sqrt{3})}\cdot 2i}{\cancel{(z-2+\sqrt{3})}(z-2-\sqrt{3})} \\
+               &= \frac{2i}{-2\sqrt{3}} = -\frac{i}{\sqrt{3}} \\
+    I &= 2\pi i \text{Res}(f,2-\sqrt{3}) = 2\pi i \times -\frac{i}{\sqrt{3}} = \frac{2\pi}{\sqrt{3}}
+    \end{align}
+\end{example}
+
+\begin{example}
+    \begin{align}
+        I &= \int_0^{2\pi} \frac{\sin\theta\;d\theta}{(3+\cos\theta)(2+\sin\theta)} \\
+          &= \oint_{C_1} -\frac{i\,dz}{z} \frac{\frac{z-z^{-1}}{2i}}{\left(3 + \frac{z+z^{-1}}{2}\right)\left(2 + \frac{z-z^{-1}}{2i}\right)} \\
+          &= \oint_{C_1} \frac{-2i (z^2 - 1)\;dz}{(z^2 + 6x + 1)(z^2 + 4iz - 1)}
+    \end{align}
+    \begin{itemize}
+        \item $z^2 + 6z + 1 = 0 \implies z = -3 \pm \sqrt{8} = -3 \pm 2\sqrt{2}$.
+            Pole inside $C_1$ at $z_1 = -3 + 2\sqrt{2}$.
+        \item $z^2 + 4iz - 1 = 0 \implies z = -2i \pm \sqrt{-4 + 1} = -2i \pm i\sqrt{3}$.
+            Pole inside $C_1$ at $z_2 = -2i + i\sqrt{3}$.
+    \end{itemize}
+    Now look at residues:
+    \begin{enumerate}
+        \item
+            \begin{align}
+                \text{Res}(f,z_1) &= \lim_{z\to z_1} (z-z_1)f(z) \\
+                z_1^2 &= -6z_1 - 1 \\
+                \implies z_1^2 - 1 &= -2 - 6z_1 = -2 + 18 -12\sqrt{2} \\
+                                   &= 4\sqrt{2}z_1 \\
+                z_1^2 + 4iz - 1 &= 4z_1(\sqrt{2} + i) \\
+                \text{Res}(f,z_1) &= \lim_{z\to -3+2\sqrt{2}} \frac{-2i(z^2 - 1)}{(z_1 + 3 + 2\sqrt{2})(z_1^2 + 4iz -1)} \\
+                                  &= \frac{-2i \times 4\sqrt{2}z_1}{4\sqrt{2} \times 4z_1 (\sqrt{2}+i)} \frac{\sqrt{2} - i}{\sqrt{2} - i} \\
+                                  &= \frac{-i(\sqrt{2} - i}{2\times 3} = -\frac{i}{6}(\sqrt{2} -i)
+            \end{align}
+            Some reductions work for other residues.
+        \item
+            \begin{equation}
+                \text{Res}(f,z_2) = \frac{i}{6}(\sqrt{3} - i)
+            \end{equation}
+    \end{enumerate}
+    Hence,
+    \begin{align}
+        I &= 2\pi i \times \frac{i}{6}(\sqrt{3} - i - (\sqrt{2} - i)) \\
+          &= -\frac{\pi}{3} (\sqrt{3} - \sqrt{2})
+    \end{align}
+\end{example}
+
+\chapter{Integrals over the real line}
+\section{Real integrals}
+Sometimes a real integral can be more easily performed by analytic continuation to the $\C$-plane and using residues.
+\begin{example}[1]
+    \begin{equation}
+        I = \ifnt \frac{dx}{1 + x^2}
+    \end{equation}
+    \begin{itemize}
+        \item In real analysis: $x =\tan u$, $dx = \sec^2u\,du$, $1 + x^2 = \sec^2u$, $x = \pm \infty, u = \pm \pi/2$.
+            \begin{equation}
+                I = \int_{\pi/2}^{\pi/2} \frac{sec^2u\;du}{\sec^2u} = \pi
+            \end{equation}
+        \item In complex analysis:
+            \begin{equation}
+                f(z) = \frac{1}{1 + z^2}
+            \end{equation}
+            f has 2 simple poles at $z = \pm i$, so, 
+            \begin{align}
+                \text{Res}(f,\pm i) &= \lim_{z\to\pm i} (z \mp i)f(z) \\
+                                    &= \lim_{z\to\pm i} \frac{1}{z\pm i} = \frac{1}{\pm 2i}
+            \end{align}
+            Let C be the contour
+            \begin{equation}
+                [-R,R] \cup \left\{Re^{i\theta} | \theta \in [0,\pi]\right\}
+            \end{equation}
+            For $|z| = R$, $R|f(z)| \to 0$ as $R \to \infty$.
+            The integral around semi-circle goes to 0 as $R \to \infty$.
+            \begin{align}
+                I &= \lim_{R\to\infty} \oint_C f(z)\,dz \\
+                  &= 2\pi i \text{Res}(f,i) = \pi
+            \end{align}
+    \end{itemize}
+\end{example}
+
+\begin{example}[2]
+    \begin{align}
+        I_2 &= \ifnt \frac{x+2}{(2x^2 + 3)^2}\,dx \\
+        f(z) &= \frac{z+2}{(2z^2 + 3)^2}
+    \end{align}
+    Double poles at $2z^2 + 3 = 0$.
+
+    As before, $R|f(Re^{i\theta})| \to 0$ as $R \to \infty$, so take some contour as before. 
+    Integral around semicircle in upper $\frac{1}{2}\C$-plane $\to 0$.
+    \begin{equation}
+        I_2 = \lim_{R\to\infty} \oint_C f(z)\,dz
+    \end{equation}
+    This encloses pole at $z = +i\sqrt{\frac{3}{2}}$.
+    Note:
+    \begin{align}
+        (2z^2 + 3)^2 &= 4\left(z^2 + \frac{3}{2}\right)^2 \\
+                     &= \left(z + i\sqrt{\frac{3}{2}}\right)^2\left(z - i\sqrt{\frac{3}{2}}\right)^2 \\
+        \text{Res}\left(f, i\sqrt{\frac{3}{2}}\right) &= \lim_{z\to i\sqrt{3/2}} \frac{d}{dz}\left[ \left(z - i\sqrt{\frac{3}{2}}\right)^2f(z)\right] \\
+                                                      &= \lim_{z\to i\sqrt{3/2}} \left[\frac{z+2}{4(z+i\sqrt{3/2})^2}\right] \\
+                                                      &= \left[\frac{1}{4(z + i\sqrt{3/2})^2} - \frac{2(z+2)}{4(z + i\sqrt{3/2})^3}\right]\times i\sqrt{\frac{3}{2}} \\
+                                                      &= \frac{1}{4(i\sqrt{6})^2} - \frac{2(i\sqrt{3/2} + 2}{4(i\sqrt{6})^3} \\
+                                                      &= -\frac{1}{(i\sqrt{6})^3} = \frac{1}{i6\sqrt{6}} \\
+        \implies I_2 &= 2\pi i\text{Res}\left(f, i\sqrt{\frac{3}{2}}\right) \\
+                     &= \frac{\pi}{3\sqrt{6}}
+    \end{align}
+    The more complicated the rational function, the easier the complex method. 
+\end{example}
+
+\section{Branch cuts and contours}
+Sometimes we need to be careful about constructing a contour, as contours cannot cross branch cuts.
+\begin{example}
+    \begin{align}
+        f(z) &= z^{-\alpha} = \exp(-\alpha\log(z))
+    \end{align}
+    Cannot integrate f around $C_R$ if $\alpha \notin \Z$.
+    \begin{equation}
+        I = \ofnt \frac{u^{-y}}{1 + u}\,du
+    \end{equation}
+    Analytically continue to $\C$:
+    \begin{align}
+        f(z) &= \frac{z^{-y}}{1+z} \\
+        z^{-y} &= \exp(-y\log(z)) \\
+        (u + i\e)^{-y} &= u^{-y}\exp\left(-y\left(\frac{i\e}{u}\right)\right)
+    \end{align}
+    Here, choosing standard branch for log, $\log(re^{i\theta}) = \log(r)+i\theta, \theta \in [0,2\pi]$. 
+    Requires branch cut on $\R^+$.
+    Since $\theta \in [0,2\pi]$ on this branch of log, "$u - i\e$" is really $\theta = +2\pi - O(\e)$.
+    \begin{align}
+        \log(u-i\e) &= \log(u) + \log\left(1 - \frac{i\e}{u}\right) \\
+                    &= \log(u) + 2\pi i - \frac{i\e}{u} \\
+        (u-i\e)^{-y} &= u^{-y}e^{-2\pi iy + i\e y/u}
+    \end{align}
+    To avoid branch cut, must construct "Pacman"-style contour - circle going round at radius, R, then breaking near the positive reals to go back to the origin then curve round. 
+    \begin{align}
+        C &= C_R' \cup I \cup C_\e' \cup \gamma 
+    \end{align}
+    \begin{itemize}
+        \item $C_R'$:
+            \begin{equation}
+                \bigg|\frac{z^{-y}}{1+z}\bigg|R \to 0
+            \end{equation}
+            for $|z| = R, R \to \infty$.
+        \item $C_\e'$:
+            \begin{equation}
+                \bigg|\frac{z^{-y}}{1+}\bigg|\e \to 0
+            \end{equation}
+            for $|z| = \e, \e \to 0$.
+        \item $\gamma_{-}$:
+            \begin{align}
+                z^{-y} &= u^{-y} e^{-2\pi iy} \\
+                \int_{\gamma} f\,dz &= \int_R^0 \frac{u^{-y}}{1+u}e^{-2\pi i y}\,du \\
+                                    &= -e^{-2\pi i y}I \\
+                \oint_C f(z)\,dz &= I - e^{-2\pi i y}I \\
+                                 &= (1 - e^{-2\pi i y})I
+            \end{align}
+    \end{itemize}
+    R has a simple pole at $z = -1$. 
+    \begin{align}
+        \text{Res}(f, -1) &= \lim_{z\to -1} (1+z)f(z) = (-1)^{-y} \\
+                          &= e^{-i\pi y} \\
+        I &= \frac{2\pi i\text{Res}(f,-1)}{1 - e^{-2\pi i y}} = \frac{2\pi ie^{-i\pi y}}{1 - e^{-2\pi i y}} \\
+          &= \pi\times\frac{2i}{e^{i\pi y} - e^{-\pi y}} = \frac{\pi}{\sin(\pi y)}
+    \end{align}
+\end{example}
+
+\newpage
+\section{Closing contours}
+\begin{example}
+    \begin{align}
+        I &= \ifnt \frac{x\sin(\pi x)}{x^2 + 1}\,dx \\
+        f(z) &= \frac{z\sin(\pi z)}{1+z^2} \\
+             &= \frac{z(e^{i\pi z} - e^{-i\pi z})}{(1+z^2)(2i)}
+    \end{align}
+    Looking to close contour in upper/lower half of plane.
+    For semicircle in upper half plane, $R|e^{i\pi z}| \to 0$, but $R|e^{-i\pi z}| \to \infty$.
+    Define:
+    \begin{equation}
+        f_{\pm} = \pm\frac{ze^{\pm i\pi z}}{2i(1+z^2}
+    \end{equation}
+    Let $C_+ = [-R,R] \cup \left\{ Re^{i\theta}\,|\,| \theta \in [0,\pi]\right\}$.
+    \begin{equation}
+        \oint_{C_+} f_+\,dz = 2\pi i\text{Res}(f,i)
+    \end{equation}
+    $f_+$ has simple pole at i. 
+    \begin{align}
+        \text{Res}(f_+,i) &= \lim_{z\to i} (z-i)f_+ \\
+                          &= \lim_{z\to i} \frac{ze^{i\pi z}}{2i(z+i)} = \frac{ie^{-\pi}}{(2i)^2} \\
+                          &= \frac{e^{-\pi}}{4i} \\
+        \oint_{C_+} f_+\,dz &= \frac{\pi e^{-\pi}}{2} \\
+        I &= 2\text{Res}(f_+,i) = \pi e^{-\pi}
+    \end{align}
+\end{example}
+
+\chapter{Summation of Series}
+Cotour integrals can be used to good effect in evaluating infinite series. 
+
+\section{Riemann-Zeta Function}
+\begin{align}
+    \z(s) &= \sum_{n=1}^\infty \frac{1}{n^s}
+\end{align}
+Look at $s \in \Z^+, (s > 1)$.
+Looks like we are summing over an infinite series of poles with residues, $\frac{1}{n^s}$.
+
+Aim: Construct meromorphic function $f_s$ such that $f_s$ has poles at integer $z = n$, residues $\frac{1}{n^s}$, and $R|f| \to 0$ for $|z| = R \to \infty$.
+This last condition with lead to $\int_{CR} f\;dz = 0$.
+Note: $\sin(\pi z)$ has zeros at $z = n$.
+Around $z = n$:
+\begin{align}
+    \sin(n\pi + \pi(z-n)) &= \cos(n\pi)\sin(\pi(z-n)) \\
+                          &= (01)^n\pi(z-n) + O(z-n)^3 \\
+    \pi\cot(\pi z) &= \frac{1}{z-n} + O(z-n) \\
+    f_s(z) &= \frac{\pi\cot(\pi z)}{z^s}
+\end{align}
+Simple poles at $z = n \neq 0$, residue $\frac{1}{n^s}$.
+At $z = 0$, pole of order $s+1$. 
+If s is even, then 
+\begin{equation}
+    \frac{1}{(-n)^s}  = \frac{1}{n^s}.
+\end{equation}
+Poles on $\Z^+$ have same residue as poles on $Z^-$.
+
+Consider 
+\begin{align}
+    z &= Re^{i\theta} = R\cos\theta + iR\sin\theta \\
+    e^{2i\pi z} &= e^{2i\pi R\cos\theta}e^{-2\pi R\sin\theta} \\
+    \theta \in (0,\pi), \sin\theta &> 0, e^{2i\pi z} \to 0, |z| = R\to \infty \\
+    \theta \in (\pi,2\pi), \sin\theta &< 0, e^{2i\pi z}\to 0, |z|=R\to\infty \\
+    |\cot(\pi z)| &= \bigg|\frac{e^{2i\pi z}+1}{e^{2i\pi z} - 1}\bigg| \to 1
+\end{align}
+To cover $z \in \R$, take $z = \pm R, R = N + \frac{1}{2} \implies \cot(\pi(N+\frac{1}{2})) = 0$.
+So take the discrete series of contours, $C_R$, $R = N + \frac{1}{2}, N \in \Z^+ \to \infty$. 
+
+On $C_R$: $R_N|f(z)| \to 0$ as $N \to \infty$ and
+\begin{equation}
+    \int_{C_R} f(z)\;dz = 0
+\end{equation}
+At finite N, $\oint_{C_R} f\;dz$ is small, poles run from $-N$ to N.
+\begin{equation}
+    \sum_{res} \text{Res}(f,z_i) = 0
+\end{equation}
+Poles at $z \in \Z$. 
+\begin{align}
+    2\z(s) + \text{Res}(f_s,0) = 0
+\end{align}
+
+\begin{itemize}
+    \item $s=2$: At $z=0$, has triple pole 
+        \begin{align} 
+            f_2 &= \frac{\pi\cot(\pi z)}{z^2} \\
+            \cos(\pi z) &= 1 - \frac{(\pi z)^2}{2} + \frac{(\pi z)^4}{4!} + \cdots \\
+            \sin(\pi z) &= \pi z - \frac{(\pi z)^3}{3!} + \frac{(\pi z)^5}{5!} + \cdots \\
+            \frac{\pi\cot(\pi z)}{z^2} &= \pi\frac{1 - \frac{(\pi z)^2}{2} + \frac{(\pi z)^4}{4!}}{\pi z^3\left(1 - \frac{(\pi z)^2}{3!}\right)} \\
+                                       &= \frac{1}{z^3}\left(1 - \frac{\pi^2z^2}{3}\right) \\
+            \z(2) &= -\frac{1}{2}\text{Res}(f_2,0) = \frac{\pi^2}{6}
+        \end{align}
+    \item $s=4$:
+        \begin{align}
+            \frac{\pi\cot(\pi z)}{z^4} &= \frac{1}{z^5}\frac{1 - \frac{(\pi z)^2}{2} + \frac{(\pi z)^4}{4!}}{1 - \e} 
+        \end{align}
+        Let 
+        \begin{align}
+            \e &= \frac{(\pi z)^2}{3!} - \frac{(\pi z)^4}{4!} \\
+            \frac{1}{1-\e} &= 1 + \e + \e^2 + \cdots \\
+            \frac{\pi\cot(\pi z)}{z^4} &= \frac{1}{z^5}\left(1 - \frac{(\pi z)^2}{2} + \frac{(\pi z)^4}{4!} \right)\left(1 + \frac{\pi z)^2}{3!} - \frac{(\pi z)^4}{5!} + \frac{(\pi z)^4}{36} \right) \\
+            \text{Residue} &= -\frac{\pi^4}{45} \\
+            \z(4) &= \frac{\pi^4}{90}
+        \end{align}
+\end{itemize}
+
+\section{Other Series}
+What about 
+\begin{equation}
+    S = \sum_1^\infty \frac{(-1)^n}{n^2}
+\end{equation}
+$\frac{\pi}{\sin(\pi z)}$ has alternating sign for residue. 
+\begin{equation}
+    f(z) = \frac{\pi}{z^2\sin(\pi z)}
+\end{equation}
+Two copies of S on positive and negative real axis. 
+As $z \to 0$:
+\begin{align}
+    f(z) &= \frac{1}{z^3}\left(1 + \frac{(\pi z)^2}{3!}\right) \\
+    S &= -\frac{1}{2}\text{Res}(f,0) = -\frac{\pi^2}{12}
+\end{align}
+
+Finally, suppose the terms in the series are not symmetric around $z = 0$.
+\begin{align}
+    S &= \sum_0^\infty \frac{1}{(n+1)(n+2)} \\
+    f(z) &= \frac{\pi\cot(\pi z)}{(z+1)(z+2)}
+\end{align}
+This gives S from poles for $z = n \geq 0$. 
+Consider $m = -n-\lambda \implies m+i = -(n+(\lambda-i))$, so if $\lambda = 3$, then $m+1 = -(n+2), m+2 = -(n+1)$. 
+
+So we have $(m+1)(m+2) = (n+1)(n+2)$. 
+This gives two copies of S, but not symmetric around the origin.
+\begin{align}
+    \sum_{n=-3}^{-\infty} \frac{1}{(n+1)(n+2)} &= \sum_{m=0}^\infty \frac{1}{(m+1)(m+2)}
+\end{align}
+Thus $2S + \text{Res}(f, -1) + \text{Res}(f,-2) = 0$. 
+Poles at $z = -1,-2$ are double poles. 
+\begin{align}
+\pi\cot(\pi z) &= \frac{1}{z-n}(1 + O(z-n)^2)
+\end{align}
+Both poles give residue of $-1$, hence $S = 1$.
+
+\subfile{vecs.tex}
+
+\end{document}

@@ -1,0 +1,247 @@
+\documentclass[cplx.tex]{subfiles}
+
+\begin{document}
+\part{Infinite Dimensional Vector Spaces}
+\chapter{}
+Define vector space and scalars:
+\begin{align}
+    E &= \{\vx\} \\
+    k &= (\R, \C) 
+\end{align}
+Define '+' - the sum, and '$\cdot$' - product by scalar. 
+
+\begin{multicols}{2}
+    The properties of the sum:
+    \begin{itemize}
+        \item commutative
+        \item associative
+        \item neutral element
+        \item inverse element
+    \end{itemize}
+    \columnbreak    
+    The properties of the product:
+    \begin{itemize}
+        \item neutral element in k
+        \item distributive
+    \end{itemize}
+\end{multicols}
+
+\section{Bases and eigenvectors}
+Consider $\vx$ in n-dimensional space, with orthonormal basis $\{\ve_i\}, i = 1,\cdots,n$.
+\begin{align}
+    \vx &= \sum_{i=1}^n \ve_i x^i = \ve_1 x^1 + \cdots + \ve_n x^n \\
+\end{align}
+$(x^1\cdots x^n)$ - $x^i$ cooridnates of the vector in $\{\ve_i\}$.
+In matrix form:
+\begin{align}
+    \vx &= \begin{bmatrix} \ve_1 & \cdots & \ve_n\end{bmatrix} \begin{bmatrix} x^1 \\ \vdots \\ x^n \end{bmatrix} \\
+    \vx &= \sum_{i=1}^n \ve'_i x^i = \ve'_1 x^1 + \cdots + \ve'_n x^n
+\end{align}
+Transformation of basis:
+\begin{align}
+    \ve'_1 &= \ve_1 S^1_1 + \cdots + \ve_n S^n_1 = \sum_i \ve_i S^i_1 \\
+    \ve'_n &= \ve_1 S^1_n + \cdots + \ve_n S^n_n = \sum_i \ve_i S^i_n \\
+    \ve' &= \begin{bmatrix} \ve_1 \cdots \ve_n \end{bmatrix}\begin{bmatrix} S^1_1 & S^1_2 & \cdots & S^1_n \\ \vdots & & & \\ S^n_1 & \cdots & \cdots & S^n_n \end{bmatrix} \\
+    \vx &= \sum_{i=1}^n \ve'_i x'^i = \sum_{i=1}^n \left(\sum_{j=1}^n \ve_j S^j_i\right) x'^i \\
+        &= \sum_{j=1}^n \ve_j \left(\sum_{i=1}^n S^j_i x'^i\right) = \sum_{j=1}^n \ve_j x^j \\
+    x^j &= \sum_{i=1}^n S^j_i x'^i \\
+    \begin{bmatrix} x^1 \\ x^2 \\ \vdots \\ x^n \end{bmatrix} &= \begin{bmatrix} S^1_1 & \cdots & \cdots & S^1_n \\ & \ddots & & \\ & & \ddots & \\ & & & S^n_n \end{bmatrix}\begin{bmatrix} x'^1 \\ x'^2 \\ \vdots \\ x'^n\end{bmatrix}  \\
+    \begin{bmatrix} x'^1 \\ \vdots \\ x'^n \end{bmatrix} &= \begin{bmatrix} & & \\ & S^{-1} & \\ & & \end{bmatrix} \begin{bmatrix} x^1 \\ \vdots \\ x^n \end{bmatrix}
+\end{align}
+
+\section{Einstein's Notation}
+\begin{align} 
+    m^2 = |p|^2 &= \sum_{i=1}^4 p_ip^i = p_ip^i \\
+    m^2\cdot x^i &= p_ip^i x^i \\
+    \delta^i_j &= \begin{cases} 1 & i = j \\ 0 & i \neq j\end{cases} \\
+    \vx &= \ve_i x^i = \ve'_i x'^i \\
+    \ve'_j &= \ve_i S^i_j \\
+    x^i &= S^i_j x'^j
+\end{align}
+Can write product of matrices in the same way:
+\begin{align}
+    (AB)^i_j &= A^i_kB^k_j
+\end{align}
+
+
+\begin{example}[3D Rotations]
+    Have basis of $\{\ve_1,\ve_2,\ve_3\}$
+
+    Consider the vector, $\vec{p}: (p^1,p^2,p^3)$, with a rotation of $\phi_3$ around $\ve_3$.
+    \begin{align}
+        \ve'_1 &= \ve_1\cos(\phi) + \ve_2\sin(\phi) \\
+        \ve'_2 &= -\ve_1\sin(\phi) + \ve_2\cos(\phi) \\
+        \ve'_3 &= \ve_3 \\
+        S(\ve_3,\phi) &= \begin{bmatrix} \cos\phi & -\sin\phi & 0 \\ \sin\phi & \cos\phi & 0 \\ 0 & 0 & 1 \end{bmatrix} \\
+        \begin{bmatrix} p'^1 \\ p'^2 \\ p'^3 \end{bmatrix} &= \underbrace{\begin{bmatrix} \cos\phi & \sin\phi & 0 \\ -\sin\phi & \cos\phi & 0 \\ 0 & 0 & 1 \end{bmatrix}}_{S^{-1} = R(\ve_3,\phi)} \begin{bmatrix} p^1 \\ p^2 \\ p^3 \end{bmatrix} \\
+        R(\ve_2,\phi) &= \begin{bmatrix} \cos\phi & 0 & \sin\phi \\ 0 & 1 & 0 \\ -\sin\phi & 0 & \cos\phi \end{bmatrix}
+    \end{align}
+    Now consider a consecutive rotation, $\phi_1 \to \phi_2, \ve_2$:
+    \begin{align}
+        R(\ve_2,\phi_1+\phi_2) &= \begin{bmatrix} \cos(\phi_1+\phi_2) & 0 & \sin(\phi_1+\phi_2) \\ 0 & 1 & 0 \\ -\sin(\phi_1+\phi_2) & 0 & \cos(\phi_1+\phi_2) \end{bmatrix}
+    \end{align}
+\end{example}
+These rotations can lead to the matrix representation: 
+\begin{align}
+    e^{i\phi_1}e^{i\phi_2} &= e^{i(\phi_1+\phi_2)}
+\end{align}
+
+\begin{itemize}
+    \item $R^{-1} = R^T \implies R^TR = 1$ - this is an example of an orthogonal matrix
+        \begin{align}
+            S = \begin{bmatrix} -1 & & \\ & -1 & \\ & & -1 \end{bmatrix}
+        \end{align}
+    \item When $\phi$ is small, R becomes $I + \text{something else}$
+\end{itemize}
+
+\chapter{}
+\section{Linear Forms}
+\begin{align}
+    E &\to k \\
+    \vx &\to F(\vx)
+\end{align}
+F is fully defined given:
+\begin{align}
+    F(\ve_i) &\equiv f_i \\
+    F(\vx) &= F\left(\sum \ve_i x^i\right) = \sum F(\ve_i)x^i = f_ix^i
+\end{align}
+
+\section{Dual Space}
+Define dual space with respect to E - $E^*$ is the set of all linear forms that can be defined on E.
+\begin{equation}
+    E^* \text{ is a vector space: } \begin{cases} F+G \to & \text{linear functional} \\ \alpha F & \\ \text{zero functional} \to & O(\vx) = 0 \\ \text{additive inverse element} & \end{cases}
+\end{equation}
+Can also define a canonical basis on $E^*$:
+\begin{align}
+    E&: \{\ve_i\} \\
+    E^*&: \{\ve^{*i}\} \\
+    \ve^{*i}(\ve_j) &= \delta^i_j \\
+    \ve^{*i} &\equiv \ve^i \\
+    \vec{y} &= \ve_iy^i \\
+    y^i &= \ve^i(\vec{y}) = \ve^i(\ve_jy^j) = \delta^i_jy^j = y^i
+\end{align}
+Given $\vx^*$ in in $E^*$:
+\begin{align}
+    \vx^*(\vec{y}) &= \vx^*(\ve_jy^j) = \overbrace{\vx^*(\ve_j)}^{x_j^*}y^j \\
+                   &= x_j^*\ve^j(\vec{y}) \\
+    \vx^* &= x_j^* \ve^j
+\end{align}
+Change of basis:
+\begin{align}
+    \ve'_j &= \ve_iS^i_j \\
+    \implies x'^*_j &= x_iS^i_j \\
+    \implies x^j &= T^j_ix^i
+\end{align}
+Note: transforming under S is known as covariant, transforming under T is contravariant.
+
+\section{Tensors}
+Consider a tensor of the following form
+\begin{align}
+    A^{i1\cdots ir}_{j1\cdots js}
+\end{align}
+n-dimensional vector space, $n^{r+s}$ components.
+It will transforms covariant for the subindices, and transforms contravariant for superindices:
+\begin{align}
+    A'^{i1\cdots ir}_{j1 \cdots js} &= T^{i1}_{m1}\cdots T^{ir}_{mr} A^{m1\cdots mr}_{n1\cdots nr}S^{n1}_{j1}\cdots S^{ns}_{js} 
+\end{align}
+\begin{itemize}
+    \item $i1 \cdots ir \to$ contravariant coordinates
+    \item $j1 \cdots js \to$ covariant coordinates
+\end{itemize}
+In orthonormal spaces, contravariant and covariant components are identical.
+
+\subsection{Examples}
+\begin{itemize}
+    \item Rank 0 Tensors:
+        \begin{itemize}
+            \item Scalars 
+                \begin{align}
+                    R:\phi &\to \phi' = \phi \\
+                    S:\phi &\to \phi' = \phi
+                \end{align}
+            \item Pseudoscalars
+                \begin{align}
+                    R:\rho &\to \rho' = \rho \\
+                    S:\rho &\to \rho' = -\rho \\
+                    \rho &= \vec{a}\cdot(\vx \land \vec{y})
+                \end{align}
+        \end{itemize}
+    \item Rank 1 Tensors:
+        \begin{itemize}
+            \item Vectors
+                \begin{align}
+                    R:v^i &\to v'^i = R^i_jv^j \\
+                    S:v^i &\to v'^I = S^i_jv^j = -v^i
+                \end{align}
+            \item Pseudovectors (axial vectors)
+                \begin{align}
+                    R:\om^i &\to \om'^i = R^i_j\om^j \\
+                    S:\om^i &\to \om'^i = \text{det}(S)\;S^i_j \om^j = \om^i
+                \end{align}
+        \end{itemize}
+    \item Rank 2 Tensors
+        \begin{itemize}
+            \item Moment of Inertia
+                \begin{align}
+                    I^{ij} &= \sum_n m_n \left[|\vr_n|^2\delta^{ij} - r_n^ir_n^j\right]
+                \end{align}
+                This is a symmetric tensor, $\implies I^{ij} \to J^{ji} = J^{ij}$.
+                \begin{align}
+                    L^i &= \om_j I^{ji} = \delta_{jk}\om^kI^{ji}
+                \end{align}
+                where $L^i$ is the angular momentum, $\om_j$ is the angular velocity.
+                
+                Can choose a basis in which $I'$ is diagonal:
+                \begin{align}
+                    I' = \begin{bmatrix} I_1 & & \\ & \ddots & \\ & & I_n \end{bmatrix} 
+                \end{align}
+                where $I_1 \to I_n$ are the principle moments of inertia.
+            \item Surfaces and curvatures
+                Consider $h(x,y)$ single valued and continuous. 
+                \begin{equation}
+                    \R^2 \to^h \R
+                \end{equation}
+                Local minimum of $h(x,y)$:
+                \begin{align}
+                    h(x,y) &= h(x_0,y_0) + \frac{1}{2}(\p_x,\p_y)\begin{pmatrix} h_{xx} & h_{xy} \\ h_{yx} & h_{yy} \end{pmatrix} \begin{pmatrix} \p_x \\ \p_y \end{pmatrix}
+                \end{align}
+                2x2 matrix is the curvature tensort, h.
+                Gaussian curvature is $\text{det}(h)$.
+        \end{itemize}
+    \item Isotropic tensors - invariant under rotation. 
+        \begin{itemize}
+            \item All Rank 0 tensors are isotropic
+            \item No Rank 1 tensor is isotropic
+            \item The only Rank 2 tensor that is isotropic is the Kronecker delta, $\delta^{ij}$:
+                \begin{align}
+                    \delta'_{mn} &= \delta_{ij}R^i_mR^j_n = R_{jm}R^j_n \\
+                                 &= R^T_{mj}R^j_n \\
+                                 &= (R^TR)_{mn} \\
+                                 &= \delta_{mn}
+                \end{align}
+        \end{itemize}
+    \item Rank 3: Levi Civita:
+        \begin{align}
+            \e_{ijk} &= \begin{cases} 1 & (1,2,3),(3,1,2),(2,3,1) \\ -1 & (1,3,2)\cdots \\ 0 & \text{repeated indices} \end{cases}
+        \end{align}
+    \item Scalar product:
+        \begin{equation}
+            \vec{a}\cdot\vec{b} = a^ib^i\delta_{ij} 
+        \end{equation}
+    \item Vector product:
+    \begin{equation}
+        (\vec{a}\land \vec{b})_i = \e_{ijk}a^jb^k
+    \end{equation}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+\end{document}
+

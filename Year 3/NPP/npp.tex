@@ -1,0 +1,57 @@
+\documentclass[a4paper, 11pt, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+\usepackage{subfiles}
+
+\title{Nuclear and Particle Physics \vspace{-20pt}}
+\author{Dr Maitre}
+\date{\vspace{-15pt}Michaelmas Term 2018 - Epiphany Term 2019}
+\rhead{\hyperlink{page.1}{Contents}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{}
+\chapter{}
+
+Use these because these are made by God himself:
+\url{https://dmaitre.phyip3.dur.ac.uk/notes/npp/}
+
+\emph{Use these notes only with link above, these will just be additional annotations}
+
+\section{Units}
+
+\begin{example}[Do Broglie Wavelength]
+    \begin{align}
+        \lambda &= \frac{\hbar}{p} \\
+        p &= 20 \text{GeV/c} \\
+        l &= 0.05 \hbar c\text{GeV}^{-1} \\
+        \hbar c &= 0.19733 \,\text{fm}\;\text{GeV} \equiv 1 \\
+        \lambda &= 0.0987 \,\text{fm}
+    \end{align}
+\end{example}
+
+\section{Kinematics}
+
+High energies mean speed close to c, so use special relativity, and get the Lorentz transforms and Tensors.
+
+\begin{example}[4-Momenta]
+    In the rest frame of a particle of mass m, 
+    \begin{align}
+        p &= (m, \vec{0})
+    \end{align}
+    How is it in a different frame?
+    \begin{align}
+        p &= (E,\vp) \\
+        p\cdot p &\equiv p^2 = \begin{cases} \text{Rest Frame} & m^2 - \vec{0}^2 - m^2 \\ \text{Other Frames} & E^2 \vec{p}\cdot\vec{p} = E^2 - |\vec{p}|^2 \end{cases} \\
+        m^2 &= E^2 - |\vec{p}|^2 \\
+        E^2 &= m^c + |\vec{p}|^2 \\
+        E &= \sqrt{m^2 + |\vec{p}|^2}
+    \end{align}
+    Note: there will be factors of c in this, but set to 1, in natural units.
+\end{example}
+
+
+\end{document}

@@ -3,50 +3,11 @@
 \usepackage{../../../LaTeX-Templates/Notes}
 \usepackage{subfiles}
 
-\titlecontents{chapter}% <section-type>
-    [0pt]% <left>
-    {}% <above-code>
-    {Lecture \thecontentslabel\quad}% <numbered-entry-format>
-    {}% <numberless-entry-format>
-    {\dotfill\contentspage}% <filler-page-format>
-\titleformat{\chapter}{\fontsize{15}{17}\bfseries\normalfont}{\textbf{Lecture \thechapter}}{1em}{}
-\titleformat{\subsubsection}{\fontsize{10}{13}\bfseries\scshape}{\textbf{\thesubsubsection}}{1em}{}
-\setcounter{tocdepth}{4}
-% \setcounter{secnumdepth}{1}
-
-\renewcommand{\arraystretch}{1.2}
-
-\newcommand\R{\mathbb{R}}
-\newcommand\N{\mathbb{N}}
-\newcommand\C{\mathbb{C}}
-\newcommand\Z{\mathbb{Z}}
-\newcommand\p{\partial}
-\newcommand\ifnt{\int_{-\infty}^{\infty}}
-\newcommand\ofnt{\int_{0}^{\infty}}
-\newcommand\ifsum{\sum_{-\infty}^{\infty}}
-\newcommand\F{\mathcal{F}}
-\newcommand\La{\mathcal{L}}
-\newcommand\K{\mathcal{K}}
-\newcommand\om{\omega}
-\newcommand\veca{\vec{a}(\vec{r})}
-\newcommand\veru{\vec{r}(u)}
-\newcommand\vr{\vec{r}}
-\newcommand\vs{\vec{S}}
-\newcommand\va{\vec{a}}
-\newcommand\hn{\hat{n}}
-\newcommand\hr{\hat{r}}
-\newcommand\he{\hat{e}}
-\newcommand\dy{\frac{dy}{dx}}
-\newcommand\dyy{\frac{d^2 y}{dx^2}}
-\newcommand\lam{\lambda}
-\newcommand\e{\epsilon}
-\newcommand\grint{\int_{z-\e}^{z+\e}}
-\newcommand\del{\nabla}
-
 \title{Statistical Physics \vspace{-20pt}}
-\author{Dr Stewart Clark}
+\author{Prof Stewart Clark}
 \date{\vspace{-15pt}Michaelmas Term 2018}
 \rhead{\hyperlink{page.1}{Contents}}
+\lhead{M. Rossetter}
 
 \begin{document}
 
@@ -65,7 +26,7 @@ Interference effects from Quantum Mechanics canle out for large N, e.g.
 \section{Probability}
 A summary:
 \begin{itemize}
-    \item P(A or B) = P(A) + P(B) for independent events A and B    
+    \item P(A or B) = P(A) + P(B) for independent events A and B
     \item P(A and B) = P(A)P(B)
     \item Counting events: the number of ways of splitting N objects into 2 piles of size r and (N-r) is
         \begin{equation}
@@ -74,8 +35,8 @@ A summary:
 \end{itemize}
 
 \section{Probability}
-Let's have a system containing three objects which can have spin up or down. 
-Will create a distribution of 1/8, 3/8, 3/8, 1/8, of likelihood of being in a state of All Up, 2 Up One Down, 2 Down One Up, All Down. 
+Let's have a system containing three objects which can have spin up or down.
+Will create a distribution of 1/8, 3/8, 3/8, 1/8, of likelihood of being in a state of All Up, 2 Up One Down, 2 Down One Up, All Down.
 
 \section{Distributions}
 \subsection{Discrete}
@@ -103,12 +64,12 @@ and the variance is
 \end{equation}
 
 \subsection{Continuous distribution}
-When a variable x takes on any value, $-\infty\leq x <\infty$ (or any range within), then the probability that x equals some value $x_0$ does not make sense. 
+When a variable x takes on any value, $-\infty\leq x <\infty$ (or any range within), then the probability that x equals some value $x_0$ does not make sense.
 Instead probability is found in a range, $a\leq x\leq b$, so the continuous distribution is $f(x)$, then,
 \begin{equation}
     P(a\leq x\leq b) = \int_{a}^{b} f(x)\,dx
 \end{equation}
-and the normalisation, 
+and the normalisation,
 \begin{equation}
     \int_{-\infty}^{\infty} f(x)\,dx = 1.
 \end{equation}
@@ -125,7 +86,7 @@ A common continuous distribution is the Normal (Gaussian) distribution which is
 \section{Probabilities}
 If we perform an experiment N times and event i occurs $n_i$ times, then the frequency of occurrence is $F(n_i, N) = \frac{n_i}{N}$.
 Now if we take N copies of the experiment, and perform it once on each experiment, does is yield the same result?
-If the experiment is probabilistic, i.e. every experiment, then no. 
+If the experiment is probabilistic, i.e. every experiment, then no.
 TO make sense of this, we introduce probability as
 \begin{equation}
     P_{n_i} = \lim_{N\to\infty} F(n_i, N)
@@ -133,8 +94,8 @@ TO make sense of this, we introduce probability as
 When we do this, the above two statements mean the same thing and it is known as the ergodic hypothesis.
 
 \chapter{}
-Thermodynamics is very powerful and provides information on bulk systems - it provides minimal information. 
-Microscopic predictions give information about every particle in the system (subject to level of theory, e.g. classical or qm); this leads to information overload. 
+Thermodynamics is very powerful and provides information on bulk systems - it provides minimal information.
+Microscopic predictions give information about every particle in the system (subject to level of theory, e.g. classical or qm); this leads to information overload.
 
 \section{Important Definitions}
 \begin{itemize}
@@ -147,13 +108,13 @@ Microscopic predictions give information about every particle in the system (sub
     \item Microstate: complete specification of the state of the system, consistent with theory, i.e. what every particle is doing.
 \end{itemize}
 A macrostate has a very large number of microstates, $\approx N!$.
-We must assign likelihoods (probabilities) of any particle being in any state. 
-In the microcanonical ensemble, we can assign probabilities - as energy is not changing, then the probabilities must be equal. 
+We must assign likelihoods (probabilities) of any particle being in any state.
+In the microcanonical ensemble, we can assign probabilities - as energy is not changing, then the probabilities must be equal.
 
-We need to figure out how to count the microstates - we define distributions. 
+We need to figure out how to count the microstates - we define distributions.
 
 \begin{example}
-Let's take 4 particles, called A,B,C,D. 
+Let's take 4 particles, called A,B,C,D.
 Now distribute them amongst some energy levels, $\e_n = 0, \e, 2\e, \dots, n\e$.
 If we looks at the microcanonical ensemble (N,U,V) $\to (4,4\e,V)$.
 
@@ -185,14 +146,14 @@ These are classical particles, so how will they distribute amongst energy levels
 \end{example}
 
 \chapter{}
-From the last example, we see that for the macrostate (N,U,V) that some distributions are more likely than others. 
-From thermodynamics, remember that the most likely state of a system is the one that maximises entropy. 
+From the last example, we see that for the macrostate (N,U,V) that some distributions are more likely than others.
+From thermodynamics, remember that the most likely state of a system is the one that maximises entropy.
 So, is there a connection between microscopic state probabilities and entropy?
 Boltzmann concluded that the number of possible microstates, $\Omega$, leads to entropy, i.e.
 \begin{equation}
     S = S(\Omega)
 \end{equation}
-but what is the form of $S(\Omega)$? 
+but what is the form of $S(\Omega)$?
 We know for independent systems A and B that the probabilities multiply, i.e. $\Omega_{AB} = \Omega_A\Omega_B$.
 However for these two systems, we have entropy $S_A$ and $S_B$ and so
 \begin{equation}
@@ -202,7 +163,7 @@ Boltzmann noted this and proposed that entropy is given by
 \begin{equation}
     S = k_B\ln(\Omega).
 \end{equation}
-This is the link between microscopic and macroscopic quantities. 
+This is the link between microscopic and macroscopic quantities.
 
 Consider Stirling's approximation:
 \begin{align}
@@ -218,9 +179,9 @@ For large N, we have that
 \begin{equation}
     \Omega \approx \Omega\{n^{max}\}.
 \end{equation}
-We need to seek the most probable distribution - this is the distribution that contains the most microstates, and hence maximises entropy. 
+We need to seek the most probable distribution - this is the distribution that contains the most microstates, and hence maximises entropy.
 We need the distribution satisfying the constraints of constant particle number and constant energy, i.e. $\sum_i n_i = N$ and $\sum_i n_i\e_i = U$.
-We want to maximise 
+We want to maximise
 \begin{align}
     \Omega(\{n_i\}) &= \frac{N!}{\prod_i n_i!} \\
     S(\{n_i\}) &= k_B\ln\left(\frac{N!}{\prod_i n_i!}\right) \\
@@ -236,33 +197,656 @@ If we define $p_i = \frac{n_i}{N}$ being the probability of finding $n_i$ partic
     \frac{S(\{n_i\})}{Nk_B} &= -\sum_i \frac{n_i}{N}\ln\left(\frac{n_i}{N}\right) \\
     \implies S(\{p_i\}) &= -Nk_B\sum_i p_i\ln(p_i).
 \end{align}
-The statistical entropy by Boltzmann 
+The statistical entropy by Boltzmann
 \begin{equation}
     S = k_B\ln\Omega \geq 0
 \end{equation}
-and also, 
+and also,
 \begin{equation}
     S(\{p_i\}) = -Nk_B\sum_i p_i\ln(p_i).
 \end{equation}
 This is the link between macroscopic and microscopic entropy.
-For probability, this means that the system is in the distribution that maximises entropy, most of the time. 
+For probability, this means that the system is in the distribution that maximises entropy, most of the time.
+
+\chapter{}
+\section{Method of Lagrange Multipliers}
+\begin{align}
+    \frac{\p}{\p n_i}&\left[N\ln(N) - \sum_i n_i\ln(n_i) - \alpha\sum_i n_i - \beta\sum_i n_i\e_i\right] = 0 \\
+    \implies &0 - \ln(n_i) - 1 - \alpha - \beta\e_i = 0 \\
+    \implies & \ln(n_i) = \underbrace{-1 -\alpha}_{A} -\beta\e_i \\
+    \implies &n_i = e^Ae^{-\beta\e_i}
+\end{align}
+These are the $n_is$ that maximise $S(\{n_i\})$.
+\begin{align}
+    N &= \sum_i n_i = \sum_i e^Ae^{-\beta\e_i} \\
+    \implies e^A &= \frac{N}{\sum_i e^{-\beta\e_i}} = \frac{N}{Z} \\
+    Z &= \sum_i e^{-\beta\e_i} \\
+    \implies n_i &= \frac{N}{Z}e^{-\beta\e_i} \\
+    p_i &= \frac{n_i}{N} = \frac{e^{-\beta\e_i}}{Z}
+\end{align}
+The quantity Z is known as the partition function - coming from the Lagrange multiplier that fixed N.
+What about $\beta$?
+\begin{equation}
+    U = \sum_i n_i\e_i = \frac{N}{Z}\sum_i \e_ie^{-\beta\e_i}
+\end{equation}
+Now take the derivative with of Z with respect to $-\beta$, giving
+\begin{align}
+    -\frac{dZ}{d\beta} &= -\frac{d}{d\beta} \sum_i e^{-\beta\e_i} = \sum_i \e_i e^{-\beta\e_i} \\
+    U &= -\frac{N}{Z}\frac{dZ}{d\beta} = -N\frac{d}{d\beta}\ln(Z)
+\end{align}
+If we know U then we get Z or vice versa.
+Actually, this expression is valid in other ensembles, e.g. (N,T,V) then if we know Z, we can get U.
+
+Is there a physicaly interpretation of $\beta$?
+Let's take the thermodynamic expression $F = U - TS$.
+In statistical physics, we've dealt with U and S.
+So temperature is
+\begin{equation}
+    \frac{1}{T} = \frac{\p S}{\p U}\bigg|_V,
+\end{equation}
+and we already know U and S.
+
+Consider 2 systems, A and B, where we can exhange energy but not particles and are otherwise isolated.
+They contain $N^A$ and $N^B$ particles with $N = N^A + N^B$.
+The combined system is the microcanonical ensemble (N,U,V) and has energy levels $\e_i^A$ and $\e_i^B$.
+The particles have distributions $\{n_i^A\}$ and $\{n_i^B\}$.
+Entropy, $S = S^A + S^B$, and so
+\begin{align}
+    \frac{S^A}{k_B} &= N^A\ln(N^A) - \sum_i n_i^A\ln(n_i^A) \\
+    \frac{S^B}{k_B} &= N^B\ln(N^B) - \sum_i n_i^B\ln(n_i^B)
+\end{align}
+At thermal equilibrium, we are in the distribution that maximises entropy.
+With constraints, we have
+\begin{multline}
+    -\alpha\sum_i n_i^A - \alpha'\sum_i n_i^B - \left[N^A\ln(N^A) + \sum_i n_i^A\ln(n_i^A) + N^B\ln(N^B) + \sum_i n_i^B\ln(n_i^B)\right] \\ -\beta\left[\sum_i n_i^A\e_i^A + \sum_i n_i^B\e_i^B\right]
+\end{multline}
+We want to maximise this with respect to $n_i^A$ and $n_i^B$.
+
+\chapter{}
+From last time:
+
+To maximise, we take the derivatives:
+\begin{align}
+    \frac{\p}{\p n_i^A} &\to 0 \\
+    \frac{\p}{\p n_i^B} &\to 0
+\end{align}
+The maths is identical to the example of one system.
+We get:
+\begin{align}
+    \frac{n_i^A}{N^A} &= \frac{e^{-\beta\e_i^A}}{Z^A}, Z^A = \sum_i e^{-\beta\e_i^A} \\
+    \frac{n_i^B}{N^B} &= \frac{e^{-\beta\e_i^B}}{Z^B}, Z^B = \sum_i e^{-\beta\e_i^B}
+\end{align}
+Note that both systems have a Boltzmann like probability with the same $\beta$.
+In thermodynamics, such a system would have the same T, i.e. $\beta$ and T are related.
+
+Let's let system A contain just one particle, and hence B contains $N-1$ particles.
+The system "AB" is in the (N,U,V) macrostate (microcanonical ensemble).
+
+THe probability of any particle being in the state i with energy $\e_i$ is
+\begin{equation}
+    p_i = \frac{e^{-\beta\e_i}}{Z}.
+\end{equation}
+
+The probability of the single particle in A being in state i is
+\begin{equation}
+    p_i^A = \frac{\Omega(\e_i)}{\sum_i \Omega(\e_i)}
+\end{equation}
+
+The energy of system B will be $U - \e_i$ and $\Omega(\e_i) = 1$, and the particles in B will be distributed with energy $U - \e_i$.
+\begin{align}
+    S^A &= 0 \;\because\; \ln(1) = 0 \\
+    S^B &= k_B\ln(\Omega(\{\e_i\}))
+\end{align}
+But we know
+\begin{align}
+    \frac{1}{T} = \frac{\p S}{\p U}\bigg|_V &= -k_B\frac{\p}{\p U} (\ln\Omega(\e_i)) \\
+                                            &= -k_B\frac{\p}{\p \e_i} \ln\Omega(\e_i)
+\end{align}
+Let's integrate:
+\begin{align}
+    \ln\Omega(\e_i) &= -\frac{\e_i}{k_BT} + cst \\
+    \implies \Omega(\e_i) &= Ce^{-\e_i/k_BT}
+\end{align}
+Comparing to previously (Boltzmann expressions), we have
+\begin{equation}
+    \beta = \frac{1}{k_BT}.
+\end{equation}
+
+\section{Free Energy}
+We have
+\begin{align}
+    p_i &= \frac{e^{-\e_i/k_BT}}{Z} \\
+    \implies \ln(p_i) &= \frac{-\e_i}{k_BT} - \ln(Z)
+\end{align}
+For entropy, we know that
+\begin{align}
+    S &= -Nk_B\sum_i p_i\ln(p_i) \\
+      &= Nk_B\sum_ip_i\left(\frac{\e_i}{k_BT} + \ln(Z)\right)
+\end{align}
+But
+\begin{align}
+    U &= N\sum_i p_i\e_i \\
+    \implies U - TS &= -Nk_BT\ln(Z_{tot})
+\end{align}
+This is the Helmholtz Free Energy, which is the ability to do work.
+
+The partition function is the free energy - what we can do work with in thermodynamics.
+
+\section{Statistical Physics and Thermodynamics}
+We can write
+\begin{equation}
+    \beta = \frac{1}{k_BT}
+\end{equation}
+so that it is easier to note how exponentials change.
+\begin{align}
+    \frac{\p}{\p T} &= \frac{\p}{\p\beta}\frac{\p\beta}{\p T} \\
+    \frac{\p\beta}{\p T} &= -\frac{1}{k_BT^2} \\
+    \implies \frac{\p}{\p\beta} &= -k_BT^2\frac{\p}{\p T}
+\end{align}
+
+\begin{itemize}
+    \item Helmholtz Free Energy,
+        \begin{equation}
+            F = -Nk_BT\ln(Z)
+        \end{equation}
+    \item Energy,
+        \begin{align}
+            U &= -N\left[\frac{\p}{\p\beta}\ln(Z)\right]_V \\
+              &= Nk_BT^2\left[\frac{\p}{\p T}\ln(Z)\right]_V
+        \end{align}
+    \item Entropy,
+        \begin{equation}
+            S = \frac{1}{T}(U-F), S = S(Z)
+        \end{equation}
+    \item All other thermodynamic properties in terms of Z follow, e.g. heat capacity,
+        \begin{equation}
+            C_V = \left(\frac{\p U}{\p T}\right)_V
+        \end{equation}
+\end{itemize}
+
+\chapter{}
+A system of one dimensional harmonic oscillators has energy levels:
+\begin{equation}
+    \e_n = \left(n+\frac{1}{2}\right)\hbar\om.
+\end{equation}
+Calculate its partition function:
+\begin{align}
+    Z &= \sum_{n=0}^\infty e^{-\beta\e_n} = \sum_{n=0}^{\infty} e^{-\beta(n+1/2)\hbar\om} \\
+      &= e^{-\beta\hbar\om/2}\sum_{n=0}^\infty e^{-\beta n\hbar\om} \\
+      &= e^{-\beta\hbar\om/2}\left((e^{-\beta\hbar\om})^0 + (e^{-\beta\hbar\om})^1 + (e^{-\beta\hbar\om})^2 + \dots\right)
+\end{align}
+THis is just a geometric series in $e^{-\beta\hbar\om}$ so we get
+\begin{equation}
+    Z = \left[\frac{1}{1 - e^{-\beta\hbar\om}}\right]e^{-\beta\hbar\om/2}
+\end{equation}
+We now have the partition function of the system in terms of $\beta$ (or T).
+The free energy contatins $\ln(Z)$, so
+\begin{align}
+    \ln(Z) &= \ln\left(\frac{e^{-\beta\hbar\om/2}}{1-e^{-\beta\hbar\om}}\right) \\
+           &= -\frac{\beta\hbar\om}{2} - \ln\left(1 - e^{-\beta\hbar\om}\right)
+\end{align}
+Hence, the Helmholtz energy is
+\begin{align}
+    F &= -\frac{N\ln(Z)}{\beta} \\
+      &= \frac{N\hbar\om}{2} + \frac{N}{\beta}\ln\left(1 - e^{-\beta\hbar\om}\right)
+\end{align}
+
+For the internal energy,
+\begin{equation}
+    U = -N\frac{\p \ln{Z}}{\p \beta},
+\end{equation}
+we need the $\frac{\p}{\p\beta}$ derivative, i.e.
+\begin{align}
+    \frac{\p}{\p\beta} &= -\frac{\hbar\om}{2} - \frac{\hbar\om e^{-\beta\hbar\om}}{1 - e^{\beta\hbar\om}} \\
+                       &= -\frac{\hbar\om}{2} - \frac{\hbar\om}{e^{\beta\hbar\om} - 1}
+\end{align}
+Hence, we get
+\begin{align}
+    U &= \frac{N\hbar\om}{2} + \frac{N\hbar\om}{e^{\beta\hbar\om} - 1} \\
+      &= N\hbar\om\left(\frac{1}{2} + \frac{1}{e^{\beta\hbar\om} -1}\right)
+\end{align}
+
+For entropy,
+\begin{align}
+    S &= \frac{U - F}{T} = k_B\beta(U - F) \\
+      &= k_B\beta \left[N\hbar\om\left(\frac{1}{2} + \frac{1}{e^{\beta\hbar\om} - 1}\right) - \frac{N\hbar\om}{2} - \frac{N}{\beta}\ln\left(1 - e^{-\beta\hbar\om}\right)\right] \\
+      &= Nk_B\left[\frac{\beta\hbar\om}{e^{\beta\hbar\om}} - \ln\left(1 - e^{-\beta\hbar\om}\right)\right]
+\end{align}
+
+Now obtain the specific heat of the system at constant volume,
+\begin{align}
+    C_V &= \frac{\p U}{\p T}\bigg|_V = -k_B\beta^2 \frac{\p U}{\p \beta}\bigg|_V \\
+        &= \frac{Nk_B(\beta\hbar\om)^2e^{\beta\hbar\om}}{\left(e^{\beta\hbar\om}-1\right)^2}
+\end{align}
+Plot the results:
+\begin{enumerate}
+    \item
+        \begin{equation}
+            U(T) = \frac{1}{2} + \frac{1}{e^{1/T} - 1}
+        \end{equation}
+        This starts at $\frac{1}{2}$ and increases non-linearly.
+    \item
+        \begin{equation}
+            S(T) = \frac{1/T}{e^{1/T} - 1} - \ln(1 - e^{-1/T})
+        \end{equation}
+        Starts at zero and increases non-linearly.
+\end{enumerate}
+
+\begin{example}
+    Localised $\frac{1}{2}$-spins in a magnetic field.
+    If the spins have magnetic moment $\mu$ in a field B, then the energy of spins parallel to B is $-\mu B$ and the energy of the spins anti-parallel to B is $+\mu B$.
+    Calculate the partition function of the system.
+
+    We have a two-level system, so introduce notation:
+    \begin{align}
+        \e_0 &= -\mu B = -\frac{\e}{2} \\
+        \e_i &= +\mu B = +\frac{\e}{2}
+    \end{align}
+    So the partition function is
+    \begin{align}
+        Z &= \sum_{n=0}^1 e^{-\beta\e_n} = e^{-\beta\e/2} + e^{\beta\e/2}
+    \end{align}
+\end{example}
+
+\chapter{}
+Consider from last time:
+\begin{equation}
+    Z = e^{-\beta\e/2} + e^{\beta\e/2}
+\end{equation}
+Probability of finding particle in state $\e_i$ is 
+\begin{align}
+    p_0 &= \frac{e^{-\beta\e/2}}{e^{\beta\e/2}\left(1 + e^{-\beta\e}\right)} = \frac{e^{-\beta\e}}{1 + e^{-\beta\e}} \\
+    p_1 &= \frac{e^{\beta\e/2}}{e^{\beta\e/2}\left(1 + e^{-\beta\e}\right)} = \frac{1}{1 + e^{-\beta\e}}
+\end{align}
+$p_0$ starts at 0 for low T and approaches $\frac{1}{2}$ as T increases, and opposite for $p_1$.
+
+The magnetisation per particle is the average magnetic moment, i.e.
+\begin{equation}
+    \frac{M}{N} = p_0(-\mu) + p_1(+\mu) = \mu \frac{1 - e^{-\beta\e}}{1 + e^{-\beta\e}} = \mu\tanh\left(\frac{\beta\e}{2}\right)
+\end{equation}
+Magnetisation decreases non-linearly with temperature.
+
+For energy, we need $\ln(Z)$, i.e.
+\begin{align}
+    \ln(Z) &= \ln\left[e^{\beta\e/2}\left(1 + e^{-\beta\e}\right)\right] \\
+           &= \frac{\beta\e}{2} + \ln\left(1 + e^{-\beta\e}\right)
+\end{align}
+We also need
+\begin{align}
+    \frac{\p}{\p \beta}\ln(Z) &= \frac{\e}{2} - \frac{\e e^{-\beta\e}}{\left(1 + e^{-\beta\e}\right)}
+\end{align}
+Hence, internal energy,
+\begin{align}
+    U &= -N\left[\frac{\p \ln(Z)}{\p \beta}\right]_V  \\
+      &= -N \left[\frac{\e}{2} - \frac{\e e^{-\beta\e}}{1 + e^{-\beta\e}}\right]
+\end{align}
+and specific heat, 
+\begin{align}
+    C_V &= \left[\frac{\p U}{\p T}\right]_V = -k_B\beta^2\left[\frac{\p U}{\p \beta}\right]_V \\
+        &= -Nk_B (\beta\e)^2 \frac{e^{-\beta\e}}{\left(1 + e^{-\beta\e}\right)^2}
+\end{align}
+
+We also have free energy and entropy:
+\begin{align}
+    F &= -\frac{N}{\beta}\ln(Z) = -\frac{N\e}{2} - \frac{N}{\beta}\ln\left[1 + e^{-\beta\e}\right] \\
+    S &= k_B\beta (U - F) = Nk_B\left[\frac{\beta\e e^{-\beta\e}}{1 + e^{-\beta\e}} - \frac{N}{\beta}\ln\left(1 + e^{-\beta\e}\right)\right]
+\end{align}
+Plotting entropy vs temperature shows a faster increasing curve for low B than for high B. 
+\begin{itemize}
+    \item For the same temperature we can move from low B to high B.
+        As we increase the B field, then the spins will begin to align, hence entropy decrease.
+        The system will change energy, $T\Delta S$.
+    \item For the same entropy, can move from high B to low B. 
+        We have no change in entropy, $\Delta S = 0$, hence no change in heat, howver the temperature changes, $T_h \to T_l$.
+\end{itemize}
+
+We had 
+\begin{align}
+    S &= Nk_B\left[\frac{\frac{2\mu B}{k_B T}e^{-2\mu B/k_BT}}{1 + e^{-2\mu B/k_BT}} + \ln\left(1 + e^{-2\mu B/k_BT}\right)\right]
+\end{align}
+In here, $\frac{B}{T}$ appears, therefore is $\Delta S$ is zero, then $\frac{B}{T}$ is constant, i.e.
+\begin{align}
+    \frac{B_h}{T_h} &= \frac{B_l}{T_l} \\
+    \implies T_l &= \frac{B_l}{B_h}T_h
+\end{align}
+So as we vary B with $\Delta S = 0$, we vary T.
+This is called adiabatic demagnetisation.
+
+\chapter{}
+In statistical physics, we need the energies of the states and their degeneracies.
+In discrete systems, this is obvious.
+However in systems where energies come in a continuum, we need the density of states. 
+We seek the density $g(\e)$ of states in the range $\e \to \e+d\e$. 
+Also, we often have relationships between energy and momentum, e.g. in 1D ISW, $E = \frac{\hbar^2k^2}{2m}$ (momentum is $\hbar k$), so we sometimes seek $g(k)$ instead.
+
+Let $n(k)$ be the number of independent solutions with $k \in 0 \to k_0$ and similar for $n(k+\delta k)$.
+Therefore, 
+\begin{align}
+    g(k)\;\delta k &= n(k+\delta k) - n(k) \\
+                   &= \frac{n(k+\delta k) - n(k)}{\delta k}\delta k \\
+                   &= \frac{dn}{dk}\delta k
+\end{align}
+
+\begin{example}
+    In the 3D ISW, we had solutions, 
+    \begin{align}
+        \Psi(x,y,z) &= \sin(k_xx)\sin(k_yy)\sin(k_zz)
+    \end{align}
+    with 
+    \begin{align}
+        k_x &= \frac{\pi}{a}n & k_y &= \frac{\pi}{a}m & k_z &= \frac{\pi}{a}l & n,m,l &\in \N
+    \end{align}
+    Let's count states.
+    If $n(k)$ is the number of independent states, we have
+    \begin{align}
+        n(k) &= \frac{\text{Volume in 3D k-space (in all positive octant)}}{\left(\frac{\pi}{a}\right)^3} \\
+             &= \frac{1}{8}\times \frac{4}{3}\pi k^3 \left(\frac{a}{\pi}\right)^3
+    \end{align}
+    Hence, 
+    \begin{align}
+        g(k)\;\delta k &= \frac{dn(k)}{dk} = \frac{a^3}{(2\pi)^3}4\pi k^2
+    \end{align}
+    Other notes: 
+    \begin{itemize}
+        \item If we include spin, then multiply $n(k)$ by 2.
+    \end{itemize}
+    For energy, we have 
+    \begin{align}
+        E &= \frac{\hbar^2 k^2}{2m} \\
+        k &= \left(\frac{2mE}{\hbar^2}\right)^{1/2} \\
+        \frac{dk}{dE} &= \frac{1}{2} \left(\frac{2mE}{\hbar^2}\right)^{-1/2} \left(\frac{2m}{\hbar^2}\right) \\
+                               &= \frac{1}{2}\frac{1}{k}\frac{2m}{\hbar^2} \\
+        dk &= \frac{m}{\hbar^2 k}dE \\
+        g(E)\,dE &= a^3 \frac{2\pi}{\hbar^3} (2m)^{3/2} E^{1/2}\;dE \\
+        g(E) &\approx E^{1/2}
+    \end{align}
+    This is the energy density of states.
+\end{example}
+
+\section{More distributions}
+For N particles, a large number of microstates, $\Omega$, correspond to each distribution $\{n_1,n_2,n_3,\dots\}$ and we seek the one that is largest.
+The most probable distribution is the one which contains the most microstates. 
+So we find the particular $\{n_1,n_2,n_3,\dots\}$ with constraints $\sum_j n_j = N$ (constant particle number) and $\sum_j n_j\e_j = U$ (constant energy), for which
+\begin{equation}
+    \Omega(\{n_j\}) = \frac{N!}{\prod_j n_j!}
+\end{equation}
+is maximum.
+
+What changes if for state 1, we allow $g_1$ particles in it, i.e. $g_1$ degeneracy?
+There are more microstates - what was previously $n_1$ can now be $g_1$-fold degenerate, i.e.
+\begin{equation}
+    \Omega(\{n_j\}) = \frac{N!}{\prod_j n_j!}\times g_1^{n_1}.
+\end{equation}
+Let's now let state 2 be $g_2$-fold degenerate, giving
+\begin{equation}
+    \Omega(\{n_j\}) = \frac{N!}{\prod_j n_j!}\times g_1^{n_1} \times g_2^{n_2}.
+\end{equation}
+It is now straightforward to generalise such that state j is $g_j$-fold degenerate. 
+\begin{equation}
+    \Omega(\{n_j\}) = N! \prod_j \frac{g_j^{n_j}}{n_j!},
+\end{equation}
+where $n_j$ is the number of distinguishable particles in the state with energy $\e_j$ which is $g_j$-fold degenerate.
+We now want to maximise this with respect to the $n_j$s.
+So we want to maximise entropy under the constraints given above: 
+\begin{align}
+    \frac{S}{k_B} &= \ln\left[N!\prod_j \frac{g_j^{n_j}}{n_j!}\right] \\
+                  &= \sum_j \left[n_j\ln(g_j) - \ln(n_j!)\right] + \ln(N!) \\
+                  &\approx \sum_j \left[n_j\ln(g_j) - n_j\ln(n_j) + n_j\right] + \ln(N!)
+\end{align}
+Now maximise with respect to the $n_j$, i.e. do $\frac{\p}{\p n_j}$ on above with Lagrange multipliers and set to zero:
+\begin{align}
+    \frac{\p}{\p n_j} \left[\sum_j \left(n_j\ln(g_j) - n_j\ln(n_j) + n_j - \alpha n_j - \beta n_j\e_j\right)\right] &= 0 \\
+    \ln(g_j) - \ln(n_j) - 1 + 1 - \alpha - \beta\e_j &= 0 \\
+    \ln\left(\frac{g_j}{n_j}\right) &= \alpha + \beta\e_j \\
+    \frac{n_j}{g_j} &= e^{-\alpha}e^{-\beta\e_j}
+\end{align}
+
+\chapter{}
+We have classical, distinguishable particles
+\begin{align}
+    \Omega(\{n_i\}) &= N!\prod_i \frac{g_i^{n_i}}{n_i!} \\
+    \frac{n_i}{g_i} &= e^{-\alpha}e^{-\beta \e_k}
+\end{align}
+Leads to Maxwell-Boltzmann distribution
+\begin{equation}
+    f_{MB}(\e_j) = e^{-\alpha}e^{\beta \e_j}
+\end{equation}
+As previously noted, $\alpha$ is determined from fixed N ($\int f_{MB}(\e)\;d\e = N$), and $\beta = \frac{1}{k_BT}$.
+
+This is the distribution of particles which are "classical" (distinguishable) at temperature, T. 
+
+What about indistinguishable particles?
+Recall
+\begin{align}
+    \hat{S}\Psi(r_1,r_2) &= \Psi(r_2,r_1) 
+\end{align}
+
+So we have two sets of particles:
+\begin{itemize}
+    \item Fermions
+        \begin{equation}
+            \Psi(r_1,r_2) = -\Psi(r_2,r_1)
+        \end{equation}
+    \item Bosons
+        \begin{equation}
+            \Psi(r_1,r_2) = \Psi(r_2,r_1)
+        \end{equation}
+\end{itemize}
+For fermions, $\Psi(r,r) = 0$ $\implies$ \emph{Pauli Exclusion Principle.}
+
+\section{Fermion Statistics}
+Each single particle state will either be occupied or unoccupied. 
+So with degeneracy, $g_j$, for a state with energy, $\e_j$, we want the number of ways the $g_j$ states can be put into two piles (occupied and unoccupied).
+
+\begin{itemize}
+    \item If there are $n_j$ particles in states, then there are $g_j - n_j$ unoccupied states.
+    \item For a state with energy, $\e_j$, we get
+        \begin{equation}
+            \Omega(\e_j) = \frac{g_j!}{n_j!(g_j-n_j)!}
+        \end{equation}
+        This is the jth state, hence for all states we get
+        \begin{equation}
+            \Omega_{FD} = \prod_j \frac{g_j!}{n_j(g_j-n_j)!}
+        \end{equation}
+\end{itemize} 
+Maximising the entropy under the constraints of fixed particle number fixed energy:
+\begin{align}
+    \frac{S}{k_B} = \ln(\Omega) &= \ln\left(\prod_j \frac{g_j!}{n_j!(g_j-n_j)!}\right) \\
+                                &= \sum_j\left[\ln(g_j!) - \ln(n_j!) - \ln((g_j-n_j)!)\right] \\
+                                &= \sum_j\left[g_j\ln(g_j) - g_j - (n_j\ln(n_j) - n_j) - ((g_j-n_j)\ln(g_j-n_j) - (g_j-n_j))\right] \\
+                                &= \sum_j\left[g_j\ln(g_j) - n_j\ln(n_j) - (g_j-n_j)\ln(g_j-n_j)\right]
+\end{align}
+Introducing the usual Lagrange multipliers and maximising with respect to particle number - this is a binomial distribution so we don't need to do a mathematical check as to whether it's a maximum or a minimum.
+\begin{gather}
+    \frac{\p}{\p n_j}\left[\sum_j\left(g_j\ln(g_j) - n_j\ln(n_j) - (g_j-n_j)\ln(g_j-n_j)\right) - \alpha\sum_jn_j - \beta\sum_jn_j\e_j\right] = 0 \\
+        \frac{\p}{\p n_j}[\cdots] = -\ln(n_j) -1 + \ln(g_j-n_j)+1-\alpha-\beta\e_j = 0 \\
+        \ln\left(\frac{g_j}{n_j} - 1\right) = \alpha + \beta\e_j \\
+        \frac{n_j}{g_j} = \frac{1}{e^{\alpha}e^{\beta\e_j}+1}
+\end{gather}
+This is the Fermi-Dirac distribution function:
+\begin{equation}
+    f_{FD} = \frac{1}{e^{\alpha}e^{\beta\e_j}+1}
+\end{equation}
+
+\section{Bosons}
+How to count microstates? Here there is no restriction on state occupancy within the $g_j$ degenerate state with energy $\e_j$.
+It can accomodate any number of particles $n_j$.
+
+Rather than putting the particles in boxes, let's imagine we have all the particles lined up and we arrange the "partitions" between groups of particles. 
+So we have objects $n_j+(g_j-1)$ and we split them into groups of $n_j$ and $(g_j-1)$, giving for energy state $\e_j$,
+\begin{align}
+    \Omega(\e_j) &= \frac{(n_j+g_j-1)!}{n_j!(g_j-1)!} \\ 
+                 &\approx \frac{(n_j+g_j)!}{n_j!g_j!} \\
+\end{align}
+Therefore for all states, we get the total number of microstates as
+\begin{equation}
+    \Omega_{BE} = \prod_j \frac{(n_j+g_j)!}{n_j!g_j!}
+\end{equation}
 
 
+\chapter{}
+\section{Boson Statistics}
+\begin{align}
+    \Omega_{BE} &= \prod_j \frac{(n_j + g_j)!}{n_j!g_j!} \\
+    \frac{S}{k_B} &= \ln\left[\prod_j \frac{(n_j+g_j)!}{n_j!g_j!}\right] = \sum_j \left[\ln(n_j + g_j)! - \ln(n_j!) - \ln(g_j!)\right] \\
+                  &= \sum_j \left[(n_j+g_j)\ln(n_j+g_j) - (n_j+g_j) - (n_j\ln(n_j) - n_j) - (g_j\ln(g_j) - g_j)\right] \\
+                  &= \sum_j \left[(n_j+g_j)\ln(n_j+g_j) - n_j\ln(n_j) - g_j\ln(g_j)\right]
+\end{align}
+So maximise this with constraints on particle nunber and energy (as usual). 
+With Lagrange multipliers, we have
+\begin{gather}
+    \frac{\p}{\p n_j}\left[\sum_j\left[(n_j+g_j)\ln(n_j+g_j) - n_j\ln(n_j) - g_j\ln(g_j) - \alpha n_j - \beta n_j\e_j\right]\right] = 0 \\
+    \ln(n_j+g_j) + 1 - \ln(n_j) - 1 - \alpha - \beta\e_j = 0 \\
+    \ln(\frac{g_j}{n_j} + 1) = \alpha + \beta\e_j \\
+    \frac{n_j}{g_j} = \frac{1}{e^{\alpha}e^{\beta\e_j}-1}
+\end{gather}
+This is the Bose-Einstein distribution function, i.e.
+\begin{align}
+    f_{BE}(\e) &= \frac{1}{e^{\alpha}e^{\beta\e}-1}
+\end{align}
+
+So, after all this work, we finally have the distribution functions for classical particles, fermions, and bosons.
+They are:
+\begin{align}
+    f(\e) &= \frac{1}{e^{\alpha}e^{\beta/k_BT}\begin{cases} +1 & \text{Fermions, Fermi-Dirac} \\ 0 & \text{Classical, Maxwell-Boltzmann} \\ -1 & \text{Bosons, Bose-Einstein} \end{cases}}
+\end{align}
+
+\begin{example}
+    In the non-quantum limit (this means $n_j \ll g_j$ - sometimes called the dilute limit), do the three sets of statistics become the same?
+    \begin{itemize}
+        \item Fermions:
+            \begin{align}
+                \Omega(\e_j) &= \frac{g_j!}{n_j!(g_j-n_j)!} \\
+                             &= \frac{\overbrace{1\times2\times3\times\cdots\times(g_j-n_j)}^{(g_j-n_j)!}(g_j-n_j+1)\times\cdots\times g_j}{n_j!(g_j-n_j)!} \approx \frac{g_j^{n_j}}{n_j!}
+            \end{align}
+        \item Bosons:
+            \begin{align}
+                \Omega_{BE}(\e_j) &= \frac{(n_j+g_j)!}{n_j!g_j!} \\
+                            &= \frac{\overbrace{1\times2\times\cdots\times g_j}^{g_j!}(g_j+1)\times\cdots\times(n_j+g_j)}{n_j!g_j!} \approx \frac{g_j^{n_j}}{n_j!}
+            \end{align}
+        \item Classical:
+            \begin{align}
+                \Omega_{MB}(\e_j) &= \frac{g_j^{n_j}}{n_j!}
+            \end{align}
+    \end{itemize}
+    Now we take the product over all states, $\prod_j$ to get the same result. 
+    However, if you look back to the classical result, which is for distinguishable particles, we had an extra factor of $N!$.
+
+    So are dilute limit FD or BE equal to MB? \unl{This is called the Gibbs paradox.} (More on this later.)
+\end{example}
+
+\section{Thermal Averages}
+Let Q be some thermal property. 
+When a particle is in a state with energy $\e_j$, that particle has microscopic property $Q_j$.
+THe system can best be described by combining all of those microscopic properties, with a weighted average using the distribution function, i.e. the average is
+\begin{align}
+    \langle Q\rangle &= \frac{1}{N}\sum_j n_jQ_j
+\end{align}
+We usually don't have $n_j$, but we have the distribution functions. 
+We have 
+\begin{align}
+    n_j &= g_jf_j \\
+    f_j &= \frac{N}{Z}e^{-\beta\e_j} \\
+    \langle Q\rangle &= \frac{\sum_j g_j e^{-\beta\e_j}Q_j}{\sum_j g_je^{-\beta\e_j}}
+\end{align}
+In bulk systems, the states become continuous, so sums are written as integrals and we get
+\begin{align}
+    \langle Q\rangle &= \frac{\ofnt g(\e)e^{-\beta\e}Q(\e)\,d\e}{\ofnt g(\e)e^{-\beta\e}d\e}
+\end{align}
+Or, in k-space, we have
+\begin{align}
+    \langle Q\rangle &= \frac{\ofnt g(k)e^{-\beta\e(k)}Q(k)\;dk}{\ofnt g(k)e^{-\beta\e(k)}dk}
+\end{align}
+
+\chapter{}
+In bulk systems, the states become continuous, so sums are written as integrals and we get
+\begin{align}
+    \langle Q\rangle &= \frac{\ofnt g(\e)e^{-\beta\e}Q(\e)\,d\e}{\ofnt g(\e)e^{-\beta\e}d\e}
+\end{align}
+Or, in k-space, we have
+\begin{align}
+    \langle Q\rangle &= \frac{\ofnt g(k)e^{-\beta\e(k)}Q(k)\;dk}{\ofnt g(k)e^{-\beta\e(k)}dk}
+\end{align}
+For density of states, we had for a 3D gas, $g(k) \propto k^2$ and $g(\e) \propto \e^{1/2}$.
+We also have the partition function, 
+\begin{align}
+    Z &= \sum_{i\text{ states}} e^{-\beta\e_i} = \sum_{j\text{ energies}} g_je^{-\beta\e_j} \\
+      &= \ofnt g(k)e^{-\beta \e(k)}dk = \ofnt g(\e)e^{-\beta\e}d\e
+\end{align}
 
 
+\begin{example}
+    The density of states for the 3D dilute gas was
+    \begin{align}
+        g(k)\;\delta k &= \frac{V}{(2\pi)^2}4\pi k^2\;\delta k \\
+        \implies Z &= \frac{V}{(2\pi)^2}4\pi \ofnt k^2e^{-\beta\hbar^2k^2/2m}\,dk \\
+        \ofnt x^2e^{-\lambda x^2}\,dx &= \frac{1}{4}\sqrt{\frac{\pi}{\lambda^3}} \\
+        \implies Z &= V\left(\frac{2\pi M}{\beta h^2}\right)^{3/2} = \frac{V}{\lambda_D^3} \\
+        \lambda_D &= h\sqrt{\frac{\beta}{2\pi M}} = \frac{h}{\sqrt{2\pi Mk_BT}}
+    \end{align}
+\end{example}
+$\lambda_D$ is known as the deBroglie thermal wavelength. 
+This is a measure of how "classical" or "quantum" the system is, i.e. how dilute or how dense the system is. 
+If $\lambda_D$ is much smaller than interparticle distance, then we are in the dilute (non-quantum) limit.
 
+If we have the density of states as $g(k)$, then we know that $\hbar k = mv$ and $\frac{\hbar^2k^2}{2m} = \frac{1}{2}mv^2$ so we can also obtain $g(v)$.
+It gives the number of particles lying between $v$ and $v+\delta v$, so
+\begin{align}
+    n(v)\;\delta v &= g(v)\;\delta v ~e^{-\alpha}e^{-\beta\e(v)} = Cv^2e^{-\beta mv^2/2}
+\end{align}
+We can calculate $C$ by noting that 
+\begin{align}
+    N &= \ofnt n(v)\;dv
+\end{align}
+Integrating this gives (using earlier integral)
+\begin{equation}
+    C = 4\pi N\left(\frac{\beta M}{2\pi}\right)^{3/2}.
+\end{equation}
+We are in the classical limit and note that $h$ has gone. 
 
-
-
-
-
-
-
-
-
-
-
-
+\begin{example}[What is the most probable speed of a particle in the 3D box?]
+    We maximise $n(v)$ to get the most probable.
+    As we increase temperature, the $n(v)$ is more spread out, with a lower peak shifted to the right.
+    \begin{align}
+        \frac{dn(v)}{dv} &= C\,2ve^{-\beta mv^2/2}\left(1 - \beta \frac{mv^2}{2}\right) = 0 \\
+        \implies v_{max} &= \sqrt{\frac{2}{\beta m}}
+    \end{align}
+    Now consider the mean speed. 
+    Using the thermal averages above, we get:
+    \begin{align}
+        \bar{v} &= \frac{\ofnt v^2e^{-\beta mv^2/2}v\;dv}{\ofnt v^2e^{-\beta mv^2/2}\;dv} \\
+                &= \sqrt{\frac{8}{\pi\beta m}}
+    \end{align}
+    How about RMS speed?
+    \begin{align}
+        v^2_{RMS} &= \frac{\ofnt v^2e^{-\beta mv^2/2}v^2\;dv}{\ofnt v^2e^{-\beta mv^2/2}\;dv} \\
+                  &= \frac{3}{\beta m} \\
+        v_{RMS} &= \sqrt{\frac{3}{\beta m}}
+    \end{align}
+    Note that:
+    \begin{itemize}
+        \item 
+            \begin{align}
+                \ofnt x^3e^{-x^2}\,dx &= \frac{1}{2} \\
+                \ofnt x^4e^{-x^2}\,dx &= \frac{3}{8}\sqrt{\pi}
+            \end{align}
+        \item 
+            \begin{align}
+                \langle E\rangle &= \frac{1}{2}mv^2_{RMS} = \frac{1}{2}m\frac{3}{\beta m} \\
+                                 &= \frac{3}{2}k_BT
+            \end{align}
+            This is \unl{Equipartition} - we get $\frac{1}{2}k_BT$ of energy per degree of freedom.
+    \end{itemize}
+    What is this system's partition function?
+    \begin{align}
+        Z &= V\left(\frac{2\pi m}{\beta h^2}\right)^{3/2} = \frac{V}{\lambda_D^3}
+    \end{align}
+    Hence let's calculate some thermodynamic properties:
+    \begin{align}
+        U &= -N\frac{\p\ln(Z)}{\p\beta} = \cdots = \frac{3Nk_BT}{2} \\
+        F &= -Nk_BT \ln(Z) = \cdots = -Nk_BT(\ln(V) - 3\ln(\lambda_D))
+    \end{align}
+\end{example}
 
 
 
