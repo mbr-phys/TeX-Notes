@@ -1,0 +1,9 @@
+\contentsline {part}{I\hspace {1em}}{2}{part.1}
+\contentsline {chapter}{\numberline {1}Free and Nearly Free Electrons}{3}{chapter.1.1}
+\contentsline {chapter}{\numberline {2}}{5}{chapter.1.2}
+\contentsline {section}{\numberline {2.1}Model 2}{7}{section.1.2.1}
+\contentsline {section}{\numberline {2.2}Degenerate Perturbation Theory}{8}{section.1.2.2}
+\contentsline {section}{\numberline {2.3}Life at the Brillouin Zone Boundary}{8}{section.1.2.3}
+\contentsline {section}{\numberline {2.4}Nearly-free electron WFs in 1D}{8}{section.1.2.4}
+\contentsline {part}{II\hspace {1em}}{10}{part.2}
+\contentsfinish 

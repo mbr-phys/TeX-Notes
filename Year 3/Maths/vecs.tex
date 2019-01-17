@@ -234,6 +234,776 @@ In orthonormal spaces, contravariant and covariant components are identical.
     \end{equation}
 \end{itemize}
 
+\chapter{General Vector Spaces}
+\section{Groups and Fields}
+We need a notion of both of these math objects to define a general VS. 
+
+\subsection{Group}
+A group is a set G together with an operation $O:G\times G\to G$, with properties:
+\begin{itemize}
+    \item Associativity, $(a\circ b)\circ c = a\circ(b\circ c)$
+    \item Identity element, $e$: $a = e\circ a = a\circ e~\forall a \in G$
+    \item Inverse element $\forall a$, $a \circ a^{-1} = a^{-1}\circ a = e$
+    \end{itemize}
+
+A few deductible properties:
+\begin{itemize}
+    \item $e$ is unique. \\
+        \textbf{Proof:} Assume $e,e'$ two identity elements:
+        \begin{equation}
+            e' = e\circ e' = e \implies e = e'
+        \end{equation}
+    \item $a^{-1}$ is unique $\forall a$:
+        \begin{align}
+            aa^{-1} &= a\circ(a')^{-1} = e \\
+            a^{-1}\circ (a\circ a^{-1}) &= a^{-1}\circ(a\circ(a')^{-1}) \\
+            (a^{-1}\circ a)\circ a^{-1} &= (a^{-1}\circ a)\circ (a')^{-1} \\
+            e\circ a^{-1} &= e\circ(a')^{-1} \\
+            a^{-1} &= (a')^{-1}
+        \end{align}
+    \item The inverse of $a\circ b$ is $b^{-1}\circ a^{-1}$:
+        \begin{equation}
+            (b^{-1}\circ a^{-1})\circ (a\circ b) = b^{-1}\circ(a^{-1}\circ a)\circ b = b^{-1}\circ e\circ b = e
+        \end{equation}
+\end{itemize}
+
+\textbf{Examples:}
+\begin{itemize}
+    \item $\Z_2$ group has representation under matrix multiplication:
+        \begin{equation}
+            \left\{ \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix},\begin{pmatrix} -1 & 0 \\ 0 & -1\end{pmatrix}\right\}
+        \end{equation}
+    \item $\Z_n$ group has representation:
+        \begin{equation}
+            \left\{ \begin{pmatrix} 1 & 0 \\ 0 & e^{i2\pi k/n}\end{pmatrix}, k = 0 \to n-1 \right\}
+        \end{equation}
+    \item Groups can be infinite, e.g. $\R$
+    \item These groups are commutative, $a\circ b = b\circ a~\forall a$. 
+        Called Abelian groups (not true of all groups), e.g. rotation groups
+\end{itemize}
+
+\subsection{Fields}
+A field is an extension of a group but with two operations, usually called 'addition' and 'multiplication' ($+$ and $\cdot$)
+\begin{itemize}
+    \item $(F,+)$ is an abelian group with identity element 0 
+    \item $(F\ \{0\},\cdot)$ is an abelian group with neutral element 1 
+    \item Distributive law ($\forall a,b,c \in F$):
+        \begin{align}
+            a\cdot(b+c) &= a\cdot b + a\cdot c \\
+            (a+b)\cdot c &= a\cdot c + b\cdot c
+        \end{align}
+\end{itemize}
+
+\textbf{Examples of Fields:}
+\begin{itemize}
+    \item $(\R,+,\cdot)$
+    \item $(\Q,+,\cdot)$
+    \item $(\C,+,\cdot)$
+    \item \emph{But not $\N$}
+\end{itemize}
+
+\subsection{Definition of a Vector Space}
+A vector space over the field F is a set V together with the operations:
+\begin{itemize}
+    \item '$+$':
+        \begin{align}
+            V\times V&\to V \\
+            (v,w) &\to v+w 
+        \end{align}
+    \item '$\cdot$':
+        \begin{align}
+            F\times V &\to V \\
+            (\lambda,v) &\to \lambda v
+        \end{align}
+\end{itemize}
+
+For which, the following holds:
+\begin{enumerate}
+    \item $(v+w)+z = v+(w+z)$ 
+    \item $\exists 0 \in V ~|~ v+0 = 0+v = v$
+    \item $\exists -v \in V ~|~ v + (-v) = (-v)+v = 0$
+    \item $v+w=w+v,~\forall v,w \in V$
+    \item $(\alpha+\beta)v = \alpha v + \beta v$
+    \item $\alpha(v+w) = \alpha v + \alpha w$
+    \item $\alpha(\beta v) = (\alpha\beta)v$
+    \item $1v = v$
+\end{enumerate}
+
+Using 1 and 4 above, can say $(V,+)$ is an abelian group, where 0 is the nullvector, and $v^{-1}=-v$.
+Note in 7, two different operations appear.
+
+Common fields could be $\C$ or $\R$, i.e. $(\alpha,\beta \in \R)$
+
+NB:
+\begin{itemize}
+    \item There is no scalar product in a general VS, i.e. this is an additional structure
+    \item No mention of dimension ($\infty$ dimension included)
+\end{itemize}
+
+\textbf{Examples:}
+\begin{enumerate}
+    \item $\R^n$, n-tuples of real numbers is a real VS
+        \begin{align}
+            \vec{p} &= (p_1,\cdots,p_n) \\
+            \vec{q} &= (q_1,\cdots,q_1) \\
+            \vec{p} + \vec{q} &= (p_1+q_1,\cdots,p_n+q_n) \\
+            \alpha\cdot\vec{p} &= (\alpha p_1,\cdots,\alpha p_n) \\
+            \vec{0} &= (0,\cdots,0) \\
+            -\vec{p} &= (-p_1,\cdots,-p_n)
+        \end{align}
+    \item $\C^n$, n-tuples of complex numbers is a complex vector space
+    \item $P^n(+)$ all (complex) polynomials of degree $\leq n$, $a_o + a_1t + a_2t^2 + \cdots a_nt^n$ is a complex VS (vector is a polynomial)
+    \item $M(n,m)$, the set of all complex matrices forms a complex VS $\implies$ tensors are also 'vectors' in this definition of a general VS
+    \item $C_{\R}[a,b]$, all continuous real valued functions defined on the interval $[a,b]$ is a real VS (vector = function)
+    \item $\La^2_{\C}[a,b]$, all complex valued integrable functions defined on the interval $[a,b]$ form a complex VS
+        \begin{equation}
+            f \in \La^2_{\C}[a,b] \implies \int_a^b |f(x)|^2\,dx < \infty
+        \end{equation}
+    \item $\forall$ linear forms on V form a vector space called the dual VS, $\tilde{V}$
+        \begin{align}
+            l: V &\to \C(\R) \\
+            l(\alpha\vec{p} + \beta\vec{q}) &= \alpha l(\vec{p}) + \beta l(\vec{q})
+        \end{align}
+\end{enumerate}
+So a VS is a much more general concept than $\R^3$.
+
+\chapter{}
+
+\section{Vector Spaces}
+$\vec{v},\vec{w} \in V$ defined on a field $F \in \R/\C$.
+
+Consider a linearly dependent set of vectors $\{\vec{v}_i\}$,
+\begin{align}
+    \sum_{i=0}^k \alpha_i\vec{v}_i &= 0,\alpha_i \in \R/\C
+\end{align}
+With at least one $\alpha_i \neq 0$.
+If the only way to fulfil this is $\alpha_i = 0 \forall i$, then $\{\vec{v}_i\}$ is linearly independent. 
+
+\begin{example}[$\C^3$ on $\C$]
+    \begin{align}
+        \vec{v}_1 &= (i,1,0) \\
+        \vec{v}_2 &= (0,i,0) \\
+        \vec{v}_3 &= (k,0,0) \\
+        \implies& i\vec{v}_1 + (-1)\vec{v}_2 + \frac{1}{k}\vec{v}_3 = 0 \\
+        \alpha_i &\in \C, \neq 0
+    \end{align}
+\end{example}
+A vector space is n-dimensional if there exists a subset of n linearly-independent vectors and if there does not exist any subset of $n+1$ linearly-independent vectors.
+
+A Basis is defined as n linearly-independent vectors such that for $\vec{p} \in V$,
+\begin{align}
+    \vec{p} &= \vec{e}_i\underbrace{p^i}_{\in F}
+\end{align}
+
+An n-dimensional space over $\C$ is equivalent 2n-dimensional over $\R$, e.g. $\C^3$ over $\R$ has is 6 dimensional.
+
+\subsection{Scalar Product}
+The scalar product of two vectors $\vec{p},\vec{q} \in V$ returns a real or complex number. 
+\begin{itemize}
+    \item 
+        \begin{align}
+            (\vec{p},\alpha\vec{q}+\beta\vec{r}) &= \alpha\vec{p}\vec{q} + \beta\vec{p}\vec{r}
+        \end{align}
+    \item 
+        \begin{equation}
+            (\vec{p},\vec{q}) = (\vec{q},\vec{p})^* 
+        \end{equation}
+    \item 
+        \begin{equation}
+            (\vec{p},\vec{p}) \geq 0, ~~(\vec{p},\vec{p}) = 0 \iff \vec{p} = 0
+        \end{equation}
+\end{itemize}
+\begin{align}
+    (\alpha\vec{q}+\beta\vec{r},\vec{p}) &= \alpha^*(\vec{q},\vec{p}) + \beta^*(\vec{r},\ve{p})
+\end{align}
+Can be defined in terms of the basis: $B = \{\vec{e}_i\}$
+\begin{align}
+    \vx &= \vec{e}_ix^i \\
+    \vec{y} &= \vec{e}_jy^j \\
+    \implies (\vx,\vec{y}) &= \vx\cdot\vec{y} = \vec{e}_i\vec{e}_jx^iy^j \equiv g_{ij}x^iy^j
+\end{align}
+
+For an orthonormal basis, $g_{ij} = \delta_{ij}$.
+\begin{itemize}
+    \item $g_{ij} = g_{ji} \implies G = G^T$, in real space
+    \item $\text{det}G = |G| \neq 0$
+\end{itemize}
+
+Norm of a vector:
+\begin{align}
+    ||\vec{v}|| &= \sqrt{\vec{v}\cdot\vec{c}}
+\end{align}
+\begin{itemize}
+    \item Positivity
+        \begin{align}
+            ||a\vec{v}|| &= |a|||\vec{v}|| \geq 0 \\
+            ||\vec{v}|| &= 0 \iff \vec{v} = \vec{0}
+        \end{align}
+    \item Symmetry
+        \begin{align}
+            ||\vec{v}-\vec{w}|| &= ||\vec{w}-\vec{v}||
+        \end{align}
+    \item Triangle inequality
+        \begin{align}
+            ||\vec{v}+\vec{w}|| \leq ||\vec{v}|| + ||\vec{w}||
+        \end{align}
+\end{itemize}
+
+\section{Gram-Schmidt Orthogonalisation}
+Assume that we have a set of n linearly-independent vectors, $\{\vec{v}_i\}$ in n-dimensional vector space, $V$.
+Can we construct an orthonormal basis?
+\begin{align}
+    \{\vec{v}_i\} &\to \underbrace{\{\vec{u}_i\}}_{\text{orthogonal}} \to \{\vec{e}_i\} \\
+    \vec{u}_1 &= \vec{v}_1 \\
+    \text{Proj}_{u_1}(\vec{v}_2) &= \frac{(\vec{v}_2,\vec{u}_1)}{(\vec{u}_1,\vec{u}_1)} \\
+    \vec{u}_2 &= \vec{v}_2 - \text{Proj}_{u_1}(\vec{v}_2) \\
+    \vec{u}_3 &= \vec{v}_3 - \text{Proj}_{u_1}(\vec{v}_3) - \text{Proj}_{u_2}(\vec{v}_3),etc \\
+    \vec{e}_i &= \frac{\vec{u}_i}{||\vec{u}_i||}
+\end{align}
+
+\section{Isomorphism of Finite Dimension Vector Spaces}
+Assume we have two vector spaces, $V_1,V_2$ if we can construct a linear map that relates the elements between the two vector spaces.
+\begin{align}
+    V_1 &\to^L V_2 \\
+    L(\alpha\vec{p} + \beta\vec{q}) &\to \alpha L(\vec{p}) + \beta L(\vec{q}) \\
+    \vec{r} = \alpha\vec{p} + \beta \vec{q} &\to L(\vec{r}) = \alpha L(\vec{p}) + \beta L(\vec{q})
+\end{align}
+Isomorphism is a linear map that is bijective.
+If $V_1$ and $V_2$ are isomorphic, $V_1 \approx V_2$.
+
+\begin{example}[$\C^n \approx \mathcal{P}^{n-1}$]
+    \begin{align}
+        \vec{p} &= (p_1,\cdots,p_n) \in \C^n \\
+        L(\vec{p}) &= p_1 + p_2x + \cdots p_nx^{n-1}
+    \end{align}
+\end{example}
+
+\textbf{Theorem}: \emph{Any n-dimensional real (or complex) vector space (where n is finite) is isomorphic to $\R^n$ (or $\C^n$).}
+
+\section{Tensor Product}
+Consider both $V$ and $W$ as vector spaces defined on F, with basis:
+\begin{align}
+    E_V &: \{\vec{e}_n\} \\
+    G_W &: \{\vec{g}_m\}
+\end{align}
+The tensor product $V\otimes W$ is a $n\cdot m$ dimensional vector space.
+\begin{align}
+    E\otimes G &= \{(\vec{e}_i,\vec{g}_j)\} = \vec{e}_i\otimes \vec{g}_j \begin{cases} i = 1\to n & \\ j = 1 \to m & \end{cases} \\
+    \vec{v} &= \vec{e}_iv^i \\
+    \vec{w} &= \vec{g}_jw^j \\
+    \vec{v}\otimes \vec{w} &= \vec{e}_i\otimes \vec{g}_jv^iw^j 
+\end{align}
+
+\chapter{}
+
+\section{Linear Operators}
+A linear operator $A$ maps the vector $\vx$ from a given domain in vector space $X$ into its image $\vec{y} = A(\vx)$ of a target (or codomain) in vector space $Y$.
+\begin{align}
+    X &\rightarrow^A Y \\
+    \vx &\rightarrow \vec{y} = A(\vx)
+\end{align}
+We will often consider the case $X=Y$ (for example, the operators that act as $\R^n \to \R^n$ or $\C^n \to \C^n$). This map is linear and satisfies
+\begin{align}
+    A(\vx_1 + \vx_2) &= A(\vx_1) + A(\vx_2),~ \forall \vx_1,\vx_2 \,\in X \\
+    A(\alpha\vx) &= \alpha A(\vx),~ \forall \vx \,\in X, \;\forall \alpha \,\in F
+\end{align}
+Notice that $X$ and $Y$ can in general have different dimensionality and we can choose different bases on each one. 
+
+\begin{example}
+Identity Operator:
+\begin{equation}
+    O(\vx) = \vx,~ \forall \vx \in X 
+\end{equation}
+Null Operator:
+\begin{equation}
+    E(\vx) = \vec{0}_Y,~ \forall \vx \in X
+\end{equation}
+\end{example}
+
+\section{Matrix associated to a linear operator}
+Every linear operator $A$ in $\C^n$ (or $\R^n$) can be represented by an $n\times n$ complex (real) matrix. 
+Consider the linear operator $A$, such that
+\begin{align}
+    X &\rightarrow^A Y \\
+    \vx &\rightarrow \vec{y} = A(\vx)
+\end{align}
+where $X$ is an $n$-dimensional vector space with basis $B_X = \vec{e}_i$ and $Y$ is an $m$-dimensional vector space with basis $B_Y = \vec{e}_j$.
+Thus, a vector $\vx in X$ can be expressed in terms of its components as 
+\begin{equation}
+    \vx = \vec{e}_ix^i
+\end{equation}
+and a vector $\vec{y} \in Y$ can be expressed in the basis $B_Y$ as 
+\begin{equation}
+    \vec{y} = \vec{e}_iy^i.
+\end{equation}
+Thus, we can do the same for the result of the linear operator $A$ acting on $\vx$
+\begin{equation}
+    A(\vx) = A(\vec{e}_jx^j) = A(\vec{e}_j)x^j = \vec{e}_iA^i_jx^j
+\end{equation}
+Thus $A(\vx)$ has components $A^i_jx^j$ in the basis $B_Y$ with $i=1\dots m$ and $j=1\dots n$. Notice that we can now write this as a matrix equation,
+\begin{equation}
+    \vec{y} = A\vx.
+\end{equation}
+Notice that the matrix A in $m\times n$, it is not a square matric unless $X$ and $Y$ have the same dimension. 
+Also, the matrix representation depends on the choice of basis $B_X$ and $B_Y$.
+As mentioned above, we will often consider applications within the same vector space. 
+In that case, we would identify $X = Y$, $B_X = B_Y$ and the matrix $A$ would be square $n\times n$.
+
+\section{Change of basis}
+For simplicity, we are going to consider here the case where the domain and codomain coincide $X=Y$, and we can choose the original basis $B = B_X = B_Y = \vec{e}_i$.
+Consider an operator $A$, whcih in basis $B$ has the components $A^i_j$.
+Consider now the change of basis, defined by
+\begin{align}
+    \vec{e}'_j &= \vec{e}_iS^i_j \\
+    x^j &= S_i^jx'^i \\
+    x'^j &= \left(S^{-1}\right)_i^jx^i = T_i^jx^i
+\end{align}
+Then, given $\vec{y} = A\vx$, in the old basis we have $y^j = A^j_ix^i$ and in the new basis $y'^j = A'^j_ix'^i$.
+Starting from the first expression and transforming the coordinates $x^i$ and $y^j$, we have
+\begin{align}
+    y^j &= A_i^jx^i \\
+    S_k^jy'^k &= A_i^jS_l^ix'^l \\
+    y'^k &= \left(S^{-1}\right)_j^kA_i^jS_l^ix'^l 
+\end{align}
+whcih allows us to identify $A'^k_l = \left(S^{-1}\right)A_i^jS_l^i$, 
+\begin{equation}
+    A' = S^{-1}AS
+\end{equation}
+or, equivalently,
+\begin{equation}
+    A' = TAT^{-1}
+\end{equation}
+
+\chapter{}
+\begin{itemize}
+    \item Adjoint Operator:
+        \begin{align}
+            (\vec{p},A(\vec{q})) &= (A^\dagger(\vec{p}),\vec{q}),~ \forall \vec{p},\vec{q} \in V
+        \end{align}
+        
+    \item Hermitian operator (self-adjoint): $A^\dagger = A$
+    \item Unitary operator on $\C^2$, preserve scalar product:
+        \begin{align}
+            (A(\vec{p}),A(\vec{q})) &= (\vec{p},\vec{q}),~ \forall \vec{p},\vec{q} \in V \\
+            A^\dagger A &= I \\
+            A^\dagger &= A^{-1}
+        \end{align}
+\end{itemize}
+
+\section{Systems of Linear Equations}
+Consider a set of n linear equations with n unknowns $\{x^i\}$.
+\begin{align}
+    a_1^1x^1 + a_2^1x^2 + \cdots a^1_nx^n &= y^1 \\
+    a_1^2x^1 + a_2^2x^2 + \cdots a^2_nx^n &= y^2 \\
+    a_1^ny^1 + a_2^nx^n + \cdots a^n_nx^n &= y^n \\
+    A\vec{x} &= \vec{y} \\
+    A &= \{a^i_j\}, i,j \in 1 \to n\\
+    \vec{x} &= (A^{-1})\vec{y}
+\end{align}
+Given a linear operator $A$ in $\C^n$. The following statements are equivalent:
+\begin{itemize}
+    \item A is invertible
+    \item A is injective (one-to-one)
+    \item A is surjective 
+    \item $\text{det}A \neq 0$
+\end{itemize}
+
+\section{Eigenvectors and values}
+\begin{equation}
+    A(\vec{v}) = \alpha\vec{v}
+\end{equation}
+For non-null vector, $\vec{v} \neq \vec{0}$, $\vec{v}$ is an eigenvector of $A$ with eigenvalue $\alpha$.
+
+If $\vec{v}$ is an eigenvector of $A$, then so is $\beta\vec{v}$
+\begin{equation}
+    A(\beta\vec{v}) = \beta A(\vec{v}) = \beta\alpha\vec{v} = \alpha(\beta\vec{v})
+\end{equation}
+
+\textbf{Theorem: }$\alpha \in \C$ is an eigenvalue of $A$ $\iff \text{det}(A - \alpha I) = 0$.
+
+\textbf{Proof: }Assume $\alpha$ is an eigenvalue of $A$.
+\begin{align} 
+    \exists \vec{v} \neq \vec{0} / A\vec{v} &= \alpha\vec{v} \\
+    (A - \alpha I)\vec{v} &= 0 \\
+    (A - \alpha I) \vec{0} &= 0 
+\end{align}
+$\vec{v} \neq \vec{0}$, thus $A - \alpha I$ is not injective. Therefore, 
+\begin{equation}
+    \text{det}(A - \alpha I) = 0
+\end{equation}
+
+\begin{align}
+    \text{det}(A - \alpha I) &= 0 
+\end{align}
+So $A - \alpha I$ is not injective. 
+\begin{align}
+    (A - \alpha I)\vec{v} &= (A - \alpha I)\vec{y}, ~\vec{z} = \vec{v}-\vec{y} \\
+    (A - \alpha I)\vec{z} &= 0 \\
+    A\vec{z} &= \alpha\vec{z}
+\end{align}
+Which then implies that $\vec{z}$ is an eigenvector with eigenvalue $\alpha$.
+
+\subsection{Eigenvalue solutions}
+\begin{itemize}
+    \item $\text{det}(A-\alpha I) = 0$ returns polynomial of degree n, implying n complex solutions, $\alpha_i \in \C,\; i \in 1 \to n$. 
+    \item Now define the characteristic polynomial:
+        \begin{equation}
+            P^n(\alpha) = \text{det}(A-\alpha I)
+        \end{equation}
+    \item If $A$ is complex, there are always n solutions. 
+    \item Eigenvectors: $A\vec{v}_i = \alpha_i\vec{v}_i$
+    \item We can find $\alpha_j$ that appears more than once (m times) - this eigenvalue is m-fold degenerate
+    \item The characteristic polynomial is independent of the basis:
+        \begin{align}
+            P(\alpha) &= \text{det}(A-\alpha I) = \text{det}(A'-\alpha I) \\
+            \text{det}(A'-\alpha I) &= \text{det}(T^{-1}AT-\alpha I) \\
+                                    &= \text{det}(T^{-1}AT - \alpha T^{-1}T) \\
+                                    &= \text{det}(T^{-1}(A-\alpha I)T) \\
+                                    &= \text{det}(T^{-1})\text{det}(A-\alpha I)\text{det}(T) \\
+                                    &= \text{det}(A - \alpha I)
+        \end{align}
+    \item Choose the n eigenvectors $\{\vec{v}_i\}$ as a basis:
+        \begin{align}
+            \vec{p} \in V, \vec{p} &= \vec{v}_ip^i \\
+            A(\vec{p}) = A(\vec{v}_ip^i) &= A(\vec{v}_i)p^i \\
+                       &= \sum_{i=1}^n \alpha_i\vec{v}_ip^i
+        \end{align}
+        The matrix representing $A$ is diagonal:
+        \begin{equation}
+            A_{\vec{v}_i} = \begin{pmatrix} \alpha_1 & & \\ & \ddots & \\ & & \alpha_n \end{pmatrix}
+        \end{equation}
+        The new basis $\{\vec{v}_i\}$ is in general not orthonormal. 
+        However, if $A^\dagger = A^{-1}$ or $A^{dagger} = A$, then $\{\vec{v}_i\}$ are orthonormal.
+\end{itemize}
+
+\section{Unitary Operators}
+\begin{equation}
+    (\vec{v},\vec{w}) = (A(\vec{v}),A(\vec{w}))
+\end{equation}
+$\vec{v}$ is an eigenvector of A:
+\begin{align}
+    (\vec{v},\vec{v}) = (A(\vec{v}),A(\vec{v})) &= (\alpha\vec{v},\alpha\vec{v}) \\
+                                                &= \alpha^*\alpha(\vec{v},\vec{v}) \\
+    \implies |\alpha|^2 &= 1  \\
+    \implies \alpha &= e^{i\phi}
+\end{align}
+
+For $\vec{v}_1,\vec{v}_2$ eigenvectors of a unitary operator $A$:
+\begin{align}
+    (\vec{v}_1,\vec{v}_2) &= (A(\vec{v}_1,A(\vec{v}_2)) \\
+                          &= \alpha_1^*\alpha_2(\vec{v}_1,\vec{v}_2) \\
+                          &= \frac{\alpha_2}{\alpha_1}(\vec{v}_1,\vec{v}_2) \\
+    \alpha_1 &= e^{+i\phi_1} \\
+    \alpha_1^* &= e^{-i\phi_1} = \frac{1}{\alpha_1}
+    (\vec{v}_1,\vec{v}_2) = 0 \iff \begin{cases} \alpha_1 \neq \alpha_2 & \\ \frac{\alpha_2}{\alpha_1} \neq 1 & \end{cases}
+\end{align}
+
+If A is a unitary or Hermitian operator, we can find an orthonormal basis $\{\vec{v}_i\}$ where all $\vec{v}_i$ are eigenvectors of A.
+In this basis
+\begin{align}
+    \vec{p} &= (\vec{v}_i,\vec{p})\vec{v}_i \\
+    A(\vec{v}_i) &= \alpha_i\vec{v}_i \\
+    A(\vec{p}) &= \sum_{i=1}^n (\vec{v}_i,\vec{p})\alpha_i\vec{v}_i
+\end{align}
+
+\chapter{}
+\section{Hilbert Spaces}
+\begin{itemize}
+    \item For a finite n, find a basis (of n elements), $\{\ve_i\}$
+        \begin{equation}
+            \vec{p}\in V \to \vec{p} = \ve_ip^i
+        \end{equation}
+    \item Now we consider $n\to\infty$.
+        This seems to imply that you can find infinitely many linearly-independent $\{\ve_i\},~ i = i\to N,~ N\to\infty$.
+        \begin{equation}
+            \vec{p} \in H \to \vec{p} = \ve_ip^i
+        \end{equation}
+        \begin{enumerate}
+            \item Does it converge?
+            \item Does it converge to an element in the Hilbert Space?
+        \end{enumerate}
+    \item We need a concept of distance between two elements, $\vec{p},\vec{q}$ in $H$.
+    \item Distance: (scalar product)
+        \begin{equation}
+            \vec{f},\vec{g} \in H \to (\vec{f},\vec{g})\in F
+        \end{equation}
+        The properties of the scalar product are:
+        \begin{enumerate}
+            \item $(\vec{f},\vec{g}) = (\vec{g},\vec{f})$
+            \item $(\vec{f},\alpha\vec{g}) = \alpha(\vec{f},\vec{g})$
+            \item $(\alpha\vec{f},\vec{g}) = \alpha^*(\vec{f},\vec{g})$
+            \item \emph{missed some of these - he moves his notes on too fast}
+        \end{enumerate}
+    \item 
+        \begin{align}
+            \text{distance}(\vec{f},\vec{g}) &\equiv ||\vec{f}-\vec{g}|| \equiv \sqrt{(\vec{f}-\vec{g})(\vec{f}-\vec{g})} 
+        \end{align}
+        The properties are:
+        \begin{enumerate}
+            \item $d(\vec{f},\vec{g}) = d(\vec{g},\vec{f})$
+            \item $d(\vec{f},\vec{g}) > 0,\; \forall \vec{f}\neq\vec{g}$
+            \item $d(\vec{f},\vec{g}) < d(\vec{f},\vec{h})+d(\vec{h},\vec{g})$
+        \end{enumerate}
+\end{itemize}
+
+\section{Convergence of sequences in H}
+\begin{itemize}
+    \item Strong convergence criterion: \\
+        Consider a sequence, $\{\vec{f}_i\} \in H$. This sequence converges to $\vec{f}$ if 
+        \begin{align}
+            ||\vec{f}-\vec{f}_n|| &\to 0,~ n\to\infty \\
+            ||\vec{f}-\sum_{i=1}^n \ve_if^i||^2 &\to 0,~ n\to\infty
+        \end{align}
+    \item Weak convergence criterion: \\
+        The sequence $\{\vec{f}_i\}$ converges weakly to $\vec{f}$ if
+        \begin{align}
+            (\vec{g},\vec{f}_i) \to (\vec{g},\vec{f}),~ n\to\infty
+        \end{align}
+    \item Strong convergence $\implies$ weak convergence
+    \item We say that a Hilbert space is complete if all Cauchy sequences converge in $H$.
+        \begin{equation}
+            \text{Cauchy sequence} \iff ||\vec{f}_n-\vec{f}_m|| \to 0,~ n,m \to \infty
+        \end{equation}
+        $H$ contains the limit of the sequences.
+\end{itemize}
+
+\subsection{Examples of Hilbert Spaces}
+\begin{itemize}
+    \item $\vec{f} = \{a^1,a^2,a^3,\cdots,a^n,\cdots\}, a^i\in\C$ such that
+        $|a^1|^2 + |a^2|^2 + \cdots$ converges - $\sum_{i=1}^\infty |a^i|^2 < \infty$.
+        \begin{equation}
+            \begin{pmatrix} a^1 \\ a^2 \\ \vdots \\ a^n \\ \vdots \\ \infty \end{pmatrix}
+        \end{equation}
+        All Hilbert spaces are isomorphic to this one, known as $l^2(\C)$.
+    \item Scalar product:
+        \begin{align}
+            (f,g) &= \sum_{i=1}^\infty |\bar{a}_ib^i|
+        \end{align}
+    \item $L^2(a,b) = \left\{f(x) / \int_a^b |f(x)|^2\,dx < \infty \right\}$, so scalar product is
+        \begin{equation}
+            (\vec{f},\vec{g}) = \int_a^b \bar{f(x)}g(x)\,dx
+        \end{equation}
+    \item Norm:
+        \begin{equation}
+            ||\vec{f}|| = \sqrt{\int_a^b f(x)^*f(x)\,dx}
+        \end{equation}
+\end{itemize}
+
+\section{Basis in H}
+\begin{itemize}
+    \item A complete set in H 
+    \item Contains all linear combinations and all elements in sequences
+    \item Hilbert Space is separable - $\exists$ a sequence $\{\vec{f}_n\}$ such that $\vec{f}_n \to \vec{f},~n\to\infty$.
+    \item All elements in H, $\vec{g}$ can be expressed as a linear combination:
+        \begin{equation}
+            \vec{g} = \sum_{i=1}^\infty \vec{f}_ic^i
+        \end{equation}
+    \item Define orthonormal basis:
+        \begin{align}
+            (\vec{p},\vec{q}) &= \left(\sum_{i=1}^\infty \vec{f}_ip^i,\sum_{j=1}^\infty \vec{f}_jq^j\right),~ (\vec{f}_i,\vec{f}_j = \delta_{ij} \\
+                              &= p^iq^j\delta_{ij} = p^iq_i
+        \end{align}
+\end{itemize}
+
+\section{QM Notation}
+\begin{itemize}
+    \item Go from vector notation to bra-ket notation
+    \item Column vectors to kets, $|v\rangle$
+    \item Row vectors to bras, $\langle v|$
+    \item Scalar product to bra-ket, $\langle p|q\rangle$
+    \item Operators shown with expectation values, $\langle p|A|q\rangle$
+    \item Note: bra or ket is an operator acting on a state
+        \begin{equation}
+            (|p\rangle\langle q|)|v\rangle = |p\rangle \langle q|v\rangle
+        \end{equation}
+\end{itemize}
+
+\chapter{Formulation of Quantum Mechanics}
+\begin{itemize}
+    \item Consider states in a QM system:
+        \begin{itemize}
+            \item vectors in a Hilbert space
+            \item $|v\rangle$
+            \item norm - $||v|| = \langle v|v\rangle^{1/2} = 1$
+        \end{itemize}
+    \item For observables (any physical, measurable quantity)
+        \begin{itemize}
+            \item Represented by Hermitian operators, $A$
+            \item Measuring $\to$ obtain one of the eigenvalues of $A$, $\alpha_m \in \R$
+            \item if $|\psi\rangle$ is an eigenvector $|m\rangle$ of $A$, 
+                \begin{equation}
+                    A|m\rangle = \alpha_m|m\rangle
+                \end{equation}
+            \item if $|\psi\rangle$ is not an eigenvector, $|\psi\rangle$ can be expressed in the basis of $|m\rangle$
+            \item Probability of measuring $\alpha_m$:
+                \begin{equation}
+                    P(\alpha_m)_\psi = \sum_{\alpha_m} |\langle m|\psi\rangle|^2
+                \end{equation}
+                In most cases, $\alpha_m$ will be singular, but to account for degeneracy, we sum over all eigenvectors with eigenvalue $\alpha_m$
+                \begin{align}
+                    |\psi\rangle &= \psi_m|m\rangle \\
+                                 &= \psi_1|1\rangle + \psi_2|2\rangle + \cdots + \psi_m|m\rangle
+                \end{align}
+            \item The probability of measuring any eigenvalue:
+                \begin{align}
+                    \sum_m |\langle m|\psi\rangle|^2 &= \sum_m \langle \psi|m\rangle \langle m|\psi\rangle \\
+                                                     &= \langle\psi|\psi\rangle = 1 \\
+                    \sum_m |m\rangle\langle m| &= 1
+                \end{align}
+        \end{itemize}
+    \item Given $A$, what is the average result of a measurement of a given state, $|\psi\rangle$?
+        \begin{align}
+            \langle A\rangle_\psi &= \sum_i P(\alpha_i)\,di = \sum_i \alpha_i |\langle i|\psi\rangle|^2 \\
+                                  &= \sum_i \alpha_i \langle\psi| i\rangle\langle i|\psi\rangle = \sum_i \langle\psi|A|i\rangle\langle i|\psi\rangle \\
+                                  &= \langle\psi|A|\psi\rangle, \in \R
+        \end{align}
+        This is called the \emph{expectation value} of $A$.
+    \item Spin-half states:
+        \begin{enumerate}
+            \item What is the corresponding Hilbert space?
+                \begin{itemize}
+                    \item $\C^2$ - physcial states as vectors in $\C^2$ (spin-vectors/spinors)
+                \end{itemize}
+            \item Choose basis
+                \begin{itemize}
+                    \item 
+                        \begin{align}
+                            |\uparrow\rangle \equiv \begin{pmatrix} 1 \\ 0 \end{pmatrix}, ~~
+                            |\downarrow\rangle \equiv \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+                        \end{align}
+                    \item  For an arbitrary state, $|\psi\rangle$ and $v_1,v_2 \in \C$:
+                        \begin{align}
+                            |\psi\rangle &= v_1|\uparrow\rangle + v_2|\downarrow\rangle
+                        \end{align}
+                    \item Normalisation:
+                        \begin{equation}
+                            ||\psi|| = 1 \implies |v_1|^2 + |v_2|^2 = 1
+                        \end{equation}
+                \end{itemize}
+            \item Physical quantites as operators in that Hilbert space
+                \begin{itemize}
+                    \item Rotations:
+                        \begin{itemize}
+                            \item z-component of spin
+                                \begin{equation}
+                                    s_z = \frac{1}{2} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+                                \end{equation}
+                            \item x-component of spin
+                                \begin{equation}
+                                    s_x = \frac{1}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+                                \end{equation}
+                            \item y-component of spin
+                                \begin{equation}
+                                    s_y = \frac{1}{2} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+                                \end{equation}
+                            \item 
+                                \begin{equation}
+                                    [S_i,S_j] = i\e_{ijk}S_k
+                                \end{equation}
+                            \item Note:
+                                \begin{align}
+                                    S_z|\uparrow\rangle &= \frac{1}{2}|\uparrow\rangle \\
+                                    S_z|\downarrow\rangle &= -\frac{1}{2}|\downarrow\rangle
+                                \end{align}
+                            \item $S_+$ measures the spin projection onto the z axis
+                        \end{itemize}
+                    \item Expection value for an arbitrary state, $|\psi\rangle$:
+                        \begin{align}
+                            \langle S_z\rangle_\psi &= \langle\psi| S_+|\psi\rangle = \begin{pmatrix} v_1^* & v_2^*\end{pmatrix} \frac{1}{2} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \\
+                                                    &= \frac{1}{2} (|v_1|^2 - |v_2|^2)
+                        \end{align}
+                \end{itemize}
+        \end{enumerate}
+    \item Consider particle moving in ISW between $-\frac L2$ and $\frac L2$
+        \begin{itemize}
+            \item Hilbert space, $L^2_{\C}[-\frac L2, \frac L2]$
+            \item States: vectors in Hilbert space, $\psi(x), |\psi\rangle$
+                \begin{align}
+                    \int_{-L/2}^{L/2} |\psi(x)|^2\,dx &= 1 \\
+                    |\langle\psi|\psi\rangle|^2 &= 1
+                \end{align}
+            \item Basis, n = $-\infty \to \infty$
+                \begin{align}
+                    |n\rangle &= \frac{1}{\sqrt{L}} e^{i2\pi nx/L} \equiv \psi_n(x)
+                \end{align}
+            \item Physical quantities:
+                \begin{itemize}
+                    \item position, $X$: 
+                        \begin{equation}
+                            X|\psi\rangle = x|\psi\rangle
+                        \end{equation}
+                    \item momentum, $\unl{P}$:
+                        \begin{equation}
+                            \unl{P}|\psi\rangle = -i\frac{\p}{\p x} |\psi\rangle
+                        \end{equation}
+                    \item energy,
+                        \begin{equation}
+                            \frac{\unl{P}^2}{2m} - V(x)
+                        \end{equation}
+                \end{itemize}
+            \item Note:
+                \begin{align}
+                    \unl{P}|n\rangle = -i\frac{\p}{\p x} \left(\frac{1}{\sqrt{L}} e^{i2\pi nx/L}\right) = \frac{2\pi n}{L} |n\rangle
+                \end{align}
+                $|n\rangle$ is an eigenstate of $\unl{P}$ with eigenvalue $\frac{2\pi n}{L}$
+            \item Check $|n\rangle$ form an orthonormal basis
+                \begin{itemize}
+                    \item Given a state $|n\rangle$:
+                        \begin{align}
+                            \langle X\rangle_n &= 0 = \langle n|X|n\rangle \\
+                                               &= \frac{1}{L} \int_{-L/2}^{L/2} e^{-i2\pi nx/L} xe^{i2\pi nx/L}\,dx
+                        \end{align}
+                \end{itemize}
+            \item What is the average energy? 
+                \begin{align}
+                    \langle E\rangle_n &= \frac{1}{2m} \left(\frac{2\pi n}{L}\right)^2
+                \end{align}
+        \end{itemize}
+    \item Time evolution of states (Schrodinger equation)
+        \begin{equation}
+            -i\hbar \frac{\p}{\p t}|\psi,t\rangle = H|\psi,t\rangle
+        \end{equation}
+        \begin{itemize}
+            \item $\hbar = 1$
+            \item $|\psi,t\rangle$ is state at time t
+            \item $H$ is Hamiltonian
+            \item $U(t,t_0)$ is the time evolution operator
+                \begin{equation}
+                    |\psi,t\rangle = U(t,t_0)|\psi,t_0\rangle
+                \end{equation}
+                \begin{align}
+                    i\frac{\p}{\p t}\left(U(t,t_0)\right) |\psi,t_0\rangle &= i\frac{\p}{\p t} \left(U(t,t_0)\right)U^{-1}(t,t_0)|\psi,t\rangle = H|\psi,t\rangle \\
+                    i\frac{\p}{\p t}U(t,t_0) &= HU(t,t_0) 
+                \end{align}
+            \item The solution reads:
+                \begin{align}
+                    U(t,t_0) &= e^{-iH(t-t_0)},~ U(t_0,t_0) = 1 \\
+                    e^{-iH(t-t_0)} &:= 1 - iHt + \frac{(-iHt)^2}{2} + \cdots
+                \end{align}
+                Expansion as a power series
+                \begin{align}
+                    |\psi,t\rangle &= e^{-iH(t-t_0)}|\psi,t_0\rangle \\
+                                   &= \sum_m e^{-iH(t-t_0)}|m\rangle\langle m|\psi,t_0\rangle \\
+                                   &= \sum_m e^{-iE_m(t-t_0)}|m\rangle\langle m|\psi,t_0\rangle, ~\because H|m\rangle = E_m|m\rangle
+                \end{align}
+        \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

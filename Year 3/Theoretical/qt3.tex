@@ -1,0 +1,143 @@
+\documentclass[a4paper, 11pt, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+\usepackage{subfiles}
+
+\title{Quantum Theory 3 \vspace{-20pt}}
+\author{Prof Khoze}
+\date{\vspace{-15pt}Epiphany Term 2019}
+\rhead{\hyperlink{page.1}{Contents}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{Scattering Theory}
+\chapter{Introduction to Scattering}
+\section{Two types of scattering}
+\begin{itemize}
+    \item elastic - initial particles remain and no new particles emerge in the collision
+    \item inelastic - in the final state, there is more than just the initial particles
+\end{itemize}
+Will be using \unl{non-relativistic} Quantum Mechanics for this part of the course, therefore will only be studying elastic non-relativistic scattering, e.g. Rutherford experiment, $\alpha + \text{Au} \to \alpha + \text{Au}$.
+\begin{itemize}
+    \item Consider elastic $e^-e^+$ scattering
+        \begin{equation}
+            e^+ + e^- \to e^+ + e^-
+        \end{equation}
+        \emph{Feynman diagrams of collision - both s-channel (particles meet) and t-channel (particles interact through virtual photon).}
+    \item Consider inelastic scattering
+        \begin{equation}
+            e^+ + e^- \to \mu^+ + \mu^-
+        \end{equation}
+        \emph{Feynman diagram of collision and decay into muon and anti-muon - electron and positron collide and annihilate, their energy then carried by photon which decays into muon and anti-muon.}
+\end{itemize}
+
+\section{Scattering cross-sections}
+The scattering cross-section, $\sigma$, is a probabilistic quantity that characterises the 'strength' of the scattering (interaction between the particles).
+$\sigma$ has dimension of area ($m^2$).
+\begin{align}
+    \frac{d\sigma}{d\Omega} &= \frac{1}{F} \frac{dR}{d\Omega},
+\end{align}
+where:
+\begin{itemize}
+    \item $F$ is the flux - number of incident particles per unit area per unit time ($s^{-1}m^{-2}$)
+    \item $dR$ is the rate - number of scattered particles ($N$) into $d\Omega$ per unit time ($s^{-1}$)
+    \item $d\Omega$ is the solid angle
+    \item $\frac{d\sigma}{d\Omega}$ is the differential cross-section into the solid angle ($m^2$)
+\end{itemize}
+\begin{align}
+    \frac{d\sigma}{d\Omega}(\theta,\phi) &= \frac{1}{F}\frac{dR}{d\Omega} \\
+    \sigma_{tot} &= \int_0^{2\pi} d\phi \int_0^\pi d\theta \sin\theta \frac{d\sigma}{d\Omega}(\theta,\phi) \\
+    N &= \sigma_{tot} \cdot \int F\,dt
+\end{align}
+\begin{itemize}
+    \item $F$ is known for each experiment, part of the design
+    \item $\sigma_{tot}$ is measured in experiment
+        \begin{itemize}
+            \item Measured in barns (b) - $1 \text{ barn} = 10^{-24} cm^{-2}$
+            \item $\sigma_{\text{Thompson}} = 0.665\,b$
+        \end{itemize}
+    \item LHC gluon fusion into Higgs:
+        \begin{itemize}
+            \item $g+g \to H$
+            \item \emph{Feynman diagram of gluon collision into Higgs boson}
+            \item $\sigma_{\text{Higgs}} \approx 10 pb$
+        \end{itemize}
+\end{itemize}
+
+\chapter{General Features of Potential Scattering in QM}
+\section{The Schrodinger Equation}
+Time-dependent Schrodinger equation, and reduced mass:
+\begin{align}
+    i\hbar\frac{\p\psi(r,t)}{\p t} &= \left(-\frac{\hbar^2}{2m}\del^2 + V(r)\right)\psi(r,t) \\
+    m &= \frac{m_Am_B}{m_A+m_B}
+\end{align}
+$E=$ fixed and finite
+\begin{align}
+    E&=\frac{p^2}{2m} \\
+    \psi(r,t) &= e^{-iEt/\hbar}\psi(r)
+\end{align}
+Leads to time-independent Schrodinger equation
+\begin{align}
+    E\psi(r) &= \left(-\frac{\hbar^2}{2m}\del^2 + V(r)\right)\psi(r) 
+\end{align}
+$\frac{p}{\hbar} = k$, $U(r) = \frac{2m}{\hbar^2}V(r)\to$ Scattering equation:
+\begin{equation}
+    \left(\del^2 + k^2 - U(r)\right)\psi(r) = 0
+\end{equation}
+For scattering:
+\begin{itemize}
+    \item Looking for $\psi(r)$ s.t. as $r \to \pm \infty$, 
+        \begin{align}
+            \psi_{inc}(r) + \psi_{scat}(r) &\equiv e^{ik\cdot r} + \frac{e^{i|k|\cdot|r|}}{r}\cdot f(k,\theta,\phi) \\
+                                           &= e^{ikr\cos\theta} + \frac{e^{ikr}}{r}\cdot f(k,\theta,\phi)
+        \end{align}
+    \item When scattering occurs, the incoming plane waves turn into spherical waves with $\frac{1}{r}$ amplitude from point of scattering
+    \item $f(k,\theta,\phi)$ is the scattering amplitude - need to determine this in order to compute $\sigma$
+\end{itemize}
+\begin{equation}
+    \psi(r) \approx_{r \to \infty} 1\cdot e^{ik\cdot r} + f(k,\theta,\phi)\frac{e^{ik\cdot r}}{r}
+\end{equation}
+Now consider the probability density for normalisation,
+\begin{align}
+    \rho_{inc}(r) &\equiv |\psi_{inc}|^2 = 1
+\end{align}
+What about flux?
+\begin{align}
+    F &= \frac{\text{\# of incoming particles}}{\text{Area}\cdot\text{time}} \\ 
+      &= v\cdot\rho = \frac{p}{m}\cdot\rho,~ \rho = 1 \\
+      &= \frac{p}{m}
+\end{align}
+Recall $\frac{d\sigma}{d\Omega} = \frac{1}{F}\frac{dR}{d\Omega}$. So what is $dR$?
+\begin{align}
+    dR &= j_r r^2 d\Omega
+\end{align}
+So $j_r$ is the probability current density - the number of scattered particles crossing the unit area per unit time.
+\begin{align}
+    j_r &\equiv \frac{\hbar}{2mi}\left(\psi^*_{scat}(r)\del\psi_{scat}(r) - \left(\del\psi_{scat}(r)\right)^*\psi(r)\right) \\
+        &= \frac{\hbar}{m}\text{Im}\left(\psi^*_{scat}\del\psi_{scat}\right) = \frac{\hbar k}{m}\frac{|f|^2}{r^2} \\
+        &= \frac{p}{m} |f|^2\frac{1}{r^2} = F\frac{|f(k,\theta,\phi)|^2}{r^2} \\
+    \implies \frac{d\sigma}{d\Omega} &= \frac{1}{F}\frac{dR}{d\Omega} = |f(k,\theta,\phi)|^2
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

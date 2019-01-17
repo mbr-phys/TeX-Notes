@@ -848,13 +848,616 @@ We are in the classical limit and note that $h$ has gone.
     \end{align}
 \end{example}
 
+\chapter{}
+For the Maxwell-Boltzmann distribution of a dilute monatomic gas, we had:
+\begin{equation}
+    Z_1 = V\left(\frac{2\pi m}{\beta h^2}\right)^{3/2}  = \frac{V}{\lambda_D^3},~ \lambda_D = \sqrt{\frac{\beta h^2}{2\pi m}}
+\end{equation}
+The partition function for N particles appears to be $Z_1^N$.
+When using this, we end up with properties such as entropy that are not extensive. 
+Instead if we use $\frac{Z_1^N}{N!}$, then we get
+\begin{align}
+    \ln\left(\frac{Z_1^N}{N!}\right) &= N\ln(Z_1) - \ln(N!) \\
+                                     &= N\ln(Z_1) - N\ln(N) + N \\
+                                     &= N\left(\ln\left(\frac{Z_1}{N}\right) + 1\right) \\
+                                     &= N\left(\ln\left(\frac{V}{N}\right) - 3\ln(\lambda_D) + 1\right)
+\end{align}
+So for Free Energy and Internal Energy, we have
+\begin{align}
+    F &= k_BT\ln(Z_N) = -Nk_BT\left[\ln\left(\frac{V}{N}\right) - 3\ln(\lambda_D) + 1\right] \\
+    U &= -\frac{\p}{\p\beta}\ln(Z_N) = \frac{3N}{\beta} = \frac{3}{2}Nk_BT
+\end{align}
+If we had not included the $N!$ term in the partition function, we would have obtained
+\begin{align}
+    F &= -Nk_BT\left[\ln(V) - 3\ln(\lambda_D)\right]
+\end{align}
+This is problematic - if we double $N$ and $V$, wouldn't double $F$. 
+However, when including $N!$, we see that $N$ and $V$ appear together as $\frac{V}{N}$ and so the "2" in doubling cancels. 
+We are being forced to include the $N!$ in counting the "classical" arrangements (microstates).
 
+\begin{example}
+    A box containing a partition and $N = N_1 + N_2$ particles in volume $V = V_1 + V_2$. 
+    Let the temperature be $T$. 
+    The particles in each side are the same (not \emph{identical}), and let $V_1 = V_2 = \frac{V}{2}$ and $N_1 = N_2 = \frac{N}{2}$ (divided in half).
+    \begin{align}
+        S^1_{classic}\left(\frac{N}{2},\frac{V}{2}\right) + S^2_{classic}\left(\frac{N}{2},\frac{V}{2}\right) &= \frac{3}{2}k_B\frac{N}{2} + \frac{3}{2}k_B\frac{N}{2} + \frac{N}{2}k_B\left[\ln\left(\frac{V}{2}\right) - 3\ln(\lambda_D)\right] + \frac{N}{2}k_B\left[\ln\left(\frac{V}{2}\right) - 3\ln(\lambda_D)\right] \\
+                                                                                                              &= \frac{3}{2}k_BN + Nk_B\left[\ln\left(\frac{V}{2}\right) - 3\ln(\lambda_D)\right]
+    \end{align}
+    We can write similarly for the whole box and see the difference:
+    \begin{align}
+        S_{classic}(N,V) - S_{classic}\left(\frac{N}{2},\frac{V}{2}\right) &= Nk_B\ln(2)
+    \end{align}
+    So if we let the gas mix, we get an increase in entropy of $Nk_B\ln(2) > 0$.
+    If we put the partition back in, don't we still have the same system?
+    But there is an apparent entropy increase.
+    The entropy should \unl{not} increase - there is no effective difference between "before" and "after", hence even classically, we need the concept of distinguishable and indistinguishable particles.
+\end{example}
 
+\begin{example}[The Diatomic Molecule]
+    Describe the Degrees of Freedom:
+    \begin{itemize}
+        \item Translational (rigid)
+        \item Rotational (rigid)
+        \item Vibrational
+        \item Electronic excitations
+    \end{itemize}
+    So the partition function from these is
+    \begin{align}
+        Z &= \sum_{\text{all states}} e^{-\beta\left(E_{elec}+E_{tran}+E_{vib}+E_{rot}\right)} \\
+          &= Z_{elec}\frac{Z_{tran}}{N!}Z_{vib}Z_{rot}
+    \end{align}
+    Note: the $N!$ comes from counting the translational DoFs classically. 
+    
+    So Free Energy is
+    \begin{align}
+        F &= -Nk_BT\ln(Z_{elec} - Nk_BT\left[\ln\left(\frac{Z_{tran}}{N!}+1\right)\right] - Nk_BT\ln(Z_{vib}) - Nk_BT\ln(Z_{rot}) \\
+        Z_{tran} = \frac{V}{\lambda_D^3} &\implies U_{trans} = \frac{3}{2}Nk_BT \\
+                                         &\implies C_V = \frac{3}{2}Nk_B
+    \end{align}
+    \begin{itemize}
+        \item Electronic term:
+            \begin{align} 
+                Z_{elec} &= e^{-\beta E_0} + e^{-\beta E_1} + e^{-\beta E_2} + \cdots \\
+                         &= e^{-\beta E_0}\left[1 = e^{-\beta(E_1-E_0)} + \cdots\right] 
+            \end{align}
+            For molecules, $E_1-E_0 \approx 10\text{eV}$.
+            For scale, $k_BT \approx E_1-E_0 \implies T \approx 10^5\;K$.
+            Hence, 
+            \begin{align}
+                Z_{elec} &\approx e^{-\beta E_0} \\
+                \ln(Z_{elec}) &= -\beta E_0
+            \end{align}
+            So the electronic contribution to the internal energy is
+            \begin{align}
+                \frac{U}{N} &= -\frac{\p}{\p\beta}\ln(Z) = E_0 \text{ (a constant)}
+                \implies C_V^{elec} &= \frac{\p U}{\p T}\bigg| = \frac{\p}{\pi T} E_0 = 0
+            \end{align}
+        \item Vibrations \\
+            We know for a diatomic that $\e_n = \left(n+\frac{1}{2}\right)\hbar\om$ and we know the partition function of this:
+            \begin{align}
+                Z_{vib} &= \frac{e^{-\beta\hbar\om/2}}{1 - e^{-\beta\hbar\om}}
+            \end{align}
+    \end{itemize}
+\end{example}
 
+\chapter{}
 
+\begin{example}[Ctd]
+    \begin{itemize}
+        \item Vibrations \\
+            We know for a diatomic that $\e_n = \left(n+\frac{1}{2}\right)\hbar\om$ and we know the partition function of this:
+            \begin{align}
+                Z_{vib} &= \frac{e^{-\beta\hbar\om/2}}{1 - e^{-\beta\hbar\om}} \\
+                U_{vib} &= -N\frac{\p\ln(Z_{vib})}{\p\beta} = \frac{N\hbar\om}{2} + \frac{N\hbar\om}{e^{\beta\hbar\om} - 1} \\
+                C_V^{vib} &= \frac{\p U}{\p T} = \frac{Nk_B(\hbar\om\beta)^2e^{\beta\hbar\om}}{(e^{\beta\hbar\om} - 1)^2}
+            \end{align}
+            The $O_2$ molecule vibrates at $62\,$THz - frequency to temperature conversion gives this at around $5000$K. \\
+            Now examine the high temperature limit - this means for large n. 
+            Evaluate high T partition function:
+            \begin{align}
+                Z^{high}_{vib} &= e^{-\beta\hbar\om/2}\sum_{n=0}^\infty e^{-\beta\hbar\om n} \approx e^{-\beta\hbar\om/2} \ofnt e^{-\beta\hbar\om n}dn \\ 
+                        &= \frac{e^{-\beta\hbar\om/2}}{\beta\hbar\om}
+            \end{align}
+            \begin{itemize}
+                \item \textbf{Note: can convert this sum to integral as the "step size" of 1 in the sum becomes insignificant at higher values - where we are interested for high T.} 
+            \end{itemize} 
+            \vspace{10pt}
+            Hence high T limit of internal energy is 
+            \begin{align}
+                U^{high}_{vib} &= -N\frac{\p\ln(Z^{high}_{vib})}{\p\beta} = \frac{N\hbar\om}{2} + Nk_BT \\
+                C^{high}_{vib} &= \frac{\p U_{vib}^{high}}{\p T} = Nk_B
+            \end{align}
+        \item Rotations \\
+            These are quantised as well, with
+            \begin{align}
+                L_z &= m\hbar,~ -l \leq m \leq l \\
+                L^2 &= l(l+1)\hbar^2, l \in \N
+            \end{align}
+            If the moment of inertia of the molecule is $I$, then the energy of rotation is 
+            \begin{align}
+                E &= \frac{L^2}{2I} \\
+                Z_{rot} &= \sum_l g_l e^{-\beta\e_l} = \sum_{l=0}^\infty (2l+1) e^{-\beta\hbar^2l(l+1)/"I} = ~? \\
+                Z_{rot}^{high} &\approx \ofnt (2l+1)e^{-\beta\hbar^2l(l+1)/2I},~ x = \beta\hbar^2l(l+1)/2I \\
+                               &= \frac{2I}{\hbar^2\beta} \\
+                \ln(Z_{rot}^{high}) &= \ln(2I) - \ln(\beta\hbar^2) \\
+                U_{rot}^{high} &= -N\frac{\p\ln(Z_{rot}^{high})}{\p\beta} = Nk_BT \\
+                C_{V,rot}^{high} &= Nk_B,~ T >> T_{rot}
+            \end{align}
+            Where $T_{rot}$ is a few Kelvin. \\
+            In the low temperature limit, we do this by taking the first couple of terms in Z. 
+            If $T << T_{rot}$, we have 
+            \begin{align}
+                Z_{rot}^{low} &= \sum_{l=0}^1 (2l+1)e^{-\beta\hbar^2l(l+1)/2I} \\
+                U_{rot}^{low} &= \frac{3N\hbar^2}{I}e^{-\beta\hbar^2/I} \\
+                C_{V,rot}^{low} &= 3Nk_B\left(\frac{\beta\hbar^2}{I}\right)^2e^{-\beta\hbar^2/I}
+            \end{align}
+    \end{itemize}
+    So to summarize, the heat capacity of diatomic molecules changes with temperature as first rotational, then vibrational, then electronic degrees of freedom are unlocked.
+    \begin{center}
+        \includegraphics[scale=0.8]{cv.png}
+    \end{center}
+\end{example}
 
+\section{Fermi-Dirac Systems}
+These are systems with half-integer spin, which obey Pauli exclusion. 
+The systems can be fundamental (e.g. electrons) or competitive (e.g. atoms) - conduction electrons, liquid $^3$He ($^4$He is a boson), white dwarf starts, protons.
 
+We need to use Fermi-Dirac statistics, i.e.
+\begin{align}
+    f_{FD}(\e) &= \frac{1}{e^{\alpha}e^{\beta\e} + 1} = \frac{1}{e^{\beta(\e-\mu)}+1},~ e^{\alpha} = e^{-\mu\beta}
+\end{align}
+Our particle number constraint is equivalent to an energy - adding or removing particles changes the value of $\mu$.
+$\mu$ is called the chemical potential, or the Fermi level ($\e_F$).
+The distribution $f_FD(\e)$ is the average occupation at energy $\e \to \e+d\e$ and for single particle states, we have
+\begin{align}
+    f_{FD}(\e_i) &= \frac{n_i}{g_i} \implies 0 \leq f_{FD} \leq 1 
+\end{align}
+We can calculate the Fermi level (or chemical potential) by:
+\begin{align}
+    N &= \int_0^{\e_F} g(\e)f_{FD}(\e)\;d\e
+\end{align}
+This is in the ground state at $T$.
 
+\chapter{}
+\section{Fermi-Dirac Systems Ctd}
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \centering
+    \includegraphics[scale=0.6]{fd.png}
+\end{wrapfigure}
+For plotting $f_{FD}(\e)$, we get
+\begin{align}
+    f_{FD}(\e) &= \frac{1}{e^{\beta(\e-\mu)}+1} \\
+    f_{FD}(\mu) &= \frac{1}{2} \forall T \\
+    \lim_{T\to 0} f_{FD}(\e < \mu) &= 1 \\
+    \lim_{T\to 0} f_{FD}(\e > \mu) &= 0 
+\end{align}
 
+\begin{example}[At $T=0$, calculate the Fermi level for Fermions in a box of volume, $V$.]
+"In a box" means:
+\begin{align}
+    g(\e)\;d\e &= 2\cdot\frac{2\pi V}{h^3}(2M)^{3/2} \e^{1/2}\,d\e \\
+    N &= \ofnt g(\e)\;d\e
+\end{align}
+But at $T=0$, $f_{FD}(\e)$ is just a step function where the step is at the Fermi level.
+Hence, 
+\begin{align}
+    N &= \int_0^{\e_F} \left(\frac{4\pi V}{h^3}\right)(2M)^{3/2}\e^{1/2}\cdot1\cdot d\e \\
+    \implies \e_F &= \frac{h^2}{2M}\left(\frac{3N}{8\pi V}\right)^{2/3}
+\end{align}
+\end{example}
 
+\subsection{Mathematical Aside}
+We will often find integrals of the form
+\begin{align}
+    \ofnt \frac{\e^{1/2}}{e^{-\beta\e} + 1}\,d\e
+\end{align}
+Recall that for a $\delta$-function
+\begin{align}
+    \ifnt \delta(\e-\mu)F(\e)\,d\e &= F(\mu)
+\end{align}
+But if we had a highly peaked function, $\delta_\sigma$, we have
+\begin{align}
+    \ifnt \delta_\sigma(\e-\mu)(\e-\mu)^2\,d\e &= \sigma^2 << 1
+\end{align}
+If we expand $F(\e)$ around $\mu$, then 
+\begin{align}
+    F(\e) &= F(\mu) + (\e-\mu)F'(\mu) + \frac{1}{2}(\e-\mu)^2F''(\mu) + \cdots 
+\end{align}
+So we have
+\begin{align}
+    \begin{split}
+        \ifnt \delta_\sigma(\e-\mu)F(\e)\,d\e = F(\mu)\underbrace{\ofnt \delta_\sigma(\e-\mu)\,d\e}_{1} &+ F'(\mu)\underbrace{\ifnt \delta_\sigma(\e-\mu)(\e-\mu)\,d\e}_{0} \\ &+ \frac{F''(\mu)}{2}\underbrace{\ifnt \delta_\sigma(\e-\mu)(\e-\mu)^2\,d\e}_{\sigma^2}
+    \end{split}
+\end{align}
+Then for Fermi-Dirac statistics, we get a variance of, 
+\begin{align}
+    \sigma^2 &= \frac{\pi^2k_B^2T^2}{3} \\
+    \implies \ifnt \delta_\sigma(\e-\mu)F(\e)\,d\e &= F(\mu) + \frac{\pi^2k_B^2T^2}{6}F''(\mu)
+\end{align}
+
+\section{More on Fermi-Dirac Statistics}
+\begin{align}
+    f_{FD}(\e) &= \frac{1}{e^{\beta(\e-\mu)}+1} \\
+    f'_{FD}(\e) &= \frac{-\beta e^{\beta(\e-\mu)}}{(e^{\beta(\e-\mu)}+1)^2} \\
+    \ofnt f'_{FD}(\e)\,d\e &= f_{FD}(\infty) - f(0) = -1 \\
+    \ofnt -f'_{FD}(\e)\,d\e &= 1
+\end{align}
+This is also a distribution function:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{fddash.png}
+\end{figure}
+
+\begin{example}[Calculate the Fermi energy and internal energy of a Fermi gas at temperature T up to order $T^2$.]
+    We have
+    \begin{align}
+        g(\e)\;d\e &= \frac{4\pi V}{h^3}(2M)^{3/2} \e^{1/2}\,d\e
+    \end{align}
+    We need to evaluate $\e_F$ from
+    \begin{align} 
+        N &= \int_0^{\e_F} g(\e)f_{FD}(\e)\,d\e \approx \frac{2}{3}\mu^{3/2} + \frac{\pi^2}{12\beta^2\mu^{1/2}}
+    \end{align}
+    Then U follows from this.
+\end{example}
+
+What is the entropy of the Fermions?
+At $T=0$, all Fermions have $S=0$, because there is only one way to arrange the Fermions.
+Although we multiply by 2 for spin - this is only valid for systems which are not magnetic. 
+Fermions carry a spin and hence are influenced by magnetic fields, even if the material is not \emph{magnetic}.
+So applying a magnetic field to such a system gives us a \unl{paramagnet}.
+
+Looking at the Ferm-Dirac distribution function:
+If we apply $B$, then the up spins gain energy $+\mu_BB$ and the down spins gain energy $-\mu_BB$.
+The distribution functions move left/right by energy $\mu_BB$.
+
+Turning this into bands.
+So the up spins flip to down spins (energy obtained from the $B$-field.
+\emph{Double check this graph.}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{elbnds.png}
+\end{figure}
+
+\chapter{}
+
+\begin{example}
+    $^3$He is a Fermion because it consists of 2 protons and 1 neutron and 2 electrons $\to$ 5 half-spin. 
+    In the gas, it behaves classically so we use the Maxwell-Boltzmann distribution. However, in the liquid, the system is more interesting. 
+    In the phase diagram of $^3$He, it remains liquid down to $T \approx 0$. 
+    Note that at $T=0$, $S=0$, so liquid $^3$He has $S\approx0$ at $T\approx0$.
+    \emph{Image in here}
+
+    If we plot entropy vs temperatue, in the range where entropy of liquid is less than the solid. 
+    \emph{Image in here}
+
+    We've not considered zero point motion - $^3$He has low mass hence zero point motion may be significant. 
+    Let's look at very low T phase diagram.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{he3.png}
+    \end{figure}
+
+    At low temperatures, $T\approx1\,$K, we get a liquid-liquid phase transition. 
+    There is a very weak attraction between $^+$He atoms (spin-orbit interactions).
+    The $^3$He atoms pair up - 2$^3$He:
+    \begin{equation}
+        |\uparrow\uparrow\rangle + |\downarrow\downarrow\rangle + \frac{1}{\sqrt{2}}|\uparrow\downarrow + \downarrow\uparrow\rangle
+    \end{equation}
+    This is a Boson.
+    The Fermi particles $\to$ Bosons, hence they collapse down to the same ground state of the system, having a "macroscopic wavefunction".
+\end{example}
+
+A similar feature to the above occurs in some metals when they are cooled down. 
+The electrons are Fermions and the usual conductivity physics happens. 
+But if we pair them up into Bosons, then we get a similar Boson gas causing superconductivity. \\
+We have positive ions in a sea of conducting electrons. 
+The ions are slightly attracted to the path of an electron.
+This positive path attracts a second electron causing coupling. 
+This pair of eletrons is called a Cooper pair and is a Boson.
+The electrons collapsie down into the Boson ground state giving superconductivity.
+
+\section{Bose-Einstein Statistics}
+The BE distribution is
+\begin{equation}
+    f_{BE}(\e) = \frac{1}{e^{\beta(\e-\mu)}-1}
+\end{equation}
+where $e^{\alpha} = e^{-\beta\mu}$ for particle number conservation and $\mu$ is the \unl{chemical potential} or Fermi level.
+We have $g(\e)f_{BE}(\e)d\e$ is the number of particles in the energy range $\e \to \e+d\e$.
+We must have
+\begin{align}
+    f_{BE}(\e) &> 1 \\
+    e^{-\beta\mu}e^{\beta\e} &> 1 \\
+    -\beta\mu + \beta\e &> 0 \\
+    \mu &< \e \\
+    \mu(T) &\leq 0
+\end{align}
+For Bosons at $T=0$, it is energetically favourable for all N of them to occupy the ground state.
+Let $\e=0$ be the lowest energy state, so at $T=0$, we have
+\begin{align}
+    f_{BE}(0) &= N \\
+    \frac{1}{e^{-\beta\mu}-1} &= N
+\end{align}
+For a low enough T, a macroscopic number of Bosons is in the ground state. 
+Let this be $n_0(T)$.
+Let $T_B$ be a low temperature where $n_0(T)$ is macroscopic, i.e. $n_0(T<T_B)$ is large.
+\begin{align}
+    n_0(T<T_B) \gg 1 \approx N
+\end{align}
+So for $T < T_B$, we have
+\begin{align}
+    \frac{1}{e^{-\beta\mu(T)}-1} &= n_0(T) \\
+    e^{-\beta\mu(T)} &= 1 + \frac{1}{n_0(T)} \\
+    -\beta\mu(T) &= \ln\left(1+\frac{1}{n_0(T)}\right) \approx \frac{1}{n_0(T)}, ~ [\ln(1+x) \approx x] \\
+    \mu(T) &= -\frac{k_BT}{n_0(T)}
+\end{align}
+Since T is small, and $n_0(T)$ is big.
+
+\subsection{Density of States}
+Investigating the low T limit of density of states, we get:
+\begin{align}
+    N = \int_0^{\delta\e} g(\e)f_{BE}(\e)\,d\e &= C\int_0^{\delta\e} \sqrt{\e} \frac{1}{e^{-\beta\e} -1}\,d\e \\
+                                               &= C\cancel{\delta\e}\frac{(\delta\e/2)^{1/2}}{\beta(\delta\e/2)} = 0
+\end{align}
+This is not correct - a problem!!
+
+\chapter{}
+\section{Bose-Einstein Condensation}
+For bosons, $g(\e) \approx \sqrt{\e}$, so
+\begin{equation}
+    N = \int_0^{d\e} g(\e)f_{BE}(\e)\,d\e = 0
+\end{equation}
+We modify the DoS to allow all the particles to occupy the lowest energy state at $T=0$ - we do this by adding on a $\delta$-function, i.e. $g(\e) \to g(\e) + \delta(\e)$.
+\begin{align}
+    N = \int_0^{\delta\e} \delta(\e)f_{BE}(\e)\,d\e + \int_0^{\delta\e} g(\e)f_{BE}(\e)\,d\e &= \frac{1}{e^{-\beta\mu - 1}},~ \to N, T \to 0
+\end{align}
+Let's now calculate the number of bosons in the ground state at T, call this $n_0(T)$.
+The total number of particles is the number in the ground state plus the rest:
+\begin{align}
+    N &= \underbrace{\frac{1}{e^{-\beta\mu}-1}}_{n_0(T)} + \underbrace{\ofnt g(\e)f_{BE}(\e)\,d\e}_{N^{th}(T)} \\ 
+      &= n_0(T) + N^{th}(T)
+\end{align}
+So let's substitute in the usual $g(\e)$ to get:
+\begin{align}
+    N^{th}(T) &= \frac{2\pi V(2m)^{3/2}}{h^3} \ofnt \frac{\sqrt{\e}}{e^{-\beta\mu}e^{\beta\e}-1}d\e
+\end{align}
+Previously, we found that for some T, call it $T_B$, where $T<T_B$, $n_0(T)$ became macroscopic.
+We know that at $T=0$, the Fermi level (chemical potential, $\mu$) is zero.
+So continue with
+\begin{align}
+    N^{th}(T) &= \frac{2\pi V(2m)^{3/2}}{h^3} \ofnt \frac{\sqrt{\e}}{e^{\beta\e}-1}d\e
+\end{align}
+and if we substitute $x = \beta\e,~ dx = \beta\,d\e$, we get
+\begin{align}
+    N^{th}(T) &= \frac{2\pi V("M)^{3/2}}{(h^2\beta)^{3/2}} \ofnt \frac{\sqrt{x}}{e^x - 1}dx \\
+\end{align}
+\begin{itemize}
+    \item \emph{Aside: This is a standard integral involving the Riemann-Zeta function:}
+        \begin{align}
+            \zeta(y) &= 1^{-y} + 2^{-y} + 3^{-y} + \cdots = \sum_{k=1}^\infty k^{-y} \\
+            \ofnt \frac{\sqrt{x}}{e^x -1}dx &= \frac{\sqrt{\pi}}{2} ~\zeta\left(\frac{3}{2}\right) \approx 2.612\frac{\sqrt{\pi}}{2}
+        \end{align}
+\end{itemize}
+So using this, 
+\begin{align}
+    N^{th}(T) &= 2\pi V\left(\frac{2M}{h^2\beta}\right)^{3/2}\frac{\sqrt{\pi}}{2}~\zeta\left(\frac{3}{2}\right) \\
+              &= 2.612\frac{V}{h^3}(2\pi Mk_B)^{3/2}T^{3/2} \propto T^{3/2} \\
+    N^{th}(T) &= \begin{cases} cT^{3/2} & T \leq T_B \\ \approx N & T > T_B \end{cases}
+\end{align}
+Let's investigate $T_B$.
+For $T \leq T_B$, we get
+\begin{align}
+    \frac{n_0(T)}{N} &= \frac{N-N^{th}(T)}{N} = 1 - \frac{N^{th}(T)}{N} \\
+                     &= 1 - \frac{c T^{3/2}}{c T_B^{3/2}} \\
+    n_0(T) &= N\left(1 - \left(\frac{T}{T_B}\right)^{3/2}\right)
+\end{align}
+As the temperature drops below $T_B$, there is a sudden and rapid increase in the population of the ground state, $\e = 0$, and at $T=0$, $n_0(T) = N$.
+This is known as \emph{Bose-Einstein condensation.}
+
+\subsection{Internal Energy}
+For $T \leq T_B$, the internal energy is
+\begin{align}
+    U(T) &= \cancel{\ofnt \e\delta(\e)f_{BE}(\e)\,d\e} + \frac{2\pi V}{h^3}(2M)^{3/2} \ofnt \e\sqrt{\e}f_{BE}(\e)\,d\e
+\end{align}
+So the "condensate" does not contribute to the internal energy of the system.
+Hence, 
+\begin{align}
+    U(T) &= \frac{2\pi V}{h^3}(2M)^{3/2}\ofnt \e^{3/2}f_{BE}(\e)\,d\e
+\end{align}
+\begin{itemize}
+    \item Note that:
+        \begin{equation}
+            \ofnt \frac{x^{3/2}}{e^x -1}dx = \frac{3}{4}\sqrt{\pi}~\zeta\left(\frac{5}{2}\right) \approx 1.783
+        \end{equation}
+\end{itemize}
+So this gives
+\begin{align}
+    U(T) &= \frac{2.012V}{h^3}(2\pi M)^{3/2}(k_BT)^{5/2}
+\end{align}
+So we have $U(T) \propto T^{5/2}$ and hence $C_V \propto T^{3/2}$.
+Recall from thermodynamics, $P \propto \frac{U}{V}$ and so $P \propto T^{5/2}$.
+
+\begin{example}
+    $^4$He is $2p + 2n + 2e$ hence is a boson.
+    It remains fluid at $T=0$ and there is a phase transition at $T\approx 2$K.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{he4.png}
+        \includegraphics[scale=0.4]{h4cv.jpg}
+    \end{figure}
+    The divergence in $C_V$ implies a phase transition.
+\end{example}
+
+\chapter{}
+\section{Photons and Phonons (Bosons)}
+Photons do not interact with each other. 
+This is why we can see emission from billions of years ago. 
+Photons and phonons are particles obeying BE statistics, and it costs zero energy to add or remove one. 
+There, the chemical potential is zero. 
+The mass of these Bosons is zero:
+\begin{itemize}
+    \item BLackbody radiation
+    \item Lattice vibrations
+        \begin{itemize}
+            \item Both of these exist at a temperature $T$ in a volume $V$
+        \end{itemize}
+\end{itemize}
+As the chemical potential is zero, we have no Lagrange multiplier constraining particle number. 
+Hence, the distribution function is
+\begin{equation}
+    f_{BE}(\e) = \frac{1}{e^{\beta\e} - 1}
+\end{equation}
+Also, we have $\e = \hbar\om = h\nu$. 
+
+The average energy per photon/phonon is the average number of photons per state ($f_{BE}(x)$) times the average energy of the photon/phonon,
+\begin{equation}
+    \frac{U}{N} = \frac{\hbar\om}{e^{\beta\hbar\om}-1}.
+\end{equation}
+However, we know that oscillators have energies, $\e_n = n\hbar\om,~ n \in \N$.
+
+Consider an oscillator which has groun state, $\e_0 = 0$, and first excited state $\e_i = \hbar\om$.
+If there are n Bosons in the excited state then energy is $n\hbar\om$.
+This is the same as having one Boson in state $n$.
+Collections of Bosons act as groups of oscillators that have the same energy as a single particle.
+
+\section{Spectral Density}
+For such systems, it is often more convenient to use density of states $g(\om)$ rather than $g(\e)$, i.e. the number of states in $\om \to \om+d\om$ is $g(\om)d\om$.
+Energy:
+\begin{equation}
+    \int g(\om)\,d\om\, f(\om)\hbar\om = U
+\end{equation}
+In k-space, this is usually a general starting point as it is independent of particle type, i.e.
+\begin{equation}
+    g(k)\delta k = \frac{V}{(2\pi)^3}4\pi^2k^2\delta k \times 2
+\end{equation}
+The multiplication by 2 is analagous to degrees of freedom - photons have two independent transverse polarisations. 
+We have $c = \frac{\om}{k}$, $c = \nu\lambda$, we get $dk = \frac{d\om}{c}$.
+
+This gives Planck's Radiation Formula:
+\begin{equation}
+    g(\om)f(\om)d\om = \frac{\hbar V}{\pi^2c^3} \om^3 d\om \frac{1}{e^{\beta\hbar\om}-1}
+\end{equation}
+or
+\begin{equation}
+    g(\nu)d\nu = \frac{8\pi hV}{c^3}\nu^3d\nu \frac{1}{e^{\beta h\nu}-1}.
+\end{equation}
+From this, other properties follow, such as Wien's Displacement Law, Stefan-Boltzmann, etc.
+Total energy:
+\begin{align}
+    \frac{U}{N} &= \frac{8\pi hV}{c^3} \ofnt \frac{v^3}{e^{\beta h\nu}-1}d\nu,~ x = \beta h\nu \\
+                &= \frac{8\pi V}{c^3\beta^4h^3} \underbrace{\ofnt \frac{x^3}{e^x - 1}dx}_{\pi^4/15} = \underbrace{\frac{8\pi^5Vk_B^4}{15c^3h^3}}_{\text{Stefan constant, }\sigma}T^4
+\end{align}
+
+\section{Radiation Pressure}
+From $dU = TdS - pdV$,
+\begin{equation}
+    p = -\left(\frac{\p U}{\p V}\right)_S
+\end{equation}
+As S depends on occupation number, 
+\begin{equation}
+    \{n_i\} \implies p = -\left(\frac{\p U}{\p V}\right)_S = -\sum_i \frac{\p\e_i}{\p V}
+\end{equation}
+But $\e_i \propto V^{-2/3}$. 
+Remember that
+\begin{align}
+    \e_n &= \frac{n^2\pi^2\hbar^2}{2m} \\
+    \implies p &= \frac{2}{3}\sum_i n_i\frac{\e_i}{V} = \frac{2}{3}\frac{U}{V}
+\end{align}
+How many photons per unit volume in a cavity at temperature, $T$?
+\begin{align}
+    N &= \ofnt g(\nu)f(\nu)d\nu \\
+    \implies \frac{N}{V} &= \frac{8\pi}{c^3h^3\beta} \ofnt \frac{x^2}{e^x - 1}dx \\
+                         &= 60.42 \frac{k_B^3}{c^3h^3}T^3
+\end{align}
+Much of the above applies to phonons. 
+Differences are phonons have 3 polarisations (2 transverse, 1 longitudinal), and the dispersion curves are more complicated.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{brill.png}
+\end{figure}
+
+\chapter{}
+\section{Entropy}
+Let $S_m$ be the entropy of an m particle system, and probabilities of particles being in the allowed states be $\{p_i\}$.
+Properties:
+\begin{enumerate}
+    \item $S_m(\{p_i\}) \geq 0$
+    \item Permutation invariance -
+        \begin{equation}
+            S_m(p_1,p_2,\dots,p_m) = S_m(p_2,p_1,\dots,p_m)
+        \end{equation}
+    \item Expansible -
+        \begin{equation}
+            S_m(p_1,p_2,\dots,p_m,0) = S_m(p_1,p_2,\dots,p_m)
+        \end{equation}
+    \item Normalisable - 
+        \begin{equation}
+            S_2\left(\frac{1}{2},\frac{1}{2}\right) = \text{constant}
+        \end{equation}
+    \item Additivity (if $x$ and $y$ are independent) - 
+        \begin{equation}
+            S(x,y) = S(x) + S(y)
+        \end{equation}
+    \item Continuity -
+        \begin{equation}
+            S_2(p,1-p) \to 0, p \to 0
+        \end{equation}
+\end{enumerate}
+It has been proven (elsewhere) that all of these can be satisfied only with 
+\begin{equation}
+    S_m = -\sum_i p_i\ln(p_i).
+\end{equation}
+But what if there is some other property that satisfies these conditions?
+
+\subsection{Let's Play A Game}
+\begin{example}
+    We have scrabble tiles with only 4 letters A,B,C, and D in equal quantities. 
+    How many yes/no questions do I have to ask to determine what a randomly picked tile is?
+    \begin{itemize}
+        \item AB (50\%) or CD (50\%)?
+            \begin{itemize}
+                \item A (25\%) or B (25\%)?
+                \item C (25\%) or D (25\%)?
+            \end{itemize}
+    \end{itemize}
+    This can be modelled in bits, where one would only need 2 bits to get an answer - (00, 01, 10, 11).
+
+    What if the bag had 50\% A, 25\% B, and 12.5\% for both C and D?
+    \begin{itemize}
+        \item A (50\%) or BCD (50\%)?
+            \begin{itemize}
+                \item B (25\%) or CD (25\%)?
+                    \begin{itemize}
+                        \item C (25\%) or D (25\%)?
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+    To find out a tile's identity, we ask 1 question half the time, 2 questions a quarter of the time, and 3 questions an eighth of the time - 1.75 questions on average. 
+
+    Let's define information content as the number of questions that need to asked. 
+    \begin{equation}
+        \text{Information} = \sum_i p_i \times \text{number of questions of level }i
+    \end{equation}
+    \emph{Level i is the level of the tree we're on.}
+    \begin{align}
+        \text{Number of questions given by level i} &= \log_2(\underbrace{\text{questions on tree}}_{1/p}) \\
+        \text{Information} &= \sum_i p_i\log_2\frac{1}{p_i} = -\sum_i p_i\log_2p_i
+    \end{align}
+    \begin{itemize}
+        \item Problem 2 has an entropy of 1.75
+        \item Problem 1 has an entropy of 2
+    \end{itemize}
+    So Problem 1 has a higher entropy. 
+    The more disordered a system is, the more information it contains. 
+
+    Another game: 12 balls looking all the same, but 1 is heavier or lighter (we don't know). 
+    Using balance scales, what's the minimum number of measurements to identify the odd ball?
+
+    The slowest way to do this is to compare each ball one by one, i.e. 12 tries. 
+    The better way would be to maximise entropy. 
+    Get the maximum amount of information at each step.
+\end{example}
+
+\section{Entropy of the Universe}
+If you played a movie, and it looked the same forward and backward, then you can't tell what the arrow of time is. 
+Most physical laws are time reversible, entropy gives us the arrow of time. 
 \end{document}
