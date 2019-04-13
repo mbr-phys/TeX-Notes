@@ -1,0 +1,232 @@
+\documentclass[cplx.tex]{subfiles}
+
+\begin{document}
+\part{Calculus of Variations and Infinite Series}
+\chapter{Infinite Series}
+\textbf{For the most part, just use his notes, he's just reading from them}
+\begin{itemize}
+    \item Series converges to S: \emph{A series with partial sums $s_n = \sum_{i=0}^n u_i$ converges to S iff}
+        \begin{equation}
+            S = \lim_{n\to\infty}
+        \end{equation}
+        More explicitly, this means that $\forall \e \in \R$ with $\e > 0$: $\exists N \in \N$ such that $|s_n - S| < \e \forall n \leq N$.
+\end{itemize}
+
+\begin{example}[Geometric Series]
+    \begin{align}
+        1 &+ x + x^2 + \cdots \\
+        s_n &= 1 + x + x^2 + \cdots \\
+        (1-x)s_n &= 1 - x^{n+1} \\
+        s_n = \frac{1-x^{n+1}}{1-x}
+    \end{align}
+    Converges for $|x| < 1$.
+\end{example}
+\begin{example}[Harmonic Series]
+    \begin{align}
+        1 &+ \frac12 + \frac13 + \frac14 + \cdots \\
+        = 1 &+ \frac12 + \left(\frac13 + \frac14\right)\underbrace{\left(\frac15 + \frac16 + \frac17 + \frac18\right)}_{\frac{1}{p+1} + \frac{1}{p+2} + \cdots + \frac{1}{2p} > \frac{p}{2p} = \frac12} + \cdots
+    \end{align}
+\end{example}
+
+\section{Convergence Tests}
+\begin{itemize}
+    \item Compare to another series
+    \item Compare to integrals
+\end{itemize}
+
+\chapter{}
+\begin{itemize}
+    \item Gauss' Test
+        \begin{align}
+            \frac{u_n}{u_{n+1}} &= 1 + \frac{h}{n} + \frac{B(n)}{n^2}
+        \end{align}
+    \item Start with Kummer's test using $a_n = n\ln(n)$
+        \begin{align}
+            n\ln(n)\left(1 + \frac 1n\right) - (n+1)\ln(n+1) &= (n+1)\ln(n) - (n+1)\ln(n+1) \\
+                                                             &= (n+1)\left(\ln(n) - \ln(n) - \ln\left(1+\frac 1n\right)\right) \\
+                                                             &\to -(n+1)\ln\left(1+\frac 1n\right) \\
+                                                             &\to -1, n \to \infty, < 0
+        \end{align}
+    \item So the series diverges
+    \item Test devised to examine the convergence of hyper-geometric series
+        \begin{equation}
+            F(a,b,c;x) = 1 + \frac{ab}{c}\frac{x}{1!} + \frac{a(a+1)b(b+1)}{c(c+1)}\frac{x^2}{2!} + \cdots
+        \end{equation}
+    \item Using ratio of successive terms, this series converges for $|x| < 1$, or when $x = 1$ for $a+b-c < 0$.
+\end{itemize}
+
+\section{Alternating Series}
+\begin{equation}
+    \sum_{n=1}^\infty (-1)^{n+1}u_n
+\end{equation}
+\begin{itemize}
+    \item Leibniz criterion: \emph{An alternating series converges if $u_n$ is monotonically decreasing and $\lim_{n\to\infty} u_n = 0$.}
+\end{itemize}
+
+\section{Algebra of Series}
+\begin{itemize}
+    \item Series that are absolutely convergent may be re-ordered
+    \item Their sum is independent of the order in which the terms are ordered
+    \item A product of two such series, will also converge absolutely
+    \item Taylor series - we know what these are by now, but he's giving us more explanation on this than anything else so far
+\end{itemize}
+
+\chapter{Special Functions}
+\begin{itemize}
+    \item Just normal differential equations that solve into sum of trigs
+        \begin{align}
+            \del^2\psi &= -k^2\psi \\
+            \del^2\psi &= 4\pi G\rho \\
+            \del^2\psi &= -k\rho
+        \end{align}
+    \item Cylindrical symmetry
+        \begin{align}
+            \psi &= P(\rho)\Phi(\phi)Z(z) \\
+            \rho^2P'' &+ \rho P' + (n^2\rho^2 - m^2)P = 0
+        \end{align}
+        The resulting solutions for $P(\rho)$ are Bessel functions.
+    \item Spherical symmetry
+        \begin{align}
+            \psi &= R(r)\Phi(\phi)\Theta(\theta) \\
+            (1-x^2)P'' &- 2xP' - \frac{m^2}{1-x^2}P + l(l+1)P = 0
+        \end{align} 
+        Where P is $P(x), x \equiv \cos\theta$.
+        Known as the Legendre polynomials.
+    \item Gaussians and error functions
+        \begin{equation}
+            \mathcal{P}(x)\,dx = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\,dx
+        \end{equation}
+        Function normalised to unity.
+    \item Error function
+        \begin{equation}
+            \text{erf}(x) \equiv \frac{2}{\sqrt{\pi}} \int_0^x \exp(-x'^2)\,dx',~ \lim_{x\to\infty} = 1
+        \end{equation}
+        To find an expression for this as $x \to \infty$, use \emph{asymptotic expansion.}
+        Use integration by parts using 
+        \begin{gather}
+            e^{-t^2}\,dt = \frac{d}{dt}\left(\frac{e^{-t^2}}{2t}\right) - \frac{1}{2t^2}e^{-t^2}\,dt \\
+            1 - \text{erf}(x) = \frac{2}{\sqrt{\pi}}\int_x^\infty \exp(-x'^2)\,dx \\
+            \text{erf}(x) = 1 - \frac{2}{\sqrt{\pi}}e^{-x^2}\left[\frac{1}{2x} - \frac{1}{2^2x^3} + \frac{1\cdot3}{2^3x^5} - \cdots\right] + (-1)^n\frac{1\times3\times5\cdots(2n-1)}{2^n}\frac{2}{\sqrt{\pi}} \int_x^\infty \frac{e^{-t^2}}{t^{2n}}\,dt
+        \end{gather}
+        Results in a series expansion in the notes.
+    \item Gamma function defined as
+        \begin{align}
+            \Gamma(z) &\equiv \ofnt e^{-t}t^{z-1}\,dt \\
+            \Gamma(n) &= (n-1)!, n > 0 \\
+            \Gamma(z) &= 2\ofnt e^{-t^2}t^{2z-1}\,dt = \int_0^1 \left[\ln\left(\frac{1}{t}\right)\right]^{z-1}\,dt
+        \end{align}
+    \item Beta function
+        \begin{align}
+            \Gamma(m)\Gamma(n) &=  \ofnt e^{-u}u^{m-1}du \ofnt e^{-v}v^{n-1}dv \\
+                               &= 4 \ofnt e^{-x^2}x^{2m-1}dx \ofnt e^{-y^2}y^{2n-1}dy
+        \end{align}
+        Making use of the substiution $u = x^2, v = y^2$, and now changing to polar coordinates.
+        \begin{align}
+            \Gamma(m)\Gamma(n) &= 4\ofnt e^{-r^2}r^{2m+2n-1}dr\, \int_0^{\pi/2} \cos^{2m-1}(\theta)\,\sin^{2n-1}(\theta)\,d\theta \\
+                               &= 2\ofnt e^{-t}t^{m+n-1}dt\, \int_0^{\pi/2} \cos^{2m-1}(\theta)\,\sin^{2n-1}(\theta)\,d\theta
+        \end{align}
+        Where $r^2 \to t$. Note that the first integral is $\Gamma(m+n)$, which then defines the Beta function. 
+        \begin{align} 
+            B(m,n) &= \frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)} \\
+                   &= 2\int_0^{\pi/2} \cos^{2m-1}(\theta)\,\sin^{2n-1}(\theta)\,d\theta
+        \end{align}
+    \item Legendre functions - probably just look at notes for Theoretical
+\end{itemize}
+
+
+\chapter{}
+\begin{itemize}
+    \item Use a generating function, do stuff with its derivatives
+        \begin{align}
+            g(t,x) &= (1-2xt+t^2)^{-1/2} \equiv \sum_{n=0}^\infty P_n(x)t^n,~ |t| < 1 \\
+            \frac{\p}{\p t} g(t,x) &= \frac{x-t}{(1-2xt+t^2)^{3/2}} = \sum_{n=0}^{\infty} nP_n(x)t^{n-1} \\
+            (x-t)\sum P_n(x)t^n &= (1-2xt+t^2)\sum nP_n(x)t^{n-1} \\
+            xP_nt^n - P_nt^{n+1} &= nP_nt^{n-1} - 2xnP_nt^n + nP_nt^{n+1} \\
+            xP_nt^n - P_{n-1}t^n &= (n+1)P_{n+1}t^n - 2xnP_nt^n + (n-1)P_{n-1}t^n \\
+            (1+2n)xP_n &= (n+1)P_{n+1} + nP_{n-1} \\
+            \sum xP_nt^n &= xP_0t^0 + xP_1t^1 + \cdots \\
+            \sum P_nt^{n+1} &= P_0t^1 + P_1t^2 + \cdots
+        \end{align}
+    \item Now do stuff with $\p x$
+        \begin{align}
+            \frac{\p}{\p x}g(t,x) &= \frac{t}{(1-2xt+t^2)^{3/2}} = \sum_{n=0}^\infty P_n'(x)t^n \\
+            \frac{t}{(1-2xt+t^2)^{3/2}} &= (1-2xt+t^2)\sum P_n't^n \\
+            t\sum P_nt^n &= (1-2xt+t^2) \sum P_n't^n \\
+            P_{n-1}t^n &= P_n't^n - 2xP_{n-1}'t^n + P_{n-2}'t^n \\
+            P_n &= P_{n+1}' - 2xP_n' + P_{n-1}' \\
+            P_{n+1}' + P_{n-1}' &= 2xP_n' + P_n
+        \end{align}
+    \item You do some more maths that he isn't going to explain and you'll get something "interesting"
+        \begin{align}
+            (1+2n)xP_n &= (n+1)P_{n+1} + nP_{n-1} \\
+            P_{n+1}' + P_{n-1}' &= 2xP_n' + P_n 
+        \end{align}
+        Take $\p/\p x$ of (4.15) and $(2n+1)$ times (4.16):
+        \begin{align}
+            (1+2n)P_n + (1+2n)xP_n' &= (n+1)P_{n+1}' + nP_{n-1}' \\
+            (2n+1)P_{n+1}' + (2n+1)P_{n-1}' &= 2x(2n+1)P_n' + (2n+1)P_n 
+        \end{align}
+        Now do $(4.18) + 2(4.17)$.
+        \begin{align}
+            (2n+1)P_n &= P_{n+1}' + P_{n-1}'
+        \end{align}
+    \item Anything that satisfies these recurrence relations, should satistfy
+        \begin{align}
+            (1-x^2)P_n'' - 2xP_n' + n(n+1)P_n = 0
+        \end{align}
+    \item Legendre polynomials can be used to solve problems of electric potential.
+        \begin{itemize}
+            \item Look for the potential at point $r$ from the origin, with a charge at $a$.
+            \item Distance $d = (r^2+a^2 - 2ar\cos\theta)^{1/2}$.
+            \item For $r > a$
+                \begin{align}
+                    \phi &= \frac{q}{4\pi\e_0 d} \\
+                    d &= r\left(1 - 2\frac{a}{r}\cos\theta + \left(\frac{a}{r}\right)^2\right)^{1/2}, \frac{a}{r} = t \\
+                      &= r(1 - 2xt + t^2)^{1/2} \\
+                    \phi &= \frac{q}{4\pi\e_0 r}g(t,x) \\
+                         &= \frac{q}{4\pi\e_0 r}\sum_n P_n(x)t^n
+                \end{align}
+            \item Or for $r < a$
+                \begin{equation}
+                    \phi = \frac{q}{4\pi\e_0 a}\sum_n P_n(x)t^n, t = \frac{r}{a}
+                \end{equation}
+        \end{itemize}
+    \item Legendre polynomials are orthogonal 
+        \begin{equation}
+            \int_{-1}^1 P_m(x)P_n(x)\,dx = 0, ~ m \neq n 
+        \end{equation}
+    \item Most functions in the interval of orthogonality can be written as a sum of the $P_n$
+        \begin{align}
+            f(x) &= \sum_n c_n P_n(x) \\
+            \int_{-1}^1 f(x)P_m(x)\,dx &= \int_{-1}^1 \left[\sum_n c_nP_n(x)\right]P_m(x)\,dx \\
+                                       &= \sum_n c_n \int_{-1}^1 P_n(x)P_m(x)\, dx \\
+                                       &= c_m g_m
+        \end{align}
+    \item Spherical harmonics
+        \begin{align}
+            Y_{lm} &\propto P_l^m e^{im\phi}
+        \end{align}
+    \item He's going on about some boring stuff now, just read the notes
+\end{itemize}
+
+\chapter{Integration}
+Who cares?
+
+\chapter{}
+Who cares again?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

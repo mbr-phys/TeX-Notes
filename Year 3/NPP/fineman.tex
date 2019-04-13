@@ -1,0 +1,21 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{tikz-feynman}
+\usetikzlibrary{external}             %% Load the `external` library
+\tikzexternalize[                     %% Activate externalization
+  system call={                       %% Use lualatex in system call
+    lualatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname="\image" "\texsource"
+  },
+]
+
+\begin{document}
+
+\feynmandiagram [horizontal=a to b] {
+    a -- [fermion] i1 [particle=\(e^{+}\)],
+    i2 [particle=\(e^{-}\)] -- [fermion] a,
+    a -- [photon, edge label=\(\gamma\)] b,
+    b -- [fermion] f2 [particle=\(\bar{q}\)],
+    b -- [fermion] f1 [particle=q],
+};
+
+\end{document}

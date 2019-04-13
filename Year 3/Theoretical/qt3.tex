@@ -8,6 +8,9 @@
 \date{\vspace{-15pt}Epiphany Term 2019}
 \rhead{\hyperlink{page.1}{Contents}}
 
+\newcommand{\dens}{\hat{\rho}}
+\newcommand{\fp}{\cancel{\p}}
+
 \begin{document}
 
 \maketitle
@@ -123,7 +126,852 @@ So $j_r$ is the probability current density - the number of scattered particles 
 \end{align}
 
 
+\chapter{Special Functions for central potentials}
+Scattering equation:
+\begin{equation}
+    \left(\del^2 + k^2 + U(\vr)\right)\psi_k(\vr) = 0
+\end{equation}
+This is the Schrodinger equation in terms of the rescaled variables - $k = \frac{p}{\hbar}$, $U(\vr) = \frac{2m}{\hbar^2}V(\vr)$.
+Assume that the potential is central, $U(\vr) = U(r)$.
+So we will use spherical polar coordinates. 
+\begin{align}
+    \bigtriangleup \equiv \vec{\del}^2 = \frac{1}{r^2}\frac{\p}{\p r}\left(r^2\frac{\p}{\p r}\right) &+ \underbrace{\frac{1}{r^2\sin\theta}\frac{\p}{\p\theta}\left(\sin\theta\frac{\p}{\p\theta}\right) + \frac{1}{r^2\sin^2\theta}\frac{\p^2}{\p\phi^2}}_{} \\
+    &\implies -\frac{L^2(\theta,\phi)}{\hbar^2r^2} 
+\end{align}
+$L^2$ is the operator of the angular momentum squared. 
+Use the separation of variables method to split wavefunction into radial and angular components.
+\begin{align}
+    \psi_k(\vr) &= \sum_{l,m} c_{klm} R_{klm}(r)Y_{lm}(\theta,\phi)
+\end{align}
+What is $R$ and what is $Y$?
+\begin{align}
+    L^2Y_{lm}(\theta,\phi) &= l(l+1)\hbar^2 Y_{lm}(\theta,\phi)
+\end{align}
+So $Y_{lm}$ is an eigenfunction of $L^2$ with eigenvalue of $l(l+1)\hbar^2$.
+$Y_{lm}$ are known as the spherical harmonics.
+They are also eigenfunctions of the operator, $L_z$.
+\begin{align}
+    L_zY_{lm} &= m\hbar Y_{lm} \\
+    l\in\Z &, -l \leq m \leq l \\
+    Y_{lm}(\theta,\phi) &= C_{lm}e^{im\phi}P_l^m(\cos\theta) \\
+    P_l^m(x) &= (1-x^2)^{|m|/2}\left(\frac{d}{dx}\right)^|m| P_l(x) \\
+    P_l(x) &= \frac{1}{2^ll!}\left(\frac{d}{dx}\right)^l (x^2-1)^2
+\end{align}
+$P_l^m(x)$ is the associated Legendre polynomial, and $P_l(x)$ is the regular Legendre polynomial.
+Spherical harmonics give a complete orthonormal set of functions of $\theta,\phi$.
+\begin{align}
+    \int Y^m_lY_{l'}^{m'*} d\Omega &= \delta_{ll'}\delta_{mm'} \\
+    \lim_{m\to0} Y_{lm} &= \alpha P_l(\cos\theta)
+\end{align}
+(3.12) is known as azimuthal symmetry.
+\begin{align}
+    \frac{L^2}{-\hbar^2r^2}Y^m_l(\theta,\phi) = -\frac{1}{\hbar^2r^2}\hbar^2 l(l+1)Y^m_l(\theta,\phi) \\
+    \psi_k(\vr) = \sum_{l=0}^\infty \sum_{m=-l}^{+l} c_{klm} R_{klm}(r)Y_{lm}(\theta,\phi) \\
+    \left(\frac{\p^2}{\p r^2} + \frac{2}{r}\frac{\p}{\p r} - \frac{l(l+1)}{r^2} - U(r) + k^2\right)R_{klm}(r) = 0
+\end{align}
+(3.15) is the equation for the radial component, $R_{klm}(r)$, solve to determine.
+Assune the potential, $U(r)$, has a finite range, $\lim_{r\to\infty}U(r) = 0$.
+\begin{align}
+    \lim_{r\to\infty} \psi_k(\vr) = e^{ik\cdot \vr} + f(k,\theta,\phi)\frac{e^{ikr}}{r}
+\end{align}
+This is our boundary (asymptotic) condition.
 
+To start simply,
+\begin{enumerate}
+    \item $r\to\infty$, $U(r) \to 0$
+    \item $l=0$
+\end{enumerate}
+For this case, we are solving
+\begin{align}
+    \left(\frac{\p^2}{\p r^2} + \frac{2}{r}\frac{\p}{\p r} - \cancel{\frac{l(l+1)}{r^2}} + \cancel{U(r)} + k^2\right)R_{k00} = 0
+\end{align}
+This has a general solution:
+\begin{align}
+    R_{k00} &= A\cdot\frac{\sin(kr)}{r} + B\cdot\frac{\cos(kr)}{r} \\
+    R_{k00} &= \frac{1}{r}U(r) 
+\end{align}
+A, B are arbitrary constants.
+Substitute (3.19) into (3.17) will give (3.18), the simplest of cases where the full function will follow using spherical harmonics.
+
+\chapter{}
+
+\chapter{The Method of Partial Waves}
+\begin{align}
+    \psi_k(r,\theta,\phi) &\to_{r\to\infty} e^{ik\cdot r} + f(k,\theta, \phi)\frac{e^{ikr}}{r}
+\end{align}
+$f(k,\theta,\phi)$ is the scattering amplitude. 
+Usin $V(r)$ and assume azimuthal symmetry - no dependence on $\phi$.
+\begin{align}
+    Y_l^m(\theta,\phi=0) &\implies y_l^0(\theta,\cancel{\phi}) = P_l(\cos\theta) \\
+    \psi_k(r,\theta) &\to_{r\to\infty} \sum_{l=0}^\infty R_{kl}(r)P_l(\cos\theta) \\
+    f(k,\theta) &\to_{r\to\infty} \sum_{l=0}^\infty f_l(k)P_l(\cos\theta)
+\end{align}
+Each term in the sum of (5.3) is known as a partial wave, so it is a sum over partial waves.
+So we know the Legendre polynomials, and must determine the amplitude of the partial waves.
+\begin{align}
+    \frac{d\sigma}{d\Omega} &= |f(l,\theta,\phi)|^2 \\
+                            &= \sum_{l'=0}^\infty\sum_{l=0}^\infty f_{l'}^*(k)f_l(k) P_{l'}(\cos\theta)P_l(\cos\theta) \\
+    \sigma &= \int \frac{d\sigma}{d\Omega}d\Omega = 2\pi \int \frac{d\sigma}{d\Omega}\,d(\cos\theta)
+\end{align}
+Note that
+\begin{align}
+    \int_{-1}^{+1} P_{l'}(x)P_l(x) \,dx &= \frac{2}{2l+1}\delta_{l'l} \\
+    \implies \sigma_{tot} &= 4\pi \sum_{l=0}^\infty \frac{1}{2l+1}|f_l(k)|^2 \\
+                          &= \sum_{l=0}^\infty \sigma_l,~~ \sigma_l = \frac{4\pi}{2l+1}|f_l|^2
+\end{align}
+This is the partial wave decomposition of the total cross-section. 
+$\sigma_l$ is the cross-section for the $l$-th partial wave.
+$f_l$ is still our unknown to be determined.
+\begin{align}
+    R_{kl}(r) &\to_{r\to\infty} (2l+1) i^l j_l(kr) + f_l(kr)\frac{e^{ikr}}{r}
+\end{align}
+The first term comes from the Rayleigh formula; the second term just comes from above.
+At the same time, we know that we can express the radial wavefunction using the spherical Bessel functions:
+\begin{align}
+    R_{kl}(r) &= B_l(k)j_l(kr) + C_l(k)n_l(kr)
+\end{align}
+$B_l$ and $C_l$ are r-independent constants, $j_l$ and $n_l$ are spherical Bessel functions, first and second kind respectively.
+\begin{align}
+    R_{kl}(r) &\to_{r\to\infty} \frac{e^{i\alpha}}{kr}\left[b_l(k)\sin\left(kr - \frac{\pi l}{2}\right) - c_l(k)\cos\left(kr-\frac{\pi l}{2}\right)\right] \\
+    \delta_l(k) &= -\arctan\left(\frac{c_l(k)}{b_l(k)}\right) \\
+    A_l(k) &= \sqrt{b_l^2(k) + c_l^2(k)}
+\end{align}
+$\delta_l(k)$ is the phase shift - all the non-trivial information about scattering is contained in $\delta_l(k)$.
+\begin{align}  
+    R_{kl}(r) &= e^{i\alpha}A_l(k)\frac{1}{kr}\sin\left(kr - \frac{\pi l}{2} + \delta_l(k)\right)
+\end{align}
+Now comparing (5.11) with (5.16):
+\begin{align}
+    A_l(kr)e^{i\alpha} &= (2l+1)i^le^{\delta_l(k)} \\
+    f_l(k) &= \frac{2l+1}{k}e^{i\delta_l(k)}\sin(\delta_l(k))
+\end{align}
+The partial l-wave scattering amplitude is now known in terms of $\delta_l(k)$, the phase shifts.
+This allows us to express the total cross-section in terms of the phase shifts. 
+\begin{align}
+    |f_l(k)|^2 &= \frac{(2l+1)^2}{k^2}\sin^2(\delta_l(k)) \\
+    \sigma_l &= \frac{4\pi(2l+1)}{k^2}\sin^2(\delta_l(k)) \\
+    \sigma &= \sum_{l=0}^\infty \frac{4\pi}{k^2}(2l+1)\sin^2(\delta_l(k))
+\end{align}
+Consider the trivial example of zero potential $\implies$ no scattering.
+\begin{equation}
+    \delta_l(k) = 0
+\end{equation}
+This comes from there being no second kind Bessel function as it is singular at the origin.
+The cross-section follows from this as equal to 0 from (5.21).
+
+\chapter{}
+\begin{equation}
+    \lim_{r\to\infty} R_{kl}(r) = \sum_{l=0}^\infty \left(B_l(k)j_l(kr) + C_l(k)n_l(kr)\right)
+\end{equation}
+$B_l(k)$ and $C_l(k)$ are constants, no r-dependence.
+To conserve probability at $r\to\infty$, they must not have a relative phase, i.e.
+\begin{equation}
+    \frac{B_l(k)}{C_l(k)} = \text{real.}
+\end{equation}
+
+\begin{align}
+    \lim_{r\to\infty} R_{kl}(r) &= (2l+1)i^l\sin\left(kr - \frac{\pi l}{2}\right) + f_l(k)\frac{e^{ikr}}{r} \\
+    \lim_{r\to\infty} \psi_k(r) &= e^{ik\cdot r} + f(k,\theta,\phi)\frac{e^{ikr}}{r} \\
+    \lim_{r\to\infty} R_{kl}(r) &= \frac{A_l(k)e^{i\alpha}}{kr}\sin\left(kr - \frac{\pi l}{2} + \delta_l(k)\right) \\
+    B_l(k) &= A_l(k)e^{i\alpha}
+\end{align}
+$B_l(k)$ is complex, whereas $A_l(k)$ is real. \\
+(6.5) introduces the concept of the phase shift, which contains all the information surrounding the scattering.
+(6.3) and (6.5) are physically equivalent equations.
+\begin{align}
+    f_l(k) &= \frac{2l+1}{k}e^{i\delta_l(k)}\sin\left(\delta_l(k)\right)
+\end{align}
+Where $f_l(k)$ is the amplitude of the $l$th partial wave. 
+Then, this allows us to calculate the total scattering cross-section,
+\begin{align}
+    \sigma &= \sum_{l=0}^\infty \sigma_l \\
+    \sigma_l &= \frac{4\pi(2l+1)}{k^2}\sin^2\left(\delta_l(k)\right)
+\end{align}
+
+Examples:
+\begin{enumerate}
+    \item $V(r) = 0 \implies$ no scattering 
+        \begin{align}
+            \delta_l &= 0 & f_l(k) &= 0 & \sigma & = 0
+        \end{align}
+    \item Scattering of a hard sphere, 
+        \begin{equation}
+            V(r) = \begin{cases} \infty & 0 \leq r \leq r_0 \\ 0 & r_0 < r < \infty \end{cases}
+        \end{equation}
+    \item Scattering of a potential well,
+        \begin{equation}
+            V(r) = \begin{cases} -V_0 & 0 \leq r \leq r_0 \\ 0 & r_0 < r < \infty \end{cases}
+        \end{equation}
+\end{enumerate}
+
+So in general, by rewriting (6.5), the radial wavefunction has to have the form 
+\begin{align}
+    \lim_{r\to\infty} R_{kl}(r) &= \frac{\tilde{A}_l(k)e^{i\alpha}}{r} \left[\sin\left(kr - \frac{\pi l}{2}\right) + \tan(\delta_l(k))\cos\left(kr - \frac{\pi l}{2}\right)\right] \\
+    \tan(\delta_l(k)) &= \frac{j_l(kr_0)}{n_l(kr_0)}
+\end{align}
+So for example 2 (an ISW), split into regions \RN{1} and \RN{2}.
+\RN{1} is the well, \RN{2} is free space. 
+So the solution in \RN{2} where $V_{\RN{2}} = 0$ is known.
+\begin{align}
+    R^\RN{2}(r)|_{r=r_0} &= R^\RN{1}(r)|_{r=r_0} \equiv 0 \\
+    \frac{\p R^\RN{2}(r)}{\p r}\big|_{r_0} &= \frac{\p R^\RN{1}}{\p r}\big|_{r_0}
+\end{align}
+The evaluation of these boundaries at $r_0$ is what leads to $\tan(\delta_l(k))$ being the ratio of Bessel functions using $r_0$.
+\begin{align}
+    \sigma &= \sum_{l=0}^\infty \sigma_l \\
+    \sigma_l &= \frac{4\pi(2l+1)}{k^2}\sin^2(\delta_l(k)) = \frac{4\pi(2l+1}{k^2}\frac{1}{1 + \cot^2(\delta_l(k))} \\
+    \cot^2(\delta_l(k)) &= \frac{n^2_l(kr_0)}{j^2_l(kr_0)}
+\end{align}
+So what is the low-energy limit? I.e. as $k \to 0$.
+\begin{align}
+    \lim_{k\to0} \sigma_l(k) &= 4\pi(2l+1)\left(\frac{1}\lim_{k\to0}{k\cot(\delta_l(k))}\right)^2 \\
+    \lim_{k\to0} k\cot(\delta_l(k)) &= \frac{kn_l(kr_0)}{j_l(kr_0)} \\
+    \lim_{kr_0\to0} j_l(kr_0) &= \frac{(kr_0)^l}{(2l+1)!!} + O((kr_0)^{l+1}) \\
+    \lim_{kr_0\to0} n_l(kr_0) &= -(2l-1)!!\frac{1}{(kr_0)^{l+1}} + O\left(\frac{1}{(kr_0)^l}\right)
+\end{align}
+
+\chapter{}
+For any potential $V(r)$:
+\begin{equation}
+    \lim_{r\to\infty} R_{kl}(r) = \frac{\tilde{A}_{kl}(r)}{r}\left[\sin\left(kr-\frac{\pi l}{2}\right) + \tan(\delta_l(k))\cos\left(kr-\frac{\pi l}{2}\right)\right]
+\end{equation}
+For $V(r)$ as the hard sphere potential (a radial ISW, $0\leq r\leq r_0$),
+\begin{equation}
+    \tan(\delta_l(k)) = \frac{j_l(kr_0)}{n_l(kr_0)}
+\end{equation}
+We also know that
+\begin{align}
+    \sigma_l &= \frac{4\pi}{k^2}(2l+1)\sin^2(\delta_l(k)) \\
+             &\equiv \frac{4\pi}{k^2}(2l+1)\frac{1}{1+\cot^2(\delta_l(k))}
+\end{align}
+So $\sigma_l$ is known for this potential.
+\begin{itemize}
+    \item We want to simplify this expression
+    \item What happens for $l=0$ (s-wave)?
+    \item What happens in the low energy limit as $k\to0$?
+\end{itemize}
+Start with the $k\to0$ limit, keeping $l$ general.
+\begin{align}
+    (2l+1)!! &= 1\times3\times5\times\dots\times(2l+1) \\
+    \lim_{\rho\to0} j_l(\rho) &= \frac{\rho^l}{(2l+1)!!} + O(\rho^{l+1}) \\
+    \lim_{\rho\to0} n_l(\rho) &= -(2l-1)!!\frac{1}{\rho^{l+1}} + O\left(\frac{1}{\rho^l}\right), (-1)!! = 1
+\end{align}
+For the hard sphere potential,
+\begin{align}
+    \lim_{k\to0} \tan(\delta_l(k)) &= -\frac{kr_0 (kr_0)^{2l}}{(2l-1)!!(2l+1)!!} + O((kr_0)^2) \\
+    \sigma_l(k) &= \frac{4\pi(2l+1)}{k^2+\left(\frac{k}{\tan(\delta_l(k))}\right)^2} \\
+    \lim_{k\to0} \sigma_l(k) &= \frac{4\pi(2l+1)}{0 + \left(\frac{k}{kr_0(kr_0)^{2l}}(2l-1)!!(2l+1)!!\right)^2} \\
+                             &= \frac{4\pi(2l+1)r_0^2(kr_0)^{4l}}{\big((2l-1)!!(2l+1)!!\big)^2}
+\end{align}
+What can we say about this?
+Firsly, $\sigma_l \propto r_0^2$, so dimension of length squared.
+\textbf{Some sort of issue here with the powers of $\mathbf{kr_0}$ - stay tuned, kids.}
+
+So what happens in the limit when $l\to0$ (s-wave)?
+\begin{equation}
+    \lim_{k\to 0} \sigma_0 = 4\pi\cdot r_0^2
+\end{equation}
+For classical cross-section off the sphere, no probabilities - you either are aimed into the sphere and hit it, or you aren't aimed at it and miss it. 
+So the classical cross-section, 
+\begin{equation}
+    \sigma_{clsc} = \pi r_0^2,
+\end{equation}
+is just the cross-section of the sphere.
+In the Quantum Mechanical case, the low energy limit is 4 times that of the classical limit due to interference effects.
+\begin{equation}
+    \lim_{k\to0} \sigma_0^{QM} = 4\sigma_0^{clsc}
+\end{equation}
+The Quantum Mechanical case appears to be the area of the entire curved surface of the sphere.
+
+Consider the scattering length, $a = r_0$ - for hard sphere potential. 
+In general, 
+\begin{align}
+    a &\equiv -\lim_{k\to0} \frac{\tan(\delta_{l=0}(k))}{k}
+\end{align}
+This will still be equal to $r_0$ for a hard sphere.
+The cross-section will always go proportional to $a^2$,
+\begin{equation}
+    \sigma_0 \propto a^2
+\end{equation}
+
+\section{Resonances}
+So in general for the l\textsuperscript{th}-wave, 
+\begin{align}
+    \sigma_l &= \frac{4\pi}{k^2}(2l+1)\frac{1}{1+\cot^2(\delta_l(k))}, ~0 \leq \cot^2(\delta_l(k)) \leq +\infty
+\end{align}
+If we fix $l$ and vary $k$ for $\sigma_l(k)$, where does $\sigma_l(k)$ reach a local maxima?
+When $\cot(\delta_l(k)) = 0$ - this is called a \emph{resonance.}
+Resonances are sharp peaks inbetween roughly uniform $\sigma_l(k)$ distributions.
+
+\chapter{}
+Last lecture summary:
+\begin{itemize}
+    \item Hard sphere potential 
+        \begin{equation}
+            \lim_{k\to0} k\cot(\delta_l(k)) = -\frac{(2l-1)!!(2l+1)!!}{r_0\cdot(kr_0)^{2l}}
+        \end{equation}
+    \item Cross-section
+        \begin{equation}
+            \sigma_l = \frac{4\pi(2l+1)}{k^2(1+\cot^2(\delta_l(k)))} \to \frac{4\pi(2l+1)r_0^2\cdot(kr_0)^{4l}}{[(2l-1)!!(2l+1)!!]^2}
+        \end{equation}
+    \item Factor of 4l suppresses with higher l
+    \item $l=0$ - dominant contours(?) s-wave at $kr_0 < 1$.
+    \item Scattering length, $l_s = a$
+        \begin{align}
+            a &= \lim_{k\to0} \left(-\frac{1}{k\cot(\delta_{l=0}(k))}\right) \\
+            \lim_{k\to0} \sigma_0 &= 4\pi a^2
+        \end{align}
+\end{itemize}
+
+\section{Resonances}
+\begin{align}
+    \sigma_l(k) &= \frac{4\pi}{k^2}(2l+1)\frac{1}{1+\cot^2(\delta_l(k))}
+\end{align}
+Hunting for $\sigma_l$'s maxima $\iff$ hunting for zeros of $\cot(\delta_l)$.
+Can parameterise this:
+\begin{align}
+    \cot(\delta_l(k)) &= \frac{E_R - E}{\Gamma_R/2} \\
+    \sigma_l(E) &= \frac{4\pi}{k^2}(2l+1)\frac{\Gamma_R^2/4}{(E-E_R)^2+\Gamma_R^2/4}
+\end{align}
+This forms a gaussian around $E_R$.
+Maxima at $E_R$. 
+For $\sigma_l^{max}/2$, $E=E_R \pm \Gamma_R/2$.
+This is known as the Bret-Wigner resonance formula.
+$\Gamma_R$ is the resonance width.
+
+\section{The Optical Theorem}
+\begin{align} 
+    f(k,\theta,\cancel{\phi}) &= \sum_{l=0}^\infty f_l(k)P_l(\cos\theta) \\
+    f_l(k) &= \frac{2l+1}{k}e^{i\delta_l(k)}\sin(\delta_l(k)) \\
+    f(k,\theta=0) &= \sum_{l=0}^\infty \frac{2l+1}{k} e^{i\delta_l(k)}\sin(\delta_l(k))\cdot 1 \\
+    \sigma_{tot} &= \sum_{l=0}^\infty \frac{4\pi}{k^2}(2l+1)\sin^2(\delta_l(k)) \\
+    \text{Im}[f(k,\theta=0)] &= \sum_l \frac{2l+1}{k}\sin^2(\delta_l(k)) \\
+    \sigma_{tot} &= \frac{4\pi}{k}\text{Im}[f(k,\theta=0)]
+\end{align}
+
+\section{Integral equation and Born approximation for scattering}
+Central equation is the Schrodinger equation
+\begin{equation}
+    (\vec{\del}^2 + k^2)\psi_k(\vr) = U(\vr)\psi_k(\vr)
+\end{equation}
+Can write down a formal, general solution:
+\begin{align}
+    \psi(\vr) &= \psi^{(0)}(\vr) + \int G_0(k,\vr-\vr') U(\vr)\psi(\vr')\, d^3\vr' \\
+    (\vec{\del}^2 &+ k^2)\psi^{(0)}(\vr) = 0 \\
+    (\vec{\del}^2 &+ k^2)G_0(k,\vr-\vr') = \delta^{(3)}(\vr-\vr')
+\end{align}
+This is the definition of the Green's function, which is then used to find the general solution of the Schrodinger equation.
+
+\chapter{}
+\section{The Lippmann-Schwinger integral equation}
+\begin{align}
+    \psi_k(\vr) &= \psi_k^{(0)}(\vr) + \int G_0(\vec{k},\vr-\vr')U(\vr)\psi_k(\vr')d^3r' \\
+    (\vec{\del}^2 + \vec{k}^2)\psi_k(\vr) &= U(\vr)\psi_k(\vr) \\
+    \psi_k^{(0)}(r) &= e^{i\vec{k}\cdot\vr} \\
+    (\vec{\del}^2 + \vec{k}^2)G_0(\vec{k},\vr) &= \delta^{(3)}(\vr)
+\end{align}
+Fourier transform of Green's function:
+\begin{align}
+    G_0(\vec{k},\vr) &= \int \frac{d^3q}{(2\pi)^3} e^{i\vec{q}\cdot\vr} \tilde{G}(\vec{k},\vec{q})\\
+    (\vec{\del}^2 + \vec{k}^2)G_0(\vec{k},\vr) &= \int \frac{d^3q}{(2\pi)^3} (-q^2 + k^2)e^{i\vec{q}\cdot\vr}\tilde{G},~ \text{want } \tilde{G} = \frac{-1}{q^2-k^2} \\
+                                               &= \int \frac{d^3q}{(2\pi)^3} e^{i\vec{q}\cdot\vr}\cdot 1 \equiv \delta^{(3)}(\vr),\text{ QED} \\
+    G_0(\vec{k},\vr) &= \int \frac{d^3q}{(2\pi)^3} \frac{e^{i\vec{q}\cdot\vr}}{q^2-k^2} = -\frac{e^{i|\vec{k}||\vr|}}{4\pi |\vr|} \\
+    G_0(\vec{k},\vr-\vr') &= -\frac{e^{i|k||\vr-\vr'|}}{4\pi |\vr-\vr'|}
+\end{align}
+Require $U(\vr')$ such that
+\begin{equation}
+    U(\vr') \begin{cases} \neq 0 & |\vr'| < d \\ \to 0 & |\vr'| > d \end{cases}
+\end{equation}
+Want to take $|\vr| >> d \implies \frac{\vr'}{\vr} << 1$.
+Now Taylor expand these terms:
+\begin{align}
+    |\vr - \vr'| &= r\sqrt{1 - \left(\frac{\vr'}{\vr}\right)^2} \approx r\left(1-\frac12 2\frac{\vr\cdot\vr'}{r^2} + \cdots\right) \\
+                 &\approx r - \frac{\vr\cdot\vr'}{r} = r - \hat{\vr}\cdot\vr' \\
+    \vec{k}' &\equiv \hat{\vr}|\vec{k}| = \frac{\vr}{r}k
+\end{align}
+$\vec{k}'$ is the momentum of the scattered particle.
+\begin{align}
+    G_0(\vec{k},\vr-\vr') &\approx -\frac{1}{4\pi} \frac{e^{ikr}}{r} e^{-i\vec{k}'\cdot\vr'}
+\end{align}
+The general solution of the scattering equation therefore reads
+\begin{align}
+    \psi_k(\vr) &= e^{i\vec{k}\cdot\vr} - \frac{1}{4\pi} \int \frac{e^{ikr}}{r}e^{-i\vec{k}'\cdot\vr'}U(\vr')\psi_k(\vr)\,d^3r'
+\end{align}
+Can expand around solutions to the homogeneous solution in powers of the potential - Born expansion.
+\begin{equation}
+    f_{Born}(\vr) = -\frac{1}{4\pi}\int d^3r' ~ e^{i\vec{\Delta}\cdot\vr'}U(\vr'),~ \vec{\Delta} = \vec{k} - \vec{k}'
+\end{equation}
+$\vec{\Delta}$ is the momentum transfer.
+
+\chapter{}
+\begin{align}
+    \psi_{Born, ~\vec{k}}(\vr) &= e^{i\vec{k}\cdot\vr} + \int G_0(\vr-\vr')U(\vr)e^{i\vec{k}\cdot\vr'}d^3r' \\
+    G_0(\vr - \vr') &= \frac{e^{ikr}}{r}\cdot e^{-i\vec{k}'\cdot\vr'} = \frac{1}{r}e^{i(\vec{k}-\vec{k}')\cdot\vr'} \\
+    f_B(\vr) &= -\frac{1}{4\pi}\int e^{i\vec{\Delta}\cdot\vr}U(r)\,d^3r \\
+    \frac{d\sigma_B}{d\Omega} &= |f_B|^2 \\
+    \sigma_B &= \int d\Omega\, |f_B|^2 \\
+    \int d^3r &= \int_0^{2\pi} d\phi \, \int_0^\pi \sin\theta\,d\theta\, \ofnt r^2\,dr \\
+    f_B &= -\frac{1}{4\pi} \underbrace{\int d\phi}_{2\pi} \ofnt r^2U(r)\,dr\, \int_0^\pi \sin\theta e^{i\Delta r\cos\theta}d\theta,~ h = \cos\theta \\
+        &= -\frac12 \int dr\,r^2U(r)\, \int (-dh) e^{i\Delta rh} \\
+        &= -\frac{1}{\Delta} \ofnt r\sin(\Delta r)U(r)\,dr
+\end{align}
+Gaussian potential,
+\begin{align}
+    U(r) \propto e^{-\alpha^2r^2}
+\end{align}
+Yukawa potential,
+\begin{equation}
+    U(r) \propto -\frac{1}{r}e^{-\mu r}
+\end{equation}
+In the limit of $\mu \to 0$, you get the Coulomb potential.\\
+Perturbation theory is equivalent to the Born approximation.
+
+\part{Statistical Mechanics}
+\chapter{}
+\begin{itemize}
+    \item Complete description of a quantum system $\implies \psi(x) \iff$ a pure state
+    \item An incomplete description of a quantum system $\iff$ a mixed state (do not know the full wave function)
+\end{itemize}
+The latter is Statistical quantum mechanics.
+The physical system of interest is made of N different subsystems, $\alpha = 1,\dots,N \implies \psi^{(\alpha)}(x)$.
+A useful tool/concept is the density matrix/operator, $\dens$.
+
+Let's start with a pure state, and a subsystem $\alpha$.
+\begin{align}
+    \psi^{(\alpha)}(x) &= \langle x|\psi^\alpha\rangle = \langle x|\alpha\rangle \\
+    \psi^\alpha &\equiv |\psi^\alpha\rangle \equiv |\alpha\rangle
+\end{align}
+A Hermitian (for this course, self-adjoint) operator,
+\begin{align}
+    \hat{O}^\dagger &= \hat{O} \\
+    \hat{O}|n\rangle &= \lambda_n|n\rangle
+\end{align}
+The operator $\hat{O}$ describes a physical quantity and acts on states from the Hilbert spaces (wave functions) $|n\rangle$.
+$|n\rangle$ is an eigen-vector of the operator $\hat{O}$. 
+$\lambda_n \in \R$, an eigenvalue of $\hat{O}$.
+In general, 
+\begin{align}
+    \hat{\Ham}|\psi\rangle &= |\tilde{\psi}\rangle \neq \lambda|\psi\rangle
+\end{align}
+However, there will exist states $|n\rangle$, such that,
+\begin{equation}
+    \hat{\Ham}|n\rangle = E_n|n\rangle,
+\end{equation}
+where $E_n$ is an energy of the state.
+For any Hermitian operator, we can solve the eigenvalue relation, and $\lambda_n \in \R \forall n$. 
+The set $\{|n\rangle\}$ must be complete.
+\begin{align}
+    \psi &= \sum_n c_n|n\rangle \\
+    \sum_n &|n\rangle\langle n| = 1
+\end{align}
+This is equivalent to completeness of the set.
+If the set is complete:
+\begin{equation}
+    \langle n|m\rangle = \delta_{nm}
+\end{equation}
+If the set is continuous:
+\begin{equation}
+    \langle n|m\rangle = \delta(n-m)
+\end{equation}
+These are conditions of orthonormality of the set.
+
+\chapter{}
+For the pure state, $|\psi\rangle$:
+\begin{align}
+    \langle A\rangle &= \langle\psi|\hat{A}|\psi\rangle = \sum_n\sum_m \underbrace{\langle n|\psi\rangle}_{c_n} \underbrace{\langle\psi|m\rangle}_{c_m^*} \underbrace{\langle m|\hat{A}|n\rangle}_{A_{mn}} \\
+                     &= \sum_n\sum_m c_nc_m^* A_{mn}
+\end{align}
+So now consider a mixed state scenario, do not have $|\psi\rangle$.
+The mixed state is a statiscal ensemble of pure states of subsystems for the mixed system state, with $|\alpha\rangle$s the subsystem wavefunctions. 
+Within each subsystem $|\alpha\rangle$, we can compute 
+\begin{equation}
+    \langle A\rangle_\alpha \equiv \langle\alpha|\hat{A}|\alpha\rangle.
+\end{equation}
+So what about for the entire physical system?
+\begin{equation}
+    \langle A\rangle = \sum_\alpha W_\alpha \langle A\rangle_\alpha
+\end{equation}
+where $W_\alpha$ is the probability to find the measurement in the subsystem $|\alpha\rangle$.
+The physical system is characterised by $\{|\alpha\rangle\}_\alpha,W_\alpha$.
+For a system in a mixed state, the key quantity is the density operator, $\hat{\rho}$.
+\begin{align}
+    \hat{\rho} &= \sum_\alpha W_\alpha |\alpha\rangle \langle\alpha| = \sum_\alpha \rho_{\alpha\alpha} \\
+    \langle A\rangle &= \sum_\alpha \langle\alpha|\hat{A}|\alpha\rangle \equiv \sum_\alpha \underbrace{W_\alpha |\alpha\rangle\langle\alpha|}_{\hat{\rho}_{\alpha\alpha}}\hat{A} \\
+                     &\equiv \text{tr}(\hat{\rho}\hat{A})
+\end{align}
+Where $\langle A\rangle$ is the expectation value of $\hat{A}$ in a mixed state, and $\hat{\rho}$ is the density operator.
+Density matrix:
+\begin{align}
+    \rho_{nm} &= \langle n|\hat{\rho}|m\rangle \\
+    \langle A\rangle &= \sum_n \sum_m \underbrace{\sum_\alpha \langle n|\alpha\rangle W_\alpha \langle\alpha|m\rangle}_{\rho_{nm}} \underbrace{\langle m|\hat{A}|n\rangle}_{A_{mn}} \\
+                     &= \sum_m \sum_n \rho_{nm}A_{mn} \equiv \text{tr}(\rho A)
+\end{align}
+Properties of density operator $\hat{\rho} \iff \rho_{nm}$ density matrix:
+\begin{itemize}
+    \item $\hat{\rho}^\dagger = \hat{\rho} \iff (\rho_{nm})^\dagger = \rho_{nm}$ - Hermitian
+        \begin{equation}
+            (\hat{\rho})^\dagger = \sum_\alpha |\alpha\rangle W_\alpha \langle\alpha| = \hat{\rho}
+        \end{equation}
+    \item Every Hermitian (self-adjoint) operator can be diagonalised. 
+    \item We can find a complete orthonormal set, $\{|n\rangle\}_n$ where
+        \begin{equation}
+            \rho_{nm} = \begin{pmatrix} \rho_11 & 0 & \cdots \\ 0 & \rho_{22} & \\ & \vdots & 0 & \rho_{nm}\end{pmatrix} = \rho_{nn}\delta_{nm}, \rho_{nn} \in \R
+        \end{equation}
+    \item The physical meaning of $\rho_{nn}$ is the probability for the system to find itself in the state $|n\rangle$.
+    \item For each $n$, $0 \leq \rho_{nn} \leq 1$, and $\sum_n \rho_{nn} = 1$
+        \begin{equation}
+            \implies \text{tr}(\hat{\rho}) = 1
+        \end{equation}
+    \item In the special case where the mixed state is the pure state, only $\rho_{n_0,n_0} = 1 \neq 0$
+    \item For a truly mixed state, there will be a few $\rho_{nn} \neq 0, 0 \leq \rho_{nn} < 1$. Follows from the trace.
+        \begin{equation}
+            \text{tr}(\hat{\rho}^2) \begin{cases} < 1 & \text{mixed state} \\ = 1 & \text{pure state} \end{cases}
+        \end{equation}
+\end{itemize}
+
+\part{Relativistic Quantum Mechanics}
+\chapter{}
+\begin{align}
+    \hat{\Ham}\psi &= E\psi \\
+    \hat{E} &= i\hbar\frac{\p}{\p t} 
+\end{align}
+Free case, $V = 0$:
+\begin{align}
+    \hat{\Ham}_{free} &= \frac{\hat{p}^2}{2m} \\
+    \hat{p} &= -i\hbar\frac{\p}{\p x}
+\end{align}
+Free relativistic energy momentum relation:
+\begin{align}
+    E &= \vec{p}^2c^2 + m^2c^4 \\
+    (\p_\mu\p^\mu &+ m^2)\Phi = 0
+\end{align}
+Klein Gordon equation - will use $\Phi$ instead of $\psi$ for wavefunction to show relativistic, $\hbar = c = 1$.
+\begin{equation}
+    \left(\p_\mu\p^\mu + m^2\frac{c^2}{\hbar^2}\right)\Phi = 0
+\end{equation}
+
+\chapter{}
+\begin{equation}
+    \left(\p_\mu\p^\mu + m^2\right)\Phi = 0
+\end{equation}
+Lorentz 4-vector:
+\begin{align}
+    x^\mu &= (t,\vec{x}), \mu = \underbrace{0}_{t},\underbrace{1,2,3}_{\vec{x}} \\
+    x_\mu &= g_{\mu\nu}x^\nu \\
+    x^\mu &= g^{\mu\nu}x_\nu \\
+    g_{\mu\nu} &= \begin{pmatrix} +1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix} = g^{\mu\nu} \\
+    \p_\mu &= \frac{\p}{\p x^\mu} \\
+    \p^\mu &= \frac{\p}{\p x_\mu} = g^{\mu\nu}\p_\nu \\
+    \p_\mu\p^\mu &= \frac{\p}{\p x^\mu}\frac{\p}{\p x_\mu} = \frac{\p^2}{\p t^2} - \frac{\p^2}{\p\vec{x}^2} \\
+    (\p_\mu\p^\mu &+ m^2)\Phi = 0
+\end{align}
+Klein-Gordon equation is Lorentz-covariant.
+$\Phi$ is the relativistic wavefunction - \textit{more precisely, $\Phi$ is called the scalar field $\Phi(t,\vx)$. $\Phi$ has no indices so it is a scalar and it is a field as it depends on space and time.} \\
+The Klein-Gordon equation is a free relativistic equation - there is no potential, and no other fields, only $\Phi$.
+We want to introduce interactions of $\Phi(t,\vx)$ with $A_\mu(t,\vx)$, where $A_\mu$ is the vector field also known as the 4-vector potential.
+\begin{align}
+    A^\mu &= \begin{pmatrix} \frac{1}{c}\phi \\ \vec{A} \end{pmatrix} \equiv (\phi,\; \vec{A}) \\
+    A_\mu &= g_{\mu\nu}A^\nu = (\phi,\;-\vec{A})
+\end{align}
+This is the electromagnetic vector field. \\
+Interactions are introduced as follows:
+\begin{align}
+    \p_\mu \to D_\mu &\equiv \p_\mu - ieA_\mu(t,\vx)
+\end{align}
+$D_\mu$ here is the covariant derivative, $e$ is the absolute value of the electric charge, $e = -q$.
+This is the \textbf{minimal way} to introduce interactions of $\Phi$ with electromagnetism.
+Our modified Klein-Gordon equation becomes
+\begin{align}
+    (D^\mu D_\mu &+ m^2)\Phi = 0 \\
+    D^\mu D_\mu &= (\p^\mu - ieA^\mu)(\p_\mu - ieA_\mu) \\
+    E &\to E - q\phi \\
+    \vec{p} &\to \vec{p} - q\vec{A}
+\end{align}
+Back to the free Klein-Gordon,
+\begin{align}
+    (\p_\mu\p^\mu &+ m^2)\Phi = 0
+\end{align}
+We want to define, $j^\mu$ - the 4-vector current.
+\begin{equation}
+    \p_\mu j^\mu = 0
+\end{equation}
+This is the continuity equation, or the current conservation equation.
+\begin{align}
+    j^\mu &= (c\rho,\;\vec{j}) \equiv (\rho,\;\vec{j}) \\
+    \p_\mu j^\mu &= \p_t\rho + \p_i j^i = 0 \\
+    j^\mu &= \frac{i}{2m}\left(\Phi^*\p^\mu\Phi - (\p^\mu\Phi)^*\Phi\right)
+\end{align}
+Check $\p_\mu j^\mu = 0$, if $\Phi$ satsifies Klein-Gordon.
+\begin{align}
+    \p_\mu j^\mu &= \frac{i}{2m}\left(\cancel{(\p_\mu\Phi^*)\p^\mu\Phi} + \Phi^*\p_\mu\p^\mu\Phi - (\p_\mu\p^\mu\Phi^*)\Phi - \cancel{(\p^\mu\Phi^*)(\p_\mu\Phi)} \right)
+\end{align}
+Now use the Klein-Gordon equation:
+\begin{align}
+    \p_\mu\p^\mu\Phi &= -m^2\Phi \\
+    \p_\mu\p^\mu\Phi^* &= -m^2\Phi^* \\
+    \p_\mu j^\mu &= \frac{i}{2m}\Big(\cancel{(\p_\mu\Phi^*)\p^\mu\Phi} + \underbrace{\Phi^*\p_\mu\p^\mu\Phi}_{-m^2\Phi} - \underbrace{(\p_\mu\p^\mu\Phi^*)\Phi}_{-m^2\Phi^*} - \cancel{(\p^\mu\Phi^*)(\p_\mu\Phi)} \Big) \\
+    \p_\mu j^\mu &= 0
+\end{align}
+Interpretation: $j^\mu$ is the probability 4-current.
+Specifically, taking $j^0 = \rho(t,\vx)$:
+\begin{align}
+    \int_V \rho(t,\vx)\,d^3\vx &= \text{Prob to find ptcl within V} \\
+    \rho &= \frac{i}{2m}\left(\phi^*\p_t\Phi - (\p_t\Phi^*)\Phi\right)
+\end{align}
+This is not manifestly positive, so it cannot be a probability current.
+Furthermore, there are $E > 0$ and $E < 0$ solutions to the Klein-Gordon equation.
+\begin{align}
+    \Phi_{special} &\approx e^{ip^\mu x_\mu},~ p^0 = +\sqrt{\vec{p}^2 + m^2} \\
+    (\p_\mu\p^\mu &+ m^2)e^{ip^\mu x_\mu} = \left(-p^\mu p_\mu + m^2\right)e^{ip^\mu x_\mu} = 0 
+\end{align}
+This is a solution. 
+\begin{align}
+    \tilde{\Phi}_{special} &\approx e^{-ip^\mu x_\mu}
+\end{align} 
+This is also a solution.
+\begin{align}
+    E &= \pm \sqrt{\vec{p}^2 + m^2} \\
+    p^\mu &= (E=p^0,\; \vec{p})
+\end{align}
+
+\chapter{}
+\begin{align}
+    E^2 &= p^2c^2 + m^2c^4 \\
+    E^2 &- p^2 = m^2c^4 \\
+    (\p_\mu\p^\mu &+ \frac{m^2c^2}{\hbar^2})\Phi(x,t) = 0 \\
+    E &= \pm \sqrt{p^2c^2 + m^2c^4}
+\end{align}
+\section{Dirac Equation}
+\begin{align}
+    i\hbar\frac{\p\psi}{\p t} &= \Ham_D\psi(x,t) \\
+                              &= -i\hbar c\sum_{k=1}^3 \alpha^k\frac{\p\psi}{\p x^k} + \beta mc^2\psi(x,t) \\
+    \Ham_D &= \unl{\alpha}\cdot\unl{p}c + \beta mc^2,~ p_k = -i\hbar\del_k \\
+    E^2\psi &= (p^2c^2 + m^2c^4)\psi \\
+    \Ham_D^2 &= (-\hbar^2c^2\del^2 + m^2c^4) \\
+             &= (-i\hbar c\alpha^j\p_j + \beta mc^2)(-i\hbar c\alpha^k\p_k + \beta mc^2) \\
+             &= -\hbar^2c^2\alpha^j\alpha^k\p_j\p_k - i\hbar c^3m\alpha^i\beta\p_i - i\hbar c^3m\beta\alpha^k\p_k + \beta^2m^2c^4 \\
+             &= -\frac{\hbar^2c^2}{2}\left\{\alpha^j,\alpha^k\right\}\p_j\p_k - i\hbar c^3m\{\alpha^i,\beta\} + \frac{m^2c^4}{2}\{\beta,\beta\}  \\
+    \{\alpha^j,\alpha^k\} &= \alpha^j\alpha^k + \alpha^k\alpha^j
+\end{align}
+Klein-Gordon is fulfilled if
+\begin{align}
+    \{\alpha^j,\alpha^k\} &= 2\delta^{jk} \\
+    \{\alpha^i,\beta\} &= 0 \\
+    \{\beta,\beta\} &= 2
+\end{align}
+These conditions define what is called \textbf{Dirac algebra.}
+Dirac algebra is satisfied by choice e.g.
+\begin{align}
+    \alpha^k &= \begin{pmatrix} 0 & \sigma^k \\ \sigma^k & 0 \end{pmatrix} & \beta &= \begin{pmatrix} I_2 & 0 \\ 0 & -I_2\end{pmatrix} \\
+    \alpha^1 &= \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \end{pmatrix} & \beta &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix}
+\end{align}
+$\sigma^k$ denotes the k-th Pauli matrix.
+Consequences:
+\begin{align}
+    \psi = \begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4\end{pmatrix}
+\end{align}
+This is known as the \textbf{Dirac spinor.}
+Hermiticity of $\Ham_D$
+\begin{align}
+    (\alpha^k)^\dagger &= \alpha^k & \beta^\dagger &= \beta 
+\end{align}
+$\alpha$ and $\beta$ are not unique:
+\begin{align}
+    \tilde{\alpha}^k &= M\alpha^kM^{-1} & \tilde{\beta} &= M\beta M^{-1}
+\end{align}
+Requiring $M$ to be Hermitian.
+
+Let's define
+\begin{align}
+    \rho &= \psi^\dagger\psi \\
+         &= \begin{pmatrix} \psi_1^* & \psi_2^* & \psi_3^* & \psi_4^*\end{pmatrix}\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4\end{pmatrix} \\
+         &= |\psi_1|^2 + |\psi_2|^2 + |\psi_3|^2 + |\psi_4|^2 \leq 0 \\
+    \frac{\p\rho}{\p t} &= \psi^\dagger\frac{\p\psi}{\p t} + \frac{\p\psi^\dagger}{\p t}\psi \\
+    \psi^\dagger\frac{\p\psi}{\p t} &= \psi^\dagger \frac{1}{i\hbar}\Ham_D\psi \\
+                                    &= \psi^\dagger \left(-c\alpha^k\del_k + \frac{mc^2}{i\hbar}\beta\right)\psi \\
+                                    &= -c\psi^\dagger\unl{\alpha}\cdot\unl{\del}\psi + \frac{mc^2}{i\hbar}\psi^\dagger \beta\psi \\
+    \frac{\p\psi^\dagger}{\p t}\psi &= -c(\unl{\del}\psi^\dagger)\cdot\unl{\alpha}\psi - \frac{mc^2}{i\hbar}\psi^\dagger\beta\psi \\ 
+    \frac{\p\rho}{\p t} &= -c(\del\psi^\dagger)\cdot \unl{\alpha}\psi - c\psi^\dagger\unl{\alpha} \cdot\unl{\del}\psi \\ 
+    \frac{\p\rho}{\p t} &+ \unl{\del}\cdot(\psi^\dagger c\unl{\alpha}\psi) = 0 \\
+    \frac{\p\rho}{\p t} &+ \unl{\del}\cdot\unl{j} = 0 \\
+    \unl{j} &= \psi^\dagger c\unl{\alpha}\psi
+\end{align}
+Covariant form:
+\begin{align}
+    \{\beta,\beta\} = 2 &\implies \beta^2 I_4 \\
+    i\hbar\frac{\p\psi}{\p t} &= -i\hbar c\alpha^k \frac{\p\psi}{\p x^k} + \beta mc^2\psi \\
+    -i\beta\frac{1}{c}\frac{\p\psi}{\p t} &+ i\beta\alpha^k\frac{\p\psi}{\p x^k} - \frac{mc}{\hbar}\psi \\
+    \p_\mu &= \left(\frac{1}{c}\frac{\p}{\p t},\frac{\p}{\p x^1},\frac{\p}{\p x^2},\frac{\p}{\p x^3}\right) \\
+    \left(-i\gamma^\mu\p_\mu + \frac{mc}{\hbar}\right)\psi &= 0
+\end{align}
+Introduced two new 4x4 matrices
+\begin{align}
+    \gamma^0 &= \beta & \gamma^k &= \beta\alpha^k
+\end{align}
+Setting $\hbar = c = 1$
+\begin{equation}
+    (i\cancel{\p} - m)\psi = 0
+\end{equation}
+\begin{align}
+    \gamma^0 &= \begin{pmatrix} 0 & I_2 \\ I_2 & 0 \end{pmatrix} & \gamma^k &= \begin{pmatrix} 0 & \sigma^k \\ -\sigma^k & 0 \end{pmatrix}
+\end{align}
+
+\chapter{}
+Klein-Gordon equation:
+\begin{align}
+    (\p_m\p^m - m^2)\Phi(x^\mu) = 0
+\end{align}
+This is manifestly Lorentz-covariant.\\
+Dirac equation:
+\begin{align}
+    (i\gamma^\mu\p_\mu - m)\Psi(x) &= 0 \\
+    \{\gamma^\mu,\gamma^\nu\} &= 2g^{\mu\nu}
+\end{align}
+$\Psi(x)$ is a 4-component spinor - a bispinor in $3+1$ dimensions.
+
+Problems with interpretation of $\Phi(x)$ as the wavefunction:
+\begin{itemize}
+    \item $E^2 = \vec{p}^2 + m^2 \implies E = \pm \sqrt{\vec{p}^2+m^2}$, so positive and negative energies are both present, making an unstable solution. 
+    \item Define $j^\mu$
+        \begin{equation}
+            \p_\mu j^\mu = 0
+        \end{equation}
+        This is a conserved current.
+        \begin{align}
+            j^0(x) = \rho(x)
+        \end{align}
+        But this is not manifestly positive.
+        Probability, P to find particle:
+        \begin{align}
+            P &= \int_V \rho(x)\,d^3x
+        \end{align}
+        So the quantum mechanical meaning of $\rho(x)$ is the probablity density.
+\end{itemize}
+Common origin of these problems is that the Klein-Gordon equation is second order in derivatives with respect to $\p_0 = \frac{\p}{\p t}$.
+\begin{align}
+    \rho(x) &\approx \Phi^*\p_t \Phi - (\p_t\Phi^*)\Phi \\
+    \p_\mu j^\mu &= 0 \to \p_t\rho + \cdots
+\end{align}
+Dirac's original idea: Find Lorentz covariant equation which is first order in $\p_t$.
+\begin{align}
+    (i\gamma^\mu\p_\mu - m)\Psi(x) &= 0
+\end{align}
+$\Psi(x)$ is a relativistic field, bispinor.
+\begin{align}
+    \Psi(x) &= \begin{pmatrix} \psi^1(x) \\ \psi^2(x) \\ \psi^3(x) \\ \psi^4(x) \end{pmatrix}
+\end{align}
+Normal $\to$ Weyl spinor $\to$ 2 components. Normal spinors are 2-component ones. \\
+Dirac spinor, $\Psi(x) \to$ 4 components (bispinor).
+
+The Klein-Gordon equation is for $\Phi(x)$, a scalar field - a one-component object, for spin $=0$ particles. 
+Bosons are particles with integer spin, i.e. spin $=0$, e.g. Higgs boson.
+
+The Dirac equation is for the four-component $\Psi(x)$, which describes fermions, particles of half-integer spin, lowest of these is $\frac12$.
+Why 4-components then?
+Spin-$\frac12$ particles, spin aligned along the direction of momentum vector positively or negatively.
+Spinor has four-components as it did not solve the energy problem. 
+There are still positive and negative energies, each of them has spin $\pm\frac12$, i.e. four states.\\
+In Klein-Gordon, $\Phi(x)$ is complex, so two degrees of freedom.
+$\Phi(x)$ and $\Psi(x)$ are not wavefunctions, they are operators acting on the states in Hilbert space.
+Positive energy part creates the particle, the negative energy destroys the particle.
+
+Let's rederive (very compactly) the Dirac equation.
+Assume the Dirac equation and relate it to the Klein Gordon equation.
+\begin{align}
+    (\p_\mu\p^\mu + m^2)\Phi &= 0 \\
+    (\p_0^2 + m^2 - \p_{\vx}^2)\Phi &= 0 \\
+    (a^2 - b^2)\Phi &= 0 \\
+    (a \pm b)\Phi &= 0 
+\end{align}
+If we can apply (4.13) to Klein-Gordon, then (4.14) would be a simple 'Dirac' equation.
+But $\p_0^2 + m^2 \neq a^2$, so must use $\gamma$ matrices to make this work. 
+\begin{align}
+    (i\gamma^\nu\p_\nu + m)(i\gamma^\mu\p_\mu - m)\Psi &= 0 \\ 
+    \{\gamma^\mu,\gamma^\nu\} &= 2g^{\mu\nu}
+\end{align}
+(4.16) is the defining equation for $\gamma$ matrices and is known as Clifford algebra.
+\begin{align}
+    (-\gamma^\nu\gamma^\mu\p_\nu\p_\mu - \cancel{mi\gamma^\nu\p_\nu} + \cancel{im\gamma^\mu\p_\mu} - m^2)\Psi &= 0 \\
+    (-\gamma^\nu\gamma^\mu\p_\nu\p_\mu - m^2)\Psi &= 0 \\
+    \gamma^\nu\gamma^\mu \p_\nu\p_\mu &= \frac12\gamma^\nu\gamma^\mu(\p_\nu\p_\mu + \p_\mu\p_\nu),~ \gamma^\mu\p_\mu = \fp \\
+                                      &= \frac12\gamma^\nu\gamma^\mu\p_\nu\p_\mu + \frac12\gamma^\nu\gamma^\mu\p_\mu\p_\nu \\
+                                      &= \frac12\left(\{\gamma^\mu,\gamma^\nu\}\right)\p_\nu\p_\mu = \frac12\times 2g^{\mu\nu}\p_\nu\p_\mu \\
+                                      &= \p_\mu\p^\mu \\
+    -(\p_\mu\p^\mu + m^2)\Psi &= 0
+\end{align}
+This is the Klein-Gordon equation from the Dirac equation.
+So any solution to the Dirac equation will satisfy the Klein-Gordon equation. 
+This explains why we didn't solve the energy sign problem.
+
+\chapter{}
+
+\chapter{}
+Last lecture, discussed Lorentz transformations of Dirac spinors and Dirac equation.
+\begin{align}
+    x\to x'^\mu&\equiv \Lambda^\mu_\nu x^\nu \\
+    \Psi(x) \to \Psi'(x')&\equiv S(\Lambda)\Psi(x) \\
+    (i\cancel{\p}-m)\Psi(x) &= 0 \\
+    (i\gamma^\mu\p_\mu - m)\Psi(x) &= 0 \\
+    (i\gamma^\mu\p_\mu' -m)\Psi'(x') &= 0 \\
+    S^{-1}(\Lambda)\gamma^\nu S(\Lambda) &= \gamma^\mu\Lambda^\nu_\mu \\
+    \bar{\Psi} &\equiv \Psi^\dagger\gamma^0
+\end{align}
+This is the Dirac conjugate spinor.
+\begin{align}
+    \bar{\Psi}'(x') &= \bar{\Psi}(x)\cdot S^{-1}(\Lambda) \\
+    \bar{\Psi}\Psi &= \text{Lorentz singlet/scalar}
+\end{align}
+Lorentz singlets do not transform under Lorentz transformations.
+\begin{align}
+    \bar{\Psi}\gamma^\mu\Psi &= \text{Lorentz vector} \\
+    \bar{\Psi}'\gamma^\mu\Psi &\to \bar{\Psi}S^{-1}\gamma^\mu S\Psi = \Lambda^\mu_\nu \bar{\Psi}\gamma^\nu\Psi \\
+    \bar{\Psi}\gamma^\mu\Psi &= \Lambda^\mu_\nu(\bar{\Psi}\gamma^\nu\Psi)
+\end{align}
+Dirac Langrangian:
+\begin{align}
+    \La_D &= \bar{\Psi}(i\gamma^\mu\p_\mu - m)\Psi
+\end{align}
+
+\section{General Solutions to Klein Gordon}
+\begin{align}
+    (\p^\mu\p_\mu &+ m^2)\Phi(x) = 0 \\
+    \Phi(x) &= \int \frac{d^3p}{(2\pi)^3} \frac{1}{2w_p}\left(a_{\vp} e^{-ip^\mu x_\mu} + b^{\dagger}_{\vp} e^{+ip^\mu x_\mu}\right)\Bigg|_{p^0\equiv w_p\equiv +\sqrt{m^2+\vp^2}} \\
+    p^\mu &= (p^0\equiv w_{\vp},\; \vp)
+\end{align}
+We integrate over $\vp$.
+\begin{align}
+    (\p^\mu\p_\mu + m^2)e^{\pm ip^\mu x_\mu} &= (-p^\mu p_\mu + m^2)e^{\pm ip^\mu x_\mu} \\
+    m^2 - p^\mu p_\mu &= 0,~ p^0 = w_{\vp}
+\end{align}
+$p^0 = w_{\vp}$ is on-mass shell condition.\\
+$a_{\vp}$ is an arbitrary function of $\vp$, using its complex conjugate and not another arbitrary function ensures $\Phi(x)$ is real.
+\begin{align}
+    \int \frac{d^3\vp}{(2\pi)^3} \frac{1}{2w_{\vp}},~ w_{\vp} = \sqrt{\vp^2 + m^2}
+\end{align}
+This is a Lorentz-invariant integration measure. Why? \\
+Manifestly Lorentz-invariant measure:
+\begin{align}
+    \int \frac{d^4p}{(2\pi)^3} \delta^{(1)}(p_\mu p^\mu - m^2) &= \sum_{\text{solutions}} \int \frac{d^4p}{(2\pi)^3} \frac{\delta(p^0=\text{solution}}{|\p_{p_0} (p^\mu p_\mu - m^2)|} \\
+                                                               &= \int \frac{d^3\vp}{(2\pi)^3} \left(\frac{1}{2w_{\vp}}\bigg|_{p_0 = +w_p} + \frac{1}{2w_{\vp}}\bigg|_{p_0=-w_p}\right)
+\end{align}
+So (6.19) is Lorentz invariant as it follows from simplifying something manifestly Lorentz invariant.
+\begin{equation}
+    p_0 = w_{\vp} = +\sqrt{\vp^2 + m^2} 
+\end{equation}
+Is a positive relativistic energy. 
+\begin{align}
+    e^{-ip^\mu x_\mu} &= e^{-iw_{\vp}t}\cdot e^{+i\vp\vx} \\
+    e^{+ip^\mu x_\mu} &= e^{+iw_{\vp}t}\cdot e^{-i\vp\vx} \\
+\end{align}
+Which gives a negative energy solution in the second line.
+So $\Phi(x)$ is actually an operator, $\hat{\Phi}(x)$, so are $a_p$ and $b^\dagger$.
+\begin{itemize}
+    \item $\hat{a}_{\vp}$ is the annihilation operator of a particle, 'a'.
+    \item $\hat{a}^{\dagger}_{\vp}$ is the creation operator of a particle, 'a'.
+    \item $\hat{b}_{\vp}$ is the creation operator of a particle, 'b'.
+    \item $\hat{b}^{\dagger}_{\vp}$ is the annihilation operator of a particle, 'b'.
+\end{itemize}
+a and b are antiparticles of each other.
 
 
 

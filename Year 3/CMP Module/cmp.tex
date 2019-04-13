@@ -545,10 +545,51 @@ For a $D=3$ model:
         \end{itemize}
 \end{itemize}
 
-
-
-
-
+\chapter{\textit{Lecture 9}}
+\begin{itemize}
+    \item Consider standard cubic about zero, wells for v and -v
+    \item Broken symmetry potential
+        \begin{align}
+            f &= \frac12(\del\phi)^2 U(\phi) \\
+            U(\phi) &= \frac{\lambda}{4}(v^2 - \phi^2)^2 \\
+            v^2 &= \frac{u^2}{\lambda}
+        \end{align}
+    \item Most systems break symmetry in the same way, i.e. whole system will sit at v
+    \item Alternatively if sitting in both wells, field plots between the two - called a wall, kink, or soliton
+    \item Suppose a kink is of size l (in 1D) - Energy cost:
+        \begin{align}
+            \int \frac12 \left(\frac{\p\phi}{\p x}\right)^2dx &\approx l\left(\frac{v}{l}\right)^2 \\
+                                                                &\approx \frac{v^2}{l}
+        \end{align}
+    \item To reduce the cost, we smear out the wall
+    \item However, there's a second term
+        \begin{align}
+            \int U\,dx &= \lambda v^4l \\
+            E &= \frac{v^2}{l} + \lambda v^4l \\
+            \frac{\p E}{\p l} &= -\frac{v^2}{l^2} + \lambda v^4 = 0 \\
+            l &= \left(\frac{1}{\lambda v^2}\right)^{1/2} \approx \frac{1}{\mu}
+        \end{align}
+    \item $E(x)$ forms like a Gaussian, kink is localised in a region of size l
+    \item Center can be anywhere
+    \item It costs a (semi-)infinite energy to remove it
+        \begin{itemize}
+            \item it's stable
+        \end{itemize}
+\begin{figure}[H]
+    \includegraphics[scale=0.5,center]{kink.png}
+\end{figure}
+    \item Can unwind for only a finite energy cost
+    \item What about vortices?
+    \item Swirly at $r\to\infty$
+    \item Costs a huge amount of energy
+    \item Derrick's theorem: \emph{Time-independent topological objects are impossible to realise in greater than one spatial dimension for this theory}
+    \item Contradictions to this:
+        \begin{itemize}
+            \item time dependence
+            \item vortex-antivortex pairs
+            \item add a field that cancels the effects of the swirliness
+        \end{itemize}
+\end{itemize}
 
 
 
