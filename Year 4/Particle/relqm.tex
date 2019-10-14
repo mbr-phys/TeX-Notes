@@ -3,6 +3,10 @@
 \usepackage{../../../LaTeX-Templates/Notes}
 \usepackage{subfiles}
 
+\newcommand\hphi{\hat{\phi}}
+\newcommand\hpi{\hat{\pi}}
+\newcommand\vy{\unl{y}}
+
 \title{Particle Theory \vspace{-20pt}}
 \author{Prof Krauss, Prof Khoze, and Dr Alonso}
 \date{\vspace{-15pt}Michaelmas Term 2019 - Epiphany Term 2020}
@@ -201,6 +205,100 @@ Now we demand the action is unchanged.
     \delta\phi &= \phi'-\phi = (e^{i\nu}-1)\phi \implies \p_\mu(\delta\phi) = \delta(\p_\mu\phi) \\
     \delta S &= \int d^4x\; \left\{\delta\phi\left[\p_\mu\frac{\p\La}{\p(\p_\mu\phi)} + \frac{\p\La}{\p\phi} + \phi\leftrightarrow\phi^* + \p_\mu\left(\frac{\p\La}{\p(\p_\mu\phi)}\phi\right)\right]\right\}
 \end{align}
+
+\chapter{}
+\section{Conserved Current}
+The Lagrangian is invariant under transformations of the form
+\begin{align}
+    \phi &\to \phi' = e^{i\theta}\phi \\
+    \delta\phi &= \phi'-\phi = (e^{i\theta}-1)\phi \\
+    \delta(\p_\mu\phi) &= \p_\mu\phi' - \p_\mu\phi = (e^{i\theta}-1)\p_\mu\phi
+\end{align}
+The next step from this is to figure out the change to the action. 
+If the Lagrangian is invariant, the action should be - but this condition is a bit too tough. 
+So the condition is that the action is invariant as it will be what changes the theory. 
+Therefore, we demand that $\delta S = 0$.
+\begin{align}
+    \delta S &= \delta\left( \int \La\;d^4x\right) \\
+             &= \int \left\{ \frac{\p\La}{\p\phi}\delta\phi + \frac{\p\La}{\p(\p_\mu\phi)}\delta(\p_\mu\phi) + (\phi\leftrightarrow\phi^*)\right\}\;d^4x \\
+             &= \int \left\{\frac{\p\La}{\p\phi}(i\theta\phi) + \frac{\p\La}{\p(\p_\mu\phi)}(i\theta\p_\mu\phi) + (\phi\leftrightarrow\phi^*,i\to-i)  \right\}\;d^4x
+\end{align}
+Term two above:
+\begin{align}
+    \frac{\p\La}{\p(\p(\p_\mu\phi)}(i\theta\p_\mu\phi) &= \theta\p_\mu\left(\frac{\p\La}{\p(\p_\mu\phi)}\right) - i\theta\left(\p_\mu\frac{\p\La}{\p(\p_\mu\phi)}\right)\phi \\
+    \implies \frac{\p\La}{\p\phi}(i\theta\phi) &- i\theta\left(\p_\mu\frac{\p\La}{\p(\p_\mu\phi)}\right)\phi = 0 \\
+    \delta S &= \int \left\{i\theta\left[\p_\mu\left(\frac{\p\La}{\p(\p_\mu\phi)}\phi\right) - \p_\mu\left(\frac{\p\La}{\p(\p_\mu\phi^*)}\phi^*\right)\right]\right\}\;d^4x = 0 \\
+    \implies &\p_\mu\left[\frac{\p\La}{\p(\p_\mu\phi)} \phi - \frac{\p\La}{\p(\p_\mu\phi^*)}\phi^*\right] = 0 \\
+    j^\mu &= (\p^\mu\phi^*)\phi - (\p^\mu\phi)\phi^*
+\end{align}
+This is the conserved current. 
+\begin{align}
+    \p_\mu j^r &= 0 & \p_t\rho - \grad\unl{j} &= 0 
+\end{align}
+We can then define conserved charge:
+\begin{align}
+    Q &= j^0 = (\p_t\phi^*)\phi - (\p_t\phi)\phi^* 
+\end{align}
+
+\section{Quantising the field}
+\begin{enumerate}
+    \item We start with the Lagrangian.
+        From this, we produce the conjugate momentum:
+        \begin{align}
+            \La(\phi,\p_\mu\phi) \to \pi &= \frac{\p\La}{\p(\p_t\phi)} = \dot{\phi} = \p_t\phi
+        \end{align}
+    \item Go from Lagrangian to Hamiltonian:
+        \begin{align}
+            \La &= \frac12 \p_\mu\phi\p^\mu\phi - \frac{m^2}{2}\phi^2 \\
+            \La \to \Ham &= \dot{\phi}\pi - \La \\
+                        &= \frac12\pi^2 + \frac12(\grad\phi)^2 + \frac{m^2}{2}\phi^2
+        \end{align}
+    \item Go from a Hamiltonian to an operator Hamiltonian: $\Ham \to \hat{\Ham}$. 
+        We turn all classical fields into field operators, add hats. 
+        Lives in Fock space.
+    \item We demand equal time commutator. 
+        \begin{align}
+            [\hphi(\vx,t),\hpi(\vy,t)] &= i\delta^3(\vx-\vy) \\
+            [\hphi(\vx,t),\hphi(\vy,t)] &= [\hpi(\vx,t),\hpi(\vy,t)] = 0 
+        \end{align}
+    \item Define creation and annihilation operators, which will "inherit" commutator relations. 
+        \begin{align}
+            \phi(x) &= \sum_{\unl{p}} \left[\ha(p)e^{-ip\cdot x} + \hag(p)e^{ip\cdot x}\right]
+                    &\to \int \frac{d^4p}{(2\pi)^4} \left[\ha(p)e^{-ipx} + \hat(p)e^{ipx}\right](2\pi)\delta(p^2-m^2)\Theta(p_0)
+        \end{align}
+        The $\delta$ in the last equation is to show it must satisfy the energy-momentum equation, $E^2 - p^2 = m^2$.
+        \begin{align}
+            \hphi(x) &= \int_{p_0=\sqrt{\unl{p}^2+m^2}} \frac{d^3p}{(2\pi)^32p_0} \left[\ha(p)e^{-ipx} + \hag(p)e^{ipx}\right] \\
+            \hpi(x) &= ip_0\int \frac{d^3p}{(2\pi)^32p_0} \left[-\ha(p)e^{-ipx} + \hag(p)e^{ipx}\right] \\
+            ip_0\hphi + \hpi &= 2ip_0 \int\frac{d^3p}{(2\pi)^32p_0} \hag(p)e^{ipx} \\
+            \ha(p) &= \int e^{ipx}\left(ip_0\hphi + \hpi\right)\;d^3x \\
+            \hag(p) &= \int e^{-ipx}\left(ip_0\hphi - \hpi\right)\;d^3x
+        \end{align}
+        Now consider the ladder operators' commutations:
+        \begin{align}
+            [\ha(p),\hag(q)] &= \delta^3(p-q) \\
+            [\ha,\ha] &= [\hag,\hag] = 0
+        \end{align}
+        Finally, we can write the Hamiltonian operator in terms of the ladder operators. 
+        \begin{align}
+            \hat{\Ham} &= \frac12 \int \frac{d^3k}{(2\pi)^32k_0} k_0\left[\hag(k)\ha(k) + \ha(k)\hag(k)\right]
+        \end{align}
+        Interpretation of a Quantum Field Theory as a continuous sum of harmonic oscillator Hamiltonians, one for each frequency vector $\unl{k}$.
+    \item Spectrum of states. 
+        We will start by defining a ground state, or a vacuum, $|0\rangle,\;\langle0|0\rangle$.
+        We can annihilate/create the vacuum with the ladder operators:
+        \begin{align}
+            \ha(\unl{k})|0\rangle &= 0 \\
+            \hag(\unl{k})|0\rangle &= |\unl{k}_1\rangle \\
+            \langle0|\hat{\Ham}|0\rangle &= \int d^3x \to \infty
+        \end{align}
+        But the vacuum is an eigenstate of a Hamiltonian with infinite energy. 
+        This is one of the many divergences in QFT.
+        Now we want to use normal ordering to get rid of the infinities. 
+        We demand that $\langle0|:\hat{\Ham}:|0\rangle$ is finite - this is \textit{normal ordering}. 
+\end{enumerate}
+
+
 
 
 \end{document}
