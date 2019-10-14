@@ -38,7 +38,7 @@
 
 Kronecker delta:
 \begin{align}
-    \delta_{ij} = \delta^{ij} &= \begin{cases} 1 & i=j \\ 0 & \text{otherwise} \end{cases} 
+    \delta_{ij} = \delta^{ij} &= \begin{cases} 1 & i=j \\ 0 & \text{otherwise} \end{cases}
 \end{align}
 Levi-Civita tensor:
 \begin{equation}
@@ -66,7 +66,7 @@ where rapidity
 \section{Lagrange formalism}
 \begin{align}
     L\left(q(t),\dot{q}(t)\right) &= T - V \\
-    S(t,t_0) &= \int_{t_0}^t L\; dt' 
+    S(t,t_0) &= \int_{t_0}^t L\; dt'
 \end{align}
 Minimise action, $S$, leads to Euler-Lagrange equations of motion:
 \begin{align}
@@ -85,44 +85,122 @@ Introduce Hamilton function:
 \end{align}
 Introducing the annihilation and creation operators:
 \begin{align}
-    \hat{a} &= \frac{1}{\sqrt{2}}\left(\sqrt{\om}\hat{x} + \frac{i}{\sqrt{\om}}\hat{p}\right) \\
-    \hat{a}^\dagger &= \frac{1}{\sqrt{2}}\left(\sqrt{\om}\hat{x} - \frac{i}{\sqrt{\om}}\hat{p}\right)
+    \ha &= \frac{1}{\sqrt{2}}\left(\sqrt{\om}\hx + \frac{i}{\sqrt{\om}}\hp\right) \\
+    \hag &= \frac{1}{\sqrt{2}}\left(\sqrt{\om}\hx - \frac{i}{\sqrt{\om}}\hp\right)
 \end{align}
-$\hat{x}$,$\hat{p}$,$\hat{H}$ are Hermitian, so
+$\hx$,$\hp$,$\hh$ are Hermitian, so
 \begin{align}
-    [\hat{a},\hat{a}^\dagger] &= 1 \\
-    [\hat{a},\hat{a}] &= [\hat{a}^\dagger,\hat{a}^\dagger] = 0 \\
-    \hat{H} &= \om\left(\hat{a}^\dagger\hat{a} + \frac12\right) = \om\left(\hat{N}+\frac12\right) \\
-    \hat{N}|n\rangle &= n|n\rangle \\
-    [\hat{N},\hat{a}^\dagger] &= \hat{a}^\dagger \\
-    [\hat{N},\hat{a}] &= -\hat{a} \\
-    \hat{H}|E\rangle &= E|E\rangle \\
-    \hat{H}\left(\hat{a}|E\rangle\right) &= \left(\hat{a}\hat{H} + \hat{H}\hat{a} - \hat{a}\hat{H}\right)|E\rangle \\
-                                         &= aE|E\rangle + \om[\hat{N},\hat{a}]|E\rangle \\
-                                         &= (E-\om)\hat{a}|E\rangle
+    [\ha,\hag] &= 1 \\
+    [\ha,\ha] &= [\hag,\hag] = 0 \\
+    \hh &= \om\left(\hag\ha + \frac12\right) = \om\left(\han+\frac12\right) \\
+    \han|n\rangle &= n|n\rangle \\
+    [\han,\hag] &= \hag \\
+    [\han,\ha] &= -\ha \\
+    \hh|E\rangle &= E|E\rangle \\
+    \hh\left(\ha|E\rangle\right) &= \left(\ha\hh + \hh\ha - \ha\hh\right)|E\rangle \\
+                                         &= aE|E\rangle + \om[\han,\ha]|E\rangle \\
+                                         &= (E-\om)\ha|E\rangle
 \end{align}
 Eigenvalues of Hermitian operators are real numbers, therefore the eigenvalues of their squares cannot be negative $\implies$ there must be a lowest state $|0\rangle$ (the ground state) such that
 \begin{align}
-    \hat{a}|0\rangle &= 0 \implies E_0 = \frac{\om}{2}
+    \ha|0\rangle &= 0 \implies E_0 = \frac{\om}{2}
 \end{align}
 
+\chapter{}
+\section{Lagrange Formalism for Point Particles}
+Put point particles along one dimension at even intervals, $i=1,2,\dots$.
+Can write a Lagrangian for the system which is the Lagrangian for all the points and their relative veolicties, $\La(q_i,\dot{q}_i,t)$.
+\begin{align}
+    \frac{d}{dt}\frac{\p L}{\p \dot{q}_i} - \frac{\p L}{\p q_i} = 0
+\end{align}
+Now instead of these discrete labels, call the one dimension a continous "label" x.
+Now you have a chain where each "x" is a point on a continous chain, $\La\left(q(x),\dot{q}(x),t\right)$.
+Note that the time dependence is implicit in each variable of the Lagrangian - this reduces the discrete case to a function of one variable, however more complicated in the continous case. \\
+This $q(x)$ is not a particle like the $q_i$, but a field.
+
+\section{Fields}
+Scalar fields are real- or complex-valued functions of space time.
+\begin{align}
+    \phi(\unl{x},t) \in \R,\C
+\end{align}
+Now defining fields, the Lagrange function is now an integral of the Lagrange density, and then can consider the action principle.
+\begin{align}
+    L\left[\phi,\p_\mu\phi\right] &= \int \La\left(\phi(\unl{x},t),\p_\mu\phi(\unl{x},t),t\right)\,d^3x \\
+    S(t,t_0) &= \int_{t_0}^t L\,dt = \int_{t_0}^t \La\,d^4x
+\end{align}
+The dimension of the action must be zero as it gets exponentiated, and must result in zero mass.
+\begin{align}
+    \text{dim}[S] &= 0 & \text{dim}[dx] &= -1
+\end{align}
+These imply that the Lagrangian has mass dimension of 4.
+\begin{align}
+    \La &= \frac12\p_\mu\phi\p^\mu\phi - \frac{m^2}{2}\phi^2
+\end{align}
+By construction, the following holds:
+\begin{align}
+    \text{dim}[\p_\mu] &= 1 & \text{dim}[\phi] &= 1
+\end{align}
+Now, following on using similar logic to Hamilton's principle and canonical conjugates for (2.6),
+\begin{align}
+    \pi &= \frac{\p\La}{\p\dot{\phi}} \leftrightarrow \dot{\phi} \\
+    \Ham &= \dot{\phi}\pi - \La = \frac{\pi^2}{2} + \frac{(\del\phi)^2}{2} + m^2\phi^2
+\end{align}
+Now for the Equations of Motion:
+\begin{align}
+    \p_\mu \frac{\p\La}{\p(\p_\mu\phi)} - \frac{\p\La}{\p\phi} &= 0 \\
+    \p_\mu\p^\mu\phi + m^2\phi &= 0 \\
+    \Box\phi + m^2\phi &= 0
+\end{align}
+
+\begin{example}[Side Remark]
+For a free non-relativistic particle, we have
+\begin{align}
+    E &= \frac{p^2}{2m}
+\end{align}
+The Schrodinger equation is essentially this.
+But then if we go relativistic (with a Fourier transform),
+\begin{align}
+    E^2 &= \unl{p}^2 + m^2 \\
+    \p_t^2 - \unl{\del}^2 - m^2 &= \p_\mu\p^\mu - m^2
+\end{align}
+\end{example}
+
+We write our solution as
+\begin{align}
+    \phi(\unl{x},t) &= \sum_{\unl{p}} \left[A(\unl{p})\cos(p\cdot x) + B(\unl{p})\sin(p\cdot x)\right] \\
+    -p^2 &+ m^2 = 0 \\
+    p_0 &= \om = \sqrt{\unl{p}^2 + m^2}
+\end{align}
+Note that Eq (2.16) only works for the condition of Eq (2.18).\\
+Instead of summing over momenta, we want to integrate over momenta, so try
+\begin{align}
+    \phi(\unl{x},t) &= \int \frac{d^4p}{(2\pi)^4} (2\pi)\delta(p^2-m^2)\Theta(p_0) = \int \frac{d^3p}{2(2\pi)^3p_0}
+\end{align}
+
+\section{Making the field complex}
+\begin{align}
+    \La &= \p_\mu\phi^*\p^\mu\phi - m^2\phi^*\phi
+\end{align}
+From this, you get two sets of E.o.M, one for $\phi$ and one for $\phi^*$.
+\begin{align}
+    \phi^*:~ 0 &= \p_\mu\frac{\p\La}{\p(\p_\mu\phi)} - \frac{\p\La}{\p\phi} = (\Box+m^2)\phi^* \\
+    \phi:~ 0 &= \p_\mu\frac{\p\La}{\p(\p_\mu\phi^*)} - \frac{\p\La}{\p\phi^*} = (\Box+m^2)\phi
+\end{align}
+Solutions as before:
+\begin{align}
+    \phi &= Ae^{ipx} \\
+    \phi^* &= A^* e^{-ipx}
+\end{align}
+Now consider:
+\begin{align}
+    \phi &\to \phi' = \phi e^{i\nu} & \phi^* &\to \phi'^* = e^{-i\nu}\phi^* & \La &= \La'
+\end{align}
+Now we demand the action is unchanged.
+\begin{align}
+    \delta S &= 0 = \int d^4x\; \left[\frac{\p\La}{\p(\p_\mu\phi)} \delta(\p_\mu\phi) + \frac{\p\La}{\p\phi}\delta\phi + \phi\leftrightarrow\phi^*\right] \\
+    \delta\phi &= \phi'-\phi = (e^{i\nu}-1)\phi \implies \p_\mu(\delta\phi) = \delta(\p_\mu\phi) \\
+    \delta S &= \int d^4x\; \left\{\delta\phi\left[\p_\mu\frac{\p\La}{\p(\p_\mu\phi)} + \frac{\p\La}{\p\phi} + \phi\leftrightarrow\phi^* + \p_\mu\left(\frac{\p\La}{\p(\p_\mu\phi)}\phi\right)\right]\right\}
+\end{align}
+
+
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

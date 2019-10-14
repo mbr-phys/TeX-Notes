@@ -185,7 +185,102 @@ For interacting,
     \hh &= \hh_0\otimes\mathbb{I}_1 + \mathbb{I}_1\otimes\hh_1 + \mathcal{H}_{int}.
 \end{align}
 
+\chapter{}
+\section{Learning Outcomes}
+To be familiar with the route to quantisation of the electromagnetic field, in particular to:
+\begin{itemize}
+    \item Explain and state the description of the electromagnetic field in terms of modes, including polarization
+    \item Be familiar with the equivalence between a mode of the field and a quantum harmonic oscillator
+    \item To explain the form of (but not derive) expressions for the Hamiltonian of the electromagnetic field, and the electric and magnetic fields in terms of the creation and annihilation operatoes
+    \item To recognise and explain the concepts of the Schrodinger and Heisenberg representations, and to explain which is being applied
+    \item To explain and apply the concepts of adjoint and self-adjoint operators and their matrix elements
+\end{itemize}
 
+\section{Quantising the EM field}
+Consider an EM scalar potential, $\phi=0$ (no free charges), and a vector potential, $\unl{A}$.
+\begin{align}
+    \E(\vr,t) &= \frac{\p}{\p t}\unl{A} & \B(\vr,t) &= \del\times\unl{A}(\vr,t) \\
+    \grad\left[\grad\cdot\unl{A}\right] &- \del^2\unl{A} + \frac{1}{c^2}\frac{\p^2}{\p t^2}\unl{A} = 0
+\end{align}
+Coulomb gauge, $\del\cdot\unl{A} = 0$.
+\begin{align}
+    \unl{A} &= \sum_{\unl{k}} \left\{ \unl{A}_{\unl{k}}\exp\left[i(\unl{k}\cdot\unl{r}-\om_kt)\right] + \unl{A}^*_{\unl{k}}\exp\left[-i(\unl{k}\cdot\unl{r} - \om_kt)\right]\right\} \\
+    \om_k &= c|k|,~ \unl{k}\cdot\unl{A}_{k} = 0
+\end{align}
+Polarisation vectors, $\ve_{k1},\ve_{k2}$ - orthonormal vectors perpendicular to $\unl{k}$.
+\begin{align}
+    \unl{A}_k &= A_{k1}\ve_{k1} + A_{k2}\ve_{k2} \\
+    \unl{A} &= \sum_{\unl{k},s} A_{\unl{k},s}\ve_{\unl{k},s}\exp\left\{i(\unl{k}\cdot\vr-\om_kt)\right\} + A_{\unl{k},s}^*\ve_{\unl{k},s}\exp\left\{-i(\unl{k}\cdot\vr-\om_kt)\right\}
+\end{align}
+The labels of the modes are $\unl{k},s$, $s\in1,2$. 
+They gives us the: direction; wavelength, $\frac{2\pi}{|\unl{k}|}$; and polarisation, $s$.\\
+To quantise this classically:
+\begin{align}
+    H &= \frac12\e_0 \int \left(\E\cdot\E + c^2\B\cdot\B\right)\,dV \\
+      &= 2\e_0 V \sum_{\unl{k},s} \om_k^2 A_{\unl{k},s}A_{\unl{k},s}^* \\
+    A_{\unl{k},s} &= \frac{1}{2\om_k\sqrt{\e_0V}} \left\{\om_kq_{\unl{k},s} + ip_{\unl{k},s}\right\} \\
+    A_{\unl{k},s}^* &= \frac{1}{2\om_k\sqrt{\e_0V}} \left\{\om_kq_{\unl{k},s} - ip_{\unl{k},s}\right\}
+\end{align}
+$q_{\unl{k},s},p_{\unl{k},s}$ canonical coordinates $(x,p)$.
+\begin{align}
+    H_{\unl{k},s} &= \frac12\left(p^2_{\unl{k},s} + \om_k^2q_{\unl{k},s}\right)
+\end{align}
+Harmonic oscillator $m=1$, $x\leftrightarrow p$.
+To transfer this from classical to quantum, you simply convert everything to its operator form. 
+For a single mode:
+\begin{align}
+    \hh_{\unl{k},s} &= \left(\hag_{\unl{k},s}\ha_{\unl{k},s} + \frac12\right)\hbar\om_k \\
+    [\ha_{\unl{k},s},\hag_{\unl{k},s}] &= 1 \\
+    \hag_{\unl{k},s}\ha_{\unl{k},s} &= \hn_{\unl{k},s}
+\end{align}
+Now we have eigenstates, $|n\rangle_{\unl{k},s}$.
+Note: modes are not always equal to photons, but you can have photons spread over several modes. \\
+Going back on the substitution:
+\begin{align}
+    \hat{A}_{\unl{k},s} &= \sqrt{\frac{\hbar}{2\om_k\e_0V}}\ha_{\unl{k},s} & \hat{A}_{\unl{k},s}^\dagger &= \sqrt{\frac{\hbar}{2\om_k\e_0V}}\hag_{\unl{k},s}
+\end{align}
+From these, we can find the quantised electric and magnetic field expressions. 
+We will mostly be concerned with the electric field throughout this course as it has a much stronger interaction with matter than the magnetic. 
+\begin{align}
+    \hat{\E}_{\unl{k},s}(\vr,t) &= i\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\left[\ha_{\unl{k},s}\exp\{i(\unl{k}\cdot\vr-\om_kt)\} - \hag_{\unl{k},s}\exp\{-i(\unl{k}\cdot\vr-\om_kt)\}\right]
+\end{align}
+
+\section{Multimode Fields}
+\begin{align}
+    \hat{H}_{\unl{k},s} &= \sum_{\unl{k},s} \hbar\om_k \left(\hag_{\unl{k},s}\ha_{\unl{k},s} + \frac12\right)
+\end{align}
+So the modes are independent of each other, but will interact through matter. 
+We have a basis of 
+\begin{equation}
+    |n_1n_2n_3\dots\rangle \equiv |n_1\rangle_{\unl{k}1,s}\otimes|n_2\rangle_{\unl{k}2,s}\otimes\dots
+\end{equation}
+Now we can write the electric field operator:
+\begin{align}
+    \hat{\E}(\vr,t) &= \sum_{\unl{k},s} \hat{\E}_{\unl{k},s}(\vr,t) \\
+                    &= \sum_{\unl{k},s} i\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\left\{\ha_{\unl{k},s}\exp[i(\unl{k}\cdot\vr-\om_kt)] + \hag_{\unl{k},s}\exp[-i(\unl{k}\cdot\vr-\om_kt)]\right\}
+\end{align}
+This is written in the Heisenberg representation. 
+Now if we look at the expectation value, for one mode of the electric field
+\begin{align}
+    {}_{\unl{k},s}\langle n|\hat{\E}(\vr,t)|n'\rangle_{\unl{k},s}
+\end{align}
+This is time dependent as seen by the field operator and will oscillate in time through some means. 
+As a reminder, consider an operator in the Heisenberg picture:
+\begin{align}
+    \hat{O}_H(t) &= \hat{U}^\dagger(t,t_0)\hat{O}\hat{U}(t,t_0) \\ 
+    \hat{U}(t,t_0) &= \exp
+\end{align}
+
+
+
+
+
+
+
+
+
+
+\textit{LOs for L2}
 \end{document}
 
 
