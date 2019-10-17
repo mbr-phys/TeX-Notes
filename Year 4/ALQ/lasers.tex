@@ -212,7 +212,102 @@ These rates are equal when
 \end{align}
 For $\lambda=500\,nm$, $T= 41400\,K$. So for most black bodies, stimulated emission is negligible.
 
+\chapter{Linewidths and Lineshapes}
+2 types of broadening:
+\begin{itemize}
+    \item Homogeneous - all atoms in sample affected the same
+    \item Inhomogeneous - atoms in sample affected differently
+\end{itemize}
 
+\section{Homogeneous Broadening}
+Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
+\textbf{Radiative (natural) broadening:}
+\begin{itemize}
+    \item Consider some excited state population (\textit{doodle}), $N_2$. $e^{-\Gamma_Ht}$
+        Leads to some spread in maximum, \textit{doodle}.
+        \begin{equation}
+            FWHM = \Gamma_H
+        \end{equation}
+        This broadening follows from the Heisenberg uncertainty principle: Finite lifetime $\implies$ spread in energy, $\Delta E\Delta t \approx \hbar/2$, then a spread in energy $\implies$ a spread in frequency,
+        \begin{equation}
+            \Delta E = \hbar\Delta\om \implies \Delta\om = \frac{1}{\tau_2} = A_{21} = \Gamma_H
+        \end{equation}
+        This is only for a 2 level atom.
+    \item Define the normalised lineshape function:
+        \begin{align}
+            L_H(\om) &= \frac{\frac{\Gamma_H}{2\pi}}{(\om-\om_{12})^2+\frac{\Gamma_H^2}{4}} \\
+            \ofnt &L_H(\om)\;d\om = 1
+        \end{align}
+    \item For multiple decay paths: \textit{doodle of decays from level k to levels l,m,n}.
+        For level k
+        \begin{align}
+            \frac{dN_k}{dt} &= -N_kA_{kl} - N_kA_{km} - N_kA_{kn} \\
+            \tau_k &= \frac{1}{\sum A_{ki}} = \frac{1}{\Gamma_H}
+        \end{align}
+    \item When both levels decay, \textit{doodle}.
+        \begin{align}
+            \Gamma_2 &= \sum A_{2i} = \frac{1}{\tau_2} \\
+            \Gamma_1 &= \sum A_{1i} = \frac{1}{\tau_1} \\
+            \Gamma_{21} &= \Gamma_2 + \Gamma_1
+        \end{align}
+        $\Gamma_{21}$ is the emission linewidth. 
+\end{itemize}
+\begin{example}[Argon ion laser]
+    \textit{doodle the laser transition between $3p^44p,^2D_{5/2}^0 \to ^2P_{3/2} \to 3p^5({}^2P_{1/2}^0,{}^2P_{3/2}^0)$}.\\
+    $\lambda = 488\,nm$, $A= 7.8\times10^7\;s^{-1}$, $1:\,73,1\;nm;~ A=4.5\times10^8\;s^{-1}$, $2:\,72.3\;nm;~ A=23\times10^8\;s^{-1}$.\\
+    Emission linewidth:
+    \begin{align}
+        \sum A &= 2.8\times10^9 = (2\pi)450\;MHz
+    \end{align}
+\end{example}
+\textbf{Collisional/pressure broadening:}
+\begin{itemize}
+    \item Collisions between atoms - de-excite the atoms $\to$ reduce excited state lifetime $\to$ broader transition
+    \item Depends on pressure - important for gas lasers
+\end{itemize}
+\textbf{Phonon broadening:}
+\begin{itemize}
+    \item \textit{doodle of standard 1,2 transition for bare atom/ion}. In a crystal, two distinct groups of energy levels packed together, quantised vibrational modes $\implies$ phonons. 
+    \item Occurs in solid state lasers, and is temperature tempendent
+    \item Dominant broadening at room temperature
+\end{itemize}
+
+\section{Inhomogeneous Broadening}
+\textbf{Doppler Broadening:}
+\begin{itemize}
+    \item Arises due to motion of atoms - when a moving atom emits, there is a Doppler shift dependent on the component of velocity along the direction of the emitted photon.
+        \begin{align}
+            \om &= \om_{12}\left(1 \pm \frac{v_z}{c}\right)
+        \end{align} 
+        $\pm$ for blue/red shift - blue as velocity towards observer, red away. 
+    \item Broadening arises due to Maxwell-Boltzmann distribution of velocities,
+        \begin{align}
+            P(v_z)\,dv_z &= \left(\frac{M}{2\pi k_BT}\right)^{1/2} \exp\left(-\frac{Mv_z^2}{2k_BT}\right)\;dv_z
+        \end{align}
+        Use correspondence between $v_z$ and $\om$ to get
+        \begin{align}
+            P(\om)\,d\om &= \frac{c}{\om_{12}}\left(\frac{M}{2\pi k_BT}\right)^{1/2}\exp\left[-\frac{Mc^2}{2k_B T}\frac{(\om-\om_{12})^2}{\om_{12}^2}\right]
+        \end{align}
+    \item \textit{doodle tight peak around $\om_{12}$, a smaller tight peak closer to observer with higher freq, and another smaller tight peak further from observer with smaller freq, with a gaussian overcurve.} This is the Gaussian lineshare summed over all velocity classes. $FWHM = \Delta\om_I$.
+    \item For Doppler broadening, 
+        \begin{align}
+            \Delta\om_I &= \frac{2\om_{12}}{c}\left(\frac{2k_BT}{M}\ln2\right)^{1/2} \\
+                        &= 7.16\times10^{-7}\om_{12}\left(\frac{T}{M_A}\right)^{1/2}
+        \end{align}
+        $\Delta\om_I$ is known as the Doppler width, $M_A$ is using the mass in atomic units instead of kg as used so far for $M$.
+\end{itemize}
+\begin{example}[Argon ion laser 2]
+$M_A = 40$, $\lambda=488\,nm$, Discharge temperature $\approx 1200^\circ C$.
+\begin{align}
+    \Delta\om_I &= (2\pi) 2.7\,GHz
+\end{align}
+This is many times larger than the natural broadening. 
+\end{example}
+\textbf{Amorphous crystal broadening:}
+\begin{itemize}
+    \item Occurs in glass materials
+    \item Inhomogeneities are Gaussian (normal), the emission is also Gaussian
+\end{itemize}
 
 \end{document}
 

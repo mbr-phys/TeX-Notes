@@ -299,6 +299,99 @@ We can then define conserved charge:
 \end{enumerate}
 
 
+\chapter{}
+We have to use creation and annihilation operators that propagate forwards and backwards in time for the plane wave to work. 
+What propagates backwards in time though?
+Essentially anti-particles - recall the negative energy solutions from last year in Dirac theory. 
+Particles propagating backwards in time are equivalent to anti-particles propagating forwards - this is where the backwards pointing arrows for Feynman diagrams come from. 
+\textit{do a doodle} - the anti-particle won't satisfy the four-momentum conservation rules. 
 
+\section{Green's functions for QM}
+\begin{align}
+    G(\vx,t;\vx',t'):~ \psi(\vx,t) &= \int d^3x\; G(\vx,t;\vx',t)\psi(\vx',t')
+\end{align}
+This makes use of the superposition in QM.
+In principle, you can use this with any theory. 
+Note: the wavefunction used above is $\psi(\vx,t) \equiv \langle\vx|\psi(t)\rangle$.
+THis solves the time-dependent Schrodinger equation, 
+\begin{align}
+    (i\p_t - \hh)|\psi\rangle &= 0 \\
+    (i\p_t - H)_xG(\vx,t;\vx',t') &= \delta^3(\vx-\vx')\delta(t-t') \\
+    G\to 0 &\iff t < t'
+\end{align}
+This is called the retarded Green's function.
+\begin{align}
+    G(\vx,t;\vx',t') &= \langle\vx,t|\hat{U}(t,t')|\vx',t'\rangle\Theta(t-t')
+\end{align}
+$\hat{U}$ is the time evolution operator. 
+This solves everything really, but the issue is it doesn't give practical solutions.
+\begin{align}
+    \hat{U}(t-t') &= \exp\left[-i\int_{t'}^{t} \hh(\tau)\; d\tau\right] \to_{\cancel{\propto} t}  \exp\left[-i\hh(t-t')\right] 
+\end{align}
+Now we take a free Hamiltonian:
+\begin{align}
+    \hh_0 &= \frac{\hp^2}{2m}
+\end{align}
+This then gives the free Green's function, $G_0$.
+\begin{align}
+    \left(i\p_t-\frac{\vp^2}{2m}\right)_xG_0(\vx,t;\vx',t') &= \delta^3(\vx-\vx')\delta(t-t')
+\end{align}
+Can either go from p space to x space, or can transform time derivatives to energy and solve it in energe space. 
+\begin{align}
+    \left(\om-\frac{\vp^2}{2m}\right) G_0(\vp,\om) &= 1 \\
+    G_0(\vp,\om) &= \frac{1}{\om-\frac{\vp^2}{2m}} \\
+    G_0(\vx,t;\vx',t') &= \int \frac{e^{-i\om(t-t')-i\vp(\vx-\vx')}}{w-\frac{\vp^2}{2m}}  \;d^3p\;d\om
+\end{align}
+Notice that we have developed a problem here in the form of a pole in the denominator. 
+This is solved using usual Cauchy tactics: 
+\begin{align}
+    G_0^{(R)}(\vx,t;\vx',t') &= \int \frac{e^{-i\om(t-t')-i\vp(\vx-\vx')}}{w-\frac{\vp^2}{2m} - i\e^+}  \;d^3p\;d\om
+\end{align}
+This now transforms back to the retarded function, as the $\e$ term gives back $\Theta(t-t')$.
+\begin{align}
+    G^{(R)}_0 &= \int \exp\left[-\frac{ip^2(t-t')}{2m}\right] \Theta(t-t')\exp\left[-ip(\vx-\vx')\right]\; d^3p
+\end{align}
+We can make this look very Gaussian for a simpler solve, quadratic in x and divided by t - a quadratic extension.
+Therefore, it is finite. \\
+Now what happens adding a term to the Hamiltonian: $\hh = \hh_0 + V(\vx)$?
+Pretty much the only example of a term that is solvable under this is a harmonic oscillator. 
+It becomes increasingly more complicated going down this path for real systems.\\
+To solve this new Hamiltonian, must do something slightly different. 
+Let us say we know the solution for the free Green's function:
+\begin{align}
+    \F\left[(i\p_t - H_0)G_0\right] &= 1 \\
+    \tilde{G}_0 &= \frac{1}{\tilde{i\p_t - H_0}} \\
+    (i\p_t - H_0 - V)G &= \delta^3(\vx-\vx')\delta(t-t') \\
+    \F\left[(i\p_t-H_0-V)G\right] &= 1 \\
+    (\tilde{G}_0^{-1} - \tilde{V})\tilde{G} &= 1
+\end{align}
+From this, you can realise that you can write a formal solution for this as an expansion in how the particle interacts with the potential - Born potential from TP3. 
+\begin{align}
+    G(\vx_N,t_N;\vx_0,t_0) &= G_0(t_N,t_0) + G_0(t_N,t_1)V(t_1)G_0(t_1,t_0) + G_0(t_N,t_2)V(t_2)G_0(t_2,t_1)V(t_1)G_0(t_1,t_0) + \dots
+\end{align}
+The second term here is the first Born approximation, but can then can be continued onward, on the condition of $t_N \geq t_{N_1} \geq \dots t_2\geq t_1\geq t_0$.
+The Born expansion is just the first term in a process known as perturbative expansion, or the Dyson series. 
+This is just a Taylor expansion in V.
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
