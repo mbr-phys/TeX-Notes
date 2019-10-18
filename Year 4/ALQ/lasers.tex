@@ -309,6 +309,110 @@ This is many times larger than the natural broadening.
     \item Inhomogeneities are Gaussian (normal), the emission is also Gaussian
 \end{itemize}
 
+\chapter{}
+\begin{example}
+\textit{doodle of cylinder with some gas in, narrowband light beam (arrow) towards it}
+If the light beam is resonant with the atoms in the gas, we would expect some interaction. 
+But how is the medium excited?
+It depends on the broadening. 
+\begin{enumerate}
+    \item Homogeneous broadening: \textit{graph of om vs N1, lorentzian about zero, turn on radiation spike above zero, under lorentzian bracket.}\\
+        Turn on radiation within natural linewidth. 
+        \textit{om vs N2 graph - tiny dotted lorentzian, and om vs N1 graph - lorentzian around 0, then dotted lorentzian that is reduced}
+        All of these distributions will be the same - all atoms are affected equally.  
+    \item Inhomogeneous broadening: \textit{Gaussian graph around om12 (om vs N1) with spike above, graph of N2 vs om with tiny dotted gaussian around spike, and om vs N1 where it's a Gaussian with tiny dip in it where spike was}
+        Distributions are now very different - atoms are affected differently, and only a subset of the atoms interact.
+        For example, with Doppler broadening, only particles with a specific velocity would be excited strongly by the light beam. 
+        The width of the N2 Gaussian is determined by natural broadening. 
+\end{enumerate}
+\end{example}
+Reminder:
+\begin{align}
+    A_{21}N_2 &\equiv \text{rate of spontaneous emission per }m^3 \\
+    B_{12}\rho(\om_{12})N_1 &\equiv \text{rate of absorption per }m^3 \\
+    B_{21}\rho(\om_{12})N_2 &\equiv \text{rate of stimulated emission per }m^3
+\end{align}
+\section{Homogeneous broadening}
+All atoms are affected the same $\implies$ simply define a new constant:
+\begin{align}
+    a_{21}(\om) &= A_{21}L_H(\om) & b_{12}(\om) &= B_{12}L_H(\om) & b_{21}(\om) &= B_{21}L_H(\om)
+\end{align}
+Then if we wanted to know the rate of emission now:
+\begin{align}
+    a_{21}(\om)\,d\om &= \text{rate of emission in range $\om\to\om+d\om$ per atom} 
+\end{align}
+We have to multiply by the $d\om$ because $L_H(\om)$ has units $\frac{1}{\om}$.
+Integrating recovers the result,
+\begin{align}
+    \int L_H(\om)\,d\om &= 1
+\end{align}
+Inhomogeneous broadening is more difficult. 
+We want to do this, but we can use the results from homogeneous broadening in certain circumstances, i.e. for narrowband light and $\Gamma_H \ll \Delta\om_I$.
+
+\textit{Draw a very thin square slab with width dz, light beam arrow going in with I(z) and light beam leaving with I(z+dz). Slab has label for area A.}\\
+Consider a \unl{weak} narrowband beam of light, frequency $\om$ and bandwidth $d\om$. \\
+Assume:
+\begin{itemize}
+    \item No spontaneous emission
+    \item Homogeneous broadening
+    \item Steady state
+\end{itemize}
+Find change in power of beam.
+\begin{align}
+    \left(I(z+dz) - I(z)\right)A &= \left[N_2B_{21}L_H(\om)\rho(\om_{12})\,d\om - N_1B_{12}L_H(\om)\rho(\om_{12})\,d\om\right]\times\hbar\om\times A\,dz
+\end{align}
+The term inside the square brackets above is the net rate of photons added to the field ($m^{-3}$).\\
+For a beam, the intensity is described as
+\begin{align}
+    I(z) &= c\rho(\om)\;d\om 
+\end{align}
+Substitute this into Eq (4.7) and rearrange, also using the expressions for A and B coefficients found in lecture 2: 
+\begin{align}
+    \frac{1}{I}\frac{dI}{dz} &= \frac{\hbar\om}{c}L_H(\om)\left[N_2B_{21} - N_1B_{12}\right] \\
+                             &= \frac{\pi^2c^2}{\om^2_{12}}A_{21}L_H(\om)\left[N_2 - \frac{g_2}{g_1}N_1\right]
+\end{align}
+This uses the assumption that we are close to resonance.\\
+The prefactor can be defined as the optical gain cross section,
+\begin{align}
+    \sigma(\om) &= \frac{\pi^2c^2}{\om_{12}^2}A_{21}L_H(\om).
+\end{align}
+Solve equation:
+\begin{align}
+    I(z) &= I(0)\exp\left[\sigma(\om)\times\left(N_2-\frac{g_2}{g_1}N_1\right)z\right]
+\end{align}
+There are two cases:
+\begin{enumerate}
+    \item Absorption:
+        \begin{align}
+            N_2 &< \frac{g_2}{g_1}N_1 \\
+            \implies I(z) &= I(0)e^{-\kappa(\om)z},~ \kappa(\om) = \sigma(\om)\left(\frac{g_2}{g_1}N_1 - N_2\right)  
+        \end{align}
+        $\kappa$ is the absorption coefficient. 
+        \textit{Draw diagram of Beer's law, decay of I(z) from I(0) as z increases.}
+    \item Amplification.
+        \begin{align}
+            N_2 &> \frac{g_2}{g_1}N_1 \\
+            I(z) &= I(0)e^{g(\om)z},~ g(\om) = \sigma(\om)\left(N_2-\frac{g_2}{g_1}N_1\right)
+        \end{align}
+        $g(\om)$ is the gain coefficient, $e^{g(\om)z}$ is the gain. 
+        \textit{Doodle of exponential growth from I(0) with z of I(z).}
+\end{enumerate}
+The condition for gain is
+\begin{equation}
+    N_2 > \frac{g_2}{g_1}N_1.
+\end{equation}
+This is known as \unl{Population Inversion.}
+Frequency dependence of the gain:
+\begin{align}
+    g(\om) &= \sigma(\om)\times N^*, ~ N^* = N_2 - \frac{g_2}{g_1}N_1 \\
+           &= \frac{\pi^2c^2}{\om_{12}^2}A_{21}L_H(\om)\times \left[N_2-\frac{g_2}{g_1}N_1\right]
+\end{align}
+We call $N^*$ the population inversion density. 
+\textbf{Note:} Frequency dependence is in the optical gain cross section via $L(\om)$. 
+$\sigma(\om)$ is determined by the atom, we cannot control it. 
+Broadening spreads gain over a range of frequencies. 
+
+
 \end{document}
 
 
