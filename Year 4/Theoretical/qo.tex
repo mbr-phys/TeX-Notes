@@ -279,6 +279,110 @@ As a reminder, consider an operator in the Heisenberg picture:
     \hat{U}(t,t_0) &= \exp\left[-i\frac{\hat{H}(t-t_0)}{\hbar}\right]
 \end{align}
 
+\chapter{}
+\section{Learning Outcomes}
+Quantum States of the EM field. 
+We will cover three important families of quantum states of light: number states, coherent states, and squeezed states. 
+After studying this part, you should:
+\begin{itemize}
+    \item recognise each of these types of states, and be able to provide a simple definition
+    \item be familiar with the expansion of coherent states in terms of number states
+    \item be able to calculate expectation values and variances of physical quantities (e.g. electric field, photon number, quadratures, etc) for number states and coherent states
+    \item be familiar with and able to define the quadrature operators
+    \item be able to sketch phase space diagrams of coherent states and squeezed states
+    \item to provide and explain the definition of a quadrature squeezed state and its key properties
+    \item to describe the uncertainty relation and the concept of minimum uncertainty states
+\end{itemize}
+
+\section{Single Mode Fields}
+\begin{align}
+    \hn_{\unl{k},s} &= \hag_{\unl{k},s}\ha_{\unl{k},s} \\
+    \hh_{\unl{k},s} &= \left(\hn_{\unl{k},s}+\frac12\right)\hbar\om_k 
+\end{align}
+The eigenstates are the number states, a.k.a Fock states, $|n\rangle_{\unl{k},s}$.
+\begin{align}
+    \hn_{\unl{k},s}|n\rangle_{\unl{k},s} &= n|n\rangle_{\unl{k},s} \\
+    \hh_{\unl{k},s}|n\rangle_{\unl{k},s} &= \hbar\om_k\left(n+\frac12\right)|n\rangle_{\unl{k},s} 
+\end{align}
+It follows that the vacuum state has energy as well - $|0\rangle_{\unl{k},s}$, with energy $\frac12\hbar\om_k$.
+\begin{align}
+    \hag_{\unl{k},s} |0\rangle_{\unl{k},s} &= |1\rangle_{\unl{k},s} \\
+    \ha_{\unl{k},s}|1\rangle_{\unl{k},s} &= |0\rangle_{\unl{k},s}
+\end{align}
+
+\section{Multimode fields}
+For multimode states, we just do the sum of all of these states. 
+\begin{align}
+    \hh &= \sum_{\unl{k},s} \left(\hn_{\unl{k},s} + \frac12\right)\hbar\om_k \\
+    |n_0n_1n_2\dots n_k\dots\rangle &= |n_0\rangle_0\otimes|n_1\rangle\otimes\dots\otimes|n_k\rangle_k\otimes\dots
+\end{align}
+The modes cannot interact with each other, so are independent unless there is matter to interact with.
+\begin{align}
+    \left[\hag_{\unl{k},s},\ha_{\unl{k}',s'}\right] &= \delta_{kk'}\delta_{ss'} \\
+    {}_{\unl{k},s}\langle n_k|n_{k'}\rangle_{\unl{k}',s} &= 0,\; \forall k\neq k', s\neq s'
+\end{align}
+
+\section{Electric Field of a Single Field Number State}
+What is the expectation value, $\langle\hat{\E}_{\unl{k},s}(\vr,t)\rangle$?
+\begin{align}
+    {}_{\unl{k},s}\langle n|\Eh_{\unl{k},s}(\vr,t)|n\rangle_{\unl{k},s} &= \ve_{\unl{k},s}i\left(\frac{\hbar\om_k}{2\e_0 V}\right)^{1/2}\left[{}_{\unl{k},s}\langle n|\ha_{\unl{k},s}|n\rangle_{\unl{k},s}e^{i(\unl{k}\cdot\vr-\om_k t)} - {}_{\unl{k},s}\langle n|\hag_{\unl{k},s}|n\rangle_{\unl{k},s}e^{-i(\unl{k}\cdot\vr-\om_kt)}\right] \\
+    \ha|n\rangle &= \sqrt{n}|n-1\rangle \implies \langle n|n-1\rangle = 0 \\
+    \hag|n\rangle &= \sqrt{n+1}|n+1\rangle \implies \langle n|n+1\rangle = 0 \\
+    \implies \langle\Eh_{\unl{k},s}(\vr,t)\rangle &= 0,\; \forall n
+\end{align}
+I.e. the mean electric field is zero for number states.
+Now consider the expectation value for the square of the electric field, $\langle \Eh_{unl{k},s}(\vr,t)^2\rangle$.
+\begin{align}
+    \langle \Eh_{unl{k},s}(\vr,t)^2\rangle &= 2\left(\frac{\hbar\om_k}{2\e_0V}\right)\left(n+\frac12\right)
+\end{align}
+Now we can work out the variance:
+\begin{align}
+    \langle(\Delta\E)^2\rangle = \langle\Eh^2\rangle - \langle\Eh\rangle^2 &= 2\left(\frac{\hbar\om_k}{2\e_0V}\right)\left(n+\frac12\right) \\
+    H &= \frac12\e_0 \int \left(\E^2+\frac{1}{c^2}\B^2\right)\,dV
+\end{align}
+From analogy to the classical Hamiltonian, we can see how the variance would be related to the energy. \\
+The vacuum state fluctuates in its energy around zero, and this has observable effects.
+
+\section{Electric Field in Multimode Fields}
+For a multimode field's vacuum, 
+\begin{align}
+    \langle(\Delta\E)^2\rangle &= \sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right).
+\end{align}
+This term sums to infinity, which can be a problem, and leads to some effects:
+\begin{itemize}
+    \item The Lamb shift in atoms' energy levels
+    \item The Casimir effect causes a series of modes to form in between two plates that can be zero at the plates, while the modes outside the plates have no restrictions. The difference in the two areas of modes causes a force that pushes the plates together.
+        The Casimir effect has a classical analogue when boats close to a harbor wall are pushed into the wall by the difference in waves from out in the open water and between the boat and the wall. 
+\end{itemize}
+
+\section{The Number States - A Summary}
+\begin{itemize}
+    \item Complete orthonormal basis
+    \item Well defined photon number and energy
+    \item Zero mean electric field - not at all classical
+    \item E-field fluctuates, even for $|0\rangle$, and E-field fluctuations increase with $n$
+    \item Most non-classical states you can get, and you can do experiments with them to show this using single or a few photons in the modes
+\end{itemize}
+
+\section{States with Classical Limits}
+\begin{align}
+    E_x(z,t) &\propto \sin(kx-\om t) \\
+    \langle n|\ha|n\rangle &= \langle n|\hag|n\rangle = 0 \\
+    |\psi\rangle &= \sum_n c_n |n\rangle
+\end{align}
+We want to look for eigenstates of $\ha$:
+\begin{align}
+    \ha|\alpha\rangle &= \alpha|\alpha\rangle, \alpha\in\C
+\end{align}
+We did this because right eigenstates of $\hag$ do not exist.
+\begin{align}
+    \hag|\beta\rangle &\neq \beta|\beta\rangle,\forall \beta \in \C \\
+    \langle\alpha|\hag &= \alpha^*\langle\alpha|
+\end{align}
+However, $\hag$ does form eigenstates with left states. 
+
+
+
 
 
 \end{document}
