@@ -373,6 +373,95 @@ The second term here is the first Born approximation, but can then can be contin
 The Born expansion is just the first term in a process known as perturbative expansion, or the Dyson series. 
 This is just a Taylor expansion in V.
 
+\chapter{}
+\section{Causality}
+\begin{align}
+    i\Delta(x-y) &= [\hphi(x),\hphi(y)]
+\end{align}
+For equal times, $x_0=y_0$, $i\Delta(x-y) = 0$ unless $\vx = \unl{y}$.
+This is the equal time commutator, i.e. it is zero unless the two times are zero. 
+The properties of $(x-y)$ depend on $(x-y)^2$, as $(x-y) = \sqrt{(x-y)^2}$ to make it meaningful and remove four-vector indices. 
+For everything that x and y have space-like distance $(x-y)^2\leq0$, this must be zero; for light-like distances, it is something like the delta function.
+\begin{align}
+    i\Delta(x-y) &= \int \frac{d^3k\;d^3k'}{(2\pi)^32\om_k (2\pi)^3\om_{k'}} \left\{ \left[\ha(k),\hag(k')\right]e^{-ikx + ik'y} + \left[\hag(k),\ha(k')\right]e^{ikx-ik'y}\right\} \\
+                 &= \int \frac{d^3k}{(2\pi)^3 2\om_k} \left[e^{-ik\cdot(x-y)} - e^{ik\cdot(x-y)}\right] 
+\end{align}
+\begin{itemize}
+    \item manifestly Lorentz invariant (only scalar products of four-vectors)
+    \item micro-causality: vanishes for space-like distances because $\Delta(x-y)$ vanishes for $t_x = t_y$ (equal time commutator) - this is true only because sum is over positive and negative energy waves, ignoring the negative energy solutions, $\Delta$ does no longer vanish for space-like distances, and signals could be transmitted with superluminal speed. 
+    \item 
+        \begin{align}
+            \p_t\Delta(x-y)|_{x_0=y_0} = -\delta^3(x-y) 
+        \end{align}
+    \item $\Delta(x-y)$ solves the Klein-Gordon equation:
+        \begin{equation}
+            (\p_\mu\p^\mu + m^2)\Delta(x) = 0
+        \end{equation}
+    \item Vacuum Expectation Value:
+        \begin{align}
+            \Delta_+(x-y) &= \langle0|\Delta(x-y)|0\rangle = \dots \int\frac{d^3k}{(2\pi)^32\om_k} e^{-ik(x-y)}
+        \end{align}
+        If $x\to y$, this will explode to infinity, i.e. all of space-time. 
+        To ignore this, define another operator
+        \begin{align}
+            \Delta_-(x-y) &= \int \frac{d^3k}{(2\pi)^32\om_k}e^{ik(x-y)} \\
+            \langle0|\Delta|0\rangle &= \Delta_+ - \Delta_-
+        \end{align}
+\end{itemize}
+
+\section{Green's function of Klein-Gordon field}
+\begin{align}
+    (\Box + m^2)G(x,x') &= i\delta^4(x-x') \\
+    (-p^2 + m^2)G(p) &= i \\
+    G(p) &= \frac{-i}{p^2-m^2 - i\e^+}
+\end{align}
+This is classical field theory. 
+Must connect this with quantum operators and fields:
+\begin{align}
+    G(x,x') &= \langle0|T[\hphi(x)\hphi(x')]|0\rangle = \Delta_F \\
+    T[\hphi(x)\hphi(x')] &= \Theta(t-t')\hphi(x)\hphi(x') + \Theta(t'-t)\hphi(x')\hphi(x) 
+\end{align}
+This is the time-ordered product. 
+The first term describes forwards time, the second backwards time. 
+Now we can look at $i\e^+$ and convince ourselves that this is the equivalent of the $\Theta$ functions above:
+\begin{align}
+    \Theta(t) &= -\int \frac{d\om}{2\pi} \frac{ie^{-i\om t}}{\om - i\e^+} = \Delta_F
+\end{align}
+The $-i\e^+$ is the causal structure that leads into the time ordering of Eq (5.12).
+We call this then $\Delta_F$, the Feynman propagator.
+
+\section{Interacting Theory}
+We want to apply the above theory to reality, to see it working on actual physics and prove it is not just a consistent mathematical framework, but also a valid physical one. 
+We start with the $\phi^4$ theory Lagrangian.
+\begin{align}
+    \La &= \La_{free} + \La_{int} = \frac12(\p_\mu\phi)(\p^\mu\phi) - \frac{m^2}{2}\phi^2 - \frac{\lambda}{4!}\phi^4
+\end{align}
+This Lagrangian is said to not be realistic, as it is not one found in nature, but it is useful to test quantum field theory as it is useful for certain things and also awfully similar to the Higgs field after breaking electroweak symmetry, exlcuding the $\phi^3$ term. \\
+We want to calculate some scattering amplitude where some initial state becomes a final state, $M_{i\to f}$, or transition amplitude.
+\begin{align}
+    M_{i\to f} &= \langle f|i\rangle
+\end{align}
+We pretend we are dealing with particles that are isolated from all other interactions coming from an infinite distance. 
+This is not the case as there is constant "bubbles" of particles being created and annihilated instantaneously throughout space-time. 
+We use perturbation theory to expand around the bubbles and subtract the eventual infinities that then plague us. 
+The most useful quantity for now to calculate is the S-matrix:
+\begin{align}
+    M_{i\to f} &= \langle f|\hat{S}|i\rangle = S_{fi}
+\end{align}
+
+\section{Pictures}
+\begin{itemize}
+    \item Schrodinger - $\hat{O}^{s}$ operators do no depend on time, but wavefunctions do $\psi^s(t)$
+    \item Heisenberg - $\hat{O}^H(t)$ operators do depend on time, but wavefunction does not $\psi^H$
+        \begin{equation}
+            \hat{O}^H(t) = \exp[i\hh(t-t_0)]\hat{O}^s\exp[-i\hh(t-t_0)]
+        \end{equation}
+        We can switch between Schrodinger and Heisenberg using the time-evolution operator. 
+    \item Interaction - 
+\end{itemize}
+
+
+
 \end{document}
 
 
