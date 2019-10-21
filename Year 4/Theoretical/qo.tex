@@ -364,6 +364,7 @@ This term sums to infinity, which can be a problem, and leads to some effects:
     \item Most non-classical states you can get, and you can do experiments with them to show this using single or a few photons in the modes
 \end{itemize}
 
+\chapter{}
 \section{States with Classical Limits}
 \begin{align}
     E_x(z,t) &\propto \sin(kx-\om t) \\
@@ -380,6 +381,85 @@ We did this because right eigenstates of $\hag$ do not exist.
     \langle\alpha|\hag &= \alpha^*\langle\alpha|
 \end{align}
 However, $\hag$ does form eigenstates with left states. 
+\begin{align}
+    |\alpha\rangle &= \sum_{n=0}^\infty c_n|n\rangle \\
+    \ha|\alpha\rangle = \sum_{n=1}^\infty c_n\sqrt{n}|n-1\rangle &= \alpha\sum_{n=0}^\infty c_n|n\rangle \\
+    = \sum_{n=0}^\infty c_{n+1}\sqrt{n+1}|n\rangle &= \alpha\sum_{n=0}^\infty c_n|n\rangle \\
+    c_{n+1} &= \frac{\alpha}{\sqrt{n+1}}c_n
+\end{align}
+Use the fact that the states are normalised to find $c_0$:
+\begin{align}
+    \langle\alpha|\alpha\rangle &= 1 \to c_0 \\
+                                &= |c_0|^2\sum_{m=0}^\infty \sum_{n=0}^\infty \frac{(\alpha^*)^m}{\sqrt{m!}}\frac{(\alpha)^n}{\sqrt{n!}}\langle m|n\rangle \\
+    |c_0|^2\sum_{n=0}^\infty \frac{|\alpha|^{2n}}{n!} &= |c_0|^2\exp|\alpha|^2 = 1
+\end{align}
+If we take $c_0$ to be real and positive,
+\begin{align}
+    |\alpha\rangle &= \exp\left\{-\frac{|\alpha|^2}{2}\right\} \sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}}|n\rangle
+\end{align}
+These are the eigenstates of $\ha$ with eigenvalue $\alpha \in \C$, $\alpha=0 \implies |0\rangle$.
+\begin{align}
+    \langle\alpha|\ha|\alpha\rangle &= \alpha \\
+    \langle\alpha|\hag|\alpha\rangle &= \alpha^*
+\end{align}
+The states $|\alpha\rangle$ we found are right eigenstates of $\ha$ and left eigenstates of $\hag$,
+\begin{align}
+    \ha|\alpha\rangle &= \alpha|\alpha\rangle \\
+    \langle\alpha|\hag &= \alpha^*\langle\alpha|
+\end{align}
+So what is the mean photon number of these states, $\langle\alpha|\hn|\alpha\rangle$?
+\begin{align}
+    \langle\alpha|\hag\ha|\alpha\rangle &= |\alpha|^2
+\end{align}
+So $\alpha$ behaves like a mean amplitude.
+What we want to calculate now is the variance of photon number, i.e. $\langle(\Delta n)^2\rangle = \langle n^2\rangle - \langle n\rangle^2$.
+\begin{align}
+    \langle n\rangle^2 &= |\alpha|^4 \\
+    \langle\alpha|\hn^2|\alpha\rangle &= \langle\alpha|\hag\ha\hag\ha|\alpha\rangle
+\end{align}
+We wish to normal order Eq (5.21) by switching the middle two operators. 
+We do this using commutators:
+\begin{align}
+    [\ha,\hag] &= \ha\hag - \hag\ha = 1 \\ 
+    \implies (5.21) &= \langle\alpha|\hag(\hag\ha + 1)\ha|\alpha\rangle \\
+                    &= \langle\alpha|\hag\hag\ha\ha|\alpha\rangle + \langle\alpha|\hag\ha|\rangle \\
+                    &= |\alpha|^4 + |\alpha|^2 \\
+    \langle(\Delta n)^2\rangle &= |\alpha|^2 \\
+    \langle n\rangle &= \langle(\Delta n)^2\rangle
+\end{align}
+So the mean is equal to the variance. 
+This is what is described in the Poisson distribution.
+\begin{align}
+    \frac{\Delta n}{n} &= \langle n\rangle^{-1/2}
+\end{align}
+So this gets smaller as n gets larger, i.e. more classical for large n. 
+
+\section{The electric field of a more classical state}
+\begin{align}
+    \langle\Eh_x(z,t)\rangle &= \langle\alpha|\Eh_x(z,t)|\alpha\rangle \\
+                             &= \langle\alpha|\left\{\left(\frac{i\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},x}\left[\ha\exp(i(kz-\om_kt)) - \hag\exp(-i(kz0\om_kt))\right]\right\}|\alpha\rangle \\
+                             &= 2|\alpha|\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\sin\left\{\om t - kz - \theta\right\}\ve_{\unl{k},x},\; \alpha = |\alpha|e^{i\theta} \\
+    \langle\Eh_x^2(z,t)\rangle &= \frac{\hbar\om_k}{2\e_0V}\left[1+4|\alpha|^2\sin^2(\om t-kz-\theta)\right] \\
+    \langle(\Delta \Eh_x(z,t))^2\rangle &= \frac{\hbar\om_k}{2\e_0V}
+\end{align}
+This variance has no $\alpha$ in it, so the $|\alpha\rangle$ states only have vacuum fluctuations.
+The variance of coherent states $=$ minimum possible, and doesn't depend on $\alpha$ or n.
+This looks like classical EM field, with $|\alpha|$ the amplitude, and $\langle n\rangle = |\alpha|^2$.
+\textit{draw graph of sin wave for E vs t, squiggle uncertainty along sin wave.}
+\begin{align}
+    |\alpha\rangle &= \exp\left\{-\frac{|\alpha|^2}{2}\right\}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}}|n\rangle \\
+    |\beta\rangle &= \exp\left\{-\frac{|\beta|^2}{2}\right\}\sum_{m=0}^\infty \frac{\beta^m}{\sqrt{m!}}|m\rangle \\
+    \langle\beta|\alpha\rangle &= \exp\left\{-\frac{|\beta|^2+|\alpha|^2}{2}\right\}\sum_{m,n} \frac{(\beta^*)^m(\alpha)^n}{\sqrt{m!n!}}\langle m|n\rangle \\
+                               &= \exp\left\{-\frac{|\beta|^2+|\alpha|^2}{2}\right\}\sum_n \frac{(\beta^*\alpha)^n}{n!} \\
+                               &= \exp\left\{-\frac{|\beta|^2+|\alpha|^2}{2}\right\}\exp\left\{\beta^*\alpha\right\} \\
+    \langle\beta|\alpha\rangle^2 &= \exp\left\{-|\alpha-\beta|^2\right\}
+\end{align}
+So two states will depend on how much they differ from one another, they form an over-complete basis. 
+\begin{align}
+    \frac{1}{\pi}\int |\alpha\rangle\langle\alpha|\;d^2\alpha &= \sum_n |n\rangle\langle n| = \mathbb{I} \\
+    |\phi\rangle &= \frac{1}{\pi}\int |\alpha\rangle\langle\alpha|\phi\rangle\;d^2\alpha
+\end{align}
+
 
 
 
