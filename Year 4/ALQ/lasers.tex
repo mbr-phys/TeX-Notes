@@ -22,7 +22,7 @@
 \maketitle
 %\tableofcontents
 
-\epigraphhead[200]{\hfil\includegraphics{lasers.png}\hfil}
+\epigraphhead[200]{\hfil\includegraphics[scale=0.5]{lasers.png}\hfil}
 \part{}
 \chapter{}
 \begin{itemize}
@@ -412,6 +412,103 @@ We call $N^*$ the population inversion density.
 $\sigma(\om)$ is determined by the atom, we cannot control it. 
 Broadening spreads gain over a range of frequencies. 
 
+\chapter{}
+\textit{dotted cylinder again, one meter long.}
+Imagine we have a sample which is our laser gain sample, and we will send one photon in. 
+For most lasers,  the peak gain, $g(\om_{12}) \approx 0.01\;cm^{-1}$.
+So one photon in to our 1m long sample, means $e^1 = 2.7$ photons out.
+We must add a cavity to recirculate the light, and now using mirrors either side of the gain medium,  we will pass through the gain medium 40 times, $e^{40} \approx 10^17$ photons.
+\textit{doodle of cavity, mirrors either side of gain medium, arrows diverting round.}
+
+\section{General Cavity Design}
+\textit{doodle parallelogram gain medium ($\eta_mi,L_m$), curved mirrors either side, cavity with $\eta_c$, length of caivty $L_c$, and intracavity element induces a loss $a$. Mirror 1 (left) reflectivity as close to 1 as we can get. Mirror 2 is output coupler, must be less than 1 so laser can eventually escape. Label of $\alpha$ near mirror 2.} \\
+Also distributed loss throughout cavity of $\alpha$ per meter.
+
+\section{Longitudinal Cavity Modes}
+The field in ithe cavity forms standing waves, i.e.
+\begin{equation}
+    n\frac{\lambda_n}{2} = L_c
+\end{equation}
+$n$ is called the mode order.
+Mode separation,
+\begin{equation}
+    \Delta\nu_{fsr} = \nu_{n+1} - \nu_n = \frac{c}{2L_c}
+\end{equation}
+This is the \unl{Free Spectral Range.}
+\begin{example}[Mode order of 10cm cavity at $\lambda= 500\,nm$]
+    \begin{align}
+        n &= \frac{2L_c}{\lambda} = 4\times10^5 \\
+        \Delta\nu_{fsr} &= \frac{c}{2L_c} = 1.5\;Ghz
+    \end{align}
+\end{example}
+
+\section{Cavity Losses}
+Trace intensity around the cavity:
+\begin{align}
+    I_0 \implies I_0R_1(1-a)R_2(1-a)e^{-2\alpha L_c}
+\end{align}
+\begin{multicols}{2}
+\begin{itemize}
+    \item Pass through the cavity twice, so $(1-a)$ twice. 
+    \item $e^{-2\alpha L_c}$ is the distributed loss over length, $2L_c$.
+\end{itemize}
+\end{multicols}
+\begin{equation}
+    I_0 \implies I_0R_1R_2(1-a)^2e^{-2\alpha L_c}
+\end{equation}
+Express as round trip loss,
+\begin{align}
+    I_0 &\implies I_0e^{-\delta_c} \\
+    \delta_c &= \ln\left(\frac{1}{R_1R_2(1-a)^2}\right)+2\alpha L_c \\
+    \frac{I_0-I_0e^{-\delta_c}}{I_0} &= 1 - e^{-\delta_c} \approx 1-(1-\delta_c) = \delta_c
+\end{align}
+This is the \unl{Fractional Round Trip Loss.}
+
+\section{Cavity Lifetime}
+The lifetime of a photon in a cavity is a useful concept. 
+Define cavity lifetime, $\tau_c$.
+\begin{align}
+    I(t) &= I_0e^{-t/\tau_c} \\
+         &= I_0e^{-N\delta_c} = I_0e^{-t\delta_c/T_{RT}} \\
+    \tau_c &= \frac{2L_c}{c\delta_c} = \frac{T_{RT}}{\delta_c}
+\end{align}
+$T_{RT}$ is called the Round Trip Time.
+Cavity has a quality factor, 
+\begin{align}
+    Q = \frac{\om}{\Delta\om_c} = \om\tau_c
+\end{align}
+So we can then think of cavities as having a linewidth, $\Delta\om_c = \frac{1}{\tau_c}$.
+
+\section{Threshold Condition}
+\begin{align}
+    \text{Round Trip Gain}\times\text{Round Trip Loss} = 1
+\end{align}
+\begin{itemize}
+    \item Gain x loss $>1$, intensity grows $\implies$ laser oscillation 
+    \item Gain x loss $<1$, intensity decays $\implies$ no laser :(
+\end{itemize}
+Substitute for gain and loss:
+\begin{align}
+    e^{2g(\om_{12}L_m}\times e^{-\delta_c} &= 1 \\
+    g_{th}(\om_{12}) &= \frac{\delta_c}{2L_m}
+\end{align}
+
+\begin{example}[Helium Neon Laser]
+    \begin{itemize}
+        \item Gain cell length $= L_m = L_c = 50\,cm$.
+        \item Two mirrors with $R_1 = 0.998$ and $R_2 = 0.98$.
+        \item Distributed losses are $\alpha = 0.02\,m^{-1}$.
+        \item $A_{21} = 3.4\times10^6\,s^{-1},~ \lambda = 632.8\,nm$.
+        \item Doppler width is dominant as it is a gas (could be pressure broadening, but assume not for this) - $\Delta\om_I = 2\pi\cdot1500\;MHz$.
+    \end{itemize}
+    So what is the population inversion density, $N^*$, required for laser oscillation?
+    \begin{itemize}
+        \item Considering round trip losses
+        \item Fractional round trip loss
+        \item Atomic properties for expression of gain
+        \item Only thing left to then find is $N^*$
+    \end{itemize}
+\end{example}
 
 \end{document}
 
