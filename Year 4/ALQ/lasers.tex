@@ -3,6 +3,11 @@
 \usepackage{../../../LaTeX-Templates/Notes}
 \usepackage{subfiles}
 \usepackage{epigraph}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{snake it/.style={decorate,decoration=snake}}
+
 
 \setlength{\epigraphwidth}{\textwidth}
 \titleformat{\part}[display]
@@ -114,25 +119,87 @@ Electromagnetic Field Modes - not examinable:
 
 \chapter{Einstein's rate equations}
 A laser requirs amplification due to stimulated emission of radiation. 
-\textit{Doodle of two energy levels with E,g,N 1 and 2.}
+\begin{multicols}{2}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,1) node[anchor=south] {2} -- (3,1) node[anchor=south] {$E_2,g_2,N_2$};
+        \draw (0,0) node[anchor=south] {1} -- (3,0) node[anchor=south] {$E_1,g_1,N_1$};
+    \end{tikzpicture}
+\end{figure}
 \begin{align}
     E_2 - E_1 = \hbar\om_{12}
 \end{align}
+\end{multicols}
 \begin{enumerate}
     \item Spontaneous emission: Atom in some excited state, until some time later where it spontaneously decays into a lower state, with a photon emitted with energy shown in Eq (2.1). 
         Rates: $A_{21}$ per $N_i$ atoms, or $A_{21}N_2$ per $m^3$.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (0,1) node[anchor=south east] {Before:} -- (2,1);
+                \draw[fill] (1,1) circle (3pt);
+                \draw (0,0) -- (2,0);
+
+                \draw (4,1) node[anchor=south east] {After:} -- (6,1);
+                \draw (4,0) -- (6,0);
+                \draw[fill] (5,0) circle (3pt);
+                \draw[-{Latex[length=2mm,width=1.5mm]}] (4.9,0.9) arc (150:210:20pt);
+                \draw[-{Latex[length=2.5mm,width=2.4mm]},snake it] (5.2,0.3) -- (6.9,0.3) node[anchor=west] {$\hbar\om_{12}$};
+            \end{tikzpicture}
+        \end{figure}
     \item Absorption: Excite into excited state using energy of photon. 
         Rates: $B_{12}\rho(\om_{12})$, $B_{12}\rho(\om_{12})N_2$.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (0,1) node[anchor=south east] {Before:} -- (2,1);
+                \draw[fill] (1,0) circle (3pt);
+                \draw (0,0) -- (2,0);    
+                \draw[-{Latex[length=2.5mm,width=2.4mm]},snake it] (-1.2,0.3) node[anchor=south east] {$\hbar\om_{12}$} -- (0.5,0.3);
+
+                \draw (4,1) node[anchor=south east] {After:} -- (6,1);
+                \draw (4,0) -- (6,0);
+                \draw[fill] (5,1) circle (3pt);
+                \draw[-{Latex[length=2mm,width=1.5mm]}] (4.9,0.1) arc (210:150:20pt);
+            \end{tikzpicture}
+        \end{figure}
     \item Stimulated emission: At the initial time we have an atom in an excited state which we then apply a radiated field (photon) to. Later, the atom will decay into a lower state and there will be two outgoing photons - they have been emitted into the same mode.
         Rates: $B_{21}\rho(\om_{12})$, $B_{21}\rho(\om_{12})N_2$. Note: 
         \begin{itemize}
             \item Here, $\rho(\om_{12})$ is the spectral energy density - the energy density, per unit angular frequency range at $\om$, with units of $J\,m^{-3}\,s$.
             \item Generally, the light being used here is broad-band.
         \end{itemize}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (0,1) node[anchor=south east] {Before:} -- (2,1);
+                \draw[fill] (1,1) circle (3pt);
+                \draw (0,0) -- (2,0);    
+                \draw[-{Latex[length=2.5mm,width=2.4mm]},snake it] (-1.2,0.3) node[anchor=south east] {$\hbar\om_{12}$} -- (0.5,0.3);
+                
+                \draw (4,1) node[anchor=south east] {After:} -- (6,1);
+                \draw (4,0) -- (6,0);
+                \draw[fill] (5,0) circle (3pt);
+                \draw[-{Latex[length=2mm,width=1.5mm]}] (4.9,0.9) arc (150:210:20pt);
+                \draw[-{Latex[length=2.5mm,width=2.4mm]},snake it] (5.2,0.3) -- (6.9,0.3);
+                \draw[-{Latex[length=2.5mm,width=2.4mm]},snake it] (5.2,0.6) -- (6.9,0.6) node[anchor=north west] {$\hbar\om_{12}$};
+            \end{tikzpicture}
+        \end{figure}
 \end{enumerate}
 
 \section{Apply the 3 processess}
 \textit{Doodle going through $A_{21}$ to $B_{12}$ to $B_{21}$.}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0.5,2) node[anchor=south east] {2} -- (7.5,2) node[anchor=south west] {$E_2$};
+        \draw (0.5,0) node[anchor=north east] {1} -- (7.5,0) node[anchor=north west] {$E_1$};
+        \draw[-{Latex[length=2mm,width=1.5mm]}] (2,2) -- (2,0) node[anchor=east,midway] {$A_{21}$};
+        \draw[-{Latex[length=2mm,width=1.5mm]}] (4,0) -- (4,2) node[anchor=east,midway] {$B_{12}\rho(\om_{12})$};
+        \draw[-{Latex[length=2mm,width=1.5mm]}] (6,2) -- (6,0) node[anchor=east,midway] {$B_{21}\rho(\om_{12})$};
+    \end{tikzpicture}
+\end{figure}
 Conservation of atom number:
 \begin{align}
     \frac{dN_2}{dt} &= -\frac{dN_1}{dt} \\
@@ -233,18 +300,62 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
             \Delta E = \hbar\Delta\om \implies \Delta\om = \frac{1}{\tau_2} = A_{21} = \Gamma_H
         \end{equation}
         This is only for a 2 level atom.
+        \begin{figure}[H]
+            \centering 
+            \begin{tikzpicture}
+                \draw[->] (0,0) -- (0,2) node[anchor=east] {$N_2$};
+                \draw[->] (0,0) -- (3,0) node[anchor=west] {$t$};
+                \draw (0.2,2) .. controls (0.5,1) and (1.5,0.3) .. (3,0.2) node[anchor=south west] {$e^{-\Gamma_Ht}$};
+
+                \draw[->] (5,0) -- (9,0) node[anchor=west] {$\om$}; 
+                \draw (7,-0.1) node[anchor=north] {$\om_{12}$} -- (7,0.1);
+                \draw (5.1,0.1) cos (6.7,1.7) sin (7,2) cos (7.3,1.7) sin (8.9,0.1);
+                \draw[<->] (6.3,1) -- (7.7,1) node[anchor=south west] {FWHH $= \Gamma_H$};
+            \end{tikzpicture}
+        \end{figure}
     \item Define the normalised lineshape function:
         \begin{align}
-            L_H(\om) &= \frac{\frac{\Gamma_H}{2\pi}}{(\om-\om_{12})^2+\frac{\Gamma_H^2}{4}} \\
+            L_H(\om) &= \frac{\Gamma_H/2\pi}{(\om-\om_{12})^2+\frac{\Gamma_H^2}{4}} \\
             \ofnt &L_H(\om)\;d\om = 1
         \end{align}
-    \item For multiple decay paths: \textit{doodle of decays from level k to levels l,m,n}.
+    \item For multiple decay paths: 
+        \begin{multicols}{2}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (0,2) -- (4,2) node[anchor=south west] {k};
+                \draw (0,1) -- (4,1) node[anchor=south west] {l};
+                \draw (0,0.5) -- (4,0.5) node[anchor=south west] {m};
+                \draw (0,0) -- (4,0) node[anchor=south west] {n};
+
+                \draw[-{Latex[length=2mm,width=1.5mm]}] (1,2) -- (1,0) node[anchor= south east,midway] {$A_{kn}$};
+                \draw[-{Latex[length=2mm,width=1.5mm]}] (2,2) -- (2,0.5) node[anchor=east,midway] {$A_{km}$};
+                \draw[-{Latex[length=2mm,width=1.5mm]}] (3,2) -- (3,1) node[anchor=north east,midway,yshift=2pt] {$A_{kl}$};
+            \end{tikzpicture}
+        \end{figure}
         For level k
         \begin{align}
             \frac{dN_k}{dt} &= -N_kA_{kl} - N_kA_{km} - N_kA_{kn} \\
             \tau_k &= \frac{1}{\sum A_{ki}} = \frac{1}{\Gamma_H}
         \end{align}
-    \item When both levels decay, \textit{doodle}.
+        \end{multicols}
+    \item When both levels decay:
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw[->] (0,0) -- (0,3);
+                \draw (0.1,2.9) sin (1.7,2.4);
+                \draw (1.7,2.4) arc (90:-90:0.2cm);
+                \draw (1.7,2) cos (0.1,1.5);
+                
+                \draw (0.1,1.3) sin (1.7,0.8);
+                \draw (1.7,0.8) arc (90:-90:0.2cm);
+                \draw (1.7,0.4) cos (0.1,-0.1);
+
+                \draw[dashed] (0,2.2) node[anchor=east] {2} -- (2.3,2.2);
+                \draw[dashed] (0,0.6) node[anchor=east] {1} -- (2.3,0.6);
+            \end{tikzpicture}
+        \end{figure}
         \begin{align}
             \Gamma_2 &= \sum A_{2i} = \frac{1}{\tau_2} \\
             \Gamma_1 &= \sum A_{1i} = \frac{1}{\tau_1} \\
@@ -253,7 +364,21 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
         $\Gamma_{21}$ is the emission linewidth. 
 \end{itemize}
 \begin{example}[Argon ion laser]
-    \textit{doodle the laser transition between $3p^44p,^2D_{5/2}^0 \to ^2P_{3/2} \to 3p^5({}^2P_{1/2}^0,{}^2P_{3/2}^0)$}.\\
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw (0,2) node[anchor=east] {$3p^44p$} -- (4,2) node[anchor=west] {$2D_{5/2}^0$};
+            \draw (0,1) -- (4,1) node[anchor=west] {$2p_{3/2}$};
+            \draw (0,0.5) -- (4,0.5) node[anchor=west] {$2p_{1/2}^0$};
+            \draw (0,0) -- (4,0) node[anchor=west] {$2p_{3/2}$};
+
+            \draw[-{Latex[length=2mm,width=1.5mm]}] (3,2) -- (3,1);
+            \draw[-{Latex[length=2mm,width=1.5mm]}] (2,1) -- (2,0.5);
+            \draw[-{Latex[length=2mm,width=1.5mm]}] (1,1) -- (1,0);
+
+            \draw[decorate,decoration={brace,amplitude=10pt},xshift=5pt] (-0.2,-0.2) -- (-0.2,0.7) node[midway,anchor=east,xshift=-10pt] {$3p^5$}; 
+        \end{tikzpicture}
+    \end{figure}
     $\lambda = 488\,nm$, $A= 7.8\times10^7\;s^{-1}$, $1:\,73,1\;nm;~ A=4.5\times10^8\;s^{-1}$, $2:\,72.3\;nm;~ A=23\times10^8\;s^{-1}$.\\
     Emission linewidth:
     \begin{align}
@@ -285,10 +410,29 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
             P(v_z)\,dv_z &= \left(\frac{M}{2\pi k_BT}\right)^{1/2} \exp\left(-\frac{Mv_z^2}{2k_BT}\right)\;dv_z
         \end{align}
         Use correspondence between $v_z$ and $\om$ to get
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw[->] (0,0) -- (12,0);
+                \draw (0,0.1) cos (4,3) sin (6,4) cos (8,3) sin (12,0.1);
+                \draw (2,0) cos (2.7,1.5) sin (3,1.8) cos (3.3,1.5) sin (4,0);
+                \draw (4.5,0) cos (5.7,3.5) sin (6,4) cos (6.3,3.5) sin (7.5,0);
+                \draw (8,0) cos (8.7,1.5) sin (9,1.8) cos (9.3,1.5) sin (10,0);
+
+                \draw[dashed] (3,0) -- (3,1.8);
+                \draw[dashed] (6,0) -- (6,4);
+                \draw[dashed] (9,0) -- (9,1.8);
+
+                \draw[<->] (2.5,1.4) -- (9.5,1.4);
+                \draw[-Latex] (10,1.4) node[anchor=west] {FWHH $= \Delta\om_I$} -- (9.6,1.4);
+                \draw[-Latex] (9.5,2.3) node[anchor=south west] {Atom moving towards} -- (9.1,1.9);
+                \draw[-Latex] (2.4,2.4) node[anchor=south east] {Atom moving away} -- (2.9,1.9);
+                \draw[-Latex] (6,4.4) node[anchor=west] {Stationary atom} -- (6,4.1);
+            \end{tikzpicture}
+        \end{figure}
         \begin{align}
             P(\om)\,d\om &= \frac{c}{\om_{12}}\left(\frac{M}{2\pi k_BT}\right)^{1/2}\exp\left[-\frac{Mc^2}{2k_B T}\frac{(\om-\om_{12})^2}{\om_{12}^2}\right]
         \end{align}
-    \item \textit{doodle tight peak around $\om_{12}$, a smaller tight peak closer to observer with higher freq, and another smaller tight peak further from observer with smaller freq, with a gaussian overcurve.} This is the Gaussian lineshare summed over all velocity classes. $FWHM = \Delta\om_I$.
     \item For Doppler broadening, 
         \begin{align}
             \Delta\om_I &= \frac{2\om_{12}}{c}\left(\frac{2k_BT}{M}\ln2\right)^{1/2} \\
@@ -311,16 +455,64 @@ This is many times larger than the natural broadening.
 
 \chapter{}
 \begin{example}
-\textit{doodle of cylinder with some gas in, narrowband light beam (arrow) towards it}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) ellipse (0.4cm and 1cm);
+        \draw (0,1) -- (4,1);
+        \draw (0,-1) -- (4,-1);
+        \draw (4,0) ellipse (0.4cm and 1cm);
+        \draw[-Latex] (4,1.3) node[anchor=west] {Gas} -- (3.3,0.6);
+
+        \draw[-Latex] (-1.4,0) node[anchor=north] {Narrowband} -- (0,0);
+    \end{tikzpicture}
+\end{figure}
 If the light beam is resonant with the atoms in the gas, we would expect some interaction. 
 But how is the medium excited?
 It depends on the broadening. 
 \begin{enumerate}
-    \item Homogeneous broadening: \textit{graph of om vs N1, lorentzian about zero, turn on radiation spike above zero, under lorentzian bracket.}\\
+    \item Homogeneous broadening (Lorentzian):
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw[->] (-3,0) -- (3,0) node[anchor=north] {$\om$};
+                \draw[->] (0,0) node[anchor=north] {$\om_{12}$} -- (0,4) node[anchor=east] {$N_1$};
+                \draw (-2.8,0.1) cos (-0.4,3.2) sin (0,3.8) cos (0.4,3.2) sin (2.8,0.1);
+
+                \draw[-Latex] (3,2) -- (4,2);
+
+                \draw[->] (4,2.5) -- (10,2.5) node[anchor=north] {$\om$};
+                \draw[->] (7,2.5) node[anchor=north] {$\om_{12}$} -- (7,4.5) node[anchor=east] {$N_2$};
+                \draw[dashed] (4.2,2.6) cos (6,3.5) sin (7,3.8) cos (8,3.5) sin (9.8,2.6);
+
+                \draw[->] (4,-1) -- (10,-1) node[anchor=north] {$\om$};
+                \draw[->] (7,-1) node[anchor=north] {$\om_{12}$} -- (7,2) node[anchor=east] {$N_1$};
+                \draw (4.2,-0.8) cos (6.4,1.2) sin (7,1.8) cos (7.6,1.2) sin (9.8,-0.8);
+                \draw[dashed] (4.2,-0.9) cos (6.4,0.8) sin (7,1.4) cos (7.6,0.8) sin (9.8,-0.9);
+            \end{tikzpicture}
+        \end{figure}
         Turn on radiation within natural linewidth. 
-        \textit{om vs N2 graph - tiny dotted lorentzian, and om vs N1 graph - lorentzian around 0, then dotted lorentzian that is reduced}
-        All of these distributions will be the same - all atoms are affected equally.  
-    \item Inhomogeneous broadening: \textit{Gaussian graph around om12 (om vs N1) with spike above, graph of N2 vs om with tiny dotted gaussian around spike, and om vs N1 where it's a Gaussian with tiny dip in it where spike was}
+        All of these distributions will be the same - all atoms are affected equally, and the population of $N_1$ is reduced slightly as it moves into $N_2$.
+    \item Inhomogeneous broadening (Gaussian): 
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw[->] (-3,0) -- (3,0) node[anchor=north] {$\om$};
+                \draw[->] (0,0) node[anchor=north] {$\om_{12}$} -- (0,3) node[anchor=east] {$N_1$};
+                \draw (-2.8,0.1) cos (-1,2) sin (0,2.8) cos (1,2) sin (2.8,0.1);
+                \draw[fill] (0.75,0) rectangle (1.25,0.6);
+
+                \draw[-Latex] (3,1.5) -- (4,1.5);
+
+                \draw[->] (4,2.5) -- (10,2.5) node[anchor=north] {$\om$};
+                \draw[->] (7,2.5) node[anchor=north] {$\om_{12}$} -- (7,3.5) node[anchor=east] {$N_2$};
+                \draw[dashed] (7.5,2.5) cos (7.9,3) sin (8,3.2) cos (8.1,3) sin (8.5,2.5);
+
+                \draw[->] (4,-1) -- (10,-1) node[anchor=north] {$\om$};
+                \draw[->] (7,-1) node[anchor=north] {$\om_{12}$} -- (7,2) node[anchor=east] {$N_1$};
+                \draw (4.1,-0.9) cos (6,0.8) sin (7,1.5) cos (7.5,1) sin (8,-0.2) cos (8.5,0.2) sin (9.9,-0.9);
+            \end{tikzpicture}
+        \end{figure}
         Distributions are now very different - atoms are affected differently, and only a subset of the atoms interact.
         For example, with Doppler broadening, only particles with a specific velocity would be excited strongly by the light beam. 
         The width of the N2 Gaussian is determined by natural broadening. 
@@ -349,7 +541,18 @@ Integrating recovers the result,
 Inhomogeneous broadening is more difficult. 
 We want to do this, but we can use the results from homogeneous broadening in certain circumstances, i.e. for narrowband light and $\Gamma_H \ll \Delta\om_I$.
 
-\textit{Draw a very thin square slab with width dz, light beam arrow going in with I(z) and light beam leaving with I(z+dz). Slab has label for area A.}\\
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (0.8,-0.4) -- (0.8,0.6) -- (0,1) -- cycle;
+        \draw (0.8,-0.4) -- (1,-0.4) -- (1,0.6) -- (0.2,1) -- (0,1);
+        \draw (1,0.6) -- (0.8,0.6);
+
+        \draw[-Latex] (-1,0.3) node[anchor=east] {$I(z)$} -- (0.3,0.3);
+        \draw[-Latex] (1,0.3) -- (2,0.3) node[anchor=south] {$I(z+dz)$};
+        \draw[-Latex] (0.7,1) node[anchor=south] {Area, A} arc (80:200:10pt);
+    \end{tikzpicture}
+\end{figure}
 Consider a \unl{weak} narrowband beam of light, frequency $\om$ and bandwidth $d\om$. \\
 Assume:
 \begin{itemize}
@@ -388,14 +591,29 @@ There are two cases:
             \implies I(z) &= I(0)e^{-\kappa(\om)z},~ \kappa(\om) = \sigma(\om)\left(\frac{g_2}{g_1}N_1 - N_2\right)  
         \end{align}
         $\kappa$ is the absorption coefficient. 
-        \textit{Draw diagram of Beer's law, decay of I(z) from I(0) as z increases.}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw[->] (0,0) -- (0,2) node[anchor=east] {$I(z)$};
+                \draw[->] (0,0) node[anchor=north east] {0} -- (3,0) node[anchor=north] {$z$};
+                \draw (0,1.7) .. controls (0.5,0.5) and (2,0) .. (2.8,0.05) node[anchor=south west,midway,yshift=10pt] {Beer's Law};
+                \draw (-0.05,1.7) node[anchor=east,yshift=-5pt] {\scriptsize $I(0)$} -- (0.05,1.7);
+            \end{tikzpicture}
+        \end{figure}
     \item Amplification.
         \begin{align}
             N_2 &> \frac{g_2}{g_1}N_1 \\
             I(z) &= I(0)e^{g(\om)z},~ g(\om) = \sigma(\om)\left(N_2-\frac{g_2}{g_1}N_1\right)
         \end{align}
         $g(\om)$ is the gain coefficient, $e^{g(\om)z}$ is the gain. 
-        \textit{Doodle of exponential growth from I(0) with z of I(z).}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw[->] (0,0) -- (0,2) node[anchor=east] {$I(z)$};
+                \draw[->] (0,0) node[anchor=north east] {0} -- (3,0) node[anchor=north] {$z$};
+                \draw (0,0.3) node[anchor=east] {$I(0)$} .. controls (1.4,0.2) and (2.5,1) .. (3,1.8) node[anchor=north,xshift=-40pt] {\small \shortstack{Exponential \\ Growth}};
+            \end{tikzpicture}
+        \end{figure}
 \end{enumerate}
 The condition for gain is
 \begin{equation}
@@ -413,15 +631,35 @@ $\sigma(\om)$ is determined by the atom, we cannot control it.
 Broadening spreads gain over a range of frequencies. 
 
 \chapter{}
-\textit{dotted cylinder again, one meter long.}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-{Latex[length=2.4mm,width=3.8mm]},snake it] (-1,0) -- (1,0) node[anchor=south,midway,xshift=-20pt] {1 photon in};
+        \draw (5,0) ellipse (0.4cm and 1cm);
+        \draw (1,0) ellipse (0.4cm and 1cm);
+        \draw (1,1) -- (5,1) node[anchor=south,midway] {Gain medium};
+        \draw (1,-1) -- (5,-1);
+        \draw[->] (2.6,-1.2) -- (1,-1.2);
+        \draw[->] (3.4,-1.2) -- (5,-1.2);
+        \draw[white] (2.6,-1.2) -- (3.4,-1.2) node[midway,black] {1 m};
+    \end{tikzpicture}
+\end{figure}
 Imagine we have a sample which is our laser gain sample, and we will send one photon in. 
 For most lasers,  the peak gain, $g(\om_{12}) \approx 0.01\;cm^{-1}$.
 So one photon in to our 1m long sample, means $e^1 = 2.7$ photons out.
-We must add a cavity to recirculate the light, and now using mirrors either side of the gain medium,  we will pass through the gain medium 40 times, $e^{40} \approx 10^17$ photons.
-\textit{doodle of cavity, mirrors either side of gain medium, arrows diverting round.}
+We must add a cavity to recirculate the light, and now using mirrors either side of the gain medium,  we will pass through the gain medium 40 times, $e^{40} \approx 10^{17}$ photons.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,3) arc (120:240:40pt);
+        \draw (4,3) arc (60:-60:40pt);
+        \draw[-{Latex[length=2mm,width=2mm]}] (0.5,1.6) arc (315:60:0.3cm);
+        \draw (1,1.25) rectangle (3,2.25);
+        \draw[-{Latex[length=2mm,width=2mm]}] (3.5,2.05) arc (135:-120:0.3cm);
+    \end{tikzpicture}
+\end{figure}
 
 \section{General Cavity Design}
-\textit{doodle parallelogram gain medium ($\eta_mi,L_m$), curved mirrors either side, cavity with $\eta_c$, length of caivty $L_c$, and intracavity element induces a loss $a$. Mirror 1 (left) reflectivity as close to 1 as we can get. Mirror 2 is output coupler, must be less than 1 so laser can eventually escape. Label of $\alpha$ near mirror 2.} \\
 Also distributed loss throughout cavity of $\alpha$ per meter.
 
 \section{Longitudinal Cavity Modes}
@@ -509,6 +747,94 @@ Substitute for gain and loss:
         \item Only thing left to then find is $N^*$
     \end{itemize}
 \end{example}
+
+\chapter{}
+\section{Gain Saturation}
+\textit{doodle this too - start with two levels, 1 and 2, $S_1$ and $S_2$, $N_i/\tau_i$, $N_2A_{21}$ - rate between states.}
+Develop rate equations for $N_1$ and $N_2$.
+\begin{align}
+    \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} \\
+    \frac{dN_1}{dt} &= S_1 + N_2A_{21} - \frac{N_1}{\tau_1}
+\end{align}
+In the steady state, 
+\begin{align}
+    \frac{dN_2}{dt} &= \frac{dN_1}{dt} = 0 \\
+    N_2 &= S_2\tau_2 \\
+    N_1 &= S_1\tau_1 + A_{21}\tau_1N_2 \\
+        &= S_1\tau_1 + A_{21}\tau_1S_2\tau_2
+\end{align}
+Population inversion density,
+\begin{align}
+    N_0^* &= N_2 - \frac{g_2}{g_1}N_1 \\
+        &= S_2\tau_2\left(1-\frac{g_2}{g_1}A_{21}\tau_1\right) - \frac{g_2}{g_1}S_1\tau_1
+\end{align}
+'0' denotes small signal coefficient (in the absence of field).
+\textit{doodle neq two level diagram, same one again, now new arrows up and down}
+\begin{align}
+    N_2\sigma(\om)\frac{I}{\hbar\om} & \frac{g_2}{g_1}N_1\sigma(\om)\frac{I}{\hbar\om}
+\end{align}
+We have assumed $L(\om) < \Gamma_{21}$.
+\begin{align}
+    \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} - N^*\sigma(\om)\frac{I}{\hbar\om} \\
+    \frac{dN_1}{dt} &= S_1 - \frac{N_1}{\tau_1} + N^*\sigma(\om)\frac{I}{\hbar\om} + A_{21}N_2 \\
+    N_2 &= S_2\tau_2 - N^*\left(\frac{\sigma I}{\hbar\om}\right)\tau_2 \\
+    N_1 &= S_1\tau_1 + N^*\left(\frac{\sigma I}{\hbar\om}\right)\tau_1 + A_{21}\tau_1N_2 \\
+    N^* &= \frac{S_2\tau_2\left(1-\frac{g_2}{g_1}A_{21}\tau_1\right) - \frac{g_2}{g_1}S_1\tau_1}{1+\left(\frac{\sigma I}{\hbar\om}\right)\left[\tau_2+\frac{g_2}{g_1}\left(1-A_{21}\tau_2\right)\tau_1\right]}
+\end{align}
+Numerator is $N_0^*$:
+\begin{align}
+    N^* &= \frac{N_0^*}{1 + \frac{I}{I_s}}
+\end{align}
+We can now define Saturation Intensity:
+\begin{align}
+    I_s(\om) &= \frac{\hbar\om}{\sigma(\om)}\frac{1}{\tau_2+\frac{g_2}{g_1}\tau_1(1-A_{21}\tau_2)}
+\end{align}
+Gain is saturated too, since
+\begin{align}
+    g(\om) &= \sigma(\om)N^* = \frac{g_0(\om)}{1 + \frac{I}{I_s(\om)}}
+\end{align}
+\textbf{Comments:}
+\begin{itemize}
+    \item At $I = I_s(\om) \to g(\om) = \frac{g_0(\om)}{2}$.
+    \item $I_s(\om)$ is frequency dependent through $\sigma(\om)$, so will happen quicker at line centre.
+    \item For an efficient laser, expect large population inversion $\implies \tau_2 \gg \tau_1$.
+    \item All decays from state 2 into state 1 $\implies A_{21} \approx \frac{1}{\tau_2}$.
+\end{itemize}
+\begin{align}
+    I_s(\om) &= \frac{\hbar\om}{\sigma(\om)\tau_2}
+\end{align}
+This is usually an excellent approximation.
+\begin{example}[Linear Amplifier]
+    \textit{doodle I0 in, IL out of parallelogram that is L long}
+    \begin{align}
+        \frac{dI}{dz} &= g(\om)I = \frac{g_0(\om)I}{1 + \frac{I}{I_s(\om)}}
+    \end{align}
+    We just integrate this, after length L:
+    \begin{align}
+        \int_{I(0)}^{I(L)} \frac{1+\frac{I}{I_s(\om)}}{I}\,dI &= \int_0^L g_0(\om)\,dz \\
+        \ln\left(\frac{I_L}{I_0}\right) + \frac{I_L-I_0}{I_s(\om)} &= g_0(\om)L
+    \end{align}
+    \textbf{Two limiting cases:}
+    \begin{enumerate}
+        \item $I/I_s(\om) \ll 1 \implies$ exponential growth,
+            \begin{align}
+                I_L &= I_0e^{g_0(\om)L}
+            \end{align}
+        \item $I/I_s(\om) \gg 1 \implies$ linear growth,
+            \begin{align}
+                I_L &= I_0  + g_0(\om)I_s(\om)L
+            \end{align}
+    \end{enumerate}
+    \textit{doodle plot of exp growth into linear growth as z increases}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[->] (0,0) -- (0,2.5);
+            \draw[->] (0,0) -- (4,0);
+        \end{tikzpicture}
+    \end{figure}
+\end{example}
+
 
 \end{document}
 

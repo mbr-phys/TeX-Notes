@@ -449,17 +449,59 @@ The most useful quantity for now to calculate is the S-matrix:
     M_{i\to f} &= \langle f|\hat{S}|i\rangle = S_{fi}
 \end{align}
 
+\chapter{}
 \section{Pictures}
 \begin{itemize}
-    \item Schrodinger - $\hat{O}^{s}$ operators do no depend on time, but wavefunctions do $\psi^s(t)$
-    \item Heisenberg - $\hat{O}^H(t)$ operators do depend on time, but wavefunction does not $\psi^H$
+    \item Schrodinger - $\hat{O}^{s}$ operators do no depend on time, but wavefunctions do, $\psi^s(t)$
+    \item Heisenberg - $\hat{O}^H(t)$ operators do depend on time, but wavefunction does not, $\psi^H$.
+        We can switch between Schrodinger and Heisenberg using the time-evolution operator: 
+        \begin{align}
+            \hat{O}^H(t) &= \exp[i\hh(t-t_0)]\hat{O}^s\exp[-i\hh(t-t_0)] \\
+        \end{align}
+    \item Interaction - $\hh$ is independent of time, and we define it as $\hh = \hh_0 + \hh_{int}$, wehre $\hh_0$ is the free particle Hamiltonian and $\hh_{int}$ describes interactions,
         \begin{equation}
-            \hat{O}^H(t) = \exp[i\hh(t-t_0)]\hat{O}^s\exp[-i\hh(t-t_0)]
+            \hat{O}^I(t) = \exp[i\hh_0(t-t_0)]\hat{O}^s\exp[-i\hh_0(t-t_0)]
         \end{equation}
-        We can switch between Schrodinger and Heisenberg using the time-evolution operator. 
-    \item Interaction - 
+        We can connect the field operators of the Heisenberg and Interaction pictures too:
+        \begin{align}
+            \hat{O}^H &= \underbrace{\exp[i\hh(t-t_0)]\exp[-i\hh_0(t-t_0)]}_{\hat{U}^\dagger(t,t_0)}\hat{O}^I\underbrace{\exp[-\hh_0(t-t_0)]\exp[-i\hh(t-t_0)]}_{\hat{U}(t,t_0)} \\
+            i\p_t\hat{U}(t,t_0) &= \dots \hh_{int}^I\cdot\hat{U}(t,t_0) \\
+            \hat{U}(t,t_0) &= 1 \implies \\
+            \hat{U}(t,t_0) &= \sum_{n=0}^\infty (-i)^n \int_{t_0}^t dt_1\; \int_{t_0}^{t_1} dt_2\, \dots \int_{t_0}^{t_{n-1}}dt_n \; \hh_{int}^I(t_1)\hh_{int}^I(t_2)\dots\hh_{int}^I(t_n) \\
+                           &= \exp\left[-iT \int_{t_0}^t \hh_{int}^I(\tau)\,d\tau\right]
+        \end{align}
+        Note that $t_1>t_2>t_3>\dots>t_n$, and we put the T in the exponential to say that we have time-ordered to remove an incorrect factor $n!$.
+        We can then notice that this is exactly the $\hat{S}$ matrix: 
+        \begin{align}
+            \hat{S} &= T\exp\left[-i\int_{t_0}^t \hh_{int}^I(\tau)\,d\tau\right] \\
+                    &= 1 - \underbrace{i\int \hh_{int}}_{\text{Born approx}} + (-i)^2 \int \int \hh_{int} + \dots
+        \end{align}
 \end{itemize}
 
+\section{Scattering in QFT}
+Look at $2\to2$ scattering: $p_1 + p_2 \to q_1 + q_2$.
+We set our incoming particles way back in the past so we can approximate with plane waves, and similarly in the future for outgoing particles - aymptotic states.
+\begin{align}
+    {}_{t\to +\infty}\langle q_1,q_2;\text{OUT}|p_1,p_2;\text{IN}\rangle_{t\to-\infty} &= \langle q_1,q_2|\hag_{in}(p_1)|p_2\rangle \\
+                                                                                       &= \langle q_1,q_2|\hag_{out}(p_1)|p_2\rangle + \langle q_1,q_2|\hag_{in}(p_1)-\hag_{out}(p_1)|p_2\rangle
+\end{align}
+The first term in this is zero unless $q_1,q_2=p_1$, which would lead to a "disconnected diagram", or no "real scattering".
+So this is irrelevant for $\hat{S}$ if $f \neq i$.
+We need to rewrite the creation and annihlation operators:
+\begin{align}
+    \ha(k) &= \int e^{ikx}\left[k_0\hphi(x,t) + i\hpi(x,t)\right]\,d^3x,~ \phi = \p_t\hphi,~ k_0 = -i\p_te^{ikx} \\
+           &= i\int \left[e^{ikx}(-i\overleftarrow{\p_t})\hphi+e^{ikx}\p_t(i\phi)\right]\,d^3x \\
+           &= i\int ie^{ikx}(\breve{\p_t})\hphi\,d^3x \\
+    \hag(k) &= i\int e^{-ikx}\breve{\p_t}\hphi \\
+    \int f(x,t)\,d^3x &= \int dt\,\frac{\p}{\p t}\int f(x,t)\,d^3x = \int d^4x\,\frac{\p}{\p t}f(x,t) \\
+    \langle q_1,q_2|p_1,p_2\rangle &= i\int d^4x\;\left\{e^{-ip_1x}(\Box_x+m^2)\langle q_1,q_2|\hphi(x,t)|p_2\rangle\right\}
+\end{align}
+We can do this again to pull a particle out the "out" state:
+\begin{align}
+    \langle q_1,q_2|p_1,p_2\rangle &= i\int d^4x\; e^{-ip_1x+iq_1y_1}(\Box_{x_1}+m^2)(\Box_{y_1}+m^2)\langle q_2|T(\hphi(y_1)\hphi(x_1))|p_2\rangle \\
+    T\hphi(y)\hphi(x) &= \Theta(y_0-x_0)\hphi(y)\hphi(x) + \Theta(x_0-y_0)\hphi(x)\hphi(y)
+\end{align}
+LSZ-theorem: external particle $\to$ $\phi$ in time-ordered particle + plane wave part + diff. kernel.
 
 
 \end{document}
