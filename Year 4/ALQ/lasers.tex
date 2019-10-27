@@ -660,10 +660,32 @@ We must add a cavity to recirculate the light, and now using mirrors either side
 \end{figure}
 
 \section{General Cavity Design}
-Also distributed loss throughout cavity of $\alpha$ per meter.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \filldraw[fill=lightgray,draw=black] (0,0) -- (-0.5,0) -- (-0.5,1.5) node[anchor=south west] {$R_1 \approx 1$} -- (0,1.5) arc (150:210:1.5cm);
+        \filldraw[fill=lightgray,draw=black] (4.5,0) -- (5,0) -- (5,1.5) node[anchor=west,midway] {$\to$} node[anchor=south east,xshift=10pt] {$R_2 < 1$} -- (4.5,1.5) arc (30:-30:1.5cm);
+
+        \draw (1,0.3) -- (3,0.3) node[anchor=north,midway] {Gain Medium, $\eta_H$} -- (3.5,1.2) node[anchor=west,midway,xshift=10pt] {$\alpha$} -- (1.5,1.2) -- cycle;
+        \draw (0.4,0.3) rectangle (0.6,1.2) node[anchor=south] {a};
+
+        \draw[<->] (1.5,1.4) -- (3.5,1.4) node[anchor=south,midway] {$L_H$} node[anchor=south west] {$\eta_c$};
+        \draw[<->] (-0.2,-0.4) -- (4.7,-0.4) node[anchor=north,midway] {$L_c$};
+    \end{tikzpicture}
+\end{figure}
+\begin{itemize}
+    \item $R_1$ is mirror 1 and must have a reflectivity as close to 1 as possible
+    \item $R_2$ is the output coupler and must have a lower reflectivity so that the laser can eventually escape through this
+    \item $L_c$ is the mirror separation, the length of the cavity
+    \item $\alpha$ is the distributed loss over the length of the gain medium
+    \item a is the intracavity element - it can make pulsed lasers or change the frequency, or induce a fixed loss
+    \item The gain cell is angled, cut at Brewster's angle to minimise loss. 
+    \item The cavity imposes spectrum and characteristics to the laser. 
+    \item Distributed loss throughout cavity of $\alpha$ per meter.
+\end{itemize}
 
 \section{Longitudinal Cavity Modes}
-The field in ithe cavity forms standing waves, i.e.
+The field in the cavity forms standing waves, i.e.
 \begin{equation}
     n\frac{\lambda_n}{2} = L_c
 \end{equation}
@@ -674,10 +696,20 @@ Mode separation,
 \end{equation}
 This is the \unl{Free Spectral Range.}
 \begin{example}[Mode order of 10cm cavity at $\lambda= 500\,nm$]
-    \begin{align}
-        n &= \frac{2L_c}{\lambda} = 4\times10^5 \\
-        \Delta\nu_{fsr} &= \frac{c}{2L_c} = 1.5\;Ghz
-    \end{align}
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \centering
+    \begin{tikzpicture}
+    \filldraw[fill=lightgray,draw=black] (0,0) -- (-0.5,0) -- (-0.5,1.5) -- (0,1.5) arc (150:210:1.5cm);
+    \filldraw[fill=lightgray,draw=black] (4.4,0) -- (4.9,0) -- (4.9,1.5) -- (4.4,1.5) arc (30:-30:1.5cm);
+    \draw (-0.2,0.75) sin (0.4,1.25) cos (1,0.75) sin (1.6,0.25) cos (2.2,0.75) sin (2.8,1.25) cos (3.4,0.75) sin (4,0.25) cos (4.6,0.75);
+    \draw (-0.2,0.75) sin (0.4,0.25) cos (1,0.75) sin (1.6,1.25) cos (2.2,0.75) sin (2.8,0.25) cos (3.4,0.75) sin (4,1.25) cos (4.6,0.75);
+    \draw[<->] (-0.2,-0.4) -- (4.6,-0.4) node[anchor=north,midway] {$L_c$};
+    \end{tikzpicture}
+\end{wrapfigure}
+\begin{align}
+    n &= \frac{2L_c}{\lambda} = 4\times10^5 \\
+    \Delta\nu_{fsr} &= \frac{c}{2L_c} = 1.5\;Ghz
+\end{align}
 \end{example}
 
 \section{Cavity Losses}
