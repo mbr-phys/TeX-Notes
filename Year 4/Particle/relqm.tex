@@ -304,7 +304,6 @@ We have to use creation and annihilation operators that propagate forwards and b
 What propagates backwards in time though?
 Essentially anti-particles - recall the negative energy solutions from last year in Dirac theory. 
 Particles propagating backwards in time are equivalent to anti-particles propagating forwards - this is where the backwards pointing arrows for Feynman diagrams come from. 
-\textit{do a doodle} - the anti-particle won't satisfy the four-momentum conservation rules. 
 
 \section{Green's functions for QM}
 \begin{align}
@@ -503,6 +502,82 @@ We can do this again to pull a particle out the "out" state:
 \end{align}
 LSZ-theorem: external particle $\to$ $\phi$ in time-ordered particle + plane wave part + diff. kernel.
 
+\chapter{}
+
+\section{Wick's Theorem}
+To evaluate the perturbative series, resort to Wick's theorem. 
+It tells us what happens with a time-ordered product of two fields.
+\begin{align}
+    T[\hphi(x)\hphi(y)] &= \underbrace{\Delta_F(x-y)}_{\text{Feynman propagator}} + \underbrace{:\hphi(x)\hphi(y):}_{\text{Normal ordered product}} \\
+    \langle0|T[\hphi(x)\hphi(y)]|0\rangle &= \langle0|\Delta_F(x-y)|0\rangle + \langle0|:\hphi(x)\hphi(y):|0\rangle = \Delta_F(x-y) \\
+    \langle0|:\hphi(x_1)\hphi(x_2)\dots\hphi(x_n):|0\rangle &= 0 \forall n \\
+    \langle0|\Delta_F(x-y)|0\rangle &= \Delta_F(x-y) \\
+    \langle0|T[\hphi_1\hphi_2\hphi_3\hphi_4]|0\rangle = \Delta_F(x_1-x_2)\Delta_F(x_3-x_4) &+ \Delta_F(x_1-x_3)\Delta_F(x_2-x_4) + \Delta_F(x_1-x_4)\Delta_F(x_2-x_3)
+\end{align}
+Back to scattering from before:
+\begin{align}
+    \langle q_1,q_2|p_1,p_2\rangle &\propto \int \dots (\Box_{x_1}+m^2)(\Box_{x_2}+m^2)(\Box_{y_1}+m^2)(\Box_{y_2}+m^2)\langle0|T[\hphi(x_1)\hphi(x_2)\hphi(y_1)\hphi(y_2)]|0\rangle \\
+    \langle q_1,q_2|T[i\lambda\phi^4(z)]|p_1,p_2\rangle &\propto \dots \langle0|T[\hphi(x_1)\hphi(x_2)i\lambda\phi^4(z)\hphi(y_1)\hphi(y_2)]|0\rangle
+\end{align}
+
+\section{Feynman Rules}
+\begin{enumerate}
+    \item Draw all topologically distinct Feynman diagrams with $n$ external legs, associating each leg with an external momentum.
+    \item For each \textbf{internal propagator} with momentum $p$ add a term
+        \begin{align}
+            \frac{d^4k}{(2\pi)^4}\frac{i}{(p^2-m^2-i\e^+)}
+        \end{align}
+    \item For each \textbf{vertex} add a term
+        \begin{align}
+            \frac{-i\lambda}{4!}(2\pi)^4\delta^4\left(\sum_i k_i\right)
+        \end{align}
+        where the sum goes over all momenta entering the vertices
+    \item Make sure you understand symmetry factor compensating the $4!$ in the vertex
+\end{enumerate}
+
+\section{The Dirac Equation}
+Dirac realised that the real relativistic equation was $p^2 = m^2$ which gives a quadratic in $\p_t$, but this gave positive and negative energies, $E = \pm\sqrt{\unl{p}^2+m^2}$.
+As well, the probabilistic interpretation no longer works as zero-components explode or go negative.
+Solution to both: abandon concept of a single-particle theory, construct a quantum field theory, and introduce anti-particles as negative energy solutions propagating backward in time.
+\begin{align}
+    i\p_t\psi(\vx,t) &= -i\unl{\alpha}\cdot\grad\psi(\vx,t) + \beta m\psi(\vx,t)
+\end{align}
+We want to square this ansatz and get the Klein-Gordon equation back. \\
+First requirement is that $\alpha$ and $\beta$ are matrices. 
+To get KG back when squaring, we require the following relations:
+\begin{align}
+    \left\{\alpha_i,\alpha_j\right\} &= 2\delta_{ij} & \beta^2 &= \alpha^2 = 1 \\
+    \left\{\alpha_i,\beta\right\} &= 0 & \text{Tr}[\alpha_i] &= \text{Tr}[\beta] = 0 \\
+\end{align}
+$\alpha_i$ conditions can be fulfilled by the Pauli matrices. 
+$\alpha_i,\beta$ must be of \unl{even} dimension, and then we see that because of $\{\alpha_i,\beta\} = 0$, the matrices must be of $\text{dim} = 4$ or $m=0$.
+\begin{align}
+    \alpha_i &= \begin{pmatrix} 0 & \sigma_i \\ \sigma_i & 0\end{pmatrix} & \beta &= \begin{pmatrix}1 & 0\\ 0& -1\end{pmatrix} 
+\end{align}
+These matrices aren't very easy to work with though, so we can put them into a single four-vector:
+\begin{align}
+    \gamma^\mu_{\eta\xi} &= (\beta,\beta\unl{\alpha})_{\eta\xi} \\
+    \{\gamma^\mu,\gamma^\nu\}_{\eta\xi} &= 2g^{\mu\nu}1_{\eta\xi}
+\end{align}
+From this, we can re-write the Dirac equation using $\gamma^\mu\p_\mu = \cancel{\p}$ as
+\begin{align}
+    (i\cancel{p}-m)_{\eta\xi}\psi_{\xi} &= 0
+\end{align}
+How do we make a Lagrangian out of this?
+First we need a Hermitian conjugate of the equation, starting with the ansatz in Eq (7.10).
+\begin{align}
+    -i\p_t\psi^\dagger &= i\grad\psi^\dagger\cdot\unl{\alpha}^\dagger + m\psi^\dagger\beta^\dagger\\
+\end{align}
+Then, multiplying from the right with $\beta^\dagger$ and using the matrix relations above, \textit{put left arrow on slash}
+\begin{align}
+    -i\psi^\dagger\p_\mu\gamma^\mu &= m\psi^\dagger \\
+    \bar{\psi}(i\cancel{\p}+m) &= 0,~ \bar{\psi} = \psi^\dagger\gamma_0 
+\end{align}
+Now that we have both of these, we can write down our Lagrangian:
+\begin{align}
+    \La &= \bar{\psi}(i\cancel{\p}-m)\psi
+\end{align}
+\textit{put left right arrow above pslash.}
 
 \end{document}
 
