@@ -2,9 +2,12 @@
 
 \usepackage{../../../LaTeX-Templates/Notes}
 \usepackage{subfiles}
+\usetikzlibrary{arrows.meta}
 
 \newcommand\xo{\hat{X}_1}
 \newcommand\xt{\hat{X}_2}
+\newcommand\hsig{\hat{\sigma}}
+\newcommand\hd{\hat{\unl{d}}}
 
 \title{Advanced Theoretical Physics \vspace{-20pt}}
 \author{Dr Kendon and Prof Gardiner}
@@ -600,8 +603,131 @@ Then in the interaction picture,
     U &= \exp\left(-\frac{i}{\hbar}\hh_{int}\right) = \exp\left(\eta^*\ha^2 - \eta(\hag)^2 \right)
 \end{align}
 
+\chapter{}
+\section{Learning Outcomes}
+Atom-light interaction and a model for photodetection.
+We will develop a fully quantum mechanical model for the interaction of light with atoms. 
+After studying this part, you should:
+\begin{itemize}
+    \item Be familiar with the atom-light interaction Hamiltonian in the electric dipole approximation, and explain this approximation.
+    \item Be familiar with the Pauli operators asa quantum description of the two-level atom.
+    \item Explain the physical basis of the Jaynes-Cummings model for atom-light interactions. Explain and use, but not derive, the resulting Hamiltonian.
+    \item Be familiar with the concept of dressed state, and vacuum Rabi splitting in the context of the Jaynes Cummings Hamiltonian.
+    \item Be able to perform simple calculations with combinations of atomic and field operators.
+    \item Provide a simple explanation of a photodetector in the context of quantum optics. 
+    \item Be familiar with the operator expression for the photodetection probability, and understand the meaning of normal ordering in this context.
+\end{itemize}
 
+\section{Atom-Light Interactions}
+\begin{align}
+    \hh &= \hh_{atom} + \hh_{field} + \hh_{int} \\
+    \hh_{atom} &= \frac{\hp^2}{2m} + \hat{V}(r) 
+\end{align}
+So for the EM field, classical version in something of $\hat{A}$.
+Interaction: force on $e^-$ due to EM field,
+\begin{align}
+    \unl{F} &- q\left[\E(\vr,t) + \unl{v}\times\B(\vr,t)\right]
+\end{align}
+where $\unl{F}$ is the Lorentz force. \textit{We do not need to know the derivation for this, only to use it.}
+This is known as the minimal coupling Hamiltonian. 
+Choose Coulomb gauge, $\phi=0,\,\del\cdot A = 0$, but note that this is not Lorentz invariant.
+Now we apply the electric dipole approximation, where light $\gg$ atoms.
+\begin{align}
+    A_{\unl{k},s}(\vr,t) &= A_{\unl{k},s}\exp\left[i(\unl{k}\cdot\vr 0 \om_kt)\right] + c.c.
+\end{align}
+The length scale of the light in this is given by the wavevector, $\approx |\unl{k}| = 2\pi/\lambda$.
+For visible light, $\lambda \approx 400-700\,nm$; for microwaves, $\lambda \approx 1\,cm$.
+But for atoms, $\approx 0.1\,nm$, so as far as atoms are concerned, photons are huge.
+If $\vr$ is the size of the atom, $\unl{k}\cdot\vr \ll 1$.
+So $A(\vr,t) \approx A(t)$ over the size of the atom.
+\begin{align}
+    \hh_{int} &= e\hat{\vr}\cdot\Eh(t)
+\end{align}
+The sign of $e$ is positive, so $e^-$ is $-e$.
+$e\hat{\vr} = \hat{\unl{d}}$, the electric dipole operator.
+\begin{align}
+    \hh_{int} &= \hat{\unl{d}}\cdot\Eh(t)
+\end{align}
+So we want a single mode field, and the best way to think about this is place the light into a cavity.
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+    \filldraw[fill=lightgray,draw=black] (0,0) -- (-0.5,0) -- (-0.5,1.5) -- (0,1.5) arc (150:210:1.5cm);
+    \filldraw[fill=lightgray,draw=black] (4.4,0) -- (4.9,0) -- (4.9,1.5) -- (4.4,1.5) arc (30:-30:1.5cm);
+    \draw (-0.2,0.75) sin (0.4,1.25) cos (1,0.75) sin (1.6,0.25) cos (2.2,0.75) sin (2.8,1.25) node[anchor=south west] {photon} cos (3.4,0.75) sin (4,0.25) cos (4.6,0.75);
+    \draw[dashed,-{Latex[length=3mm,width=1.5mm]}] (-0.7,0.75) -- (5.3,0.75) node[anchor=west] {x};
+    \fill (2.4,1) circle (3pt) node[anchor=south east] {atom};
+    \end{tikzpicture}
+\end{figure}
+\begin{align}
+    \Eh &= e_{\unl{k}}\left(\frac{\hbar\om_k}{\e_0V}\right)^{1/2}(\ha+\hag)\sin(kx)
+\end{align}
+Two level atom - the two that match EM field.
+\begin{align}
+    \hh &= \hh_{atom} + \hh_{field} + \hh_{int} \\
+    \hh_{field} &= \hbar\left(\hag\ha + \frac12\right)
+\end{align}
+The $\frac12$ is the zero-point energy. 
+A two-level atom is equivalent to a spin-$\frac12$ particle.
+\begin{align}
+    \hsig_+ &= |e\rangle\langle g| & \hsig_- &= |g\rangle\langle e| = \hsig^\dagger_+ \\
+    \hsig_z &= |e\rangle\langle e| - |g\rangle\langle g| \\
+    \hsig_+ &= \hsig_x + i\hsig_y & \hsig_- &= \hsig_x - \hsig_y
+\end{align}
+Now we can write the Hamiltonian for the atom:
+\begin{align}
+    \hh_{atom} &= \frac12(E_e - E_g)\hsig_z = \frac12\hbar\om_0\hsig_z \\
+    \hh_{int} &= -\hd\cdot\Eh = g\hat{d}(\ha+\hag) \\
+    g &= -\left(\frac{\hbar\om}{\e_0V}\right)^{1/2}\sin(k-\cdots) \\
+    \langle g|\hd|g\rangle &= \langle e|\hd|e\rangle = 0 \\
+    \hd &= d|g\rangle\langle e| + d^*|e\rangle\langle g| \\
+        &= d(\hsig_+ + \hsig_-) \\
+    \hh_{int} &= \hbar\left(\frac{dg}{\hbar}\right)(\hsig_+ +\hsig_-)(\ha+\hag) \\
+    \hh &= \frac12\hbar\om_0\hsig_z + \hbar\om_k\left(\hag\ha+\frac12\right) + \hbar\lambda(\hsig_+ +\hsig_-)(\ha+\hag)
+\end{align}
+Note that $\lambda$ here is \unl{not a wavelength} but just the constant from Eq (7.19).
 
+\section{Rotating Wave Approximation}
+So in the Heisenberg picture, we have
+\begin{align}
+    \ha(t) &= \ha(0)e^{-i\om t} & \hag(t) &= \hag(0)e^{+i\om t} \\
+    \hsig_+(t) &= \hsig_+(0)e^{+i\om_0t} & \hsig_-(t) &= \hsig_-(0)e^{-i\om_0 t} 
+\end{align}
+$\hh_{int}$ has:
+\begin{align}
+    \hsig_+\ha &\approx e^{i(\om_0-\om)t} & \hsig_-\hag &\approx e^{i(w-\om_0)t} \\
+    \hsig_+\hag &\approx e^{i(\om+\om_0)t} & \hsig_-\ha &\approx e^{-i(\om+\om_0)t}
+\end{align}
+Eqs (7.23) oscillate slowly and conserve energy, while Eqs (7.24) oscillate fast and do not conserve energy.
+So we want to drop the fast oscillating terms as these are not useful to our picture of the Hamiltonian, and this is the rotating wave approximation. 
+From this, we arrive at the Jaynes-Cummings Hamiltonian:
+\begin{align}
+    \hh_{JC} &= \frac12\hbar\om_0\hsig_z + \hbar\om\left(\hag\ha+\frac12\right) + \hbar\lambda(\hsig_+\ha +\hsig_-\hag)
+\end{align}
+This describes: 
+\begin{itemize}
+    \item energy of atom
+    \item energy of photons/cavity mode (single mode)
+    \item how energy can be exchanged between atom and cavity mode
+\end{itemize}
+\begin{align}
+    \hsig_+\ha|g\rangle|n\rangle &\implies |e\rangle|n-1\rangle \\
+    \hsig_-\hag|e\rangle|n\rangle &\implies |g\rangle|n+1\rangle
+\end{align}
+So these behave like raising and lowering operators as they shift the atom around the cavity.\\
+So what assumptions did we use?
+\begin{itemize}
+    \item electron can't go anywhere else outside the cavity
+    \item number of photons is fixed, such that there were no other losses to outside the cavity
+    \item only need $|g\rangle,|e\rangle$ for the two levels of the atom and $|n\rangle,|n+1\rangle$ for the states of the photons
+\end{itemize}
+We can then form two basis states:
+\begin{align}
+    |\psi_1,n\rangle &\equiv |e\rangle|n\rangle & |\psi_2,n\rangle &\equiv |g\rangle|n+1\rangle 
+\end{align}
+\begin{equation}
+    \hh(n) = \hbar\begin{pmatrix} n\om+\frac12\om_0 & \lambda\sqrt{n+1} \\ \lambda\sqrt{n+1} & (n+1)\om-\frac12\om_0\end{pmatrix}
+\end{equation}
 
 
 
