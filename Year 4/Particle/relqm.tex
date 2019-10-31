@@ -579,6 +579,80 @@ Now that we have both of these, we can write down our Lagrangian:
 \end{align}
 \textit{put left right arrow above pslash.}
 
+\chapter{}
+\section{Quantising the Dirac equation}
+\begin{align}
+    \La &= \bar{\psi}(i\cancel{\p}-m)\psi  \\
+    \frac{\p\La}{\psi} - \p_\mu\frac{\p\La}{\p(\p_\mu\psi)}
+\end{align}
+Perform a plane wave expansion:
+\begin{align}
+    \psi(x) &= \int d^3x \left[e^{-ipx}u(p)+e^{ipx}v(p)\right]
+\end{align}
+$u$ and $v$ are spinor solutions of positive and negative energy respectively, or particle and anti-particle solutions.
+\begin{align}
+    (\cancel{p}-m)_{\alpha\beta}u_\beta(p) &= 0 & (\cancel{p}+m)v_\beta(p) &= 0 & p^\mu &= (E,\unl{0}) = (m,\unl{0}) 
+\end{align}
+So the only matrix that survives this condition is $\gamma^0$, or $\beta$.
+\begin{align}
+    (\beta-1)u(m) &= 0 & (\beta+1)v(m) &= 0
+\end{align}
+So this implies that we have two solutions for $u$ and two for $v$:
+\begin{align}
+    u^{(1)}(m) &= \begin{pmatrix} 1\\0\\0\\0\end{pmatrix} & u^{(2)}(m) &= \begin{pmatrix} 0\\1\\0\\0\end{pmatrix} & v^{(1)}(m) &= \begin{pmatrix} 0\\0\\1\\0\end{pmatrix} & v^{(2)}(m) &= \begin{pmatrix} 0\\0\\0\\1\end{pmatrix}
+\end{align}
+$u^{(1/2)}$ describes particles with spin up/down and $v^{(1/2)}$ describes anti-particles with spin up/down.\\
+To boost these spinors:
+\begin{align}
+    (\cancel{p}+m)(\cancel{p}-m)u &= (p^2-m^2)u \\
+    u(p) &= \eta(\cancel{p}+m)u((m,\unl{0}))
+\end{align}
+Here, $\eta$ is some renormalisation factor. 
+\begin{align}
+    \cancel{p} &= p^\mu\gamma_\mu = E\gamma^0 - p_x\gamma^1 - p_y\gamma^2 - p_z\gamma^3 \\
+    u(p) &\to \bar{u}(p) = u^\dagger(p)\gamma^0
+\end{align}
+We want to fix $\eta$ so that a sum over the two $u$ spinors that we have, we get a $\delta_{ij}$ and this is the same as negative sum over the two $v$ spinors.
+\begin{align}
+    \bar{u}_i(p)u_j(p) &= \delta_{ij} = -\bar{v}_i(p)v_j(p)
+\end{align}
+\textbf{If you are not consistent with how you use your convention, then you will burn in hell.}\\
+Reverse the order of above and obtain the completeness relations:
+\begin{align}
+    \sum_{i=1}^2 u^{(i)}_\alpha(p)\bar{u}^{(i)}_\beta(p) &= \left(\frac{\cancel{p}+m}{2m}\right)_{\alpha\beta} \\
+    \sum_{i=1}^2 v_\alpha^{(i)}(p)\bar{v}_\beta^{(i)}(p) &= \left(\frac{\cancel{p}-m}{2m}\right)_{\alpha\beta}
+\end{align}
+
+\newpage
+\textbf{Quantisation:}
+\begin{enumerate}
+    \item Construct Lagrangian
+    \item Make $\pi$:
+        \begin{equation}
+            \pi = \frac{\p\La}{\p\dot{\psi}} = \bar{\psi}i\gamma^0 = i\psi^\dagger
+        \end{equation}
+    \item Construct Hamiltonian:
+        \begin{align}
+            \Ham &= \pi\dot{\psi} + \bar{\pi}\bar{\dot{\psi}} - \La 
+        \end{align}
+    \item Make everything operators
+    \item Demand equal-time (anti-)commutators for bosons(fermions) - anti-commutator $= 0$ means no two particles in same state.
+        \begin{align}
+            \left\{\psi_\alpha(\vx,t),\psi^\dagger_\beta(\vec{y},t)\right\} &= \delta_{\alpha\beta}\delta^3(x-y) 
+        \end{align}
+        All others are zero.
+    \item Expand in waves with creation and annihilation operators
+        \begin{align}
+            \psi_\alpha(\vx,t) &= \int \frac{d^3p}{(2\pi)^3} \frac{m}{E} \sum_{i=1}^2\left[e^{-ipx}u_\alpha^{(i)}(p)\hat{b}_i(p) + e^{ipx}v_\alpha^{(i)}(p)\hat{d}^\dagger_i(p) \right]\\
+            \psi_\beta^\dagger(\vx,t) &= \int \frac{d^3p}{(2\pi)^3} \frac{m}{E} \sum_{i=1}^2\left[e^{-ipx}\bar{u}_\beta^{(i)}(p)\hat{b}^\dagger_i(p) + e^{ipx}\bar{v}_\beta^{(i)}(p)\hat{d}_i(p) \right]\gamma^0
+        \end{align}
+    \item Use completeness relations for $u(p)$ and $v(p)$:
+        \begin{align}
+            \left\{\hat{b}_\alpha(p),\hat{b}_\alpha^\dagger(q)\right\} &= (2\pi)^3\frac{E}{m}\delta^3(\vec{p}-\vec{q})\delta_{\alpha\beta} \\
+            \left\{\hat{d}_\alpha(p),\hat{d}_\alpha^\dagger(q)\right\} &= (2\pi)^3\frac{E}{m}\delta^3(\vec{p}-\vec{q})\delta_{\alpha\beta} 
+        \end{align}
+\end{enumerate}
+
 \end{document}
 
 
