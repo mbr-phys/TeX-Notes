@@ -678,7 +678,7 @@ Now we can write the Hamiltonian for the atom:
 \begin{align}
     \hh_{atom} &= \frac12(E_e - E_g)\hsig_z = \frac12\hbar\om_0\hsig_z \\
     \hh_{int} &= -\hd\cdot\Eh = g\hat{d}(\ha+\hag) \\
-    g &= -\left(\frac{\hbar\om}{\e_0V}\right)^{1/2}\sin(k-\cdots) \\
+    g &= -\left(\frac{\hbar\om}{\e_0V}\right)^{1/2}\sin(kx) \\
     \langle g|\hd|g\rangle &= \langle e|\hd|e\rangle = 0 \\
     \hd &= d|g\rangle\langle e| + d^*|e\rangle\langle g| \\
         &= d(\hsig_+ + \hsig_-) \\
@@ -714,6 +714,7 @@ This describes:
     \hsig_+\ha|g\rangle|n\rangle &\implies |e\rangle|n-1\rangle \\
     \hsig_-\hag|e\rangle|n\rangle &\implies |g\rangle|n+1\rangle
 \end{align}
+\begin{multicols}{2}
 So these behave like raising and lowering operators as they shift the atom around the cavity.\\
 So what assumptions did we use?
 \begin{itemize}
@@ -721,14 +722,143 @@ So what assumptions did we use?
     \item number of photons is fixed, such that there were no other losses to outside the cavity
     \item only need $|g\rangle,|e\rangle$ for the two levels of the atom and $|n\rangle,|n+1\rangle$ for the states of the photons
 \end{itemize}
+\columnbreak
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (1,0) node[anchor=north west] {$|g\rangle|n+1\rangle$};
+        \draw (0,3) -- (1,3) node[anchor=south west] {$|e\rangle|n\rangle$};
+        \draw[Latex-Latex] (1,3) -- (1,0) node[anchor=west,midway,yshift=-20pt] {$\hbar\om_0$};
+        \draw[dashed] (1,1.5) -- (0.5,1.5) node[anchor=east] {$E=0$}; 
+        \draw (1,2.25) -- (0.5,2.25) node[anchor=east] {$\hbar\Delta$};
+        \draw[Latex-Latex] (0.6,2.25) -- (0.6,0) node[anchor=east,midway,yshift=-10pt] {$\hbar\om$};
+    \end{tikzpicture}
+\end{figure}
+\end{multicols}
 We can then form two basis states:
 \begin{align}
-    |\psi_1,n\rangle &\equiv |e\rangle|n\rangle & |\psi_2,n\rangle &\equiv |g\rangle|n+1\rangle 
+    |\psi_1,n\rangle &\equiv |e\rangle|n\rangle = |i\rangle & |\psi_2,n\rangle &\equiv |g\rangle|n+1\rangle = |f\rangle
 \end{align}
 \begin{equation}
     \hh(n) = \hbar\begin{pmatrix} n\om+\frac12\om_0 & \lambda\sqrt{n+1} \\ \lambda\sqrt{n+1} & (n+1)\om-\frac12\om_0\end{pmatrix}
 \end{equation}
+Matrix elements obtained from $\langle i|\hh(n)|i\rangle$, etc.
 
+\chapter{}
+\section{Rotating Wave Approx Ctd}
+We will take $\Delta=0$, and for an initial state $|i\rangle = |e\rangle|n\rangle$,
+\begin{align}
+    |\psi(t)\rangle &= c_i(t)|i\rangle + c_f(t)|f\rangle \\
+    E_i &= \frac12\hbar\om + n\hbar\om,~ E_f = -\frac12\hbar\om + (n+1)\hbar\om
+\end{align}
+So the energies are equal, and conserved.
+We can then solve the Schrodinger equation for Eq (8.1), and find relations for the co-factors:
+\begin{align}
+    \dot{c}_i &= -i\lambda\sqrt{n+1}c_f & \ddot{c}_i &+ \lambda^2(n+1)c_i = 0 \\
+    c_i(t) &= \cos\left(\lambda t\sqrt{n+1}\right) & c_f(t) &= i\sin\left(\lambda t\sqrt{n+1}\right) 
+\end{align}
+\begin{equation}
+    P_i(t) = |c_i(t)|^2 = \cos^2\left(\lambda t\sqrt{n+1}\right)
+\end{equation}
+To figure this out, we can go through many different solutions, but the simplest in this problem is to use what is called the \textbf{atomic inversion}:
+\begin{align}
+    \om(t) &= \langle\psi(t)|\hsig_z|\psi(t)\rangle \\
+           &= P_i(t) - P_f(t) = \cos\left(2\lambda t\sqrt{n+1}\right)
+\end{align}
+Now we will define the \textbf{Rabi frequency}, as
+\begin{align}
+    \Om(n) &= 2\lambda\sqrt{n+1}
+\end{align}
+Note that there are even Rabi oscillations for $n=0$.
+This may seem a strange possibility at first, but there are many experiments to prove this is in fact the case, where it occurs in our cavity model as the vacuum of the single mode focused on the atom. 
+This can appear quite classical at first, but in the more general case as you increase the number of states involved, it will seem more quantum.
+We can write general descriptions for our ground and excited states:
+\begin{align}
+    |\psi_g(t)\rangle &= -i\sin_{n=0}^\infty c_n\sin\left(\frac12\Om(n)\right)|n+1\rangle \\
+    |\psi_e(t)\rangle &= \sum_{n=0}^\infty c_n\cos\left(\frac12\Om(n)t\right)|n\rangle \\
+    \om(t) &= \sum_{n=0}^\infty |c_n|^2\cos\left(\Om(n)t\right),\; c_n = \frac{\alpha^n}{\sqrt{n!}}e^{-|\alpha|^2/2}
+\end{align}
+For a single number state, $P_i$ oscillates between ground and excited in a classical sinusoidal appearance, but when we consider a coherent state with average $\langle n\rangle$, it drops down into being a superposition of being ground and excited, then after a while excites into partial oscillations again, and continues this interesting pattern.
+\textit{input graphs}
+
+Now, we want to analyse the Jaynes-Cummings Hamiltonian through the calculation of the matrix elements instead, so we will start with our same two pairs of states, this time with $\Delta\neq0$.
+\begin{align}
+    |i\rangle &= |e\rangle|n\rangle & |f\rangle &= |g\rangle|n+1\rangle 
+\end{align}
+\begin{equation}
+    \hh(n) = \hbar\begin{pmatrix}n\om+\frac12\om_0 & \lambda\sqrt{n+1} \\ \lambda\sqrt{n+1} & (n+1)\om-\frac12\om_0 \end{pmatrix}
+\end{equation}
+This has eigenenergies with the Rabi frequency, which is the same as before if $\Delta=0$.
+\begin{align}
+    E_{\pm} &= \hbar\left\{\left(n+\frac12\right)\om \pm \frac12\Om_n(\Delta)\right\} \\
+    \Om_n(\Delta) &= \left[\Delta^2+ 4\lambda^2(n+1)\right]^{1/2} 
+\end{align}
+We then have eigenstates, 
+\begin{align}
+    |n,+\rangle &= \cos\left(\frac12\Phi_n\right)|i\rangle + \sin\left(\frac12\Phi_n\right)|f\rangle & |n,-\rangle &= -\sin\left(\frac12\Phi_n\right)|i\rangle + \cos\left(\frac12\Phi_n\right)|f\rangle
+\end{align}
+We have used a new angle here, $\Phi_n$, where this is defined as
+\begin{align}
+    \Phi_n &= \arctan\left(\frac{2\lambda\sqrt{n+1}}{\Delta}\right) = \arctan\left(\frac{\Om_n(0)}{\Delta}\right).
+\end{align}
+We are happy with this definition even in the limit of $\Delta\to0$, as $\tan$s have known angles even at $\infty$.\\
+The eigenstates above are known as \emph{dressed states} of the atom, so when the atom is in a single-mode field like this, the field changes the eigenstates so they become eigenstates of the whole system. 
+This looks like the energies of the eigenstates being changed by the application of the field.
+The original eigenstates we considered, $|e\rangle|n\rangle$ and $|g\rangle|n+1\rangle$, are called \emph{bare states.}
+These bare states do not have the same energy, unless $\Delta=0$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (1,0) node[anchor=north west] {$|g\rangle|n+1\rangle$};
+        \draw (0,3) -- (1,3) node[anchor=south west] {$|e\rangle|n\rangle$};
+        \draw[Latex-Latex] (0,3) -- (0,0) node[anchor=east,midway,yshift=-20pt] {$\hbar\om_0$};
+        \draw[dashed] (0,1.5) -- (0.5,1.5) node[anchor=west] {$E=0$}; 
+        \draw (0.5,2.25) -- (1,2.25) node[anchor=south,midway] {$\hbar\Delta$} node[anchor=west] {$|g\rangle|n+1\rangle$};
+        \draw[Latex-Latex] (0.6,2.25) -- (0.6,0) node[anchor=west,midway,yshift=-10pt] {$\hbar\om$};
+
+        \draw (3,2.25) -- (3.5,2.25) node[anchor=south,midway] {$\Delta$} node[anchor=north,midway] {$\lambda=0$};
+        \draw (3,3) -- (3.5,3);
+        \draw[dashed] (3.5,2.25) -- (4.5,2);
+        \draw (4.5,2) -- (5,2) node[anchor=north,midway] {$|n,-\rangle$} node[anchor=north,midway,yshift=-15pt] {$\lambda\neq0$}; 
+        \draw[dashed] (3.5,3) -- (4.5,3.25);
+        \draw (4.5,3.25) -- (5,3.25) node[anchor=south,midway] {$|n,+\rangle$};
+        \draw[white] (4.75,3.25) -- (4.75,2) node[black,midway] {$\hbar\Om_n(\Delta)$};
+    \end{tikzpicture}
+\end{figure}
+So if we define $\Delta=\om_0-\om$, we can see that now $\Delta$ is the energy splitting between the states $|e\rangle|n\rangle$ and $|g\rangle|n+1\rangle$, but this is for $\lambda=0$ and we can see the dependence on $\lambda$ on these energy states through the Rabi frequency. 
+It is then clear that this energy splitting $\Delta$, will increase for the eigenenergies, $|n,-\rangle$ and $n,+\rangle$.
+This is known as a \emph{Stark Shift}, since it is interacting through the E-field of light. 
+Specifically, it is known as the AC or dynamic Stark shift, as the source of the electric field is not static, but dynamic.\\
+So as $\Delta\to0$, we are on resonance, and the bare states are degenerate, but the dressed states are still split.
+\begin{align}
+    \arctan&\left(\frac{2\lambda\sqrt{n+1}}{\Delta\to0}\right) \to \frac{\pi}{2} & \cos\left(\frac12\Phi_n\right) &= \sin\left(\frac12\Phi_n\right) \to \frac{1}{\sqrt{2}} \\
+    |n,+\rangle &= \frac{1}{\sqrt{2}}\left(|e\rangle|n\rangle+|g\rangle|n+1\rangle\right) & |n,-\rangle &= \frac{1}{\sqrt{2}}\left(-|e\rangle|n\rangle+|g\rangle|n+1\rangle\right)
+\end{align}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$n=0$} -- (2,0) node[anchor=north,midway] {$\lambda,\Delta=0$}; 
+        \draw (0,1) node[anchor=east] {$n=1$} -- (2,1);
+        \draw (0,2) node[anchor=east] {$n=2$} -- (2,2);
+        \draw[Latex-Latex] (1,0) -- (1,1) node[anchor=west,midway] {$\hbar\om$};
+        \draw[Latex-Latex] (1,1) -- (1,2) node[anchor=west,midway] {$\hbar\om$};
+
+        \draw[-Latex] (2.2,1) -- (2.8,1);
+
+        \draw (3,-0.1) -- (5,-0.1) node[anchor=north,midway] {$\lambda>0,\Delta=0$};
+        \draw (3,0.1) -- (5,0.1);
+        \draw[Latex-Latex] (5.1,-0.2) -- (5.1,0.2) node[anchor=west,midway] {$2\hbar\lambda$};
+        \draw (3,0.8) -- (5,0.8);
+        \draw (3,1.2) -- (5,1.2);
+        \draw[Latex-Latex] (5.1,0.7) -- (5.1,1.3) node[anchor=west,midway] {$2\sqrt{2}\hbar\lambda$};
+        \draw (3,1.5) -- (5,1.5);
+        \draw (3,2.5) -- (5,2.5);
+        \draw[Latex-Latex] (5.1,1.5) -- (5.1,2.5) node[anchor=west,midway] {$2\sqrt{3}\hbar\lambda$};
+    \end{tikzpicture}
+\end{figure}
+The phenomenom shown above is known as vacuum Rabi splitting, where we get anharmonic energy levels due to coupling as $\lambda\neq0$.
+This is the underlying physics that allows us to engineer quantum technology by compressing waves down several orders of magnitude.
+This all begins as the light and atom when allowed to interact begin to behave as a composite system.
 
 
 \end{document}
