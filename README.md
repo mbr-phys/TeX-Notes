@@ -1,8 +1,8 @@
 ### TeX and MD Notes
 
-* TeX & MD files for [PDF notes](https://github.com/MisconceptualShark/PDF-Notes)
+* TeX & MD files for [PDF notes](https://github.com/mbr-phys/PDF-Notes)
 
-	- personal sty files in [LaTeX Templates repo](https://github.com/MisconceptualShark/LaTeX-Templates)
+	- personal sty files in [LaTeX Templates repo](https://github.com/mbr-phys/LaTeX-Templates)
 
 	- images needed for docs located in folders beside them
 
