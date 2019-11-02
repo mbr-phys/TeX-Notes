@@ -2,6 +2,7 @@
 
 \usepackage{../../../LaTeX-Templates/Notes}
 \usepackage{subfiles}
+\usepackage{tensor}
 
 \newcommand\hphi{\hat{\phi}}
 \newcommand\hpi{\hat{\pi}}
@@ -56,11 +57,11 @@ Anti-symmetric tensor:
 \section{Lorentz Transformation}
 Boosts and rotations:
 \begin{equation}
-    x'^\mu = \Lambda^\mu_\nu x^\nu
+    x'^\mu = \tensor{\Lambda}{^\mu_\nu} x^\nu
 \end{equation}
 Lorentz boost along z-axis:
 \begin{equation}
-    \Lambda^\mu_\nu = \begin{pmatrix} \cosh\nu & 0 & 0 & -\sinh\nu \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ -\sinh\nu & 0 & 0 & \cosh\nu \end{pmatrix}
+    \tensor{\Lambda}{^\mu_\nu} = \begin{pmatrix} \cosh\nu & 0 & 0 & -\sinh\nu \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ -\sinh\nu & 0 & 0 & \cosh\nu \end{pmatrix}
 \end{equation}
 where rapidity
 \begin{equation}
