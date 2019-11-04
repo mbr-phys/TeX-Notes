@@ -6,6 +6,7 @@
 
 \newcommand\hphi{\hat{\phi}}
 \newcommand\hpi{\hat{\pi}}
+\newcommand\hpsi{\hat{\psi}}
 \newcommand\vy{\unl{y}}
 
 \title{Particle Theory \vspace{-20pt}}
@@ -653,6 +654,87 @@ Reverse the order of above and obtain the completeness relations:
             \left\{\hat{d}_\alpha(p),\hat{d}_\alpha^\dagger(q)\right\} &= (2\pi)^3\frac{E}{m}\delta^3(\vec{p}-\vec{q})\delta_{\alpha\beta} 
         \end{align}
 \end{enumerate}
+
+\chapter{}
+\section{Dirac Propagator}
+\begin{align}
+    \psi(x) &= \sum_{i=1}^2 \int d^3p \left[e^{-ipx}u^{(i)}(p)\hat{b}^{(i)} + e^{ipx}v^{(i)}(p)\hat{d}^{\dagger(i)}\right]
+\end{align}
+Want to have two different objects at positions x and y and have some amplitude between them, $\langle\psi(y)|\psi(x)\rangle$.
+\begin{align}
+    iS_F(y-x) &= \langle0|\hpsi(y)\hpsi^\dagger(x)|0\rangle\Theta(y_0-x_0) - \langle0|\hpsi^\dagger(y)\hpsi(x)|0\rangle
+\end{align}
+We subtract these two terms instead of add them due to Fermi algebra, as we are dealing with fermions now, not bosons, so we have a particle going one way with the first term and an anti-particle going the other with the latter term.
+So now, dropping the "hats" from the operators for convenience,
+\begin{align}
+    iS_F(x,y)_{\beta\alpha} &= \langle0|T[\psi_\beta(y)\bar{\psi}_\alpha(x)]|0\rangle \\
+                            &= \int \frac{d^3p}{(2\pi)^22E_p}\left[e^{-ip(y-x)}\Theta(y_0-x_0)(\cancel{p}+m) - e^{ip(y-x)}(\cancel{p}-m)\Theta(x_0-y_0)\right]_{\beta\alpha} \\
+                            &= i\int\frac{d^4p}{(2\pi)^4} e^{-ip(y-x)}\left[\frac{\cancel{p}+m}{p^2-m^2+i\e}\right]_{\beta\alpha}
+\end{align}
+Where in between the last two lines, we have used Cauchy's Integral formula.\\
+In Feynman diagrams, we rarely deal with propagators in position space, so again, we will Fourier transform into momentum space, which is simply if you consider Eq (9.5) is already in the form of a Fourier transform.
+\begin{align}
+    iS_F(p) &= \frac{i\cancel{p}+m}{p^2-m^2+i\e^+}
+\end{align}
+
+\section{Quantising Electrodynamics}
+We will start from scratch with electrodynamics, beginning with proposing two vector fields. 
+We want these to be related somehow, so there is no point having two vectors, we will have a vector field $\E$, and an axial vector field, $\B$.
+We will also set the restraint that we can only use first derivates for equations of motion. 
+\begin{align}
+    \grad\cdot\E &= 4\pi\rho, \text{ - scalar} \\
+    \grad\cdot\B &= 0, \text{ - pseudo-scalar} \\
+    \p_t\E - \grad\times\B &= -4\pi\vec{j}, \text{ - vectors} \\
+    \p_t\B - \grad\times\E &= 0, \text{ - axial-vectors}
+\end{align}
+The conditions we have used are that we have no magnetic monopoles, and $\E$ and $\B$ are light.
+
+Now let's reintroduce the vector potential, $A^\mu = (\phi,\vec{A})$
+\begin{align}
+    E &= -\grad A^0 - \p_t\vec{A} & \B &= \grad\times\vec{A}
+\end{align} 
+So what is the free Lagrangian from this?
+\begin{align}
+    \La &= -\frac14F^{\mu\nu}F_{\mu\nu} + \cancel{j^\mu A_\mu} \\
+    F^{\mu\nu} &= \p^\mu A^\nu - \p^\nu A^\mu = \begin{pmatrix} 0 & -E_x & -E_y & -E_z \\ E_x & 0 & -B_z & B_y \\ E_y & B_z & 0 & -B_x \\ E_z & -B_y & B_x & 0 \end{pmatrix}
+\end{align}
+The cancelled term in the Lagrangian is what we would add for a term describing the source, but we have no source, so we set to 0.
+Using $F^{\mu\nu}$, we can re-write Maxwell's equations:
+\begin{align}
+    \p_\mu F^{\mu\nu} &= j^\nu \\
+    \p_\mu \tilde{F}^{\mu\nu} &= 0,\, \tilde{F}^{\mu\nu} = \e^{\mu\nu\rho\sigma}F_{\rho\sigma}
+\end{align}
+Eq (9.14) is in fact the Euler-Lagrange equation,
+\begin{align}
+    \p_\mu\frac{\p\La}{\p(\p_\mu A_\nu)} - \frac{\p\La}{\p A_\nu} = 0
+\end{align}
+
+\section{Gauge Invariance}
+\textbf{Problems:}
+\begin{itemize}
+    \item 
+        \begin{align}
+            \pi^0 &= \frac{\p\La}{\p A^0} = 0 \implies [\hat{A}^0,\hpi^0] \propto \delta
+        \end{align}
+    \item Gauge invariance:
+        \begin{align}
+            A_\mu &\to A_\mu' = A_\mu + \p_\mu\Lambda \\
+            \implies F_{\mu\nu}' &= F_{\mu\nu}
+        \end{align}
+        Our current standing of $A^\mu$ leaves us with four degrees of freedom, which is too many. 
+        We need to reduce the degrees of freedom by two if we want to develop a viable theory.
+        $A^\mu$ is gauge dependent, whereas $F^{\mu\nu}$ is gauge independent, so $\E,\B$ are independent too.
+\end{itemize}
+There are some gauges we can choose to help us solve this:
+\begin{itemize}
+    \item Coulomb gauge, $\grad\cdot\vec{A} = 0$
+    \item Lorentz gauge, $\p_\mu A^\mu = 0$
+    \item Temporal gauge, $A_0 = 0$
+    \item Axial gauge, $A_z = 0$
+\end{itemize}
+Any physical quantity we want to calculate must be gauge-independent.
+
+
 
 \end{document}
 
