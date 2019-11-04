@@ -337,9 +337,9 @@ What is the expectation value, $\langle\hat{\E}_{\unl{k},s}(\vr,t)\rangle$?
     \implies \langle\Eh_{\unl{k},s}(\vr,t)\rangle &= 0,\; \forall n
 \end{align}
 I.e. the mean electric field is zero for number states.
-Now consider the expectation value for the square of the electric field, $\langle \Eh_{unl{k},s}(\vr,t)^2\rangle$.
+Now consider the expectation value for the square of the electric field, $\langle \Eh_{\unl{k},s}(\vr,t)^2\rangle$.
 \begin{align}
-    \langle \Eh_{unl{k},s}(\vr,t)^2\rangle &= 2\left(\frac{\hbar\om_k}{2\e_0V}\right)\left(n+\frac12\right)
+    \langle \Eh_{\unl{k},s}(\vr,t)^2\rangle &= 2\left(\frac{\hbar\om_k}{2\e_0V}\right)\left(n+\frac12\right)
 \end{align}
 Now we can work out the variance:
 \begin{align}
@@ -859,6 +859,109 @@ So as $\Delta\to0$, we are on resonance, and the bare states are degenerate, but
 The phenomenom shown above is known as vacuum Rabi splitting, where we get anharmonic energy levels due to coupling as $\lambda\neq0$.
 This is the underlying physics that allows us to engineer quantum technology by compressing waves down several orders of magnitude.
 This all begins as the light and atom when allowed to interact begin to behave as a composite system.
+
+\chapter{}
+\section{Photodetection}
+We are interested in detecting low numbers of photons, so we will make use of the physics previously discussed, in terms of Hamiltonians
+\begin{align}
+    \hh &= \hh_{field} + \hh_{atom} + \hh_{int} \\
+    \hh_{field} &= \sum_{\unl{k},s}\hbar\om_k\left(\hag_{\unl{k},s}\ha_{\unl{k},s}+\frac12\right) \\
+    \hh_{atom} &= \hbar\om_0\hsig_z,\; |k| = \frac{2\pi}{\lambda} \\
+\end{align}
+We then want to use the electric dipole approximation to build our interaction Hamiltonian,
+\begin{align}
+    \hh_{int} &= e\hat{\vr}\cdot\Eh = -\hat{d}\cdot\Eh(\vec{R},t)
+\end{align}
+We are aiming to ionise the atom, because then we have a free electron to detect as well. 
+Once we have one electron freed, we can pull many more until we have multiple electrons to form a current, which we can detect.
+Of course to ionise the atom, we require the photon to add enough energy to free the electron.
+
+Two types of photodetectors:
+\begin{itemize}
+    \item Photomultiplier tube (PMT):
+        \textit{draw doodle, photo multiplier tube, photon bumps into cathode, then e bumps into next, etc etc, the first is a cathode, then lots of dynodes, then an anode attached to a resistor to detect the current.}
+        It is in a tube so it has a high vacuum. 
+        This tube can result in a gain $\approx 10^8$.
+    \item Avalanche Photo Detecto (APD)
+        \textit{draw doodle, see notes}
+        We do not have as high a gain here, but using a semiconductor instead of a high vacuum is more practical and easier to make.
+\end{itemize}
+\textit{more doodles}
+For a free electron, 
+\begin{align}
+    |e\rangle &= \frac{1}{\sqrt{V}}e^{i\vec{q}\cdot\vr}
+\end{align}
+So for our interaction Hamiltonian then, 
+\begin{align}
+    \hh_{int} &= -\hat{d}\cdot\Eh(\vr,t) \\
+    \Eh(\vr,t) &= i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\left[\hag_{\unl{k},s}(t)e^{i\unl{k}\cdot\vr} - \ha_{\unl{k},s}(t)e^{-i\unl{k}\cdot\vr}\right]
+\end{align}
+This is clearly in the Heisenberg picture as we have time-dependent operators. 
+Here, $\ve$ is the polarisation vector.
+\begin{align}
+    \ha_{\unl{k},s}(t) &= \ha_{\unl{k},s}e^{-i\om_kt} & \hag_{\unl{k},s}(t) &= \hag_{\unl{k},s}e^{i\om_kt}
+\end{align}
+We want to split the electric field into two parts for absorption and emission:
+\begin{align}
+    \Eh_+(\vr,t) &\equiv i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\ha_{\unl{k},s}(t)e^{i\vec{k}\cdot\vr} \\
+    \Eh_-(\vr,t) &\equiv -i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\hag_{\unl{k},s}(t)e^{-i\vec{k}\cdot\vr} \\
+\end{align}
+These have been defined such that $\Eh_- \equiv \Eh_+^\dagger$ and vice versa; these operators have taken on the properties of the creation and annihilation operators. 
+We only want to use $\Eh_+$ as this deals with absorption, which is what we're interested in. 
+\begin{align}
+    \langle F|\hh|I\rangle &\approx -\underbrace{\langle e|\hat{d}|g\rangle}_{\text{atom}} \underbrace{\langle f|\Eh_+(\vr,t)|i\rangle}_{\text{field}} 
+\end{align}
+The atom term above is equal to $d$, but the field term isn't so clear. 
+We must sum over all possible final states to find this expectation value, using the \textbf{broadband detector assumption.}
+\begin{align}
+    P_f &= |\langle F|\hh|I\rangle|^2 \propto |\langle f|\Eh_+(\vr,t)|i\rangle|^2 \\
+    P_i &\propto \sum_f |\langle f|\Eh_+(\vr,t)|i\rangle|^2 \\
+        &\propto \sum_f \langle i|\Eh_-(\vr,t)|f\rangle\langle f|\Eh_+(\vr,t)|i\rangle
+\end{align}
+If this sum is over all possible $f$ and doesn't depend on any of the other terms, then the $|f\rangle\langle f|$ will sum to the identity.
+\begin{align}
+    P_i &\propto \langle i|\Eh_-(\vr,t)\Eh_+(\vr,t)|i\rangle \\
+    \Eh_+(\vr,t) &\equiv i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\ha_{\unl{k},s}(t)e^{i\vec{k}\cdot\vr} 
+\end{align}
+Depending on what our state is, wrapping it around the electric field operators can produce some fairly non-trivial outcomes.
+Note that the ordering of these operators is important; if the operators were the other way around, they would be acting on the f bra/kets instead of the i bra/kets, and we would not have been able to sum and cancel the fs.\\
+Reminding ourselves that we are trying to count photons, we can see that $\Eh_-\Eh_+ \propto \hag\ha = \hn$, the number operator. 
+Therefore our current result makes sense as it will indeed count photons, for discrete states or coherent states (detecting average number of photons instead).
+We will see more on this when we discuss correlation functions in lecture 11, but we first need to understand beamsplitters in lecture 10.
+
+\section{Coherence/correlation functions}
+First, we will remind ourselves of the classical functions. 
+An early example is Young's slits experiment:
+\textit{doodle}
+We need 
+\begin{align}
+    \Delta s &\leq \frac{c}{\Delta\om} \\
+    \Delta t &= \frac{\Delta s}{c} = \frac{1}{\Delta\om}
+\end{align}
+$\frac{c}{\Delta\om}$ is the coherence length, and $\Delta t$ is the coherence time.
+Now what about the fiel at the detector?
+\begin{align}
+    t_1 &= t-\frac{s_1}{c},\; t_2 = t-\frac{s_2}{c} \\
+    \E(\vr,t) &= k_1\E(\vr_1,t_1) + k_2\E(\vr_2,t_2) \\
+    I(\vr) &= \langle |\E(\vr,t)|^2\rangle_t \\
+           &= |k_1|^2\langle|\E(\vr_1,t_1)|^2\rangle + |k_2|^2\langle|\E(\vr_2,t)|^2\rangle + 2\text{Re}\left[k_1^*k_2\langle\E^*(\vr_1,t_1)\E(\vr_2,t_2)\rangle\right] \\
+           &= I_1 + I_2 + 2\text{Re}[\text{interference}]
+\end{align}
+So we introduce $\gamma^{(1)}(x_1,x_2)$.
+This is the first order normalised mutual coherence function. 
+\begin{align}
+    \gamma^{(1)}(x_1,x_2) &= \frac{\langle\E^*(\vr_1,t_1)\E(\vr_2,t_2)\rangle}{\left\{\langle|\E(\vr_1,t_1)|^2\rangle\langle|\E(\vr_2,t_2)|^2\rangle\right\}^{1/2}} \\
+    I(\vr) &= I_1 + I_2 + 2\sqrt{I_1I_2}\text{Re}\left[k_1^*k_2\gamma^{(1)}(x_1,x_2)\right]
+\end{align}
+Now we set $k_j = |k_j|e^{i\phi_j}$.
+\begin{align}
+    I(\vr) &= I_1 + I_2 + 2\sqrt{I_1I_2}|\gamma^{(1)}(x_1,x_2)|\cos(\phi_1-\phi_2) \\
+\end{align}
+The $\cos$ term in this is the phase difference from path difference.
+The value of $\gamma^{(1)}$ sets the amount of coherence: 
+\begin{equation}
+    \gamma^{(1)} \begin{cases} = 1 & \text{full coherence} \\ >0,\,<1 & \text{partial coherence} \\ = 0 & \text{no coherence}\end{cases}
+\end{equation}
 
 
 \end{document}
