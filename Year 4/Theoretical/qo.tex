@@ -4,6 +4,8 @@
 \usepackage{subfiles}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{snake it/.style={decorate,decoration=snake}}
 
 \newcommand\xo{\hat{X}_1}
 \newcommand\xt{\hat{X}_2}
@@ -451,13 +453,13 @@ So this gets smaller as n gets larger, i.e. more classical for large n.
 \end{align}
 This variance has no $\alpha$ in it, so the $|\alpha\rangle$ states only have vacuum fluctuations.
 The variance of coherent states $=$ minimum possible, and doesn't depend on $\alpha$ or n.
-This looks like classical EM field, with $|\alpha|$ the amplitude, and $\langle n\rangle = |\alpha|^2$.
+This looks like classical EM field, with $|\alpha|$ the amplitude, and $\langle n\rangle = |\alpha|^2$, but with an uncertainty fluctuation around the path.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
         \draw[->] (0,-0.2) -- (6,-0.2) node[anchor=north] {$t$};
         \draw[->] (0,-0.2) -- (0,3) node[anchor=south] {$\Eh_x(z,t)$};
-        \draw (0,1.5) sin (1,3) cos (2,1.5) sin (3,0) cos (4,1.5) sin (5,3) cos (6,1.5);
+        \draw[snake it] (0,1.5) sin (1,3) cos (2,1.5) sin (3,0) cos (4,1.5) sin (5,3) cos (6,1.5);
     \end{tikzpicture}
 \end{figure}
 \begin{align}
@@ -880,14 +882,97 @@ Of course to ionise the atom, we require the photon to add enough energy to free
 Two types of photodetectors:
 \begin{itemize}
     \item Photomultiplier tube (PMT):
-        \textit{draw doodle, photo multiplier tube, photon bumps into cathode, then e bumps into next, etc etc, the first is a cathode, then lots of dynodes, then an anode attached to a resistor to detect the current.}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw[snake it,-Latex] (0,0) -- (1,-1);
+                \draw[-Latex] (1,-1) -- (1.2,-0.6) node[anchor=west] {$e^-$};
+                \draw[dashed] (1.5,0) -- (2,1);
+
+                \draw[dashed] (2.1,1) -- (3.1,-1);
+                \draw[dashed] (1.9,1) -- (2.9,-1);
+
+                \draw[dashed] (3.1,-1) -- (4.1,1);
+                \draw[dashed] (2.9,-1) -- (3.9,1);
+                \draw[dashed] (3,-1) -- (4,1);
+
+                \draw[dashed] (4.2,1) -- (5.2,-1);
+                \draw[dashed] (4.1,1) -- (5.1,-1);
+                \draw[dashed] (3.9,1) -- (4.9,-1);
+                \draw[dashed] (4,1) -- (5,-1);
+
+                \draw[dashed] (5.2,-1) -- (6.2,1);
+                \draw[dashed] (5.1,-1) -- (6.1,1);
+                \draw[dashed] (4.9,-1) -- (5.9,1);
+                \draw[dashed] (5,-1) -- (6,1);
+                \draw[dashed] (4.8,-1) -- (5.8,1);
+
+                \draw[dashed] (6.2,1) -- (7.2,-1);
+                \draw[dashed] (6.1,1) -- (7.1,-1);
+                \draw[dashed] (5.9,1) -- (6.9,-1);
+                \draw[dashed] (6.3,1) -- (7.3,-1);
+                \draw[dashed] (6,1) -- (7,-1);
+                \draw[dashed] (5.8,1) -- (6.8,-1);
+
+                \draw[ultra thick] (0.75,-0.95) arc (240:300:20pt) node[anchor=north,midway] {\tiny photo cathode};
+                \draw[ultra thick] (2.65,-0.95) arc (240:300:20pt) node[anchor=north,midway] {++};
+                \draw[ultra thick] (4.65,-0.95) arc (240:300:20pt) node[anchor=north,midway] {++++} node[anchor=north east,xshift=-20pt] {\tiny dynodes};
+                \draw[ultra thick] (6.65,-0.95) arc (240:300:20pt) node[anchor=north,xshift=15pt,yshift=10pt] {\tiny anode,resistor};
+                \draw[ultra thick] (1.65,0.95) arc (120:60:20pt) node[anchor=south,midway] {+};
+                \draw[ultra thick] (3.65,0.95) arc (120:60:20pt) node[anchor=south,midway] {+++};
+                \draw[ultra thick] (5.65,0.95) arc (120:60:20pt) node[anchor=south,midway] {+++++};
+
+                \draw (7,-1) -- (7,-1.4) -- (7.2,-1.4);
+                \draw[decorate,decoration=zigzag] (7.2,-1.4) -- (7.9,-1.4);
+                \draw (7.9,-1.4) -- (8,-1.4);
+                \draw (8,-1.6) -- (8,-1.2);
+                \draw (8.1,-1.5) -- (8.1,-1.3);
+                \draw (8.2,-1.45) -- (8.2,-1.35);
+            \end{tikzpicture}
+        \end{figure}
         It is in a tube so it has a high vacuum. 
         This tube can result in a gain $\approx 10^8$.
-    \item Avalanche Photo Detecto (APD)
-        \textit{draw doodle, see notes}
+    \item Avalanche Photo Detector (APD)
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \filldraw[draw=black,fill=lightgray] (0,0) node[anchor=north] {\tiny semiconductor} rectangle (0.3,2);
+                \filldraw[draw=black,fill=lightgray] (4.8,0) rectangle (5.1,2);
+                \draw[snake it] (-1.3,1) -- (0,1);
+                \draw (1.8,0) -- (1.8,2) node[anchor=east,xshift=-15pt] {p};
+                \draw (3.3,0) -- (3.3,2) node[anchor=east,xshift=-15pt] {i} node[anchor=west,xshift=15pt] {n};
+
+                \draw[-Latex] (0.3,1) -- (0.9,1) node[anchor=south] {$e^-$};
+                \draw[dashed] (1.2,1) -- (1.8,1);
+                \draw[dashed] (1.8,0.5) -- (3,0.5);
+                \draw[dashed] (1.8,1) -- (3,1);
+                \draw[dashed] (1.8,1.5) -- (3,1.5);
+                \draw[dashed] (3.3,1) -- (4.5,1);
+                \draw[dashed] (3.3,0.25) -- (4.5,0.25);
+                \draw[dashed] (3.3,0.75) -- (4.5,0.75);
+                \draw[dashed] (3.3,1.25) -- (4.5,1.25);
+                \draw[dashed] (3.3,1.75) -- (4.5,1.75);
+                \draw (5.1,0.3) -- (5.3,0.3) -- (5.3,0);
+                \draw[decorate,decoration=zigzag] (5.3,0) -- (6.1,0) node[anchor=north,midway] {\tiny resistor};
+                \draw (6.1,0) -- (6.2,0);
+                \draw (6.2,-0.2) -- (6.2,0.2);
+                \draw (6.3,-0.1) -- (6.3,0.1);
+                \draw (6.4,0.05) -- (6.4,-0.05);
+            \end{tikzpicture}
+        \end{figure}
         We do not have as high a gain here, but using a semiconductor instead of a high vacuum is more practical and easier to make.
 \end{itemize}
-\textit{more doodles}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$|I\rangle$} -- (1,0) node[anchor=west] {$|g\rangle_{atom}|i\rangle_{field}$};
+        \draw[-Latex] (0.5,0) -- (0.5,2);
+        \draw (0,2) node[anchor=east] {$F\rangle$} -- (1,2);
+        \draw (0.2,2.1) -- (0.8,2.1);
+        \draw (0.4,2.2) -- (0.6,2.2); 
+        \draw[decorate,decoration={brace,amplitude=5pt,mirror}] (1,1.9) -- (1,2.3) node[anchor=west,midway,xshift=5pt] {$|e\rangle|f\rangle_{field}$};
+    \end{tikzpicture}
+\end{figure}
 For a free electron, 
 \begin{align}
     |e\rangle &= \frac{1}{\sqrt{V}}e^{i\vec{q}\cdot\vr}
@@ -933,7 +1018,22 @@ We will see more on this when we discuss correlation functions in lecture 11, bu
 \section{Coherence/correlation functions}
 First, we will remind ourselves of the classical functions. 
 An early example is Young's slits experiment:
-\textit{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \filldraw[draw=black,fill=lightgray] (0,1.1) rectangle (0.3,1.4);
+        \filldraw[draw=black,fill=lightgray] (0,0) rectangle (0.3,0.8);
+        \filldraw[draw=black,fill=lightgray] (0,-0.6) rectangle (0.3,-0.3);
+        \filldraw[draw=black,fill=lightgray] (4.8,-0.6) rectangle (5.1,1.4);
+
+        \filldraw[draw=black,fill=black] (-1,0.4) circle (2pt) node[anchor=south] {$\om$};
+        \draw (0.15,0.95) -- (-1,0.4) -- (0.15,-0.15);
+
+        \draw (0.15,0.95) node[anchor=south west,xshift=3pt] {$r_1$} -- (4.7,0.95) -- (0.15,-0.15) node[anchor=north west,xshift=3pt] {$r_2$};
+        \draw[Latex-Latex] (1.5,1.1) -- (3.6,1.1) node[anchor=south,midway] {$s_1$};
+        \draw[Latex-Latex] (1.5,0) -- (3.6,0.55) node[anchor=north west,midway] {$s_2$} node[anchor=north,midway,xshift=30pt,yshift=-10pt] {$\Delta s = |s_1-s_2|$};
+    \end{tikzpicture}
+\end{figure}    
 We need 
 \begin{align}
     \Delta s &\leq \frac{c}{\Delta\om} \\
