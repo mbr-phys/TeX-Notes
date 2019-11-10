@@ -734,6 +734,81 @@ There are some gauges we can choose to help us solve this:
 \end{itemize}
 Any physical quantity we want to calculate must be gauge-independent.
 
+\chapter{}
+\section{Quantisation in Coulomb Gauge}
+We start by recognising that $A^0$ is not dynamical: $\p_t A^0 = 0$.
+We give a condition to fix the gauge:
+\begin{align}
+    \grad\cdot\vec{A}&= 0.
+\end{align}
+This condition follows the logic of fixing the longitudinal component of $\vec{A}$ as a constant, which can just be set to zero since it has no bearing on the equations of motion. 
+We then have two degrees of freedom left in the two transverse components of $\vec{A}$.
+For $\vec{A}\parallel\vec{z}$,
+\begin{align}
+    A_z &= 0 & A_{x,y} \neq 0 \\
+    \e_{(1)}^\mu &= (0,1,0,0) & \e_{(2)}^\mu &= (0,0,1,0)
+\end{align}
+We then have a generalisation for any massless spin-1 field:
+\begin{align}
+    \e_\mu\e^\mu &= 0 & \e_\mu^{(i)}\e^{(j)\mu} &= \delta_{ij}
+\end{align}
+We use the quantisation process discussed previously:
+\begin{itemize}
+    \item Consider the Lagrangian of the gauge field,
+        \begin{align}
+            \La &= -\frac14 F^{\mu\nu}F_{\mu\nu}.
+        \end{align}
+        The objects we want to quantise are the fields, $A^\nu$.
+        Using the conjugate momenta,
+        \begin{align}
+            \pi^\nu &= \frac{\p\La}{\p\dot{A}^\nu} = \begin{cases} \nu = 0, & \pi^0 = 0 \\ \nu = i, & \pi^i = -E^i = F^{0i}\end{cases} \\
+        \end{align}
+    \item Construct the Hamiltonian:
+        \begin{align}
+            \Ham &= \pi^\nu\dot{A}^\nu - \La = \frac12(\E^2+\B^2) + \E\grad A^0
+        \end{align}
+    \item Demand commutator relations:
+        \begin{align}
+            [A^0(\vx,t),\pi^0(\vec{y},t)] &= i\delta^3(\vx-\vec{y}) \\
+            [A^i(\vx,t),\pi^j(\vec{y},t)] &= i\delta_{ij}\delta^3(\vx-\vec{y})
+        \end{align}
+        We want Eq (10.9) to be vanishing, so the fact it is not is problematic. 
+        Note that putting a nabla in front of $A^0$ will give you something of the form of Gauss' law, so this isn't bad physics; it's bad formalism.
+        Our issue here is that our notation is not dynamical; $A^0$ is not an operator, just an inconsequential number.
+        However, we cannot use this constraint on the commutators as one side will vanish while the other will not.
+        Therefore, we cannot implement Gauss' law as an operator equation.\\
+        What about trying the constraint on "physical states", $\grad\cdot\Eh|\psi\rangle = 0$?
+        But this doesn't work either as it would violate our commutation relations again. 
+        The only way to get this to work is $\langle\psi|\grad\cdot\Eh|\psi\rangle=0$ - \textbf{this means that Maxwell's laws are only realised as an average over physical states.}
+        We will return to this solution when we address the Loretnz gauge.\\
+        \textit{This makes sense because we don't care about the unphysical ones as long as they go into the corner and kill themselves.}
+    \item Our solution to the commutator problem is by replacing the $\delta$-function:
+        \begin{align}
+            [A^i,\pi^j] &= i\delta_{ij}\delta^3(\vx-\vec{y}) \\
+            \delta_{ij} \to \delta_{ij}^{tr}(\vx-\vec{y}) &= \int \frac{d^3k}{(2\pi)^3} e^{i\vec{k}(\vx-\vec{y})}\left(\delta_{ij}-\frac{k_ik_j}{\unl{k}^2}\right) \\
+            \p_i\delta_{ij}^{tr} &= \p_j\delta_{ij} = 0 \\
+            [A^i,\pi^j] &= -\delta_{ij}^{tr}(\vx-\vec{y}) = [A^i,-E^j]
+        \end{align}
+        Now, in this new form, $\grad\cdot\E$ commutes with everything and we can implement it as an operator, where everything can be set to zero.
+        So $\grad\cdot\Eh=0$ is perfectly legitimate.
+        As a by-product of this, we also have
+        \begin{align}
+            [\grad\cdot\vec{A}_i,\Eh_j] &= 0.
+        \end{align}
+        This clearly gives us the Coulomb gauge automatically, as $\grad\cdot\vec{A}=0$.\\
+        Using $\delta^{tr}$ implies that $A_i$ and $E_j$ do commute at space-like distances - is this a problem?
+        \begin{itemize}
+            \item $A$ is gauge-dependent and unphysical - it can not be measured anyway, and therefore it cannot harm causality 
+            \item From $[A_i,E_j]$ commutators for physical fields $[B_i,E_j]$ can be deduced - they vanish for space-like distance and infact are idential irrespective of choice of $\delta$-function.
+        \end{itemize}
+    \item Expanding fields in plane waves:
+        \begin{align}
+            \vec{A}(\vx,t) &= \int\frac{d^3k}{(2\pi)^3(2k_0)} \sum_{\lambda=1}^2 \left[\vec{\e}^{(\lambda)}(k)\ha(k,\lambda)e^{-ikx} + \vec{\e}^{(\lambda)*}(k)\hag(k,\lambda)e^{ikx}\right] \\
+            [\ha(k,\lambda),\hag(q,\kappa)] &= (2\pi)^32k_0\delta_{\lambda\kappa}\delta^3(\vec{k}-\vec{q})
+        \end{align}
+        All of the other commutators vanish.
+    \item \textbf{Summary:} Pain! Pain! Pain! \textit{Cheat!} Phew!
+\end{itemize}
 
 
 \end{document}

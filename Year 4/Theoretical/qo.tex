@@ -3,6 +3,7 @@
 \usepackage{../../../LaTeX-Templates/Notes}
 \usepackage{subfiles}
 \usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
 
 \newcommand\xo{\hat{X}_1}
 \newcommand\xt{\hat{X}_2}
@@ -963,6 +964,181 @@ The value of $\gamma^{(1)}$ sets the amount of coherence:
     \gamma^{(1)} \begin{cases} = 1 & \text{full coherence} \\ >0,\,<1 & \text{partial coherence} \\ = 0 & \text{no coherence}\end{cases}
 \end{equation}
 
+\chapter{}
+\section{Learning Outcomes}
+We will develop the quantum mechanical theory of the beamsplitter. 
+After studying this section, you should
+\begin{itemize}
+    \item Be familiar with the clasical description of a lossless beamsplitter.
+    \item Be able to derive equations that relate the creation and annihilation operators for a lossless beamsplitter.
+    \item Understand the meaning of coincidence in the context of the beamsplitter. 
+    \item Understand the meaning of unitary transforms in the context of the beamsplitter. 
+    \item Be familiar with the significance of a beamsplitter for single photon states, and the results when the two input modes each contain a single photon (Hong-Ou-Mandel effect).
+    \item Be familiar with the operation of a beamsplitter with coherent states. 
+    \item Be able to calculate the joint output state of a beamsplitter for any number state or coherent state input, or combinations thereof. 
+\end{itemize}
+
+\section{The beam splitter}
+A general beamsplitter will look like the following:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) node[anchor=north] {1} -- (1,0);
+        \draw[-Latex] (1,0) -- (3,0);
+        \draw (3,0) -- (4,0) node[anchor=south] {3};
+        \draw[-Latex] (2,2) node[anchor=east] {0} -- (2,1);
+        \draw[-Latex] (2,1) -- (2,-1);
+        \draw (2,-1) -- (2,-2) node[anchor=west] {2};
+
+        \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) node[anchor=north east,midway] {$r,t$} -- (3.1,-1.4) -- (1.1,1.6) node[anchor=south west,midway] {$r',t'$} -- cycle;
+    \end{tikzpicture}
+\end{figure}
+$r,t,r',t'$ are complex, so they introduce phases. 
+We will only deal with \textbf{lossless beamsplitters:} $|r| = |r'|,\; |t| = |t'|$.
+Beamsplitters mix modes, so 2 and 3 are both linear combinations of 0 and 1.
+In a quantum beamsplitter, there will \textbf{always} be two inputs; if we do not put two in, then the second will be the vacuum, which must still be considered.
+For now, we will not consider polarisation dependence, but this will be addressed later on. 
+Classically,
+\begin{align}
+    \begin{pmatrix} a_2\\a_3\end{pmatrix} &= \begin{pmatrix} t' & r \\ r' & t\end{pmatrix} \begin{pmatrix}a_0\\a_1\end{pmatrix}
+\end{align}
+For the quantum case, 
+\begin{align}
+    \begin{pmatrix} \ha_2\\ \ha_3\end{pmatrix} &= \begin{pmatrix} t' & r \\ r' & t\end{pmatrix} \begin{pmatrix}\ha_0\\ \ha_1\end{pmatrix} 
+\end{align}
+and similarly for $\hag$ but with the complex conjugates of $t,r$ etc.
+We shall fix the phase shift so reflected vs transmitted $\pm i$, $\exp\left(\pm i\frac{\pi}{2}\right)$.
+Using a 50:50 beam splitter, $|r|=|t|=\frac{1}{\sqrt{2}}$.
+\begin{align}
+    \begin{pmatrix}\ha_2 \\ \ha_3\end{pmatrix} &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & i \\ i & 1\end{pmatrix}\begin{pmatrix} \hag_0 \\ \hag_1\end{pmatrix}
+\end{align}
+This is the balanced Hadamard operator used in Quantum information.\\
+We want to calculate $\langle\hn_2\rangle$.
+So for the input, we have 
+\begin{align}
+    |0\rangle_0|1\rangle_1 &\equiv |0_01_1\rangle \\
+    \langle\hn_2\rangle &= \langle 0_01_1|\hag_2\ha_2|0_01_1\rangle
+\end{align}
+So how do we define the output operators?
+\begin{align}
+    \ha_2 &= \frac{1}{\sqrt{2}}\left(\ha_0+i\ha_1\right) & \ha_3 &= \frac{1}{\sqrt{2}}\left(i\ha_0+\ha_1\right) \\
+    \hag_2 &= \frac{1}{\sqrt{2}}\left(\hag_0-i\hag_1\right) & \hag_3 &= \frac{1}{\sqrt{2}}\left(-i\hag_0+\hag_1\right)
+\end{align}
+So we can input these into the expectation value equation:
+\begin{align}
+    \langle\hn_2\rangle &= \langle0_01_1|\frac12\left(\hag_0-i\hag_1\right)\left(\ha_0+i\ha_1\right)|0_01_1\rangle \\
+                        &= \langle0_01_1|\frac12\left\{\hag_0\ha_0 - i\hag_1\ha_0+i\hag_0\ha_1+\hag_1\ha_1\right\}|0_01_1\rangle\\
+                        &= \langle0_01_1|\frac12\left\{0 + 0 + 0 + 1\right\}|0_01_1\rangle = \frac12 = \langle\hn_3\rangle
+\end{align}
+Naturally, this is exactly what we expected from a 50:50 beamsplitter - $\hn_2$ and $\hn_3$ have an even split.
+However, if we consider
+\begin{align}
+    \langle0_01_1|\hn_2\hn_3|0_01_1\rangle &= 0 \neq \langle\hn_2\rangle\langle\hn_3\rangle
+\end{align}
+The photons will only ever come out at one port at a single time, so on average it is 50:50, but will alternate between the ports, so one port is always at 0 - \textbf{photon anti-bunching.}
+This is not what we would expect classically, where $\langle I_2I_3\rangle = \langle I_2\rangle\langle I_3\rangle$.
+So putting single photons through a beam splitter is something very non-classical.
+
+We can approach this problem in another way:
+\begin{align}
+    |0\rangle_0|1\rangle_1 &= \hag_1|0\rangle_0|0\rangle_1
+\end{align}
+So this time we start with two vacuum states and use the creation operator to add photons. 
+\begin{align}
+    \hag_2 &= \frac{1}{\sqrt{2}}\left\{\hag_0 - i\hag_1\right\} & \hag_3 &= \frac{1}{\sqrt{2}}\left\{-i\hag_0 + \hag_1\right\} \\
+    \hag_1 &= \frac{1}{\sqrt{2}}\left\{i\hag_2+\hag_3\right\} & \hag_0 &= \frac{1}{\sqrt{2}}\left\{\hag_2+i\hag_3\right\}
+\end{align}
+Note that vacuum in means vacuum out, i.e. $|0_00_1\rangle \to |0_20_3\rangle$.
+Now let's apply $\hag_1$, which means adding a photon to port 1. 
+\begin{align}
+    |0_01_1\rangle &\to \frac{1}{\sqrt{2}}\left\{i\hag_2+\hag_3\right\}|0_20_3\rangle \\
+                   &= \frac{1}{\sqrt{2}}\left\{i|1_20_3\rangle + |0_21_3\rangle\right\} \\
+    \langle\hn_2\rangle &= \langle\hn_3\rangle = \frac12,\; \langle\hn_2\hn_3\rangle &= 0 
+\end{align}
+So this method reproduces the same results as before.
+Note that we cannot write Eq (10.16) as a product state, i.e. $|1_20_3\rangle \neq |1_2\rangle|0_3\rangle$.
+Instead, this is known as an entangled state.
+
+Now, what happens if we put one photon into each input at once?
+We now have four equally likely possibilities:
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \draw[-Latex,thick,cyan] (0,0) -- (1,0);
+            \draw[thick,cyan] (1,0) -- (2,0);
+            \draw[-Latex,thick,cyan] (2,-0.1) -- (3,-0.1);
+            \draw[thick,cyan] (3,-0.1) -- (4,-0.1);
+            \draw[-Latex,thick,magenta] (2,2) -- (2,1);
+            \draw[-Latex,thick,magenta] (2,1) -- (2,0.1) -- (3,0.1);
+            \draw[thick,magenta] (3,0.1) -- (4,0.1);
+
+            \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
+        \end{tikzpicture}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \draw[-Latex,thick,cyan] (0,0) -- (1,0);
+            \draw[-Latex,thick,cyan] (1,0) -- (3,0);
+            \draw[thick,cyan] (3,0) -- (4,0);
+            \draw[-Latex,thick,magenta] (2,2) -- (2,1);
+            \draw[-Latex,thick,magenta] (2,1) -- (2,-1);
+            \draw[thick,magenta] (2,-1) -- (2,-2);
+    
+            \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
+        \end{tikzpicture}
+        \caption{}
+    \end{subfigure}\\
+    \vspace{10pt}
+    \begin{subfigure}[H]{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \draw[-Latex,thick,cyan] (0,0) -- (1,0);
+            \draw[-Latex,thick,cyan] (1,0) -- (2,0) -- (2,-1);
+            \draw[thick,cyan] (2,-1) -- (2,-2);
+            \draw[-Latex,thick,magenta] (2,2) -- (2,1);
+            \draw[-Latex,thick,magenta] (2,1) -- (2,0) -- (3,0);
+            \draw[thick,magenta] (3,0) -- (4,0);
+    
+            \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
+        \end{tikzpicture}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \draw[-Latex,thick,cyan] (0,0) -- (1,0);
+            \draw[thick,cyan] (1,0) -- (2,0);
+            \draw[-Latex,thick,cyan] (1.9,0) -- (1.9,-1);
+            \draw[thick,cyan] (1.9,-1) -- (1.9,-2);
+            \draw[-Latex,thick,magenta] (2,2) -- (2,1);
+            \draw[thick,magenta] (2,1) -- (2,0);
+            \draw[-Latex,thick,magenta] (2.1,0) -- (2.1,-1);
+            \draw[thick,magenta] (2.1,-1) -- (2.1,-2);
+    
+            \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
+        \end{tikzpicture}
+        \caption{}
+    \end{subfigure}
+\end{figure}
+\begin{align}
+    |1_01_1\rangle = \hag_0\hag_1|0_00_1\rangle &\to \frac12\left(\hag_2+i\hag_3\right)\left(i\hag_2+\hag_3\right)|0_20_3\rangle \\
+                                                &\to \frac12 \left\{i\hag_2\hag_2 - \hag_3\hag_2 + \hag_3\hag_2 + i\hag_3\hag_3\right\}|0_20_3\rangle \\
+                                                &\to \frac i2\left\{\sqrt{2}|2_20_3\rangle+\sqrt{2}|0_22_3\rangle\right\}
+\end{align}
+
+\section{Coherent States and Beamsplitters}
+\begin{align}
+    |0\rangle_0|\alpha_1\rangle_1 \to |\alpha_2\rangle_2|\alpha_3\rangle_3 
+\end{align}
+So inputting one coherent state with a vacuum, yields coherent states in both outputs.
+For 50:50,
+\begin{align}
+    \alpha_2 &= \frac{i\alpha_1}{\sqrt{2}} & \alpha_3 &= \frac{\alpha_1}{\sqrt{2}}
+\end{align}
 
 \end{document}
 

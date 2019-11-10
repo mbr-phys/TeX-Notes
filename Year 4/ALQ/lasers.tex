@@ -261,7 +261,7 @@ Standard result:
 \begin{align}
     g(\om)\,d\om &= \frac{\om^2}{\pi^2c^3}\,d\om \\
     \implies \bar{n} &= \frac{\rho(\om)}{\hbar\om g(\om)} = \frac{\pi^2c^3}{\hbar\om^3}\rho(\om)\\
-    \bar{n} = \frac{B_{21}\rho(\om)}{A_{21}} = \frac{\text{rate of stimulated emission}}{\text{rate of spontaneous emission}}
+    \bar{n} &= \frac{B_{21}\rho(\om)}{A_{21}} = \frac{\text{rate of stimulated emission}}{\text{rate of spontaneous emission}}
 \end{align}
 It follows that:
 \begin{itemize}
@@ -781,7 +781,16 @@ Substitute for gain and loss:
 
 \chapter{The Laser Oscillator: Oscillation and Gain Saturation}
 \section{Gain Saturation}
-\textit{doodle this too - start with two levels, 1 and 2, $S_1$ and $S_2$, $N_i/\tau_i$, $N_2A_{21}$ - rate between states.}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$S_1$} -- (2,0) node[anchor=west] {1};
+        \draw (0,1.5) node[anchor=east] {$S_2$} -- (2,1.5) node[anchor=west] {2};
+        \draw[-Latex] (0.7,1.5) -- (0.7,0) node[anchor=west,midway] {$N_2A_{21}$};
+        \draw[-Latex] (1.7,1.5) -- (2.5,1) node[anchor=west] {$\frac{N_2}{\tau_2}$};
+        \draw[-Latex] (1.7,0) -- (2.5,-0.5) node[anchor=west] {$\frac{N_1}{\tau_1}$};
+    \end{tikzpicture}
+\end{figure}
 Develop rate equations for $N_1$ and $N_2$.
 \begin{align}
     \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} \\
@@ -800,10 +809,25 @@ Population inversion density,
         &= S_2\tau_2\left(1-\frac{g_2}{g_1}A_{21}\tau_1\right) - \frac{g_2}{g_1}S_1\tau_1
 \end{align}
 '0' denotes small signal coefficient (in the absence of field).
-\textit{doodle neq two level diagram, same one again, now new arrows up and down}
+\begin{multicols}{2}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$S_1$} -- (3,0) node[anchor=west] {1};
+        \draw (0,1.5) node[anchor=east] {$S_2$} -- (3,1.5) node[anchor=west] {2};
+        \draw[-Latex] (0.75,0) -- (0.75,1.5) node[anchor=west,midway] {(1)};
+        \draw[-Latex] (1.5,1.5) -- (1.5,0) node[anchor=west,midway] {(2)};
+        \draw[-Latex] (2.25,1.5) -- (2.25,0) node[anchor=west,midway] {(3)};
+        \draw[-Latex] (2.7,1.5) -- (3.5,1) node[anchor=west] {$\frac{N_2}{\tau_2}$};
+        \draw[-Latex] (2.7,0) -- (3.5,-0.5) node[anchor=west] {$\frac{N_1}{\tau_1}$};
+    \end{tikzpicture}
+\end{figure}
 \begin{align}
-    N_2\sigma(\om)\frac{I}{\hbar\om} & \frac{g_2}{g_1}N_1\sigma(\om)\frac{I}{\hbar\om}
+    (1)&~~ \frac{g_2}{g_1}N_1\sigma(\om)\frac{I}{\hbar\om}\\
+    (2)&~~ N_2\sigma(\om)\frac{I}{\hbar\om} \\
+    (3)&~~ N_2A_{21}
 \end{align}
+\end{multicols}
 We have assumed $L(\om) < \Gamma_{21}$.
 \begin{align}
     \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} - N^*\sigma(\om)\frac{I}{\hbar\om} \\
@@ -1075,6 +1099,154 @@ $\sigma(\om)$ and $L_m$ are fixed (or practically so), so for us to maximise our
     \end{tikzpicture}
 \end{figure}
 
+\chapter{Population Inversion in Four-level lasers}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (3,0) node[anchor=west] {0};
+        \draw (1.5,0.7) -- (3,0.7) node[anchor=west] {1};
+        \draw (1.5,1.4) -- (3,1.4) node[anchor=west] {2};
+        \draw (0,2) -- (3,2) node[anchor=west] {3};
+        \draw[-Latex] (0.3,0) -- (0.3,2) node[anchor=east,midway] {$S_{03}$};
+        \draw[-Latex] (0.7,2) -- (0.7,0) node[anchor=west,midway] {$\Gamma_{30}$};
+        \draw[-Latex] (1.8,2) -- (1.8,1.4) node[anchor=west,midway] {$\Gamma_{32}$};
+        \draw[-Latex,red] (2.5,1.4) -- (2.5,0.7) node[anchor=west,midway] {Laser};
+        \draw[-Latex] (1.7,1.4) -- (1.7,0.7) node[anchor=west,midway] {$\Gamma_{21}$};
+        \draw[-Latex] (1.9,0.7) -- (1.9,0) node[anchor=west,midway] {$\Gamma_{10}$};
+    \end{tikzpicture}
+\end{figure}
+$\Gamma_{32}$ is a fast, non-radiative decay; $\Gamma_{10}$ likewise.
+\begin{align}
+    \frac{dN_3}{dt} &= N_0S_{03} - \left(\Gamma_{30}+\Gamma_{32}\right)N_3 \\
+    \frac{dN_2}{dt} &= N_3\Gamma_{32} - N_2\Gamma_{21} \\
+    \frac{dN_1}{dt} &= N_2\Gamma_{21} - N_1\Gamma_{10} \\
+    \frac{dN_0}{dt} &= -N_0S_{03} + N_3\Gamma_{30} + N_1\Gamma_{10}
+\end{align}
+In the ideal case, $\Gamma_{32}\gg\Gamma_{30}$, and $N_3\approx0$, i.e. decay is faster than pumping.
+
+\section{Idealised Four-level laser}
+\textit{finish the doodle, lots of circles in 0, some in 2, arc arrow between them}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (3,0) node[anchor=west] {0};
+        \draw (1.5,0.7) -- (3,0.7) node[anchor=west] {1};
+        \draw (1.5,1.4) -- (3,1.4) node[anchor=west] {2, $N_2\approx N^*$};
+        \draw (0,2) -- (3,2) node[anchor=west] {3, $N_3=0$};
+        \draw[-Latex] (1.9,0.7) -- (1.9,0) node[anchor=west,midway] {Fast $\to N_1\approx0$};
+    \end{tikzpicture}
+\end{figure}
+The idealised four-level laser equations:
+\begin{align}
+    N_0 &\approx N & N_2 &\approx \frac{S_{03}}{\Gamma_{21}}N & N_1 & N_3 = 0
+\end{align}
+
+\section{Comparison of three- and four-level laser schemes}
+\begin{multicols}{2}
+For a three-level scheme, we found that,
+\begin{align}
+    S_{12}^{th} &= \frac{N+N_{th}^*}{N-N_{th}^*}\Gamma_{21} \approx \Gamma_{21}.
+\end{align}
+For four-level schemes, we found that
+\begin{align}
+    S_{03}^{th} &= \frac{N_{th}^*}{N-N_{th}}\Gamma_{21} \approx \frac{N_{th}^*}{N}\Gamma_{21}
+\end{align}
+\end{multicols}
+If we assume equal $\Gamma_{21}$s,
+\begin{align}
+    \frac{\text{four-level}}{\text{three-level}} &= \frac{S_{03}^{th}}{S_{13}^{th}} = \frac{N_{th}^*}{N+N_{th}^*} \approx \frac{N_{th}^*}{N} \ll 1
+\end{align}
+This reiterates that four-level lasers are much more efficient than three-level ones.
+Comparing power per unit volume absorbed at threshold:
+\begin{align}
+    \left(\frac{P}{V}\right)_{th,3} &= \hbar\om_{13}\Gamma_{21}\frac{N}{2} & \left(\frac{P}{V}\right)_{th,4} &= \hbar\om_{30}N^*\Gamma_{21}
+\end{align}
+
+\begin{example}[Ruby vs Nd:YAG]
+    Ruby doped at 1\% by weight.
+    \begin{align}
+        N_0 &= 3.3\times10^{26}\,m^{-3} & \Gamma_{21} &= 3.3\times10^2\,s^{-1}
+    \end{align}
+    Assume pumping at $\lambda=505\,nm$.
+    Laser rod, diameter $6\,mm$, length $10\,cm$.
+    \begin{align}
+        P_{th} &= \left(\frac{hc}{\lambda}\right)\frac{N_0}{2}\Gamma_{21}\times V \approx 5.4\,kW
+    \end{align}
+    Now for the ND:YAG,
+    \begin{align}
+        \Gamma_{21} &= 1.8\times10^3\,s^{-1} & \sigma &= 9\times10^{-19}\,cm^2 
+    \end{align}
+    Assume cavity loss of $\delta_c = 0.05$, with diameter $4\,mm$, and length $5\,cm$.
+    Pumped at $808\,nm$.
+    \begin{align}
+        N_{th}^* &= \frac{\delta_c}{2\sigma L_m} = 5.6\times10^{21}\,m^{-3} \\
+        P_{th} &= \hbar\om_{30}N_{th}^*\Gamma_{21}V \approx 1.66\,W
+    \end{align}
+    So Ruby has a massive energy cost compared to Nd:YAG, Nd:YAG much preferable.
+\end{example}
+
+\chapter{Population Inversion in Three-level Gas Lasers}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (3,0) node[anchor=west] {0};
+        \draw (1.5,1) -- (3,1) node[anchor=west] {1};
+        \draw (0,2) -- (3,2) node[anchor=west] {2};
+        \draw[-Latex] (0.3,0) -- (0.3,2) node[anchor=east,midway] {$S_{02}$};
+        \draw[-Latex] (0.6,2) -- (0.6,0) node[anchor=west,midway] {$\Gamma_{20}$};
+        \draw[-Latex] (2,2) -- (2,1) node[anchor=west,midway] {$\Gamma_{21}$, Laser};
+        \draw[-Latex] (1.6,0) -- (1.6,1) node[anchor=west,midway] {$S_{01}$};
+        \draw[-Latex] (2.4,1) -- (2.4,0) node[anchor=west,midway] {$\Gamma_{10}$};
+    \end{tikzpicture}
+\end{figure}
+Develop rate equations in absence of field:
+\begin{align}
+    \frac{dN_2}{dt} &= S_{02}N_0 - (\Gamma_{20}+\Gamma_{21})N_2 \\
+    \frac{dN_1}{dt} &= S_{01}N_0 + \Gamma_{21}N_2 - \Gamma_{10}N_1 \\
+    \frac{dN_0}{dt} &= -(S_{02}+S_{01})N_0 + \Gamma_{20}N_2 + \Gamma_{10}N_1
+\end{align}
+Using the steady state definition, $\frac{dN_i}{dt}=0$:
+\begin{align}
+    N_2 &= \frac{S_{02}}{\Gamma_{20}+\Gamma_{21}}N_0 \\
+    S_{01}N_0 &+ \Gamma_{21}\left[\frac{S_{02}}{\Gamma_{20}+\Gamma_{21}}N_0\right] - \Gamma_{10}N_1 = 0 \\
+    N_1 &= \frac{S_{01}(\Gamma_{20}+\Gamma_{21})+\Gamma_{21}S_{02}}{\Gamma_{10}(\Gamma_{20}+\Gamma_{21})}N_0
+\end{align}
+For population inversion, we need
+\begin{align}
+    \frac{N_2}{N_1} &> \frac{g_2}{g_1} \\
+    N^* &= N_2 - \frac{g_2}{g_1}N_1 > 0 \\
+    \frac{N_2}{N_1} &= \frac{S_{02}\Gamma_{10}}{S_{01}(\Gamma_{20}+\Gamma_{21})+\Gamma_{21}S_{02}} > \frac{g_2}{g_1}
+\end{align}
+We have to find another pumping technique as we cannot use light. 
+Both down transitions are optical (radiative), so $S_{02}$ cannot be optical due to parity conservation, and $\Gamma_{20}$ is negligible.
+\begin{align}
+    \frac{N_2}{N_1} &= \frac{S_{02}\Gamma_{10}}{(S_{01}+S_{02})\Gamma_{21}} > \frac{g_2}{g_1} \\
+    \frac{S_{02}}{S_{01}} &> \left(\frac{g_1\Gamma_{10}}{g_2\Gamma_{21}}-1\right)^{-1}
+\end{align}
+
+\begin{example}[Argon ion laser]
+    \begin{wrapfigure}{l}{0.25\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \draw (0,0) -- (2,0);
+            \draw (0,0.4) -- (2,0.4);
+            \draw (0,1.4) -- (2,1.4);
+            \draw (0,2) -- (2,2);
+            \draw[-Latex] (1,1.4) -- (1,0.4);
+            \draw[-Latex] (0.5,1.4) -- (0.5,0);
+            \draw[-Latex] (1.5,2) -- (1.5,1.4);
+        \end{tikzpicture}
+    \end{wrapfigure}
+    \textit{doodle the diagram, (laser) 488.0 nm with A = 7.8x10to7 s-1, (decays) 73.1nm A = 4.5x10to8 s-1, 72.3nm A = 23x10to8 s-1}
+    We have a degeneracy of $g = 2J+1$, so $g_1 = 4, g_2 = 6$.
+    $\Gamma_{21} = 7.8\times10^7\,s^{-1}$, $\Gamma_{10}=27.5\times10^8\,s^{-1}$.\\
+    From this, we get a ratio of $0.044$.
+    For this particular system, we can pump into the lower level 22.5 times as quickly as into the upper one and still maintain population inversion due to fast natural decay rates.
+    \textbf{Striking result!}\\
+    This can happen because $A \propto \om^3$ so massively different for the higher frequencies of the lower level decay.
+    The downside is low quantum efficiency.
+\end{example}
+Gas lasers cannot be optically pumped, so they use collisions, or \textbf{particle pumping.}
 
 
 \end{document}
