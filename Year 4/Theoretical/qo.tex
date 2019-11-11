@@ -1131,14 +1131,50 @@ We now have four equally likely possibilities:
 \end{align}
 
 \section{Coherent States and Beamsplitters}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) node[anchor=north] {1,$|\alpha_1\rangle$} -- (1,0);
+        \draw[-Latex] (1,0) -- (3,0);
+        \draw (3,0) -- (4,0) node[anchor=south] {3,$|\alpha_3\rangle$};
+        \draw[-Latex] (2,2) node[anchor=east] {0,$|0\rangle$} -- (2,1);
+        \draw[-Latex] (2,1) -- (2,-1);
+        \draw (2,-1) -- (2,-2) node[anchor=west] {2,$|\alpha_2\rangle$};
+
+        \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
+    \end{tikzpicture}
+\end{figure}
 \begin{align}
     |0\rangle_0|\alpha_1\rangle_1 \to |\alpha_2\rangle_2|\alpha_3\rangle_3 
 \end{align}
 So inputting one coherent state with a vacuum, yields coherent states in both outputs.
 For 50:50,
 \begin{align}
-    \alpha_2 &= \frac{i\alpha_1}{\sqrt{2}} & \alpha_3 &= \frac{\alpha_1}{\sqrt{2}}
+    \alpha_2 &= \frac{i\alpha_1}{\sqrt{2}} & \alpha_3 &= \frac{\alpha_1}{\sqrt{2}} & BS &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & i \\ i & 1\end{pmatrix}
 \end{align}
+Now what if we have
+\begin{align}
+    |\alpha_0\rangle_0|\alpha_1\rangle_1 &\to |\alpha_2\rangle_2|\alpha_3\rangle_3 
+\end{align}
+We want to have the same amplitude going into both 1 and 0, but with a phase difference, so $|\alpha_0| = |\alpha_1| = |\alpha|$, with $\alpha_1 = |\alpha|\e^{i\theta}$ and $\alpha_0=|\alpha|$.
+We will find that
+\begin{align}
+    P_2 &\propto \sin^2\frac{\theta}{2}
+\end{align}
+This can be compared to the coherent state results in Lecture 6. 
+
+\chapter{}
+\section{Learning Outcomes}
+We will discuss interference, and the classical and quantum definitions of first and second order coherence. 
+After studying this section, you should
+\begin{itemize}
+    \item Be able to calculate the output state of an interferomater with number states or coherent states in the input modes.
+    \item Understand and be able to apply
+\end{itemize}
+
+\section{Interferometers}
+The Mach-Zehnder interferometer is the simplest and cleanest interferometer:
+\textit{doodle drawing from notes}
 
 \end{document}
 
