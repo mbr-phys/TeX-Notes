@@ -1269,12 +1269,82 @@ We will discuss interference, and the classical and quantum definitions of first
 After studying this section, you should
 \begin{itemize}
     \item Be able to calculate the output state of an interferomater with number states or coherent states in the input modes.
-    \item Understand and be able to apply
+    \item Understand and be able to apply the definition of first-order coherence, and be familiar with its link to the visibility of interference fringes. 
+    \item Be familiar with, and able to apply, the definition of second-order coherence.
+    \item In each of the above cases, to be familiar with and able to apply the quantum definitions in terms of correlation functions involving electric field operators. 
+    \item To understand, and be able to apply the terms incoherent, partially coherent, and fully coherent in the context of first-order coherence.
+    \item TO understand and be able to apply the terms Poissonian, sub-Poissonian, bunching, and anti-bunching in the context of second-order coherence.
+    \item To be familiar with the first- and second-order coherence properties of single-mode number states, coherent states, and thermal states.
 \end{itemize}
 
 \section{Interferometers}
 The Mach-Zehnder interferometer is the simplest and cleanest interferometer:
 \textit{doodle drawing from notes}
+Let's work through it. 
+Going through the first beamsplitter, we get:
+\begin{align}
+    |0\rangle_0|1\rangle_1 &\to \frac{1}{\sqrt{2}}\left(|0\rangle_A|1\rangle_B + i|1\rangle_A|0\rangle_B\right)
+\end{align}
+The phase from the mirrors is $e^{i\pi/2}$ on both, but we don't need to know it. \\
+Now, we need to put in a phase shift, $e^{i\theta}$. 
+We can only phase shift the second term, as we can't phase shift the vacuum - it has no well defined phase to shift. 
+\begin{align}
+    |0\rangle_0|1\rangle_1 &\to \frac{1}{\sqrt{2}}\left(|0\rangle_A|1\rangle_B + i|1\rangle_A|0\rangle_B\right)\\
+                           &\to \frac{1}{\sqrt{2}}\left(|0\rangle_A|1\rangle_B + ie^{i\theta}|1\rangle_A|0\rangle_B\right)
+\end{align}
+Then, we have the second beamsplitter, which transforms as:
+\begin{align}
+    |0\rangle_A|1\rangle_B &\to \frac{1}{\sqrt{2}}\left(|1\rangle_2|0\rangle_3 + i|0\rangle_3|1\rangle_3\right) \\
+    |1\rangle_A|0\rangle_B &\to \frac{1}{\sqrt{2}}\left(|0\rangle_2|1\rangle_3 + i|1\rangle_2|0\rangle_3\right) 
+\end{align}
+So we can then put both beamsplitters together for the full transform:
+\begin{align}
+    |0\rangle_0|\rangle_1 &\to \frac12 \left(i(1+e^{i\theta})|0\rangle_2|1\rangle_3 + (1-e^{i\theta})|1\rangle_2|0\rangle_3\right) \\
+    P_2 &= \frac14(1-e^{i\theta})^2 = \frac12 (1-\cos\theta) \\
+    P_3 &= \frac12(1+\cos\theta)
+\end{align}
+Single photons $\to$ wavelike interference, averaging over many. 
+
+What we had before interferometers was double beam experiments: \textit{doodle from notes}
+\begin{align}
+    \E(vr,t) &= k_1\E(\vr_1,t_1) + k_2\E(\vr_2,t_2)
+\end{align}
+From this, we found the first-order normalised mutual coherence function:
+\begin{align}
+    \gamma^{(1)}(\vr_1,t_1,\vr_2,t_2) &= \frac{\langle\E^*(\vr_1,t_1)\E(\vr_2,t_2)\rangle_t}{\left\{\langle|\E(\vr_1,t_1)|^2\rangle_t \langle|\E(\vr_2,t_2)|^2\rangle_t\right\}^{1/2}} \\
+    I(\vr) &= I_1 + I_2 + \sqrt{I_1I_2}|\gamma^{(1)}(\vr_1,t_1,\vr_2,t_2)|\cos(\phi_1-\phi_2) \\
+    \gamma^{(1)} & \begin{cases} = 1 & \text{fully coherent} \\ < 1 & \text{partially coherent} \\ = 0 & \text{fully incoherent}\end{cases}
+\end{align}
+\textit{doodle of coherence oscillation wave}
+\textbf{Rayleigh fringe visibility} is defined as:
+\begin{align}
+    \nu &= \frac{I_{max}-I_{min}}{I_{max}+I_{min}} \\
+    \nu &= \begin{cases} 1 & \text{fully coherent} \\ 0 & \text{fully incoherent}\end{cases}
+\end{align}
+Reminder that our first order coherence depends on $\langle\E^*(\vr_1,t_1)\E(\vr_2,t_2)\rangle_t$, but
+\begin{align}
+    P_i &\propto \langle i|\Eh_-(\vr,t)\Eh_+(\vr,t)|i\rangle \propto \hag\ha = \hn
+\end{align}
+This is the quantum version of the first order coherence. 
+What about our \textbf{quantum} first-order normalised mutual coherence function?
+\begin{align}
+    g^{(1)}(\vr_1,t_1,\vr_2,t_2) &= \frac{\langle\Eh_-(\vr_1,t_1)\Eh_+(\vr_2,t_2)\rangle}{\left\{\langle\Eh_-\Eh_+(\vr_1,t_1)\rangle\langle\Eh_-\Eh_+(\vr_2,t_2)\rangle\right\}^{1/2}}
+\end{align}
+\textit{another doodle}
+We find that both number and coherent states can be fully coherent, i.e. $g^{(1)}=1$.
+The first order coherent function tells you how coherent you are and how visible your fringes will be. 
+
+\section{Second Order Coherence}
+\textit{another doodle}
+Let's consider a classical second-order normalised mutual coherence function:
+\begin{align}
+    \gamma^{(2)}(\vr_3,t_3,\vr_2,t_2) &= \frac{\langle I(\vr_3,t_3)I(\vr_2,t_2)\rangle_t}{\langle I(\vr_3,t_3)\rangle\langle I(\vr_2,t_2)\rangle_t}
+\end{align}
+This is second order as $I \propto \E^*\E$, so each term has to $\E$-fields, instead of one as previously.
+Now let's look at the quantum version again:
+\begin{align}
+    g^{(2)}(\vr_3,t_3,\vr_2,t_2) &= \frac{\langle\Eh_-(\vr,t_3)\Eh_-(\vr_2,t_2)\Eh_+(\vr_2,t_2)\Eh_+(\vr_3,t_3)\rangle}{\langle\Eh_-\Eh_+(\vr_3,t_3)\rangle\langle(\Eh_-\Eh_+(\vr_2,t_2)\rangle}
+\end{align}
 
 \end{document}
 
