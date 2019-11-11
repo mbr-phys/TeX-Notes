@@ -7,7 +7,11 @@
 \usetikzlibrary{arrows.meta}
 
 \tikzset{snake it/.style={decorate,decoration=snake}}
-
+\tikzset{
+    partial ellipse/.style args={#1:#2:#3}{
+        insert path={+ (#1:#3) arc (#1:#2:#3)}
+    }
+}
 
 \setlength{\epigraphwidth}{\textwidth}
 \titleformat{\part}[display]
@@ -652,9 +656,9 @@ We must add a cavity to recirculate the light, and now using mirrors either side
     \begin{tikzpicture}
         \draw (0,3) arc (120:240:40pt);
         \draw (4,3) arc (60:-60:40pt);
-        \draw[-{Latex[length=2mm,width=2mm]}] (0.5,1.6) arc (315:60:0.3cm);
+        \draw[-Latex] (0.5,1.6) arc (315:60:0.3cm);
         \draw (1,1.25) rectangle (3,2.25);
-        \draw[-{Latex[length=2mm,width=2mm]}] (3.5,2.05) arc (135:-120:0.3cm);
+        \draw[-Latex] (3.5,2.05) arc (135:-120:0.3cm);
     \end{tikzpicture}
 \end{figure}
 
@@ -860,7 +864,15 @@ Gain is saturated too, since
 \end{align}
 This is usually an excellent approximation.
 \begin{example}[Linear Amplifier]
-    \textit{doodle I0 in, IL out of parallelogram that is L long}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[-Latex] (0,1) node[anchor=east] {$I_0$} -- (1,1);
+            \draw (0.75,0.5) -- (1.25,1.5) -- (3.25,1.5) -- (2.75,0.5) -- cycle;
+            \draw[Latex-Latex] (1.25,1.7) -- (3.25,1.7) node[anchor=south,midway] {L};
+            \draw[-Latex] (3,1) -- (4,1) node[anchor=west] {$I_L$};
+        \end{tikzpicture}\vspace{-25pt}
+    \end{figure}
     \begin{align}
         \frac{dI}{dz} &= g(\om)I = \frac{g_0(\om)I}{1 + \frac{I}{I_s(\om)}}
     \end{align}
@@ -880,19 +892,20 @@ This is usually an excellent approximation.
                 I_L &= I_0  + g_0(\om)I_s(\om)L
             \end{align}
     \end{enumerate}
-    \textit{doodle plot of exp growth into linear growth as z increases}
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
-            \draw[->] (0,0) -- (0,2.5);
-            \draw[->] (0,0) -- (4,0);
+            \draw[->] (0,0) -- (0,2.5) node[anchor=east] {$I(z)$};
+            \draw[->] (0,0) -- (4,0) node[anchor=north] {$z$};
+            \draw (0,0.3) node[anchor=east] {$I_0$} parabola (2,1.2) -- (3.2,2.2);
+            \draw[dashed] (2,1.2) -- (0.56,0);
+            \draw[dashed] (0,0.3) -- (2,0.3);
         \end{tikzpicture}
     \end{figure}
 \end{example}
 
 \chapter{Multimode lasing and output power}
 Last time:
-\textit{draw tikz doodle again}
 \begin{align}
     \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} - \frac{N^*\sigma(\om)I}{\hbar\om} \\
     \frac{dN_1}{dt} &= S_1 - \frac{N_1}{\tau_1} + \frac{N^*\sigma(\om)I}{\hbar\om} + N_2A_{21} 
@@ -939,7 +952,18 @@ We can take the expression found for gain last time and apply the above relation
     I_{ss} &= I_s(\om)\left[\frac{g_0(\om)}{g_{th}}-1\right]
 \end{align}
 \end{multicols}
-Consider simple cavity, \textit{doodle one from previous diagrams, with I+ going out, I- going back}.
+Consider simple cavity, 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) rectangle (0.5,2);
+        \draw (3,0) rectangle (3.5,2);
+        \draw[-Latex] (1.15,1.8) -- (2.35,1.8) node[anchor=south,midway] {$I_+$};
+        \draw[-Latex] (2.35,0.2) -- (1.15,0.2) node[anchor=north,midway] {$I_-$};
+        \draw[-Latex] (1,0.5) arc (220:140:20pt);
+        \draw[-Latex] (2.5,1.5) arc (40:-40:20pt);
+    \end{tikzpicture}
+\end{figure}
 Mirror transmission, $T=(I-R),~ I_{out} = T\times I_+$.
 Assume low output coupling-uniform field approximation, i.e. $I_+ \approx I_-$.
 \begin{multicols}{2}
@@ -990,7 +1014,17 @@ Differentiate expression for $I_{out}$ with respect to T and set to zero:
 
 \chapter{Requirements for Population Inversion}
 \section{Condition for Steady State Population Inversion}
-\textit{Look again at usual two level diagram, with s1, s2, n2/tau2, n1/tau1, n2a21 in between}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$S_1$} -- (2,0) node[anchor=west] {1};
+        \draw (0,1.5) node[anchor=east] {$S_2$} -- (2,1.5) node[anchor=west] {2};
+        \draw[-Latex] (0.7,1.5) -- (0.7,0) node[anchor=west,midway] {$N_2A_{21}$};
+        \draw[-Latex] (1.7,1.5) -- (2.5,1) node[anchor=west] {$\frac{N_2}{\tau_2}$};
+        \draw[-Latex] (1.7,0) -- (2.5,-0.5) node[anchor=west] {$\frac{N_1}{\tau_1}$};
+    \end{tikzpicture}\vspace{-25pt}
+\end{figure}
+Develop rate equations for $N_1$ and $N_2$.
 \begin{align}
     \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} \\
     \frac{dN_1}{dt} &= S_1 + N_2A_{21} - \frac{N_1}{\tau_1} 
@@ -1020,49 +1054,51 @@ We want:
 \end{itemize}
 
 \section{Three and Four Level Lasers}
-\textit{doodle three level transition, laser transition from 2 to 1, pump from 1 to 3, fast decay from 3 to 2.}
+\subsection{Traditional Solid State Three-level Laser}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \draw (0,0) -- (2,0);
-        \draw (1,1.3) -- (2,1.3);
-        \draw (0,2) -- (2,2);
-        \draw[-Latex] (0.5,0) -- (0.5,2);
-        \draw[-Latex] (1.3,2) -- (1.3,1.3);
-        \draw[-Latex] (1.7,1.3) -- (1.7,0);
+        \draw (0,0) -- (2,0) node[anchor=west] {1};
+        \draw (1,1.3) -- (2,1.3) node[anchor=west] {2};
+        \draw (0,2) -- (2,2) node[anchor=west] {3};
+        \draw[-Latex] (0.5,0) -- (0.5,2) node[anchor=east,midway] {Pump};
+        \draw[-Latex] (1.3,2) -- (1.3,1.3) node[anchor=west,midway] {Fast decay}; 
+        \draw[-Latex] (1.7,1.3) -- (1.7,0) node[anchor=west,midway] {Laser};
     \end{tikzpicture}
 \end{figure}
-This is known as the traditional solid state three-level laser, e.g. Ruby. \\
-\textit{doodle three level transition, laser trans from 2 to 1, fast decay from 1 to 0, pump from 0 to 3.}
+This is known as the traditional solid state three-level laser, e.g. Ruby. 
+
+\subsection{Gas lasers}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \draw (0,0) -- (2,0);
-        \draw (1,1.3) -- (2,1.3);
-        \draw (0,2) -- (2,2);
-        \draw[-Latex] (0.5,0) -- (0.5,2);
-        \draw[-Latex] (1.3,2) -- (1.3,1.3);
-        \draw[-Latex] (1.7,1.3) -- (1.7,0);
+        \draw (0,0) -- (2,0) node[anchor=west] {0};
+        \draw (1,1.3) -- (2,1.3) node[anchor=west] {1};
+        \draw (0,2) -- (2,2) node[anchor=west] {2};
+        \draw[-Latex] (0.5,0) -- (0.5,2) node[anchor=east,midway] {Pump};
+        \draw[-Latex] (1.3,2) -- (1.3,1.3) node[anchor=west,midway] {Laser};
+        \draw[-Latex] (1.7,1.3) -- (1.7,0) node[anchor=west,midway] {Fast decay};
     \end{tikzpicture}
 \end{figure}
-This is common for gas lasers, e.g. Ar+.\\
-\textit{doodle four three level transition, laser from 2 to 1, fasy decay from 3 to 2 and 1 to 0, pump from 0 to 3.}
+This is common for gas lasers, e.g. Ar+.
+
+\subsection{Solid state and dye lasers}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \draw (0,0) -- (2,0);
-        \draw (1,0.7) -- (2,0.7);
-        \draw (1,1.4) -- (2,1.4);
-        \draw (0,2) -- (2,2);
-        \draw[-Latex] (0.5,0) -- (0.5,2);
-        \draw[-Latex] (1.3,2) -- (1.3,1.4);
-        \draw[-Latex] (1.7,1.4) -- (1.7,0.7);
-        \draw[-Latex] (1.3,0.7) -- (1.3,0);
+        \draw (0,0) -- (2,0) node[anchor=west] {0};
+        \draw (1,0.8) -- (2,0.8) node[anchor=west] {1};
+        \draw (1,1.6) -- (2,1.6) node[anchor=west] {2};
+        \draw (0,2.5) -- (2,2.5) node[anchor=west] {3};
+        \draw[-Latex] (0.5,0) -- (0.5,2.5) node[anchor=east,midway] {Pump};
+        \draw[-Latex] (1.3,2.5) -- (1.3,1.6) node[anchor=west,midway] {Fast decay};
+        \draw[-Latex] (1.7,1.6) -- (1.7,0.8) node[anchor=west,midway] {Laser};
+        \draw[-Latex] (1.3,0.8) -- (1.3,0) node[anchor=west,midway] {Fast decay};
     \end{tikzpicture}
 \end{figure}
 This is most solid state lasers and dye lasers, e.g. Nd:YAG.
 
-\textbf{General comments:}
+\subsection{General comments}
 \begin{itemize}
     \item We only show three/four levels here but each one of these levels may be a tight collection of thousands of levels which may be close enough to be treated as a single big level.
     \item For three-level schemes, one transition must be non-radiative to conserve parity.
@@ -1084,20 +1120,26 @@ This is most solid state lasers and dye lasers, e.g. Nd:YAG.
 $\sigma(\om)$ and $L_m$ are fixed (or practically so), so for us to maximise our gain, we have to maximise $N^*$ through pumping. 
 
 \section{Three-Level Traditional Solid State Lasers}
-\textit{doodle the traditional laser again, but bigger, label pumping as S13 with rate s-1, add decay right back down again gamma31, we want gamma32, and laser transition gamma21}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \draw (0,0) -- (2,0);
-        \draw (1,1.3) -- (2,1.3);
-        \draw (0,2) -- (2,2);
-        \draw[-Latex] (0.3,0) -- (0.3,2);
-        \draw[-Latex] (1.3,2) -- (1.3,1.3);
-        \draw[-Latex,red] (1.7,1.3) -- (1.7,0);
-        \draw[-Latex] (0.6,2) -- (0.6,0);
-        \draw[-Latex] (1.2,1.3) -- (1.2,0);
+        \draw (0,0) -- (3,0) node[anchor=west] {1};
+        \draw (1.5,1.3) -- (3,1.3) node[anchor=west] {2};
+        \draw (0,2) -- (3,2) node[anchor=west] {3};
+        \draw[-Latex] (0.3,0) -- (0.3,2) node[anchor=east,midway] {$S_{13}$};
+        \draw[-Latex] (2,2) -- (2,1.3) node[anchor=west,midway] {$\Gamma_{32}$};
+        \draw[-Latex,red] (2.5,1.3) -- (2.5,0) node[anchor=west,midway,black] {Laser};
+        \draw[-Latex] (0.8,2) -- (0.8,0) node[anchor=west,midway] {$\Gamma_{31}$};
+        \draw[-Latex] (1.7,1.3) -- (1.7,0) node[anchor=west,midway] {$\Gamma_{21}$};
     \end{tikzpicture}
 \end{figure}
+To study the steady state small signal population inversion, we ignore the effects of the laser field on the populations. 
+The rate equations are:
+\begin{align}
+    \frac{dN_3}{dt} &= S_{13}N_1 - (\Gamma_{31}+\Gamma_{32})N_3 \\
+    \frac{dN_2}{dt} &= \Gamma_{32}N_3 - \Gamma_{21}N_2 \\
+    \frac{dN_1}{dt} &= -S_{13}N_1 + \Gamma_{31}N_1 + \Gamma_{21}N_2
+\end{align}
 
 \chapter{Population Inversion in Four-level lasers}
 \begin{figure}[H]
@@ -1125,7 +1167,6 @@ $\Gamma_{32}$ is a fast, non-radiative decay; $\Gamma_{10}$ likewise.
 In the ideal case, $\Gamma_{32}\gg\Gamma_{30}$, and $N_3\approx0$, i.e. decay is faster than pumping.
 
 \section{Idealised Four-level laser}
-\textit{finish the doodle, lots of circles in 0, some in 2, arc arrow between them}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1134,6 +1175,7 @@ In the ideal case, $\Gamma_{32}\gg\Gamma_{30}$, and $N_3\approx0$, i.e. decay is
         \draw (1.5,1.4) -- (3,1.4) node[anchor=west] {2, $N_2\approx N^*$};
         \draw (0,2) -- (3,2) node[anchor=west] {3, $N_3=0$};
         \draw[-Latex] (1.9,0.7) -- (1.9,0) node[anchor=west,midway] {Fast $\to N_1\approx0$};
+        \draw[thick,red,-Latex] (1.5,1) [partial ellipse=270:22:0.5cm and 1cm];
     \end{tikzpicture}
 \end{figure}
 The idealised four-level laser equations:
