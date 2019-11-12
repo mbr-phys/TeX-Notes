@@ -1279,7 +1279,18 @@ After studying this section, you should
 
 \section{Interferometers}
 The Mach-Zehnder interferometer is the simplest and cleanest interferometer:
-\textit{doodle drawing from notes}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (4,0) node[anchor=north] {3} -- (0,0) node[anchor=north,midway,xshift=-30pt] {A} -- (0,3) node[anchor=east,midway,yshift=-10pt] {A} node[anchor=east] {0};
+        \draw (-1,2) node[anchor=north] {1} -- (3,2) node[anchor=south,midway,xshift=10pt] {B} -- (3,-1) node[anchor=west] {2} node[anchor=west,midway,yshift=10pt] {B};
+        \filldraw[fill=lightgray,draw=black] (1.4,-0.3) rectangle (1.6,0.3) node[anchor=south] {$\theta$};
+        \draw[ultra thick] (-0.5,2.5) -- (0.5,1.5);
+        \draw[ultra thick] (3.5,-0.5) -- (2.5,0.5);
+        \draw[ultra thick,gray] (2.5,2.5) -- (3.5,1.5) node[anchor=south west,midway] {mirror};
+        \draw[ultra thick,gray] (-0.5,0.5) -- (0.5,-0.5);
+    \end{tikzpicture}
+\end{figure}
 Let's work through it. 
 Going through the first beamsplitter, we get:
 \begin{align}
@@ -1305,7 +1316,17 @@ So we can then put both beamsplitters together for the full transform:
 \end{align}
 Single photons $\to$ wavelike interference, averaging over many. 
 
-What we had before interferometers was double beam experiments: \textit{doodle from notes}
+What we had before interferometers was double beam experiments:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (3pt) node[anchor=north] {$r_1,t_1$};
+        \fill (0,1) circle (3pt) node[anchor=south] {$r_2,t_2$};
+        \draw[snake it] (0,0) -- (2,0.5);
+        \draw[snake it] (0,1) -- (2,0.5);
+        \draw (2,0.3) -- (2,0.7) arc (90:-90:5.5pt);
+    \end{tikzpicture}\vspace{-1.5cm}
+\end{figure}
 \begin{align}
     \E(vr,t) &= k_1\E(\vr_1,t_1) + k_2\E(\vr_2,t_2)
 \end{align}
@@ -1315,7 +1336,16 @@ From this, we found the first-order normalised mutual coherence function:
     I(\vr) &= I_1 + I_2 + \sqrt{I_1I_2}|\gamma^{(1)}(\vr_1,t_1,\vr_2,t_2)|\cos(\phi_1-\phi_2) \\
     \gamma^{(1)} & \begin{cases} = 1 & \text{fully coherent} \\ < 1 & \text{partially coherent} \\ = 0 & \text{fully incoherent}\end{cases}
 \end{align}
-\textit{doodle of coherence oscillation wave}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0.5) -- (4,0.5) node[anchor=north] {r};
+        \draw[-Latex] (0,0.5) -- (0,2.5) node[anchor=east] {I};
+        \draw (0,1.5) sin (0.5,2) cos (1,1.5) sin (1.5,1) cos (2,1.5) sin (2.5,2) cos (3,1.5) sin (3.5,1) cos (4,1.5);
+        \draw (0,2) -- (4,2) node[anchor=west] {$I_{max}$};
+        \draw (0,1) -- (4,1) node[anchor=west] {$I_{min}$};
+    \end{tikzpicture}
+\end{figure}
 \textbf{Rayleigh fringe visibility} is defined as:
 \begin{align}
     \nu &= \frac{I_{max}-I_{min}}{I_{max}+I_{min}} \\
@@ -1330,12 +1360,23 @@ What about our \textbf{quantum} first-order normalised mutual coherence function
 \begin{align}
     g^{(1)}(\vr_1,t_1,\vr_2,t_2) &= \frac{\langle\Eh_-(\vr_1,t_1)\Eh_+(\vr_2,t_2)\rangle}{\left\{\langle\Eh_-\Eh_+(\vr_1,t_1)\rangle\langle\Eh_-\Eh_+(\vr_2,t_2)\rangle\right\}^{1/2}}
 \end{align}
-\textit{another doodle}
 We find that both number and coherent states can be fully coherent, i.e. $g^{(1)}=1$.
 The first order coherent function tells you how coherent you are and how visible your fringes will be. 
 
 \section{Second Order Coherence}
-\textit{another doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) node[anchor=north] {1} -- (1,0);
+        \draw[-Latex] (1,0) -- (3,0);
+        \draw (3,0) -- (4,0) node[anchor=south] {3, $I(\vr_3,t_3)$};
+        \draw[-Latex] (2,2) node[anchor=east] {0} -- (2,1);
+        \draw[-Latex] (2,1) -- (2,-1);
+        \draw (2,-1) -- (2,-2) node[anchor=west] {2, $I(\vr_2,t_2)$};
+
+        \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
+    \end{tikzpicture}
+\end{figure}
 Let's consider a classical second-order normalised mutual coherence function:
 \begin{align}
     \gamma^{(2)}(\vr_3,t_3,\vr_2,t_2) &= \frac{\langle I(\vr_3,t_3)I(\vr_2,t_2)\rangle_t}{\langle I(\vr_3,t_3)\rangle\langle I(\vr_2,t_2)\rangle_t}
