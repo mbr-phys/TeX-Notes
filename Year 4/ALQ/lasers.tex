@@ -1290,6 +1290,88 @@ Both down transitions are optical (radiative), so $S_{02}$ cannot be optical due
 \end{example}
 Gas lasers cannot be optically pumped, so they use collisions, or \textbf{particle pumping.}
 
+\chapter{The Fabry-Perot Etalon and Laser Cavity Modes}
+\textit{write initial bit up from slides}
+
+\section{The Fabry-Perot Elaton}
+\begin{align}
+    \frac{I_T}{I_0} &= \frac{T^2}{(1-R)^2}\frac{1}{1+\frac{4F^2}{\pi^2}\sin^2\frac{\delta}{2}}
+\end{align}
+\textit{doodle Airy pattern in slides}\\
+Points to note:
+\begin{itemize}
+    \item For mirrors, $T+R+A = 1$, absorption $A\approx0$, so $T=1-R$.
+        \begin{align}
+            \frac{I_T}{I_0}\bigg|_{max} &= 1
+        \end{align}
+        So all light trnasmitted at cavity resonance.
+    \item Phase difference:
+        \begin{align}
+            \delta &= \frac{4\pi d}{\lambda}\cos\theta
+        \end{align}
+        Dependent on angle, separation, and wavelength. 
+    \item For bright fringes, $\sin\frac{\delta}{2}=0$ so $\delta=2n\pi$, or $2d\cos\theta = n\lambda$.
+    \item Free spectral range, $\Delta\nu_{fsr}$. At maxima, 
+        \begin{align}
+            \lambda &= \frac{2d\cos\theta}{n} \implies \nu = \frac{c}{\lambda} = \frac{nc}{\cos\theta} \\
+            \Delta\nu_{fsr} &= \nu_{n+1}-\nu_n = \frac{c}{2d\cos\theta}
+        \end{align}
+        Then, at normal incidence, 
+        \begin{align}
+            \Delta\nu_{fsr} &= \frac{c}{2d}
+        \end{align}
+    \item Fringe width. What is the full width at half maximum (FWHM) of fringes? Assume $\frac{I_T}{I_0}=\frac12$ when $\delta=2\pi n\pm\delta_{1/2}$.
+        \begin{align}
+            \frac12 &= \frac{1}{1+\frac{4F^2}{\pi^2}\sin^2(\frac{\delta_{1/2}}{2})} \\
+            \sin^2\left(\frac{\delta_{1/2}}{2}\right) &= \frac{\pi^2}{4F^2} \\
+            \delta_{1/2} &= 2\sin^{-1}\left(\frac{\pi}{2F}\right) \\
+            \delta_{1/2} &\approx \frac{\pi}{F},\; F >> 1 \\
+            \text{FWHM} &= 2\delta_{1/2} = \frac{2\pi}{F}
+        \end{align}
+        Separation of adjacent peaks (in radians) $=2\pi$.
+        Hence, finesse, 
+        \begin{align}
+            F &= \frac{\Delta\nu_{fsr}}{\Delta\nu_{FWHM}}
+        \end{align}
+        \textit{doodle it}\\
+        So high finesse $\to$ sharp fringes, and vice versa.
+        Before, 
+        \begin{align}
+            F &= \frac{\pi\sqrt{R}}{1-R} \implies \Delta\nu_{FWHM} = \frac{c}{2d}\left(\frac{1-R}{\pi\sqrt{R}}\right)
+        \end{align}
+\end{itemize}
+
+\begin{example}
+    30cm long etalon with mirrors, $R=0.99$.
+    \begin{align}
+        \Delta\nu_{fsr} &= \frac{c}{2d} = 500\,MHz \\
+        F &= \frac{\pi\sqrt{R}}{1-R} \approx 313 \\
+        \Delta\nu_{FWHM} &= \frac{\Delta\nu_{fsr}}{F} = 1.6\,MHz
+    \end{align}
+    In visible range, say $\lambda=550\,nm,~ \nu =  545\,THz$.
+    We can use this etalon to reolve to 1 part in $10^8$.
+\end{example}
+
+\section{Laser Cavities}
+The Fabry-Perot etalon is not a good laser cavity.
+We need to place a gain medium between mirrors. 
+\textit{doodle}
+This cavity however is difficult to align.
+More fundamentally, diffraction will cause losses.
+\textit{doodle}
+Diffraction leads to large losses.
+The solution is to use curved mirrors: \textit{doodle}
+Each curved mirror acts as a lens, \textit{doodle}
+\begin{align}
+    f &= \frac{R}{2}
+\end{align}
+where here R is the radius of curvature.
+Cavity acts as a sequence of lenses.
+\textit{doodle}
+Related by Fourier transform, so essentially we want a function that is its own Fourier transform - Gauss-Hermite. 
+
+
+
 
 \end{document}
 
