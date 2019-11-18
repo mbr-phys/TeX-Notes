@@ -885,6 +885,72 @@ If we assume $k\parallel\e_z$, then $k\cdot\e^{(1,2)}(k)$ is trivially fulfilled
 \end{align}
 So the two unphysical polarisations compensate each other.
 
+\chapter{}
+\begin{figure}[H]
+    \centering
+    \includegraphics{etomu.pdf}
+    \vspace{-30pt}
+\end{figure}
+\begin{align}
+    \La_{QED} &= \bar{\psi}(i\cancel{\p}-m)\psi - \frac14F_{\mu\nu}F^{\mu\nu} - \frac{\alpha}{2}(\p_\mu A^\mu)^2 - eA^\mu j^\mu
+\end{align}
+The first term of this is the free spinor field, the second is the free electromagnetic field, the third is a gauge-fixing term with $\alpha=1$, and the fourth is the interaction term, with a current $j^\mu = \bar{\psi}\gamma^\mu\psi$.\\
+\textit{If you're a physicist, we don't do social interactions, we just emulate them in whatever programming we run.}
+
+\section{Feynman Rules}
+What are the "building blocks"?
+\begin{itemize}
+    \item Terms with two fields give the propagators $\implies$ the Green's functions of the equations of motions
+    \item Particles:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.2]{feyn1.png}
+        \end{figure}
+    \item Propagators:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.2]{feyn2.png}
+        \end{figure}
+    \item Vertices (interaction):
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.2]{feyn3.png}
+        \end{figure}
+\end{itemize}
+Now the rules:
+\begin{enumerate}
+    \item Draw all distinct Feynman diagrams, including labels for the momenta of the incoming and outgoing particles:
+        \begin{itemize}
+            \item incoming/outgoing (anti-)fermions with momentum $p$ are represented with spinors $u(p)/\bar{u}(p)$,  $(\bar{v}(p)/v(p))$
+            \item incoming/outgoing photons with momentum $k$ are represented with polarisation vectors $\e^\mu(k)$, /$\e^{*\mu}(k)$
+            \item  propagators related to the external particles are "amputated"
+        \end{itemize}
+    \item internal lines give rise to the corresponding propagators
+    \item interactions are represented by vertices and corresponding expression, four momentum conservation is imposed at each vertex, thereby fixing the momenta of internal lines
+    \item $i$ (imaginary unit) times the amplitude related to a single diagram is given by the product of all building blocks, the single-diagram amplitudes are summed to yield the overal amplitude. 
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics{etomu2.pdf}
+    \vspace{-25pt}
+\end{figure}
+\begin{align}
+    i\mathcal{M} &= \left[\bar{u}_{\alpha}(p_3)(-ie\gamma^\mu_{\alpha\beta})v_\beta(p_4)\right]\frac{-ig_{\mu\nu}}{(p_3+p_4)^2+i\e^+}\left[\bar{v}_\gamma(p_2)(-ie\gamma^\nu_{\gamma\delta}u_\delta(p_1)\right]
+\end{align}
+We now want to square this, so we sum over outgoing polarisations, average over incomings. 
+\begin{align}
+    \frac14\sum_{spins}|\mathcal{M}|^2 &= -\frac{e^4}{4}\sum_{spins}\left[\bar{u}_\alpha(p_3)\gamma_{\alpha\beta}^\mu v_\beta(p_4)\bar{v}_{\beta'}(p_4)\gamma_{\beta'\alpha'}^{\mu'}u_{\alpha'}(p_3)\right]\frac{g_{\mu\nu}g_{\mu'\nu'}}{(p_3+p_4)^4}\left[\bar{v}_\gamma(p_2)\gamma^\nu_{\gamma\delta}u_\delta(p_1)\bar{u}_{\delta'}(p_1)\gamma^{\nu'}_{\delta'\gamma'}v_{\gamma'}(p_2)\right] \\
+    \sum_{spin} &u_{\delta}(p)\bar{u}_{\delta'}(p) = (\cancel{p}-m)_{\delta\delta'},~ \sum_{spin} v_\beta\bar{v}_{\beta'} = (\cancel{p}+m)_{\beta\beta'} \\
+    \frac14\sum_{spins}|\mathcal{M}|^2 &= \frac{e^4}{4}\text{Tr}\left[(\cancel{p}_3-m_3)\gamma^\mu(\cancel{p}_4+m_4)\gamma^\mu\right]\frac{g_{\mu\nu}g_{\mu'\nu'}}{(p_3+p_4)^4}\text{Tr}\left[(\cancel{p}_2+m_2)\gamma^\nu(\cancel{p}_1-m_1)\gamma^{\nu'}\right] \\
+    \text{Tr}[\gamma^\mu\gamma^\nu] &= 4g^{\mu\nu},~ \text{Tr}[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma] = 4(g^{\mu\nu}g^{\rho\sigma}+g^{\mu\sigma}g^{\nu\rho}-g^{\mu\rho}g^{\nu\sigma}) \\
+    \frac14\sum_{spins}|\mathcal{M}|^2&=\text{Tr}[pp\gamma^\rho\gamma^\mu\gamma^\delta\gamma^{\mu'}]-\text{Tr}[m_3m_4\gamma^\mu\gamma^{\mu'}] \\
+                                      &= 4p_{4\delta}p_{3\rho}\left(\gamma^{\rho\mu}g^{\delta\mu'}-g^{\rho\delta}g^{\mu\mu'}+g^{\rho\mu'}g^{\mu\delta}\right) - 4m_3m_4g^{\mu\mu'} \\
+                                      &= \left[4(p_4^\mu p_3^{\mu'}+ p_4^{\mu'}p_3^\mu - g^{\mu\mu'}p_3p_4)-4m_\mu^2g^{\mu\mu'}\right]\times\left[4(p_2^\nu p_1^{\nu'}+p_2^{\nu'}p_1^\nu - g^{\nu\nu'}p_1p_2)-4m_e^2g^{\nu\nu'}\right],\; m_i = 0 \\
+                                      &= \frac{16e^4}{4(p_3+p_4)^4}\left[2(p_2p_4)(p_1p_3) + 2(p_1p_4)(p_2p_3) - 4(p_1p_2)(p_3p_4) + 4(p_1p_2)(p_3p_4)\right] \\
+                                      &= \frac{8e^4}{(p_3+p_4)^2}\left[(p_2p_4)(p_1p_3)+(p_1p_4)(p_2p_3)\right]
+\end{align}
+
+
 
 \end{document}
 

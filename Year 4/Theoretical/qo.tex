@@ -1387,6 +1387,245 @@ Now let's look at the quantum version again:
     g^{(2)}(\vr_3,t_3,\vr_2,t_2) &= \frac{\langle\Eh_-(\vr,t_3)\Eh_-(\vr_2,t_2)\Eh_+(\vr_2,t_2)\Eh_+(\vr_3,t_3)\rangle}{\langle\Eh_-\Eh_+(\vr_3,t_3)\rangle\langle(\Eh_-\Eh_+(\vr_2,t_2)\rangle}
 \end{align}
 
+\chapter{}
+For the Mach-Zehnder interferometer, what if $\theta=0$?
+If for a single photon going through one beamsplitter, we have the Hadamard operator, 
+\begin{align}
+    H = \frac{1}{\sqrt{2}}\begin{pmatrix}1&i\\i&1\end{pmatrix}
+\end{align}
+then, for two beamsplitters, as seen in the interferometer, without a phase shift, we would have the Hadamard operator squared,
+\begin{align}
+    H^2 &= \frac12\begin{pmatrix}1&i\\i&1\end{pmatrix}\begin{pmatrix}1&-i\\-i&1\end{pmatrix} = I
+\end{align}
+which makes the identity matrix and the one photon will simply come out of a single port again. 
+
+\section{Single mode field (no beamsplitter)}
+The only difference here is that everything that commutes can be cancelled out, and we are left with the dagger operators:
+\begin{align}
+    g^{(2)}_{\text{\tiny single}} &= \frac{\langle\hag\hag\ha\ha\rangle}{\langle\hag\ha\rangle\langle\hag\ha\rangle} \\
+                                  &=  \frac{\langle\hn(\hn-1)\rangle}{\langle\hn\rangle^2}
+\end{align}
+Where we use the ladder operators' commutation relation to redefine. 
+\begin{enumerate}
+    \item Coherent state:
+        \begin{align}
+            \langle\alpha|\hag\hag\ha\ha|\alpha\rangle &= |\alpha|^4 \\
+            \langle\alpha|\hn|\alpha\rangle &= |\alpha|^2 \\
+            g^{(2)} &= 1
+        \end{align}
+    \item Number states:
+        \begin{align}
+            \langle1|\hn(\hn-1)|1\rangle &= 0 \\
+            \frac{\langle n|\hn(\hn-1)|n\rangle}{\langle\hn\rangle^2} &= \frac{n^2-n}{n^2} = 1-\frac{1}{n}
+        \end{align}
+\end{enumerate}
+For $g^{(2)}$, number states with more photons look more classical. 
+For a $g^{(2)}<1$, we call it sub-Poissonian, because for a coherent state with $g^{(2)}=1$, we have a Poisson distribution. 
+
+\section{Two modes}
+The Hanburg, Brown, and Twiss experiment (didn't quite manage this), actually Jeff Kimble and Herbert Waller. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) node[anchor=north] {1, single mode} -- (1,0);
+        \draw[-Latex] (1,0) -- (3,0);
+        \draw (3,0) -- (4,0) node[anchor=south] {3};
+        \draw[-Latex] (2,2) node[anchor=east] {0} -- (2,1);
+        \draw[-Latex] (2,1) -- (2,-1);
+        \draw (2,-1) -- (2,-2) node[anchor=west] {2};
+
+        \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
+    \end{tikzpicture}
+\end{figure}
+\begin{align}
+    |0_01_1\rangle &\to \frac{1}{\sqrt{2}}\left\{i|1_20_3\rangle + |0_21_3\rangle\right\}
+\end{align}
+So single time, two modes. 
+\begin{align}
+    g^{(2)}(t_2=t_3) &= \frac{\langle\hag_3\hag_2\ha_2\ha_3\rangle}{\langle\hag_3\ha_3\rangle\langle\hag_2\hag_2\rangle} = \frac{\langle\hn_3\hn_2\rangle}{\langle\hn_3\rangle\langle\hn_2\rangle} = 0 
+\end{align}
+But if we take it at different times, then the input is now $|0_01_1\rangle_{t_2}|0_01_1\rangle_{t_3}$, so now $\langle\hn_2\hn_3\rangle = \frac14$, and 
+\begin{align}
+    g^{(2)}(t_2-t_3) &= 1
+\end{align}
+Now if we put light into both inputs:
+\begin{align}
+    |1_01_1\rangle &\to \frac{i}{\sqrt{2}}\left\{|0_22_3\rangle + |2_20_3\rangle\right\} \\
+    g^{(2)} &= \frac{\langle\hn_2\hn_3\rangle}{\langle\hn_2\rangle\langle\hn_3\rangle} = 0
+\end{align}
+So this is definitely non-classical.
+
+\section{Coherent states in beamsplitter}
+\begin{align}
+    |0_1\alpha_1\rangle &\to \frac{i}{\sqrt{2}}|\alpha_2,\alpha_3\rangle \\
+    \langle\hn_2\rangle\hn_3\rangle &= \langle\hn_2\hn_3\rangle \implies g^{(2)} = 1 
+\end{align}
+
+\section{Summary}
+For first order, we have $\gamma^{(1)}$ for classical, and $g^{(1)}$ for quantum. We are looking at amplitudes:
+\begin{align}
+    \frac{\langle\Eh^{(1)}_+\Eh^{(2)}_-\rangle}{(\langle\Eh^{(1)}_+\Eh^{(1)}_-\rangle\langle\Eh^{(2)}_+\Eh^{(2)}_-\rangle)^{1/2}}
+\end{align}
+Amplitudes of interference fringes - fringe visibility. \\
+How coherent the EM fields are:
+\begin{align}
+    0 &\leq \gamma^{(1)}, \text{ (incoherent)} \\
+    g^{(1)} &\leq 1, \text{ (coherent)}
+\end{align}
+
+For second order, we have $\gamma^{(2)}$ for classical, and $g^{(2)}$ for quantum. 
+\begin{align}
+    1 &\leq \gamma^{(2)} < \infty \\
+    0 &\leq g^{(2)} < 1
+\end{align}
+
+We looked at small number states, where 
+\begin{align}
+    g^{(2)} &= 1-\frac1n 
+\end{align}
+We also looked at coherent states, where we have:
+\begin{align}
+    g^{(2)} &= 1, \text{ (Poissonian)}\\
+    g^{(2)} &< 1, \text{ (sub-Poissonian)} 
+\end{align}
+
+\chapter{}
+\section{Learning Outcomes}
+We will discuss polarisation in terms of two-mode states and projective measurements. 
+After studying this section, you will:
+\begin{itemize}
+    \item Be able to calculate the probability of detecting a photon after a linear polariser, for any two-mode input state (number, coherent) and any combination of polariser angle and initial polarisation. 
+    \item Understand the action of a linear polariser in terms of projective measurements; be familiar with the use of the projection operator, and be able to disucss the state before and after the measurement.
+\end{itemize}
+
+\section{Polarisation}
+\begin{align}
+    \Eh(\vr,t) &= i\sum_{\vec{k},s} \om_k\ve_{\vec{k},s}\left[A_{\vec{k},s}\exp\left\{i(\vec{k}\cdot\vr-\om_kt)\right\}+ c.c.\right]
+\end{align}
+We are now concerned with $\ve_{\unl{k},s}$, the polarisation vector of the field.
+There are two polarisations to make up a complete basis, contained in the index $s$.
+Above is what we will see classically. 
+
+Consider two modes with same $\unl{k},\om_k$, where $\unl{k}\propto\hat{z}$, so we have $\ve_x,\ve_y$.
+\begin{align}
+    \Eh(\vr,t) &= i\om_k\left[(A_x\ve_x+A_y\ve_y)\exp\left\{i(\unl{k}\cdot\vr-\om_kt)\right\} + c.c.\right]
+\end{align}
+\textit{doodle graph}
+\begin{align}
+    \ve_\theta &= \cos\theta\ve_x + \sin\theta\ve_y \\
+    \ve_{\theta'} &= -\sin\theta\ve_x + \cos\theta\ve_y
+\end{align}
+Hnece, for the amplitudes, $A_x,A_y\to A_\theta,A_{\theta'}$:
+\begin{align}
+    \begin{pmatrix}A_\theta \\ A_{\theta'} \end{pmatrix} &= \begin{pmatrix}\cos\theta & \sin\theta \\ -\sin\theta & \cos\theta\end{pmatrix} \begin{pmatrix}A_x \\A_y\end{pmatrix}
+\end{align}
+Now we must have our polarising beamsplitters:
+\textit{doodle from notes}
+
+What about the quantum setting?
+We have our operator that we will split into the different cartesian polarisations, $\ha_{\unl{k},s}\to \ha_x,\ha_y$, and we have a rotation matrix, $\ha_{\theta},\ha_{\theta'}$. 
+Note that 
+\begin{align}
+    [\ha_{\theta},\ha_{\theta'}] &= 0 \\
+    [\ha_{\theta},\hag_\theta] &= 1
+\end{align}
+So these are just the creation and annihilation operators in a specific orientation.
+
+\begin{example}[Number state with one photon polarised along $\theta$]
+    We have a two mode field (with $|0\rangle$ the single mode vacuum):
+    \begin{align}
+        |1_\theta,0_{\theta'}\rangle &= \hag_\theta|0,0\rangle \\
+                                     &= (\hag_x\cos\theta+\hag_y\sin\theta)|0,0\rangle \\
+                                     &= \cos\theta|1_x,0_y\rangle + \sin\theta|0_x,1_y\rangle
+    \end{align}
+    We can create from the vacuum state in any way we want to, so we don't have to worry about what we are using for this, and whether we use a number or coherent state.\\
+    We can show that
+    \begin{align}
+        \hn|1_\theta,0_{\theta'}\rangle &= \sum_{\unl{k},s} \hn_{\unl{k},s}|1_\theta,0_{\theta'}\rangle \\
+                                        &= |1_\theta,0_{\theta'}\rangle \\
+        \langle\hn\rangle &= 1
+    \end{align}
+\end{example}
+
+\textit{doodle polarising beamsplitter}
+\begin{align}
+    \text{Prob} &\propto \langle\hn\rangle = \langle\psi|\hag_\theta\ha_\theta|\psi\rangle
+\end{align}
+So what if we have a state $|\psi\rangle$ of one photon, but we don't know polarisation. 
+Depending on this polarisation, we will be likelier to get different measurements. 
+In a single measurement, we record 0 or 1.
+\begin{align}
+    P_0 &= |\langle0,0|\psi\rangle|^2 & P_1 &= |\langle1_{\theta P}|\psi\rangle|^2
+\end{align}
+All we can do with one measurement is if we detect photon, i.e. 1. 
+So then we know something: that is definitely not polarised in $\theta'$ direction, because then it definitely wouldn't have come through. 
+To determine $\theta$, we need to make many measurements, or many copies, of $|\psi\rangle$ - this need gives rise to the concept of ensembles, where the ratio of 0 to 1 lets you work out what $\theta$ is. 
+
+We can now try another experiment:
+\textit{doodle again}
+\begin{align}
+    |\psi\rangle &= |1_{\pi/4},0_{3\pi/4}\rangle
+\end{align}
+So we have one photon, polarised at 45 degrees. 
+The probability of detecting one photon is then
+\begin{align}
+    P_1 &= |\langle1_x,0_x|1_{\pi/4},0_{3\pi/4}\rangle|^2 = \frac12,~ (\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{1}{\sqrt{2}})
+\end{align}
+Now let's compare with a random mixture of two states, so half the time we have $|1_x,0_y\rangle$, and half the time we have $|0_x,1_y\rangle$.
+Again however, we get $P_1=\frac12$. 
+How do we tell the difference between the two cases?
+
+If we set the polariser to $\theta_p = \frac{\pi}{4}$, $|1_{\pi/4},0_{3\pi/4}\rangle \implies P_1 = 1$, but the fifty-fifty mixture still yields $P_1=1$.
+
+What we have been writing here are the projection operators for these states:
+\begin{align}
+    |\psi\rangle &= \sum_jc_j|j\rangle
+\end{align}
+where $\{j\}$ is a complete orthonormal basis.
+\begin{align}
+    P_j &= |\langle j|\psi\rangle|^2 = |c_j|^2 \\
+        &= \langle\psi|j\rangle\langle j|\psi\rangle \\
+        &= \langle\psi|\hat{P}_j|\psi\rangle,~ \hat{P}_j = |j\rangle\langle j| \\
+    \hat{P}_j|\psi\rangle &= |j\rangle\langle j|\psi\rangle = c_j|j\rangle
+\end{align}
+So this projection operator, $\hat{P}_j$, is projecting the state $|\psi\rangle$ onto $|j\rangle$ - however this is not normalised as it is. 
+So we need as set of these so the normalisation sums to one. 
+\begin{align}
+    P_x &= |\langle1_x0_y|\psi\rangle|^2 \\
+    |\psi\rangle &= \frac{1}{\sqrt{2}}\left\{|1_x0_y\rangle+|0_x1_y\rangle\right\} = |1_{\pi/4},0_{3\pi/4}\rangle \\
+    P_x &= \frac12, \hat{P}_x = |1_x0_y\rangle\langle1_x0_y| \\
+    \hat{P}_x|\psi\rangle &= \frac{1}{\sqrt{2}}|1_x0_y\rangle
+\end{align}
+If we apply $\hat{P}_x$ but "fail", i.e. no photon, then we must have $|0_x1_y\rangle$, so we have then define
+\begin{align}
+    \hat{P}_y &= |0_x1_y\rangle\langle0_x1_y| \\
+    \hat{P}_y|\psi\rangle &= \frac{1}{\sqrt{2}} |0_x1_y\rangle
+\end{align}
+Again, this is not normalised by itself. \\
+So for measurements there will be at least two outcomes (if only one, then there is clearly no need to make the measurement!), and we need a complete set of projectors which sum to identity, $\left\{\hat{P}_x,\hat{P}_y\right\}$.
+\begin{align}
+    \hat{P}_x+\hat{P}_y &= \mathbb{I}^2 = |1_x0_y\rangle\langle1_x0_y| + |0_x1_y\rangle\langle0_x1_y| \\
+    \sum_j\hat{P}_j &= \mathbb{I}
+\end{align}
+So we have out complete set of projective measurements. \emph{Other types of measurements are possible but these are beyond the current scope.}
+
+Thus far, we have been working with pure states, $|\psi\rangle$, which represent everything about a particular quantum state.
+\begin{align}
+    |\psi\rangle &= \sum_jc_j|j\rangle
+\end{align}
+So we can form a density matrix for a pure state, $\hat{\rho}$ - it is the projector of the state onto itself.
+\begin{align}
+    \hat{\rho} = |\psi\rangle\langle\psi| &= \sum_jc_j|j\rangle\sum_mc^*_m\langle m| \\
+                                          &= \sum_{j,m} c_jc^*_m|j\rangle\langle m|
+\end{align}
+
+\begin{example}[Horizontal and Vertical polarisation]
+    \begin{align}
+        |L\rangle &= \frac{1}{\sqrt{2}}\left\{|1_H,0_V\rangle + i|0_H,1_V\rangle\right\}
+    \end{align}
+\end{example}
+
+
 \end{document}
 
 
