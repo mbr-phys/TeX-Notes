@@ -1,0 +1,134 @@
+\documentclass[relqm.tex]{subfiles}
+
+\begin{document}
+\part{Gauge Theories}
+\chapter{}
+\section{Plan}
+\begin{itemize}
+    \item Lectures 1-2: Introduction and Motivation, Intro to Group theory $\to$ Lie groups (continoues symmetries).
+        \begin{itemize}
+            \item Why group theory? Gauge theories are quantum field theories with an emphasis on symmetry, as gauge theories have gauge symmetries. Mathematically, symmetries are described by group theory. 
+        \end{itemize}
+    \item Lecture 3: Different types of symmetries - global and local (gauge) symmetries. 
+    \item Lecture 4: From these gauge symmetries, we will construct Abelian, and non-Abelian gauge field theories. 
+    \item By the end of the course, we will learn about the Higgs mechanism and Spontaneous Symmetry Breaking, and ultimately discuss the full Standard Model of Particle Physics.
+\end{itemize}
+The Standard Model is a gauge field theory of SU(3)$\times$SU(2)$\times$U(1) - this is the gauge group of the Standard Model. 
+\begin{itemize}
+    \item SU(3) is the gauge theory of strong interactions (QCD).
+    \item SU(2)$\times$U(1) is the gauge theory of the unified electroweak interactions.
+\end{itemize}
+
+\section{Introduction to Group Theory}
+Groups are needed in order to describe and define symmetry transformations. 
+So what is a group?
+
+There are four properties that define a group:
+\begin{enumerate}
+    \item \textbf{Closure} under group multiplication. 
+        \begin{align}
+            g_1\cdot g_2 = g_3 \in G,\; \forall g_1,g_2 \in G
+        \end{align}
+        So group multiplication is confined to within the bounds of the group.
+    \item \textbf{Associativity} of group multiplication. 
+        \begin{align}
+            g_1\cdot(g_2\cdot g_3) &= (g_1\cdot g_2)\cdot g_3,\; \forall g_1,g_2,g_3 \in G
+        \end{align}
+    \item \textbf{Identity element}. 
+        \begin{align}
+            \exists\, e \in G\,:\, e\cdot g = g\cdot e = g,\; \forall g \in G
+        \end{align}
+    \item \textbf{Inverse element}.
+        \begin{align}
+             \exists\, g^{-1} \in G\,:\, g^{-1}\cdot g = g\cdot g^{-1} = e,\; \forall g \in G
+        \end{align}
+\end{enumerate}
+
+Now some notes:
+\begin{itemize}
+    \item The group is called \textbf{Abelian} iff
+        \begin{align}
+            g_1\cdot g_2 = g_2\cdot g_1,\; g_1,g_2 \in G
+        \end{align}
+        This is equivalent to being called commutative, from $[g_1,g_2]=0$.
+    \item Then it holds that we have \textbf{non-Abelian} groups, where
+        \begin{align}
+            g_1\cdot g_2 \neq g_2\cdot g_1
+        \end{align}
+        This is non-commutative, from $[g_1,g_2]\neq0$.
+\end{itemize}
+Matrix multiplication (of square matrices) is an example of a non-Abelian group multiplication.
+
+\subsection{Important Examples}
+\begin{itemize}
+    \item SU(N) is a group of unitary $N\times N$ matrices, with $\text{det}=1$. For SU(N), N is for $N\times N$ matrices, and the U says it is unitary. 
+        Unitary is defined by
+        \begin{align}
+            SU(N) \ni U\,:\, U^\dagger\cdot U = U\cdot U^\dagger = \mathbb{I}_{N\times N},~ U^\dagger = (U^*)^T
+        \end{align}
+        where $U^\dagger$ is called Hermitian conjugation. 
+        The S then defines the group as "Special", which means $\text{det}(U) = 1$.\\
+        Let's check these group properties. 
+        \begin{enumerate}
+            \item Matrix multiplication:
+                \begin{align}
+                    U_1 &\in SU(N):~ U_1^\dagger U_1 = \mathbb{I} \\
+                    U_2 &\in SU(N):~ U_2^\dagger U_2 = \mathbb{I} \\
+                    (U_1U_2)^\dagger U_1U_2 &= U_2^\dagger \underbrace{U^\dagger_1 U_1}_{\mathbb{I}}U_2 = U^\dagger_2 U_2 = \mathbb{I} \\
+                    \text{det}(U_1U_2) &= \text{det}(U_1)\cdot\text{det}(U_2) = 1
+                \end{align}
+                So we have \textbf{closure.}
+            \item Associativity is satisfied by the definition of matrix multiplication.
+            \item Unit matrix:
+                \begin{align}
+                    e &= \mathbb{I}_{N\times N} 
+                \end{align}
+            \item The inverse matrix element:
+                \begin{align}
+                    U^{-1} &= U^\dagger
+                \end{align}
+        \end{enumerate}
+        So we have a group that holds all the properties, a very important group at that. \\
+        Consider some general $U \in SU(N)$. 
+        How many real independent parameters (real degrees of freedom) does $U$ have?
+        An $N\times N$ complex matrix will have $2N^2$ real degrees of freedom. 
+        Now if we require unitarity, $U^\dagger = U$, there are $N^2$ constraints on the degrees of freedom, so now we are left with only $N^2$ degrees of freedom by this requirement. 
+        Now if we impose that $\text{det}U = 1$, which is a single condition, we are left with $N^2-1$ real degrees of freedom. 
+    \item U(1) is a group of unitary $1\times1$ matrices, so $U^\dagger U = 1$. 
+        \begin{align}
+            \forall U \in U(1)\,:\, U = e^{i\alpha},\; \alpha \in \R
+        \end{align}
+        Note we cannot require that the $\text{det}U=1$, otherwise we collapse down to a single value of this group, where $\alpha=0$.
+        We do not really need to check the group properties of U(1) as they are completely trivial.
+    \item SO(N) is a group of $N\times N$ real-valued matrices which are orthogonal:
+        \begin{align}
+            \forall O \in SO(N)\,:\, O^T\cdot O = O\cdot O^T = \mathbb{I}
+        \end{align}
+        So N is for $N\times N$, O is for orthogonal, and S again for $\text{det}=1$.\\
+        SO(N) matrices are \emph{proper} (we do not do parity transformations of $x\to -x$) rotations in the $\R^N$ (N-dimensional real vector space).
+        It is again trivial to find the four group properties fully satisfied for SO(N), so these are groups again.
+        \begin{align}
+            SO(2) \ni O = \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta\end{pmatrix}
+        \end{align}
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
