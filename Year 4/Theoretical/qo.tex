@@ -11,6 +11,7 @@
 \newcommand\xt{\hat{X}_2}
 \newcommand\hsig{\hat{\sigma}}
 \newcommand\hd{\hat{\unl{d}}}
+\newcommand\hrho{\hat{\rho}}
 
 \title{Advanced Theoretical Physics \vspace{-20pt}}
 \author{Dr Kendon and Prof Gardiner}
@@ -1609,6 +1610,21 @@ So for measurements there will be at least two outcomes (if only one, then there
 \end{align}
 So we have out complete set of projective measurements. \emph{Other types of measurements are possible but these are beyond the current scope.}
 
+\chapter{}
+\section{Learning Outcomes}
+Density matrices, pure states, mixed states, and entangled states. 
+To be familiar with the concepts of pure states, mixed states, and the density matrix. 
+To apply them to entangled states and product states, and use the partial trace. 
+After studying this section you will be able to:
+\begin{itemize}
+    \item Explain and state the definitions of pure states, mixed states, and the density matrix.
+    \item Perform calculations using the density operator and the trace (e.g. trace of the density operator, expectation values) for pure states and mixed states. 
+    \item Explain and state the definitions of entangled states and product states for bi-partite systems in a pure state. 
+    \item To be familiar with the definition and properties of the partial trace and its application to the joint density matrix. 
+    \item To be familiar with and apply the partial trace over a sub-system of a bipartite density matrix, and understand how the outcome differs for product states and entangled states. 
+\end{itemize}
+
+\section{The Density Matrix}
 Thus far, we have been working with pure states, $|\psi\rangle$, which represent everything about a particular quantum state.
 \begin{align}
     |\psi\rangle &= \sum_jc_j|j\rangle
@@ -1621,9 +1637,90 @@ So we can form a density matrix for a pure state, $\hat{\rho}$ - it is the proje
 
 \begin{example}[Horizontal and Vertical polarisation]
     \begin{align}
-        |L\rangle &= \frac{1}{\sqrt{2}}\left\{|1_H,0_V\rangle + i|0_H,1_V\rangle\right\}
+        |L\rangle &= \frac{1}{\sqrt{2}}\left\{|1_H,0_V\rangle + i|0_H,1_V\rangle\right\} \\
+        \hat{\rho}_L &= |L\rangle\langle L| = \frac12\left\{ |H\rangle\langle H| + i|V\rangle\langle H| - |H\rangle\langle V| + |V\rangle\langle V|\right\} \\
+                  &= \frac12 \begin{pmatrix} 1 & i \\ -i & 1 \end{pmatrix}
     \end{align}
+    Note: this is Hermitian, and the diagonal terms give likelihoods of being in H or V, while the off-diagonals form coherences, i.e. the relative phases between the different basis states.\\
+    For a pure state, the Schrodinger equation can be written as
+    \begin{align}
+        \dt \hat{\rho} &= \frac{i}{\hbar}[\hat{\rho},\hh].
+    \end{align}
+    This is known as the van-Neumann equation.
+
+    So let's go back to the example of source giving horizontal or vertical polarisations, but we don't know which one we were getting. 
+    We can write this in terms of a density matrix,
+    \begin{align}
+        \hrho_{H/V} &= \frac12|H\rangle\langle H| + \frac12|V\rangle\langle V| = \frac12 \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+    \end{align}
+    The difference here is there is no off-diagonal terms, so there is no coherences in this ensemble, i.e. a mixed state. 
+    Above, we just had the projector of one state $|L\rangle$, but now we have the sum of two projectors. 
+    So the coherences will depend on whether we have a mixed or pure state.
 \end{example}
+
+More generally, we can have
+\begin{align}
+    \hrho &= \sum_j p_j|\psi_j\rangle\langle\psi_j|.
+\end{align}
+This will work for any (not necessarily orthogonal) set of states $|\psi_j\rangle$.
+In general, this decomposition is not unique, unless you know it is from a particular set. 
+
+\begin{example}[Pure or Mixed?]
+    \begin{align}
+        \hrho &= \frac12 |L\rangle\langle L| + \frac12|H\rangle\langle H| \\
+              &= \frac12\cdot\frac12\begin{pmatrix}1 & i \\ -i & 1\end{pmatrix} + \frac12\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \\
+              &= \frac14 \begin{pmatrix} 3 & i \\ -i & 1\end{pmatrix}
+    \end{align}
+    There is an easy way to test if this state is pure or mixed. 
+    We square $\hrho$, or $\hrho^\dagger\hrho$, but $\hrho$ is Hermitian, so it is just $\hrho^2$.
+    For a pure state, $\hrho_L$,
+    \begin{align}
+        \hrho_L &= \frac12\begin{pmatrix} 1 & i \\ -i & 1\end{pmatrix} & \hrho_L^2 &= \frac14\begin{pmatrix} 2 & 2i & -2i & 2\end{pmatrix} = \frac12\begin{pmatrix}1 & i \\ -i & 1 \end{pmatrix} = \hrho_L 
+    \end{align}
+    So we want $\hrho = \hrho^2$ for a pure state. 
+    Let's check for the state above:
+    \begin{align}
+        \rho &= \frac14\begin{pmatrix}3 & i \\ -i & 1\end{pmatrix} & \hrho^2 &= \frac{1}{16}\begin{pmatrix}4 & 4i \\ -4i & 2\end{pmatrix} = \frac14\begin{pmatrix}1 & i & -i & 2\end{pmatrix} \neq \hrho
+    \end{align}
+    So the above is not a pure state, but a mixed state.
+\end{example}
+It is very easy to see why this is the case for a pure state generally, as
+\begin{align}
+    \hrho &= |\psi\rangle\langle\psi| & \hrho^2 &= |\psi\rangle\underbrace{\langle\psi|\psi\rangle}_{1}\langle\psi| = \hrho
+\end{align}
+If the diagonal elements of $\hrho$ describe the likelihoods of being in whichever state, then we have to look at the trace - the sum of the diagonal entries. 
+When performing in terms of an operator, 
+\begin{align}
+    \text{Tr}[\hat{A}] &= \sum_j \langle j|\hat{A}|j\rangle
+\end{align}
+for some orthonormal basis $\{|j\rangle\}$.
+This is invariant of basis, so any basis will give the same trace.
+
+We can find the traces of a multiplication of operators too:
+\begin{align}
+    \text{Tr}[\hrho\cdot\hat{P}_n] &= \langle n|\hrho|n\rangle,~ \hat{P}_n = |n\rangle\langle n|
+\end{align}
+So the second operator will "wrap" itself around the first essentially. 
+
+What about the expectation value of $\hat{A}$ on $\hrho$?
+\begin{align}
+    \text{Tr}[\hrho\cdot\hat{A}] &= \langle\hat{A}\rangle_{\hrho}
+\end{align}
+For a pure state, we can see this is true easily from $\langle\psi|\hat{A}|\psi\rangle$ and $\hrho = |\psi\rangle\langle\psi|$, and by linearity, it can also be proven for mixed states. 
+
+\section{Useful Properties of Trace}
+\begin{itemize}
+    \item $\text{Tr}[\hat{A}\hat{B}] = \text{Tr}[\hat{B}\hat{A}]$, even if $[\hat{A},\hat{B}]\neq0$.
+        This comes from cyclic permutation: $\text{Tr}[\hat{A}\hat{B}\hat{C}] = \text{Tr}[\hat{B}\hat{C}\hat{A}] = \text{Tr}[\hat{C}\hat{A}\hat{B}]$.
+    \item $\text{Tr}[\hat{A}+\hat{B}] = \text{Tr}[\hat{A}] + \text{Tr}[\hat{B}]$.
+    \item The condition for $\hrho$ to be a density operator comes from conservation of probability and is (for pure and mixed states): $\text{Tr}[\hrho] = 1$. \\
+        Whereas $\text{Tr}[\hrho^2]=\text{Tr}[\hrho]$ \textbf{only for pure states.}
+\end{itemize}
+
+\section{Entangled States}
+Entangled states are quantum correlation, where these are more correlated than it is possibly to get in classical physics.
+\textit{doodle beamsplitter}
+
 
 
 \end{document}

@@ -1370,7 +1370,93 @@ Cavity acts as a sequence of lenses.
 \textit{doodle}
 Related by Fourier transform, so essentially we want a function that is its own Fourier transform - Gauss-Hermite. 
 
+\chapter{Gaussian Beams and Cavity Stability}
+The electric field distribution needs to reproduce after a round trip, so it needs to be its own Fourier transform, i.e. Gause-Hermite modes.
+\begin{align}
+    U &= \frac{U_0}{q}e^{i(kz-\om t)}e^{ikr^2/2q}H_l\left(\frac{\sqrt{2}x}{w}\right)H_m\left(\frac{\sqrt{2}y}{w}\right)e^{-i(l+m)\alpha} \\
+    q &= z-z_0-iZ_R,\; r^2 = x^2+y^2,\; \tan\alpha = \frac{z}{Z_R}
+\end{align}
+Where $Z_R$ is the Rayleigh range, and $z_0$ is the location of beam waist.
+Gaussian beam ($\text{TEM}_{00}$):
+\begin{align}
+    U &= U_0e^{i(kz-\om t)}\frac{e^{ikr^2/2q}}{q}
+\end{align}
+\textit{take some notes from the powerpoint slides}
 
+\section{Propagation of Gaussian beams}
+\begin{align}
+    w(z) &= w_0\left(1+\left(\frac{z}{z_R}\right)^2\right)^{1/2} \implies \frac{w(z)^2}{w_0^2} - \frac{z^2}{z^2_R} = 1
+\end{align}
+This is the equation of hyperbola with asymptotes at 
+\begin{align}
+    w(z) &= \pm\frac{w_0z}{z_R}
+\end{align}
+\textit{doodle from Hannah}
+\begin{align}
+    \theta_{beam} &= \frac{2w_0}{z_R} = \frac{2\lambda}{\pi w_0} = 1.27\frac{\lambda}{w_0}
+\end{align}
+So a Gaussian beam is diffraction limited, as we get a very similar result here as you would for a circular aperture.
+\begin{align}
+    I &= \frac{2P}{\pi w(z)^2}e^{-2r^2/w(z)^2}
+\end{align}
+\textit{doodle cavity again}
+What values of $L_c$, $R_1$, and $R_2$ lead to a stable solution?
+Some things won't work. 
+\textit{more doodles}
+The stability condition is
+\begin{align}
+    0 < \left(1-\frac{L_c}{R_1}\right)\left(1-\frac{L_c}{R_2}\right) < 1
+\end{align}
+This can often be represented graphically:
+\textit{doodle from notes}
+\begin{enumerate}
+    \item Symmetric concentric:
+        \textit{doodle}
+    \item Symmetric confocal:
+        \textit{doodle}
+    \item Plane parallel:
+        \textit{doodle}
+\end{enumerate}
+We want to design cavity to be in the shaded regions of the graph, and this requires satisfying two conditions in the inequality:
+\begin{itemize}
+    \item $L_c < R_1 + R_2$
+    \item The centres of curvature must \textbf{both} be inside or outside the cavity.
+        \textit{doodles}
+\end{itemize}
+
+\begin{example}
+    A laser has mirrors with $R_1=1.0m$, and $R_2 = 0.35m$.
+    What ranges of $L_c$ are stable?
+
+    From the second requirement, we know there are two ranges.
+    \begin{itemize}
+        \item Both inside $\to 1.0 < L_c < 1.35$
+        \item Both outside $\to 0 < L_c < 0.35$
+    \end{itemize}
+\end{example}
+
+\section{Finding the mode shape for a cavity}
+Simple case, \textbf{Symmetric:}\\
+The waist must be at the centre, so $R_1=R_2=R$.
+\textit{doodle}
+At each mirror, the radius of curvature of the beam is the same as the mirror. 
+Recall
+\begin{align}
+    R(z) &=\frac{z^2+z_R^2}{z} \\
+    R\left(\frac{L_c}{2}\right) &= R = \frac{\frac{L^2_c}{4}+z_R^2}{\frac{L_c}{2}} \\
+    z_R^2 &= \frac{L_c}{4}(2R-L_c) \equiv \left(\frac{\pi w_0^2}{\lambda}\right)^2 \\
+    w_0^2 &= \frac{\lambda}{2\pi}\left[L_c(2R-L_c)\right]^{1/2} 
+\end{align}
+We know the beam wasist inside a symmetric cavity from $R$ and $L_c$.
+
+\section{Mode Volume}
+How do we choose what cavity parameters to use?
+Try to match mode volume to Gain medium. 
+\textit{doodle}
+\begin{align}
+    V \leq Tw_0^2L_c
+\end{align}
+This assume the beam is not spreading, i.e. $Z_R \gg L_c$.
 
 
 \end{document}

@@ -11,7 +11,7 @@
         \end{itemize}
     \item Lecture 3: Different types of symmetries - global and local (gauge) symmetries. 
     \item Lecture 4: From these gauge symmetries, we will construct Abelian, and non-Abelian gauge field theories. 
-    \item By the end of the course, we will learn about the Higgs mechanism and Spontaneous Symmetry Breaking, and ultimately discuss the full Standard Model of Particle Physics.
+    \item By the end of the course, we will learn about the Higgs mechanism and Spontaneous Symmetry Breaking, and ultimately reach the full Standard Model of Particle Physics.
 \end{itemize}
 The Standard Model is a gauge field theory of SU(3)$\times$SU(2)$\times$U(1) - this is the gauge group of the Standard Model. 
 \begin{itemize}
@@ -110,7 +110,166 @@ Matrix multiplication (of square matrices) is an example of a non-Abelian group 
         \begin{align}
             SO(2) \ni O = \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta\end{pmatrix}
         \end{align}
+        We can see that for SO(2), we have one real parameter in $\theta\in\R,0\leq\theta\leq2\pi$.
 \end{itemize}
+
+\chapter{}
+Continuing last time, SO(2) is isomorphic to U(1):
+\begin{align}
+    SO(2):~ O &= \begin{pmatrix}\cos\theta & \sin\theta \\ -\sin\theta & \cos\theta\end{pmatrix} & U(1):~ U &= e^{i\theta} = \cos\theta + i\sin\theta
+\end{align}
+So both these groups depend only on the value of $\theta$, and knowing any matrix in one of these groups allows us to construct the corresponding matrix in the other.
+
+\section{Group Theory Continued}
+\subsection{Direct Products of Groups}
+Consider a group $G \ni \{g_1,g_2,\dots\}$, and another group $H \ni \{h_1,h_2,\dots\}$.
+We can define a product group from these, $G\times H$, which is also a group. 
+The definition of this direct product is by construction.
+If we consider a matrix element of matrix $g \in G,\, g_{ij}$, and similarly for in $H$ we consider the matrix element $h_{\alpha\beta}, h \in H$.
+Now we construct an object
+\begin{align}
+    g_{ij}\cdot h_{\alpha\beta} &\equiv (gh)_{i\alpha;j\beta} \\
+    G\times H &= \{g_{ij}\cdot h_{\alpha\beta}\}
+\end{align}
+Let us consider the example of $U(1)\times SU(2)$, where this direct product is equal to $U(2)$, which is a untary group, but the determinant is not $=1$, but $\text{det}=e^{i2\alpha}$, where $\alpha$ was the parameter of $U(1)$.
+
+An important example to keep in mind is the Gauge Field Theory of the Standard Model: $SU(3)\times SU(2)\times U(1)$.
+
+\subsection{Simple vs Non-simple Groups}
+\textbf{A simple group} is defined as a group that cannot be written as a direct product of smaller groups, i.e. cannot be decomposed.
+A group U(N) is not simple, as
+\begin{align}
+    U(N) &\approx U(1)\times SU(N),
+\end{align}
+where SU(N) and U(1) are both trivially simple groups. 
+
+\subsection{Representations of Groups}
+We can describe group in two equivalent ways:
+\begin{itemize}
+    \item A group is some formal mathematical structure - it is some set of elements which satisfies the four definitions of the group and some precise descriptions of what we mean by that.
+    \item \textbf{The Fundamental Represenation of the Group} - we can derive a group via an explicit matrix representation, e.g. SU(N) are $N\times N$ complex matrices such that $U^\dagger U=1 = UU^\dagger$ and $\text{det}U=1$.
+\end{itemize}
+Each group can have many different representations; the fundamental representation is what we used for its definitions.
+A group SU(N) in the fundamental representation is given by the $N\times N$ matrices.
+These matrices act on some N-dimensional complex vector space described by a N-vector.
+\begin{align}
+    \begin{pmatrix} \bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \end{pmatrix} \cdot \begin{pmatrix} \bullet \\ \bullet \\ \bullet\end{pmatrix}
+\end{align}
+An N-vector, $x_i$, is transforming in the fundamental representation of SU(N).
+
+We can also construct a tensor representation,
+\begin{align}
+    x_i &= \begin{pmatrix} x_1\\ x_2\\x_N\end{pmatrix};y_j = \begin{pmatrix}y_1\\y_2\\y_N\end{pmatrix} \in \C^N:~ x_iy_j = \text{rank-2 tensor, in SU(N)} \\
+    \sum_k & \underbrace{U_{ik}}_{\text{SU(N) matrix}}\underbrace{x_k}_{\text{vector}} = \underbrace{x'_i}_{\text{\shortstack{transformed\\ vector}}} \text{ fund. rep.} \\
+    \sum_{j'}\sum_{i'} & U_{ii'}U_{jj'}(x_{i'}y_{j'}) = (xy)_{ij}
+\end{align}
+These rank-two tensor representations can be decomposed into a singlet $\oplus$ traceless symmetric tensor $\oplus$ anti-symmetric tensor representations.
+These representations which cannot be reduced any further are called \textbf{irreducible representations.}
+So the fundamental representation of any group is irreducible, while rank-two tensor representation is reducible, as said above.
+
+A group element in some general representation can be written as some matrix which can be brought into some block diagonal form, where off-diagonal elements are all zero, where each minimal block along the diagonal is an irreducible representation (irrep) of the group.
+
+\chapter{}
+\section{Lie Groups}
+For a Lie group, $G$, with an element of this group, $a(\alpha^1,\dots,\alpha^k)$, $a$ depends continuously on parameters $\alpha^1,\dots,\alpha^k$. 
+Elements of Lie groups can be represented by
+\begin{align}
+    a &= e^{-i\sum_{a=1}^k T^a\alpha^a}.
+\end{align}
+Here, the $\alpha$s are our free parameters, and $T^a$ are the generators of the Lie group, i.e. these are given matrices.
+\begin{align}
+    \alpha^i=0\; \forall\, i \leq k,\; a = e^0 = \mathbb{I}
+\end{align}
+We can consider $\alpha^1,\dots,\alpha^k\ll1$ (infinitesimal),
+\begin{align}
+    a &= e^{-i\sum_{a=1}^k T^a\alpha^a} = \mathbb{I} - i\sum_a T^a\alpha^a + \mathcal{O}(\alpha^2) \\
+    T^a &= i\frac{\p a}{\p\alpha^a}\bigg|_{\alpha^a=0}
+\end{align}
+For example, if $G=SU(2)\ni U_{2\times2}$ (in the fundamental representation):
+\begin{align}
+    T^b_{2\times2} &= i\frac{\p U_{2\times2}}{\p\alpha^b}
+\end{align}
+Now back to the general case of a Lie group (\textit{from now on, the sum over repeated indices is assumed}),
+\begin{align}
+    G \ni a &= \exp\left(-iT^a\alpha_a\right) \\
+    T^a &= i\frac{\p a}{\p\alpha^a}\bigg|_{\alpha^a=0}
+\end{align}
+This will find our generators for the Lie group, but these generators will not commute:
+\begin{align}
+    [T^a,T^b] &= if^{abc}T^c
+\end{align}
+This is not an elephant, but another generator with some prefactor, where the $f^{abc}$ is the structure constant of the Lie group. 
+Following from the definition of the commutator relation, $f^{abc}$ is completely anti-symmetric around its three indices.
+
+\textbf{Any given Lie group is defined by this relation in Eq (3.8).}
+Essentially, the explicit form of the structure constants is what defines any given Lie group as distinct.
+From this relation, we can find the set of all generators, $\{T^a\}^k_{a=1}$, which will allow us to write down all elements of our Lie group, $a\in G$ through Eq (3.1).
+
+\subsection{Notations}
+Sometimes in the notes, we may use 
+\begin{align}
+    a &= e^{i\theta^a X_a},~ \theta^a = -\alpha^a,~ X^a = T^a \\
+    c^{abc} &=  f^{abc}
+\end{align}
+
+\section{Some Simple Lie Groups}
+\subsection{U(1) Group}
+The simplest example we'll have is U(1) $\ni a$: here, we have $T=1$, and the number of generators is also 1.
+        \begin{align}
+            a &= e^{-i\alpha\cdot1},~ T=1 \\
+            [T,T] &= [1,1] = 0 \implies f^{abc} = 0
+        \end{align}
+        For all Abelian Lie groups, the commutators are zero (by definition).
+
+\subsection{SU(2) Group}
+SU(2) $\ni U$:
+        \begin{align}
+            U &= e^{-i\alpha^a T_a}
+        \end{align}
+        So we want to know:
+        \begin{itemize}
+            \item How many $T^a$s are there, i.e. $k$? And what are the generators of SU(2) in the fundamental representation? \\
+                We will start by choosing the fundamental representation, where we have $2\times2$ complex matrices with $U^\dagger U = \mathbb{I}$ and $\text{det}U = 1$.
+                \begin{align}
+                    U &= \exp\left(-i\sum_{a=1}^3 \alpha^a\frac{\sigma^a}{2}\right)
+                \end{align}
+                So we have three real parameters in $\alpha^a$ and the generators, $\frac{\sigma^a}{2}$ are the Pauli matrices (over 2). 
+                Is this right?
+                Well Pauli matrices are Hermitian, and they provide us with a complete basis of $2\times2$ Hermitian matrices (-1, as it excludes the unit matrix).
+                Let's consider the Hermitian conjugate of $U$ to check:
+                \begin{align}
+                    U^\dagger &= \left[\exp\left(-i\alpha^a\frac{\sigma_a}{2}\right)\right]^\dagger = \exp\left(+i\alpha^a\frac{\sigma_a}{2}\right) = U^{-1}
+                \end{align}
+                So we have unitarity, and we can easily check the other group properties if needed.
+        
+                We have learned that the generators of SU(2) (in the fundamental representation) are 
+                \begin{align}
+                    T^a &= \frac{\sigma^a}{2},~ a = \{1,2,3\}
+                \end{align}
+                This agrees with the argument of free parameters from last lecture where SU(N) has $N^2-1$ free parameters, which for SU(2) requires three free parameters, which we have in our three generators. 
+        
+                But why is it $\frac{\sigma}{2}$ and not $\sigma$? The $\frac12$ factor is due to normalisation, and depends on how we choose normalisation. 
+                In the fundamental representation, we choose
+                \begin{align}
+                    \text{Tr}(T^aT^b) &= \frac12 \delta^{ab},
+                \end{align}
+                and for $T^a = \frac{\sigma^a}{2}$, we fulfill this requirement.
+
+            \item What is the Lie algebra of SU(2), i.e. $f^{abc}$?
+                \begin{align}
+                    \left[\frac{\sigma^a}{2},\frac{\sigma^b}{2}\right] &= i\e^{abc}\frac{\sigma^c}{2}
+                \end{align}
+                We can check this directly using the defining properties of Pauli matrices, or just working it out by hand. 
+                So our structure constants of SU(2) are $\e^{abc}$, and now we have our full Lie algebra for SU(2):
+                \begin{align}
+                    [T^a,T^b] &= i\e^{abc}T^c
+                \end{align}
+            \item What about choosing in another representation than the fundamental one?\\
+                We can choose any representation of SU(2), and we may get different descriptions of generators, but the Lie group is always defined by Eq (3.8), and for SU(2), $f^{abc} = \e^{abc}$ in any representation, but the simplest one will always be the fundamental one.
+        \end{itemize}
+
+
+
 
 \end{document}
 
