@@ -223,53 +223,139 @@ The simplest example we'll have is U(1) $\ni a$: here, we have $T=1$, and the nu
 
 \subsection{SU(2) Group}
 SU(2) $\ni U$:
+\begin{align}
+    U &= e^{-i\alpha^a T_a}
+\end{align}
+So we want to know:
+\begin{itemize}
+    \item How many $T^a$s are there, i.e. $k$? And what are the generators of SU(2) in the fundamental representation? \\
+        We will start by choosing the fundamental representation, where we have $2\times2$ complex matrices with $U^\dagger U = \mathbb{I}$ and $\text{det}U = 1$.
         \begin{align}
-            U &= e^{-i\alpha^a T_a}
+            U &= \exp\left(-i\sum_{a=1}^3 \alpha^a\frac{\sigma^a}{2}\right)
         \end{align}
-        So we want to know:
-        \begin{itemize}
-            \item How many $T^a$s are there, i.e. $k$? And what are the generators of SU(2) in the fundamental representation? \\
-                We will start by choosing the fundamental representation, where we have $2\times2$ complex matrices with $U^\dagger U = \mathbb{I}$ and $\text{det}U = 1$.
-                \begin{align}
-                    U &= \exp\left(-i\sum_{a=1}^3 \alpha^a\frac{\sigma^a}{2}\right)
-                \end{align}
-                So we have three real parameters in $\alpha^a$ and the generators, $\frac{\sigma^a}{2}$ are the Pauli matrices (over 2). 
-                Is this right?
-                Well Pauli matrices are Hermitian, and they provide us with a complete basis of $2\times2$ Hermitian matrices (-1, as it excludes the unit matrix).
-                Let's consider the Hermitian conjugate of $U$ to check:
-                \begin{align}
-                    U^\dagger &= \left[\exp\left(-i\alpha^a\frac{\sigma_a}{2}\right)\right]^\dagger = \exp\left(+i\alpha^a\frac{\sigma_a}{2}\right) = U^{-1}
-                \end{align}
-                So we have unitarity, and we can easily check the other group properties if needed.
+        So we have three real parameters in $\alpha^a$ and the generators, $\frac{\sigma^a}{2}$ are the Pauli matrices (over 2). 
+        Is this right?
+        Well Pauli matrices are Hermitian, and they provide us with a complete basis of $2\times2$ Hermitian matrices (-1, as it excludes the unit matrix).
+        Let's consider the Hermitian conjugate of $U$ to check:
+        \begin{align}
+            U^\dagger &= \left[\exp\left(-i\alpha^a\frac{\sigma_a}{2}\right)\right]^\dagger = \exp\left(+i\alpha^a\frac{\sigma_a}{2}\right) = U^{-1}
+        \end{align}
+        So we have unitarity, and we can easily check the other group properties if needed.
+
+        We have learned that the generators of SU(2) (in the fundamental representation) are 
+        \begin{align}
+            T^a &= \frac{\sigma^a}{2},~ a = \{1,2,3\}
+        \end{align}
+        This agrees with the argument of free parameters from last lecture where SU(N) has $N^2-1$ free parameters, which for SU(2) requires three free parameters, which we have in our three generators. 
         
-                We have learned that the generators of SU(2) (in the fundamental representation) are 
-                \begin{align}
-                    T^a &= \frac{\sigma^a}{2},~ a = \{1,2,3\}
-                \end{align}
-                This agrees with the argument of free parameters from last lecture where SU(N) has $N^2-1$ free parameters, which for SU(2) requires three free parameters, which we have in our three generators. 
-        
-                But why is it $\frac{\sigma}{2}$ and not $\sigma$? The $\frac12$ factor is due to normalisation, and depends on how we choose normalisation. 
-                In the fundamental representation, we choose
-                \begin{align}
-                    \text{Tr}(T^aT^b) &= \frac12 \delta^{ab},
-                \end{align}
-                and for $T^a = \frac{\sigma^a}{2}$, we fulfill this requirement.
+        But why is it $\frac{\sigma}{2}$ and not $\sigma$? The $\frac12$ factor is due to normalisation, and depends on how we choose normalisation. 
+        In the fundamental representation, we choose
+        \begin{align}
+            \text{Tr}(T^aT^b) &= \frac12 \delta^{ab},
+        \end{align}
+        and for $T^a = \frac{\sigma^a}{2}$, we fulfill this requirement.
 
-            \item What is the Lie algebra of SU(2), i.e. $f^{abc}$?
-                \begin{align}
-                    \left[\frac{\sigma^a}{2},\frac{\sigma^b}{2}\right] &= i\e^{abc}\frac{\sigma^c}{2}
-                \end{align}
-                We can check this directly using the defining properties of Pauli matrices, or just working it out by hand. 
-                So our structure constants of SU(2) are $\e^{abc}$, and now we have our full Lie algebra for SU(2):
-                \begin{align}
-                    [T^a,T^b] &= i\e^{abc}T^c
-                \end{align}
-            \item What about choosing in another representation than the fundamental one?\\
-                We can choose any representation of SU(2), and we may get different descriptions of generators, but the Lie group is always defined by Eq (3.8), and for SU(2), $f^{abc} = \e^{abc}$ in any representation, but the simplest one will always be the fundamental one.
-        \end{itemize}
+    \item What is the Lie algebra of SU(2), i.e. $f^{abc}$?
+        \begin{align}
+            \left[\frac{\sigma^a}{2},\frac{\sigma^b}{2}\right] &= i\e^{abc}\frac{\sigma^c}{2}
+        \end{align}
+        We can check this directly using the defining properties of Pauli matrices, or just working it out by hand. 
+        So our structure constants of SU(2) are $\e^{abc}$, and now we have our full Lie algebra for SU(2):
+        \begin{align}
+            [T^a,T^b] &= i\e^{abc}T^c
+        \end{align}
+    \item What about choosing in another representation than the fundamental one?\\
+        We can choose any representation of SU(2), and we may get different descriptions of generators, but the Lie group is always defined by Eq (3.8), and for SU(2), $f^{abc} = \e^{abc}$ in any representation, but the simplest one will always be the fundamental one.
+\end{itemize}
 
+\chapter{}
 
+\chapter{}
+\section{QED}
+The Lagrangian of QED:
+\begin{align}
+    \La = \bar{\psi}(i\gamma^\mu D_\mu - m)\psi - \frac14 F_{\mu\nu}F^{\mu\nu}
+\end{align}
+QED is a U(1) gauge invariance theory, with Dirac fermion fields $\psi,\bar{\psi}$, and the gauge field $A_\mu$, which is a vector field.
+The Dirac fields describe $e^{\pm}$, and the gauge field describes the photons, $\gamma$.
 
+If we consider just the gauge field part of QED:
+\begin{align}
+    \La[A_\mu] &= -\frac14 F^{\mu\nu}F_{\mu\nu}
+\end{align} 
+We can then begin to write down equations of motion from this, first considering the action.
+\begin{align}
+    \mathcal{S} &= \int \La[A_\mu]\,d^4x
+\end{align}
+We take the extremum of the action, where $\frac{\delta\mathcal{S}[A]}{\delta A_\nu}=0$, to find the Euler-Lagrange equations. 
+\begin{align}
+    \p_\mu \frac{\p\La[A]}{\p(\p_\mu A_\nu)} &= \frac{\p\La[A]}{\p A_\nu} = 0 \\
+    \p_\mu F^{\mu\nu} &= 0
+\end{align}
+However, if we look at the full Lagrangian again and fully express $D_\mu = \p_\mu + ieA_\mu$, then Eq (5.5) is no longer equal to zero when fermions are present.
+\begin{align}
+    \p_\mu F^{\mu\nu} &= e\bar{\psi}\gamma^\nu\psi \equiv j^\nu
+\end{align}
+These are two of the Maxwell equations (out of four) for QED.
+The other two Maxwell equations are trivial in QED, following from the Bianchi identity, 
+\begin{align}
+    \p_\lambda F_{\mu\nu} + \p_\mu F_{\nu\lambda} + \p_\nu F_{\lambda\mu} = 0.
+\end{align}
+This identity is automatically satisfied for $F_{\mu\nu} = \p_\mu A_\nu - \p_\nu A_\mu$.
+So all four classical Maxwell equations can be written in QED as 
+\begin{align}
+    \frac{\p S}{\p A_\nu} = 0 &\implies \p_\mu F^{\mu\nu} = j^\nu \\
+    \frac{\p S}{\p \bar{\psi}} = 0 &\implies (i\gamma^\mu D_\mu - m)\psi = 0  
+\end{align}
+Eq (5.9) is the Dirac equation with the field $A_\mu$ in the $D_\mu$ term. 
+
+\subsection{How many degrees of freedom does the photon field have?}
+Naively, it looks like it has four degrees of freedom, as we have $A_\nu, \nu = 0,1,2,3$. 
+In reality, there are only two physical degrees of freedom of the photon.
+Why is that?
+$A_0$ field decouples $\to$ it is not a dynamical field as it does not have a kinetic term, i.e. $\frac12(\p_t A_0(x))^2$ is absent in the Lagrangian, but this term is required for any fieldto be kinetic as it would describe velocity.\\
+We can always fix the gauge freedom by setting $A_0\equiv0$.
+We can further set $\p_iA_i=0$ - this is the Coulomb gauge.
+So we have two constraints from fixing the gauge, so two \emph{unphysical} degrees of freedom are removed, leaving us with $4-2=2$ physical degrees of freedom (assuming unbroken gauge invariance).
+These 2 degrees of freedom of the photon are its 2 transverse polarisations. 
+
+$A_\mu$ describes spin-1 fields (or particles), and we have the two gauges of $A_0 = 0$ and $\p_i A_i = 0 \implies p_i A_i = 0$, where $p_i$ is the three-momenta.
+If we then choose momentum to be wholly along the z-coordinate, so $\vec{p}=(0,0,p)$, then $\vec{A} = (A_1,A_2,0)$, and then we see that we have two transverse polarisations along x and y, while the momentum transfer is all in z - this is the simplest choice for example but any physical orientation of $\vec{p}$ and $\vec{A}$ will lead to the same two transverse polarisations.
+
+\subsection{What is allowed in QED?}
+Again, we write down the QED Lagrangian:
+\begin{align}
+    \La_{QED} = &-\frac14 F^{\mu\nu}F_{\mu\nu} \text{ - propagator of the photon field $A_\mu$, quadratic in it} \nonumber \\
+                &+ \bar{\psi}(i\gamma^\mu\p_\mu -m)\psi \text{ - free propagation of fermions} \nonumber \\
+                &- e\bar{\psi}\gamma^\mu A_\mu\psi \text{ - 3 point vertex describing interactions}
+\end{align}
+$\La_{QED}$ is uniquely constructed from the requirement of gauge invariance. 
+Can we add other gauge-invariant interactions?
+Consider
+\begin{align}
+    \La &= F_{\mu\nu}F^{\nu\alpha}F_\alpha^\mu
+\end{align}
+\textit{fix}
+For mass dimension, $[]$: we have
+\begin{align}
+    [A_\mu] &= 1 & [\phi] & = 1 & [\La] &= 4 \\
+    [\psi] &= \frac32 & [\bar{\psi}] &= \frac32 & [\mathcal{S}] &= 0 
+\end{align}
+So we can see the mass dimension of the above $\La$ will be 6. 
+We could add it to the QED Lagrangian with some pre-factor to get it to work?
+\begin{align}
+    \La &= \La_{QED} + \frac{1}{M^2}F_{\mu\nu}F^{\nu\alpha}F_\alpha^\mu
+\end{align}
+Any terms of $\La$ that have a coefficient of negative mass dimension in front are not UV-renormalisable, and any operators is $\La$ of mass dimension greater than 4 are not renormalisable. 
+
+\subsection{What is UV Renormalisation?}
+Any Quantum Field Theory which constains quantum corrections such as
+\textit{feynman diagrams - tree level, then one loop correction and up to higher loops}
+All loop-level corrections contain $\infty$ in the UV, so we need to have a prescription to remove this divergence.
+
+\textbf{UV Renormalisation} is the prescription to remove UV divergences.
+
+So now $\La_{QED}$ is completed and is shown that we cannot remove or add anything from/to it. 
 
 \end{document}
 

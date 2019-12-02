@@ -1770,9 +1770,80 @@ For a pure state, we can see this is true easily from $\langle\psi|\hat{A}|\psi\
 
 \section{Entangled States}
 Entangled states are quantum correlation, where these are more correlated than it is possibly to get in classical physics.
-\textit{doodle beamsplitter}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) node[anchor=south] {1} -- (1,0);
+        \draw[-Latex] (1,0) -- (3,0);
+        \draw (3,0) -- (4,0) node[anchor=south] {3,  Bob};
+        \draw[-Latex] (2,2) node[anchor=west] {0} -- (2,1);
+        \draw[-Latex] (2,1) -- (2,-1);
+        \draw (2,-1) -- (2,-2) node[anchor=east] {Alice,  2};
+        \draw[dashed] (0.75,-1.25) rectangle (3.25,1.25);
+        \draw (0.75,1.25) node[anchor=south east] {Charlie} -- (3.25,-1.25);
+    \end{tikzpicture}
+\end{figure}
+Charlie has 0 and 1 and makes the states. 
+So we will input $|+\rangle$ states, where
+\begin{align}
+    |+\rangle &= \frac{1}{\sqrt 2}|H+V\rangle,
+\end{align}
+with a polariser of $\frac{\pi}{4}$.
+\begin{align}
+    |+_0\rangle|+_1\rangle &= \frac12\left\{(H_0+V_0)(H_1+V_1)\right\} \\
+                           &= \frac12\left\{|H_0H_1\rangle + |H_0V_1\rangle + |V_0H_1\rangle + |V_0V_1\rangle\right\} \\
+                           &= \frac12\left\{-|H_2H_3\rangle+i|H_3V_3\rangle + i|V_2H_2\rangle + |V_2V_3\rangle\right\} \\
+                           &= \frac12\left\{|V_2V_3\rangle-|H_2H_3\rangle+i(|H_3V_3\rangle+|H_2V_2\rangle)\right\}
+\end{align}
+We will discard the imaginary term in what is called post selection and renormalise, by considering when both outputs get one photon, but we don't know which. The imaginary term describes when either state gets both photons so we ignore it. 
+\begin{align}
+    |\psi_{AB}\rangle &= \frac{1}{\sqrt2}\left(|V_2V_3-H_2H_3\rangle\right)
+\end{align}
+What happens if we measure if it has horizontal or vertical polarised photons?
+We send into another beamsplitter and see where it comes out. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) node[anchor=south] {$|3\rangle$} -- (1,0);
+        \draw[-Latex] (1,0) -- (3,0);
+        \draw (3,0) -- (4,0) node[anchor=south] {V};
+        \draw[-Latex] (2,2) node[anchor=west] {$0\rangle$} -- (2,1);
+        \draw[-Latex] (2,1) -- (2,-1);
+        \draw (2,-1) -- (2,-2) node[anchor=east] {H};
+        \draw[dashed] (0.75,-1.25) rectangle (3.25,1.25);
+        \draw (0.75,1.25) -- (3.25,-1.25);
+    \end{tikzpicture}
+\end{figure}
+But how do we write the state $|3\rangle$ that we are putting into the polarising beamsplitter?
+\begin{align}
+    |\psi_{AB}\rangle\langle\psi_{AB}| &= \hrho_{AB}  \\
+    \text{Tr}_B[\hrho_{AB} &\equiv \text{Tr}_B[\hrho_{AB}\mathbb{I}_B] \\
+    \hrho_{AB} &= \frac12\left(|V_2V_3\rangle\langle V_2V_3|-|V_2V_3\rangle\langle H_2H_3| - |H_2H_3\rangle\langle V_2V_3| + |H_2H_3\rangle\langle H_2H_3|\right) \\
+    \mathbb{I}_B &= |H_3\rangle\langle H_3| + |V_3\rangle\langle V_3|
+\end{align}
+Note the projector is not normalised.
+We are going to measure then ignore the outcome.
+\begin{align}
+    \hrho_A &= \text{Tr}_B[\hrho_{AB}] = \frac12\left(|H_2\rangle\langle H_2| + |V_2\rangle\langle V_2|\right) \\
+            &= \frac12\begin{pmatrix} 1 & 0 \\ 0 & 1\end{pmatrix} 
+\end{align} 
+So for either Alice or Bob it looks like what they're getting is a stream of photons which are randomly either horizontally or vertically polarised but there are no coherences here.
+This is one of the signatures of entanglement - \emph{you start with a pure state, you trace out one of the parties, and the other one will see something mixed.}
 
+Now let's see what happens when they do the measurements. 
+So Charlie is sending a stream of photons like this, and Alice and Bob can see the following:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|cccccccccc}
+        Alice & 0 & 0 & H & 2 & V & H & 2 & 2 & V & V \\
+        \hline
+        Bob & 2 & 2 & H & 0 & V & H & 0 & 0 & V & V 
+    \end{tabular}
+\end{table}
+So we get a whole stream of different outcomes, but the key thing is is that whenever they get a single photon each, they will get the same outcomes for these photons and know what each gets. 
+What makes this Quantum is that you can do this in any pair of bases and you will always get this level of correlation, regardless of the polarising angle of the beamsplitter (as long as it is a shared angle) and this will not work on classical states.
 
+This example is the first half of how you do quantum key distribution for quantum cryptography - the other half is how to stop somebody intercepting the photons and cheating on you. 
 
 \end{document}
 
