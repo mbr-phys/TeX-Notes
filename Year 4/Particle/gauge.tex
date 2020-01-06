@@ -269,6 +269,70 @@ So we want to know:
 \end{itemize}
 
 \chapter{}
+\section{Symmetries: An Introduction}
+Recall: The Fundamental representation of SU(N) has $T^a_{N\times N}$ acting on $\phi=\begin{pmatrix}x_1\\ n_N\end{pmatrix} \in \C$.
+The conjugate to the fundamental representation takes $\phi^\dagger$ instead. 
+
+In the adjoint representation, $(T^a)_{bc} = -if^{bca}$, a running from 1 to the number of generators, which is $N^2-1$ for SU(N).
+
+Symmetries:\\
+Let $\phi(x)$ be a field. 
+Its Lagrangian is 
+\begin{align}
+    \La &= \frac{1}{\lambda}\p_\mu\phi\p^\mu\phi - \frac12m^2\phi^2 - \frac{\lambda}{4}\phi^4
+\end{align}
+for a simply-interacting real scalar field, $\phi(x)\in\R$.
+The kinetic term is quadratic (bilinear) in the field, the interaction term is of a higher order. 
+The kinetic terms yield propagators, here being $\frac{i}{p^2-m^2}$. 
+The interaction terms yield vertices in the Feynman diagrams.
+
+For a complex field,
+\begin{align}
+    \La &= (\p_\mu\phi^\dagger)(\p^\mu\phi) - m^2\phi^\dagger\phi - \frac{\lambda}{4!}(\phi^\dagger\phi)^2
+\end{align}
+For a general field, the action is
+\begin{align}
+    S = \int \La[\phi]\;d^4x
+\end{align}
+A transform of the fields which leaves the action invariant is called a symmetry. 
+Additionally, a quantum theory must also leave the vacuum invariant. 
+
+Symmetries can be discrete, e.g. $\phi(x)\to-\phi(x)$, or continuous, e.g. $\phi(x)\to e^{-i\alpha(x)}\phi(x),\alpha\in\R$.
+The Lagrangian of a real scalar field is invariant under $\phi\to\phi(x)$, so the action is also invariant. 
+Thus $\phi\to-\phi$ is a symmetry of this theory; for the complex scalar Lagrangian, $\phi\to e^{i\alpha}\phi$ is a symmetry. 
+A continous symmetry can be local, depending on $x_N$, or global, being independent of $x_N$, i.e. if $\alpha$ in $e^{i\alpha}\phi$ is $\alpha(x)$ then it is local, and global if just $\alpha$.\\
+Continuous transforms are described by Lie groups. 
+Global continuous symmetries provide conserved quantities - this is the basis of Noether's theorem which states that for every generator of a global continuous system, there exists a conserved current $j^\nu(x)$ such that $\p^\nu j = 0$.
+This is a Noether current. \\
+For U(1), $\phi\to e^{-i\alpha}\phi$, which gives us the conserved electric charge, 
+\begin{align}
+    Q = \int j^\nu(x)\;d^3x,~ \frac{dQ}{dt} = 0
+\end{align}
+
+Noether's theorem does not necessarily hold for local symmetries. 
+These are gauge symmetries. 
+We consider a local U(1) transform, $\phi\to e^{-i\alpha(x)}\phi$, with the Dirac Lagrangian for free Dirac fermions, 
+\begin{align}
+    \La &= \bar{\psi}(i\gamma^\nu\p_\nu - m)\psi \\
+    \La &\to \La + \bar{\psi}i\gamma^\nu\p_\nu(-i\alpha(x))\psi \text{ - not invariant}
+\end{align}
+To attain invariance, we add a gauge field $A$, that transforms as $A_\mu(x)\to A_\mu(x)+\frac{1}{e}\p_\mu\alpha(x)$, $e$ being the gauge coupling constant. 
+We then replace the standard derivative with a covariant derivative of the form, 
+\begin{align}
+    D_\mu &= \p_\mu + ieA_\mu \\
+    \La &= \bar{\psi}(i\gamma^\mu D_\mu - m)\psi
+\end{align}
+We now have a gauge invariant Lagrangian above which describes not only the propagatino of $\bar{\psi}$ and $\psi$, but it also includes the interaction between $A_\mu$ and $\psi$.
+To give $A_\mu$, the photon propagation, we include a term $-\frac14 F^{\mu\nu}F_{\mu\nu}$ in the Lagrangian, where,
+\begin{align}
+    F^{\mu\nu} &= \p^\mu A^\nu - \p^\nu A^\mu,
+\end{align}
+which is plainly gauge invariant in the U(1) case. 
+Thus, 
+\begin{align}
+    \La_{QED} &= \bar{\psi}(i\cancel{D} - m)\psi - \frac14 F^{\mu\nu}F_{\mu\nu}
+\end{align}
+
 
 \chapter{}
 \section{QED}
@@ -333,9 +397,8 @@ $\La_{QED}$ is uniquely constructed from the requirement of gauge invariance.
 Can we add other gauge-invariant interactions?
 Consider
 \begin{align}
-    \La &= F_{\mu\nu}F^{\nu\alpha}F_\alpha^\mu
+    \La &= F_{\mu\nu}F^{\nu\alpha}\tensor{F}{_\alpha^\mu}
 \end{align}
-\textit{fix}
 For mass dimension, $[]$: we have
 \begin{align}
     [A_\mu] &= 1 & [\phi] & = 1 & [\La] &= 4 \\
@@ -344,18 +407,130 @@ For mass dimension, $[]$: we have
 So we can see the mass dimension of the above $\La$ will be 6. 
 We could add it to the QED Lagrangian with some pre-factor to get it to work?
 \begin{align}
-    \La &= \La_{QED} + \frac{1}{M^2}F_{\mu\nu}F^{\nu\alpha}F_\alpha^\mu
+    \La &= \La_{QED} + \frac{1}{M^2}F_{\mu\nu}F^{\nu\alpha}\tensor{F}{_\alpha^\mu}
 \end{align}
 Any terms of $\La$ that have a coefficient of negative mass dimension in front are not UV-renormalisable, and any operators is $\La$ of mass dimension greater than 4 are not renormalisable. 
 
 \subsection{What is UV Renormalisation?}
-Any Quantum Field Theory which constains quantum corrections such as
-\textit{feynman diagrams - tree level, then one loop correction and up to higher loops}
+Any Quantum Field Theory which constains quantum corrections such as a tree level interaction, then one loop correction and up to higher loops, e.g.
+\begin{equation}
+    \includegraphics[valign=c,scale=0.2]{diagrams/renorm1.png} + \includegraphics[valign=c,scale=0.2]{diagrams/norm2.png} + \dots
+\end{equation}  
 All loop-level corrections contain $\infty$ in the UV, so we need to have a prescription to remove this divergence.
 
 \textbf{UV Renormalisation} is the prescription to remove UV divergences.
 
 So now $\La_{QED}$ is completed and is shown that we cannot remove or add anything from/to it. 
+
+\chapter{}
+\section{Non-Abelian Gauge Invariance}
+Start from a free Lagrangian for Dirac fermions
+\begin{align}
+    \La &= \bar{\psi}(i\gamma^\mu\p_\mu - m)\psi
+\end{align}
+$\psi(x)$ transform in the fundamental representation of a Lie group, G. 
+Assume that G is a SU(N) group, so $\psi(x)$ is a column vector with $N$ rows 
+$\bar{\psi}(x)$ will transform in the anti-fundamental representation, or conjugate to fundamental, as a row vector of $N$ columns.
+This is invariant under global transformations. 
+\begin{align}
+    \psi(x) &\to U\psi(x),~ \bar{\psi}(x) \to \bar{\psi}(x)\,U^\dagger,~ U \in SU(N)
+\end{align}
+Here, U is not dependent on x, i.e. a global symmetry. 
+The Lagrangian will be invariant. 
+Upgrade this construction to $U(x)$, i.e. a gauge (local) symmetry. 
+\begin{align}
+    \psi(x)&\to U(x)\,\psi(x),\; \bar{\psi}(x) \to \bar{\psi}(x)\,U^\dagger(x),\; U(x) = e^{-i\alpha^a(x)T^a} \in SU(N) 
+\end{align}
+Here, $T^a$ are the generators of SU(N) in the fundamental representation. 
+But here we will not see an invariant Lagrangian, so we must add something to the Lagrangian:
+\begin{align}
+    A_\mu(x) &\to U(x)(A_\mu(x)+i\p_\mu)U^\dagger(x)
+\end{align}
+In the fundamental representation, $U(x)$ is an $N\times N$ matrix, and $A_\mu$ must also be one for the equations to make sense - but this is still a single gauge field. 
+The gauge field in matrix notation is then,
+\begin{align}
+    A_\mu(x) &= gT^aA_\mu^a(x).
+\end{align}
+$A_\mu^a$ is not a gauge field but a component gauge field, $a=0,\dots,N^2-1$; $g$ is the gauge coupling constant, i.e. a non-Abelian generalisation of $e$.
+
+We can now form some trace identities (in the fundamental representation):
+\begin{align}
+    \text{Tr}[T^aT^b] &= \frac12\delta^{ab} & \text{Tr}[A_\mu T^a] &= \frac{g}{2}\sum_b A_\mu^b\delta^{ab} = \frac{g}{2}A_\mu^a & A_\mu^a &= \frac{2}{g}\text{Tr}[A_\mu T^a]
+\end{align}
+Now we can set out requirements to make our original $\La$ gauge invariant:
+\begin{itemize}
+    \item By transforming the derivative:
+        \begin{align}
+            \p_\mu &\to D_\mu = \p_\mu - iA_\mu
+        \end{align}
+        This is the \textbf{Covariant Derivative.}
+    \item We must form a kinetic term for $A_\mu$s so that these are dynamical gauge fields
+        \begin{align}
+            \La_{kin} &= -\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}]
+        \end{align}
+        $F_{\mu\nu}$ is the field strength:
+        \begin{align}
+            F_{\mu\nu} &= \p_\mu A_\nu - \p_\nu A_\mu - i[A_\mu,A_\nu]
+        \end{align}
+        This is almost the field strength that we had for QED, but we must add the final commutator term in order to make it transform as we are now in non-Abelian algebra. 
+        $F_{\mu\nu}$ is the field strength in matrix notation, and can be written in component notation as well:
+        \begin{align}
+            F_{\mu\nu}(x) &= gT^aF^a_{\mu\nu}(x) & 
+            F^a_{\mu\nu} &= \frac2g \text{Tr}[T^aF_{\mu\nu}] &
+            F_{\mu\nu}^a &= \p_\mu A_\nu^a - \p_\nu A_\mu^a + gf^{abc}A_\mu^bA_\nu^c
+        \end{align}
+\end{itemize}
+And our Lagrangian becomes
+\begin{align}
+    \La &= -\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}] + \bar{\psi}(i\gamma^\mu D_\mu - m)\psi.
+\end{align}
+We still need to check if this is gauge invariant or not. 
+How do $D_\mu\psi$ and $F_{\mu\nu}$ transform under gauge transforms?
+\begin{align}
+    F_{\mu\nu} &\to U\,F_{\mu\nu}\,U^\dagger & D_\mu\psi &\to U\,D_\mu\psi
+\end{align}
+So we see that $F_{\mu\nu}$ transforms in the adjoint representation, and $D_\mu\psi$ transforms as $\psi$.
+How do we check these?
+\begin{itemize}
+    \item How to check for $F_{\mu\nu}$?
+        \begin{align}
+            F_{\mu\nu} &= \p_\mu A_\nu - \p_\nu A_\mu - i[A_\mu,A_\nu],\; A_{\mu,\nu} \to U(x)(A_{\mu,\nu} + i\p_{\mu,\nu})U^\dagger(x) \\
+                       &\to U\,F_{\mu\nu}\,U^\dagger
+        \end{align}
+    \item How to check for $D_\mu\psi$?
+        \begin{align}
+            D_\mu\psi &= (\p_\mu + iA_\mu)\psi,\; \psi \to U(x)\psi(x),\; A_\mu \to U(x)(A_\mu+i\p_\mu)U^\dagger(x) \\
+                      &\to U(x)D_\mu\psi
+        \end{align}
+\end{itemize}
+We notice that that gauge transformation for $A_\mu \to (A_\mu(x)+\p_\mu)$ is really $A_\mu \to iD_\mu$.
+
+So under gauge transformation, our Lagrangian transforms as:
+\begin{align}
+    \La &\to -\frac{1}{2g^2}\text{Tr}[UF_{\mu\nu}U^\dagger UF^{\mu\nu}U^\dagger] + \bar{\psi}U^\dagger(i\gamma^\mu UD_\mu\psi - mU\psi) \to \La
+\end{align}
+Hence, the Lagrangian is completely gauge invariant.
+
+This is a universal prescription. 
+For any Lagrangian with any matter fields (scalars, fermions, whatever else) that is invariant under global symmetry, performing the transformations
+\begin{align}
+    \p_\mu &\to D_\mu & \oplus \La_{kin} &= -\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}]
+\end{align}
+will induce a gauge-invariant Lagrangian. 
+Thus, we have constructed a non-Abelian gauge theory. 
+
+Where does the kinetic pre-factor come from?
+\begin{align}
+    \La_{kin} &= -\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}] = -\frac14F_{\mu\nu}F^{\mu\nu} \\
+    F_{\mu\nu} &= gT^aF_{\mu\nu}^a,\; \text{Tr}[T^aT^b] = \frac12\delta^{ab}
+\end{align}
+
+This gauge theory is known as Yang-Mills theory, which is just meaning a non-Abelian theory. 
+This theory is no longer free. 
+It automatically contains interactions through the inclusion of $A_\mu$ which forms three-point vertices (interactions): between the fermions and gauge bosons, three gauge bosons; and four-point vertices between four gauge bosons.
+This is not something we saw in QED, but nonetheless required for the Lagrangian to be physical at all. 
+
+
 
 \end{document}
 

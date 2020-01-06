@@ -1,7 +1,7 @@
 %NOTE: COMPILE IN TERMINAL USING LUALATEX
 \documentclass[a4paper,11pt]{standalone}
 
-%\usepackage{amsmath}
+\usepackage{amsmath}
 %\usepackage{cancel}
 \usepackage{tikz-feynman}
 %\usetikzlibrary{external}             %% Load the `external` library
@@ -16,9 +16,9 @@
 \begin{document}
 
 \feynmandiagram [large, horizontal=a to b] {
-    i1 [particle=$u_{\alpha}(p_1)$] -- [fermion] a [dot,label=180:$-ie\gamma^\mu_{\beta\alpha}$] -- [fermion] i2 [particle=$\bar{v}_\beta(p_2)$],
-    a -- [photon,edge label'=$\frac{-ig_{\mu\nu}}{(p_1+p_2)^2}$] b [dot,label=0:$-ie\gamma^\nu_{\gamma\delta}$],
-    f1 [particle=$v_\delta(p_4)$] -- [fermion] b -- [fermion] f2 [particle=$\bar{u}_\gamma(p_3)$],
+    i1 [label=0:$\psi$] -- [fermion] a -- [fermion] i2 [label=0:$\bar{\psi}$],
+    a [label=90:$e$] -- [photon] b [label=90:$A_\mu$],
+    i1 -- [photon] i2,
 };
 
 \end{document}
