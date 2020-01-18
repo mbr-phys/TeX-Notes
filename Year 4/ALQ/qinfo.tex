@@ -1,0 +1,103 @@
+\documentclass[lasers.tex]{subfiles}
+
+\begin{document}
+\part{Quantum Information and Computing}
+\chapter{}
+\section{What is a quantum computer?}
+It's like a classical computer, but we replace 'bits' (0s and 1s) with \emph{qubits.}
+But what is a qubit?
+A qubit is a 2-level quantum system, with the quantum levels referred to $|0\rangle$ and $|1\rangle$.
+\emph{copy from notes.}
+
+Examples of 2-level systems:
+\begin{itemize}
+    \item Spin-$\frac12$ particle: 2 states are spin 'up' and spin 'down'.
+    \item Photon: 2 polarisations, e.g. vertical and horizontal or left-circular and right-circular.
+    \item Atoms, ions, molecules with many energy levels and we can select 2 as our qubit states. 
+    \item 'Artifical atoms' in solid state, e.g. quantum dots in semiconductors or LC resonator in a superconductor. 
+\end{itemize}
+
+List five physical implementations of qubits and their problems:
+\begin{itemize}
+    \item Two energy levels in an atom trapped by an optical tweezer - difficult to localise. 
+    \item Two energy levels in an ion trapped using electrodes - it's only in one dimension (scaling problem). 
+    \item Two energy levels of an impurity ion (spin) in a semi-conductor (e.g. phosphorous in Si) - interacts with surroundings, i.e. Silicon.
+    \item Two energy levels of an LC circuit in a superconductor - very bulky and needs $10mK$ cryostat. 
+    \item Two polarisation modes of a photon - photons don't interact. 
+\end{itemize}
+
+\chapter{}
+\section{DiVincenzo Criteria}
+The DiVincenzo criteria are often used to frame discussions about the advantages and disadvantages of different quantum computing platforms. 
+The five criteria are:
+\begin{enumerate}
+    \item Initialisation (\textbf{state preparation}) - typically means the ability to prepare identical qubits (cooling) and address each qubit independently (localisation).
+    \item A universal set of quantum \textbf{gates} - single- and two-qubit gates at minimum. 
+    \item Measurement (\textbf{read out}) of $|0\rangle$ or $|1\rangle$.
+    \item Low \textbf{decoherence} - qubits isolated from environment (external world).
+    \item \textbf{Scalability} - the ability to scale up to say 100 or 1000 or more qubits.
+\end{enumerate}
+
+\section{Why Quantum Computing?}
+\begin{enumerate}
+    \item Moore's law - as transistor size is reduced, we approach atomic dimensions.  
+    \item Energy efficiency - replace dissipative classical gates with reversible quantum gates.
+    \item Quantum 'advantage' - quantum computers can store more information and compute (certain problems) much faster.
+\end{enumerate}
+A classical bit has states 0 and 1: N bits have $2N$ states; a qubit has states $0\rangle$ and $|0\rangle$: N qubits have $2^N$ states, i.e. exponential scaling. 
+To see why, we need the \textbf{Qubit State Vector}.
+\begin{align}
+    |\psi\rangle = a|0\rangle + b|1\rangle,
+\end{align}
+where $a$ and $b$ are complex coefficients that may be time-dependent which obey the normalisation criterion. 
+
+Now we want a 2 qubit state vector, where our two qubits are A and B, as a normalised product state:
+\begin{align}
+    |\Psi\rangle_{AB} &= (a|0\rangle_A + b|1\rangle_A)\otimes(c|0\rangle_B+d|1\rangle_B), \\
+                      &= ac|00\rangle + ad|01\rangle + bc|10\rangle + bd|11\rangle.
+\end{align}
+In addition to product, we can have \textbf{entangled states} that are not factorisable into products.
+
+What about 3 qubits, $A,B,C$?
+\begin{align}
+    |\Psi\rangle_{ABC} &= c_{000}|000\rangle + c_{001}|001\rangle + c_{010}|010\rangle + c_{011}|011\rangle + c_{100}|100\rangle + c_{101}|101\rangle + c_{110}|110\rangle + c_{111}|111\rangle,
+\end{align}
+which is $2^3=8$ states. 
+For 4 qubits, we would have $2^4=16$ states; for $N$ qubits, $2^N$ states. 
+For 40 qubits, $2^{40}\approx10^{12}$; for 100 qubits, $2^{100}\approx10^{30}$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

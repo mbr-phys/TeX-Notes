@@ -15,10 +15,14 @@
 
 \begin{document}
 
+%\feynmandiagram [large, horizontal=a to b] {
+%    i1 [label=0:$\psi$] -- [fermion] a -- [fermion] i2 [label=0:$\bar{\psi}$],
+%    a [label=90:$e$] -- [photon] b [label=90:$A_\mu$],
+%    i1 -- [photon] i2,
+%};
 \feynmandiagram [large, horizontal=a to b] {
-    i1 [label=0:$\psi$] -- [fermion] a -- [fermion] i2 [label=0:$\bar{\psi}$],
-    a [label=90:$e$] -- [photon] b [label=90:$A_\mu$],
-    i1 -- [photon] i2,
+    i1 -- [photon] a -- [photon] i2,
+    i3 -- [photon] a -- [photon] i3,
 };
 
 \end{document}

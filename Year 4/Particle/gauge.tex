@@ -530,6 +530,110 @@ This theory is no longer free.
 It automatically contains interactions through the inclusion of $A_\mu$ which forms three-point vertices (interactions): between the fermions and gauge bosons, three gauge bosons; and four-point vertices between four gauge bosons.
 This is not something we saw in QED, but nonetheless required for the Lagrangian to be physical at all. 
 
+\chapter{}
+We want to find a Lagrangian with terms with powers $>2$ of gauge fields, i.e. interactions of $A_\mu$s.
+\begin{align}
+    \La &= \dots - gf^{abc}\p_\mu A_\nu^aA^{\mu b}A^{\nu c} - \frac{g^2}{4}f^{abc}f^{ade}A_\mu^b A_\nu^c A^{\mu d}A^{\nu e} + \text{ nothing else}
+\end{align}
+From the first term, we can see that there interactions involving three-point vertices of gauge fields, 
+\textit{doodle three-point vertex of three As} - $gf^{abc}p^\mu$
+From the second, we find four-point vertices,
+\textit{doodle four-point vertex of four As} - $gf^{abc}f^{ade}$
+So interactions are automatically included, and there are no higher levels of gauge field interactions. 
+Both the terms above had to appear in the Lagrangian as they come from $\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}]$.\\
+The relative coefficients between the three- and four-point vertices, and also between vertices with fermions, are fixed and uniquely determined by gauge invariance of the total Lagrangian. 
+In a non-Abelian gauge theory, we cannot arbitrarily change the coupling constant $g$, e.g. if we coupled a matter field $\phi_1$ to $A_\mu$ with a coupling constant $g$, and try to couple some other matter field $\phi_2$ to $A_\mu$ with a coupling constant $\kappa g$, then $\kappa=1$.
+If $\kappa\neq1$, then the $f^{abc}$s will be altered by this, which cannot be done as these define the group and will be constant. 
+However, in an Abelian theory, we can couple different matter fields to gauge fields with $\kappa g$, where $\kappa$ is arbitrary. 
+
+\section{Running Coupling Constants}
+In a classical gauge theory, the coupling constant is a constant.
+In a quantum gauge theory, it is no longer constant; instead, it depends on the energy scale at which we make observations. 
+For a scattering experiment, at energy scale, $E = \sqrt{s}$, $s=(p_1+p_2)^2$.
+\textit{doodle gluons going in and out, various diagrams at tree level and some loops}.
+At tree level, processes are $\propto g^2$; at loop level, $\propto g^{2(1+\text{no. of loops})}$.
+When we extract the value of $g^2$ from any such measurement, we will get $g^2(E)$.\\
+We usually consider $g^2(p)$, where $p$ is a momentum or energy value characteristic for the experiment, e.g. can be $p=E_{COM}$, $p$ is either $\sqrt{s}$ or total transverse momentum (total momentum transfer).\\
+Consider the coupling constant defined
+\begin{align}
+    \alpha(p) \equiv \frac{g^2(p)}{4\pi}.
+\end{align}
+In QED, we have $\alpha_{QED}=\frac{e^2}{4\pi}$.
+In QCD, we have a SU(3) gauge theory with $N_f$ flavour of quarks (fermions), with a coupling constant (computed to 1 loop order),
+\begin{align}
+    \alpha_s(p) = \frac{g^2_{SU(3)}(p)}{4\pi} = \frac{2\pi}{b_0\log\frac{p}{\Lambda_{QCD}}}
+\end{align}
+Here, $\Lambda_{QCD}\approx300\,MeV$, $b_0=11-\frac23 N_f$. 
+
+\chapter{}
+For non-Abelian gauge theory, all matter fields couple to $A_\mu^a$ with the same gauge coupling $g$:
+\begin{align}
+    D_\mu &= \p_\mu - igA_\mu^aT^a.
+\end{align}
+For Abelian, this is not the case:
+\begin{align}
+    D_\mu &= \p_\mu + ieYA_\mu,
+\end{align}
+where we define $Y\equiv$ hypercharge - an arbitrary factor that can be different between matter fields.
+
+In a non-Abelian theory, we can compute the coupling constant $\alpha(p)$, defined in Eq (7.2), as
+\begin{align}
+    \alpha(p) &= \frac{2\pi}{b_0\log\frac{p}{\Lambda}} + \text{ higher-order corrections.} \\
+    \frac{2\pi}{\alpha(p)} &= b_0\log\left(\frac{p}{\Lambda}\right).
+\end{align}
+In an SU(N) gauge theory with $N_f$ flavours of Dirac fermions,
+\begin{align}
+    b_0 &= \frac{11}{3}N - \frac23 N_f.
+\end{align}
+Strong interactions in the Standard Model are described by QCD, the non-Abelian SU(3) gauge theory with $N_f=6$ quarks. 
+In QCD, $b_0=7$, and what is important to note about that is that it is positively valued. 
+$b_0$ is called the first coefficient of the $\beta$-function - the sign of the $\beta$-function and the sign of its first coefficient determines how the coupling constant runs. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (5,0) node[anchor=north] {$\log p$};
+        \draw[-Latex] (0,0) -- (0,2) node[anchor=east] {$\frac{1}{\alpha(p)}$};
+        \draw (0.5,0) node[anchor=north] {$\Lambda$} -- (4.5,1.7);
+    \end{tikzpicture}
+\end{figure}
+We can see at the scale of $\Lambda$, the coupling constant $\alpha$ becomes infinitely strong. 
+More carefully:
+\begin{itemize}
+    \item Assume that our 1-loop approximation to $\alpha(p)$ is correct
+    \item $p\to\Lambda \implies \frac{1}{\alpha}\to 0\implies\alpha\to\infty$, so we have an infinite strength interaction, which results in the confinement of quarks and gluons. 
+\end{itemize}
+This is non actually a full proof as the assumption is incorrect, but it does result in the real picture of confinement. \\
+Similarly, $p\to\infty\implies\frac{1}{\alpha(p)}\to\infty\implies\alpha(p)\to0$, which results in \emph{asymptotic freedom}, i.e. at high energies, QCD interactions become irrelevant. 
+The theory of QCD at high energies becomes free, or non-interacting. 
+
+\section{The Standard Model}
+The Standard Model of particle physics is an SU(3)$_c\otimes$SU(2)$_L\otimes$U(1)$_Y$ gauge theory. 
+SU(3) is the theory of strong interaction (QCD); and SU(2)$\otimes$U(1) is the GWS electroweak theory, where SU(2) describes what will become weak interactions, and U(1) describes what will become electromagnetic interactions (after spontaneous symmetry breaking).
+\begin{itemize}
+    \item $b_0>0$ for non-Abelian gauge theories (if $N_f <$ some critical number)
+    \item $b_0<0$ for Abelian theories like U(1)
+\end{itemize}
+If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$; and for QED, $\alpha_{EM}$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (5,0) node[anchor=north] {$\log p$};
+        \draw[-Latex] (0,0) -- (0,2) node[anchor=east] {$\frac{1}{\alpha(p)}$};
+        \draw (0.5,0) node[anchor=north] {$\Lambda$} -- (4.5,1.7) node[anchor=west] {$\alpha_S$};
+        \draw (0.2,0.3) -- (4.7,1.5) node[anchor=west] {$\alpha_W$};
+        \draw[dashed] (0.8,0) -- (0.8,0.5);
+        \draw (0.3,2) -- (4.8,0.2) node[anchor=west] {$\alpha_{EM}$};
+    \end{tikzpicture}
+\end{figure}
+\begin{itemize}
+    \item At the electroweak scale $\approx m_{W,Z,H}\approx100$ GeV, the weak force fails as its mediators are no longer present. 
+    \item EM will hit zero in the graph at what is known as $\Lambda_{Landau}$ and freaks out from there.
+    \item EM will fail like weak at the electron mass scale.
+    \item All three coupling constants almost converge on a single point in the middle, but not quite. If they did, it would be indicative of a Grand Unified Theory (GUT) scale, i.e. SU(5)$_{GUT}\to$SU(3)$\otimes$SU(2)$\otimes$U(1). A single gauge theory of SU(5) would split into the three known groups at lower energy scales, below the GUT scale. 
+        SU(5) is currently ruled out, but maybe SO(10)?
+\end{itemize}
+
+
 
 
 \end{document}

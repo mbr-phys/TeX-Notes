@@ -14,13 +14,21 @@
     }
 }
 
-\setlength{\epigraphwidth}{\textwidth}
-\titleformat{\part}[display]
-{\normalfont\huge\filcenter\bfseries\thispagestyle{epigraph}}
-{\partname\ \thepart}
-{20pt}
-{\Huge}
-\titlespacing*{\part}{0pt}{0pt}{40pt}
+\input Starburst.fd
+\newcommand*\initfamily{\usefont{U}{Starburst}{xl}{n}}
+
+%\setlength{\epigraphwidth}{\textwidth}
+%\titleformat{\part}[display]
+%{\normalfont\huge\filcenter\bfseries\thispagestyle{epigraph}}
+%{\partname\ \thepart}
+%{20pt}
+%{\Huge}
+%\titlespacing*{\part}{0pt}{0pt}{40pt}
+%\makeatletter
+%\def\@partimage{}
+%\newcommand{\partimage}[2][]{\gdef\@partimage{\includegraphics[#1]{{#2}}}}
+%\newcommand{\printparttitle}[1]{\parttitlefon #1\vfil\@partimage\vfil\gdef  \@partimage{}}
+%\makeatother
 
 \title{Atoms, Lasers, and Qubits \vspace{-20pt}}
 \author{Dr Weatheril and Prof Adams}
@@ -30,10 +38,11 @@
 \begin{document}
 
 \maketitle
-%\tableofcontents
+\tableofcontents
 
-\epigraphhead[200]{\hfil\includegraphics[scale=0.5]{lasers.png}\hfil}
-\part{}
+%\epigraphhead[200]{\hfil\includegraphics[scale=0.5]{lasers.png}\hfil}
+%\partimage{width=\textwidth,keepaspectratio}{lasers.png}
+\part{\initfamily LASER PHYSICS}
 \chapter{Introduction}
 \begin{itemize}
     \item \textbf{Note:} The course will be more reading based than math based. 
@@ -2164,6 +2173,8 @@ This is often called the optical (or AC) Kerr effect, and leads to \textbf{self-
     \item The intensity profile of the beam creates equivalent to graded refractive index (GRIN) lens. 
     \item Also interesting physics, e.g. optical solitons. 
 \end{itemize}
+
+\subfile{qinfo.tex}
 
 \end{document}
 
