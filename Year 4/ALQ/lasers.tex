@@ -1436,13 +1436,12 @@ Where we can define \textbf{Finesse:}
         Separation of adjacent peaks (in radians) $=2\pi$.
         Hence, finesse, 
         \begin{align}
-            F &= \frac{\Delta\nu_{fsr}}{\Delta\nu_{FWHM}}
+            F &= \frac{\Delta\nu_{fsr}}{\Delta\nu_{FWHM}}.
         \end{align}
-        \textit{doodle it}\\
         So high finesse $\to$ sharp fringes, and vice versa.
         Before, 
         \begin{align}
-            F &= \frac{\pi\sqrt{R}}{1-R} \implies \Delta\nu_{FWHM} = \frac{c}{2d}\left(\frac{1-R}{\pi\sqrt{R}}\right)
+            F &= \frac{\pi\sqrt{R}}{1-R} \implies \Delta\nu_{FWHM} = \frac{c}{2d}\left(\frac{1-R}{\pi\sqrt{R}}\right).
         \end{align}
 \end{itemize}
 
@@ -1460,20 +1459,86 @@ Where we can define \textbf{Finesse:}
 \section{Laser Cavities}
 The Fabry-Perot etalon is not a good laser cavity.
 We need to place a gain medium between mirrors. 
-\textit{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \filldraw[fill=lightgray,draw=black] (0,0) -- (-0.5,0) -- (-0.5,1.5) -- (0,1.5) -- cycle;
+        \filldraw[fill=lightgray,draw=black] (2.5,0) -- (3,0) -- (3,1.5) -- (2.5,1.5) -- cycle;
+
+        \draw (0.5,0.2) rectangle (2,1.3);
+        \draw[-Latex] (0,0.2) -- (2.5,0.5) -- (0,1) -- (2.6,1.6);
+    \end{tikzpicture}
+\end{figure}
 This cavity however is difficult to align.
 More fundamentally, diffraction will cause losses.
-\textit{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \filldraw[fill=lightgray,draw=black] (0,0) -- (-0.5,0) -- (-0.5,1.5) -- (0,1.5) -- cycle;
+        \filldraw[fill=lightgray,draw=black] (2.5,0) -- (3,0) -- (3,1.5) -- (2.5,1.5) -- cycle;
+        \draw (0,1.3) cos (2.8,1.7);
+        \draw (0,0.2) cos (2.8,-0.2);
+    \end{tikzpicture}
+\end{figure}
 Diffraction leads to large losses.
-The solution is to use curved mirrors: \textit{doodle}
-Each curved mirror acts as a lens, \textit{doodle}
-\begin{align}
-    f &= \frac{R}{2}
-\end{align}
+The solution is to use curved mirrors:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \filldraw[fill=lightgray,draw=black] (0,0) -- (-0.5,0) -- (-0.5,1.5) -- (0,1.5) arc (150:210:1.5cm);
+        \filldraw[fill=lightgray,draw=black] (2.5,0) -- (3,0) -- (3,1.5) -- (2.5,1.5) arc (30:-30:1.5cm);
+        \draw[Latex-Latex] (0,-0.2) -- (2.5,-0.2) node[anchor=north,midway] {$L$};
+        \draw (-0.1,1.2) sin (1.25,0.9) cos (2.6,1.2);
+        \draw (-0.1,0.3) sin (1.25,0.6) cos (2.6,0.3);
+    \end{tikzpicture}
+\end{figure}
+Each curved mirror acts as a lens, 
+\begin{multicols}{2}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[-Latex] (0,0) -- (1,0);
+            \draw[-Latex] (1,0) -- (2,0) -- (1.5,0.5);
+            \draw (1.5,0.5) -- (1,1) -- (1.5,1.5);
+            \draw[-Latex] (0,2) -- (1,2);
+            \draw[-Latex] (1,2) -- (2,2) -- (1.5,1.5);
+            \fill (1,1) circle (2pt) node[anchor=east] {f};
+            \draw[Latex-Latex] (1,1) -- (2.2,1);
+            \draw (1.9,-0.2) arc (-30:30:70pt);
+            \fill (0.5,1) circle (2pt);
+            \draw[Latex-Latex] (0.5,1) -- (1.9,-0.2) node[anchor=north east,midway,yshift=5pt] {R};
+        \end{tikzpicture}
+    \end{figure}
+    \begin{align}
+        f &= \frac{R}{2}.
+    \end{align}
+\end{multicols}
 where here R is the radius of curvature.
 Cavity acts as a sequence of lenses.
-\textit{doodle}
-Related by Fourier transform, so essentially we want a function that is its own Fourier transform - Gauss-Hermite. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[dashed] (0,0) -- (0,2);
+        \draw[dashed] (2,0) -- (2,2);
+        \draw[dashed] (4,0) -- (4,2);
+        \draw (-1,1) ellipse (0.2cm and 0.5cm);
+        \draw[dashed] (-1,0.3) -- (-1,1.7);
+        \draw (1,1) ellipse (0.2cm and 0.5cm);
+        \draw[dashed] (1,0.3) -- (1,1.7);
+        \draw (3,1) ellipse (0.2cm and 0.5cm);
+        \draw[dashed] (3,0.3) -- (3,1.7);
+        \draw (5,1) ellipse (0.2cm and 0.5cm);
+        \draw[dashed] (5,0.3) -- (5,1.7);
+
+        \draw (-1,1.4) sin (0,1.1) cos (1,1.4);
+        \draw (-1,0.6) sin (0,0.9) cos (1,0.6);
+        \draw (1,1.4) sin (2,1.1) cos (3,1.4);
+        \draw (1,0.6) sin (2,0.9) cos (3,0.6);
+        \draw (3,1.4) sin (4,1.1) cos (5,1.4);
+        \draw (3,0.6) sin (4,0.9) cos (5,0.6);
+    \end{tikzpicture}
+\end{figure}
+Related by Fourier transform, so essentially we want a function that is its own Fourier transform, we will see Gauss-Hermite. 
 
 \chapter{Gaussian Beams and Cavity Stability}
 The electric field distribution needs to reproduce after a round trip, so it needs to be its own Fourier transform, i.e. Gause-Hermite modes.
@@ -1496,7 +1561,24 @@ This is the equation of hyperbola with asymptotes at
 \begin{align}
     w(z) &= \pm\frac{w_0z}{z_R}
 \end{align}
-\textit{doodle from Hannah}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (-4,0) -- (4,0);
+        \draw[-Latex] (0,-4) -- (0,4);
+        \draw[dashed] (-4,-3.5) -- (4,3.5);
+        \draw[dashed] (-4,3.5) -- (4,-3.5);
+        \draw (-4,-3.5) sin (0,-1.5) cos (4,-3.5) node[anchor=north,midway,yshift=-40pt,xshift=15pt] {$P=\infty$};
+        \draw (-4,3.5) sin (0,1.5) cos (4,3.5);
+        \draw (0.5,-0.5) arc (-45:45:20pt) node[anchor=west,midway,yshift=5pt,xshift=-3pt] {$\theta_{beam}$};
+
+        \draw[-Latex] (5.5,-4) -- (5.5,4);
+        \draw[-Latex] (5.5,0) -- (10,0);
+        \draw (6,4) sin (8,1.5) arc (90:-90:42.5pt);
+        \draw (6,-4) sin (8,-1.5);
+        \draw[dashed] (6.4,3.2) -- (6.4,-3.2) -- (3.7,-3.2) -- (3.7,3.2) -- cycle;
+    \end{tikzpicture}
+\end{figure}
 \begin{align}
     \theta_{beam} &= \frac{2w_0}{z_R} = \frac{2\lambda}{\pi w_0} = 1.27\frac{\lambda}{w_0}
 \end{align}

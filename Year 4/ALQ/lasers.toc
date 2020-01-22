@@ -1,0 +1,72 @@
+\contentsline {part}{I\hspace {1em}\usefont {U}{Starburst}{xl}{n}LASER PHYSICS}{4}{part.1}% 
+\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1.1}% 
+\contentsline {section}{\numberline {1.1}Introduction to lasers}{5}{section.1.1.1}% 
+\contentsline {chapter}{\numberline {2}Einstein's rate equations}{7}{chapter.1.2}% 
+\contentsline {section}{\numberline {2.1}Apply the 3 processess}{7}{section.1.2.1}% 
+\contentsline {section}{\numberline {2.2}Steady State Solution}{8}{section.1.2.2}% 
+\contentsline {section}{\numberline {2.3}Number of photons per mode}{9}{section.1.2.3}% 
+\contentsline {chapter}{\numberline {3}Linewidths and Lineshapes}{10}{chapter.1.3}% 
+\contentsline {section}{\numberline {3.1}Homogeneous Broadening}{10}{section.1.3.1}% 
+\contentsline {section}{\numberline {3.2}Inhomogeneous Broadening}{11}{section.1.3.2}% 
+\contentsline {chapter}{\numberline {4}Amplification by Stimulated Emission}{13}{chapter.1.4}% 
+\contentsline {section}{\numberline {4.1}Homogeneous broadening}{14}{section.1.4.1}% 
+\contentsline {chapter}{\numberline {5}The Laser Oscillator: Cavity Basics and Threshold}{16}{chapter.1.5}% 
+\contentsline {section}{\numberline {5.1}General Cavity Design}{16}{section.1.5.1}% 
+\contentsline {section}{\numberline {5.2}Longitudinal Cavity Modes}{16}{section.1.5.2}% 
+\contentsline {section}{\numberline {5.3}Cavity Losses}{17}{section.1.5.3}% 
+\contentsline {section}{\numberline {5.4}Cavity Lifetime}{17}{section.1.5.4}% 
+\contentsline {section}{\numberline {5.5}Threshold Condition}{17}{section.1.5.5}% 
+\contentsline {chapter}{\numberline {6}The Laser Oscillator: Oscillation and Gain Saturation}{19}{chapter.1.6}% 
+\contentsline {section}{\numberline {6.1}Gain Saturation}{19}{section.1.6.1}% 
+\contentsline {chapter}{\numberline {7}Multimode lasing and output power}{22}{chapter.1.7}% 
+\contentsline {section}{\numberline {7.1}Optimum Output Coupling}{23}{section.1.7.1}% 
+\contentsline {chapter}{\numberline {8}Requirements for Population Inversion}{24}{chapter.1.8}% 
+\contentsline {section}{\numberline {8.1}Condition for Steady State Population Inversion}{24}{section.1.8.1}% 
+\contentsline {section}{\numberline {8.2}Three and Four Level Lasers}{24}{section.1.8.2}% 
+\contentsline {subsection}{\numberline {8.2.1}Traditional Solid State Three-level Laser}{24}{subsection.1.8.2.1}% 
+\contentsline {subsection}{\numberline {8.2.2}Gas lasers}{25}{subsection.1.8.2.2}% 
+\contentsline {subsection}{\numberline {8.2.3}Solid state and dye lasers}{25}{subsection.1.8.2.3}% 
+\contentsline {subsection}{\numberline {8.2.4}General comments}{25}{subsection.1.8.2.4}% 
+\contentsline {section}{\numberline {8.3}Three-Level Traditional Solid State Lasers}{25}{section.1.8.3}% 
+\contentsline {chapter}{\numberline {9}Population Inversion in Four-level lasers}{27}{chapter.1.9}% 
+\contentsline {section}{\numberline {9.1}Idealised Four-level laser}{27}{section.1.9.1}% 
+\contentsline {section}{\numberline {9.2}Comparison of three- and four-level laser schemes}{27}{section.1.9.2}% 
+\contentsline {chapter}{\numberline {10}Population Inversion in Three-level Gas Lasers}{29}{chapter.1.10}% 
+\contentsline {chapter}{\numberline {11}The Fabry-Perot Etalon and Laser Cavity Modes}{31}{chapter.1.11}% 
+\contentsline {section}{\numberline {11.1}The Fabry-Perot Elaton}{31}{section.1.11.1}% 
+\contentsline {subsection}{\numberline {11.1.1}Path different between succesive rays}{31}{subsection.1.11.1.1}% 
+\contentsline {subsection}{\numberline {11.1.2}Transmitted amplitude}{31}{subsection.1.11.1.2}% 
+\contentsline {subsection}{\numberline {11.1.3}Transmitted Intensity}{31}{subsection.1.11.1.3}% 
+\contentsline {subsection}{\numberline {11.1.4}Points to note}{32}{subsection.1.11.1.4}% 
+\contentsline {section}{\numberline {11.2}Laser Cavities}{33}{section.1.11.2}% 
+\contentsline {chapter}{\numberline {12}Gaussian Beams and Cavity Stability}{35}{chapter.1.12}% 
+\contentsline {section}{\numberline {12.1}Propagation of Gaussian beams}{35}{section.1.12.1}% 
+\contentsline {section}{\numberline {12.2}Finding the mode shape for a cavity}{36}{section.1.12.2}% 
+\contentsline {section}{\numberline {12.3}Mode Volume}{36}{section.1.12.3}% 
+\contentsline {chapter}{\numberline {13}Cavity Effects: Single Frequency Operation}{37}{chapter.1.13}% 
+\contentsline {section}{\numberline {13.1}Inhomogeneous - spectral hole burning}{37}{section.1.13.1}% 
+\contentsline {section}{\numberline {13.2}Homogeneous - Spatial Hole Burning}{39}{section.1.13.2}% 
+\contentsline {section}{\numberline {13.3}External Cavity Diode Laser}{40}{section.1.13.3}% 
+\contentsline {section}{\numberline {13.4}Practical Limit}{42}{section.1.13.4}% 
+\contentsline {chapter}{\numberline {14}Pulsed Lasers}{43}{chapter.1.14}% 
+\contentsline {section}{\numberline {14.1}Mode Locking}{43}{section.1.14.1}% 
+\contentsline {subsection}{\numberline {14.1.1}Repetition Rate}{43}{subsection.1.14.1.1}% 
+\contentsline {subsection}{\numberline {14.1.2}Pulse Duration}{43}{subsection.1.14.1.2}% 
+\contentsline {subsection}{\numberline {14.1.3}Maximum Intensity}{43}{subsection.1.14.1.3}% 
+\contentsline {subsection}{\numberline {14.1.4}Examples}{43}{subsection.1.14.1.4}% 
+\contentsline {section}{\numberline {14.2}Q Switching}{44}{section.1.14.2}% 
+\contentsline {chapter}{\numberline {15}Nonlinear Optics}{45}{chapter.1.15}% 
+\contentsline {section}{\numberline {15.1}Second Order Effects}{46}{section.1.15.1}% 
+\contentsline {subsection}{\numberline {15.1.1}Second Harmonic Generation}{46}{subsection.1.15.1.1}% 
+\contentsline {section}{\numberline {15.2}Third Order Polarisation}{46}{section.1.15.2}% 
+\contentsline {subsection}{\numberline {15.2.1}Third Harmonic Generation}{47}{subsection.1.15.2.1}% 
+\contentsline {section}{\numberline {15.3}Intensity Dependent Refractive Index}{47}{section.1.15.3}% 
+\contentsline {part}{II\hspace {1em}Quantum Information and Computing}{48}{part.2}% 
+\contentsline {chapter}{\numberline {1}}{49}{chapter.2.1}% 
+\contentsline {section}{\numberline {1.1}What is a quantum computer?}{49}{section.2.1.1}% 
+\contentsline {chapter}{\numberline {2}}{50}{chapter.2.2}% 
+\contentsline {section}{\numberline {2.1}DiVincenzo Criteria}{50}{section.2.2.1}% 
+\contentsline {section}{\numberline {2.2}Why Quantum Computing?}{50}{section.2.2.2}% 
+\contentsline {chapter}{\numberline {3}Two-level quantum mechanics}{51}{chapter.2.3}% 
+\contentsline {section}{\numberline {3.1}Single-qubit gates}{51}{section.2.3.1}% 
+\contentsfinish 

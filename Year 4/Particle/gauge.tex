@@ -606,6 +606,7 @@ This is non actually a full proof as the assumption is incorrect, but it does re
 Similarly, $p\to\infty\implies\frac{1}{\alpha(p)}\to\infty\implies\alpha(p)\to0$, which results in \emph{asymptotic freedom}, i.e. at high energies, QCD interactions become irrelevant. 
 The theory of QCD at high energies becomes free, or non-interacting. 
 
+\chapter{}
 \section{The Standard Model}
 The Standard Model of particle physics is an SU(3)$_c\otimes$SU(2)$_L\otimes$U(1)$_Y$ gauge theory. 
 SU(3) is the theory of strong interaction (QCD); and SU(2)$\otimes$U(1) is the GWS electroweak theory, where SU(2) describes what will become weak interactions, and U(1) describes what will become electromagnetic interactions (after spontaneous symmetry breaking).
@@ -631,6 +632,77 @@ If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$
     \item EM will fail like weak at the electron mass scale.
     \item All three coupling constants almost converge on a single point in the middle, but not quite. If they did, it would be indicative of a Grand Unified Theory (GUT) scale, i.e. SU(5)$_{GUT}\to$SU(3)$\otimes$SU(2)$\otimes$U(1). A single gauge theory of SU(5) would split into the three known groups at lower energy scales, below the GUT scale. 
         SU(5) is currently ruled out, but maybe SO(10)?
+    \item $\alpha_W$ is small for all regions where the weak force manifests, so it can always be studied perturbatively.
+    \item $\alpha_{\text{EM}}$ is fine in the IR regime (low energy) but then freaks out at higher energies, and cannot be studied perturbatively.
+\end{itemize}
+
+\section{QCD}
+\begin{itemize}
+    \item QCD has gauge group SU(3).
+    \item What are the matter fields of QCD? Dirac fermions known as quarks, transforming in the fundamental representation of SU(3). 
+        Quarks are in triplet states of colour, $q=\begin{pmatrix}q_1\\q_2\\q_3\end{pmatrix}$, where $q_i$ indicates the colour (1,2,3). 
+        There are six flavours of quarks as well, so $q^f_i$ where $f$ is the flavour running $1\to6$ and $i$ is the colour running $1\to3$. 
+        (Of course, each quark is also a Dirac spinor of 4 components.)
+    \item In the infrared regime (low energy), $\alpha_S\to\infty$ which implies colour confinement.
+    \item We cannot find free quarks or gluons in nature (in the IR range).
+    \item What we can observe instead are colourless (SU(3) singlets) composite particles, i.e. mesons and baryons. 
+    \item Mesons are quark-antiquark pairs: $\bar{q}_i^{f_1}q_i^{f_2}$, e.g. $\pi$-meson:
+        \begin{align}
+            \pi^0 &= \frac{\bar{u}u + \bar{d}d}{\sqrt{2}}, &
+            \pi^- &= \bar{u}d, &
+            \pi^+ &= \bar{d}u.
+        \end{align}
+        These are the lightest mesons using only the first generation of quarks. 
+        $Q(u) = \frac23$, and $Q(d)=-\frac13$.
+    \item Baryons are three quark states each with different colour:
+        \begin{align}
+            \sum_{ijk}^3 \e^{ijk}q^{f_1}_iq^{f_2}_jq^{f_3}_k.
+        \end{align}
+        For example, a proton is $(uud)$ and neutron $(udd)$.
+    \item The gauge fields of QCD are the $A_\mu^{a=1\to8}$, which are the massless gluons we know so we have an unbroken (exact) SU(3) gauge theory.
+\end{itemize}
+
+\section{Electroweak theory}
+\begin{itemize}
+    \item For SU(2), we have the gauge fields $A_\mu^{a=1\to3}$.
+    \item What are the matter fields?
+    \item There is a single scalar field of SU(2):
+        \begin{align}
+            H &= \begin{pmatrix}h^+\\h^0\end{pmatrix},
+        \end{align}
+        which is the Higgs field.
+        H is a doublet of SU(2), as it transforms in the fundamental representation.
+    \item If we compute a vacuum expectation value of the Higgs field, 
+        \begin{align}
+            \langle0|H|0\rangle &\equiv \langle H\rangle = \begin{pmatrix}0\\\frac{v}{\sqrt{2}}\end{pmatrix},
+        \end{align}
+        where $v\neq0$. In fact, $v\approx246$GeV.
+        More on this later.
+    \item All other matter fields are fermions transforming under the fundamental representation of SU(2), so they are doublets.
+        We have both quarks and leptons. 
+        Leptons are defined as fermions which do not transform under SU(3)$_{QCD}$.
+    \item The six quarks we have from 3 SU(2) doublets:
+        \begin{align}
+            \begin{pmatrix}u\\d\end{pmatrix}_L,
+            \begin{pmatrix}c\\s\end{pmatrix}_L,
+            \begin{pmatrix}t\\b\end{pmatrix}_L.
+        \end{align}
+    \item Only left-handed fermions interact with SU(2):
+        \begin{align}
+            \psi &= \psi_L + \psi_R, &
+            \psi_L &= \frac{(1-\gamma_5)}{2}\psi, &
+            \psi_R &= \frac{(1+\gamma_5)}{2}\psi.
+        \end{align}
+        So the above quark doublets are all left-handed, the right-handed components are all SU(2) singlets (non-interacting), i.e. $u_R,d_R$ etc.
+    \item Leptons also form three doublets:
+        \begin{align}
+            \begin{pmatrix}\nu_e\\e\end{pmatrix}_L,
+            \begin{pmatrix}\nu_\mu\\\mu\end{pmatrix}_L,
+            \begin{pmatrix}\nu_\tau\\\tau\end{pmatrix}_L.
+        \end{align}
+        Each lepton also has its right-handed singlet, such as $e_R,\mu_R$, in principal.
+        However no right-handed neutrinos have been observed so we say there are none. 
+    \item So we have three families, or generations, of both quarks and leptons. 
 \end{itemize}
 
 

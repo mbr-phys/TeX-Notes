@@ -66,8 +66,88 @@ which is $2^3=8$ states.
 For 4 qubits, we would have $2^4=16$ states; for $N$ qubits, $2^N$ states. 
 For 40 qubits, $2^{40}\approx10^{12}$; for 100 qubits, $2^{100}\approx10^{30}$.
 
+\chapter{Two-level quantum mechanics}
+Can think of the state vector similar to spin:
+\begin{align}
+    |\psi\rangle &= a|0\rangle + b|1\rangle = a|\uparrow\rangle + b|\downarrow\rangle = \begin{pmatrix} a \\ b\end{pmatrix}.
+\end{align}
+How does the time-dependence appear?
+$0\rangle$ and $|1\rangle$ are solutions of a Schrodinger equation,
+\begin{align}
+    i\hbar\dpt|\alpha\rangle &= H_0|\alpha\rangle,
+\end{align}
+with energies $E_0$ and $E_1$:
+\begin{align}
+    i\hbar\dpt|0\rangle &= E_0|0\rangle,\; i\hbar\dpt|1\rangle = E_1|1\rangle, \\
+    |\psi(t=0)\rangle &= a(0)|0\rangle \implies a(t) = a(0)e^{-iE_0t/\hbar},\\
+    |\psi\rangle &= ae^{-iE_0t/\hbar}|0\rangle + be^{-iE_1t/\hbar}|1\rangle, \\
+                 &= e^{-E_0t/\hbar}\left(a|0\rangle + be^{-i\om_0 t}|1\rangle\right).
+\end{align}
+$\om_0$ is the angular resonant frequency of the qubit, $\om_0=(E_1-E_0)/\hbar$.
+We define
+\begin{align}
+    G &\equiv e^{-iE_0t/\hbar} \text{ - global phase}, & R &\equiv e^{-i\om_0t} \text{ - relative phase}.
+\end{align}
+\begin{align}
+    |a|^2 &+ |b|^2 = 1 \\
+    |\psi\rangle &= a|0\rangle + be^{i\phi}|1\rangle,
+\end{align}
+So only have two free parameters in the ratio $\frac{a}{b}$ and the phase $\phi$.
+\begin{align}
+    |\psi\rangle &= \begin{pmatrix}\cos\frac{\theta}{2} \\ e^{i\phi}\sin\frac{\theta}{2}\end{pmatrix} = \begin{pmatrix} a \\ be^{i\phi}\end{pmatrix} 
+\end{align}
+$\tan\frac{\theta}{2} = \frac{b}{a}$ and $\theta$ and $\phi$ are angles (from $z$ down and $x$ round respectively as spherical coordinates. 
+So we can talk about our state vector as a Bloch vector, with all possible states of the qubit are points on the Bloch sphere.
 
+\section{Single-qubit gates}
+All single qubits are rotations on the Bloch sphere. 
+These rotations are described by unitary operator, e.g. $U$,
+\begin{align}
+    |\psi_f\rangle &= U|\psi_i\rangle,
+\end{align}
+where $U$ is a $2\times2$ matrix. 
+We can write $U$ as a sum of Pauli spin matrices (and the identity matrix),
+\begin{align}
+    \hat{\sigma}_x &= \begin{pmatrix}0&1\\1&0\end{pmatrix}, & \hat{\sigma}_y &= \begin{pmatrix}0&-i\\i&0\end{pmatrix}, & \hat{\sigma}_z &= \begin{pmatrix}1&0\\0&-1\end{pmatrix}, & \hat{\sigma}_0 &= \begin{pmatrix}1&0\\0&1\end{pmatrix}.
+\end{align}
 
+\begin{example}[Density operator]
+    The density operator is defined as:
+    \begin{align}
+        \hat{\rho} &= |\psi\rangle\langle\psi|.
+    \end{align}
+    We will write this in the form of the Pauli matrices and identity, then as a single matrix:
+    \begin{align}
+        \hat{\rho} &= \frac12\left(\hat{\sigma}_0 + u\hat{\sigma}_x + v\hat{\sigma}_y + w\hat{\sigma}_z\right) \\
+                   &= \frac12\begin{pmatrix} 1+w & u-iv \\ u+iv & 1-w\end{pmatrix}.
+    \end{align}
+    $u,v,w$ are the expectation values of $\hat{\sigma}_x,\hat{\sigma}_y,\hat{\sigma}_z$ for the state $|\psi\rangle$.
+\end{example}
+
+\begin{example}[Short Question \#7]
+    Let's take a particular state,
+    \begin{align}
+        |\psi\rangle &= \frac{1}{\sqrt{2}}\left(|0\rangle+e^{i\phi}|1\rangle\right).
+    \end{align}
+    What is the value of $\theta$?
+    \begin{align}
+        \cos\frac{\theta}{2} &= \sin\frac{\theta}{2} = \frac{1}{\sqrt{2}} \implies \frac{\theta}{2} = \frac{\pi}{4} \implies \theta = \frac{\pi}{2}.
+    \end{align}
+    Bloch vector is in equatorial plane. 
+    Now calculate expectation values of $\hat{\sigma}_i$:
+    \begin{align}
+        \langle\psi|\hat{\sigma}_x|\psi\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & e^{-i\phi}\end{pmatrix}\begin{pmatrix}0 & 1 \\ 1 & 0 \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}1 \\ e^{i\phi}\end{pmatrix} \\
+                                               &= \frac12\left(e^{i\phi}+e^{-i\phi}\right) = \cos\phi.
+    \end{align}
+    $\phi=0\implies u=+1, \phi=\pi \implies u=-1$.
+    \begin{align}
+        \langle\psi|\hat{\sigma}_y|\psi\rangle &= \frac12\begin{pmatrix}1 & e^{-i\phi}\end{pmatrix}\begin{pmatrix}0 & -i \\ i & 0\end{pmatrix}\begin{pmatrix} 1 \\ e^{i\phi}\end{pmatrix} \\
+                                               &= \frac{1}{2i}\left(e^{i\phi}+e^{-i\phi}\right) = \sin\phi. \\
+        \langle\psi|\hat{\sigma}_z|\psi\rangle &= \frac12\begin{pmatrix} 1 & e^{-i\phi}\end{pmatrix}\begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}\begin{pmatrix}1 \\ e^{i\phi}\end{pmatrix} \\
+                                               &= \frac12\left(1-1\right) = 0.
+    \end{align}
+    So the Bloch vector is in equatorial plain as thought. 
+\end{example}
 
 
 

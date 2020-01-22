@@ -205,6 +205,204 @@ This implies that the free energy is not analytic at $T_C$, and so BEC is a true
 \emph{doodle plot from visualiser}
 
 
+\chapter{BEC in Ultracold Dilute Gases of Alkali Atoms}
+\section{Bosonic Alkali Atomic Gases}
+Alkali metals are group 1 elements, and have a single valence electron in the outermost $s$-orbital: $2s$ for Li, $3s$ for Na, $4s$ for K, $5s$ for Rb. 
+The other electrons are in fully occupied shells, and therefore have total orbital and spin angular momentum $=0$.
+If the isotope is such that the nucleus is composed of an odd total number of protons and neutrons, the nucleus will have a net half-integer spin ($=\frac32$ for $^{87}$Rb, $^{23}$Na, $^7$Li).
+The \emph{total spin} will then take an integer value ($=1,2$ for $^{87}$Rb, $^{23}$Na, $^7$Li).
+It is possible to prepare the gas such that only one of these states is present, which can be considered a gas of identical particles having integer spin, i.e. \emph{identical bosons.}
+
+\section{Critical Temperature}
+Densities of trapped atomic gases are typically $\approx10^{11}-10^{15}$cm$^{-3}$. 
+Using such values and appropriate atomic masses to determine $T_C$ for the \emph{ideal, homogeneous} Bose gase yield $T_C$ between 10 nanoKelvin and 1 microKelvin.
+Such temperatures can be achieved relatively straightforwardly by methods of laser and evaporative cooling; BEC was first observed in 1995 in magnetically trapped gases of $^{87}$Rb and $^{23}$Na (Nobel prize in physics 2001).
+
+\section{Atom-Atom Interactions}
+The atoms interact with each other, and so we do not have an ideal Bose gas (interactions are in fact essential to establish thermal equilibrium during cooling).
+Interactions are dominated by elastic two-body collisions (in such dilute gases, the probability of 3 atoms meeting at the same point in space is extremely low).
+No binding takes place in elastic collisions, and so atomic clusters do not tend to form. 
+At the very cold temperatures under consideration, the collisions are very low energy, and the pair-interaction may be approximated by
+\begin{align}
+    V(\vr-\vr') &\approx g\delta(\vr-\vr'), \text{ where } g = \frac{4\pi\alpha_s\hbar^2}{m},
+\end{align}
+and $\alpha_s$ is the $s$-wave scattering length. 
+
+\section{Mean-Field Potential}
+Usually $\alpha_s$ is positive, implying a net repulsive interaction. 
+On average this can be represented by an additional potential, proportional to the \emph{atomic density} $n(\vr)$, felt by each particle due to its interaction with all other particles:
+\begin{align}
+    V_{\text{eff}}(\vr) &= gn(\vr).
+\end{align}
+In this approximation, the trapped atoms obey an effective Schrodinger equation,
+\begin{align}
+    H_{\text{eff}}\psi(\vr) &= \left[-\frac{\hbar^2}{2m}\del^2 + V_{\text{trap}}(\vr) + V_{\text{eff}}(\vr)\right] \psi(\vr) = \e\psi(\vr),
+\end{align}
+where the trapping potential $V_{\text{trap}}(\vr)$ can usually be considered harmonic. 
+Finding the steady states $\psi(\vr)$ and their corresponding "eigenvalues" $\e$ is not simply a matter of diagonalising $H_{\text{eff}}$ however, as $V_{\text{eff}}(\vr)$ is dependent on the state of the system, i.e. the effective Schrodinger equation is \emph{non-linear.}
+
+\section{Gross-Pitaevskii Equation}
+An appropriate thermodynamic limit is to let $N\to\infty$ while relaxing the trap.
+If 
+\begin{align}
+    V_{\text{trap}}(\vr) &= \frac{m\om^2 r^2}{2},
+\end{align}
+mathematically this corresponds to keeping $N\alpha_s/\alpha_h$ constant, as while letting $N\to\infty$,
+\begin{align}
+    \alpha_h &\equiv \sqrt{\frac{\hbar}{m\om}}\to\infty.
+\end{align}
+Below a critical temperature $T_C$, a transition to a "macroscopically occupied" quantum state occurs, but the mode (i.e. the spatical dependency of this state) changes with varying $T<T_C$ due to the combination of $V_{\text{trap}}(\vr)$ and atom-atom interactions.
+In the thermodynamic limit and as $T\to0$, all but a vanishingly small proportion of atoms enter a "ground state" mode $\psi_0(\vr)$, which obeys the \emph{Gross-Pitaevski equation}:
+\begin{align}
+    \left[-\frac{\hbar^2}{2m}+V_{\text{trap}}(\vr)+gN|\psi_0(\vr)|^2\right]\psi_0(\vr) = \e_0\psi_0(\vr).
+\end{align}
+This is a very useful equation for typical atom numbers $(\approx 10^3-10^8)$.
+
+\section{Thomas-Fermi Limit}
+Consider $V_{\text{trap}}(\vr) = m\om^2r^2/2$.
+All other things being equal, of $gN$ is allowed to become very large (this corresponds to letting $N\alpha_s/\alpha_h\to\infty$), the kinetic energy is completely dominated over most of the mode bby the potential energy. 
+Hence,
+\begin{align}
+    \left[\frac{m\om^2r^2}{2}+gN|\psi_0(\vr)|^2\right]\approx \e_0.
+\end{align}
+We can therefore determine a limiting spatial dependency of $\psi_0(\vr)$:
+\begin{align}
+    \psi_0(\vr) &= \begin{cases} \sqrt{\frac{\e_0-m\om^2r^2/2}{gN}} & \text{if } r\leq\sqrt{\frac{2\e_0}{m\om^2}}, \\ 0 & \text{if } r > \sqrt{\frac{2\e_0}{m\om^2}}, \end{cases}
+\end{align}
+and knowing the norm of $\psi_0(\vr)$ must be 1, one can show that in this limit
+\begin{align}
+    \e_0 &= \left(\frac{15gN}{8\pi}\right)^{2/5}\left(\frac{m\om^2}{2}\right)^{3/5}.
+\end{align}
+
+\section{Hydrodynamic Formulation}
+To a good approximation, the atomic condensate dynamics can frequently be described by the \emph{time-dependent} Gross-Pitaevskii equation:
+\begin{align}
+    i\hbar\dpt\psi(\vr) &= \left[-\frac{\hbar^2}{2m}\del^2 + V_{\text{trap}}(\vr) + gN|\psi(\vr)|^2\right]\psi(\vr).
+\end{align}
+Defining the probability density $\rho(\vr)=|\psi(\vr)|^2$ and a velocity field
+\begin{align}
+    \vec{v}(\vr) &= \frac{\hbar}{2im\rho(\vr)}\left[\psi^*(\vr)\del\psi(\vr) - \psi(\vr)\del\psi^*(\vr)\right],
+\end{align}
+it is possible to formulate a hydrodynamic description. 
+The (coupled) equations of motion are the \emph{continuity equation},
+\begin{align}
+    \dpt\rho(\vr) &= -\del\cdot\left[\rho(\vr)\vec{v}(\vr)\right],
+\end{align}
+and the equation of motion for the velocity field,
+\begin{align}
+    m\dpt\vec{v}(\vr) &+ -\del\left[\frac{m}{2}\vec{v}(\vr)^2 + V_{\text{trap}}(\vr) + gN\rho(\vr) - \frac{\hbar^2}{2m\sqrt{\rho(\vr)}}\del^2\sqrt{\rho(\vr)}\right].
+\end{align}
+If the density is relatively smooth, the final term above can be neglected. 
+In this case, together with the continuity equation, we have a dynamical description of a fluid with \emph{zero viscosity}, i.e. \emph{a superfluid}.
+When considering a fluid, one would typically not have a $V_{\text{trap}}(\vr)$ term, and it would also be more usual to write the equations in terms of $n(\vr)=N\rho(\vr)$, i.e. the condensate number density, in the present context.
+
+\chapter{Classical and Quantum Fluids}
+\section{Characteristic Properties of Classical and Quantum Fluids}
+A \emph{fluid} freely deforms or \emph{flows}, i.e. a gas or liquid. 
+In normal (classical) fluids, their physical properties are determined from classical statistical mechanics.
+A \emph{quantum fluid} remains fluid at sufficiently low temperatures for the effects of quantum mechanics to have a dominant role. 
+
+\section{Statistical Mechanics of Classical Interacting Many-Body Systems}
+The classical Hamiltonian for $N$ mass $m$ interacting identical point particles is
+\begin{align}
+    H(\vec{p}_1,\dots,\vec{p}_N,\vr_1,\dots,\vr_N) &= \frac{1}{2m}\sum_{k=1}^N \vec{p}_k^2 + \frac12\sum_{j\neq k=1}^N V(\vr_j-\vr_k).
+\end{align}
+The probability of each possible configuration is given by the Boltzmann probability density for $N$ particles and temperature $T$,
+\begin{align}
+    P(\vec{p}_1,\dots,\vec{p}_N,\vr_1,\dots,\vr_N) &= \frac{1}{Z_N}e^{-H/k_BT}, \\ 
+    \text{where } Z_N &= \left(\frac{1}{N!}\right)\int e^{-H/k_BT}\,d^3p_1\dots d^3p_N\,d^3r_1\dots d^3r_N
+\end{align}
+is the \emph{classical partition function}. 
+The $\frac{1}{N!}$ accounts for the particles' indistinguishability. 
+$Z_N$ factorises into position- and momentum-dependent terms:
+\begin{align}
+    Z_N &= \left(\prod_{k=1}^N \int e^{-p_k^2/2mk_BT}\,d^3p_k\right)Q_N = \left(2\pi mk_BT\right)^{3N/2}Q_N, \\
+    \text{where } Q_N &= \left(\frac{1}{N!}\right)\int \exp\left(-\sum_{j\neq k=1}^N \frac{V(\vr_j-\vr_k)}{2k_BT}\right)\,d^3r_1\dots d^3r_N.
+\end{align}
+The momentum part of $Z_N$ is a product of independent individual particle terms. 
+Hence, individual particle momenta are statistically independent, and a particle's momentum is in a region $d^3p$ of momentum space with probability
+\begin{align}
+    P(\vec{p})\,d^3p &= \frac{e^{-p^2/2mk_BT}}{(2\pi mk_BT)^{3/2}}\,dp.
+\end{align}
+The fraction of particles with momentum \emph{magnitude} between $p$ and $p+dp$ is
+\begin{align}
+    P_{MB}(p)\,dp &= \frac{4\pi p^2e^{-p^2/2mk_BT}}{(2\pi mk_BT)^{3/2}}\,dp,
+\end{align}
+where $P_{MB}(p)$ is the \emph{Maxwell-Boltzmann} momentum distribution.
+
+\section{Interactions in Helium and the Noble Gases}
+The atoms interact predominantly via a pairwise interaction potential $V(r)$, where $r$ is the \emph{relative coordinate} describing the distance between atoms.
+$V(r)$ contains a short-ranged repulsion and a weak, long-range van der Waals attraction, and it can be sufficient to consider a \emph{Lennard-Jones} model potential:
+\begin{align}
+    V(r) &= \e_0\left[\left(\frac{r_0}{r}\right)^{12}-2\left(\frac{r_0}{r}\right)^6\right],
+\end{align}
+where $\e_0$ is the potential depth, and $r_0$ is the position of the potential minimum.
+
+\section{Thermal de Broglie Wavelength}
+The de Broglie wavelength is defined as 
+\begin{align}
+    \lambda &= \frac{2\pi\hbar}{p}.
+\end{align}
+For a finite temperature system, a characteristic length scale is set by the \emph{thermal de Broglie wavelength},
+\begin{align}
+    \lambda_{dB} &= \frac{2\pi\hbar}{\sqrt{2\pi mk_BT}} = \sqrt{\frac{2\pi\hbar^2}{mk_BT}}.
+\end{align}
+$\lambda_{dB}$ corresponds to a momentum $\sqrt{2\pi mk_BT}$, which is distinct from both the \emph{mean} momentum $\sqrt{8mk_BT/\pi}$ and the \emph{most probable} momentum $\sqrt{2mk_BT}$.
+Quantum effects should be significant once $\lambda_{dB}$ is comparable to other typical length scales in the fluid. 
+
+\section{Significance of Quantum Effects in the Liquid Phase(s)}
+At standard atmospheric pressure, Neon (atomic mass 20) liquifies at $\approx27\,$K and freezes at $\approx24\,$K.
+The $\lambda_{dB}\approx0.07\,$nm is much less than $r_0=0.296\,$nm, and quantum effects are unimportant throughout the gas and liquid phases. 
+Helium 4 (atomic mass 4) liquifies at $4\,$K.
+There are two liquid phases (He I and He II) and no solid phase at standard atmospheric pressure. 
+Hence $\lambda_{dB}\approx0.4\,$nm is comparable to $r_0=0.264\,$nm, ad quantum effects are significant.
+
+\section{Phenomenological Low Temperature Model of a Solid Phase}
+Assume each atom vibrates with angular frequency $\om_0$ around its equilibrium position in a crystal lattice as an independent quantum harmonic oscillator, with zero-point energy per atom,
+\begin{align}
+    E_0 &= \frac32\hbar\om_0.
+\end{align}
+Assume a face-centred cubic lattice structure (12 nearest neighbours, equivalent to 4 springs of spring constant $k$ acting in each of the $x,y,$ and $z$ directions).
+The spring constant $k$ (and hence $\om_0=\sqrt{4k/m}$) can be taken from the second-order coefficient from a Taylor expansion of a Lennard-Jones potential about the equilibrium position $r_0$:
+\begin{align}
+    k &= \frac12 \frac{d^2V(r)}{dr^2}\bigg|_{r=r_0} = \frac{36\e_0}{r^2_0}.
+\end{align}
+
+\section{Absence of a Solid Phase in Helium}
+From this simple model, for Neon ($\e_0=3.94\,$meV, $r_0=0.296\,$nm), the zero-point energy 
+\begin{align}
+    E_0 &\equiv 3\hbar\sqrt{\frac{36\e_0}{mr_0^2}}\approx 4\,\text{meV},
+\end{align}
+which is comparable to $\e_0$.
+Thus Neon supports a solid phase. 
+For Helium ($\e_0=1.03\,$meV, $r_0=0.265\,$nm), this yields a zero-point energy $E_0\approx7\,$meV which is must greater than the potential well depth $\e_0$, and there is no solid phase. 
+
+\section{Singularity in Heat Capcity/Specific Heat as a Function of Temperature}
+Plotting $C_V$ as a function of $T$, at the boundary between the He I and He II phases ($T=T_C=2.17\,$K) one observes a singularity, known as the \emph{lambda point} (due to the alleged resemblance of such a plot near $T_C$ to the letter $\lambda$).
+At low $T$, $C_V\propto T^3$ (unlike BEC).
+Near $T_C$, $C_V$ has a weak power law behaviour:
+\begin{align}
+    C_V &= \begin{cases} C(T) + A_+|T-T_C|^{-\alpha}, & T > T_C, \\ C(T) + A_-|T-T_C|^{-\alpha}, & T < T_C,\end{cases}
+\end{align}
+where $C(T)$ is a smooth function of $T$ near $T_C$.
+Within the theory of phase transitions, measured values of the \emph{critical exponent} $\alpha(=-0.009)$, $A_+$, and $A_-$ are consistent with this phase transition belonging to a \emph{universality class} known as the three-dimensional XY-model. 
+The \emph{order} of such systems is described by a two-dimensional unit vector at every point in space $\vec{n}(\vr)$.
+In He I, this vector is spatially random; in He II, there is a spatial ordering, like the ordering in a ferromagnet. 
+
+\section{The Macroscopic Wavefunction}
+A two-dimensional unit vector can be equivalently described by the phase of a \emph{complex number}, such as the Gross-Pitaevskii wavefunction, motivating the introduction of a similar macroscopic wavefunction $\psi_0(\vr)$ here. 
+The wavefunction corresponds to a \emph{condensate}, or macroscopic number of particles. 
+We can normalise $\psi_0(\vr)$ such that 
+\begin{align}
+    n_0 &= |\psi_0|^2 \text{ is the condensate density,} \\
+    N_0 &= n_0V = \int |\psi_0(\vr)|^2\,d^3r \text{ is the number of condensed particles, and} \\
+    \psi_0(\vr) &= \sqrt{n_0(\vr)}e^{i\theta(\vr)}.
+\end{align}
+If $|\psi_0(\vr)|=0$, the phase $\theta(\vr)$ is undefinedl if $|\psi_0(\vr)|\neq0$, the phase $\theta(\vr)$ is a natural parameter of the system. 
+$\psi_0(\vr)$ is the \emph{order parameter} of the He II phase. 
+
+
+
 
 
 

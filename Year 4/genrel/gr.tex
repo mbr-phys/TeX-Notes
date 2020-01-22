@@ -2,6 +2,7 @@
 
 \usepackage{../../../LaTeX-Templates/Notes}
 \usepackage{subfiles}
+\usepackage{tensor}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{decorations.pathmorphing}
@@ -119,6 +120,57 @@ In general, we have
     A_{\bar{j}} &= \frac{\p x^i}{\p x^{\bar{j}}}A_i,
 \end{align}
 which we call a Rank (0,1) or order 1 covariant tensor.
+
+\chapter{}
+
+\section{Higher order tensors}
+Consider
+\begin{align}
+    T^{ab} &= A^aB^b, \\
+    T^{\bar{c}\bar{d}} &= A^{\bar{c}}B^{\bar{d}} = \left(\frac{\p x^{\bar{c}}}{\p x^a}A^a\right)\left(\frac{\p x^{\bar{d}}}{\p x^b}B^b\right) = \frac{\p x^{\bar{c}}}{\p x^a}\frac{\p x^{\bar{d}}}{\p x^b}A^a B^b = \frac{\p x^{\bar{c}}}{\p x^a}\frac{\p x^{\bar{d}}}{\p x^b}T^{ab}.
+\end{align}
+This is the definition of a second order contravariant tensor. 
+
+\section{Tensor Equations}
+We can write a basic tensor equation,
+\begin{align}
+    T^a = k(A^a+B^a),
+\end{align}
+and wonder how this would look in a transformed coordinate system?
+\begin{align}
+    T^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}T^a = k\left(\frac{\p x^{\bar{b}}}{\p x^a}A^a + \frac{\p x^{\bar{b}}}{\p x^a}B^a\right) \\
+                &= k(A^{\bar{b}}+B^{\bar{b}}).
+\end{align}
+So if a tensor equation is true, it is true in all coordinate systems.
+
+\section{The metric tensor}
+What is the metric? \emph{The metric is a measure of space.}
+We define the metric tensor, 
+\begin{align}
+    g_{ab} &= \ve_a\cdot\ve_b = g_{ba},
+\end{align}
+so it is symmetric.
+We can use this when calculating spacetime distances:
+\begin{align}
+    ds^2 &= \vec{dr}\cdot\vec{dr} = \left(dx^a\ve_a\right)\cdot\left(dx^b\ve_b\right) \\
+         &= (\ve_a\cdot\ve_b)dx^a\,dx^b = g_{ab}dx^a\,dx^b.
+\end{align}
+Is it a tensor?
+\begin{align}
+    g_{\bar{a}\bar{b}} &= (\ve_{\bar{a}}\cdot\ve_{\bar{b}}) = \left(\frac{\p x^c}{\p x^{\bar{a}}}\ve_c\right)\cdot\left(\frac{\p x^{d}}{\p x^{\bar{b}}}\ve_d\right) \\
+                       &= \frac{\p x^c}{\p x^{\bar{a}}}\frac{\p x^d}{\p x^{\bar{b}}}(\ve_c\cdot\ve_d) = \frac{\p x^c}{\p x^{\bar{a}}}\frac{\p x^d}{\p x^{\bar{b}}}g_{cd},
+\end{align}
+so it transforms as a tensor; a second order covariant tensor. 
+
+\section{Kronecker Delta}
+We can write an arbitrary vector as 
+\begin{align}
+    \vec{A} = A^a\ve_a = A^{\bar{b}}\ve_{\bar{b}} &= \left(\frac{\p x^{\bar{b}}}{\p x^a}A^a\right)\left(\frac{\p x^{d}}{\p x^{\bar{b}}}\ve_d\right) \\
+                                                  &= \left(\frac{\p x^{\bar{b}}}{\p x^a}\frac{\p x^{d}}{\p x^{\bar{b}}}\right)A^a\ve_d = \left(\frac{\p x^{d}}{\p x^a}\right)A^a\ve_d \\
+                                                  &= \tensor{\delta}{_a^d}A^a\ve_d = A^d\ve_d = A^a\ve_a
+\end{align}
+
+
 
 
 
