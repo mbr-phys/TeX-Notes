@@ -705,6 +705,108 @@ If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$
     \item So we have three families, or generations, of both quarks and leptons. 
 \end{itemize}
 
+\chapter{}
+    So far we discussed how the Standard Model is a gauge field theory with symmetry SU(3)$_{QCD}\otimes$SU(2)$_W\otimes$U(1)$_{Y}$.
+\begin{itemize}
+    \item We define the gauge fields of the electroweak sector as $W^\pm_\mu,Z_\mu^0,A_\mu$, so altogether four (3 from SU(2) and 1 from U(1)).
+    \item The photon is strictly massless because the gauge symmetry of U(1)$_{QED}$ is unbroken. 
+    \item There is a way to break a gauge symmetry spontaneously to induce masses for the other electroweak gauge fields. 
+    \item SU(2)$_W\otimes$U(1)$_Y\to$U(1)$_{QED}$ from spontaneous symmetry breaking.  
+    \item In the limit where the centre-of-mass energy $E_{com}\ll M_{Z,W^{\pm}}^2$, then the propagator can be reduced to $-\frac{g_{w}^2}{M_{Z,W^{\pm}}^2}$, and the interaction can be reduced to a point-like interaction between four fermions. 
+    \item \emph{doodle diagram}
+\end{itemize}
+
+\section{Spontaneous Symmetry Breaking}
+\begin{multicols}{2}
+We can have:
+\begin{itemize}
+    \item discrete symmetries, e.g. $\phi\to-\phi$
+    \item continuous symmetries
+        \begin{itemize}
+            \item global, e.g. $\phi(x)\to e^{-i\alpha}\phi(x)$
+            \item local (gauge), e.g. $\phi(x)\to e^{-i\alpha(x)}\phi(x)$
+        \end{itemize}
+\end{itemize}
+\columnbreak
+These symmetries can be one of three cases:
+\begin{itemize}
+    \item exact, not broken
+    \item explicitly broken, adding clear terms in the Lagrangian to break the symmetry
+    \item spontaneously broken 
+\end{itemize}
+\end{multicols}
+Spontaneous symmetry breaking preserves the invariance of the Lagrangian and Action under the field transformation, but the vacuum state of the Hilbert space is not invariant.
+\begin{itemize}
+    \item Take a real scalar field $\phi(x)$, and write its Lagrangian
+        \begin{align}
+            \La &= \underbrace{\frac12\p_\mu\phi\p^\mu\phi}_{K} \underbrace{- \frac12 m^2\phi^2 - \frac{\lambda}{4}\phi^4}_{-V(\phi)}
+        \end{align}
+    \item Consider the discrete field transformation $\phi(x)\to-\phi(x)$: the Lagrangian is invariant. 
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw[-Latex] (-1.5,0) -- (1.5,0);
+                \draw[-Latex] (0,-0.5) -- (0,2);
+                \draw (-1,2) sin (0,0) cos (1,2);
+                \fill (0,0) circle (2pt);
+            \end{tikzpicture}
+        \end{figure}
+    \item There is a global minimum at $\phi=0$; the ground state of the theory (or the vacuum state) is at $\phi=0$.
+    \item $\langle0|\hat{\phi}(x)|0\rangle = \langle\phi\rangle = 0$: this the vacuum expectation value (VEV).
+    \item In $\phi\to-\phi$, the symmetry is exact and is not spontaneously broken because $\langle\phi\rangle=0$ ($0\to-0$). 
+    \item What if we consider $m^2\to-m^2$?
+        \begin{align}
+            \La &= \frac12\p_\mu\phi\p^\mu\phi + \frac12m^2\phi^2 - \frac{\lambda}{4}\phi^4 \\
+            V(\phi) &= -\frac12m^2\phi^2 + \frac{\lambda}{4}\phi^4
+        \end{align}
+        So we now have not a minimum but a local maximum at $\phi=0$, and two degenerate local minima at $\phi=\pm v$, $v=\frac{m}{\sqrt{\lambda}}$.
+        \emph{finish doodle}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw[-Latex] (-1.5,0) -- (1.5,0);
+                \draw[-Latex] (0,-0.5) -- (0,2);
+                \draw (-1.5,2) sin (-0.75,-0.5) cos (-0.375,-0.25) sin (0,0) cos (0.375,-0.25) sin (0.75,-0.5) cos (1.5,2);
+                \fill (0,0) circle (2pt);
+                \fill (-0.75,-0.5) circle (2pt);
+                \fill (0.75,-0.5) circle (2pt);
+            \end{tikzpicture}
+        \end{figure}
+    \item $\langle\phi\rangle=\pm v$ - the universe has to spontaneously choose a vacuum, e.g. $\langle\phi\rangle=+v$ yields multiparticle states again using the creation operator $\hag$ and we have the Hilbert space, but the vacuum is not invariant under the transformation: $\langle\phi\rangle=v\to-v\neq v$.
+        Thus, a spontaneously broken discrete symmetry of $\phi\to-\phi$.
+    \item There are no interesting implications from this, so we need to look at continous symmetries to find some physical meaning.
+    \item We are going to consider spontaneous breaking of a global continuous symmetry. 
+        Now taking a complex scalar field $\phi(x)\in\C$, and noting the Lagrangian as
+        \begin{align}
+            \La &= \p_\mu\phi^*\p^\mu\phi + m^2|\phi|^2 - \frac{\lambda}{4}|\phi|^4.
+        \end{align}
+    \item Again we consider $m^2\to-m^2$, and look at the potential:
+        \begin{align}
+            V(\phi) &= -m^2|\phi|^2 + \frac{\lambda}{4}|\phi|^4.
+        \end{align}
+        We can equivalently rewrite it in the form
+        \begin{align}
+            V(\phi) &= \frac{\lambda}{4}\left(|\phi|^2-v^2\right)^2.
+        \end{align}
+        $V(\phi)$ has the same form as it did before, but now rotated around z-axis as scalar field is complex, arriving at the Mexican hat potential. 
+        \emph{find image of Mexican hat potential}
+        There is now a whole circle of minima at $|\phi|=v$, so $\langle\phi\rangle = ve^{i\xi}$. 
+        The universe has to choose a single vacuum state spontaneously. 
+    \item Let's say we choose $\langle\phi\rangle = v$, i.e. $\xi=0$. (It doesn't matter which we choose, but it's easiest to choose $\xi=0$ for mathematical convenience.)
+    \item So $\phi\to e^{-i\alpha}\phi$ keeps the Lagrangian invariant, but it does not keep the VEV invariant, so we do indeed have a spontaneously broken global continuous symmetry. 
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

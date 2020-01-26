@@ -149,8 +149,56 @@ We can write $U$ as a sum of Pauli spin matrices (and the identity matrix),
     So the Bloch vector is in equatorial plain as thought. 
 \end{example}
 
+\chapter{}
+\begin{itemize}
+    \item Any qubit can be represented by a point on the Bloch sphere. 
+    \item We have two parameters: the polar angle, $\theta$; and the azimuthal angle, $\phi$.
+    \item The qubit state vector is defined as
+        \begin{align}
+            |\psi\rangle = \begin{pmatrix} \cos\frac{\theta}{2}\\ e^{i\phi}\sin\frac{\theta}{2}\end{pmatrix} = \begin{pmatrix} a \\ b\end{pmatrix}.
+        \end{align}
+\end{itemize}
+In Cartesian coordinates, the qubit state is given by the Bloch vector $\vec{b}=(u,v,w)$, with $\sqrt{u^2+v^2+w^2}=1$.
+This Cartesian description allows for
+    \begin{align}
+        \sqrt{u^2+v^2+w^2} &< 1,
+    \end{align}
+i.e. point inside the sphere.
+In the real world, we have decoherence where the effect is to shorten the Bloch vector.
+We have two types of states:
+\begin{itemize}
+    \item Pure states: $\sqrt{u^2+v^2+w^2}=1$, on the Bloch sphere, represented by the wavefunction $|\psi\rangle$.
+    \item Mixed states: $\sqrt{u^2+v^2+w^2} < 1$, inside the Bloch sphere.
+\end{itemize}
+We cannot describe mixed states by a wavefunction, so we introduce the density matrix.
 
+\section{Density matrix for a pure state of a qubit}
+We define the density matrix as:
+\begin{align}
+    \rho &= |\psi\rangle\langle\psi| = \begin{pmatrix} \cos\frac{\theta}{2} \\ e^{i\phi}\sin\frac{\theta}{2}\end{pmatrix}\begin{pmatrix} \cos\frac{\theta}{2} & e^{-i\phi}\sin\frac{\theta}{2}\end{pmatrix}  \\
+                                    &= \begin{pmatrix} \cos^2\frac{\theta}{2} & e^{-i\phi}\sin\frac{\theta}{2}\cos\frac{\theta}{2} \\ e^{i\phi}\sin\frac{\theta}{2}\cos\frac{\theta}{2} & \sin^2\frac{\theta}{2}\end{pmatrix} = \frac12 \begin{pmatrix} 1+\cos\theta & e^{-i\phi}\sin\theta \\ e^{i\phi}\sin\theta & 1-\cos\theta\end{pmatrix} \\
+                                    &= \frac12 \begin{pmatrix} 1+\cos\theta & \sin\theta\cos\phi - i\sin\theta\sin\phi \\ \sin\theta\cos\phi + i\sin\theta\sin\phi & 1-\cos\theta\end{pmatrix} \\
+    \rho &= \frac12\begin{pmatrix} 1+w & u-iv \\ u+iv & 1-w\end{pmatrix} = \frac12\left(\hat{\sigma}_0 + u\hat{\sigma}_x + v\hat{\sigma}_y + w\hat{\sigma}_z\right).
+\end{align}
+What is the expectation value of $\rho$ for our wavefunction?
+If we have a normalised wavefunction, $\langle\psi|\rho|\psi\rangle = \langle\psi|\psi\rangle\langle\psi|\psi\rangle = 1$.
+\begin{align}
+    \langle\psi|\rho|\psi\rangle &= \frac12\left(\langle\psi|\sigma_0|\psi\rangle + u\langle\psi|\sigma_x|\psi\rangle + \cdots\right) \\
+                                 &= \frac12\left(1 + u^2 + v^2 + w^2\right) = 1
+\end{align}
+For mixed states, $\sqrt{u^2+v^2+w^2}<1$, so this will no longer be the case. 
+We will explore that properly later. 
 
+\section{Qubit Rotations}
+All unitary operations (that conserve the norm $\langle\psi|\psi\rangle$) can be described as rotations of the Bloch vector. 
+\emph{get doodle from Hannah}
+A general rotation by an angle $\Theta$ about a unit vector $\vec{n}=(n_x,n_y,n_z)$.
+We define the Rotation operator, 
+\begin{align}
+    \hat{R} &= \exp\left(-i\frac12\hat{\vec{\sigma}}\cdot\vec{n}\Theta\right) \\
+            &= \hat{\sigma}_0\cos\frac{\Theta}{2} - i\hat{\vec{\sigma}}\cdot\vec{n}\sin\frac{\Theta}{2} \\
+            &= \begin{pmatrix} \cos\frac{\Theta}{2}-in_z\sin\frac{\Theta}{2} & \left(-in_x-ny\right)\sin\frac{\Theta}{2} \\ \left(-in_x+n_y\right)\sin\frac{\Theta}{2} & \cos\frac{\Theta}{2}+in_z\sin\frac{\Theta}{2}  \end{pmatrix}
+\end{align}
 
 
 
