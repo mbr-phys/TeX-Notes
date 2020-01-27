@@ -401,6 +401,111 @@ We can normalise $\psi_0(\vr)$ such that
 If $|\psi_0(\vr)|=0$, the phase $\theta(\vr)$ is undefinedl if $|\psi_0(\vr)|\neq0$, the phase $\theta(\vr)$ is a natural parameter of the system. 
 $\psi_0(\vr)$ is the \emph{order parameter} of the He II phase. 
 
+\chapter{Superfluiditity in Helium II}
+\section{Superfluid Viscosity}
+Assuming a macroscopic wavefunction $\psi_0(\vr)=\sqrt{n_0}e^{i\theta}$, we define the \emph{superfluid velocity} $\vec{v}_s$, which defines a \emph{current density} (particle flow) $\vec{j}_0=n_0\vec{v}_s$.
+
+\section{Superflow and Viscosity}
+A normal fluid's flow viscosity $v$ through a (length $L$, radius $R$) capillary depends on the fluid's viscosity $\eta$ and the pressure difference $\Delta P = P_1-P_2$, such that
+\begin{align}
+    \frac{\Delta P}{L} &\approx \eta\frac{v}{R^2}.
+\end{align}
+\textbf{Piotr Kapitza} found that with He II, $\Delta P$ was always 0 whatever the value of $v$.
+\emph{Superflow} is therefore fluid flow with \emph{zero viscosity}.\\
+Alternatively, consider a disc suspended in fluid and made to undergo torsional oscillations about its axis. 
+The oscillation frequency depends on the torsional stiffness of the support, and the moment of inertia of the disc. 
+In a viscous fluid, a thin layer of fluid is dragged along with the disc's motion, effectively increasing the intertia of the disc. 
+With a stack of closely spaced discs, all fluid between the discs should be dragged along, contributing to the inertia. 
+Immersing a stack of discs in He II, \textbf{Elepter Andronikashvili} showed that a temperature-dependent fraction of He II contributed to the intertia but a fraction did not. 
+This motivated a \emph{two fluid} model of He II.
+
+\section{Two Fluid Model}
+The total particle density of the fluid is $n=n_s+n_n$, and the \emph{normal component} $n_n$ acts like a conventional viscous fluid. 
+It contributes to the inertia of the rotating discs, but friction with the walls prevents flow down the capillary. 
+The superfluid component $n_s$ flows with zero viscosity. 
+It does not contribute to the inertia of the rotating discs, but flows freely down the capillary.
+The two fluid components move relative to each other without friction. 
+
+\section{Temperature Dependence of the Superfluid and Normal Components}
+As $T\to0$, almost all fluid is superfluid, i.e. $n_s\approx n,n_n\approx0$, and near $T=0$ the temperature dependence is $n_s(T)\approx n-AT^4$ (A is a constant).
+Near the critical temperature $T_C$ nearly all the fluid is normal, and it is observed experimentally that $n_s$ vanishes like a power law:
+\begin{align}
+    n_s &\approx \begin{cases} B(T_C-T)^a & T<T_C, \\ 0 & T>T_C, \end{cases}
+\end{align}
+where the critical exponent $a\approx0.67$ (again consistent with predictions based on the three-dimensional XY model) and $B$ is another constant.
+
+\section{Two Fluid Hydrodynamical Quantities}
+The \emph{superfluid density} is the mass density of the superfluid component $\rho_s=mn_s$.
+There are two types of current flow, so that the total current density $\vec{j}=\vec{j}_s+\vec{j}_n$, where
+\begin{align}
+    \vec{j}_s &= n_s\vec{v}_s, & \vec{j}_n &= n_n\vec{v}_n,
+\end{align}
+and $\vec{v}_s,\vec{v}_n$ are the velocities of the two fluid components.
+
+\section{Flow Quantisation}
+From the definition of superfluid velocity, we have $\vec{v}_s = \frac{\hbar}{m}\grad\theta$.
+Hence, 
+\begin{align}
+    \grad\times\vec{v}_s &\equiv \frac{\hbar}{m}\grad\times\grad\theta=0,
+\end{align}
+i.e. the flow is \emph{irrotational}.
+Consider a flow around the inside of a torus, in particular a closed path going all the way around the torus exactly once. 
+The flow circulation $\kappa$ is defined by the integral
+\begin{align}
+    \kappa &= \oint \vec{v}_s\cdot\,d\vr = \frac{\hbar}{m}\oint \grad\theta\cdot\,d\vr = \frac{\hbar}{m}\Delta\theta,
+\end{align}
+where $\Delta\theta$ is the phase change after having traversed the path. 
+The value of any such line integral of $\vec{v}_s$ should be \emph{independent} of the (topologically similar) path between two endpoints. 
+Hence, $\Delta\theta$ is the same for any path wrapping around the torus exactly once. 
+If $\psi_0(\vr)$ is to be single-valued, we must have $\psi_0(\vr)=\psi_0(\vr)e^{i\Delta\theta}$, i.e. $\Delta\theta=2\pi j$ where $j$ is an integer. 
+Hence $\kappa=\frac{h}{m}j$ is quantised in units of $\frac{h}{m}$.
+
+\section{Phase Slips and Persistent Currents}
+Consider liquid Helium, at rest ($\kappa=0\implies j=0$) and trapped between two concentric cylinders.
+Rotating the cylinders accelerates the normal component until it has the same angular velocity as the apparatus, but leaves the superfluid component at rest.
+If the system is then cooled slowly, particles from the normal fluid will gradually be added to the superfluid component.
+Hence, their angular momentum will be transferred to the superfluid component, which will begin to rotate.
+The circulation $\kappa$ is observed to increase in sudden jumps of $\frac{h}{m}$, called \emph{phase slip} events.
+These correspond to changes in the quantum number $j$, and are therefore analagous to transitions between quantum states in an atom. 
+Conversely, cooling an initially rotating normal fluid below $T_C$ yields a circulating superflow. 
+Without viscosity, in principle this flow continues indefinitely. 
+
+\section{Irrotational Flow and Vortices}
+Consider a cylindrical container of liquid Helium. 
+In this case (topological considerations would appear to be absent), the irrotational flow condition $\grad\times\vec{v}_s=0\implies\oint\vec{v}_s\cdot\,d\vr=0$ around any closed path.
+A \emph{vortex}, however, can satisfy $\grad\times\vec{v}_s=0$ almost everywhere and still allow a net rotation. 
+In cylindrical polar coordinates,
+\begin{align}
+    \grad\times\vec{v}_s &= \frac{1}{r}\begin{vmatrix}\ve_r & r\ve_\phi & \ve_z \\ \frac{\p}{\p r} & \frac{\p}{\p\phi} & \frac{\p}{\p z} \\ v_r & rv_\phi & v_z\end{vmatrix}.
+\end{align}
+A circulating flow with cylindrical symmetry will obey $\grad\times\vec{v}_s=0$ if $\frac{1}{r}\frac{\p rv_\phi}{\p r}=0$.
+The flow velocity around the vortex must therefore be of the form
+\begin{align}
+    \vec{v}_s &= \frac{\kappa}{2\pi r}\ve_\phi,
+\end{align}
+where $\kappa$ is the (quantised) net circulation. 
+In practice only the lowest energy ($j=\pm1$) vortices are observed.
+
+\section{Vortex Core}
+Eq (5.7) satisfies $\grad\times\vec{v}_s=0$ except at $r=0$, the \emph{vortex core} (in Helium, the core region is $\approx1$\AA).
+In the vortex core $\psi_0(0)=0$, and so $\theta$ is undefined there.
+Hence $n_s\equiv|\psi_0(0)|^2=0$ at the core, and also the superfluid current density $\vec{j}_s\equiv n_s\vec{v}_s=0$.
+This avoids any singularity in the supercurrent at the centre of the vortex (topological considerations are thus not entirely absent).
+Superfluid Helium inside a rotating cylinder manifests a centrifugally curved free surface, implying circulation.
+The \emph{net circulation provided by many vortices}, circumventing a naive interpretation of the irrotationality conditions, explains this.
+
+\section{Vortex Density of a Superfluid in a Rotating Cylinder}
+If the cylinder has radius $R$ and angular velocity $\om$, the total circulation around the cylinder boundary will be the velocity at the boundary multiplied by the diameter, i.e. taking the integration contour around the cylinder boundary,
+\begin{align}
+    \kappa &= \oint \vec{v}_s\cdot\,d\vr = (\om R)(2\pi R).
+\end{align}
+The circulation is quantised; if there are $N_v$ vortices with $j=1$, then it follows that $\kappa=\frac{h}{m}N_v$.
+Hence, the number of vortices per unit area is
+\begin{align}
+    \frac{N_v}{\pi R^2} &= \frac{2m\om}{h}.
+\end{align}
+At low rotation rates, vortices from ordered triangular arrays.
+
 
 
 
@@ -408,6 +513,18 @@ $\psi_0(\vr)$ is the \emph{order parameter} of the He II phase.
 
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

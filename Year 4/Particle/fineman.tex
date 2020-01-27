@@ -1,6 +1,8 @@
 %NOTE: COMPILE IN TERMINAL USING LUALATEX
 \documentclass[a4paper,11pt]{standalone}
+%\documentclass[landscape,a4paper,11pt]{article}
 
+\usepackage{graphics,graphicx,epsfig}
 \usepackage{amsmath}
 %\usepackage{cancel}
 \usepackage{tikz-feynman}
@@ -20,9 +22,50 @@
 %    a [label=90:$e$] -- [photon] b [label=90:$A_\mu$],
 %    i1 -- [photon] i2,
 %};
-\feynmandiagram [large, horizontal=a to b] {
-    i1 -- [photon] a -- [photon] i2,
-    i3 -- [photon] a -- [photon] i3,
+\feynmandiagram [small,baseline=(a.base),horizontal=z to y] {
+    i1 -- [fermion] a [crossed dot] -- [anti fermion] i2,
+    f1 -- [anti fermion] a -- [fermion] f2,
+    i1 -- [opacity=0] z -- [opacity=0] i2,
+    f1 -- [opacity=0] y -- [opacity=0] f2,
+    z -- [opacity=0] a -- [opacity=0] y,
 };
+%        =
+%        \feynmandiagram [horizontal=b to c,baseline=(c.base)] {
+%            i3 -- [fermion] b [dot] -- [anti fermion] i4,
+%            b -- [boson] c [dot],
+%            f3 -- [anti fermion] c -- [fermion] f4,
+%        };
+%        +
+%        \feynmandiagram [small,baseline=(a.base),horizontal=z to y] {
+%            i1 -- [fermion] a [dot] -- [anti fermion] i2,
+%            f1 -- [anti fermion] a -- [fermion] f2,
+%            i1 -- [opacity=0] z -- [opacity=0] i2,
+%            f1 -- [opacity=0] y -- [opacity=0] f2,
+%            z -- [opacity=0] a -- [opacity=0] y,
+%        };
+%        +
+%        \feynmandiagram [small,vertical=b to c,baseline=(c.base)] {
+%            i3 -- [fermion] b [dot] -- [fermion] i4,
+%            b -- [boson] c [dot],
+%            f3 -- [fermion] c -- [fermion] f4,
+%        }; 
+%        +
+%        \feynmandiagram [small,horizontal=b to c,baseline=(c.base)] {
+%            i3 -- i5 [dot] -- b [dot] -- i4 [dot] -- i6,
+%            b -- [boson] c [dot],
+%            f3 -- c -- f4,
+%            i5 -- [gluon] i4,
+%            i3 -- [opacity=0] i6,
+%        };
+%        +
+%        \feynmandiagram [small,horizontal=b to c,baseline=(f.base)] {
+%            i1 -- a [dot] -- [boson] d [dot] -- i2,
+%            i3 -- b [dot] -- [boson] c [dot] -- i4,
+%            a -- [boson] b,
+%            d -- [boson] c,
+%            a -- [opacity=0] f -- [opacity=0] c,
+%            b -- [opacity=0] f -- [opacity=0] d,
+%        };
+%        + \cdots
 
 \end{document}

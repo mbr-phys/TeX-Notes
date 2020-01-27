@@ -535,10 +535,19 @@ We want to find a Lagrangian with terms with powers $>2$ of gauge fields, i.e. i
 \begin{align}
     \La &= \dots - gf^{abc}\p_\mu A_\nu^aA^{\mu b}A^{\nu c} - \frac{g^2}{4}f^{abc}f^{ade}A_\mu^b A_\nu^c A^{\mu d}A^{\nu e} + \text{ nothing else}
 \end{align}
-From the first term, we can see that there interactions involving three-point vertices of gauge fields, 
-\textit{doodle three-point vertex of three As} - $gf^{abc}p^\mu$
-From the second, we find four-point vertices,
-\textit{doodle four-point vertex of four As} - $gf^{abc}f^{ade}$
+\begin{multicols}{2}
+From the first term, we can see that there interactions involving three-point vertices of gauge fields of the form $gf^{abc}p^\mu$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{diagrams/threepoint.pdf}
+\end{figure}
+\columnbreak
+From the second, we find four-point vertices of the form $gf^{abc}f^{ade}$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{diagrams/fourpoint.pdf}
+\end{figure}
+\end{multicols}
 So interactions are automatically included, and there are no higher levels of gauge field interactions. 
 Both the terms above had to appear in the Lagrangian as they come from $\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}]$.\\
 The relative coefficients between the three- and four-point vertices, and also between vertices with fermions, are fixed and uniquely determined by gauge invariance of the total Lagrangian. 
@@ -550,7 +559,10 @@ However, in an Abelian theory, we can couple different matter fields to gauge fi
 In a classical gauge theory, the coupling constant is a constant.
 In a quantum gauge theory, it is no longer constant; instead, it depends on the energy scale at which we make observations. 
 For a scattering experiment, at energy scale, $E = \sqrt{s}$, $s=(p_1+p_2)^2$.
-\textit{doodle gluons going in and out, various diagrams at tree level and some loops}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{diagrams/loopsum.png}
+\end{figure}
 At tree level, processes are $\propto g^2$; at loop level, $\propto g^{2(1+\text{no. of loops})}$.
 When we extract the value of $g^2$ from any such measurement, we will get $g^2(E)$.\\
 We usually consider $g^2(p)$, where $p$ is a momentum or energy value characteristic for the experiment, e.g. can be $p=E_{COM}$, $p$ is either $\sqrt{s}$ or total transverse momentum (total momentum transfer).\\
@@ -713,7 +725,10 @@ If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$
     \item There is a way to break a gauge symmetry spontaneously to induce masses for the other electroweak gauge fields. 
     \item SU(2)$_W\otimes$U(1)$_Y\to$U(1)$_{QED}$ from spontaneous symmetry breaking.  
     \item In the limit where the centre-of-mass energy $E_{com}\ll M_{Z,W^{\pm}}^2$, then the propagator can be reduced to $-\frac{g_{w}^2}{M_{Z,W^{\pm}}^2}$, and the interaction can be reduced to a point-like interaction between four fermions. 
-    \item \emph{doodle diagram}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.8]{diagrams/fermi.pdf}
+        \end{figure}
 \end{itemize}
 
 \section{Spontaneous Symmetry Breaking}
@@ -760,7 +775,6 @@ Spontaneous symmetry breaking preserves the invariance of the Lagrangian and Act
             V(\phi) &= -\frac12m^2\phi^2 + \frac{\lambda}{4}\phi^4
         \end{align}
         So we now have not a minimum but a local maximum at $\phi=0$, and two degenerate local minima at $\phi=\pm v$, $v=\frac{m}{\sqrt{\lambda}}$.
-        \emph{finish doodle}
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
