@@ -847,8 +847,8 @@ So it is still invariant.
 If we consider the potential term of this, 
 \begin{equation}
     \begin{split}
-        -V(\phi) = -&\frac{\lambda}{4}(\phi_1^2+\phi_2^2)^2 \quad\to\text{ four-point interactions} \\
-                   -& \lambda v^2\phi_1^2 \quad\to\text{ mass term} \\
+        -V(\phi) = -&\frac{\lambda}{4}(\phi_1^2+\phi_2^2)^2 \quad\quad\to\text{ four-point interactions} \\
+                   -& \lambda v^2\phi_1^2 \;\;\quad\quad\quad\quad\to\text{ mass term} \\
                    -& \lambda v\phi_1(\phi_1^2+\phi_2^2) \quad\to\text{ three-point interactions}.
     \end{split}
 \end{equation}
@@ -862,6 +862,36 @@ It's massless because of a spontaneously broken global U(1) symmetry.
 \section{The Goldstone Theorem}
 If a continuous global symmetry $G$ is broken spontaneously, there will be $n$ massless Goldstone bosons, where $n$ is the number of generators of $G$.
 
+Let's consider QCD with $N_f=2$ massless flavours of quarks, i.e. $m_{u,d}\to0$ and $m_{t,b,c,s}\neq0$.
+There is then a global symmetry of SU(2)$_L$.
+Under this symmetry, the massless quarks will transform as
+\begin{align}
+    \begin{pmatrix} u_L \\ d_L\end{pmatrix} &\to e^{-i\alpha^aT^{a\in\{1,2,3\}}}\begin{pmatrix}u_L\\ d_L\end{pmatrix}, & \begin{pmatrix} u_R \\ d_R\end{pmatrix} &\to e^{+i\alpha^aT^{a\in\{1,2,3\}}}\begin{pmatrix}u_R\\ d_R\end{pmatrix}. 
+\end{align}
+It is a phenomenological fact that SU(2)$_L$ is spontaneously broken, which implies $N_f^2-1=3$ massless bosons. 
+They are the three pions, $\pi^0,\pi^+,\pi^-$:
+\begin{align}
+    \pi^0 &= \frac{\bar{u}u + \bar{d}d}{\sqrt{2}}, & \pi^+ &= u\bar{d}, & \pi^- &= d\bar{u}.
+\end{align}
+The mass of the pions $m_\pi \approx 140$ MeV $\ll 1$ GeV $= m_{proton}$, so it is an approximation, which can hold in certain schemes.
+So the pions can be \textbf{pseudo-Goldstone} bosons, which are not exactly massless since in reality $m_{u,d}\neq0$.
+
+\section{Spontaneous Breaking of a Continuous Local (Gauge) Symmetry}
+We will consider the simplest case of the Higgs phenomenon: the Abelian Higgs model.
+For a scalar field $\phi(x)\in\C$, we consider a U(1) gauge symmetry, i.e. $\phi(x)\to e^{-i\alpha(x)}\phi(x)$.
+We must look at the Lagrangian for this symmetry:
+\begin{align}
+    \La &= (\p_\mu\phi^*)(\p^\mu\phi) - \lambda\left(|\phi|^2-\frac{v^2}{2}\right)^2.
+\end{align}
+This is fine, but we need to add some stuff on:
+\begin{align}
+    A_\mu(x) &\to A_\mu(x) + \frac{1}{e}\p_\mu\alpha(x), \\
+    D_\mu &= \p_\mu + ieA_\mu(x), \\
+    \La &= -\frac14 F_{\mu\nu}F^{\mu\nu} + (D_\mu\phi)^*(D^\mu\phi)-V(\phi).
+\end{align}
+This form of the Lagrangian will be invariant under our gague transformations defined above.
+Again, the potential $V(\phi)$ will give us a Mexican hat potential with local minima at $|\langle\phi\rangle|=\frac{v}{\sqrt{2}}$.
+We choose the vacuum $\langle\phi\rangle=\frac{v}{\sqrt{2}}$ such that it breaks the gauge U(1) symmetry spontaneously.
 
 
 
