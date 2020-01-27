@@ -810,9 +810,57 @@ Spontaneous symmetry breaking preserves the invariance of the Lagrangian and Act
     \item So $\phi\to e^{-i\alpha}\phi$ keeps the Lagrangian invariant, but it does not keep the VEV invariant, so we do indeed have a spontaneously broken global continuous symmetry. 
 \end{itemize}
 
+\chapter{}
+\section{Spontaneous Breaking of a Continuous Global Symmetry}
+For a scalar field $\phi(x)\in\C$, we consider a global U(1) symmetry, i.e. $\phi(x)\to e^{-i\alpha}\phi(x),\alpha\in\R$.
+We must look at the Lagrangian for this symmetry:
+\begin{align}
+    \La &= (\p_\mu\phi^*)(\p^\mu\phi) - \lambda\left(|\phi|^2-\frac{v^2}{2}\right)^2.
+\end{align}
+Note we have made a slight change of normalisations from the previous lecture, but the constants don't matter as long as we are consistent throughout any example. 
+Following the Mexican hat potential for $V(\phi)$, we have a circle of local minima at $|\phi|=\frac{v}{\sqrt{2}}$.
+Our U(1) symmetry is spontaneously broken like before, by the choice of a particular minima as the vacuum: $\langle\phi\rangle = \frac{v}{\sqrt{2}}$.
+Again, the Lagrangian will be invariant, but the vacuum state is not.\\
+So now, we need to give a particle interpretation to the field. 
+We build up the Hilbert space above the vacuum as small fluctuations from the vacuum to build a multi-particle state. 
+To this end, we shift the scalar field $\phi(x)$ by the VEV:
+\begin{align}
+    \phi(x) - \frac{v}{\sqrt{2}} = \phi(x) - \langle\phi\rangle = \chi(x),
+\end{align}
+and it is fluctuations in this field $\chi$ which give rise to particle creation operators $\hag$, owing to the zero VEV of $\chi$, $\langle\chi\rangle=0$.
+We write $\chi$ as 
+\begin{align}
+    \chi(x) &= \frac{1}{\sqrt{2}}\left(\phi_1(x) + i\phi_2(x)\right),
+\end{align}
+where $\phi_i$ are both \textbf{real} scalar fields. 
+So the original scalar field $\phi$ would be
+\begin{align}
+    \phi(x) &= \frac{1}{\sqrt{2}}\left(v+\phi_1(x)+i\phi_2(x)\right).
+\end{align}
+We must check that this change of field variables is still allowed in the Lagrangian. 
+The Lagrangian will become
+\begin{align}
+    \La &= \frac12(\p_\mu\phi_1)(\p^\mu\phi_1) + \frac12(\p_\mu\phi_2)(\p^\mu\phi_2) - \frac{\lambda}{4}\left((v+\phi_1(x))^2+\phi_2(x)^2 - v^2\right)^2.
+\end{align}
+We can see from direct comparison that this is the same equation as Eq (11.1) just with a variable change. 
+So it is still invariant.
+If we consider the potential term of this, 
+\begin{equation}
+    \begin{split}
+        -V(\phi) = -&\frac{\lambda}{4}(\phi_1^2+\phi_2^2)^2 \quad\to\text{ four-point interactions} \\
+                   -& \lambda v^2\phi_1^2 \quad\to\text{ mass term} \\
+                   -& \lambda v\phi_1(\phi_1^2+\phi_2^2) \quad\to\text{ three-point interactions}.
+    \end{split}
+\end{equation}
+Let us consider that mass term further:
+\begin{align}
+    -\frac12 m_1^2\phi_2^2 \implies m_1^2 = 2\lambda v^2 \implies m_1 = \sqrt{2\lambda}v.
+\end{align}
+$\phi_2$ is massless; it is called the \textbf{Goldstone boson}.
+It's massless because of a spontaneously broken global U(1) symmetry.
 
-
-
+\section{The Goldstone Theorem}
+If a continuous global symmetry $G$ is broken spontaneously, there will be $n$ massless Goldstone bosons, where $n$ is the number of generators of $G$.
 
 
 
