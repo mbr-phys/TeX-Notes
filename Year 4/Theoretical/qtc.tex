@@ -506,6 +506,148 @@ Hence, the number of vortices per unit area is
 \end{align}
 At low rotation rates, vortices from ordered triangular arrays.
 
+\chapter{Interactions and Excitations in Helium II}
+\section{Interacting Many-Body Quantum Systems}
+Considering pairwise interactions only, the quantum-mechanical Hamiltonian for $N$ interacting particles is given in the position representation by 
+\begin{align}
+    \Ham = -\sum_{j=1}^N \frac{\hbar^2}{2m}\grad_j^2 + \frac12\sum_{j\neq k=1}^N V(\vr_j-\vr_k).
+\end{align}
+$\Ham$ acts on $N$-particle wavefunctions of the form $\Psi(\vr_1,\vr_2,\dots,\vr_N)$.
+If the particles are bosons, the wavefunction must be \emph{symmetric} under particle exchange, i.e.
+\begin{align}
+    \Psi(\dots,\vr_j,\dots,\vr_k,\dots) &= \Psi(\dots,\vr_k,\dots,\vr_j,\dots).
+\end{align}
+In general, a basis of $N$-body energy eigenfunctions $\Psi_n^{(N)}(\vr_1,\vr_2,\dots,\vr_N)$ exists, such that 
+\begin{align}
+    \Ham\Psi(\vr_1,\vr_2,\dots,\vr_N) &= E_n^{(N)}\Psi_n^{(N)}(\vr_1,\vr_2,\dots,\vr_N).
+\end{align}
+
+\section{Statistical Mechanics of Interacting Many-Body Quantum Systems}
+At $T=0$, the system is in the lowest energy $N$-particle eigenfunction.
+At finite $T$, the quantum state with energy eigenvalue $E_n^{(N)}$ has Boltzmann probability
+\begin{align}
+    P_n &= \frac{1}{\mathcal{Z}}e^{-(E_n^{(N)}-\mu N)/k_BT}, & \mathcal{Z} &= \sum_{N,n}e^{-(E_n^{(N)}-\mu N)/k_BT},
+\end{align}
+where $\mathcal{Z}$ is the grand canonical partition function.
+All thermodynamic quantities can be calculated from $\mathcal{Z}$, e.g. 
+\begin{align}
+    \langle N\rangle &= k_BT\frac{\p\ln\mathcal{Z}}{\p\mu}, & U &= \langle\Ham\rangle = \mu\langle N\rangle - \frac{\p\ln\mathcal{Z}}{\p(k_BT)^{-1}}.
+\end{align}
+In principle, this provides a direct way to calculate observable properties of interacting many-particle systems; in practice, this is generally a formidable task. 
+Perturbation theory often produces nearly exact results in the weakly-interacting Bose gas, but in a strongly-interacting system such as liquid Helium, predictions will be qualitative at best. 
+Quantum Monte Carlo (QMC) methods can be used to directly calculate observables of many-particle bosonic systems; one can extrapolate to the $N\to\infty$ thermodynamic limit by varying $N$.
+
+\section{One-Particle Density Matrix}
+It is helpful to define the \emph{one-particle density matrix} (for a pure state):
+\begin{align}
+    \rho_1(\vr_1',\vr_1) &= N\int \Psi(\vr_1',\vr_2,\dots,\vr_N)\Psi^*(\vr_1,\vr_2,\dots,\vr_N)\,d^3r_2,\dots,d^3r_N,
+\end{align}
+i.e. a correlation function of the wavefunction between coordinates $\vr_1,\vr_2,\dots,\vr_N$ and $\vr_1',\vr_2,\dots,\vr_N$, averaged over the configurations of all particles except the first.
+The choice of coordinate $\vr_1$ is arbitrary. 
+As the wavefunction must be symmetric under particle exchange, we say
+\begin{align}
+    \rho_1(\vr',\vr) &\equiv \rho_1(\vr_1',\vr_1) = \rho_1(\vr_2',\vr_2) = \cdots = \rho_1(\vr_N',\vr_N).
+\end{align}
+For a homogeneous system, the translational symmetry of any equilibrium state implies $\rho_1(\vr',\vr)=\rho_1(\vr-\vr')$.
+Hence, the unit norm of $\Psi(\vr_1,\vr_2,\dots,\vr_N)$ then means
+\begin{align}
+    \int \rho_1(0)\,d^3r = N \implies \rho_1(0) = \frac{N}{V} = n,
+\end{align}
+i.e. the particle number density.
+
+\section{Long-Range Correlations}
+In the absence of interactions, at $T=0$ all particles occupy a single one-particle state, i.e.
+\begin{align}
+    \Psi(\vr_1,\vr_2,\dots,\vr_N) &= \phi_0(\vr_1)\phi_0(\vr_2)\dots\phi_0(\vr_N) \implies \rho_1(\vr-\vr') = N\phi_0(\vr')\phi_0^*(\vr).
+\end{align}
+The state $\phi_0(\vr)$ is normally $e^{i\vec{k}\cdot\vr}/\sqrt{V}$ where $\vec{k}=0$, hence
+\begin{align}
+    \rho_1(\vr-\vr') &= \frac{N}{V} = n.
+\end{align}
+In the presence of interactions, we define the condensate density $n_0$ to be
+\begin{align}
+    n_0 = \lim_{|\vr-\vr'|\to\infty} \rho_1(\vr-\vr').
+\end{align}
+We can then define the macroscopic wavefunction $\phi_0(\vr)$ through 
+\begin{align}
+    \rho_1(\vr-\vr') \approx \psi_0(\vr')\psi_0^*(\vr), \text{ for large } |\vr-\vr'|.
+\end{align}
+Hence $\psi_0(\vr)$ has norm $n_0$, as desired.
+For $T<T_C$, $\rho_1(\vr-\vr')$ approaches a temperature-dependent constant value $n_0(T)$ for large $|\vr-\vr'|$.
+As $T\to T_C$, $n_0(T)\to0$, and at $T_C$ and above, $n_0$ vanishes.
+
+\section{The Momentum Distribution}
+The \emph{quantal} probability $P(\vec{p})$ that any given particle has momentum in the region $d^3p$ of momentum space is defined (for a pure state, i.e. at $T=0$) through
+\begin{align}
+    P(\vec{p})\,d^3p &= \frac{V\,d^3p}{(2\pi\hbar)^3}\langle\Psi|\hat{n}_{\vec{k}}|\Psi\rangle,
+\end{align}
+where $|\Psi\rangle$ is the many-particle wavefunction in Dirac form, $\hat{n}_{\vec{k}}$ is the number operator for the state with momentum $\vec{p}=\hbar\vec{k}$, and $V\,d^3p/(2\pi\hbar)^3$ is the number of quantum state in the region $d^3p$ of momentum space.
+The expectation value is written as
+\begin{align}
+    \langle\Psi|\hat{n}_{\vec{k}}|\Psi\rangle &= \int \rho_1(\vr)e^{i\vec{k}\cdot\vr}d^3r, \quad \rho_1(\vr) = n_0 + \Delta\rho_1(\vr),
+\end{align}
+where $\vr$ is now a relative coordinate, and $\Delta\rho_1(\vr)\to0$ for large $\vr$.
+Carrying out the Fourier transform,
+\begin{align}
+    \langle\Psi|\hat{n}_{\vec{k}}|\Psi\rangle &= \int n_0e^{i\vec{k}\cdot\vr}d^3r + \int \Delta\rho_1(\vr)e^{i\vec{k}\cdot\vr}d^3r = n_0V\delta_{\vec{k}0} + f(\vec{k}),\\
+    \implies P(\vec{p}) &= n_0V\delta(\vec{p}) + \frac{V}{(2\pi\hbar)^3}f\left(\frac{\vec{p}}{\hbar}\right).
+\end{align}
+Hence at $T=0$, there is a condensate and a contribution not unlike a Maxwell-Boltzmann distribution due to zero-point energies.
+Raising $T$ to $T_C$, $n_0\to0$, and what remains tends to a genuine (thermal) Maxwell-Boltzmann distribution.
+Neutron scattering experiments and QMC integrations both indicate that in liquid Helium as $T\to0$, the condensate component $n_0$ is only $\approx0.1n$.
+(Recall that at $T=0$, the superfluid component $n_s=n$).
+
+\section{Galilean Invariance}
+If $\Psi_0(\vr_1,\vr_2,\dots,\vr_N)$ is the ground state wavefunction for a superfluid at rest, a uniformly moving (with velocity $\vec{v}=\hbar\vec{q}/m$) trial wavefunction is $e^{i\vec{q}\cdot(\vr_1+\vr_2+\cdots+\vr_N)}\Psi_0(\vr_1,\vr_2,\dots,\vr_N)$.
+If $\vec{q}$ is very small ($\approx 1/L$, where $L$ is the macroscopic sample length), this trial function is a near-exact eigenstate of the (Galilean invariant) Hamiltonian $\Ham$. 
+The total momentum is then $\langle\hat{P}\rangle=N\hbar q$, where $\hat{P}=\sum_{j=1}^N \hat{p}_j$, and the total energy
+\begin{align}
+    \langle\Ham\rangle &\approx E_0 + N\frac{\hbar^2 q^2}{2m} = E_0 + \frac{1}{2M}\langle\hat{P}\rangle^2, \text{ where } M = Nm.
+\end{align}
+$\langle\Ham\rangle$ is then a classical Hamiltonian for an object of mass $M$ and momentum $\langle\hat{P}\rangle$, i.e. velocity $\vec{v}_s=\langle\hat{P}\rangle/M=\hbar q/m$.
+The implication is that at $T=0$, the whole mass $M$ of the fluid contributes to the superflow, not just the condensate fraction (\emph{rigidity} of the ground state).
+
+\section{Elementary Excitations in a Normal Fluid}
+Consider fluid flowing in a narrow tube.
+Friction and viscosity arise because fluid particles experience random scattering events from the atomically rough walls, transferring momentum to the walls and providing the viscous friction force.
+In a moving-with-the-fluid reference frame, it is the rough walls which move, providing time-dependent perturbations.
+Potential energy due to defects in the wall is equivalent to a time-dependent potential $V(\vr+\vec{v}t)$ in the moving frame.
+According to Fermi's golden rule for time-dependent perturbation theory, a single quantum particle with initial $\vec{p}_i,\e_i$ can be scattered elastically to final $\vec{p}_f,\e_f$ only if
+\begin{align}
+    \e_f &= \e_i-\vec{v}\cdot(\vec{p}_i-\vec{p}_f).
+\end{align}
+For a particle initially in-condensate ($\vec{p}=0$), we create an \emph{elementary excitation} only if $\e(\vec{p})=\vec{v}\cdot\vec{p}$.
+In a normal fluid $\e(\vec{p})=\frac{p^2}{2m}$, and the condition $\frac{p^2}{2m}=\vec{v}\cdot\vec{p}$ is obeyed on a cone described by 
+\begin{align}
+    |\vec{p}| = 2mv\cos\phi,
+\end{align}
+where $\phi$ is the angle to the direction of $\vec{v}$.
+The rough walls can therefore always impart momentum to a normal fluid, leading to viscous friction.
+This applies to classical fluids, strongly-interacting normal quantum fluid (He I), as well as the ideal Bose gas, which is therefore \emph{never superfluid}.
+
+\section{Helium II Quasiparticle Spectrum}
+The elementary excitation or \emph{quasiparticle} spectrum for a superfluid must be very different, such that it is impossible to satisfy $\e(\vec{p})=\vec{v}\cdot\vec{p}$.
+\textbf{Lev Landau} postulated an "N-shaped" spectrum, which has been confirmed by many experiments.
+At small $\vec{p}$, the energy is approximately linear: $\e(\vec{p})=c|\vec{p}|$. as is typical of phonons in solids (\emph{phonon branch}).
+A single He atom couples strongly to the many-particle condensate, leading to near rigid-body motion, and a phonon-like spectrum. 
+At very large $\vec{p}$, the spectrum approaches that of a conventional liquid: $\e(\vec{p}) = \frac{p^2}{2m^*}$, where $m^*$ is the \emph{effective mass} which is used as the particles interact strongly.
+A single atom can then move relatively independently, hence a \emph{free particle}-like spectrum.
+Between these two extremes, the spectrum has a local minimum (\emph{roton branch}):
+\begin{align}
+    \e(\vec{p}) &= \Delta + \frac{(p-p_0)^2}{2\mu}.
+\end{align}
+Neighbours of a moving atom move out of the way in a circular backflow, i.e. one particle moves forwards, accompanied by a ring of particles rotating backwards.
+
+\section{Quasiparticles and Superfluidity}
+Consider $c_{\text{min}}$, the slope of the line joining $p=0,\e=0$ to the local minimum in the roton branch of the quasiparticle spectrum.
+It is clear that $\e(\vec{p})>c_{\text{min}}|\vec{p}|$.
+Consequently, a low energy quasiparticle starting with near-zero initial momentum cannot be scattered into any possible final states (which process must satisfy $\e(\vec{p})=\vec{v}\cdot\vec{p}$) when $|\vec{v}_s|<c_{\text{min}}$.
+The superfluid therefore flows without dissipation due to scattering of quasiparticles, provided that the flow velocity is less than the ideal critical velocity $c_{\text{min}}$.
+Experimentally, the actual critical velocity is rather less than this ideal limit.
+
+
+
+
 
 
 
