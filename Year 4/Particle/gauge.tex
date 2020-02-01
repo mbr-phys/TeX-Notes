@@ -893,9 +893,123 @@ This form of the Lagrangian will be invariant under our gague transformations de
 Again, the potential $V(\phi)$ will give us a Mexican hat potential with local minima at $|\langle\phi\rangle|=\frac{v}{\sqrt{2}}$.
 We choose the vacuum $\langle\phi\rangle=\frac{v}{\sqrt{2}}$ such that it breaks the gauge U(1) symmetry spontaneously.
 
+\chapter{}
+Last time, we did the Abelian Higgs model.
+A U(1) gauge theory with transforms
+\begin{align}
+    \phi(x) &\to e^{-i\alpha(x)}\phi(x), & A_\mu(x) &\to A_\mu(x)+\frac{1}{e}\p_\mu\alpha(x).
+\end{align}
+We have an invariant Lagrangian under U(1) symmetry:
+\begin{align}
+    \La &= -\frac14F_{\mu\nu}F^{\mu\nu} + |D_\mu\phi|^2 - \lambda\left(|\phi|^2-\frac{v^2}{2}\right)^2,\\
+    F_{\mu\nu} &\equiv \p_\mu A_\nu - \p_\nu A_\mu, \\
+    D_\mu &\equiv \p_\mu + ieA_\mu.
+\end{align}
+We break the U(1) gauge symmetry spontaneously to get a Mexican hat potential with VEV $\langle\phi\rangle=\frac{v}{\sqrt{2}}$. 
+The symmetry goes $U(1)\to\cancel{0}$.\\
+Now we need to analyse the particle spectrum. 
+We start by writing down our scalar field as 
+\begin{align}
+    \phi(x) &= \frac{1}{\sqrt{2}}\left(v+\rho(x)\right)e^{i\xi(x)},
+\end{align}
+where $\phi(x)$ is a complex scalar field and we have no loss of generality as $\rho(x)$ and $\xi(x)$ are real fields which are our real field degrees of freedom which we needed as before. 
+For a vev to be $\langle\phi\rangle=\frac{v}{\sqrt{2}}$, the two real fields $\rho$ and $\xi$ have vevs $=0$.\\
+Before, we worked with Cartesian coordinate degrees of freedom in $\phi_1$ and $\phi_2$, but now we are describing it in polar coordinates $\rho$ and $\xi$.
+Now, we have a gauge theory so to do any analytical calculations (e.g. perturbation theory etc), we need to fix the gauge by removing the unphysical gauge degrees of freedom.
+So how do we fix the gauge?
+We will choose the unitary gauge, 
+\begin{align}
+    \alpha(x) &= \xi(x).
+\end{align}
+In the unitary gauge, the complex scalar field is going to become
+\begin{align}
+    \phi(x) &= \frac{1}{\sqrt{2}}(v+\rho(x)),
+\end{align}
+where we have got rid of one real field degree of freedom. 
+\emph{Fixing the gauge is something which must be done in any gauge theory, not just when considering spontaneous symmetry breaking.}\\
+What is our Lagrangian now?
+\begin{align}
+    \La &= -\frac14F_{\mu\nu}F^{\mu\nu} + \frac12(\p_\mu-ieA_\mu)(v+\rho(x))\cdot(\p_\mu+ieA_\mu)(v+\rho(x)) - \frac{\lambda}{4}\left(\left(v+\rho(x)\right)^2-v^2\right)^2.
+\end{align}
+We want to know if the gauge fields $A_\mu$ and the real field $\rho(x)$ are massive, and what their masses are, i.e. $m_A,m_\rho$.
+For this, we need a term in the Lagrangian which looks like
+\begin{align}
+    \La &\ni \frac{m_A^2}{2}A_\mu A^\mu - \frac{m_{\rho}^2}{2}\rho^2 + \dots
+\end{align}
+From the second and third terms in Eq (12.8) respectively, we get
+\begin{align}
+    \frac12 e^2v^2 A_\mu A^\mu &= \frac12 m_A A_\mu A^\mu \implies m_A = ev, \\
+    \lambda v^2 \rho(x)^2 &= \frac12 m_{\rho}^2\rho^2 \implies m_{\rho} = \sqrt{2\lambda}v.
+\end{align}
+So we see that the gauge field is massive, but we see it is proportional to the vev of the symmetry breaking, so it would become massless if we did not have this symmetry breaking.
+The $\rho(x)$ term is a real scalar field (i.e. the Higgs boson field) which is also massive through symmetry breaking.
+The Higgs field mass is also proportional to $\lambda$, which is the self-coupling constant of the Higgs field. \\
+In this case, we do not find a massless Goldstone boson.
+The unrealised Goldstone boson field is $\xi(x)$, which is "eaten" by the unitary gauge fixing. 
+But what if we fixed the gauge in a different way?
+The calculation may be more complicated, but any gauge fixing would ultimately result in the removal of one real field degree of freedom which would be "eaten" in some way. 
 
+Let's count the degrees of freedom before and after spontaneous symmetry breaking:
+\begin{itemize}
+    \item Before
+        \begin{itemize}
+            \item We have an unbroken gauge theory
+            \item Massless $A_\mu\implies$ 2 degrees of freedom: the 2 transverse polarisations (spin projections).
+            \item $\phi(x)\in\C\implies$ 2 degrees of freedom
+            \item $2+2=4$
+        \end{itemize}
+    \item After spontaneous symmetry breaking:
+        \begin{itemize}
+            \item $A_\mu$ with $m_A\neq0\implies$ 3 degrees of freedom in 2 transverse polarisations and 1 longitudinal. 
+            \item However, $\phi(x)$ only has 1 degree of freedom in $\rho(x)$ (for the unitary gauge in polar coords)
+            \item $3+1=4$
+        \end{itemize}
+\end{itemize}
+We thus have studied the U(1) realisation of the Higgs mechanism. 
+Key points:
+\begin{itemize}
+    \item For every broken generator of the gauge group, the corresponding gauge boson becomes massive. 
+    \item There are no Goldstone bosons left in the spectrum $\to$ they give rise to the longitudinal polarisations of massive gauge bosons. 
+    \item There is remaining massive scalar boson(s) $\to$ Higgs field(s).
+\end{itemize}
 
+\section{The Final Section}
+For the Standard Model, we have the symmetry SU(3)$_c\otimes$SU(2)$_L\otimes$U(1)$_Y$.
+We need to look throught the matter fields of the theory. 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|ccc}
+        \hline\hline
+        \rowcolor{lightgray} & SU(3)$_c$ & SU(2)$_L$ & U(1)$_Y$ \\
+        \hline\hline
+        $q_L$ & $3$ & $2$ & $+\frac16$ \\ 
+        $\bar{u}_R$ & $\bar{3}$ & $1$ & $-\frac23$ \\
+        $\bar{d}_R$ & $\bar{3}$ & $1$ & $+\frac13$ \\
+        $L_L$ & $1$ & $2$ & $-\frac12$ \\
+        $\bar{\nu}_R$ & $1$ & $1$ & $0$ \\
+        $\bar{e}_R$ & $1$ & $1$ & $+1$ \\
+        \hline 
+        $H$ & $1$ & $2$ & $+\frac12$ \\
+        \hline\hline
+    \end{tabular}
+\end{table}
+\emph{explain table}
+The Higgs doublet is defined as
+\begin{align}
+    H &= \begin{pmatrix} h^+ \\ h^0\end{pmatrix}, & \langle H\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix} 0 \\ v\end{pmatrix},
+\end{align}
+where its vev is $v=246\,$GeV.
+The symmetry broken by the real Higgs mechanism in the SM is SU(2)$_L\otimes$U(1)$_Y\to$ U(1)$_{QED}$.
 
+The full Covariant Derivative of the Standard Model is defined as
+\begin{align}
+    D_\mu &= \left(\p_\mu - ig_cA^a_\mu T^a_{SU(3)} - ig_WA_\mu^bT^b_{SU(2)} - ig'YB_\mu\right) 
+\end{align}
+\emph{fix this to make it look better and explain}
+Now we add to the Lagrangian
+\begin{align}
+    \La &+ -\frac{1}{2g_c^2}\text{Tr}(F_{\mu\nu}F^{\mu\nu})_{SU(3)_c} - \frac{1}{2g_w^2}\text{Tr}(F_{\mu\nu}F^{\mu\nu})_{SU(2)_L} - \frac14(F_{\mu\nu}F^{\mu\nu})_{U(1)_Y}.
+\end{align}
 
 
 

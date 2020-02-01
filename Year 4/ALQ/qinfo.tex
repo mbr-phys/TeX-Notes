@@ -7,7 +7,6 @@
 It's like a classical computer, but we replace 'bits' (0s and 1s) with \emph{qubits.}
 But what is a qubit?
 A qubit is a 2-level quantum system, with the quantum levels referred to $|0\rangle$ and $|1\rangle$.
-\emph{copy from notes.}
 
 Examples of 2-level systems:
 \begin{itemize}
@@ -199,6 +198,257 @@ We define the Rotation operator,
             &= \begin{pmatrix} \cos\frac{\Theta}{2}-in_z\sin\frac{\Theta}{2} & \left(-in_x-ny\right)\sin\frac{\Theta}{2} \\ \left(-in_x+n_y\right)\sin\frac{\Theta}{2} & \cos\frac{\Theta}{2}+in_z\sin\frac{\Theta}{2}  \end{pmatrix}
 \end{align}
 
+\chapter{}
+How do we implement rotation on the Bloch sphere?
+We need to drive the qubit with a resonant (or near-resonant) EM field. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,1) node[anchor=north] {EM field} sin (0.5,2) cos (1,1) sin (1.5,0) cos (2,1) sin (2.5,2) cos (3,1) sin (3.5,0) cos (4,1) sin (4.5,2) cos (5.25,1.35) sin (6.5,0.6);
+        \draw (8,1) circle (30pt);
+        \draw (7.3,0.4) node[anchor=east,xshift=-5pt] {$E_0$} -- (8.7,0.4) node[anchor=west,xshift=5pt] {$|1\rangle$};
+        \draw (7.3,1.6) node[anchor=east,xshift=-5pt] {$E_1$} -- (8.7,1.6) node[anchor=west,xshift=5pt] {$|0\rangle$};
+        \draw[-Latex] (8.4,0.4) -- (8.4,1.6) node[anchor=east,midway] {$\hbar\om_0$};
+    \end{tikzpicture}
+\end{figure}
+The qubit is like an oscillator we can drive. 
+EM field:
+\begin{align}
+    \mathcal{E} &= \mathcal{E}_0\cos(\phi_L-\om t),
+\end{align}
+where $\phi_L$ is the laser phase.
+We could include any phase offset. 
+We assume the qubit is at $\vr=0$, and $\phi=0$ at $t=0$, so $\phi_L=\vec{k}\cdot\vr$.
+This then depends on the relative position of the qubit and field. 
+Note that since there is always some $\delta r$ uncertainty in position of the qubit, this gives rise to a range of phase $\phi_L$ which can influence the qubit behaviour, e.g. phonons are solid vibrating all the time $\to$ phase is changing. 
+Hence inside the sphere for the qubit and not on the sphere. 
+We can try to reduce this by lowering temperatures. 
+Other notation:
+\begin{align}
+    \Delta &= \om-\om_0,
+\end{align}
+where $\om_0$ is the qubit frequency, $\om$ the field frequency, and $\Delta$ is defined as the qubit-field detuning. 
+If the qubit is subject to an external field, the coefficients $a$ and $b$ may become functions of time, and we should write the qubit state vector in the form
+\begin{align}
+    |\psi(t)\rangle &= a(t)|0\rangle e^{-iE_0t/\hbar} + b(t)|1\rangle e^{-iE_1t/\hbar}.
+\end{align}
+The time dependence of the coefficients $a$ and $b$ depends on the interaction between the qubit and the EM field. 
+We can use the Schrodinger equation:
+\begin{align}
+    i\hbar\dpt|\psi\rangle &= (\Ham_0+\Ham')|\psi\rangle.
+\end{align}
+Previously we just had $\Ham_0$ which describes the qubit, but now we add $\Ham'$ which is the perturbation due to the EM field.
+Typically, this interaction is of the form 
+\begin{align}
+    \Ham' &= -\hat{\vec{d}}\cdot\vec{\mathcal{E}},
+          &= -d\mathcal{E}_0\cos(\phi_L-\om t),
+\end{align}
+where $\vec{d}=-e\hat{\vr}$ is the electric dipole operator.
+and we can also define the Rabi frequency in Hz as
+\begin{align}
+    \Omega &= -\frac{d\mathcal{E}_0}{\hbar}, \\
+    \Ham' &= \hbar\Omega\cos(\phi_L-\om t).
+\end{align}
+The Rabi frequency is a measure of the coupling between the field and the qubit. 
+If the field is put on and left on, then the state will oscillate between $|0\rangle$ and $|1\rangle$ at the Rabi frequency. 
+Subbing the perturbation, we get two equations for $a$ and $b$:
+\begin{align}
+    i\dot{a}(t) &= \frac12\Omega e^{-i\phi_L}e^{i\Delta\cdot t}b, & i\dot{b}(t) &= \frac12\Omega e^{i\phi_L}e^{-i\Delta\cdot t}a.
+\end{align}
+These equations have an explicit time dependence.
+To deal with this, we can go into a rotating frame using a substitution:
+\begin{align}
+    \tilde{a} &= ae^{-it\cdot\Delta/2}, & \tilde{b} &= be^{it\cdot\Delta/2}.
+\end{align}
+This is so that we spin at the same frequency as the qubit and since we are interested in the relative phase of the field and qubit, this makes sense. 
+The Schrodinger equation for the interaction between a qubit and an oscillatory EM field is
+\begin{align}
+    i\hbar\dpt|\psi\rangle &= \Ham_{int}|\psi\rangle,
+\end{align}
+where for the vector for of the state vector, the \textbf{interaction Hamiltonian} is a $2\times2$ matrix:
+\begin{align}
+    \Ham_{int} &= \frac{\hbar}{2}\begin{pmatrix} \Delta & \Omega e^{-i\phi_L} \\ \Omega e^{i\phi_L} & -\Delta\end{pmatrix}, \\
+    i\hbar\dpt \begin{pmatrix}\tilde{a}\\ \tilde{b}\end{pmatrix} &= \frac{\hbar}{2}\begin{pmatrix}\Delta & \Omega e^{-i\phi_L} \\ \Omega e^{i\phi_L} & -\Delta\end{pmatrix}\begin{pmatrix}\tilde{a}\\ \tilde{b}\end{pmatrix}.
+\end{align}
+We can also write $\Ham_{int}$ in terms of the spin matrices. 
+Note that we have the detuning on the diagonals (like $\hat{\sigma}_z$) and to get the exponential, we need $\cos$ and $\sin$ terms:
+\begin{align}
+    \Ham_{int} &= \frac{\hbar}{2}\left[\Delta\hat{\sigma}_z + \Omega\left(\cos\phi_L\hat{\sigma}_x + \sin\phi_L\hat{\sigma}_y\right)\right],
+\end{align}
+where $\hat{\sigma}_y$ contains the imaginary values necessary for the exponents. 
+Consider zero detuning, i.e. $\Delta=0,\om_0=\om,$ and $\phi_L=0$:
+\begin{align}
+    i\dot{a} &= \frac12 \Omega b, & i\dot{b} &= \frac12\Omega a.
+\end{align}
+Taking time derivatives again:
+\begin{align}
+    i\ddot{a} &= \frac12\Omega\dot{b} = -\frac{i}{4}\Omega a \implies \ddot{a} = -\frac14\Omega^2 a.
+\end{align}
+For $a(0)=1,b(0)=0$, $a=\cos\left(\frac{\Omega t}{2}\right)$.
+Getting probabilities:
+\begin{align}
+    P_{|0\rangle} &= |a|^2 = \cos^2\left(\frac{\Omega t}{2}\right) = \frac12(1+\cos\Omega t), \\
+    P_{|1\rangle} &= |b|^2 = \sin^2\left(\frac{\Omega t}{2}\right) = \frac12(1-\cos\Omega t),
+\end{align}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (6,0) node[anchor=north] {t};
+        \draw[-Latex] (0,0) -- (0,2.8) node[anchor=east] {P};
+        \draw[purple] (0,2.5) node[anchor=east,black] {1} cos (1,1.25) sin (2,0) node[anchor=north,black] {$\frac{\pi}{\Omega}$} cos (3,1.25) sin (4,2.5) cos (5,1.25) sin (6,0) node[anchor=south west] {$P_{|0\rangle}$};
+        \draw[cyan] (0,0) node[anchor=east,black] {0} cos (1,1.25) sin (2,2.5) cos (3,1.25) sin (4,0) node[anchor=north,black] {$\frac{2\pi}{\Omega}$} cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
+    \end{tikzpicture}
+\end{figure}
+$\theta=\frac{\Omega t}{2}$ is the rotation angle. 
+The effect of the resonant EM field is to drive the qubit from $|0\rangle\to|1\rangle$ and back at $\Omega$ frequency. 
+
+The qubit follows a line of longitude. 
+$\phi_L$ determines the direction in the $xy$ plane about which we rotate, i.e. can change which longitude line we travel around. 
+Derive rotation matrix $\hat{R}$ from the interaction Hamiltonian:
+\begin{align}
+    |\psi(t)\rangle &= e^{-i\Ham_{int}t/\hbar}|\psi(0)\rangle = \hat{R}|\psi(0)\rangle.
+\end{align}
+To find the rotation matrix, we rewrite the interaction in the form:
+\begin{align}
+    \hat{R} &= e^{-i\Ham_{int}t/\hbar} = e^{-(i/2)\hat{\sigma}\cdot\hat{\vec{n}}\Theta},\quad \Theta = t\sqrt{\Omega^2+\Delta^2}.
+\end{align}
+We had defined $\Ham_{int}$ as 
+\begin{align}
+    \Ham_{int} &= \frac{\hbar}{2}\left[\Delta\hat{\sigma}_z + \Omega\left(\cos\phi_L\hat{\sigma_x}+\sin\phi_L\hat{\sigma}_y\right)\right],
+\end{align}
+so using this in $\hat{R}$ above, we can determine $\hat{\vec{n}}$ to be
+\begin{align}
+    \hat{\vec{n}} &= \frac{1}{\Theta}\begin{pmatrix} \Omega\cos\phi_L & \Omega\sin\phi_L & \Delta\end{pmatrix}.
+\end{align}
+
+\chapter{}
+From normalisation we define $\Theta=t\sqrt{\Omega^2+\Delta^2}$, with the quantity in brackets known as the \emph{effective Rabi frequency.}
+Substituting the unit vector $\hat{\vec{n}}$ above into the rotation matrix:
+\begin{align}
+    \hat{R} &= \begin{pmatrix} \cos\frac{\theta}{2}-in_z\sin\frac{\theta}{2} & (-in_x-n_y)\sin\frac{\theta}{2} \\ (-in_x+n+y)\sin\frac{\theta}{2} & \cos\frac{\theta}{2}+in_z\sin\frac{\theta}{2}\end{pmatrix} \\
+            &= \begin{pmatrix} \cos\frac{\theta}{2}-i\frac{\Delta}{\Theta}\sin\frac{\theta}{2} & -i\frac{\Omega}{\Theta}e^{i\phi_L}\sin\frac{\theta}{2} \\ -i\frac{\Omega}{\Theta}e^{-i\phi_L}\sin\frac{\theta}{2} & \cos\frac{\theta}{2}+i\frac{\Delta}{\Theta}\sin\frac{\theta}{2}\end{pmatrix}.
+\end{align}
+This is known as the \textbf{Rabi solution.}
+We consider the first of 3 special cases:\\
+Case 1: $\Delta=0$, i.e. on resonance. The Rabi solution reduces to
+\begin{align}
+    \hat{R} &= \begin{pmatrix} \cos\frac{\Omega t}{2} & -ie^{i\phi_L}\sin\frac{\Omega t}{2} \\ -ie^{-i\phi_L}\sin\frac{\Omega t}{2} & \cos\frac{\Omega t}{2}\end{pmatrix},
+\end{align}
+which corresponds to a rotation about a vector in the equatorial plane in the Bloch sphere.
+For $\Delta=0$, we often use notation $\hat{R}(\theta,\phi_L)$ where $\theta=\frac{\Omega t}{2}$ is the rotation angle and $\phi_L$ determines the direction in the $xy$ plane about which we rotate. 
+For an atom initially in state $|0\rangle$, i.e.
+\begin{align}
+    |\psi(0)\rangle &= \begin{pmatrix}1\\ 0\end{pmatrix} = |0\rangle,
+\end{align}
+and an interaction of duration $t$, the Rabi solution gives
+\begin{align}
+    |\psi(t)\rangle &= \hat{R}|\psi(0)\rangle = \begin{pmatrix} \cos\frac{\Omega t}{2} \\ -ie^{-i\phi_L}\sin\frac{\Omega t}{2} \end{pmatrix} = \begin{pmatrix} a(t) \\ b(t)\end{pmatrix}, \\
+    a(t) &= \cos\frac{\Omega t}{2}, \qquad b(t) = -ie^{-i\phi_L}\sin\frac{\Omega t}{2},
+\end{align}
+and we get the populations in states $|0\rangle,|1\rangle$ from
+\begin{align}
+    P_{|0\rangle} &= |a(t)|^2 = \cos^2\frac{\Omega t}{2},\\
+    P_{|1\rangle} &= |b(t)|^2 = \sin^2\frac{\Omega t}{2},
+\end{align}
+which are the \textbf{Rabi oscillations.}
+The population oscillates between the two states at the Rabi frequency, $\Omega$.
+The Rabi frequency is proportional to the field amplitude, i.e. the square root of the field intensity. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (6,0) node[anchor=north] {t};
+        \draw[-Latex] (0,0) -- (0,2.8) node[anchor=east] {P};
+        \draw[purple] (0,2.5) node[anchor=east,black] {1} cos (1,1.25) sin (2,0) node[anchor=north,black] {$\frac{\pi}{\Omega}$} cos (3,1.25) sin (4,2.5) cos (5,1.25) sin (6,0) node[anchor=south west] {$P_{|0\rangle}$};
+        \draw[cyan] (0,0) node[anchor=east,black] {0} cos (1,1.25) sin (2,2.5) cos (3,1.25) sin (4,0) node[anchor=north,black] {$\frac{2\pi}{\Omega}$} cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
+        \draw[dashed] (1,0) node[anchor=north] {$\frac{\pi}{2\Omega}$} -- (1,1.25);
+    \end{tikzpicture}
+\end{figure}
+Another interesting case is when there is no interaction ($\Omega=0$) but the field and the qubit have a different frequency $\Delta\neq0$, i.e. \emph{free evolution rotations}.
+In this case, the rotation matrix is 
+\begin{align}
+    \hat{R} &= \begin{pmatrix} \exp\left(-i\frac{\Delta t}{2}\right) & 0 \\ 0 & \exp\left(i\frac{\Delta t}{2}\right)\end{pmatrix},
+\end{align}
+which corresponds to a rotation about the z-axis in the Bloch sphere. 
+We use this matrix to describe the free evolution in a \emph{Ramsey interferometer}.
+
+\section{Single Qubit Rotations}
+The Rabi solution describes how a near-resonance EM field may be used to drive the qubit from any initial state to any final state. 
+Refer to this operation as a \textbf{single-qubit rotation} or \textbf{single-qubit gate.}
+Three useful interactions come from the times you pulse, e.g. as above the $\frac{\pi}{2}$-, $\pi$-, and $2\pi$-pulse.
+For all except the \textbf{Hadamard gate}, we use resonant driving $\Delta=0$.
+\begin{itemize}
+    \item $\frac{\pi}{2}$-pulse (particularly useful):\\
+        For a $\frac{\pi}{2}$ pulse, we choose the EM field intensity and the pulse duration such that $\Omega t=\frac{\pi}{2}$. 
+        This corresponds to a rotation of $90^\circ$ on the Bloch sphere which could take us from pole to equator, i.e. a qubit initially in $|0\rangle$ or $|1\rangle$ is excited $\to$ an equal superposition on the equator (or start on the equator and rotate to a pole).
+        Substituting $\Omega t=\frac{\pi}{2}$ in the Rabi solution, we obtain
+        \begin{align}
+            |\psi(t_{\pi/2})\rangle &= \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -ie^{i\phi_L} \\ -ie^{-i\phi_L} & 1\end{pmatrix}|\psi(0)\rangle.
+        \end{align}
+        To simplify the matrix, we can choose a particular laser phase, e.g. $\phi_L=\frac{\pi}{2}$, so:
+        \begin{align}
+            \hat{R}(\theta,\phi_L) &= \hat{R}\left(\frac{\pi}{2},\frac{\pi}{2}\right) = \frac{1}{\sqrt{2}}\begin{pmatrix}1 & 1 \\ -1 & 1\end{pmatrix},
+        \end{align}
+        and acting on our initial state $|\psi(0)\rangle=|0\rangle$,
+        \begin{align}
+            |\psi(t_{\pi/2})\rangle &= \hat{R}\left(\frac{\pi}{2},\frac{\pi}{2}\right)|\psi(0)\rangle \\
+                                    &= \frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\-1&1\end{pmatrix}\begin{pmatrix}1\\0\end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\-1\end{pmatrix} \\
+                                    &= \frac{1}{\sqrt{2}}\left(|0\rangle-|1\rangle\right),
+        \end{align}
+        which is a superposition between $|0\rangle$ and $|1\rangle$. 
+        This corresponds to a rotation around the $y$ axis, ending up in the $-x$ direction, i.e. the expectation value $\langle\hat{\sigma}\rangle=-1$.
+        If we apply an arbitrary phase $\phi_L$ to $|1\rangle$, we find
+        \begin{align}
+            |1\rangle &\to \frac{1}{\sqrt{2}}\left(-ie^{i\phi_L}|0\rangle+|1\rangle\right).
+        \end{align}
+        For $\phi_L=0$, we would rotate around the $x$ axis and end up along $y$. 
+        So the laser phase sets the vector in the $xy$ plane that we rotate around. 
+        If we had started with a superposition, e.g. in Eq (6.14), it carries on to the $|1\rangle$ state if we apply the same $\hat{R}\left(\frac{\pi}{2},\frac{\pi}{2}\right)$:
+        \begin{align}
+            \hat{R}\left(\frac{\pi}{2},\frac{\pi}{2}\right)\frac{1}{\sqrt{2}}\begin{pmatrix}1 \\ -1\end{pmatrix} &= \frac12\begin{pmatrix}1&1\\-1&1\end{pmatrix}\begin{pmatrix}1\\-1\end{pmatrix} = - \begin{pmatrix} 0 \\ 1\end{pmatrix}.
+        \end{align}
+        So 2 $\frac{\pi}{2}$ pulses are equivalent to a $\pi$-pulse and takes us from $|0\rangle\to|1\rangle$.
+        We shouldn't be concerned about the '$-1$' as when we take the modulus this global phase disappears. 
+    \item $\pi$-pulse: For $\Omega t_\pi = \pi$,
+        \begin{align}
+            |\psi(t_\pi)\rangle &= \begin{pmatrix} 0 & -ie^{i\phi_L}\\ -ie^{-i\phi_L} & 0 \end{pmatrix}|\psi(0)\rangle,\\
+            |0\rangle &\to -ie^{-i\phi_L}|1\rangle,\qquad |1\rangle \to -ie^{i\phi_L}|0\rangle.
+        \end{align}
+        For $\phi_L=0$ and $\phi_L=\frac{\pi}{2}$ respectively, the rotation matrix is
+        \begin{align}
+            \hat{R}\left(\pi,0\right) &= \begin{pmatrix}0&-i\\-i&0\end{pmatrix}; & \hat{R}\left(\pi,\frac{\pi}{2}\right) &= \frac{1}{\sqrt{2}}\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+        \end{align}
+        Except for the sign change, this is equivalent to a '\emph{bit-flip}' or \emph{NOT gate}.
+    \item $2\pi$-pulse:
+        For $\Omega t_{2\pi}=2\pi$, we have
+        \begin{align}
+            \hat{R}\left(2\pi,\phi_L\right) &= \begin{pmatrix}-1&0\\0&-1\end{pmatrix} = -\hat{\sigma}_0,
+        \end{align}
+        so it effectively just multiplies the entire wavefunction by $-1$, which is a global phase factor (and property of spin-$\frac12$ particles) that can be useful in gate operations.
+        In the case of two qubits, if one of them picks up a $-1$, then it does become significant as they are entangled and we can now detect this. 
+\end{itemize}
+
+\section{Hadamard Gate}
+The application of two successive $\frac{\pi}{2}$-pulses inverts the state. 
+However, it is also useful to have a pulse that takes us into a superposition and back to the same state. 
+This is a \textbf{Hadamard gate} or \textbf{Hadamard transform}.
+The Hadamard operator is 
+\begin{align}
+    \Ham &= \frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\1&-1\end{pmatrix},
+\end{align}
+and the application of two of these leave the state unchanged, i.e. $\Ham^2 = \hat{\sigma}_0$ (as long as nothing happens in-between applying them).
+There are different ways to implement a Hadamard. 
+One os to set $\Delta=\Omega$, in which case the Rabi solution becomes
+\begin{align}
+    \hat{R} &= \begin{pmatrix} \cos\frac{\Omega}{\sqrt{2}}t-\frac{i}{\sqrt{2}}\sin\frac{\Omega}{\sqrt{2}}t & -\frac{i}{\sqrt{2}}e^{i\phi_L}\sin\frac{\Omega}{\sqrt{2}}t \\  -\frac{i}{\sqrt{2}}e^{-i\phi_L}\sin\frac{\Omega}{\sqrt{2}}t & \cos\frac{\Omega}{\sqrt{2}}t+\frac{i}{\sqrt{2}}\sin\frac{\Omega}{\sqrt{2}}t \end{pmatrix},
+\end{align}
+and if we set $\frac{\Omega}{\sqrt{2}}t = \frac{\pi}{2}$ and $\phi_L=0$, we obtain
+\begin{align}
+    \hat{R} &= -\frac{i}{\sqrt{2}}\begin{pmatrix}1&1\\1&-1\end{pmatrix},
+\end{align}
+so $\hat{R}$ is the Hadamard up to some global factor which can be ignored. 
+The Hadamard is a rotation around some $45^\circ$; applying twice brings us back to the start.
+
+
 
 
 
@@ -209,6 +459,13 @@ We define the Rotation operator,
 
 
 \end{document}
+
+
+
+
+
+
+
 
 
 

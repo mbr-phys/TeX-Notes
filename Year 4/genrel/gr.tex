@@ -170,11 +170,128 @@ We can write an arbitrary vector as
                                                   &= \tensor{\delta}{_a^d}A^a\ve_d = A^d\ve_d = A^a\ve_a
 \end{align}
 
+\chapter{}
+
+\chapter{}
+
+\chapter{}
+Asbolute Derivative:
+\begin{align}
+    \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}
+\end{align}
+Covariant Derivative:
+\begin{align}
+    \tensor{\lambda}{^a_{;c}} &= \frac{\p\lambda^a}{\p x^c}+\tensor{\Gamma}{^a_{bc}}\lambda^b
+\end{align}
+Christoffel Symbols:
+\begin{align}
+    \tensor{\Gamma}{^c_{ab}}\ve_c &= \frac{\p\ve_a}{\p x^b},\quad \tensor{\Gamma}{^c_{ab}} = \tensor{\Gamma}{^c_{ba}}
+\end{align}
+Other stuff:
+\begin{align}
+    \frac{\p g_{ab}}{\p x^c} &= \tensor{\Gamma}{^d_{ac}}g_{bd} + \tensor{\Gamma}{^d_{bc}}g_{ad}\\
+    \frac{\p g_{bc}}{\p x^a} &= \tensor{\Gamma}{^d_{ba}}g_{cd} + \tensor{\Gamma}{^d_{ca}}g_{bd}\\
+    \frac{\p g_{ca}}{\p x^b} &= \tensor{\Gamma}{^d_{cd}}g_{ad} + \tensor{\Gamma}{^d_{ab}}g_{cd}\\
+    2\tensor{\Gamma}{^d_{ac}}g_{bd} &= \frac{\p g_{ab}}{\p x^c} + \frac{\p g_{bc}}{\p x^a} - \frac{\p g_{ca}}{\p x^b} \\
+    \tensor{\Gamma}{^f_{ac}} &= \frac12 g^{fb}\left(\frac{\p g_{bc}}{\p x^a} - \frac{\p g_{ca}}{\p x^b} + \frac{\p g_{ab}}{\p x^c}\right) \\
+                             &= \frac12 g^{fb}\left(\p_a g_{bc} - \p_b g_{ca} + \p_c g_{ab}\right)
+\end{align}
+We multiplied lefthandside of (6.7) by $\tensor{\delta}{^f_d}$.
+
+\begin{example}[2D flat space]
+    $x^A = \{x,y\}$:
+    \begin{align}
+        g_{AB} &= \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \text{diag}(1,1) \\
+        \tensor{\Gamma}{^A_{BC}} &= 0 
+    \end{align}
+    So we don't have to deal with these in Cartesian coordinates. What about polar coordinates? $x^A = \{r,\theta\}$:
+    \begin{align}
+        ds^2 &= dr^2 + r^2\,d\theta^2 \\
+        g_{AB} &= \text{diag}(1,r^2) \\
+        \tensor{\Gamma}{^A_{BC}} \neq 0 
+    \end{align}
+    So we can still get non-zero Christoffel symbols even for flat space, but it is still "boring" really. 
+\end{example}
+
+Let's consider something more interesting, i.e. curved. 
+For 3D space, we have
+\begin{align}
+    ds^2 &= dr^2 + r^2\,d\theta^2 + r^2\sin^2\theta\,d\phi^2 
+\end{align}
+But we want to use just the surface of a sphere, so fixed $r=a$:
+\begin{align}
+    ds^2 &= a^2\,d\theta^2 + a^2\sin^2\theta\,d\phi^2 = g_{AB}dx^A\,dx^B \\
+    g_{AB} &= \text{diag}(a^2,a^2\sin^2\theta)
+\end{align}
+We have $g_{AB}$, but we want $g^{AB}$. Recall
+\begin{align}
+    g^{AB}g_{BC} &= \tensor{\delta}{^A_C}.
+\end{align}
+So we have a set of 4 simultaneous equations:
+\begin{align}
+    g^{A1}g_{1C} + g^{A2}g_{2C} &= \tensor{\delta}{^A_C}.
+\end{align}
+For diagonal $g_{AB}$ \textbf{ONLY}:
+\begin{align}
+    g^{AB}g_{BA} &= g^{AA}g_{AA} = 1 \implies g^{AA} = \frac{1}{g_{AA}} \\
+    g^{AB} &= \text{diag}\left(\frac{1}{a^2},\frac{1}{a^2\sin^2\theta}\right)
+\end{align}
+So now we want to calculate
+\begin{align}
+    \tensor{\Gamma}{^\theta_{\theta\theta}} &= \frac12 g^{\theta B} \left(\p_\theta g_{B\theta} - \p_B g_{\theta\theta} + \p_{\theta} g_{\theta B}\right), \quad g^{\theta B} = 0, B\neq\theta \\
+                                            &= \frac12 \frac{1}{a^2}\left(\p_{\theta} g_{\theta\theta} - \p_\theta g_{\theta\theta} + \p_\theta g_{\theta\theta}\right) =  0 \\
+    \tensor{\Gamma}{^\theta_{\phi\theta}} = \tensor{\Gamma}{^\theta_{\theta\phi}} &= \frac12 g^{\theta B}\left(\p_\theta g_{B\phi} - \p_B g_{\phi\theta} + \p_\phi g_{\theta B}\right) \\
+                                          &= \frac12 g^{\theta\theta}\left(\p_\theta g_{\theta\phi} - \p_\theta g_{\phi\theta} + \p_\phi g_{\theta\theta}\right) = 0 \\
+    \tensor{\Gamma}{^\theta_{\phi\phi}} &= -\sin\theta\cos\theta \\
+    \tensor{\Gamma}{^\phi_{\theta\phi}} &= \cot\theta
+\end{align}
+The rest of the Christoffel symbols for this example are 0 (there are $2^3=8$ in total?).
+
+\section{Geodesic Equations}
+The velocity is a tensor,
+\begin{align}
+    \vec{v} &= v^\alpha\ve_{\alpha} = \frac{\p x^\alpha}{\p\tau}\ve_\alpha
+\end{align}
+If there's no force, then there's no change in the velocity vector doesn't change, but its components might change. 
+No force means the absolute derivative of the components: 
+\begin{align}
+    \frac{Dv^\alpha}{d\tau} &= 0
+\end{align}
+By an affine parameter, we mean a linear function of path length $u=A+Bs$, such as the proper time $\tau$.
+\begin{align}
+    \frac{dv^\alpha}{d\tau} + \tensor{\Gamma}{^\alpha_{\beta\gamma}}v^\beta\frac{dx^\gamma}{d\tau} &= 0 \\
+    \frac{d^2x^\alpha}{d\tau^2} + \tensor{\Gamma}{^\alpha_{\beta\gamma}}\frac{dx^\beta}{d\tau}\frac{dx^\gamma}{d\tau} &= 0 \\
+    \ddot{x}^\alpha + \tensor{\Gamma}{^\alpha_{\beta\gamma}}\dot{x}^\beta\dot{x}^\gamma &= 0
+\end{align}
+Let's guess and make a solution for the sphere, $s=a\theta$, so we are just going around the circumference of the sphere at constant $\phi$.
+For $\theta$:
+\begin{align}
+    \frac{d^2\theta}{ds^2} + \tensor{\Gamma}{^\theta_{BC}}\frac{dx^B}{ds}\frac{dx^c}{ds} = 0 + \tensor{\Gamma}{^\theta_{\phi\phi}}\frac{d\phi}{ds}\frac{d\phi}{ds} = 0
+\end{align}
+We get a big tick and a gold star!
+For $\phi$:
+\begin{align}
+    \frac{d^2\phi}{ds^2} + \tensor{\Gamma}{^\phi_{BC}}\frac{dx^B}{ds}\frac{dx^C}{ds} = 0 + \tensor{\Gamma}{^\phi_{\theta\phi}}\frac{d\theta}{ds}\frac{d\phi}{ds} + \tensor{\Gamma}{^\phi_{\phi\theta}}\frac{d\phi}{ds}\frac{d\theta}{ds} = 0 
+\end{align}
+So it's a geodesic path! Yayyyyyy!
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 \end{document}
+
+
+
 
 
 
