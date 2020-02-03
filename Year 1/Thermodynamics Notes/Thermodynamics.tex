@@ -1,31 +1,18 @@
-\documentclass[a4paper, 11pt, fleqn, normalem]{report}
-
-\usepackage{../../LaTeX-Templates/Notes}
-
-\titlecontents{chapter}% <section-type>
-    [0pt]% <left>
-    {}% <above-code>
-    {Lecture \thecontentslabel\quad}% <numbered-entry-format>
-    {}% <numberless-entry-format>
-    {\dotfill\contentspage}% <filler-page-format>
-\titleformat{\chapter}{\fontsize{13}{15}\bfseries\normalfont}{\textbf{Lecture \thechapter}}{1em}{}
-\setcounter{tocdepth}{1}
-\setcounter{secnumdepth}{1}
+\documentclass[a4paper, 11pt, normalem]{report}
+% AT RMS SPEED
+\usepackage{../../../LaTeX-Templates/Notes}
 
 \title{Foundations of Physics Year 1 \\ Thermodynamics \vspace{-20pt}}
 \author{Del Atkinson}
 \date{\vspace{-15pt}Michaelmas Term 2016}
-\rhead{\hyperlink{page.1}{Go to TOC}}
+\rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
 
 \maketitle
-\thispagestyle{fancy}
-
 \tableofcontents
 
 \chapter{}
-\thispagestyle{fancy}
 See Young \& Freedman Chapters 17--20 \\
 And of course, all of this will be on DUO
 \section{Learning Aims}
@@ -38,8 +25,8 @@ And of course, all of this will be on DUO
 \end{itemize}
 
 \section{Temperature}
-"Measure of degree of 'hotness' of a system" \\
-Measured by temperature-dependent changes in second substance i.e. thermometer \\
+"Measure of degree of 'hotness' of a system".
+Measured by temperature-dependent changes in second substance i.e. thermometer.
 These use \textbf{TE} to work:
 \begin{itemize}
     \item Liquid-in-tube
@@ -50,20 +37,21 @@ These use \textbf{TE} to work:
 Two systems are in \textbf{TE} with each other when they have the same temperature
 
 \section{Zeroth Law}
-"\textit{For two systems that are each in \textbf{TE} with a third system independently, the two are in \textbf{TE} with each other}" \\
-This will aid with calculations later on. \\
-Use 273.15 as converter for $\textbf{K}\leftrightarrow\textbf{{\textdegree}C}$
-\begin{equation*}
+"\textit{For two systems that are each in \textbf{TE} with a third system independently, the two are in \textbf{TE} with each other}".
+This will aid with calculations later on. 
+Use 273.15 as converter for $\textbf{K}\leftrightarrow\textbf{{\textdegree}C}$:
+\begin{equation}
     \dfrac{T_{2}}{T_{1}} = \dfrac{p_{2}}{p_{1}}
-\end{equation*}
+\end{equation}
 At 0 K, system energy is minimum.
 
 \chapter{}
-\thispagestyle{fancy}
 \section{Recap}
-\textbf{TE} is same temperature in different systems \\
-Zeroth Law of Thermodynamics \\
-Thermometers converge at -273.15{\textdegree}C, 0 K
+\begin{itemize}
+    \item \textbf{TE} is same temperature in different systems 
+    \item Zeroth Law of Thermodynamics 
+    \item Thermometers converge at -273.15{\textdegree}C, 0 K
+\end{itemize}
 
 \section{Learning Aims}
 \begin{itemize}
@@ -74,27 +62,26 @@ Thermometers converge at -273.15{\textdegree}C, 0 K
     \item Phase Changes
     \item Colorimetry calculations
 \end{itemize}
-Temperature is a property of materials \\
-Heat is not -- it is a type of energy transfer between bodies at different temperatures i.e. to reach \textbf{TE} \\
+Temperature is a property of materials; heat is not -- it is a type of energy transfer between bodies at different temperatures i.e. to reach \textbf{TE},
 Heat must be energy. Hence, units of heat are Joules (J)
 
 \section{Specific Heat Capacities}
 How much heat energy, Q, needs to be transmitted to a material to raise temperature by a certain amount?
 
-Experimentally, heat is related to mass, m, \& change in time, ${\Delta}$T
-\begin{equation*}
-    Q = mc{\Delta}T ~~(\text{K or C, not F})
-\end{equation*}
+Experimentally, heat is related to mass, m, \& change in time, ${\Delta}$T:
+\begin{equation}
+    Q = mc{\Delta}T ~~(\text{K or C, not F}).
+\end{equation}
 c is mass specific heat capacity -- energy required to change temperature of 1 kg of material by 1 K
-\begin{equation*}
+\begin{equation}
     Q = nC{\Delta}T\text{, for using moles instead of mass}
-\end{equation*}
+\end{equation}
 C is molar specific heat capacity
 
 Heat capacites are measured:
 \begin{itemize}
-    \item[] At constant pressure for solids
-    \item[] At constant volume for gases
+    \item At constant pressure for solids
+    \item At constant volume for gases
 \end{itemize}
 Dulong \& Petit Rule -- The molar heat capacity of most metals is approx. 25 J mol\textsuperscript{-1} K\textsuperscript{-1}
 
@@ -102,29 +89,38 @@ Dulong \& Petit Rule -- The molar heat capacity of most metals is approx. 25 J m
 Addition or removal of heat to/from a system can change its phase
 
 The amount of heat energy required to change the phase of 1 kg of material depends on the latent heat, L
-\begin{equation*}
+\begin{equation}
     Q = \pm mL
-\end{equation*}
+\end{equation}
 
 \section{Phases of matter}
-Solid -- High pressure, low temperature \\
-Liquid -- High pressure, high temperature \\
-Vapour/gas -- Low pressure, high temperature \\
-\includegraphics{MatterPhases.jpg}
-
-At the phase boundaries, both states of matter can exist in phase equilibirum. \\
-All three phases co-exist at the triple point \\
-Beyond the critical point, you cannot define between liquid and gas \\
-Dotted green line is for water
+\begin{description}[align=right,labelwidth=4cm]
+    \item[Solid] High pressure, low temperature 
+    \item[Liquid] High pressure, high temperature
+    \item[Vapour/gas] Low pressure, high temperature
+\end{description}
+\begin{figure}[H]
+    \centering
+    \includegraphics{MatterPhases.jpg}
+\end{figure}
+\begin{itemize}
+    \item At the phase boundaries, both states of matter can exist in phase equilibrium. 
+    \item All three phases co-exist at the triple point.
+    \item Beyond the critical point, you cannot define between liquid and gas.
+    \item Dotted green line is for water.
+\end{itemize}
 
 \section{Phase Changes}
 Phase changes occur at a unique temperature for set pressure, and use the latent heat specific to each transition:
-\begin{itemize}
-    \item[] Between solid \& liquid: latent heat of fusion
-    \item[] Between liquid \& gas: latent heat of vaporisation
-    \item[] Between solid \& gas: latent heat of sublimation
-\end{itemize}
-\includegraphics[scale=0.65]{download.png}
+\begin{description}[align=right,labelwidth=5cm]
+    \item[Between solid \& liquid:] latent heat of fusion
+    \item[Between liquid \& gas:] latent heat of vaporisation
+    \item[Between solid \& gas:] latent heat of sublimation
+\end{description}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.65]{download.png}
+\end{figure}
 
 \section{Calorimetry}
 \begin{itemize}
@@ -141,11 +137,12 @@ Phase changes occur at a unique temperature for set pressure, and use the latent
 \end{itemize}
 
 \chapter{}
-\thispagestyle{fancy}
 \section{Recap}
-Heat: energy transferred between bodies at different temperatures \\
-Specific heat capacity: J mol\textsuperscript{-1} K\textsuperscript{-1} / J kg\textsuperscript{-1} K\textsuperscript{-1} \\
-Phase changes and calorimetry
+\begin{itemize}
+    \item Heat: energy transferred between bodies at different temperatures.
+    \item Specific heat capacity: J mol\textsuperscript{-1} K\textsuperscript{-1} / J kg\textsuperscript{-1} K\textsuperscript{-1}
+    \item Phase changes and calorimetry
+\end{itemize}
 
 \section{Learning Aims}
 \begin{itemize}
@@ -157,65 +154,64 @@ Phase changes and calorimetry
 \end{itemize}
 
 \section{Thermal Expansion}
-Used in thermometry \\
-Implications for engineering -- rigid structures that are heated
+Used in thermometry.
+Implications for engineering -- rigid structures that are heated.
 
 Linear Thermal Expansion:
 \begin{itemize}
     \item Original rod length, L\textsubscript{0}
     \item Small change in temp, ${\Delta}T \rightarrow \text{change in length, } {\Delta}L$
 \end{itemize}
-\begin{equation*}
+\begin{equation}
     {\Delta}L = {\alpha}L_{0}{\Delta}T
-\end{equation*}
-$\alpha$ is the linear expansion co-efficient with units K\textsuperscript{-1}
+\end{equation}
+$\alpha$ is the linear expansion co-efficient with units K\textsuperscript{-1}.
 
 Volume Expansion:\\
 For small temperature, $\Delta$T, we have change $\Delta$V in volune:
-\begin{equation*}
+\begin{equation}
     {\Delta}V = {\beta}V_{0}{\Delta}T
-\end{equation*}
-$\beta$ is the co-efficient of volume expansion, $\text{K}^{-1}$
+\end{equation}
+$\beta$ is the co-efficient of volume expansion, $\text{K}^{-1}$.
 
-\section{Relating ${\alpha}$ and ${\beta}$}
-For a cube of dimension, L, with V = $\text{L}^{3}$
+\textbf{Relating ${\alpha}$ and ${\beta}$}:\\
+For a cube of dimension, L, with V = $\text{L}^{3}$.
 Consider infinitesimal changes dV, dL, \& dT:
-\begin{equation*}
+\begin{equation}
 	dV = \dfrac{dV}{dL}dL = 3L^{2}~dL
-\end{equation*}
-For intial cube dimensions, L\textsubscript{0} and V\textsubscript{0}, with $V_{0} = L_{0}^{3}$
-\begin{gather*}
-	dL = {\alpha}L_{0}dT \\
-	dV = 3L^{2}{\alpha}L_{0}dT = 3{\alpha}V_{0}dT \\
-	{\Delta}V = {\beta}V_{0}{\Delta}T \\
-	\beta = 3\alpha
-\end{gather*}
+\end{equation}
+For intial cube dimensions, L\textsubscript{0} and V\textsubscript{0}, with $V_{0} = L_{0}^{3}$:
+\begin{align}
+    dL &= {\alpha}L_{0}dT \\
+    dV &= 3L^{2}{\alpha}L_{0}dT = 3{\alpha}V_{0}dT \\
+    {\Delta}V &= {\beta}V_{0}{\Delta}T \\
+    \beta &= 3\alpha
+\end{align}
 
 \section{Thermal Expansion of Water}
-Expansion of water is approximately linear to temperature macroscopically \\
-\includegraphics[scale=0.4]{water.png}
-
-Water contracts as it cools down to 4{\textdegree}C, then expands. \\
+Expansion of water is approximately linear to temperature macroscopically.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{water.png}
+\end{figure}
+Water contracts as it cools down to 4{\textdegree}C, then expands. 
 This explains why ponds freeze from the top which was critical for evolution.
 
 \section{Thermally-Induced Stress}
-Consider a material held in position such that the dimensions can't be changed\\
+Consider a material held in position such that the dimensions can't be changed.
 Now change temperature $\rightarrow$ stress is created
-\begin{equation*}
+\begin{equation}
 	\text{Stress} = \frac{F}{A}
-\end{equation*}
+\end{equation}
 Young's modulus, Y -- Elastic behaviour of material:
-\begin{equation*}
+\begin{equation}
 	Y = \frac{F}{A}\frac{L_{0}}{{\Delta}L} \text{ -- ratio of stress/strain}
-\end{equation*}
-For $L_{0}$, $(\frac{{\Delta}L}{L_{0}})_{thermal} = \alpha{\Delta}T$
-
+\end{equation}
+For $L_{0}$, $(\frac{{\Delta}L}{L_{0}})_{thermal} = \alpha{\Delta}T$.
 When expansion is prevented: Using Young's modulus
-\begin{gather*}
-	\bigg(\frac{{\Delta}L}{L_{0}}\bigg)_{thermal} = \frac{F}{AY} \rightarrow \\
-	\bigg(\frac{{\Delta}L}{L_{0}}\bigg)_{thermal} + \bigg(\frac{{\Delta}L}{L_{0}}\bigg)_{force} = \alpha{\Delta}T + \frac{F}{AY} = 0 \rightarrow \\
-	\frac{F}{A} = -Y\alpha{\Delta}T
-\end{gather*}
+\begin{align}
+	\bigg(\frac{{\Delta}L}{L_{0}}\bigg)_{thermal} = \frac{F}{AY} \implies \bigg(\frac{{\Delta}L}{L_{0}}\bigg)_{thermal} + \bigg(\frac{{\Delta}L}{L_{0}}\bigg)_{force} = \alpha{\Delta}T + \frac{F}{AY} = 0 \implies \frac{F}{A} = -Y\alpha{\Delta}T.
+\end{align}
 
 \section{Heat Transfer Process}
 Three mechanisms of heat transfer:
@@ -224,47 +220,53 @@ Three mechanisms of heat transfer:
 	\item conduction -- vibration through materials
 	\item radiation -- electromagnetic radiation; no medium
 \end{itemize}
-Conduction: \\
-Heat flows from hot to cold \\
-Energy dQ is transferred in time dt \\
-Heat current $= H = \frac{dQ}{dt} \text{; }~~ H~\propto~A$ \\
-Experimentally, $H = \frac{dQ}{dt} = kA\frac{T_{H}-T_{C}}{L}$, where $k$ is the thermal conductivity of the material in $W~m^{-1}~K^{-1}$
-
+Conduction: 
+\begin{itemize}
+    \item Heat flows from hot to cold.
+    \item Energy dQ is transferred in time dt.
+    \item Heat current $= H = \frac{dQ}{dt} \text{; }~~ H~\propto~A$.
+    \item Experimentally, $H = \frac{dQ}{dt} = kA\frac{T_{H}-T_{C}}{L}$, where $k$ is the thermal conductivity of the material in $W~m^{-1}~K^{-1}$.
+\end{itemize}
 The general form for H, for non-uniform dT, is given by:
-\begin{equation*}
-	H = \frac{dQ}{dt} = -kA\frac{dT}{dx}\text{, negative sign indicates heat flows in direction of decreasing temperature}
-\end{equation*}
+\begin{equation}
+	H = \frac{dQ}{dt} = -kA\frac{dT}{dx},
+\end{equation}
+where the negative sign indicates heat flows in direction of decreasing temperature.
 Engineers use thermal resistance, $R = L/k \text{, in units of } K~m^{2}~W^{-1}$
 
-Convection: \\
-Convey heat energy from one location to another by movemnet of fluid (gas or liquid) with higher temperature. \\
-Two types:
+Convection: 
 \begin{itemize}
-	\item Natural Convection e.g. hot air rising
-	\item Forced Convection e.g. blood circulation
+    \item Convey heat energy from one location to another by movemnet of fluid (gas or liquid) with higher temperature. 
+    \item Two types:
+        \begin{itemize}
+        	\item Natural Convection e.g. hot air rising
+        	\item Forced Convection e.g. blood circulation
+        \end{itemize}
+    \item This is from complex fluid dynamics processes and so, there are no simple models.
 \end{itemize}
-This is from complex fluid dynamics processes and so, there are no simple models.
 
-Radiation: \\
-Through the electromagnetic spectrum so does not require a medium -- can go through vacuums
-Radiation depends on body temperature -- hotter bodies emit shorter wavelengths of radiation
-\begin{equation*}
-	H = Ae{\sigma}T^{4}
-\end{equation*}
-Rate of heat loss proportional to A, emissivity, e, \& temperature \\
-This is the Stefan-Boltzmann Law, where $\sigma = 5.67\times10^{-8}~W~m^{-2}~K^{-4}$
-
-Net heat current is the sum of the energy out and in from the surroundings at a temperature, T\textsubscript{s}, \& an emissivity, e\textsubscript{s}:
-\begin{equation*}
-	H_{net} = Ae{\sigma}T^{4} - Ae_{s}{\sigma}T^{4}_{s}
-\end{equation*}
+Radiation: 
+\begin{itemize}
+    \item Through the electromagnetic spectrum so does not require a medium -- can go through vacuums.
+    \item Radiation depends on body temperature -- hotter bodies emit shorter wavelengths of radiation.
+        \begin{equation}
+        	H = Ae{\sigma}T^{4}
+        \end{equation}
+    \item Rate of heat loss proportional to A, emissivity, e, \& temperature.
+    \item This is the Stefan-Boltzmann Law, where $\sigma = 5.67\times10^{-8}~W~m^{-2}~K^{-4}$.
+    \item Net heat current is the sum of the energy out and in from the surroundings at a temperature, T\textsubscript{s}, \& an emissivity, e\textsubscript{s}:
+        \begin{equation}
+        	H_{net} = Ae{\sigma}T^{4} - Ae_{s}{\sigma}T^{4}_{s}
+        \end{equation}
+\end{itemize}
 
 \chapter{}
-\thispagestyle{fancy}
 \section{Recap}
-Black body emissivity, $e = 1$ \\
-$T_{peak} ~\propto~f_{rad}$ \\
-Many astro-bodies are approximately black bodies
+\begin{itemize}
+    \item Black body emissivity, $e = 1$.
+    \item $T_{peak} ~\propto~f_{rad}$.
+    \item Many astro-bodies are approximately black bodies.
+\end{itemize}
 
 \section{Learning Aims}
 \begin{itemize}
@@ -275,15 +277,15 @@ Many astro-bodies are approximately black bodies
 \end{itemize}
 
 \section{Equations of state}
-The state of a material can be entirely described by a small number of variables \\
-Gases are described by the relationship between p, V, T, \& n \\
-All of this is combined into the equation of state
+The state of a material can be entirely described by a small number of variables.
+Gases are described by the relationship between p, V, T, \& n.
+All of this is combined into the equation of state.
 
 \section{Ideal Gases}
 For total mass, $m_{total}$, \& known molar mass then we get number of moles, $n$:
-\begin{equation*}
+\begin{equation}
 	m_{total} = n \times \text{gfm}
-\end{equation*}
+\end{equation}
 Holding other variables constant: (For an ideal gas only)
 \begin{itemize}
 	\item $V~\propto~n$
@@ -292,82 +294,89 @@ Holding other variables constant: (For an ideal gas only)
 \end{itemize}
 
 \section{Ideal Gas Law}
-\vspace{-24pt}
-\begin{equation*}
+\begin{equation}
 	pV = nRT
-\end{equation*}
-R is the universal gas constant, $R \approx 8.31 J mol^{-1} K^{-1}$
-
-Applicability: works well for moderate pressures and temperatures -- typically around ambient temperatures and atmospheric pressures \\
+\end{equation}
+R is the universal gas constant, $R \approx 8.31 J mol^{-1} K^{-1}$.
+Applicability: works well for moderate pressures and temperatures -- typically around ambient temperatures and atmospheric pressures.
 Gas density:
-\begin{align*}
-	n = \frac{m}{\text{gfm}} ~~~\&~~~ \rho = \frac{M}{V} \implies \rho = \frac{p\times\text{gfm}}{RT}
-\end{align*}
+\begin{align}
+    n &= \frac{m}{\text{gfm}}, & \rho &= \frac{M}{V} & \implies \rho &= \frac{p\times\text{gfm}}{RT}
+\end{align}
 If there is constant mass or n, then nR is constant:
-\begin{gather*}
-	\frac{pV}{T} = nR \implies \frac{pV}{T} = k \\
-	\therefore ~~\frac{p_{1}V_{1}}{T_{1}} = \frac{p_{2}V_{2}}{T_{2}}
-\end{gather*}
-
-\begin{tabular}{c|c}
-	Ideal Gases & Real Gases \\
-	\hline
-	Molecules infinitely small & Molecules have volume \\
-	Perfectly elastic collisions & Lose kinetic energy upon collisions \\
-	Do no interact with each other & Exert forces on each other
-\end{tabular}
+\begin{align}
+    \frac{pV}{T} &= nR \implies \frac{pV}{T} = k \\
+    \therefore ~~\frac{p_{1}V_{1}}{T_{1}} &= \frac{p_{2}V_{2}}{T_{2}}
+\end{align}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c}
+    	\hline\hline
+    	\bfseries Ideal Gases &\bfseries Real Gases \\
+    	\hline\hline
+    	Molecules infinitely small & Molecules have volume \\
+    	Perfectly elastic collisions & Lose kinetic energy upon collisions \\
+    	Do no interact with each other & Exert forces on each other\\
+    	\hline\hline
+    \end{tabular}
+\end{table}
 
 \section{Van der Waal's Equation}
-\vspace{-22pt}
-\begin{equation*}
+\begin{equation}
 	\Big(p+\frac{an^{2}}{V^{2}}\Big)(V-nb) = nRT
-\end{equation*}
-This accounts for particle volume and interactions. \\
-b $\approx$ volume of one mole of the gas \\
-a $\approx$ quantifies forces attracting molecules, reducing pressure
+\end{equation}
+This accounts for particle volume and interactions. 
+b $\approx$ volume of one mole of the gas;
+a $\approx$ quantifies forces attracting molecules, reducing pressure.
 
 \section{pV diagrams}
-These are important for thermodynamic processes. \\
-\includegraphics{pV.png} \\
-Each line on a pV diagram indicates a fixed temperature -- higher temperatures are further from the axes \\
-These lines of fixed temperature are called isotherms \\
-For ideal gas, isotherms represent constant pV \\
-Peak of dotted line shows critical temperature, above which there is no liquid-vapour phase transition \\
-Below the critical temperature, gas condenses to liquid as it is compressed \\
-Equilibrium between liquid and vapour phases inside dotted line region \\
-The gas is never liquid above critical temperature; below critical temperature, gas changes state at constant p in phase equilibrium zone
+These are important for thermodynamic processes. 
+\begin{figure}[H]
+    \centering
+    \includegraphics{pV.png} 
+\end{figure}
+Each line on a pV diagram indicates a fixed temperature -- higher temperatures are further from the axes. 
+These lines of fixed temperature are called isotherms.
+For ideal gas, isotherms represent constant pV.
+Peak of dotted line shows critical temperature, above which there is no liquid-vapour phase transition.
+Below the critical temperature, gas condenses to liquid as it is compressed.
+Equilibrium between liquid and vapour phases inside dotted line region.
+The gas is never liquid above critical temperature; below critical temperature, gas changes state at constant p in phase equilibrium zone.
 
-\section{Molcules \& Forces}
-Molecules can vary massively in size \\
-In gases, molecules are free to move; In liquids and solids, they are held together by intermolecular forces \\
-Forces are electrical in origin -- attractional/repulsive \& $\propto \frac{1}{r^{2}}$, i.e. $U(r)\propto\int\! f(r)\; dr$
+\section{Molecules \& Forces}
+Molecules can vary massively in size.
+In gases, molecules are free to move; In liquids and solids, they are held together by intermolecular forces.
+Forces are electrical in origin -- attractional/repulsive \& $\propto \frac{1}{r^{2}}$, i.e. $U(r)\propto\int\! f(r)\; dr$.
 
 \section{Force \& Potential Energy}
-Molcules are not point charges -- they contain $+$ve \& $-$ve parts \\
-Attractive interactions increase at distance up to $r_{0}$ then become repulsive. \\
-\includegraphics[scale=0.9]{PotWell.jpg} \\
+Molecules are not point charges -- they contain $+$ve \& $-$ve parts.
+Attractive interactions increase at distance up to $r_{0}$ then become repulsive. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.9]{PotWell.jpg}
+\end{figure}
 Region near bottom of graph called a potential well -- potential $U_{o}$ at position o.
-\begin{align*}
-	E_{k} << |U_{o}| \text{ -- Solid};\quad
-	E_{k} < |U_{o}| \text{ -- Liquid};\quad
-	E_{k} > |U_{o}| \text{ -- Gas}
-\end{align*}
-As temperature increases, the phase changes and importance of kinetic energy increases
+\begin{align}
+    E_{k} &<< |U_{o}| \text{ -- Solid}; &
+    E_{k} &< |U_{o}| \text{ -- Liquid}; &
+    E_{k} &> |U_{o}| \text{ -- Gas}
+\end{align}
+As temperature increases, the phase changes and importance of kinetic energy increases.
 
-Thermal expansion -- molecular view:
-As energy $\uparrow$, average distance $\uparrow$
-Adding heat to a solid causes molecules to rise up the potential well \\
-Atomic vibrations increase the radii defined by the sides of the well
+\textbf{Thermal expansion -- molecular view:}\\
+As energy $\uparrow$, average distance $\uparrow$.
+Adding heat to a solid causes molecules to rise up the potential well.
+Atomic vibrations increase the radii defined by the sides of the well.
 
 \section{Phase diagrams}
-These are plots of p against T \\
-There is only one phase at any specific p \& T, apart from phase boundaries where phase equilibrium occurs \\
-Triple point -- there is no liquid phase for materials with a triple point pressure $>$ the given pressure \\
-Critical point -- beyond this, as in latent heat, liquids and gases cannot be distinguished between, and are collectively called fluids
+These are plots of p against T.
+There is only one phase at any specific p \& T, apart from phase boundaries where phase equilibrium occurs.
+\begin{itemize}
+    \item Triple point -- there is no liquid phase for materials with a triple point pressure $>$ the given pressure.
+    \item Critical point -- beyond this, as in latent heat, liquids and gases cannot be distinguished between, and are collectively called fluids.
+\end{itemize}
 
 \chapter{}
-\thispagestyle{fancy}
-\section{Learning Aims}
 \begin{itemize}
 	\item Known assumptions of kinetic theory for ideal gases
 	\item Demonstrate relation between pressure and molecular properties
@@ -377,60 +386,55 @@ Critical point -- beyond this, as in latent heat, liquids and gases cannot be di
 \end{itemize}
 
 \section{Kinetic Theory}
-Model has as large number of molecules in a box \\
+Model has as large number of molecules in a box.
 Assumptions made:
 \begin{itemize}
-	\item[] Point particles
-	\item[] There is a volume, V, from a large number, N, of molecules with mass, m
-	\item[] Molecules are in constant motion, obeying Newton's law
-	\item[] Perfectly elastic collisions
-	\item[] Walls of box are perfectly rigid and infinitely massive (they do not absorb any energy)
+	\item Point particles
+	\item There is a volume, V, from a large number, N, of molecules with mass, m
+	\item Molecules are in constant motion, obeying Newton's law
+	\item Perfectly elastic collisions
+	\item Walls of box are perfectly rigid and infinitely massive (they do not absorb any energy)
 \end{itemize}
-Molecular motion $\rightarrow$ pressure of system
-\begin{equation*}
+Molecular motion $\rightarrow$ pressure of system:
+\begin{equation}
 	F = \frac{mv-mu}{t} = \frac{dp}{dt}
-\end{equation*}
-Individual $\Delta$p for number, N, of particles \\
-All molecules collide with walls -- generate pressure \\
-Assume all have velocity, $v = |v_{x}|$
-\begin{gather*}
-	m|v_{x}| - (-m|v_{x}|) = 2m|v_{x}| \\
-	\text{Wall Area, A, and number of molecules per unit volume, N/V} \\
-	\text{No. of collisions at A in dt} = \frac{1}{2}\Big(\frac{N}{V}\Big)\big(A|v_{x}|dt\big)
-\end{gather*}
+\end{equation}
+Individual $\Delta$p for number, N, of particles.
+All molecules collide with walls -- generate pressure.
+Assume all have velocity, $v = |v_{x}|$.
+\begin{align}
+    m|v_{x}| - (-m|v_{x}|) &= 2m|v_{x}| \\
+    \text{No. of collisions at A in dt} &= \frac{1}{2}\Big(\frac{N}{V}\Big)\big(A|v_{x}|dt\big)
+\end{align}
+Wall Area, A, and number of molecules per unit volume, N/V.
 Assume half of these are moving towards the wall:
-\begin{gather*}
-	{\Delta}p_{x}: dp_{x} = \frac{1}{2}\Big(\frac{N}{V}\Big)\big(A|v_{x}|dt\big) \times 2m|v_{x}| \\
-	\implies \frac{NAmv^{2}_{x}dt}{V} \\
-	\implies F = \frac{dp_{x}}{dt} = \frac{NAmv^{2}_{x}}{V} \\
-	\implies p = \frac{F}{A} = \frac{Nmv^{2}_{x}}{V} \\
-	\implies pV = Nmv^{2}_{x} \\
-	\implies pV = nRT
-\end{gather*}
+\begin{align}
+    {\Delta}p_{x}: dp_{x} &= \frac{1}{2}\Big(\frac{N}{V}\Big)\big(A|v_{x}|dt\big) \times 2m|v_{x}| \implies \frac{NAmv^{2}_{x}dt}{V} \\
+    F &= \frac{dp_{x}}{dt} = \frac{NAmv^{2}_{x}}{V} \implies p = \frac{F}{A} = \frac{Nmv^{2}_{x}}{V} \\
+    pV &= Nmv^{2}_{x} \implies pV = nRT
+\end{align}
 
 \section{Average Velocities}
-Assumed all molecules have $v_{x}$ \\
-Replace this with $\bar{v}_{x}$ \\
-Must have $v^{2} = v_{x}^{2} + v_{y}^{2} + v_{z}^{2},~ \bar{v} = \sum v_{x,y,z}$ \\
+Assumed all molecules have $v_{x}$.
+Replace this with $\bar{v}_{x}$.
+Must have $v^{2} = v_{x}^{2} + v_{y}^{2} + v_{z}^{2},~ \bar{v} = \sum v_{x,y,z}$.
 Overall, velocities must cancel out:
-\begin{gather*}
-	\bar{v}_{x}^{2} = \bar{v}_{y}^{2} = \bar{v}_{z}^{2} \\
-	\bar{v}_{x}^{2} = \frac{1}{3}\bar{v}^{2} \\
-	\therefore pV = \frac{1}{3}Nm\bar{v}^{2} \\
-	\implies = \frac{2}{3}N(\frac{1}{2}m\bar{v}^{2}) \\
-	\implies = \frac{2}{3}NE_{k} \text{, for translational }E_{k}
-\end{gather*}
+\begin{align}
+    \bar{v}_{x}^{2} &= \bar{v}_{y}^{2} = \bar{v}_{z}^{2} & \bar{v}_{x}^{2} &= \frac{1}{3}\bar{v}^{2} \\
+    pV &= \frac{1}{3}Nm\bar{v}^{2} & \implies pV &= \frac{2}{3}N(\frac{1}{2}m\bar{v}^{2}) \\
+    pV &= \frac{2}{3}NE_{k} \text{, for translational }E_{k} & 
+\end{align}
 Total translational kinetic energy labelled $K_{tr}$
-\begin{gather*}
-	\bar{K}_{tr} = \frac{1}{2}m\bar{v}^{2};~~ \sum N \rightarrow \text{total }K_{tr} \\
-	pV = \frac{2}{3}K_{tr} = nRT \text{ (whole gas)} \\
-	\implies K_{tr} = \frac{3}{2}nRT\text{, for n moles of gas} \\
-	\text{Divide }K_{tr}\text{ by N to get per molecule} \\
-	\frac{K_{tr}}{N} = \frac{1}{2}m\bar{v}^{2} = \frac{3nRT}{2N} \\
-	\implies = \frac{3}{2}\Big(\frac{R}{A}\Big)T ~\because~ \frac{n}{N} = \frac{1}{A} \\
-	\bar{K}_{tr} = \frac{1}{2}m\bar{v}^{2} = \frac{3}{2}k_{B}T ~\because~ \frac{R}{A} = k_{B}\text{, the Boltzmann constant} \\
-	pV = Nk_{B}T
-\end{gather*}
+\begin{align}
+    \bar{K}_{tr} &= \frac{1}{2}m\bar{v}^{2};~~ \sum N \rightarrow \text{total }K_{tr} \\
+    pV &= \frac{2}{3}K_{tr} = nRT \text{ (whole gas)} \\
+    \implies K_{tr} &= \frac{3}{2}nRT\text{, for n moles of gas} \\
+    \frac{K_{tr}}{N} &= \frac{1}{2}m\bar{v}^{2} = \frac{3nRT}{2N} \\
+                     &= \frac{3}{2}\Big(\frac{R}{A}\Big)T ~\because~ \frac{n}{N} = \frac{1}{A} \\
+    \bar{K}_{tr} &= \frac{1}{2}m\bar{v}^{2} = \frac{3}{2}k_{B}T ~\because~ \frac{R}{A} = k_{B}\text{, the Boltzmann constant} \\
+    pV &= Nk_{B}T
+\end{align}
+
 \section{RMS Speed}
 RMS Speed stands for "Root Mean Square" speed:
 \begin{gather*}
@@ -455,7 +459,7 @@ If all particles are moving, a factor of $\sqrt{2}$ is needed:
 	\frac{dN}{dt} = \frac{4\sqrt{2}{\pi}r^{2}vN}{V}
 \end{equation*}
 
-\section{Mean free path, $\lambda$}
+\section{Mean free path}
 We take the reciprocal of above to get time:
 \begin{gather*}
 	\frac{dN}{dt} = \frac{4\sqrt{2}{\pi}r^{2}vN}{V} \rightarrow \frac{dt}{dN} = \frac{V}{4\sqrt{2}{\pi}r^{2}vN} \\
