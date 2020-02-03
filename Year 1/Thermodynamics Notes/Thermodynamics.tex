@@ -1,5 +1,5 @@
 \documentclass[a4paper, 11pt, normalem]{report}
-% AT RMS SPEED
+
 \usepackage{../../../LaTeX-Templates/Notes}
 
 \title{Foundations of Physics Year 1 \\ Thermodynamics \vspace{-20pt}}
@@ -25,7 +25,7 @@ And of course, all of this will be on DUO
 \end{itemize}
 
 \section{Temperature}
-"Measure of degree of 'hotness' of a system".
+``Measure of degree of 'hotness' of a system".
 Measured by temperature-dependent changes in second substance i.e. thermometer.
 These use \textbf{TE} to work:
 \begin{itemize}
@@ -37,9 +37,9 @@ These use \textbf{TE} to work:
 Two systems are in \textbf{TE} with each other when they have the same temperature
 
 \section{Zeroth Law}
-"\textit{For two systems that are each in \textbf{TE} with a third system independently, the two are in \textbf{TE} with each other}".
+``\textit{For two systems that are each in \textbf{TE} with a third system independently, the two are in \textbf{TE} with each other}".
 This will aid with calculations later on. 
-Use 273.15 as converter for $\textbf{K}\leftrightarrow\textbf{{\textdegree}C}$:
+Use 273.15 as converter for $\textbf{K}\leftrightarrow ^{\circ}C$:
 \begin{equation}
     \dfrac{T_{2}}{T_{1}} = \dfrac{p_{2}}{p_{1}}
 \end{equation}
@@ -50,7 +50,7 @@ At 0 K, system energy is minimum.
 \begin{itemize}
     \item \textbf{TE} is same temperature in different systems 
     \item Zeroth Law of Thermodynamics 
-    \item Thermometers converge at -273.15{\textdegree}C, 0 K
+    \item Thermometers converge at -273.15{$^\circ$}C, 0 K
 \end{itemize}
 
 \section{Learning Aims}
@@ -194,7 +194,7 @@ Expansion of water is approximately linear to temperature macroscopically.
     \centering
     \includegraphics[scale=0.4]{water.png}
 \end{figure}
-Water contracts as it cools down to 4{\textdegree}C, then expands. 
+Water contracts as it cools down to 4{$^\circ$}C, then expands. 
 This explains why ponds freeze from the top which was critical for evolution.
 
 \section{Thermally-Induced Stress}
@@ -436,43 +436,41 @@ Total translational kinetic energy labelled $K_{tr}$
 \end{align}
 
 \section{RMS Speed}
-RMS Speed stands for "Root Mean Square" speed:
-\begin{gather*}
-	v_{rms} := \sqrt{\bar{(v^{2})}} \\
-	v_{rms} = \sqrt{\frac{3k_{B}T}{m}}\text{, for molecules} \\
-	v_{rms} = \sqrt{\frac{3RT}{M}}\text{, for the whole gas}
-\end{gather*}
-RMS speed is greater than average speed \\
-RMS speed is greater for molecules with smaller masses
+RMS Speed stands for ``Root Mean Square" speed:
+\begin{align}
+    v_{rms} &:= \sqrt{\bar{(v^{2})}} \\
+    v_{rms} &= \sqrt{\frac{3k_{B}T}{m}}\text{, for molecules} \\
+    v_{rms} &= \sqrt{\frac{3RT}{M}}\text{, for the whole gas}
+\end{align}
+RMS speed is greater than average speed; RMS speed is greater for molecules with smaller masses.
 
 \section{Collisions}
-Consider N spherical molecules of radius, r, with volume, V \\
-Molecules sweep out cylinder of radius 2r as they go -- inside this cylinder, collisions will occur \\
-In an interval dt, molecules travel v{\,}dt \\
+Consider N spherical molecules of radius, r, with volume, V. 
+Molecules sweep out cylinder of radius 2r as they go -- inside this cylinder, collisions will occur.
+In an interval dt, molecules travel v{\,}dt.
 For dN molecules with cylinder:
-\begin{gather*}
-	dN = 4{\pi}r^{2}vdt\Big(\frac{N}{V}\Big) \\
-	\text{Collision Rate: } \frac{dN}{dt} = \frac{4{\pi}r^{2}vN}{V}
-\end{gather*}
+\begin{align}
+    dN &= 4{\pi}r^{2}vdt\Big(\frac{N}{V}\Big) \\
+    \text{Collision Rate: } \frac{dN}{dt} &= \frac{4{\pi}r^{2}vN}{V}
+\end{align}
 If all particles are moving, a factor of $\sqrt{2}$ is needed:
-\begin{equation*}
+\begin{equation}
 	\frac{dN}{dt} = \frac{4\sqrt{2}{\pi}r^{2}vN}{V}
-\end{equation*}
+\end{equation}
 
 \section{Mean free path}
 We take the reciprocal of above to get time:
-\begin{gather*}
-	\frac{dN}{dt} = \frac{4\sqrt{2}{\pi}r^{2}vN}{V} \rightarrow \frac{dt}{dN} = \frac{V}{4\sqrt{2}{\pi}r^{2}vN} \\
-	\implies \bar{t} = \frac{V}{4\sqrt{2}{\pi}r^{2}vN} ~\because~ dN = 1 \\
-	\lambda = v\bar{t} = \frac{V}{4\sqrt{2}{\pi}r^{2}N}
-\end{gather*}
+\begin{align}
+    \frac{dN}{dt} &= \frac{4\sqrt{2}{\pi}r^{2}vN}{V} \rightarrow \frac{dt}{dN} = \frac{V}{4\sqrt{2}{\pi}r^{2}vN} \\
+    \bar{t} &= \frac{V}{4\sqrt{2}{\pi}r^{2}vN} ~\because~ dN = 1 \\
+    \lambda &= v\bar{t} = \frac{V}{4\sqrt{2}{\pi}r^{2}N}
+\end{align}
 This can be desrcibed macroscopically by using $pV = Nk_{B}T$:
-\begin{equation*}
+\begin{equation}
 	\lambda = \frac{k_{B}T}{4\sqrt{2}{\pi}r^{2}p}
-\end{equation*}
+\end{equation}
 
 \chapter{}
-\thispagestyle{fancy}
 \section{Learning Aims}
 \begin{itemize}
 	\item Heat capacity of monatomic gas
@@ -484,57 +482,65 @@ This can be desrcibed macroscopically by using $pV = Nk_{B}T$:
 	\item Maxwell-Boltzmann distribution
 \end{itemize}
 \section{Heat capacities}
-Heat is energy in transit -- adding heat adds energy \\
-Kinetic energy $\propto$ temperature, for ideal gases \\
-Equipartition theory -- energy on average is shared equally across all available Degrees of Freedom (DoFs) \\
-For a simple atomic gas -- there are 3 axes of translational motion $\therefore$ 3 DoFs \\
-Raising energy raises temperature
+Heat is energy in transit; adding heat adds energy.
+Kinetic energy $\propto$ temperature, for ideal gases.
+Equipartition theory -- energy on average is shared equally across all available Degrees of Freedom (DoFs).
+For a simple atomic gas -- there are 3 axes of translational motion $\therefore$ 3 DoFs.
+Raising energy raises temperature.
 
-How much heat is needed? \\
-\textit{dQ $\rightarrow$ dT relates to change in kinetic energy, $dK_{tr}$}\\
+How much heat is needed? 
+\textit{dQ $\rightarrow$ dT relates to change in kinetic energy, $dK_{tr}$}
 Define $C_{V}$ to be molar heat capacity at constant volume:
-\begin{gather*}
-	dQ = dK_{tr} = \frac{3}{2}nRdT \\
-	dQ = nC_{V}dT \\
-	\therefore C_{V} = \frac{1}{n}\frac{dQ}{dT} = \frac{1}{n}\frac{dK_{tr}}{dT} \\
-	\implies = \frac{1}{n}\frac{3nRdT}{2dT} \\
-	\therefore C_{V} = \frac{3}{2}R
-\end{gather*}
+\begin{align}
+    dQ &= dK_{tr} = \frac{3}{2}nRdT \\
+    dQ &= nC_{V}dT \\
+    C_{V} &= \frac{1}{n}\frac{dQ}{dT} = \frac{1}{n}\frac{dK_{tr}}{dT} \\
+          &= \frac{1}{n}\frac{3nRdT}{2dT} \\
+    C_{V} &= \frac{3}{2}R
+\end{align}
 
 \section{Degrees of Freedom}
-There are two additional DoFs in diatomic molecules \\
-Travelling along each dimensional axis, rotating about each axis, and vibrating through bonds all provide a DoF \\
-Monatomic gas -- heat only goes into translational DoFs \\
-For other molecules -- heat is distributed over all DoFs \\
-Energy, on average, is spread equally between different types of motion \\
-Each molecule carries averge energy of $\frac{1}{2}k_{B}T$ per DoF \\
-Monatomic -- 3 DoFs from each translational dimension $\therefore \frac{3}{2}nRT \rightarrow C_{V} = \frac{3}{2}R$ \\
-Diatomic -- 5 DoFs from 3 translational and 2 rotational $\therefore \frac{5}{2}nRT \rightarrow C_{V} = \frac{5}{2}R$ \\
-There are quanitised energy levels in vibrational DoFs \\
-\includegraphics[scale=0.8]{Vibration.jpg} \\
-Motions are "frozen out" at lower temperatures; as temperature increases, more DoFs become available
+There are two additional DoFs in diatomic molecules.
+Travelling along each dimensional axis, rotating about each axis, and vibrating through bonds all provide a DoF.
+Monatomic gas -- heat only goes into translational DoFs.
+For other molecules -- heat is distributed over all DoFs.
+Energy, on average, is spread equally between different types of motion.
+Each molecule carries averge energy of $\frac{1}{2}k_{B}T$ per DoF.
+\begin{itemize}
+    \item Monatomic -- 3 DoFs from each translational dimension $\therefore \frac{3}{2}nRT \rightarrow C_{V} = \frac{3}{2}R$ 
+    \item Diatomic -- 5 DoFs from 3 translational and 2 rotational $\therefore \frac{5}{2}nRT \rightarrow C_{V} = \frac{5}{2}R$ 
+\end{itemize}
+There are quantised energy levels in vibrational DoFs.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Vibration.jpg}
+\end{figure}
+Motions are ``frozen out" at lower temperatures; as temperature increases, more DoFs become available.
 
 \section{Dulong \& Petit Rule}
-Consider the crystalline lattice of a solid \\
-Each bond is under SHM -- x,y,z motion \\
-Stretching of bonds stored potential energy in each axis
+Consider the crystalline lattice of a solid.
+Each bond is under SHM -- x,y,z motion.
+Stretching of bonds stored potential energy in each axis.
 
-Dulong \& Petit Rule $\approx 25 J mol^{-1} K^{-1} \approx 3R$ for solids \\
+Dulong \& Petit Rule $\approx 25 J mol^{-1} K^{-1} \approx 3R$ for solids.
 For a simple spring model: there are 6 DoFs; 3 translational, 3 vibrational potential:
-\begin{gather*}
-	\text{Average energy per molecule } = \frac{6}{2}k_{B}T = 3k_{B}T = 3R \\
-	\text{Over whole solid: } E_{total} = 3Nk_{B}T = 3nRT
-	\therefore \text{Molar heat capacity, } C_{V} = 3R
-\end{gather*}
+\begin{align}
+    \text{Average energy per molecule } &= \frac{6}{2}k_{B}T = 3k_{B}T = 3R \\
+    \text{Over whole solid: } E_{total} &= 3Nk_{B}T = 3nRT\\
+    \text{Molar heat capacity, } C_{V} &= 3R
+\end{align}
 
 \section{Molecular Speeds}
-Use a speed distribution function to map out molecular speeds:\\
-Each plot has the same area \\
-\includegraphics[scale=0.85]{Distribution.jpg}
-\begin{gather*}
-	\text{The number of molecules with set speeds: } dN = Nf(v)~dv \\
-	\text{The probabaility that a molecule has a speed: } f(v)~dv
-\end{gather*}
+Use a speed distribution function to map out molecular speeds:
+Each plot has the same area.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.85]{Distribution.jpg}
+\end{figure}
+\begin{align}
+    \text{The number of molecules with set speeds: }& dN = Nf(v)~dv \\
+    \text{The probabaility that a molecule has a speed: }& f(v)~dv
+\end{align}
 3 key values for molceular speeds:
 \begin{itemize}
 	\item most probable; $v_{mp}$, where $\frac{df}{dv} = 0$
@@ -542,16 +548,15 @@ Each plot has the same area \\
 	\item rms; $v_{rms} = \sqrt{\bar{(v^{2})}} = \sqrt{\int_{0}^{\infty} v^{2}f(v)~dv}$
 \end{itemize}
 $f(v)$ is described by the Maxwell-Boltzmann distribution:
-\begin{equation*}
+\begin{equation}
 	f(v) = 4{\pi}\bigg(\frac{m}{2{\pi}k_{B}T}\bigg)^{3/2}v^{2}e^{\frac{-mv^{2}}{2k_{B}T}}
-\end{equation*}
+\end{equation}
 Substituting this $f(v)$ into previous speed equations gives:
-\begin{gather*}
-	v_{mp} = \sqrt{\frac{2k_{B}T}{m}};~~~\bar{v} = \sqrt{\frac{8k_{B}T}{{\pi}m}};~~~v_{rms} = \sqrt{\frac{3k_{B}T}{m}}
-\end{gather*}
+\begin{align}
+    v_{mp} &= \sqrt{\frac{2k_{B}T}{m}}; & \bar{v} &= \sqrt{\frac{8k_{B}T}{{\pi}m}}; & v_{rms} &= \sqrt{\frac{3k_{B}T}{m}}.
+\end{align}
 
 \chapter{}
-\thispagestyle{fancy}
 \section{Learning Aims}
 \begin{itemize}
 	\item The First Law of Thermodynamics
@@ -560,63 +565,75 @@ Substituting this $f(v)$ into previous speed equations gives:
 \section{Thermodynamic Systems}
 Definition: A collection of objects regarded as a single unit $\rightarrow$ beyond those objects is classified as the surroundings
 
-Heat, Q, can flow \emph{in to} or \emph{out of} a system \\
-Work, W, can br \emph{done by} or \emph{done on} a system \\
-\includegraphics{ThermoSystem.jpg} \\
+Heat, Q, can flow \emph{in to} or \emph{out of} a system; Work, W, can br \emph{done by} or \emph{done on} a system.
+\begin{figure}[H]
+    \centering
+    \includegraphics{ThermoSystem.jpg}
+\end{figure}
 Consider gas in a piston:
 Molecules hit piston, transfer energy as piston moves out $\rightarrow$ lower kinetic energy so lower temperature
-\begin{equation*}
+\begin{equation}
 	\text{Work } dW = F\:dx
-\end{equation*}
-Piston pushes molecules, transfers energy as piston moves in $\rightarrow$ higher kinetic energy so higher temperature
-\begin{gather*}
-	F = pA \rightarrow dW = F\;dx = pA\:dx \\
-	A\:dx = dV \rightarrow dW = p\:dV \\
-	\implies W = \int_{V_{1}}^{V_{2}} p\:dV \text{ -- [Integrate over volume change]}
-\end{gather*}
-However, pressure depends on volume and temperature \\
-\includegraphics[scale=0.8]{pV.jpg} \\
-Work is the area under the curve
-\begin{gather*}
-	p_{1}V_{1} = nRT_{H}; \; p_{2}V_{2} = nRT_{H} \\
-	p_{2} = 2p_{1} \therefore V_{2} = \frac{V_{1}}{2} \\
-	\implies W = \int_{V_{1}}^{V_{2}} p\:dV = \int_{V_{1}}^{V_{2}} \frac{nRT_{H}}{V}\:dV \\
-	\implies = nRT_{H}[\ln{V}]_{V_{1}}^{V_{2}} = nRT_{H}\ln{\frac{V_{2}}{V_{1}}} \\
-	\therefore W = -nRT_{H}\ln{2}
-\end{gather*}
-Work is path-dependent: different routes from initial to final volumes and pressures will require a different amount of work -- due to work being the area under the graph \\
-\includegraphics[scale=0.8]{Paths.jpg} \\
+\end{equation}
+Piston pushes molecules, transfers energy as piston moves in: higher kinetic energy so higher temperature
+\begin{align}
+    F &= pA \rightarrow dW = F\;dx = pA\:dx \\
+    A\:dx &= dV \rightarrow dW = p\:dV \\
+    W &= \int_{V_{1}}^{V_{2}} p\:dV \text{ -- [Integrate over volume change]}
+\end{align}
+However, pressure depends on volume and temperature.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{pV.jpg} 
+\end{figure}
+Work is the area under the curve:
+\begin{align}
+    p_{1}V_{1} &= nRT_{H}; \; p_{2}V_{2} = nRT_{H} \\
+    p_{2} &= 2p_{1} \therefore V_{2} = \frac{V_{1}}{2} \\
+	W &= \int_{V_{1}}^{V_{2}} p\:dV = \int_{V_{1}}^{V_{2}} \frac{nRT_{H}}{V}\:dV \\
+      &= nRT_{H}[\ln{V}]_{V_{1}}^{V_{2}} = nRT_{H}\ln{\frac{V_{2}}{V_{1}}} \\
+    W &= -nRT_{H}\ln{2}
+\end{align}
+Work is path-dependent: different routes from initial to final volumes and pressures will require a different amount of work -- due to work being the area under the graph.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Paths.jpg}
+\end{figure}
 (c) takes the least work as it has the smallest area
 
 \section{First Law of Thermodynamics}
-Internal energy, U -- sum of all $E_{k}$ and $E_{p}$ in a system (not gravitational potential though)
-\begin{gather*}
-	{\Delta}U = U_{2} - U_{1} \\
-	+ Q, \uparrow U \rightarrow {\Delta}U = Q \\
-	\text{Work done uses internal energy: } W = -{\Delta}U
-\end{gather*}
+Internal energy, U -- sum of all $E_{k}$ and $E_{p}$ in a system (not gravitational potential though).
+\begin{align}
+    {\Delta}U &= U_{2} - U_{1} \\
+    + Q, &\uparrow U \rightarrow {\Delta}U = Q 
+\end{align}
+Work done uses internal energy: $W = -{\Delta}U$.
 The first law of thermodynamics is stated as:
-\begin{gather*}
-	U_{2} - U_{1} = {\Delta}U = Q - W \quad \text{OR: } Q = {\Delta}U + W; \; dU = dQ - dW
-\end{gather*}
-Absolute U is difficult to measure for a system; $\Delta$U is not \\
-Experimentally: Q \& W depend on path taken but \underline{$\Delta$U is independent of path}
+\begin{align}
+    U_{2} - U_{1} &= {\Delta}U = Q - W \text{OR: }\\
+    Q &= {\Delta}U + W; \; dU = dQ - dW
+\end{align}
+Absolute U is difficult to measure for a system; $\Delta$U is not.
+Experimentally: Q \& W depend on path taken but \underline{$\Delta$U is independent of path}.
 
 \section{Special Case 1}
-Isolated system -- no work or heat is interchanged with surroundings: $W = Q = 0$ \\
-U is constant, only depends on T
+Isolated system -- no work or heat is interchanged with surroundings: $W = Q = 0$.
+U is constant, only depends on T.
 
 \section{Special Case 2}
-Cyclic process -- a system that returns to intial state: $U_{2} = U_{1}$ \& $Q = W \therefore$ U is constant overall
-
-\includegraphics[scale=0.9]{Cyclic.jpg}
+Cyclic process -- a system that returns to intial state: $U_{2} = U_{1}$ \& $Q = W \therefore$ U is constant overall.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.9]{Cyclic.jpg}
+\end{figure}
 
 \chapter{}
-\thispagestyle{fancy}
 \section{Recap}
-For ideal gases: $E_{T} = K_{tr} = \frac{3}{2}RT$ (per mole?) \\
-For real gases: $E_{T} = K_{tr} + E_{P} = \frac{3}{2}RT - \frac{a}{V}$ (per mole?) \\
-Free expansion causes decrease in temperature -- reason for extra term in real gases
+\begin{itemize}
+    \item For ideal gases: $E_{T} = K_{tr} = \frac{3}{2}RT$ (per mole?) 
+    \item For real gases: $E_{T} = K_{tr} + E_{P} = \frac{3}{2}RT - \frac{a}{V}$ (per mole?) 
+    \item Free expansion causes decrease in temperature -- reason for extra term in real gases
+\end{itemize}
 
 \section{Learning Aims}
 \begin{itemize}
@@ -627,87 +644,89 @@ Free expansion causes decrease in temperature -- reason for extra term in real g
 \end{itemize}
 
 \section{Thermodynamic Processes}
-\includegraphics[scale=0.7]{Processes.jpg} \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Processes.jpg}
+\end{figure}
 For an ideal gas:
 \begin{itemize}
-	\item[] Isobaric process, ${\Delta}p = 0$
-	\item[] Isochoric process, ${\Delta}V = 0 \rightarrow W = 0$
-	\item[] Isothermal process, ${\Delta}T = 0$
-	\item[] Adiabatic process, $Q = 0$
+	\item Isobaric process, ${\Delta}p = 0$
+	\item Isochoric process, ${\Delta}V = 0 \rightarrow W = 0$
+	\item Isothermal process, ${\Delta}T = 0$
+	\item Adiabatic process, $Q = 0$
 \end{itemize}
 
 \section{Isobaric Processes}
 Constant pressure process:
-\begin{equation*}
+\begin{equation}
 	W = p(V_{2} - V_{1})
-\end{equation*}
+\end{equation}
 
 \section{Isochoric Processes}
 Constant volume process:
-\begin{gather*}
-	{\Delta}V = 0 \therefore W = 0 \\
-	\implies p\:dV = 0 \\
-	U_{2} - U_{1} = {\Delta}U = Q
-\end{gather*}
-All energy added to the system as heat goes into raising the internal energy
+\begin{align}
+    {\Delta}V &= 0 \therefore W = 0 \\
+    p\:dV &= 0 \\
+    U_{2} - U_{1} &= {\Delta}U = Q
+\end{align}
+All energy added to the system as heat goes into raising the internal energy.
 
 \section{Isothermal Processes}
-Constant temperature process: \\
-Heat flow must occur slowly enough that thermal equilibrium is maintained \\
-Generally -- W, Q, \& ${\Delta}U \neq 0$ \\
-Ideal gas -- ${\Delta}U = 0$, $Q = W$
-
+Constant temperature process.
+Heat flow must occur slowly enough for thermal equilibrium to be maintained.
+Generally -- W, Q, \& ${\Delta}U \neq 0$.
+Ideal gas -- ${\Delta}U = 0$, $Q = W$.
 i.e. All heat energy taken in is output as work done
 
 \section{Adiabatic Processes}
 No heat transfer process:
-\vspace{-10pt}
-\begin{equation*}
+\begin{equation}
 	Q = 0 \therefore U_{2} - U_{1} = {\Delta}U = -W
-\end{equation*}
+\end{equation}
 Occurences:
 \begin{enumerate}
 	\item System is well-insulated
 	\item Process was so quick that heat flow was neglected
 \end{enumerate}
-For ideal gases in expansion, W is positive so $\Delta$U drops $\rightarrow$ temperature drops
+For ideal gases in expansion, W is positive so $\Delta$U drops $\rightarrow$ temperature drops.
 
 \section{Heat Capacity}
 Two molar heat capacities:
 \begin{itemize}
-	\item[] At constant volume, $C_{V}$
-	\item[] At constant pressure, $C_{p}$
+	\item At constant volume, $C_{V}$
+	\item At constant pressure, $C_{p}$
 \end{itemize}
-For ideal gases, $C_{p} > C_{V}$
-
-Consider n moles of gas at temperature T in constant volume, V \\
+For ideal gases, $C_{p} > C_{V}$:\\
+Consider n moles of gas at temperature T in constant volume, V.
 Add heat, dQ:
-\begin{gather*}
-	dQ = nC_{V}dT \implies dU = nC_{V}dT \because W = 0 \\
-	\text{Now at constant pressure: } dQ = nC_{p}dT
-\end{gather*}
+\begin{align}
+    dQ &= nC_{V}dT \\
+    dU &= nC_{V}dT \because W = 0 \\
+    dQ &= nC_{p}dT
+\end{align}
 Material expands when heated so from ideal gas law:
-\begin{gather*}
+\begin{align}
 	dW = p\:dV = nR\:dT
-\end{gather*}
+\end{align}
 Using the first law of thermodynamics:
-\begin{gather*}
-	dQ = dU + dW \\
-	\implies nC_{p}dT = nC_{V}dT + nRdT \\
-	\implies C_{p} = C_{V} + R ~\because~ dT \text{ is the same}
-\end{gather*}
+\begin{align}
+    dQ &= dU + dW \\
+    nC_{p}dT &= nC_{V}dT + nRdT \\
+    C_{p} &= C_{V} + R ~\because~ dT \text{ is the same}
+\end{align}
 
 \section{Ratio of heat capacities}
-\vspace{-22pt}
-\begin{equation*}
+\begin{equation}
 	\gamma = \frac{C_{p}}{C_{V}}
-\end{equation*}
-For a monatomic gas, $\gamma \approx 1.67$ \\
-For a diatomic gas, $\gamma = 1.4$
+\end{equation}
+For a monatomic gas, $\gamma \approx 1.67$; for a diatomic gas, $\gamma = 1.4$.
 
 \section{The Adiabatic Process}
-An adiabatic curve at any point is always steeper than the isotherm passing through the same point. \\
-\includegraphics[scale=0.7]{Adiabatic.jpg} \\
+An adiabatic curve at any point is always steeper than the isotherm passing through the same point.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Adiabatic.jpg}
+\end{figure}
 Idealised process so one of two cases:
 \begin{enumerate}
 	\item Really fast process -- no heat is exchanged
@@ -716,96 +735,104 @@ Idealised process so one of two cases:
 For an ideal gas: temperature drops for expansion and rises for compression
 
 \section{Relating V, T, p, \& W}
-\vspace{-24pt}
-\begin{gather*}
-	dU = -dW \text{ [infinitesimal process]} \\
-	\implies nC_{V}dT = -pdV ~\&~ pV = nRT \\
-	\implies nC_{V}dT = -\frac{nRT}{V}\:dV \\
-	\implies \frac{dT}{T} + \frac{R}{C_{V}}\frac{dV}{V} = 0 ~\&~ \gamma = \frac{C_{p}}{C_{V}} \\
-	\implies \frac{R}{C_{V}} = \frac{C_{p} - C_{V}}{C_{V}} = \frac{C_{p}}{C_{V}} - 1 = \gamma - 1
-\end{gather*}
+\begin{align}
+    dU &= -dW \text{ [infinitesimal process]} \\
+    nC_{V}dT &= -pdV ~\&~ pV = nRT \\
+    nC_{V}dT &= -\frac{nRT}{V}\:dV \\
+    \frac{dT}{T} + \frac{R}{C_{V}}\frac{dV}{V} &= 0. ~ \gamma = \frac{C_{p}}{C_{V}} \\
+    \frac{R}{C_{V}} &= \frac{C_{p} - C_{V}}{C_{V}} = \frac{C_{p}}{C_{V}} - 1 = \gamma - 1
+\end{align}
 Now take last equation and integrate:
-\begin{gather*}
-	\int \bigg[\frac{dT}{T} + (\gamma - 1)\frac{dV}{V} = 0\bigg] \\
-	\implies \ln{T} + (\gamma - 1)\ln{V} = k \\
-	\implies \ln{T} + \ln{V^{\gamma - 1}} = k \\
-	\implies \ln{TV^{\gamma - 1}} = k \\
-	\implies TV^{\gamma - 1} = \kappa
-\end{gather*}
+\begin{align}
+    \int \bigg[\frac{dT}{T} + (\gamma - 1)\frac{dV}{V} &= 0\bigg] \\
+    \ln{T} + (\gamma - 1)\ln{V} &= k \\
+    \ln{T} + \ln{V^{\gamma - 1}} &= k \\
+    \ln{TV^{\gamma - 1}} &= k \\
+    TV^{\gamma - 1} &= \kappa
+\end{align}
 Hence, for initial and final states, ($T_{1},\:V_{1}$) \& ($T_{2},\:V_{2}$):
-\begin{gather*}
-	T_{1}V_{1}^{\gamma - 1} = T_{2}V_{2}^{\gamma - 1} ~\&~ T = \frac{pV}{nR} \\
-	\therefore p_{1}V_{1}^{\gamma} = p_{2}V_{2}^{\gamma}
-\end{gather*}
+\begin{align}
+    T_{1}V_{1}^{\gamma - 1} &= T_{2}V_{2}^{\gamma - 1}\\
+    T &= \frac{pV}{nR} \\
+    p_{1}V_{1}^{\gamma} &= p_{2}V_{2}^{\gamma}
+\end{align}
 Now considering work:
-\begin{gather*}
-	Q = 0 ~\therefore~ W = -{\Delta}U ~\&~ {\Delta}U = nC_{V}{\Delta}T \text{ for ideal gases} \\
-	W = nC_{V}(T_{1} - T_{2}) \\
-	pV = nRT \rightarrow W = \frac{C_{V}}{R}(p_{1}V_{1} - p_{2}V_{2}) \\
-	\implies W = \frac{1}{\gamma - 1}(p_{1}V_{1} - p_{2}V_{2})
-\end{gather*}
+\begin{align}
+    Q &= 0 ~\therefore~ W = -{\Delta}U \\
+    {\Delta}U &= nC_{V}{\Delta}T \text{ for ideal gases} \\
+    W &= nC_{V}(T_{1} - T_{2}) \\
+    pV &= nRT \rightarrow W = \frac{C_{V}}{R}(p_{1}V_{1} - p_{2}V_{2}) \\
+    W &= \frac{1}{\gamma - 1}(p_{1}V_{1} - p_{2}V_{2})
+\end{align}
 
 \chapter{}
-\thispagestyle{fancy}
 \section{Learning Aims}
 \begin{itemize}
 	\item Principles of a heat engine \& its thermal efficiency
-	\item Sketch the Otto cycle, desrcibe each step, \& understand its limitations
+	\item Sketch the Otto cycle, describe each step, \& understand its limitations
 	\item Describe differences between Otto cycle \& the diesel engine
 	\item How a fridge works \& derive the coefficient of performance
 \end{itemize}
 
 \section{Definitions}
-A device that converts heat into mechanical energy of work is known as a heat engine
-
-Matter inside this engine undergoes thermodynamic processes -- \emph{the working substance}
-
-The simplest engines are thosein which the working substance undergoes a cyclic process
+\begin{itemize}
+    \item A device that converts heat into mechanical energy of work is known as a heat engine.
+    \item Matter inside this engine undergoes thermodynamic processes -- \emph{the working substance}.
+    \item The simplest engines are thosein which the working substance undergoes a cyclic process.
+\end{itemize}
 
 \section{A Simple Heat Engine}
-\includegraphics[scale=0.7]{HeatEngine.jpg} \\
-All heat engines absorb heat from the hot reservoir \& discard it to the cold reservoir \\
-Energy from the hot reservoir, $Q_{H}$, is positive; energy lost to cold reservoir, $Q_{C}$, is negative \\
-The energy difference is the work done, W
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{HeatEngine.jpg}
+\end{figure}
+All heat engines absorb heat from the hot reservoir \& discard it to the cold reservoir.
+Energy from the hot reservoir, $Q_{H}$, is positive; energy lost to cold reservoir, $Q_{C}$, is negative.
+The energy difference is the work done, W.
 
 \section{Efficiency}
-$Q_{H}$ and $Q_{C}$ are the heat energies absorbed and rejected in one cycle of the heat engine -- the difference is the Work done
-\begin{equation*}
+$Q_{H}$ and $Q_{C}$ are the heat energies absorbed and rejected in one cycle of the heat engine -- the difference is the Work done:
+\begin{equation}
 	W = {\Delta}Q = Q_{H} + Q_{C} = |Q_{H}| - |Q_{C}|
-\end{equation*}
+\end{equation}
 Thermal efficiency, e:
-\begin{equation*}
+\begin{equation}
 	e = \frac{W}{Q_{H}} = 1 + \frac{Q_{C}}{Q_{H}} = 1 - \bigg|\frac{Q_{C}}{Q_{H}}\bigg|
-\end{equation*}
-A heat engine can never be 100\% efficient $\rightarrow e < 1$ \\
-If $|Q_{C}| = 0$, then there can be no heat flow so no work can be undertaken
+\end{equation}
+A heat engine can never be 100\% efficient $\rightarrow e < 1$.
+If $|Q_{C}| = 0$, then there can be no heat flow so no work can be undertaken.
 
 \section{The Otto Cycle}
-The Otto Cycle is an idealised model for an internal combustion engine \\
-\includegraphics[scale=0.8]{Otto.jpg} \\
-The maximum volume of the cylinder is a factor, \emph{r} -- the compression ratio, larger than the minimum volume: $V_{max} = rV_{min}$ \\
-$Q_{H} > Q_{C} \therefore$ Work is done
+The Otto Cycle is an idealised model for an internal combustion engine.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Otto.jpg}
+\end{figure}
+The maximum volume of the cylinder is a factor, \emph{r} -- the compression ratio, larger than the minimum volume: $V_{max} = rV_{min}$.
+$Q_{H} > Q_{C} \therefore$ Work is done.
 
 bc \& da are at constant volume so:
-\begin{gather*}
-	Q_{H} = nC_{V}(T_{c} - T_{b}) > 0 ~\&~ Q_{C} = nC_{V}(T_{a} - T_{d}) < 0 \\
-	\implies e = \frac{Q_{H} + Q_{C}}{Q_{H}} = \frac{T_{c} - T_{b} + T_{a} - T_{d}}{T_{c} - T_{b}}
-\end{gather*}
+\begin{align}
+    Q_{H} &= nC_{V}(T_{c} - T_{b}) > 0 ~\&~ Q_{C} = nC_{V}(T_{a} - T_{d}) < 0 \\
+    e &= \frac{Q_{H} + Q_{C}}{Q_{H}} = \frac{T_{c} - T_{b} + T_{a} - T_{d}}{T_{c} - T_{b}}
+\end{align}
 For ab and cd:
-\begin{gather*}
-	T_{a}(rV)^{\gamma - 1} = T_{b}V^{\gamma - 1} ~\&~ T_{d}(rV)^{\gamma - 1} = T_{c}V^{\gamma - 1} \implies e \\
-	e = \frac{T_{d}r^{\gamma - 1} - T_{a}r^{\gamma - 1} + T_{a} - T_{d}}{T_{d}r^{\gamma - 1} - T_{a}r^{\gamma - 1}} = \frac{(T_{d} - T_{a})(r^{\gamma - 1} - 1)}{(T_{d} - T_{a})r^{\gamma - 1}} \\
-	e = 1 - \frac{1}{r^{\gamma - 1}} \\
-	\therefore ~ e < 1 \emph{always}
-\end{gather*}
-e.g. for air: $\gamma = 1.4, ~ r = 8 \implies e \approx 0.56$ \\
-\emph{r} cannot be increased too mch as the temperature of adiabatic compression rises too high \& the air/fuel mixture ignites early -- 'knocking'
+\begin{align}
+    T_{a}(rV)^{\gamma - 1} &= T_{b}V^{\gamma - 1} ~\&~ T_{d}(rV)^{\gamma - 1} = T_{c}V^{\gamma - 1} \\
+    e &= \frac{T_{d}r^{\gamma - 1} - T_{a}r^{\gamma - 1} + T_{a} - T_{d}}{T_{d}r^{\gamma - 1} - T_{a}r^{\gamma - 1}} = \frac{(T_{d} - T_{a})(r^{\gamma - 1} - 1)}{(T_{d} - T_{a})r^{\gamma - 1}} \\
+    e &= 1 - \frac{1}{r^{\gamma - 1}} < 1, \emph{\text{always}}
+\end{align}
+e.g. for air: $\gamma = 1.4, ~ r = 8 \implies e \approx 0.56$.
+\emph{r} cannot be increased too mch as the temperature of adiabatic compression rises too high \& the air/fuel mixture ignites early -- 'knocking'.
 
-In reality, the Otto cycle neglects many other sources of energy loss e.g. friction, turbulence, incomplete combustion etc. \\
-This leads to further inefficiences so in example above, $e \approx 0.35$ in reality
+In reality, the Otto cycle neglects many other sources of energy loss e.g. friction, turbulence, incomplete combustion etc. 
+This leads to further inefficiences so in example above, $e \approx 0.35$ in reality.
 
  \section{The Diesel Cycle}
-\includegraphics[scale=0.8]{Diesel.jpg}\\
+ \begin{figure}[H]
+     \centering
+     \includegraphics[scale=0.8]{Diesel.jpg}
+ \end{figure}
 Differences to the Otto Cycle:
 \begin{itemize}
 	\item No spark plugs -- high temperature caused by adiabatic compression is used to ignite fuel at constant pressure
@@ -815,30 +842,32 @@ Differences to the Otto Cycle:
 \end{itemize}
 
 \section{Fridges}
-\includegraphics[scale=0.7]{Fridge.jpg} \\
-Fridges can be considered a heat engine in reverse \\
-Requires net input of work to drive extraction of heat from cold to hot \\
-In this case, $Q_{C}$ is positive, and $Q_{H}$ \& W are negative (negative work is done on the system)
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{Fridge.jpg} 
+\end{figure}
+Fridges can be considered a heat engine in reverse.
+Requires net input of work to drive extraction of heat from cold to hot.
+In this case, $Q_{C}$ is positive, and $Q_{H}$ \& W are negative (negative work is done on the system).
 
 \section{Co-efficient of Performance}
 For a cyclic process, from the first law:
-\begin{gather*}
-	Q_{H} + Q_{C} - W = 0 ~\text{or}~ -Q_{H} = Q_{C} - W \\
-	Q_{H} ~\&~ W < 0 \implies |Q_{H}| = Q_{C} + |W|
-\end{gather*}
+\begin{align}
+    Q_{H} + Q_{C} - W &= 0 ~\text{or}~ -Q_{H} = Q_{C} - W \\
+    Q_{H} ~\&~ W &< 0 \implies |Q_{H}| = Q_{C} + |W|
+\end{align}
 The best fridge removes the most heat for the least work -- evaluated by the coefficient of performance, \emph{K}:
-\begin{equation*}
+\begin{equation}
 	K = \frac{Q_{C}}{W} = \frac{|Q_{C}|}{|Q_{H}| - |Q_{C}|}
-\end{equation*}
+\end{equation}
 Air conditioners use the same principle: for heat current H, input power P, \& time t:
-\begin{equation*}
+\begin{equation}
 	K = \frac{|Q_{C}|}{|W|} = \frac{Ht}{Pt} = \frac{H}{P}
-\end{equation*}
-It is impossible to have a fridge without some input of work \\
+\end{equation}
+It is impossible to have a fridge without some input of work.
 A heat pump functions as an inside-out firdge: it takes heat from cold outside air to heat the inside
 
 \chapter{}
-\thispagestyle{fancy}
 \section{Learning Aims}
 \begin{itemize}
 	\item Reversible \& irreversible processes
@@ -848,94 +877,103 @@ A heat pump functions as an inside-out firdge: it takes heat from cold outside a
 \end{itemize}
 
 \section{Direction of Processes}
-The key to the second law of thermodynamic processes is the direction of thermodynamic processes \\
-Real-life processes only proceed in one direction: Heat moves from hot to cold and cannot spontaneously reverse
-
-It is possible to have idealised processes that are reversible -- these can only occur close to equilibrium (known as \emph{quasi-equilibrium}) \\
-\includegraphics[scale=0.65]{Icebox.jpg}
+The key to the second law of thermodynamic processes is the direction of thermodynamic processes.
+Real-life processes only proceed in one direction: Heat moves from hot to cold and cannot spontaneously reverse.
+It is possible to have idealised processes that are reversible -- these can only occur close to equilibrium (known as \emph{quasi-equilibrium}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Icebox.jpg}
+\end{figure}
 
 \section{The Second Law of Thermodynamics}
 Kelvin-Planck statement on engines: \\
-\emph{"It is impossible for any system to undergo a process in which it absorbs heat from a reservoir at a single temperature and converts the heat completely into mechanical work, with the system ending in the same state in which is began."}
+\emph{``It is impossible for any system to undergo a process in which it absorbs heat from a reservoir at a single temperature and converts the heat completely into mechanical work, with the system ending in the same state in which is began."}
 
 Restating the Second law -- the Clausius statement on fridges: \\
-\emph{"It is impossible for any process to have as its sole result the transfer of heat from a cooler body to a hotter one."}
+\emph{``It is impossible for any process to have as its sole result the transfer of heat from a cooler body to a hotter one."}
 
-If one form of the law is violated, then it can be used to violate the other form as well \\
-There is no observational test for either expression of the law -- it is accepted as an axiom \\
-\includegraphics[scale=0.69]{Impossible.jpg} \\
+If one form of the law is violated, then it can be used to violate the other form as well.
+There is no observational test for either expression of the law -- it is accepted as an axiom.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.69]{Impossible.jpg}
+\end{figure}
 Consider a moving body of molecules:
 \begin{itemize}
-	\item[] Molecules have random motion; KE \& PE linked to internal energy
-	\item[] Superimposed is a coordinated motion -- macroscopic motion \& KE
+	\item Molecules have random motion; KE \& PE linked to internal energy
+	\item Superimposed is a coordinated motion -- macroscopic motion \& KE
 \end{itemize}
-Friction converts this macroscopic KE to random molecule motion but cannot fully convert random motion back into ordered macroscopic motion \\
-THe direction of motion is linked to the \emph{degree of disorder}
+Friction converts this macroscopic KE to random molecule motion but cannot fully convert random motion back into ordered macroscopic motion/
+THe direction of motion is linked to the \emph{degree of disorder}.
 
 \section{The First Law vs The Second Law}
-Certain processes are allowed by the First Law (energy conservation) but not by the Second Law (direction of processes) \\
-e.g. powering a speedboat by extracting heat energy from the sea
+Certain processes are allowed by the First Law (energy conservation) but not by the Second Law (direction of processes), e.g. powering a speedboat by extracting heat energy from the sea.
+The Second Law is a separate law of nature; it is not derived from the First Law.
 
-The Second Law is a separate law of nature; it is not derived from the First Law
-
-First Law: Energy cannot be created or destroyed \\
-Second Law: The availability of useful energy is limited
+\begin{itemize}
+    \item First Law: Energy cannot be created or destroyed 
+    \item Second Law: The availability of useful energy is limited
+\end{itemize}
 
 \section{The Carnot Cycle}
-A hypothetical, idealised engine with maximum efficiency \\
-This is consistent with the Second Law \\
+A hypothetical, idealised engine with maximum efficiency.
+This is consistent with the Second Law.
 Runs entirely on reversible processes:
 \begin{itemize}
 	\item Isothermal heat transfers -- to avoid irreversible heat flow
 	\item Adiabatic temperature changes -- to avoid irreversible heat transfer
 	\item Thermal \& mechanical equilibrium must be maintined
 \end{itemize}
-\includegraphics[scale=0.55]{Carnot.jpg}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.55]{Carnot.jpg}
+\end{figure}
 
 \section{Carnot Efficiency}
 ab \& cd are isothermal so ${\Delta}U = 0$:
-\begin{gather*}
-	Q_{H} = W_{ab} = nRT_{H}\ln{\frac{V_{b}}{V_{a}}} ~\&~ Q_{C} = -nRT_{H}\ln{\frac{V_{c}}{V_{b}}} \\
-	\implies \frac{Q_{C}}{Q_{H}} = -\frac{T_{C}}{T_{H}}\frac{\ln{(V_{c}/V_{d})}}{\ln{(V_{b}/V_{a})}}
-\end{gather*}
+\begin{align}
+    Q_{H} &= W_{ab} = nRT_{H}\ln{\frac{V_{b}}{V_{a}}} \\
+    Q_{C} &= -nRT_{H}\ln{\frac{V_{c}}{V_{b}}} \\
+    \frac{Q_{C}}{Q_{H}} &= -\frac{T_{C}}{T_{H}}\frac{\ln{(V_{c}/V_{d})}}{\ln{(V_{b}/V_{a})}}
+\end{align}
 bc \& da are adiabatic so:
-\begin{gather*}
-	T_{H}V_{b}^{\gamma - 1} = T_{C}V_{c}^{\gamma - 1} ~\&~ T_{H}V_{a}^{\gamma - 1} = T_{C}V_{d}^{\gamma - 1} \\
-	\implies \frac{V_{b}^{\gamma - 1}}{V_{a}^{\gamma - 1}} = \frac{V_{c}^{\gamma - 1}}{V_{d}^{\gamma - 1}} ~\therefore~ \frac{V_{b}}{V_{a}} = \frac{V_{c}}{V_{d}}
-\end{gather*}
+\begin{align}
+    T_{H}V_{b}^{\gamma - 1} &= T_{C}V_{c}^{\gamma - 1} ~\&~ T_{H}V_{a}^{\gamma - 1} = T_{C}V_{d}^{\gamma - 1} \\
+    \frac{V_{b}^{\gamma - 1}}{V_{a}^{\gamma - 1}} &= \frac{V_{c}^{\gamma - 1}}{V_{d}^{\gamma - 1}} ~\therefore~ \frac{V_{b}}{V_{a}} = \frac{V_{c}}{V_{d}}
+\end{align}
 This means that the logarithms in the isothermal equation are equal, and therefore cancel:
-\begin{gather*}
+\begin{align}
 	\frac{Q_{C}}{Q_{H}} = -\frac{T_{C}}{T_{H}} \implies \frac{|Q_{C}|}{|Q_{H}|} = \frac{T_{C}}{T_{H}}
-\end{gather*}
+\end{align}
 The efficiency of the Carnot engine is therefore given by:
-\begin{equation*}
+\begin{equation}
 	e_{Carnot} = 1 - \frac{T_{C}}{T_{H}} = \frac{T_{H} - T_{C}}{T_{H}}
-\end{equation*}
-Therefore, the larger the temperature difference, the more efficient the Carnot engine
+\end{equation}
+Therefore, the larger the temperature difference, the more efficient the Carnot engine.
 
 \section{Carnot Fridge}
-Since all steps in the Carnot Cycle are reversible, the entire cycle may be run backwards to create a maximally efficient fridge \\
+Since all steps in the Carnot Cycle are reversible, the entire cycle may be run backwards to create a maximally efficient fridge.
 From the coefficient of performance \& the previous Carnot analysis:
-\begin{gather*}
-	K = \frac{|Q_{C}|}{|Q_{H}| - |Q_{C}|} = \frac{|Q_{C}|/|Q_{H}|}{1 - |Q_{C}|/|Q_{H}|} ~\&~ \frac{|Q_{C}|}{|Q_{H}|} = \frac{T_{C}}{T_{H}} \\
-	\implies K_{Carnot} = \frac{T_{C}}{T_{H} - T_{C}}
-\end{gather*}
+\begin{align}
+    K &= \frac{|Q_{C}|}{|Q_{H}| - |Q_{C}|} = \frac{|Q_{C}|/|Q_{H}|}{1 - |Q_{C}|/|Q_{H}|} \\
+    \frac{|Q_{C}|}{|Q_{H}|} &= \frac{T_{C}}{T_{H}} \\
+    K_{Carnot} &= \frac{T_{C}}{T_{H} - T_{C}}
+\end{align}
 
 \section{Carnot Cycle and the Second Law}
-No engine or fridge is more efficient than the Carnot cycle \\
-All Carnot engines operating between the same two temperatures have the same efficiency, irrespective of the nature of the working substance \\
-The Carnot efficiency sets the upper limit for real engines so $T_{H}$ is always maximised in practice
+No engine or fridge is more efficient than the Carnot cycle.
+All Carnot engines operating between the same two temperatures have the same efficiency, irrespective of the nature of the working substance.
+The Carnot efficiency sets the upper limit for real engines so $T_{H}$ is always maximised in practice.
 
 \section{The Kelvin Scale}
 As the Carnot Cycle efficiency is independent of the working substance, Kelvin proposed to use this to define his temperature scale as follows:
-\begin{equation*}
+\begin{equation}
 	\frac{T_{C}}{T_{H}} = \frac{|Q_{C}|}{|Q_{H}|} = -\frac{Q_{C}}{Q_{H}}
-\end{equation*}
-Uses the triple point of water at 273.16 K to set the scale so identical to ideal has scale \\
-Absolute zero is minimum (not zero) energy of a system -- leads to the Third Law of Thermodynamics
+\end{equation}
+Uses the triple point of water at 273.16 K to set the scale so identical to ideal has scale.
+Absolute zero is minimum (not zero) energy of a system -- leads to the Third Law of Thermodynamics.
 
 \chapter{}
-\thispagestyle{fancy}
 \section{Learning Aims}
 \begin{itemize}
 	\item Entropy \& entropy change for a reversible process
@@ -944,55 +982,58 @@ Absolute zero is minimum (not zero) energy of a system -- leads to the Third Law
 	\item Difference between macroscopic \& microscopic state descriptions
 	\item Understand the Second Law in terms of microscopic state probabilities
 \end{itemize}
+
 \section{Entropy}
 The Second Law appears unlike other laws:
 \begin{itemize}
 	\item Series of statements of impossibility
 	\item Not a quantitive relationship
 \end{itemize}
-However, it can be made quantitive by introducing concept of \underline{Entropy}: entropy is a measure of disorder
+However, it can be made quantitive by introducing concept of \underline{Entropy}: entropy is a measure of disorder.
 
 \section{Defining entropy}
 Consider a reversible infinitesimal isothermal expansion of ideal gas:
-\begin{equation*}
+\begin{equation}
 	{\Delta}U = 0 \implies dQ = dW = p\:dV = \frac{nRT}{V}\:dV \implies \frac{dV}{V} = \frac{dQ}{nRT}
-\end{equation*}
-Expansion $\rightarrow$ molecules into a larger volume -- more disordered so $\frac{dV}{V}$ is a measure of increase in disorder \\
-Denot entropy as \emph{S} and infinitesimal change \emph{dS}:
-\begin{equation*}
+\end{equation}
+Expansion $\rightarrow$ molecules into a larger volume -- more disordered so $\frac{dV}{V}$ is a measure of increase in disorder.
+Denote entropy as \emph{S} and infinitesimal change \emph{dS}:
+\begin{equation}
 	dS = \frac{dQ}{T} \implies {\Delta}S = \frac{{\Delta}Q}{T} \text{, for whole process}
-\end{equation*}
-Generalise any reversible process from state 1 to state 2 $\rightarrow$ as a series of infinitesimal steps at temperature, T:
-\begin{equation*}
+\end{equation}
+Generalise any reversible process from state 1 to state 2 as a series of infinitesimal steps at temperature, T:
+\begin{equation}
 	{\Delta}S = \int_{1}^{2} \frac{dQ}{T}
-\end{equation*}
-Entropy is a function of the state of the system i.e. is independent of the path between the two states \\
-This is similar to internal energy which is also state-, not path-dependent \\
-Also similar to U, it is trivial to calculate changes in entropy $\Delta$S, but not absolute value of entropy, S \\
-For reversible, cyclic processes, ${\Delta}S = 0$
+\end{equation}
+Entropy is a function of the state of the system i.e. is independent of the path between the two states.
+This is similar to internal energy which is also state-, not path-dependent.
+Also similar to U, it is trivial to calculate changes in entropy $\Delta$S, but not absolute value of entropy, S.
+For reversible, cyclic processes, ${\Delta}S = 0$.
 
 \section{Entropy in Irreversible Processes}
-Since $\Delta$S is independent of path -- can model any change of state as a series of reversible processes so the previous equation can be used to calculate entropy change for irreversible processes too \\
-All irreversible processes lead to an increase in entropy \\
-Unlike energy, entropy is not a conserved quantity \\
-Overall, Reversible cycles have ${\Delta}S = 0$; Irreversible processes always have positive $\Delta$S
+Since $\Delta$S is independent of path -- can model any change of state as a series of reversible processes so the previous equation can be used to calculate entropy change for irreversible processes too.
+All irreversible processes lead to an increase in entropy.
+Unlike energy, entropy is not a conserved quantity.
+Overall, Reversible cycles have ${\Delta}S = 0$; Irreversible processes always have positive $\Delta$S.
 It is possible to calculate $\Delta$S fpr free expansion by considering the isothermal path:
 \begin{figure}[H]
+    \centering
 	\begin{subfigure}{0.4\textwidth}
 		\includegraphics[width=\textwidth]{Entropy1.jpg}
 	\end{subfigure}
+	~
 	\begin{subfigure}{0.3\textwidth}
 		\includegraphics[width=\textwidth]{Entropy2.jpg}
 	\end{subfigure}
 \end{figure}
 
 \section{Entropy and the Second Law}
-Reversible cycles have a zero net entropy change \\
-Irreversible processes always have a positive entropy change (increase in disorder)
+Reversible cycles have a zero net entropy change.
+Irreversible processes always have a positive entropy change (increase in disorder).
 
-New statement of the Second Law: \emph{"No process is possible in which the total entropy decreases, when all systems taking part in the process are included."}
+New statement of the Second Law: \emph{``No process is possible in which the total entropy decreases, when all systems taking part in the process are included."}
 
-Irreversible processes lead to a loss of opportunity to utilise energy; in a less ordered state, the energy is less available for us to use \\
+Irreversible processes lead to a loss of opportunity to utilise energy; in a less ordered state, the energy is less available for us to use.
 The universe is continually getting more disordered:
 \begin{itemize}
 	\item Entropy is \emph{the arrow of time}
@@ -1001,36 +1042,36 @@ The universe is continually getting more disordered:
 
 \section{Microscopic Interpretation of Entropy}
 Consider N coins:\\
-If all N coins are heads, the system is totally ordered \\
-The most likely macroscopic state is healf heads and half tails -- there are many possible microscopic states, but little is known about the state of individual coins $\rightarrow$ the system is maximally disordered, and has the most entropy \\
-The same arguments can be applied to molecules in a has -- macroscopic p, V, and T vs microscopic position and velocity
+If all N coins are heads, the system is totally ordered.
+The most likely macroscopic state is healf heads and half tails -- there are many possible microscopic states, but little is known about the state of individual coins $\rightarrow$ the system is maximally disordered, and has the most entropy.
+The same arguments can be applied to molecules in a has -- macroscopic p, V, and T vs microscopic position and velocity.
 
-\emph{"For any system, the most probable macroscopic state is the one with the greatest number of corresponding microscopic states, which is also the macroscopic state with the greatest disorder and highest entropy."}
+\emph{``For any system, the most probable macroscopic state is the one with the greatest number of \\ corresponding microscopic states, which is also the macroscopic state with the greatest disorder and highest entropy."}
 
 \section{Calculating Entropy From Microscopic States}
 For a number, w, of possible microscopic states for a given macroscopic state, the entropy is:
-\begin{equation*}
+\begin{equation}
 	S = k_{B}\ln{|w|}
-\end{equation*}
-Increasing the number of states, w, will increase entropy, S \\
+\end{equation}
+Increasing the number of states, w, will increase entropy, S.
 Entropy is at a minimum for a single microscopic state:
-\begin{equation*}
+\begin{equation}
 	w = 1 \implies S = 0, ~ S \nless 0
-\end{equation*}
+\end{equation}
 It is more common to calculate $\Delta$S:
-\begin{gather*}
-	{\Delta}S = S_{2} - S_{1} = k_{B}\ln{|w_{2}|} - k_{B}\ln{|w_{1}|}
-	\implies {\Delta}S = k_{B}\ln{\bigg|\frac{w_{2}}{w_{1}}\bigg|}
-\end{gather*}
+\begin{align}
+    {\Delta}S &= S_{2} - S_{1} = k_{B}\ln{|w_{2}|} - k_{B}\ln{|w_{1}|} \\
+    {\Delta}S &= k_{B}\ln{\bigg|\frac{w_{2}}{w_{1}}\bigg|}
+\end{align}
 
 \section{Microscopic States \& the Second Law}
-The entropy of a system can never decrease -- i.e. the number of possible microscopic states can never spontaneously decrease \\
+The entropy of a system can never decrease -- i.e. the number of possible microscopic states can never spontaneously decrease.
 E.g. free compression --
 \begin{itemize}
 	\item All air particles would move randomly to one side of the room
 	\item Not impossible, just very unlikely
 	\item Probability $\approx \big(\frac{1}{2}\big)^{40000000000000000000000000000}$
 \end{itemize}
-This has almost certainly never occurred anywhere \\
+This has almost certainly never occurred anywhere.
 For all practical purposes, the Second Law has never been violated.
 \end{document}
