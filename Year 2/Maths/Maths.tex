@@ -3,45 +3,7 @@
 \usepackage{../../../LaTeX-Templates/Notes}
 \usepackage{subfiles}
 
-\titlecontents{chapter}% <section-type>
-    [0pt]% <left>
-    {}% <above-code>
-    {Lecture \thecontentslabel\quad}% <numbered-entry-format>
-    {}% <numberless-entry-format>
-    {\dotfill\contentspage}% <filler-page-format>
-\titleformat{\chapter}{\fontsize{15}{17}\bfseries\normalfont}{\textbf{Lecture \thechapter}}{1em}{}
-\titleformat{\subsubsection}{\fontsize{10}{13}\bfseries\scshape}{\textbf{\thesubsubsection}}{1em}{}
-\setcounter{tocdepth}{4}
-% \setcounter{secnumdepth}{1}
-
-\renewcommand{\arraystretch}{1.2}
-
-\newcommand\R{\mathbb{R}}
-\newcommand\N{\mathbb{N}}
-\newcommand\C{\mathbb{C}}
-\newcommand\Z{\mathbb{Z}}
-\newcommand\p{\partial}
-\newcommand\ifnt{\int_{-\infty}^{\infty}}
-\newcommand\ofnt{\int_{0}^{\infty}}
-\newcommand\ifsum{\sum_{-\infty}^{\infty}}
-\newcommand\F{\mathcal{F}}
-\newcommand\La{\mathcal{L}}
-\newcommand\K{\mathcal{K}}
-\newcommand\om{\omega}
-\newcommand\veca{\vec{a}(\vec{r})}
-\newcommand\veru{\vec{r}(u)}
-\newcommand\vr{\vec{r}}
-\newcommand\vs{\vec{S}}
-\newcommand\va{\vec{a}}
-\newcommand\hn{\hat{n}}
-\newcommand\hr{\hat{r}}
-\newcommand\he{\hat{e}}
-\newcommand\dy{\frac{dy}{dx}}
-\newcommand\dyy{\frac{d^2 y}{dx^2}}
-\newcommand\lam{\lambda}
-\newcommand\e{\epsilon}
 \newcommand\grint{\int_{z-\e}^{z+\e}}
-\newcommand\del{\nabla}
 
 \title{Mathematical Methods \\ In Physics \vspace{-20pt}}
 \author{Dr Cristina Zambon and Fabrizio Caola}
@@ -55,7 +17,7 @@
 
 \part{}
 \chapter{}
-\section{Geometrical Applications of Vectors in $\R^3$}
+\section{Geometrical Applications of Vectors in R3}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \begin{center}
         \includegraphics[scale=0.5]{Cart.png}
@@ -190,7 +152,7 @@ The summed-over subscripts are called dummy subscripts and the others, free subs
     a_{ij}b_{jk}c_{k} = \sum_{j = 1}^{3} \sum_{k = 1}^{3} a_{ij}b_{jk}c_{k} ~~~ \text{(Gives 9 terms)}
 \end{gather*}
 
-\section{Kronacker Delta in $\R^{3}$}
+\section{Kronacker Delta in R3}
 \begin{gather*}
     \delta_{ij} =
     \begin{cases}
@@ -210,7 +172,7 @@ The summed-over subscripts are called dummy subscripts and the others, free subs
     \vec{a} \cdot \vec{b} = a_{i}b_{i} = \delta_{ij}a_{i}b_{j}
 \end{gather*}
 
-\section{Levi-Civita Symbol in $\R^3$}
+\section{Levi-Civita Symbol in R3}
 \begin{gather*}
     \epsilon_{ijk} =
     \begin{cases}
@@ -238,7 +200,7 @@ The summed-over subscripts are called dummy subscripts and the others, free subs
 \end{enumerate}
 
 \chapter{}
-\section{Lines in $\R^3$}
+\section{Lines in R3}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \begin{center}
         \includegraphics[scale=0.5]{EqLine.png}
@@ -256,7 +218,7 @@ Note also that by taking the vector product with $\hat{b}$, we obtain another eq
     (\vec{r} - \vec{a}) \times \hat{b} = 0
 \end{equation*}
 
-\section{Equation of a plane in $\R^3$}
+\section{Equation of a plane in R3}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \vspace{-20pt}
     \begin{center}
@@ -360,7 +322,7 @@ The set of all linear combinations of $\{\vec{v}_{1},\vec{v}_{2},\cdots,\vec{v}_
     \text{Span}(\vec{v}_{1},\cdots,\vec{v}_{n}) = \Bigg\{\sum_{i = 1}^{k} \alpha_{i}\vec{v}_{i} ~;~ \alpha_{i} \in \R / \mathbb{C} \Bigg\}
 \end{equation*}
 
-\subsection{Examples}
+\section{Examples}
 \begin{enumerate}
     \item A span of a single vector is the set of all scalar multiples of this vector
         \begin{itemize}
@@ -898,7 +860,7 @@ This yields linearly independent eigenvectors
 \subsection{Theorem - Eigenvectors of special matrices are linearly independent}
 In addition, they can be chosen such that they are mutually orthogonal
 \vspace{-15pt}
-\subsubsection{Definition}
+\textbf{Definition}
 Two matrices, $\mathbf{A}$ and $\mathbf{A}'$, are said to be similar if $\mathbf{A}' = \mathbf{S^{-1}AS}$ (similarity transformation)
 
 $\mathbf{A}$ and $\mathbf{A}'$ represent the same linear operator in different bases \\
@@ -1543,7 +1505,7 @@ Apply FT on both sides:
             \end{align*}
 \end{enumerate}
 
-\section{Dirac $\delta$-function}
+\section{Dirac delta-function}
 Consider a pulse,
 \begin{equation*}
     \delta_n (x) =  \begin{cases}
@@ -1584,7 +1546,7 @@ Its defining properties are:
 \end{enumerate}
 
 \chapter{}
-\section{Integral Representation of the $\delta$-function}
+\section{Integral Representation of the delta-function}
 \begin{equation*}
     \delta_n (t - x) = \frac{\sin(n(t - x))}{\pi(t - x)} = \frac{1}{2\pi} \int_{-n}^{n} e^{i\om(t - x)}d\om
 \end{equation*}

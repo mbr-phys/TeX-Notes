@@ -7,7 +7,7 @@
 \begin{itemize}
     \item Lectures 1-2: Introduction and Motivation, Intro to Group theory $\to$ Lie groups (continoues symmetries).
         \begin{itemize}
-            \item Why group theory? Gauge theories are quantum field theories with an emphasis on symmetry, as gauge theories have gauge symmetries. Mathematically, symmetries are described by group theory. 
+            \item Why group theory?\\ Gauge theories are quantum field theories with an emphasis on symmetry, as gauge theories have gauge symmetries. Mathematically, symmetries are described by group theory. 
         \end{itemize}
     \item Lecture 3: Different types of symmetries - global and local (gauge) symmetries. 
     \item Lecture 4: From these gauge symmetries, we will construct Abelian, and non-Abelian gauge field theories. 
@@ -394,12 +394,12 @@ Again, we write down the QED Lagrangian:
                 &- e\bar{\psi}\gamma^\mu A_\mu\psi \text{ - 3 point vertex describing interactions}
 \end{align}
 $\La_{QED}$ is uniquely constructed from the requirement of gauge invariance. 
-Can we add other gauge-invariant interactions?
+Can we add other gauge invariant interactions?
 Consider
 \begin{align}
     \La &= F_{\mu\nu}F^{\nu\alpha}\tensor{F}{_\alpha^\mu}
 \end{align}
-For mass dimension, $[]$: we have
+For mass dimension, $[\:]$: we have
 \begin{align}
     [A_\mu] &= 1 & [\phi] & = 1 & [\La] &= 4 \\
     [\psi] &= \frac32 & [\bar{\psi}] &= \frac32 & [\mathcal{S}] &= 0 
@@ -548,8 +548,8 @@ From the second, we find four-point vertices of the form $gf^{abc}f^{ade}$:
     \includegraphics[scale=0.4]{diagrams/fourpoint.pdf}
 \end{figure}
 \end{multicols}
-So interactions are automatically included, and there are no higher levels of gauge field interactions. 
-Both the terms above had to appear in the Lagrangian as they come from $\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}]$.\\
+Interactions are automatically included and there are no higher levels of gauge field interactions. 
+Both the terms above had to appear in the Lagrangian as they come from $\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}]$.
 The relative coefficients between the three- and four-point vertices, and also between vertices with fermions, are fixed and uniquely determined by gauge invariance of the total Lagrangian. 
 In a non-Abelian gauge theory, we cannot arbitrarily change the coupling constant $g$, e.g. if we coupled a matter field $\phi_1$ to $A_\mu$ with a coupling constant $g$, and try to couple some other matter field $\phi_2$ to $A_\mu$ with a coupling constant $\kappa g$, then $\kappa=1$.
 If $\kappa\neq1$, then the $f^{abc}$s will be altered by this, which cannot be done as these define the group and will be constant. 
@@ -564,8 +564,8 @@ For a scattering experiment, at energy scale, $E = \sqrt{s}$, $s=(p_1+p_2)^2$.
     \includegraphics[scale=0.5]{diagrams/loopsum.png}
 \end{figure}
 At tree level, processes are $\propto g^2$; at loop level, $\propto g^{2(1+\text{no. of loops})}$.
-When we extract the value of $g^2$ from any such measurement, we will get $g^2(E)$.\\
-We usually consider $g^2(p)$, where $p$ is a momentum or energy value characteristic for the experiment, e.g. can be $p=E_{COM}$, $p$ is either $\sqrt{s}$ or total transverse momentum (total momentum transfer).\\
+When we extract the value of $g^2$ from any such measurement, we will get $g^2(E)$.
+We usually consider $g^2(p)$, where $p$ is a momentum or energy value characteristic for the experiment, e.g. can be $p=E_{COM}$, $p$ is either $\sqrt{s}$ or total transverse momentum (total momentum transfer).
 Consider the coupling constant defined
 \begin{align}
     \alpha(p) \equiv \frac{g^2(p)}{4\pi}.
@@ -642,16 +642,18 @@ If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$
     \item At the electroweak scale $\approx m_{W,Z,H}\approx100$ GeV, the weak force fails as its mediators are no longer present. 
     \item EM will hit zero in the graph at what is known as $\Lambda_{Landau}$ and freaks out from there.
     \item EM will fail like weak at the electron mass scale.
-    \item All three coupling constants almost converge on a single point in the middle, but not quite. If they did, it would be indicative of a Grand Unified Theory (GUT) scale, i.e. SU(5)$_{GUT}\to$SU(3)$\otimes$SU(2)$\otimes$U(1). A single gauge theory of SU(5) would split into the three known groups at lower energy scales, below the GUT scale. 
+    \item All three coupling constants almost converge on a single point in the middle, but not quite. 
+        If they did, it would be indicative of a Grand Unified Theory (GUT) scale, i.e. SU(5)$_{GUT}\to$ SU(3)$\otimes$SU(2)$\otimes$U(1). 
+        A single gauge theory of SU(5) would split into the three known groups at lower energy scales, below the GUT scale. 
         SU(5) is currently ruled out, but maybe SO(10)?
-    \item $\alpha_W$ is small for all regions where the weak force manifests, so it can always be studied perturbatively.
+    \item $\alpha_W$ is small for all regions where the weak force manifests, so it can always be studied in perturbation theory.
     \item $\alpha_{\text{EM}}$ is fine in the IR regime (low energy) but then freaks out at higher energies, and cannot be studied perturbatively.
 \end{itemize}
 
 \section{QCD}
 \begin{itemize}
     \item QCD has gauge group SU(3).
-    \item What are the matter fields of QCD? Dirac fermions known as quarks, transforming in the fundamental representation of SU(3). 
+    \item What are the matter fields of QCD? Dirac fermions known as quarks, which transform in the fundamental representation of SU(3). 
         Quarks are in triplet states of colour, $q=\begin{pmatrix}q_1\\q_2\\q_3\end{pmatrix}$, where $q_i$ indicates the colour (1,2,3). 
         There are six flavours of quarks as well, so $q^f_i$ where $f$ is the flavour running $1\to6$ and $i$ is the colour running $1\to3$. 
         (Of course, each quark is also a Dirac spinor of 4 components.)
@@ -718,7 +720,7 @@ If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$
 \end{itemize}
 
 \chapter{}
-    So far we discussed how the Standard Model is a gauge field theory with symmetry SU(3)$_{QCD}\otimes$SU(2)$_W\otimes$U(1)$_{Y}$.
+    So far we discussed how the Standard Model is a gauge field theory with symmetry SU(3)$_{QCD}\otimes$ SU(2)$_W\otimes$U(1)$_{Y}$.
 \begin{itemize}
     \item We define the gauge fields of the electroweak sector as $W^\pm_\mu,Z_\mu^0,A_\mu$, so altogether four (3 from SU(2) and 1 from U(1)).
     \item The photon is strictly massless because the gauge symmetry of U(1)$_{QED}$ is unbroken. 
@@ -968,7 +970,7 @@ We thus have studied the U(1) realisation of the Higgs mechanism.
 Key points:
 \begin{itemize}
     \item For every broken generator of the gauge group, the corresponding gauge boson becomes massive. 
-    \item There are no Goldstone bosons left in the spectrum $\to$ they give rise to the longitudinal polarisations of massive gauge bosons. 
+    \item There are no Goldstone bosons left in the spectrum. They now give rise to the longitudinal polarisations of massive gauge bosons. 
     \item There is remaining massive scalar boson(s) $\to$ Higgs field(s).
 \end{itemize}
 

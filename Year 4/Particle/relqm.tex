@@ -291,7 +291,7 @@ We can then define conserved charge:
         \begin{align}
             \hat{\Ham} &= \frac12 \int \frac{d^3k}{(2\pi)^32k_0} k_0\left[\hag(k)\ha(k) + \ha(k)\hag(k)\right]
         \end{align}
-        Interpretation of a Quantum Field Theory as a continuous sum of harmonic oscillator Hamiltonians, one for each frequency vector $\unl{k}$.
+        One interpretation of a Quantum Field Theory is as a continuous sum of harmonic oscillator Hamiltonians, one for each frequency vector $\unl{k}$.
     \item Spectrum of states. 
         We will start by defining a ground state, or a vacuum, $|0\rangle,\;\langle0|0\rangle$.
         We can annihilate/create the vacuum with the ladder operators:
@@ -514,7 +514,7 @@ LSZ-theorem: external particle $\to$ $\phi$ in time-ordered particle + plane wav
 
 \section{Wick's Theorem}
 To evaluate the perturbative series, resort to Wick's theorem. 
-It tells us what happens with a time-ordered product of two fields.
+It tells us what happens with a time ordered product of two fields.
 \begin{align}
     T[\hphi(x)\hphi(y)] &= \underbrace{\Delta_F(x-y)}_{\text{Feynman propagator}} + \underbrace{:\hphi(x)\hphi(y):}_{\text{Normal ordered product}} \\
     \langle0|T[\hphi(x)\hphi(y)]|0\rangle &= \langle0|\Delta_F(x-y)|0\rangle + \langle0|:\hphi(x)\hphi(y):|0\rangle = \Delta_F(x-y) \\
@@ -524,7 +524,8 @@ It tells us what happens with a time-ordered product of two fields.
 \end{align}
 Back to scattering from before:
 \begin{align}
-    \langle q_1,q_2|p_1,p_2\rangle &\propto \int \dots (\Box_{x_1}+m^2)(\Box_{x_2}+m^2)(\Box_{y_1}+m^2)(\Box_{y_2}+m^2)\langle0|T[\hphi(x_1)\hphi(x_2)\hphi(y_1)\hphi(y_2)]|0\rangle \\
+    \begin{split} \langle q_1,q_2|p_1,p_2\rangle &\propto \int \dots (\Box_{x_1}+m^2)(\Box_{x_2}+m^2)(\Box_{y_1}+m^2)(\Box_{y_2}+m^2)\\ 
+                                                 &\qquad\qquad\qquad\qquad\qquad\qquad\times\langle0|T[\hphi(x_1)\hphi(x_2)\hphi(y_1)\hphi(y_2)]|0\rangle\end{split} \\
     \langle q_1,q_2|T[i\lambda\phi^4(z)]|p_1,p_2\rangle &\propto \dots \langle0|T[\hphi(x_1)\hphi(x_2)i\lambda\phi^4(z)\hphi(y_1)\hphi(y_2)]|0\rangle
 \end{align}
 
@@ -927,12 +928,13 @@ Now the rules:
 \begin{enumerate}
     \item Draw all distinct Feynman diagrams, including labels for the momenta of the incoming and outgoing particles:
         \begin{itemize}
-            \item incoming/outgoing (anti-)fermions with momentum $p$ are represented with spinors $u(p)/\bar{u}(p)$,  $(\bar{v}(p)/v(p))$
-            \item incoming/outgoing photons with momentum $k$ are represented with polarisation vectors $\e^\mu(k)$, /$\e^{*\mu}(k)$
-            \item  propagators related to the external particles are "amputated"
+            \item Incoming/outgoing (anti-)fermions with momentum $p$ are represented with spinors:\\ $u(p)/\bar{u}(p)$,  $(\bar{v}(p)/v(p))$
+            \item Incoming/outgoing photons with momentum $k$ are represented with polarisation vectors $\e^\mu(k)$, /$\e^{*\mu}(k)$
+            \item Propagators related to the external particles are "amputated"
         \end{itemize}
-    \item internal lines give rise to the corresponding propagators
-    \item interactions are represented by vertices and corresponding expression, four momentum conservation is imposed at each vertex, thereby fixing the momenta of internal lines
+    \item Internal lines give rise to the corresponding propagators
+    \item Interactions are represented by vertices and corresponding expression. 
+        We impose four momentum conservation at each vertex, thereby fixing the momenta of internal lines.
     \item $i$ (imaginary unit) times the amplitude related to a single diagram is given by the product of all building blocks, the single-diagram amplitudes are summed to yield the overal amplitude. 
 \end{enumerate}
 \begin{figure}[H]

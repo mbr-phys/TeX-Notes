@@ -2,39 +2,19 @@
 
 \usepackage{../../../LaTeX-Templates/Notes}
 
-\titlecontents{chapter}% <section-type>
-    [0pt]% <left>
-    {}% <above-code>
-    {Lecture \thecontentslabel\quad}% <numbered-entry-format>
-    {}% <numberless-entry-format>
-    {\dotfill\contentspage}% <filler-page-format>
-\titleformat{\chapter}{\fontsize{15}{17}\bfseries\normalfont}{\textbf{Lecture \thechapter}}{1em}{}
-\titleformat{\subsubsection}{\fontsize{10}{13}\bfseries\scshape}{\textbf{\thesubsubsection}}{1em}{}
-\setcounter{tocdepth}{4}
-% \setcounter{secnumdepth}{1}
-
-\renewcommand{\arraystretch}{1.2}
-
-\newcommand\p{\partial}
-\newcommand\E{\mathcal{E}}
+\renewcommand\E{\mathcal{E}}
 \newcommand\uE{\unl{\E}}
-\newcommand\B{\mathcal{B}}
+\renewcommand\B{\mathcal{B}}
 \newcommand\uB{\unl{\B}}
-\newcommand\del{\unl{\nabla}}
+\renewcommand\del{\unl{\nabla}}
 \newcommand\eno{\epsilon_0}
 \newcommand\hi{\hat{i}}
 \newcommand\hj{\hat{j}}
 \newcommand\hk{\hat{k}}
-\newcommand\hn{\hat{n}}
-\newcommand\hr{\hat{r}}
-\newcommand\vr{\vec{r}}
 \newcommand\vk{\unl{k}}
-\newcommand\om{\omega}
 \newcommand\J{\unl{J}}
 \newcommand\M{\unl{M}}
 \newcommand\er{\epsilon_r}
-\newcommand\e{\epsilon}
-\newcommand\lam{\lambda}
 \newcommand\pen{\lambda_L}
 \newcommand\tx{\tilde{x}}
 \newcommand\tv{\tilde{v}}
@@ -45,15 +25,10 @@
 \date{\vspace{-15pt}Epiphany Term 2018}
 \rhead{\hyperlink{page.1}{\color{black} Contents}}
 
-% \begin{example}[Title]
-%
-% \end{example}
-
 \begin{document}
 
 \maketitle
 \tableofcontents
-\addtocontents{toc}{~\hfill\textbf{Page}\par}
 
 \chapter{}
 
@@ -162,8 +137,8 @@ Note that $\unl{l}$ and $\unl{S}$ are vectors, V is scalar.
 \end{align}
 
 \chapter{}
-\section{Maxwell \RN{1}}
-\subsection{Deriving Gauss' law and Maxwell \RN{1} from Coulomb's Law}
+\section{Maxwell 1}
+\subsection{Deriving Gauss' law and Maxwell 1 from Coulomb's Law}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \begin{center}
         \includegraphics[scale=0.4]{fluxvec.png}
@@ -215,7 +190,7 @@ Just as with Hooke's Law, experimentation shows us that M\RN{1} is true under al
 The $\uE$-field resulting from any charge distribution gives $\del \cdot \uE = 0$ in the local regions where there is no charge.
 
 \chapter{}
-\section{Applying M\RN{1} to a Capacitor Plate}
+\section{Applying M1 to a Capacitor Plate}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \begin{center}
         \vspace{-20pt}
@@ -238,7 +213,7 @@ There is no charge density so:
     \item Understanding the physics helps to understand the mathematics
 \end{itemize}
 
-\section{Maxwell \RN{2} (No magnetic monopole)}
+\section{Maxwell 2 (No magnetic monopole)}
 \subsection{Ampere's Law}
 Ampere found that two parallel straight wires carrying currents $I_1$ and $I_2$ in the same direction lead to a force $F_2$ on a length L of the wire carrying $I_2$ where
 \begin{equation}
@@ -265,7 +240,7 @@ where I is the current that passes through the surface that is bounded by the pa
     \implies \uB &= \frac{\mu_0 I}{2\pi r}\hat{\phi} \\
 \end{align}
 
-\subsection{Maxwell \RN{2} from the Biot-Savart Law}
+\subsection{Maxwell 2 from the Biot-Savart Law}
 Ampere's Law can be written in the form of the Biot-Savart Law that describes the small field ($\delta\uB$) produced by a small length of a current element ($I\,d\unl{l}$) where:
 \begin{align}
     \delta \uB = \frac{\mu_0 I}{4\pi r^2}\delta\unl{l} \times \hr &= \frac{\mu_0 I}{4\pi r^2}\sin\theta\,dl\,\hat{\phi} \\
@@ -285,7 +260,7 @@ Integrating Maxwell \RN{2}:
 Hence in all experiments to date, we have found that the net magnetic flux through any closed surface is zero.
 
 \chapter{}
-\section{Maxwell \RN{3} from Faraday's Law}
+\section{Maxwell 3 from Faraday's Law}
 \subsection{Faraday's Fabulous Experiments}
 \begin{itemize}
     \item \unl{Inductive Electromotive Force}: \\
@@ -319,7 +294,7 @@ Hence in all experiments to date, we have found that the net magnetic flux throu
 \end{itemize}
 Faraday's experiments demonstrate that the law of induction is correct no matter why the flux changes; whether the loop moves or the pole pieces move.
 
-\subsection{Using Faraday's Law to find Maxwell \RN{3}}
+\subsection{Using Faraday's Law to find Maxwell 3}
 Faraday's Law:
 \begin{align}
     \xi_t &= -\frac{\p \phi_\B}{\p t} \\
@@ -346,7 +321,7 @@ Therefore, the integrands can be equated to get:
 \end{enumerate}
 
 \chapter{}
-\section{Maxwell \RN{4} from Ampere's Law}
+\section{Maxwell 4 from Ampere's Law}
 \subsection{Maxwell's Correction to Ampere's Law}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \begin{center}
@@ -624,7 +599,7 @@ Coulomb's law can be regarded as fundamental with magnetic forces and induced EM
 
 \section{Bulk Properties of Conductors, Dielectrics, and Magnetic Materials}
 \subsection{Electrical Conductors}
-\subsubsection{Microscopic properties for conductors}
+\textbf{Microscopic properties for conductors}
 \begin{itemize}
     \item Drude Model is that the electric field accelerates the charges which then collide with the scattering sites.
     \item Take $N$ to be the number of charges per unit volume; $q$ to be the charge on each carrier; and $\tau$ as the scattering time:
@@ -633,7 +608,7 @@ Coulomb's law can be regarded as fundamental with magnetic forces and induced EM
     \end{equation}
 \end{itemize}
 
-\subsubsection{Extensive and Intensive Variables}
+\textbf{Extensive and Intensive Variables}
 \begin{equation}
     V = IR \tag{Ohm's Law}
 \end{equation}
@@ -648,7 +623,7 @@ Rewriting Ohm's Law:
 This defines resistivity as an intensive variable \\
 By definition, $\rho_N = \frac{1}{\sigma_N}$, where $\sigma_N$ is the conductivity.
 
-\subsubsection{Current Densities and Charge Densities}
+\textbf{Current Densities and Charge Densities}
 \begin{equation}
     \J = \sigma_N \uE \tag{Current Density}
 \end{equation}
@@ -1418,7 +1393,7 @@ The magnitude and direction of the dc electric field changes as it passes from o
 
 
 \chapter{}
-\subsection{Boundary conditions across the interfacial plane between two magnetic materials}
+\section{Boundary conditions across the interfacial plane between two magnetic materials}
 
 \begin{figure}[H]
   	\centering

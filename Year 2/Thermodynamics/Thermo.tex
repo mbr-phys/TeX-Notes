@@ -2,26 +2,11 @@
 
 \usepackage{../../../LaTeX-Templates/Notes}
 
-\titlecontents{chapter}% <section-type>
-    [0pt]% <left>
-    {}% <above-code>
-    {Lecture \thecontentslabel\quad}% <numbered-entry-format>
-    {}% <numberless-entry-format>
-    {\dotfill\contentspage}% <filler-page-format>
-\titleformat{\chapter}{\fontsize{13}{15}\bfseries\normalfont}{\textbf{Lecture \thechapter}}{1em}{}
-\titleformat{\subsection}{\fontsize{10}{15}\bfseries\scshape}{\textbf{Example \thesubsection}}{1em}{}
-\setcounter{tocdepth}{4}
-% \setcounter{secnumdepth}{1}
-
-\newcommand\p{\partial}
-
 \newcommand\answerbox{%%
     \fbox{\rule{0.8in}{0pt}\rule[-0.5ex]{0pt}{3ex}}}
 
 \newcommand\halfbox{%%
     \fbox{\rule{0.36in}{0pt}\rule[-0.25ex]{0pt}{3ex}}}
-
-\renewcommand{\arraystretch}{1.2}
 
 \title{Foundations of Physics 2B \\ Thermodynamics \vspace{-20pt}}
 \author{Dr Peter Swift}
@@ -182,7 +167,7 @@ For $p = p(V,\,T)$:
     d(\ln{p}) = -d(\ln{V}) + d(\ln{T})~~ \Big[\frac{d(\ln{x})}{dx} = \frac{1}{x} \Big]
 \end{gather*}
 
-\subsubsection{Proof 2.2.2.1}
+\textbf{Proof 2.2.2.1:}\\
 x, y, and z related via $f(x,\,y,\,z)$
 \begin{gather*}
     x = X(y,\,z)~;~ y = Y(x,\,z) \\
@@ -340,7 +325,7 @@ Q and W depend on the path so:
     \delta Q = C\,dT ~;~ C_{V} \Big(\frac{\p Q}{\p T}\Big)_{V} ~;~ C_{p} = \Big(\frac{\p Q}{\p T} \Big)_{p}
 \end{equation*}
 
-\subsubsection{Proof}
+\textbf{Proof:}\\
 How does heat capacity change internal energy of a gas?
 
 Internal energy is our fourth function of state (U only depends on the state the system is in, not how it got there) \\
@@ -367,7 +352,7 @@ Divide by dT at constant p and take $\lim_{dT \to 0}$:
     C_p = C_V + \Bigg[\Big(\frac{\p U}{\p V} \Big)_T + p \Bigg] \Big(\frac{dV}{dT} \Big)_{p}
 \end{gather*}
 
-\subsection{ Find a relation for $C_p$ and $C_V$ for an ideal gas}
+\subsection{Find a relation for Cp and CV for an ideal gas}
 \begin{gather*}
     pV = RT ~;~ \Big(\frac{\p U}{\p T} \Big)_{p} = \frac{R}{p} ~;~ U = U(T) \\
     \Big(\frac{\p U}{\p V} \Big)_{T} = 0 \implies C_p = C_V + [0 + p]\frac{R}{p} \\
@@ -398,7 +383,6 @@ Isobaric heating, supply energy to raise at constant pressure:
     C_p = \Big(\frac{\delta Q}{\delta T}\Big)_p ~;~ \Delta Q = \int C_p \, dT
 \end{equation*}
 
-\subsection{}
 Which way does heat flow during a reversible isothermal expansion of an ideal gas?
 
 Naively add heat ($\Delta Q > 0$) to expand the gas \\
@@ -775,7 +759,7 @@ Sum in the limit of Carnots going to zero size:
     \therefore \oint \frac{\delta Q_{rev}}{T} = 0 ~ \text{for any cycle}
 \end{equation*}
 
-\subsubsection{Principle of increase of Entropy}
+\subsection{Principle of increase of Entropy}
 \emph{In every process taking place in an indeal system, the entropy change of the system either increases of remains constant \\
 This is equivalent to Kelvin and Clausius statements}
 
@@ -909,7 +893,7 @@ Use the reciprocity theorem:
     \frac{T}{p} = \Big(\frac{\p V}{\p S}\Big)_U
 \end{gather*}
 
-\subsection{What is $\Delta S$ as an ideal gas expands $V_A \to V_B$ at constant temperature, $T_0$?}
+\subsection{What is Delta S as an ideal gas expands VA to VB at constant temperature, T0?}
 Constant internal energy, $pV = RT_0$
 \begin{align*}
     \Delta S &= \int_{A}^{B} \Big(\frac{\p S}{\p V}\Big)_U dV = \int_{V_A}^{V_B} \frac{p}{T_0} = \int_{V_A}^{V_B} \frac{R}{V}dV \\
@@ -987,7 +971,7 @@ The Gibbs function is conserved at phase changes.
 \section{Maxwell Relations}
 We have seen that thermodynamic functions of state are related to partial derivatives of the potentials. The potentials (U, F, H, G) are functions of state so the order of taking second derivatives doesn't matter. We use this to find ways of relating partial derivatives (changes between two thermodynamic functions) of things that are physically hard to understand to easier ones
 
-\subsubsection{Proof}
+\textbf{Proof:}
 Consider U:
 \begin{align*}
     dU &= T\,ds - p\,dV \\
@@ -1026,7 +1010,7 @@ As you increase the pressure on a solud, it gets smaller, so the negative sign g
 \section{TdS Equations}
 Help us to look at material behaviour, $\delta Q = T\,dS$, e.g. heat transfer
 
-\subsubsection{Proof: Derive TdS by considering $S = S(V,T)$}
+\textbf{Proof: Derive TdS by considering $S = S(V,T)$.}
 Total differential (multiplied by T):
 \begin{equation*}
     T\,dS = T\Big(\frac{\p S}{\p T}\Big)_V dT + T\Big(\frac{\p S}{\p V}\Big)_T dV
@@ -1052,7 +1036,7 @@ Use the first law to write the internal energy in terms of measurable things
     \Big(\frac{\p U}{\p V}\Big)_T = T\Big(\frac{\p p}{\p T}\Big)_V - p ~;~ \Big(\frac{\p U}{\p p}\Big)_T = -T\Big(\frac{\p V}{\p T}\Big)_p - p\Big(\frac{\p V}{\p p}\Big)_T
 \end{equation*}
 
-\subsubsection{Proof - Derive the 2nd Energy Equation}
+\textbf{Proof - Derive the 2nd Energy Equation.}
 \begin{align*}
     dU &= T\,dS - p\,dV ~~\bigg[\div (dp)_T \\
     \Big(\frac{\p U}{\p p}\Big)_T &= T\Big(\frac{\p S}{\p p}\Big)_T - p\Big(\frac{\p V}{\p p}\Big)_T ~~\bigg[\big(\lim_{\Delta p \to 0}\big)_T
@@ -1070,7 +1054,7 @@ To solve problems:
     \item Identify a heat capacity or a generalised quantity
 \end{enumerate}
 
-\subsection{General Expression between $C_p$ and $C_V$ from $\kappa_T$ and $\beta_p$}
+\subsection{General Expression between Cp and CV from kappaT and betap}
 \begin{gather*}
     T\,dS = C_V dT + T\Big(\frac{\p p}{\p T}\Big)_V dV ~;~ T\,dS = C_p dT - T\Big(\frac{\p V}{\p T}\Big)_p dp \\
     0 = (C_V - C_p)dT + T \Big(\frac{\p p}{\p T}\Big)_V dV + T\Big(\frac{\p V}{\p T}\Big)_p dp
@@ -1112,7 +1096,7 @@ $C_p \geq C_V$: $\kappa_T$ is always positive; $\beta_p$ is squared so ignore th
 The heat capacities don't depend on the internal energy \\
 As $T \to 0,~ C_p \to C_V$
 
-\subsection{Heat Transfered to VDW gas expanding isothermally at $T_0$}
+\subsection{Heat Transfered to VDW gas expanding isothermally at T0}
 (VDW - Van Der Waal's)
 
 Use TdS (1)
@@ -1181,7 +1165,7 @@ i.e. Work Done $\geq$ Change in Helmholtz function
 
 The Helmholtz and Gibbs functions, changes in which don't depend on entropy change, will tell us how much can be done and if a process is spontaneous
 
-\subsection{Express $\Delta S_{env}$ in terms of U}
+\subsection{Express Delta S(env) in terms of U}
 The pressure is constant so,
 \begin{align*}
     dU &= \delta Q - p_0 dV \\
@@ -1491,7 +1475,7 @@ But the temperature is constant:
 \end{align*}
 Entropy change between phases if latent heat added
 
-\subsection{Phase Boundary}
+\section{Phase Boundary}
 We have temperature change, dT, between phases, and $dp = 0$
 \begin{gather*}
     G = U + pV - TS ~;~ dG = -S\,dT + V\,dp \\
@@ -1717,7 +1701,7 @@ The Third Law has consequences:
     \item Gases do not remain ideal
 \end{itemize}
 
-\subsection{Adiabatic Volume Change, $V_1 \to V_2 > V_1$}
+\subsection{Adiabatic Volume Change, V1 to V2 > V1}
 Work must be done (negative) as expansion
 \begin{align*}
     dU &= \delta Q + \delta W, ~~[\delta Q = 0 \\
