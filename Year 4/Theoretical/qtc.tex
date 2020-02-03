@@ -645,6 +645,153 @@ Consequently, a low energy quasiparticle starting with near-zero initial momentu
 The superfluid therefore flows without dissipation due to scattering of quasiparticles, provided that the flow velocity is less than the ideal critical velocity $c_{\text{min}}$.
 Experimentally, the actual critical velocity is rather less than this ideal limit.
 
+\chapter{Superconductivity Phenomena}
+\section{Thermal Occupation of Energy Bands in Crystalline Solids}
+The wavefunction of electrons in crystalline solids obey \emph{Bloch's theorem,}
+\begin{equation}
+    \psi_{q\vec{k}}=u_{q\vec{k}}(\vr)e^{i\vec{k}\cdot\vr},
+\end{equation}
+where $u_{q\vec{k}}(\vr)$ is a periodic function, $\hbar\vec{k}$ is the crystal momentum or \emph{quasimomentum}, and $\vec{k}$ takes values in the first Brillouin zone of the reciprocal lattice. 
+The energies of the Bloch wave states give the \emph{energy bands,} $\e_{q\vec{k}}$.
+A state with energy $\e$ is occupied according to the \emph{Fermi-Dirac} distribution:
+\begin{equation}
+    f(\e) = \frac{1}{e^{(\e-\mu)/k_BT}+1}, \text{ where } \frac NV = \frac{2}{(2\pi)^3}\sum_q\int\frac{d^3k}{e^{(\e_q\vk-\mu)k_BT}}
+\end{equation}
+(the net electron density per unit volume) sets the chemical potential $\mu$, and $T$ is the temperature.
+The factor $2$ is due to the two electron spin states.
+At very low temperatures ($k_BT\ll\mu$), the Fermi gas assumes a highly degenerate state, where $f(\e_{q\vk})$ is nearly equal to unity `inside' the Fermi surface, and equal to zero outside. 
+The Fermi surface can be defined by $\e_{q\vk}=\e_F$, where $\e_F=\mu$ is the Fermi energy. 
+We shall generally assume there to be only one conduction band at the Fermi surface, and ignore the band index $q$.
+The density of \emph{conduction electrons} is then
+\begin{equation}
+    n = \frac{2}{(2\pi)^3}\int \frac{d^3k}{e^{(\e_{\vk}-\mu)/k_BT}+1},
+\end{equation}
+where $\e_{\vk}$ is the nergy of the single band which crosses the Fermi surface.
+
+\section{Fermi Gas Description of Electrons in Metals}
+Metallic conduction is dominated by the thin shell of quantum states with energies $\e_F-k_BT<\e<\e_F+k_BT$, i.e. the only states that can be thermally excited at temperature $T$ (dilute gas of electrons excited above $\e_F$ and holes below $\e_F$).
+Electrical conductivity is given in the \emph{Drude theory} of conduction as 
+\begin{equation}
+    \sigma=\frac{ne^2\tau}{m},
+\end{equation}
+where $m$ is the effective mass of the conduction electrons, $-e$ is the electron charge, and $\tau$ is the average time between collisions with impurities or other electrons. 
+The conductivity is defined by the \emph{constitutive equaiton},
+\begin{equation}
+    \vec{j}=\sigma\E,
+\end{equation}
+where $\vec{j}$ is the electrical current density flowing in response to the external electric field $\E$.
+The resistivity $\rho\equiv\frac{1}{\sigma}$, and is thus proportional to the conduction electron \emph{scattering rate} $\tau^{-1}$:
+\begin{equation}
+    \rho = \frac{m}{ne^2}\tau^{-1}.
+\end{equation}
+
+\section{Scattering Processes, Temperature, and Resistivity}
+Conductivity depends on temperature mainly through: scattering by impurities (rate $\tau_i^{-1}$); electron-electron interactions ($\tau_{ee}^{-1}$); and electron-phonon collisions ($\tau_{ep}^{-1}$).
+Hence,
+\begin{equation}
+    \rho = \frac{m}{ne^2}\left(\tau_i^{-1}+\tau_{ee}^{-1}+\tau_{ep}^{-1}\right).
+\end{equation}
+\begin{itemize}
+    \item $\tau_i^{-1}$ is essentially independent of $T$ for nonmagnetic impurities.
+    \item $\tau_{ee}^{-1}$ is proportional to $T^2$.
+    \item At low temperatures, $\tau_{ep}^{-1}$ is proportional to $T^5$.
+\end{itemize}
+Hence, at very low $T$, we expect
+\begin{align}
+    \rho &= \rho_0 + aT^2 + \cdots,
+\end{align}
+where the residual resistivity $\rho_0$ depends only on the impurities. 
+For a \emph{superconductor} upon cooling, the resistivity $\rho$ first follows the typical behaviour, and then \emph{suddenly vanishes} at a critical temperature $T_C$.
+\textbf{Heike Kamerlingh Onnes} first observed superconductivity in mercury ($T_C=4.1\,$K) in 1911.
+Other metal elements also exhibit superconductivity at standard pressures, with niobium ($T_C=9.3\,$K) having the highest critical temperature.
+
+\section{Zero Resistivity}
+Within superconductors, $\rho=0$, which implies $\sigma$ is infinite below $T_C$.
+Consistency with the constitutive equation and a finite current density $\vec{j}$ demands $\E=0$.
+Note that all superconductors also have a critical current $I_C$ above which the superconductivity is destroyed and the resistance becomes finite again. 
+The sharp change from finite to zero resistivity implies a thermodynamic phase transition from a \emph{normal state} to a \emph{superconducting state}.
+
+\section{Magnetic Field Flux through the Centre of a Superconducting Ring}
+Flux through the centre of a ring of superconducting wire is defined by the surface integral
+\begin{align}
+    \Phi &= \int \B\cdot \vec{dS},
+\end{align}
+where $\vec{dS}$ is oriented perpendicular to the plane of the ring.
+We use the Maxwell equation and Stoke's theorem, respectively given as
+\begin{align}
+    \del\times\E &= -\frac{\p\B}{\p t}, & \int(\del\times\E)\cdot\vec{dS} &= \oint \E\cdot d\vr.
+\end{align}
+Then, considering a closed line integral around the inside of the ring, 
+\begin{align}
+    -\frac{d\Phi}{dt} &= \oint \E\cdot d\vr.
+\end{align}
+As $\E=0$ within a superconductor, $\frac{d\Phi}{dt}=0$, so the flux does not change with time. 
+
+\section{Persistent Currents}
+A current $I$ set up to circulate in a ring of superconducting wire, because there is no dissipatoin of energy due to finite resistance, \emph{never} (up to years) decays. 
+To set up such a current, we apply an external magnetic field $\B_{ext}$ to the wire ring at $T>T_C$.
+The superconductor is in its normal state, and $\B_{ext}$ passes easily through it. 
+Now cool the system below $T_C$.
+If we now set $\B_{ext}=0$, the flux $\Phi$ can remain constant only if the superconductor generates its own magnetic field $\B$ through the centre of the ring, by having a constant circulating current $I$ around it. 
+
+\section{The Meissner-Ochsenfeld Effect}
+Consider a sample cooled below $T_C$, and then slowly turn on a small external magnetic field $\B_{ext}$.
+As $\E=0$ inside the superconducting smaple, the Maxwell equation
+\begin{align}
+    \del\times\E &= -\frac{\p\B}{\p t} \implies \frac{\p\B}{\p t}=0.
+\end{align}
+Hence, $\B$ inside the sample cannot change, i.e. $\B_{ext}$ \emph{does not penetrate} the sample.
+Turning on $\B_{ext}$ when the sample is above $T_C$, the field penetrates the sample; upon cooling below $T_C$, the magnetic field is \emph{expelled}.
+This is the \emph{Meissner-Ochsenfeld effect}, seen as \emph{definitive} of superconductivity.
+It is technically simpler to demonstrate flux expulsion (Meissner-Ochsenfeld effect) than zero resistivity (requiring attached of electric leads).
+More fundamentally, it is a property of \emph{thermal equilibrium} rather than a \emph{non-equilibrium transport effect.}
+
+\section{Application of Maxwell's Equations in a Magnetic Medium}
+To maintain $\B=0$ inside the sample whatever (small) external fields are imposed, there must be screening currents flowing around the edges of the sample producing a magnetic field equal and opposite to the applied. 
+We split $\vec{j}$ into components from \emph{externally applied currents} (e.g. in coils producing the external field) and \emph{internal screening currents}: 
+\begin{equation}
+    \vec{j}=\vec{j}_{ext}+\vec{j}_{int}.
+\end{equation}
+The \emph{screening currents} produce a magnetisation $\vec{M}$ per unit volume in the sample, through 
+\begin{equation}
+    \del\times\vec{M}=\vec{j}_{int}.
+\end{equation}
+We also define a magnetic field $\vec{H}$ in terms of external currents only through 
+\begin{equation}
+    \del\times\vec{H}=\vec{j}_{ext}.
+\end{equation}
+Put together, these two equations yield the familiar phrase
+\begin{equation}
+    \B = \mu_0(\vec{H}+\vec{M}).
+\end{equation}
+
+\section{Perfect Diamagnetism}
+Consider an infinitely long cylindrical sample with an external current flowing around it in solenoidal coils. 
+\begin{equation}
+    \vec{H}=I\frac{N}{L}\ve_z
+\end{equation}
+($N$ coils per unit length $L$) is then uniform within it. 
+Imposing the \emph{Meissner condition} ($\B=0$) yields the magnetisation $\vec{M}=-\vec{H}$.
+The \emph{magnetic susceptibility} $\chi$ is defined by
+\begin{equation}
+    \chi = \frac{dM}{dH}\bigg|_{H=0}.
+\end{equation}
+For superconductors, $\chi=-1$.
+Solids with negative $\chi$ are \emph{diamagnets} (for positive $\chi$, we have paramagnets), i.e. they screen out part of the external magnetic field. 
+Superconductors are \emph{perfect diamagnets}, and $\chi=-1$ below $T_C$ implies the Meissner-Ochsenfeld effect, hence superconductivity. 
+
+\section{Type I and Type II Superconductors}
+$\chi$ is defined in the limit of very weak $\vec{H}$.
+If $\vec{H}$ is increased for a \emph{type I superconductor}, the $\B$ field remains zero inside the sample (i.e. $\vec{M}=-\vec{H}$) until suddenly at a critical field magnitude $H_C$, the superconductivity is destroyed. 
+With \emph{type II superconductors}, there is a lower critical $H_{C1}$ and an upper critical field $H_{C2}$. 
+Increasing $H$ from zero, initially $\vec{M}=-\vec{H}\implies\B=0$.
+Above $H_{C1}$, magnetic flux starts to enter the sample ($\B\neq0$) and $\vec{M}$ starts to decrease until at $H_{C1}$, $\vec{M}=0$ and the superconductivity is destroyed. 
+\textbf{Alexei Abrikosov} showed the magnetic field can enter a type II superconductor because of \emph{vortices} - regions of circulating supercurrent around small normal metal cores. 
+The magnetic field passes through the vortex cores, and the circulating currents screen the rest of the superconductor from the magnetic field. 
+
+
+
+
 
 
 

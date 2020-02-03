@@ -926,7 +926,7 @@ In the unitary gauge, the complex scalar field is going to become
     \phi(x) &= \frac{1}{\sqrt{2}}(v+\rho(x)),
 \end{align}
 where we have got rid of one real field degree of freedom. 
-\emph{Fixing the gauge is something which must be done in any gauge theory, not just when considering spontaneous symmetry breaking.}\\
+\emph{Fixing the gauge is something which must be done in any gauge theory, not just when considering spontaneous symmetry breaking.}
 What is our Lagrangian now?
 \begin{align}
     \La &= -\frac14F_{\mu\nu}F^{\mu\nu} + \frac12(\p_\mu-ieA_\mu)(v+\rho(x))\cdot(\p_\mu+ieA_\mu)(v+\rho(x)) - \frac{\lambda}{4}\left(\left(v+\rho(x)\right)^2-v^2\right)^2.
@@ -943,7 +943,7 @@ From the second and third terms in Eq (12.8) respectively, we get
 \end{align}
 So we see that the gauge field is massive, but we see it is proportional to the vev of the symmetry breaking, so it would become massless if we did not have this symmetry breaking.
 The $\rho(x)$ term is a real scalar field (i.e. the Higgs boson field) which is also massive through symmetry breaking.
-The Higgs field mass is also proportional to $\lambda$, which is the self-coupling constant of the Higgs field. \\
+The Higgs field mass is also proportional to $\lambda$, which is the self-coupling constant of the Higgs field. 
 In this case, we do not find a massless Goldstone boson.
 The unrealised Goldstone boson field is $\xi(x)$, which is "eaten" by the unitary gauge fixing. 
 But what if we fixed the gauge in a different way?
@@ -953,7 +953,6 @@ Let's count the degrees of freedom before and after spontaneous symmetry breakin
 \begin{itemize}
     \item Before
         \begin{itemize}
-            \item We have an unbroken gauge theory
             \item Massless $A_\mu\implies$ 2 degrees of freedom: the 2 transverse polarisations (spin projections).
             \item $\phi(x)\in\C\implies$ 2 degrees of freedom
             \item $2+2=4$
@@ -975,12 +974,12 @@ Key points:
 
 \section{The Final Section}
 For the Standard Model, we have the symmetry SU(3)$_c\otimes$SU(2)$_L\otimes$U(1)$_Y$.
-We need to look throught the matter fields of the theory. 
+We need to look through the matter fields of the theory. 
 \begin{table}[H]
     \centering
     \begin{tabular}{c|ccc}
         \hline\hline
-        \rowcolor{lightgray} & SU(3)$_c$ & SU(2)$_L$ & U(1)$_Y$ \\
+        \bfseries Particle &\bfseries SU(3)$_c$ &\bfseries SU(2)$_L$ &\bfseries U(1)$_Y$ \\
         \hline\hline
         $q_L$ & $3$ & $2$ & $+\frac16$ \\ 
         $\bar{u}_R$ & $\bar{3}$ & $1$ & $-\frac23$ \\
@@ -993,22 +992,21 @@ We need to look throught the matter fields of the theory.
         \hline\hline
     \end{tabular}
 \end{table}
-\emph{explain table}
+So we have left-handed quark and lepton doublets, $q_L$ and $L_L$, and right-handed quark and lepton singlets.
 The Higgs doublet is defined as
 \begin{align}
     H &= \begin{pmatrix} h^+ \\ h^0\end{pmatrix}, & \langle H\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix} 0 \\ v\end{pmatrix},
 \end{align}
 where its vev is $v=246\,$GeV.
-The symmetry broken by the real Higgs mechanism in the SM is SU(2)$_L\otimes$U(1)$_Y\to$ U(1)$_{QED}$.
-
+The symmetry broken by the real Higgs mechanism in the SM is SU(2)$_L\otimes$U(1)$_Y\to$ U(1)$_{QED}$.\\
 The full Covariant Derivative of the Standard Model is defined as
 \begin{align}
-    D_\mu &= \left(\p_\mu - ig_cA^a_\mu T^a_{SU(3)} - ig_WA_\mu^bT^b_{SU(2)} - ig'YB_\mu\right) 
+    D_\mu &= \p_\mu - ig_1\frac{Y}{2}B_\mu - ig_2\frac{\sigma^i}{2}W^i_\mu - ig_3\frac{\lambda^a}{2}G_\mu^a,
 \end{align}
-\emph{fix this to make it look better and explain}
-Now we add to the Lagrangian
+with $g_{1,2,3}$ the gauge couplings of U(1)$_Y$, SU(2)$_L$, and SU(3)$_c$, where the gauge fields and generators of each group are in the term of their coupling. 
+Now we write down the full Lagrangian of the Standard Model:
 \begin{align}
-    \La &+ -\frac{1}{2g_c^2}\text{Tr}(F_{\mu\nu}F^{\mu\nu})_{SU(3)_c} - \frac{1}{2g_w^2}\text{Tr}(F_{\mu\nu}F^{\mu\nu})_{SU(2)_L} - \frac14(F_{\mu\nu}F^{\mu\nu})_{U(1)_Y}.
+    \La &= -\frac14F^{\mu\nu}F_{\mu\nu} + i\bar{\Psi}\cancel{D}\Psi + (D_\mu\Phi)^\dagger(D^\mu\Phi) - V(\Phi) - Y_{ij}\bar{\Psi}_i\Phi\Psi_j + h.c.
 \end{align}
 
 
