@@ -448,8 +448,87 @@ and if we set $\frac{\Omega}{\sqrt{2}}t = \frac{\pi}{2}$ and $\phi_L=0$, we obta
 so $\hat{R}$ is the Hadamard up to some global factor which can be ignored. 
 The Hadamard is a rotation around some $45^\circ$; applying twice brings us back to the start.
 
+\chapter{}
+\section{Ramsey Interferometry}
+We have two $\frac{\pi}{2}$ pulses separated by time $t$ (or Hadamards):
+\textit{doodle from Hannah.}
+We can schematically represent paths in Hilbert space:
+\textit{doodle from Hannah.}
+There is a read-out of relative phase. 
+This interval $t$ is often called the \emph{free evolution time,} but this could include an interaction. 
+During this free evolution, the qubit Bloch vector rotates around the $z$-axis.
+We can describe this precession using a rotation matrix:
+\begin{align}
+    \hat{R}_z(\phi) &= \begin{pmatrix} e^{i-\phi/2} & 0 \\ 0 & e^{-\phi/2} \end{pmatrix} = \begin{pmatrix} e^{-i\Delta t/2} & 0 \\ 0 & e^{i\Delta t/2} \end{pmatrix},
+\end{align}
+so we can say that the Bloch vector precesses around the $z$-axis at a rate given by the difference between the field and qubit evolution, $\Delta=\om-\om_0$.
+The total rotation angle is $\phi=\Delta t$.
 
+The complete Ramsey sequence is given by two $\frac{\pi}{2}$ pulses separated by free evolution. 
+The $\frac{\pi}{2}$ pulse matrix is obtained from the Rabi solution for $\Delta = 0$.
+\begin{align}
+    \hat{R} &= \begin{pmatrix} \cos\frac{\theta}{2} & -ie^{i\phi_L}\sin\frac{\theta}{2} \\ -ie^{-i\phi_L}\sin\frac{\theta}{2} & \cos\frac{\theta}{2}\end{pmatrix},
+\end{align}
+where $\theta=\Omega t$.
+We choose $\phi_L=\frac{\pi}{2}$:
+\begin{align}
+    \hat{R}\left(\frac{\pi}{2},\frac{\pi}{2}\right) &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ -1 & 1\end{pmatrix} = \hat{R}_y\left(\frac{\pi}{2}\right).
+\end{align}
+Our complete sequence is given by $\hat{R}\left(\frac{\pi}{2}\right)\hat{R}\left(\phi\right)\hat{R}_y\left(\frac{\pi}{2}\right)$, where we write our sequence of rotations in reverse order. 
+\begin{align}
+    \hat{R}_y\left(\frac{\pi}{2}\right)\hat{R}(\phi)\hat{R}\left(\frac{\pi}{2}\right) &= \frac12 \begin{pmatrix} 1 & 1 \\ -1 & 1\end{pmatrix}\begin{pmatrix} e^{-i\phi/2} & 0 \\ 0 & e^{i\phi/2}\end{pmatrix} \begin{pmatrix} 1 & 1 \\ -1 & 1\end{pmatrix} \\
+                                                                                      &= \frac12 \begin{pmatrix} 1 & 1 \\ -1 & 1\end{pmatrix} \begin{pmatrix} e^{-i\phi/2} & e^{-i\phi_2} \\ -e^{-\phi/2} & e^{i\phi/2}\end{pmatrix} \\
+                                                                                      &= \begin{pmatrix} -i\sin\frac{\phi}{2} & \cos\frac{\phi}{2} \\ -\cos\frac{\phi}{2} & i\sin\frac{\phi}{2}\end{pmatrix}.
+\end{align}
+Initial Condition (at the North Pole):
+\begin{align}
+    |\psi\rangle &= |0\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+    \hat{R}\left(\frac{\pi}{2}\right)\hat{R}_z(\phi)\hat{R}_y\left(\frac{\pi}{2}\right)|\psi\rangle &= \begin{pmatrix} -\sin\frac{\phi}{2} \\ -\cos\frac{\phi}{2}\end{pmatrix} 
+\end{align}
+Our output state has:
+\begin{align}
+    \begin{pmatrix} a \\ b \end{pmatrix} &= \begin{pmatrix} -\sin\frac{\phi}{2} \\ -\cos\frac{\phi}{2}\end{pmatrix} 
+\end{align}
+The probability to be in state $|0\rangle$ at the output is then
+\begin{align}
+    P_{|0\rangle} &= |a|^2 = \frac12(1-\cos\phi) \\
+    P_{|1\rangle} &= |b|^2 = \frac12(1+\cos\phi)
+\end{align}
+For $\phi=\Delta t$, \textit{doodle previous probability diagram again.}
+At $\Delta=0$, we see $P_{|0\rangle}\to0$, because the second $\frac{\pi}{2}$ pulse completes the excitation to state $|1\rangle$.
+The fringes we see here are known as the Ramsey fringes.
 
+\section{Two qubits}
+We like to name our qubits, so we may have:
+\begin{itemize}
+    \item A and B
+    \item C (control) and T (target)
+\end{itemize}
+Now we need to write our two-qubit state vector to describe our two-qubit system:
+\begin{align}
+    |\psi\rangle_{AB} &= a|00\rangle + b|01\rangle + c|10\rangle + d|11\rangle.
+\end{align}
+Here, $|ij\rangle=|0\rangle\otimes|1\rangle$, i.e. it is an abbreviation for the tensor product. 
+The state vector can also be represented as a column vector:
+\begin{align}
+    |\psi\rangle_{AB} &= \begin{pmatrix} a \\ b \\ c \\ d\end{pmatrix},
+\end{align}
+where it has four components, $a,b,c,d$.
+All two-qubit operators, therefore, are $4\times4$ matrices.
+
+How do we construct two-qubit operators?
+As an example, we apply the interaction Hamiltonian $\Ham_{int}$ to both qubits A and B:
+\begin{align}
+    \Ham_2 &= \Ham_{int}\otimes\hat{\sigma}_0 + \hat{\sigma}_0\otimes\Ham_{int},
+\end{align}
+where the first term takes our previous $2\times2$ interaction Hamiltonian and places it in the new $4\times4$ matrix so it interacts with A and does nothing to B, and the second term such that it interacts with B and not A.
+For $\Delta=0$:
+\begin{align}
+    \Ham_2 &= \frac{\hbar}{2}\begin{pmatrix}0&\Omega\\\Omega&0\end{pmatrix}\otimes\begin{pmatrix}1&0\\0&1\end{pmatrix} + \begin{pmatrix} 1&0\\0&1\end{pmatrix}\otimes\frac{\hbar}{2}\begin{pmatrix}0&\Omega\\\Omega&0\end{pmatrix} \\
+           &= \frac{\hbar}{2}\begin{pmatrix} 0 & 0 & \Omega & 0 \\ 0 & 0 & 0 & \Omega \\ \Omega & 0 & 0 & 0 \\ 0 & \Omega & 0 & 0 \end{pmatrix} +\frac{\hbar}{2} \begin{pmatrix} 0 & \Omega & 0 & 0 \\ \Omega & 0 & 0 & 0 \\ 0 & 0 & 0 & \Omega \\ 0 & 0 & 0 & \Omega\end{pmatrix} \\
+           &= \frac{\hbar}{2} \begin{pmatrix} 0 &\Omega & \Omega & 0 \\ \Omega & 0 & 0 &\Omega \\ \Omega & 0 & 0 & \Omega \\ 0 & \Omega & \Omega & 0 \end{pmatrix}.
+\end{align}
+It follows that the operators acting on three-qubit systems correspond to $8\times8$ matrices, and in general, operators acting on $N$-qubit systems correspond to $2^N\times2^N$ matrices.
 
 
 
