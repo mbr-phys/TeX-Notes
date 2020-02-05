@@ -789,8 +789,116 @@ Above $H_{C1}$, magnetic flux starts to enter the sample ($\B\neq0$) and $\vec{M
 \textbf{Alexei Abrikosov} showed the magnetic field can enter a type II superconductor because of \emph{vortices} - regions of circulating supercurrent around small normal metal cores. 
 The magnetic field passes through the vortex cores, and the circulating currents screen the rest of the superconductor from the magnetic field. 
 
+\chapter{London Theory of Superconductivity}
+\section{Drude Theory for Finite Frequency Electric Fields}
+Using the complex number representation of AC currents and fields, the equivalent to the constitutive equation is given by
+\begin{align}
+    \vec{j}e^{-i\om t} = \sigma(\om)\vec{E}e^{-i\om t}.
+\end{align}
+The real part of the complex conductivity $\sigma(\om)$ corresponds to currents in phase with the applie electrical field (resistive), nd the imaginary part to out of phase currents (inductive and capacitive).
+Generalising the Drude theory to $\om\neq0$, the conductivity is given by
+\begin{align}
+    \sigma(\om) = \frac{ne^2}{m}\frac{\tau}{1-i\om\tau} = \frac{ne^2}{m}\frac{1}{\tau^{-1}-i\om} \implies \R(\sigma) = \frac{ne^2}{m}\frac{\tau}{1+\om^2\tau^2},
+\end{align}
+where the parameters have the same meaning as in Section 7.2 (same form as the response of a damped harmonic oscillator with a resonant frequency at $\om=0$).
+The real part of the conductivity $\R(\sigma)$ is a Lorentzian function/distribution of frequency.
+The area under this curve,
+\begin{align}
+    \ifnt \R(\sigma)\,d\om = \frac{\pi ne^2}{m},
+\end{align}
+is a constant independent of the lifetime $\tau$.
 
+\section{Perfect Conduction within the Drude Theory}
+In an ideal conductor, there should be \emph{no scattering} of the electrons. 
+Taking the limit $\tau^{-1}\to0$ in Eq. (8.2), for any finite $\om$ there is no dissipation as $\sigma(\om)$ is imaginary:
+\begin{align}
+    \sigma(\om) \to \frac{ine^2}{\om m}.
+\end{align}
+In this limit, $\R(\sigma)=0$ for any $\om\neq0$, but according to Eq. (8.2) must integrate to a finite value. 
+Hence, 
+\begin{align}
+    \R(\sigma) = \frac{\pi ne^2}{m}\delta(\om).
+\end{align}
 
+\section{London Two-Fluid Model}
+Inspired by the two-fluid model of superfluid $^4$He, \textbf{Fritz and Heinz London} assumed the electron density $n$ to be divisible into superfluid and normal components: $n=n_s+n_n$.
+The \emph{normal} electrons were assumed to have a typical metallic damping time $\tau$.
+The \emph{superfluid} electrons would move without dissipation ($\tau=\infty$), giving rise to a delta-function peak in $\sigma$ at $\om=0$ and an imaginary response elsewhere:
+\begin{align}
+    \sigma(\om) = \frac{\pi n_se^2}{m_e}\delta(\om) + i\frac{n_se^2}{\om m_e}.
+\end{align}
+By convention, we use the electron mass $m_e$, rather than the effective mass. 
+When measured, $\R(\sigma)$ shows a sharp peak at $\om=0$, the size of which defines $n_s$.
+At higher $\om$, the measured total $\R(\sigma)=0$, until $\om=\frac{2\Delta}{\hbar}$ ($2\Delta$ is known as the energy gap), when the conductivity again becomes finite. 
+
+\section{Derivation of the London Equation}
+If we restrict ourselves to frequencies below the energy gap, then the measured conductivity $\sigma(\om)$ is as given in Eq. (8.6).
+From Eqs. (8.1) and (8.4),
+\begin{align}
+    \del\times\vec{j}e^{-i\om t} &= \sigma(\om)\del\times\vec{E}e^{-i\om t} = -\sigma(\om)\frac{d\vec{B}e^{-i\om t}}{dt} = i\om\sigma(\om)\vec{B}e^{-i\om t} \\
+                                 &= -\frac{n_se^2}{m_e}\vec{B}e^{-i\om t}.
+\end{align}
+Taking the $\om=0$ limit yields
+\begin{align}
+    \del\times\vec{j}=-\frac{n_se^2}{m_e}\vec{B}.
+\end{align}
+Combining this with the static Maxwell equation $\del\times\vec{B}=\mu_0\vec{j}$ then yields
+\begin{align}
+    \del\times(\del\times\vec{B}) = -\frac{1}{\lambda^2}\vec{B},\quad \lambda = \sqrt{\frac{m_e}{\mu_0n_se^2}},
+\end{align}
+where the \emph{penetration depth} $\lambda$ is the distance inside the surface over which the external field is screened out to 0, given that $B=0$ in the bulk. 
+Combining the definition $\vec{B}=\del\times\vec{A}$ of the magnetic vector potential $\vec{A}$ with our previous expression for $\del\times\vec{j}$ yields the \emph{London equation}:
+\begin{align}
+    \vec{j} = -\frac{n_se^2}{m_e}\vec{A} = -\frac{1}{\mu_0\lambda^2}\vec{A}.
+\end{align}
+Note we must choose the correct \emph{gauge} for $\vec{A}$ (recall that $\vec{A}+\del\chi(\vr)$ yields the same $\vec{B}$ for any scalar $\chi(\vr)$).
+Conservation of charge implies the continuity equation $\p_t\rho=\del\cdot\vec{j}=0$ is obeyed.
+In a static, d.c. situation $\p_t\rho=0\implies\del\times\vec{j}=0$, so the London equation is satisfied provided the (London) gauge is chosen so that $\del\cdot\vec{A}=0$.
+
+\section{Modified London Equation and Coherence Length}
+\textbf{Brian Pippard} generalised the London equation to a nonlocal form:
+\begin{align}
+    \vec{j}(\vr) = -\frac{n_se^2}{m_e}\frac{3}{4\pi\xi_0}\int \frac{\vec{R}[\vec{R}\cdot\vec{A}(\vr')]}{R^4}e^{-R/r_0}d^3r',\; \vec{R}=\vr-\vr'.
+\end{align}
+Points in space contributing to the integral are separated by $\approx r_0$ or less, where $\frac{1}{r_0}=\frac{1}{\xi_0}+\frac{1}{l}$, and $l=v_f\tau$ is the \emph{mean free path} of electrons at the metal's Fermi surface ($v_f$ is the electron band velocity at the Fermi surface).
+$\xi_0$ is called the \emph{coherence length}, a third characteristic length scale in addition to the penetration depth $\lambda$ and the mean free path $l$.
+
+\section{The London Vortex}
+Consider a vortex (in a type II superconductor) with a radius $\approx\xi_0$ core, within which is a finite magnetic field $B_0$. 
+Outside, we use Eq. (8.10) to write, for $\vec{B}=(0,0,B_z)$,
+\begin{align}
+    \frac{d^2 B_z}{dr^2} + \frac{1}{r}\frac{dB_z}{dr} - \frac{B_z}{\lambda^2} = 0,
+\end{align}
+where we have used the expression for curl in cylindrical coordinates. 
+This (multiplied by $r^2$ is a form of Bessel equation, solved by $K_0(r/\lambda)$ (a modified Bessel function of the second kind).
+Hence, nothing that $\ofnt K_0(z)\,dz = 1$,
+\begin{align}
+    B_z(r) = \frac{\Phi_0}{2\pi\lambda^2}K_0\left(\frac{r}{\lambda}\right), \text{ where } \Phi_0 = \int B_z(r)\,d^2r
+\end{align}
+is set equal to the total magnetic flux enclosed by the vortex core (assume $\xi_0\ll\lambda$).
+
+\section{Properties of the London Vortex}
+For small $z$, $K_0(z)\to-\ln(z)$, and so when $r\ll\lambda$,
+\begin{align}
+    B_z(r) = \frac{\Phi_0}{2\pi\lambda^2}\ln\left(\frac{\lambda}{r}\right).
+\end{align}
+With $\mu_0\vec{j}=\del\times\vec{B}$, one can deduce that the corresponding circulating current, as in the case of vortices in He II, is irrotational, i.e.
+\begin{align}
+    \vec{j} \approx \frac{1}{r}\ve_\phi.
+\end{align}
+The divergence at $r=0$ is unphysical, as Eqs. (8.14) and (8.15) only apply outside the core region. 
+The London vortex model is only valid in superconductors where $\xi_0\ll\lambda$.
+For large $z$, $K_0(z)\to\sqrt{\pi/2z}e^{-z}$ asymptotically.
+Hence, very far from the vortex core, 
+\begin{align}
+    B_z(r) = \frac{\Phi_0}{2\pi\lambda^2}\sqrt{\frac{\pi\lambda}{2r}}e^{-r/\lambda}.
+\end{align}
+Overall, the magnetic field:
+\begin{itemize}
+    \item has a constant value $B_0$ inside the vortex core ($r<\xi_0$), 
+    \item decreases logarithmically for $\xi_0<r<\lambda$,
+    \item and then goes to zero exponentially on a length scale of order $\lambda$.
+\end{itemize}
 
 
 
