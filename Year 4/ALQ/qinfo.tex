@@ -451,9 +451,51 @@ The Hadamard is a rotation around some $45^\circ$; applying twice brings us back
 \chapter{}
 \section{Ramsey Interferometry}
 We have two $\frac{\pi}{2}$ pulses separated by time $t$ (or Hadamards):
-\textit{doodle from Hannah.}
-We can schematically represent paths in Hilbert space:
-\textit{doodle from Hannah.}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        %Nodes
+        \node[roundnode] (maintopic) {$\frac{\pi}{2}$};
+        \node[roundnode] (uppercircle) [above right=2em and 7em of maintopic] {$\frac{\phi}{2}$};
+        \node[roundnode] (lowercircle) [below right=2em and 7em of maintopic] {$\frac{-\phi}{2}$};
+        \node[roundnode] (output) [right=15em of maintopic] {$\frac{\pi}{2}$};
+        \node (start) [left=1em of maintopic] {};
+        \node (end) [right=1em of output] {};
+        \node (ups) [above right=0.9em and 3.1em of maintopic] {};
+        \node (ds) [below right=0.9em and 3.1em of maintopic] {};
+        \node (upe) [above left=0.9em and 3em of output] {};
+        \node (de) [below left=0.9em and 3em of output] {};
+
+        %Lines
+        \draw (start.east) -- (maintopic.west);
+        \draw (output.east) -- (end.west);
+        \draw (maintopic.east) cos (ups) sin (uppercircle.west);
+        \draw (maintopic.east) cos (ds) sin (lowercircle.west);
+        \draw (uppercircle.east) cos (upe) sin (output.west);
+        \draw (lowercircle.east) cos (de) sin (output.west);
+    \end{tikzpicture}
+\end{figure}
+We can also schematically represent paths in Hilbert space:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$|\psi\rangle=$} -- (1,0);
+        \draw (1,-0.25) rectangle (2.5,0.25) node[anchor=north east,xshift=-14pt] {H};
+        \draw (2.5,0) -- (3.5,0);
+        \draw (3.5,-0.25) rectangle (5,0.25) node[anchor=north east,xshift=-14pt] {H};
+        \draw (6,0) -- (5,0);
+
+        \draw (0,1) node[anchor=east] {$|\psi\rangle=$} -- (1,1);
+        \draw (1,0.75) rectangle (2.5,1.25) node[anchor=north east,xshift=-14pt,yshift=2pt] {$\frac{\pi}{2}$};
+        \draw (2.5,1) -- (3.5,1);
+        \draw (3.5,0.75) rectangle (5,1.25) node[anchor=north east,xshift=-14pt,yshift=2pt] {$\frac{\pi}{2}$};
+        \draw (6,1) -- (5,1);
+
+        \draw (0,1.75) -- (1,1.75);
+        \draw (1,1.75) -- (1,2.25) -- (2.5,2.25) node[anchor=north,midway,yshift=2pt] {$\frac{\pi}{2}$} -- (2.5,1.75) -- (3.5,1.75) -- (3.5,2.25) -- (5,2.25) node[anchor=north,midway,yshift=2pt] {$\frac{\pi}{2}$} -- (5,1.75) -- (6,1.75);
+        \draw[Latex-Latex] (1.75,2.35) -- (4.25,2.35) node[anchor=south,midway] {$t$};
+    \end{tikzpicture}
+\end{figure}
 There is a read-out of relative phase. 
 This interval $t$ is often called the \emph{free evolution time,} but this could include an interaction. 
 During this free evolution, the qubit Bloch vector rotates around the $z$-axis.
@@ -494,7 +536,17 @@ The probability to be in state $|0\rangle$ at the output is then
     P_{|0\rangle} &= |a|^2 = \frac12(1-\cos\phi) \\
     P_{|1\rangle} &= |b|^2 = \frac12(1+\cos\phi)
 \end{align}
-For $\phi=\Delta t$, \textit{doodle previous probability diagram again.}
+For $\phi=\Delta t$,
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (-2,0) -- (6,0) node[anchor=north] {$\Delta$};
+        \draw[-Latex] (2,0) -- (2,2.8) node[anchor=south] {P};
+        \draw[purple] (-2,0) cos (-1,1.25) sin (0,2.5) cos (1,1.25) sin (2,0) node[anchor=north,black] {$\Delta=0$} cos (3,1.25) sin (4,2.5) cos (5,1.25) sin (6,0) node[anchor=south west] {$P_{|0\rangle}$};
+        \draw[cyan] (-2,2.5) cos (-1,1.25) sin (0,0) cos (1,1.25) sin (2,2.5) node[anchor=north east,black] {1} cos (3,1.25) sin (4,0) cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
+    \end{tikzpicture}
+\end{figure}
+
 At $\Delta=0$, we see $P_{|0\rangle}\to0$, because the second $\frac{\pi}{2}$ pulse completes the excitation to state $|1\rangle$.
 The fringes we see here are known as the Ramsey fringes.
 
@@ -530,9 +582,91 @@ For $\Delta=0$:
 \end{align}
 It follows that the operators acting on three-qubit systems correspond to $8\times8$ matrices, and in general, operators acting on $N$-qubit systems correspond to $2^N\times2^N$ matrices.
 
+\chapter{}
+\section{Entanglement}
+Entanglement is what gives quantum computing its `advantage'.
+It is essential in all forms of two-qubit gates, such as CNOT (`Control-NOT').
+An entangled state cannot be separated into a product of individual qubit state vectors. 
 
+\subsection{Examples of entangled states}
+The complete set of ``maximally entangled" two-qubit states are the so-called \emph{Bell states:}
+\begin{align}
+    |\Phi^\pm\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle\pm|11\rangle\right) \\
+    |\Phi^\pm\rangle &= \frac{1}{\sqrt{2}}\left(|01\rangle\pm|10\rangle\right)
+\end{align}
+We then can tell something about B if we know A and vice versa: for (8.1), if we measure A in 0, then we know B is 0 too regardless of where B is (non-local effect). 
+We cannot transmit information though, so the limit of transferring is still less than the speed of light; we may know something about B if we observe A, but we cannot tell B that.
 
+\subsection{Measuring a part of a two-qubit state}
+This can be particularly interesting for entangled states.
+We introduce the idea of \emph{projection operators.}
+If we have a state $|\psi\rangle_{AB}$, what is the probability that A is in the state $|\phi_A\rangle$ regardless of B or that both A and B are in the state $|\phi_{A,B}\rangle$?
 
+We use a projection operator $\hat{P}$ that projects $|\psi_{AB}\rangle$ onto the state we want to see.
+\begin{align}
+    \text{Probability} = \langle\hat{P}\rangle &= \text{Tr}(\hat{\rho}_{AB}\hat{P}), \text{ where } \hat{\rho} = |\psi\rangle_{AB} {}_{AB}\langle\psi|
+\end{align}
+is the density matrix and $\hat{P}$ is the projection operator. 
+The trace Tr is the sum of diagonal elements.
+\begin{example}
+    Consider the entangled Bell state
+    \begin{align}
+        |\Phi^+\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle+|11\rangle\right).
+    \end{align}
+    What is the probability of observing qubit A in state $|+\rangle=\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)$?
+    We need to find a projection operator that
+    \begin{enumerate}
+        \item projects A on $|+\rangle$,
+        \item and leaves B unchanged.
+    \end{enumerate}
+    This operator will read
+    \begin{align}
+        \hat{P} &= |+\rangle\langle+| \otimes \hat{\sigma}_0.
+    \end{align}
+    For a single qubit, 
+    \begin{align}
+        \hat{P} &= \langle\psi|+\rangle\langle+|\psi\rangle = |\langle+|\psi\rangle|^2,
+    \end{align}
+    i.e. the probability overlap between $|\psi\rangle$ and $|+\rangle$.
+    For two qubits, the operator reads
+    \begin{align}
+        \hat{P} &= \frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1\end{pmatrix} \otimes \begin{pmatrix} 1 & 0 \\ 0 & 1\end{pmatrix} \\
+                &= \frac12\begin{pmatrix} 1 & 1 \\ 1 & 1\end{pmatrix} \otimes \begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix} \\
+                &= \frac12 \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1\end{pmatrix}.
+    \end{align} 
+    Now we define the density matrix as
+    \begin{align}
+        \hat{\rho} &= |\Phi^+\rangle\langle\Phi^+| \\
+                   &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 0 \\ 0 \\ 1\end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 0 & 0 & 1\end{pmatrix} \\
+                   &= \frac12 \begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1 \end{pmatrix}.
+    \end{align}
+    The product of these is then
+    \begin{align}
+        \hat{\rho}\hat{P} &= \frac12\begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 &0&0 & 0 \\ 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1\end{pmatrix}\frac12 \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1\end{pmatrix} \\
+                          &= \frac14\begin{pmatrix} 1&1&1&1\\0&0&0&0\\0&0&0&0\\1&1&1&1\end{pmatrix}\\
+        P_{A+} &= \text{Tr}(\hat{\rho}\hat{P}) = \frac12,
+    \end{align}
+    i.e. the probability that A is in state $|+\rangle$ is $\frac12$.
+    The probability that B is in state $|+\rangle$ is also $\frac12$.
+
+    What is the probability that both A and B are in state $|+\rangle$?
+    Classically, we would say that $P_{AB}=P_AP_B=\frac14$; this is wrong. 
+    A and B now have a correlation between them in the quantum system, so we use the projection operators to find the probability that both A and B are in $|+\rangle$.
+    The projection operator reads
+    \begin{align}
+        \hat{P} &= |+\rangle\langle+| \otimes |+\rangle\langle+| \\
+                &= \frac12\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix} \otimes \frac12\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix} \\
+                &= \frac14\begin{pmatrix} 1&1&1&1\\1&1&1&1\\1&1&1&1\\1&1&1&1\end{pmatrix}.
+    \end{align}
+    Our product reads
+    \begin{align}
+        \hat{\rho}\hat{P} &= \frac12 \begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 &0&0 & 0 \\ 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1\end{pmatrix} \frac14\begin{pmatrix} 1&1&1&1\\1&1&1&1\\1&1&1&1\\1&1&1&1\end{pmatrix}\\
+                          &= \frac14\begin{pmatrix} 1&1&1&1\\0&0&0&0\\0&0&0&0\\1&1&1&1\end{pmatrix}.\\
+        \text{Tr}(\hat{\rho}\hat{P}) &= \frac12,
+    \end{align}
+    i.e. the probability that both are in state $|+\rangle$ is $\frac12$.
+    Therefore, $P_{AB}\neq P_AP_B$, because A and B are \textbf{correlated} - whenever A is $|+\rangle$, then B is in $|+\rangle$.
+\end{example}
 
 
 

@@ -276,6 +276,102 @@ For $\phi$:
 So it's a geodesic path! Yayyyyyy!
 
 
+\chapter{}
+
+\chapter{}
+Last lecture:
+\begin{itemize}
+    \item Euler-Lagrange equations 
+    \item 'easier' way to find $\tensor{\Gamma}{^a_{bc}}$
+    \item how to find Geodesic paths
+\end{itemize}
+
+This lecture:
+\begin{itemize}
+    \item more tensor derivatives
+\end{itemize}
+Recall absolute derivative again:
+        \begin{align}
+            \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}.
+        \end{align}
+The first term above is the total change, and then the second is to ``subtract off the change due to the coordinate system".
+So for parallel transport, this means there is no physical change, i.e.
+\begin{align}
+    \frac{D\lambda^a}{ds} = 0.
+\end{align}
+The absolute derivative obeys normal rules for derivatives.
+\begin{itemize}
+    \item Linear operator -
+        \begin{align}
+            \frac{D}{ds}\left(\lambda^a+ k\mu^a\right) = \frac{D\lambda^a}{ds} + k\frac{D\mu^a}{ds}.
+        \end{align}
+    \item The (Leibniz) chain rule -
+        \begin{align}
+            \frac{D}{ds}\left(\lambda^a\mu^b\right) = \mu^b\frac{D\lambda^a}{ds} + \lambda^a\frac{D\mu^b}{ds}.
+        \end{align}
+\end{itemize}
+What is the absolute derivative of a scalar, $\phi$?
+$\phi$ does not depend on the coordinates as tensors do, so it would just be the normal derivative, i.e. 
+\begin{align}
+    \frac{D\phi}{ds} = \frac{d\phi}{ds}.
+\end{align}
+We have defined the absolute derivative of a contravariant tensor, but now what about a covariant tensor $\mu_a$?
+We can write a scalar as $\phi=\lambda^a\mu_a$, so we can write
+\begin{align}
+    \frac{D\phi}{ds} &= \frac{D}{ds}(\lambda^a\mu_a) = \mu_a\frac{D\lambda^a}{ds}+\lambda^a\frac{D\mu_a}{ds}, \\
+    \frac{d\phi}{ds} &= \mu_a\left(\frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}\right) + \lambda^a\frac{D\mu_a}{ds}, \\
+    \lambda^a\frac{d\mu_a}{ds} &= \mu_a\tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds} + \lambda^a\frac{D\mu_a}{ds}, \\
+                               &= \mu_b\tensor{\Gamma}{^b_{ac}}\lambda^a\frac{dx^c}{ds} + \lambda^a\frac{D\mu_a}{ds},
+\end{align}
+where $\lambda^a$ is any tensor, so if this is true, it must be true for any $\lambda^a$.
+We can then `cancel' $\lambda^a$ through unity, as the remaining equation must also be true:
+\begin{align}
+    \frac{d\mu_a}{ds} &= \tensor{\Gamma}{_{ac}^b}\mu_b\frac{dx^c}{ds} + \frac{D\mu_a}{ds}, \\
+    \frac{D\mu_a}{ds} &= \frac{d\mu_a}{ds} - \tensor{\Gamma}{_{ac}^b}\mu_b\frac{dx^c}{ds}.
+\end{align}
+This is the absolute derivative of a convariant tensor. 
+
+What is the absolute derivative of a rank (1,1) tensor $\tensor{\tau}{^a_b}=\lambda^a\mu_b$?
+\begin{align}
+    \frac{D\tensor{\tau}{^a_b}}{ds} = \frac{D(\lambda^a\mu_b}{ds} &= \mu_b\frac{D\lambda^a}{ds} + \lambda^a\frac{D\mu_b}{ds}, \\
+                                                                  &= \mu_b\left[\frac{d\lambda^a}{ds}+\tensor{\Gamma}{^a_{dc}}\lambda^d\frac{dx^c}{ds}\right] + \lambda^a\left[\frac{d\mu_b}{ds}-\tensor{\Gamma}{_{bc}^d}\mu_d\frac{dx^c}{ds}\right],\\
+    \frac{D\tensor{\tau}{^a_b}}{ds} &= \frac{d}{ds}(\lambda^a\mu_b) + \tensor{\Gamma}{^a_{dc}}\tensor{\tau}{^d_b}\frac{dx^c}{ds} - \tensor{\Gamma}{_{bc}^d}\tensor{\tau}{_d^a}\frac{dx^c}{ds}.
+\end{align}
+This is the absolute derivative for a rank (1,1) tensor.
+
+What about the covariant derivative?
+It is defined as:
+\begin{align}
+    \tensor{\lambda}{^a_{;c}} &= \frac{\p\lambda^a}{\p x^c} + \tensor{\Gamma}{^a_{bc}}\lambda^b \\
+    \frac{D\lambda^a}{ds} &= \tensor{\lambda}{^a_{;c}}\frac{dx^c}{ds} \\
+                          &= \frac{\p\lambda^a}{\p x^c}\frac{dx^c}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds} = \frac{d\lambda^a}{ds} + \dots.
+\end{align}
+All the rules still apply, so we can write out the covariant derivative for a scalar, a covariant, and a higher order tensor:
+\begin{align}
+    \phi_{;c} &= \frac{\p\phi}{\p x^c}, \\
+    \mu_{a;c} &= \frac{\p\mu+a}{\p x^c}-\tensor{\Gamma}{_{ac}^b}\mu_b, \\
+    \lambda_{ab;c} &= \frac{\p\lambda_{ab}}{\p x^c} - \tensor{\Gamma}{_{ac}^d}\lambda_{db}-\tensor{\Gamma}{_{bc}^d}\lambda_{ad}.
+\end{align}
+We can also consider the metric:
+\begin{align}
+    g_{ab;c} &= ? \\
+    \frac{\p g_{ab}}{\p x^c} &= \frac{\p}{\p x^c} (\ve_a\cdot\ve_b), \\
+                             &= \frac{\p\ve_a}{\p x^c}\cdot\ve_b + \ve_a\cdot\frac{\p\ve_b}{\p x^c},\\
+                             &= \left(\tensor{\Gamma}{_{ac}^d}\ve_d\right)\cdot\ve_b + \ve_a\cdot\left(\tensor{\Gamma}{_{bc}^d}\ve_d\right), \\
+                             &= \tensor{\Gamma}{_{ac}^d}g_{db} + \tensor{\Gamma}{_{bc}^d}g_{ad}, \\
+    g_{ab;c} &= \frac{\p g_{ab}}{\p x^c} - \tensor{\Gamma}{_{ac}^d}g_{db} - \tensor{\Gamma}{_{bc}^d}g_{ad} = 0,
+\end{align}
+where we used the previous definitions of the covariant derivative to find this definition. 
+Why is this important?
+The metric allows us to switch coordinate systems as
+\begin{align}
+    R_a &= g_{ab}R^b.
+\end{align}
+Now suppose we want to find the covariant derivative:
+\begin{align}
+    R_{a;c} &= \cancel{g_{ab;c}R^b} + g_{ab}\tensor{R}{^b_{;c}} \\
+            &= g_{ab}\tensor{R}{^b_{;c}}.
+\end{align}
 
 
 
