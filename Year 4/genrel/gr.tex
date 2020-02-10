@@ -373,6 +373,48 @@ Now suppose we want to find the covariant derivative:
             &= g_{ab}\tensor{R}{^b_{;c}}.
 \end{align}
 
+\chapter{}
+\section{The Riemann Curvature Tensor}
+\begin{itemize}
+    \item how do we know if space is curved?
+    \item second derivatives of the metric
+    \item `space-sing' around a loop
+    \item convergence of geodesic paths
+\end{itemize}
+The Riemann curvature tensor tells us \emph{how much the direction of a vector changes as it goes round a loop}, or the \emph{tidal forces of gravity}.
+\begin{align}
+    \tensor{\left(\tensor{\lambda}{^a_{;b}}\right)}{_{;c}} &= \frac{\p\tensor{\lambda}{^a_{;b}}}{\p x^c} + \tensor{\Gamma}{^a}{_{ec}}\tensor{\lambda}{^e_{;b}} - \tensor{\Gamma}{_{bc}^f}\tensor{\lambda}{_{;f}^a} \\
+                                                         &= \frac{\p}{\p x^c}\left(\frac{\p\lambda^a}{\p x^b} + \tensor{\Gamma}{^a_{bd}}\lambda^d\right) + \cdots \\
+    \tensor{\lambda}{^a_{;b;c}} &= \frac{\p^2\lambda^a}{\p x^c \p x^b} + \tensor{\Gamma}{^d_{bd}}\frac{\p\lambda^d}{\p x^c} + \lambda^d\frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c} + \tensor{\Gamma}{^a_{ec}}\tensor{\lambda}{^a_{;b}}-\tensor{\Gamma}{_{bc}^f}\tensor{\lambda}{^a_{;f}} 
+\end{align}
+In flat space, the Christoffel symbols go to zero, so we can sway $;b$ and $;c$ indices, but \textbf{not in curved space.}
+\begin{align}
+    \tensor{\lambda}{^a_{;c;b}} &= \frac{\p^2\lambda^a}{\p x^b\p x^c} + \tensor{\Gamma}{^a_{cd}}\frac{\p\lambda^d}{\p x^b} + \lambda^d\frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} + \tensor{\Gamma}{^a_{eb}}\tensor{\lambda}{^e_{;c}} - \tensor{\Gamma}{_{cb}^f}\tensor{\lambda}{^a_{;f}} \\
+    \tensor{\lambda}{^a_{;c;b}}-\tensor{\lambda}{^a_{;b;c}} &= \left(\tensor{\Gamma}{^a_{cd}}\frac{\p\lambda^d}{\p x^b} - \tensor{\Gamma}{^a_{bd}}\frac{\p\lambda^d}{\p x^c}\right) + \lambda^d\left(\frac{\p\tensor{\Gamma}{_{cd}^a}}{\p x^b} - \frac{\p\tensor{\Gamma}{_{bd}^a}}{\p x^c}\right) + \left(\tensor{\Gamma}{^a_{eb}}\tensor{\lambda}{^e_{;c}}-\tensor{\Gamma}{^a_{ec}}\tensor{\Gamma}{^e_{;b}}\right) \\
+                                                            &= \tensor{\Gamma}{^a_{cd}}\left(\frac{\p\lambda^a}{\p x^b}-\tensor{\lambda}{^d_{;b}}\right) + \tensor{\Gamma}{^a_{bd}}\left(\tensor{\lambda}{^d_{;c}}-\frac{\p\lambda^d}{\p x^c}\right) + \lambda^d\left(\frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} - \frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c}\right) \\
+                                                            &= \left(\tensor{\Gamma}{^a_{be}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} - \frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c}\right)\lambda^d = \tensor{R}{^a_{dbc}}\lambda^d
+\end{align}
+We have arrived at the Riemann curvature tensor.
+Consider:
+\textit{doodle diagram}
+\begin{align}
+    \lambda^a(B^1) &= \lambda^a(A) + \tensor{\lambda}{^a_{;b}}\delta x^b + \tensor{\lambda}{^a_{;c}}\delta y^c + \tensor{\lambda}{^a_{;b;c}}\delta x^b\delta y^c \\
+    \lambda^a(B^2) &= \lambda^a(A) + \tensor{\lambda}{^a_{;c}}\delta y^c + \tensor{\lambda}{^a_{;b}}\delta x^b + \tensor{\lambda}{^a_{;c;b}}\delta y^c\delta x^b \\
+    \Delta\lambda^a &= \lambda^a(B^2)-\lambda^a(B^1) = \left(\tensor{\lambda}{^a_{;c;b}}-\tensor{\lambda}{^a_{;b;c}}\right)\delta x^b\delta y^c \\
+                    &= \tensor{R}{^a_{dbc}}\lambda^a\cdot\text{ area of loop}
+\end{align}
+In flat space, any two lines have a separation that increases linearly with distance $s$, e.g. $\p_s^2=0$.
+But in curved space, our two lines can converge or diverge as they travel from initial parallel conditions. 
+Consider two lines $x^a(s)$ and $\tilde{x}^a(s)$ with a separation $\zeta^a=\tilde{x}^a - x^a$.
+We can write our geodesic equation for this as
+\begin{align}
+    \frac{d^2x^a}{ds^2} &+ \tensor{\Gamma}{^a_{bc}}\frac{dx^b}{ds} \frac{dx^c}{ds} = 0 \\
+    \frac{d^2\tilde{x}^a}{ds^2} &+ \tensor{\tilde{\Gamma}}{^a_{bc}}\frac{d\tilde{x}^b}{ds}\frac{d\tilde{x}^c}{ds} = 0 \\
+    \ddot{\zeta}^a &+ \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{\zeta}^c + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c + \frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d} \zeta^d\dot{x}^b\dot{x}^c = 0  \\
+    \frac{D^2\zeta^a}{ds^2} &= \frac{D}{ds}\left(\dot{\zeta}^a + \tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right) \\
+                            &= \ddot{\zeta}^a + \tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c + \frac{d}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right)+\tensor{\Gamma}{^a_{ef}}\left(\tensor{\Gamma}{^e_{bc}}\zeta^b\dot{x}^c\right)\dot{x}^f
+\end{align}
+
 
 
 
