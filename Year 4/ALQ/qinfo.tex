@@ -668,6 +668,125 @@ The trace Tr is the sum of diagonal elements.
     Therefore, $P_{AB}\neq P_AP_B$, because A and B are \textbf{correlated} - whenever A is $|+\rangle$, then B is in $|+\rangle$.
 \end{example}
 
+\chapter{}
+Last time, we looked at entanglement in the Bell states - which are maximally entangled:
+\begin{align}
+    |\Phi^\pm\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle\pm|11\rangle\right).
+\end{align}
+We calculated the probability $P_A$ that A is in the state $|+\rangle=\frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right)$, which we found was $P_A=\frac12$.
+The probability $P_B$ that B is in the state $|+\rangle$ was also $P_B=\frac12$.
+Then, we asked what the joint probability that both A and B are in the state $|+\rangle$.
+Classically, we would say that $P_{AB}=P_AP_B=\frac14$, but here this is not the case as these states are correlated, i.e. whenever A is in the state $|+\rangle$, then B must also be in the state $|+\rangle$.\\
+\textbf{Entanglement implies correlation.}
+
+To see this correlation, we can rewrite the Bell state by defining the $|+\rangle,|-\rangle$ basis as
+\begin{align}
+    |+\rangle &= \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right) & |-\rangle &= \frac{1}{\sqrt{2}}\left(|0\rangle-|1\rangle\right), \\
+    |0\rangle &= \frac{1}{\sqrt{2}}\left(|+\rangle+|-\rangle\right) & |1\rangle &= \frac{1}{\sqrt{2}}\left(|+\rangle-|-\rangle\right).
+\end{align}
+Using these definitions, we simply rearrange the Bell state:
+\begin{align}
+    |\Phi^+\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle+|11\rangle\right) \\
+                   &= \frac{1}{\sqrt{2}}\left[\frac{1}{\sqrt{2}}\left(|+\rangle+|-\rangle\right)\otimes\frac{1}{\sqrt{2}}\left(|+\rangle+|-\rangle\right)+\frac{1}{\sqrt{2}}\left(|+\rangle-|-\rangle\right)\otimes\frac{1}{\sqrt{2}}\left(|+\rangle-|-\rangle\right)\right] \\
+                   &= \frac{1}{\sqrt{2}}\left[\frac12\left(|++\rangle+|-+\rangle+|+-\rangle + |--\rangle + |++\rangle - |-+\rangle - |+-\rangle + |--\rangle\right)\right] \\
+                   &= \frac{1}{\sqrt{2}}\left(|++\rangle+|--\rangle\right).
+\end{align}
+This is an example of the rotational invariance of the Bell state.
+So the Bell state appears the same in this basis as before - we have simply `rotated' the state vector around the Bloch sphere to align along the x-axis. 
+In fact, the Bell state will appear the same regardless of the basis/rotation. 
+The Bell state represents quantum entanglement and correlations which is invariant under rotations, \emph{providing that we choose to measure A and B in the same basis.}
+
+\section{Qubit Gates}
+We have two basic types of gates:
+\begin{itemize}
+    \item The NOT gate - a single qubit gate
+    \item The Controlled NOT gate - two qubit gate that works on correlation for its output
+\end{itemize}
+All computations can be built up from these two basic gates.
+
+Let's consider the CNOT gate.
+This is a universal gate, i.e. having just CNOT gates $+$ single qubit rotations is sufficient to build a universal quantum computer. 
+We have:
+\textit{doodle}
+What does it do?
+If C is in state $|1\rangle$, then NOT on T, otherwise we do nothing. 
+This can be written as a matrix:
+\begin{align}
+    \text{CNOT} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle\end{Bmatrix},
+\end{align}
+where the final term is in roughly what each line represents in the $4\times4$ matrix. 
+For the first two lines, where A is in $|0\rangle$, we do nothing to B, hence the identity form; the latter two lines, where A is in $|1\rangle$, we perform NOT on B - this resembles the Pauli $\hat{\sigma}_x$ matrix. 
+This is also called the Controlled-X (CX) gate, where X represents that Pauli $\hat{\sigma}_x$ matrix. 
+
+CNOT clearly involves entanglement then. 
+We cannot separate CNOT into a product of single-qubit matrices, e.g.
+\begin{align}
+    \text{CNOT} &\neq \hat{\sigma}_0\otimes\hat{\sigma}_x.
+\end{align}
+So CNOT is an entangling operator. 
+
+\begin{example}[CNOT creates entanglement]
+    Our Control and Target inputs are:
+    \begin{align}
+        |C\rangle &= |+\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right) \\
+        |T\rangle &= |0\rangle.
+    \end{align}
+    \textit{doodle}
+    The full input state is then
+    \begin{align}
+        |C\rangle\otimes|T\rangle &= \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right)\otimes|0\rangle \\
+                       |CT\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle+|10\rangle\right).
+    \end{align}
+    This is a \textbf{product state} - there is no entanglement between these yet. 
+    Now we pass this product state through the CNOT operator to give
+    \begin{align}
+        \text{CNOT}|CT\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle+|11\rangle\right),
+    \end{align}
+    where we not have the Bell state which is maximally entangled by definition. 
+    Therefore, we see \textit{CNOT creates entanglement.}
+
+    Let's work through this again in matrix form.
+    \begin{align}
+        |CT\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1\end{pmatrix}\otimes\begin{pmatrix}1\\0\end{pmatrix} \\
+                   &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1\\0\\1\\0\end{pmatrix}. \\
+        \text{CNOT}|CT\rangle &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\1\\0\end{pmatrix}\\
+                              &= \frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle\end{Bmatrix} \\
+                              &= \frac{1}{\sqrt{2}}\left(|00\rangle+|11\rangle\right) = |\Phi^+\rangle.
+    \end{align}
+    We get the same result as before. 
+\end{example}
+
+\subsection{How to realise CNOT?}
+We consider a conditional Ramsey interferometer:
+\textit{doodle}
+If the Control is in state $|1\rangle$, then it applies a $-1$ factor to the state vector and this $-1$ factor flips the output of the Ramsey interferometer, i.e. perform the NOT.
+
+\section{Implementing Quantum Computing in real physical systems}
+We have a choice of our five possiblities:
+\begin{enumerate}
+    \item Atoms
+    \item Ions 
+    \item Semiconductors
+    \item Superconductors
+    \item Photons
+\end{enumerate}
+We are going to use atoms from here, but the question is how to satisfy the 5 diVincenzo criteria:
+\begin{enumerate}
+    \item Initialisation: prepare qubits
+    \item Gates: single-qubit rotations and two-qubit gates (CNOT)
+    \item Read-out.
+    \item Low decoherence.
+    \item Scalability.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
 
 
 

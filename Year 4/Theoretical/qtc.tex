@@ -900,6 +900,280 @@ Overall, the magnetic field:
     \item and then goes to zero exponentially on a length scale of order $\lambda$.
 \end{itemize}
 
+\chapter{The Ginzburg-Landau Model}
+\section{Magnetic Work}
+Consider a single circuit with constant $I$.
+If the flux $\Phi$ \emph{through} the circuit changes, an emf $\mathcal{E}$ is induced \emph{around} it. 
+To keep the current constant, the sources of current must do work, at a rate 
+\begin{align}
+    \frac{dW}{dt} &= -I\mathcal{E} = I\frac{d\Phi}{dt}.
+\end{align}
+Hence, if the flux change through the circuit is $\delta\Phi$, the work done by the sources is 
+\begin{align}
+    \delta W &= I\delta\Phi.
+\end{align}
+For a length $L$ long z-oriented cylindrical sample with $N$ equally-spaced solenoidal coils (equivalent to a stack of $N$ simple circuits) around it, the work done is then
+\begin{align}
+    \delta W &= NI\delta\Phi.
+\end{align}
+The magnetic flux is then equal to the cylinder's cross-sectional area $A$ multiplied by the magnitude of the (z-oriented) B field. 
+Hence, 
+\begin{align}
+    \delta W &= NIA\delta B.
+\end{align}
+Inside the sample, $\unl{H}=\frac{N}{L}I\ve_z$, and so, where the volume $V=AL$,
+\begin{align}
+    \frac{\delta W}{V} &= \unl{H}\cdot\delta\unl{B} = \mu_0(\vec{H}\cdot\delta\vec{M}+\vec{H}\cdot\delta\vec{H}).
+\end{align}
+The first term is the \emph{magnetic work} per unit volume doneon the sample; the second is the work per unit volume in the \emph{absence} of a sample (\emph{self-inductance}).
+
+\section{Thermodynamics of Magnetic Materials}
+Eq. (9.5) is valid for any bulk sample with homogeneous magnetic fields. 
+By convention, we do not consider the second term as ``work done on the sample" in the internal energy.
+Hence, 
+\begin{align}
+    dU &= T\,dS + \mu_0V\vec{H}\cdot\,d\vec{M}.
+\end{align}
+In terms of $U(S,\vec{M})$, the temperature and magnetic field are
+\begin{align}
+    T &= \frac{\p U}{\p S}, & \vec{H} &= \frac{1}{\mu_0V}\frac{\p U}{\p M}\vec{n},\quad \left(\vec{n}=\frac{\vec{M}}{M}\right).
+\end{align}
+It is useful to define analogs of the Helmholtz and Gibbs free energyes:
+\begin{align}
+    F(T,\vec{M}) &= U - TS, & G(T,\vec{H}) &= U-TS-\mu_0V\vec{H}\cdot\vec{M}.
+\end{align}
+As $T$ and $\vec{H}$ are the most naturally-controlled experimental variables, it is often convenient to work with $G(T,\vec{H})$. 
+That this is the most naturally-viewed as a function of $T$ and $\vec{H}$ can be seen from 
+\begin{align}
+    dG &= -S\,dT - \mu_0V\vec{M}\cdot d\vec{H}.
+\end{align}
+In terms of $G$, one can calculate the entropy and magnetisation:
+\begin{align}
+    S &= -\frac{\p G}{\p T}, & \vec{M} &= -\frac{1}{\mu_0V}\frac{\p G}{\p H}\vec{n}\quad \left(\vec{n}=\frac{\vec{H}}{H}\right).
+\end{align}
+Note also that 
+\begin{align}
+    F &= G+\mu_0V\vec{H}\cdot\vec{M}, & U &= F+TS.
+\end{align}
+
+\section{Condensation Energy in Type I Superconductors}
+If we change the magnitude of an H field from 0 to the value $H_C$ where, in a type I superconductor, the superconductivity is destroyed, while keeping $T$ ($<T_C$) constant, then
+\begin{align}
+    G_s(T,H_C) - G_s(T,0) &= \int dG = -\mu_0 V\int_0^{H_C} \vec{M}\cdot d\vec{H} = \mu_0\frac{H_C^2}{2}V,
+\end{align}
+where we have used $\vec{M}=-\vec{H}$ as defined in the Meissner-Ochsenfeld effect.
+At the critical field $H_C$, the normal and superconducting state are in thermal equilibrium, i.e. the Gibbs free energies are equal: $G_s(T,H_C) = G_n(T,H_C)$.
+In the normal state, $M\approx0$ (we neglect the small normal metal paramagnetism or diamagnetism). 
+If the normal state had persisted below $H_C$ down to $H=0$, then 
+\begin{align}
+    G_n(T,H_C) - G_n(T,0) &= \int dG \approx 0 \implies G_s(T,0) - G_n(T,0) = -\mu_0\frac{H_C^2}{2}V,
+\end{align}
+i.e. the Gibbs potential for the (stable) superconducting state is lower. 
+Substituting $\vec{H}=\vec{M}=0$ gives the same result for $F_s(T,0)-F_n(T,0)$.
+$\mu_0\frac{H_C^2}{2}$ is called the \emph{condensation energy} (actually an energy density), and is a measure of the gain in free energy per unit volume in the superconducting state compared to the normal state at the same temperature. 
+
+\section{Condensation Energy in Type II Superconductors}
+Similarly to Eq. (9.12), we integrate over $H$ between 0 and $H_{C2}$, yielding
+\begin{align}
+    G_s(T,H_{C2}) - G_s(T,0) &= \int dG = -\mu_0V\int_0^{H_{C2}}\vec{M}\cdot d\vec{H} = \mu_0\frac{H_C^2}{2}V.
+\end{align}
+Here $H_C$, called in this context the \emph{thermodynamic critical field}, is \emph{defined} through 
+\begin{align}
+    \frac{H_C^2}{2} &\equiv \int_0^{H_{C2}}\vec{M}\cdot d\vec{H}.
+\end{align}
+It is a convenient measure of the energy - there is no phase transition at $H_C$ in a type II superconductor (as does occur at $H_{C1}$ and $H_{C2}$).
+
+\section{Ginzburg-Landau Order Parameter}
+\textbf{Ginzburg} and \textbf{Landau} (GL) postulated a complex order parameter $\psi$ that characterises the super -conducting state like the magnetisation $\vec{M}$ does a ferromagnet. 
+As with the superfluid order parameter in ${}^4$He,
+\begin{align}
+    \psi &= \begin{cases} 0 & T>T_C, \\ \psi(T) \neq 0 & T<T_C.\end{cases}
+\end{align}
+Here $\psi$ is of purely phenomenological origin. 
+However, in the microscopic BCS theory, $|\psi|^2$ can be identified with the density of Cooper pairs. 
+
+\section{Temperature Dependence of the Helmholtz Free Energy Density}
+GL assumed the (real) superconductor free energy must \emph{depend smootly} on $\psi$ (be differentiable with respect to $\psi,\psi^*$), effectively meaning it must be a function of $|\psi|^2$.
+Since $\psi\to0$ when $T\to T_C$ from below, we can Taylor expand the free energy in powers of $|\psi|^2$, keeping only a limited number of terms. 
+Hence, the free energy density $f=\frac{F}{V}$ has the form
+\begin{align}
+    f_s(T) &= f_n(T) + a(T)|\psi|^2 + \frac{b(T)}{2}|\psi|^2+\cdots.
+\end{align}
+$a(T)$ and $b(T)$ are phenomenological parameters, assumed to be smooth functions of temperature $T$. 
+We also assume $b(T)>0$, ensuring $f$ has a minimum (or minima).
+
+\section{Minima near Critical Temperature}
+If $a(T)>0,\, f_s-f_n$ has a single minimum at $\psi=0$. 
+However, if $a(T)<0$, then $f_s-f_n$ has minima where $|\psi|^2=-\frac{a(T)}{b(T)}$.
+GL assumed that above $T_C$ (normal state), $a(T)>0$, and below $T_C$ (superconducting state), $a(T)<0$.
+While slowly changing $T$, the state of the system \emph{changes suddenly} when $a(T)=0$.
+Near $T_C$, we can Taylor expand $a(T)$ and $b(T)$:
+\begin{align}
+    a(T) &\approx \dot{a}(T-T_C) + \cdots, & b(T) &\approx b + \cdots,
+\end{align}
+where $\dot{a}$ and $b$ are chosen to be positive-valued phenomenological constants.
+These expressions for $a(T)$ and $b(T)$ yield the right qualitative behaviour for a transition to a superconducting state as $T$ is lowered through $T_C$.
+Within this simple picture
+\begin{align}
+    |\psi| &= \begin{cases} 0 & T>T_C, \\ \sqrt{\frac{\dot{a}}{b}(T_C-T} & T<T_C. \end{cases}
+\end{align}
+
+\section{Phase of the Ginzburg-Landau Order Parameter}
+There are an infinite set of minima for $f_s-f_n$ corresponding to all possible values of the phase $\theta$ in $\psi=|\psi|e^{i\theta}$.
+The value of $\theta$ is arbitrary, resulting in the same free energy. 
+As in the case of direction of $\vec{M}$ in a ferromagnet, the system \emph{spontaneously chooses} a particular value. 
+
+\section{Minimum of the Free Energy Density Difference}
+According to Eq. (9.17), the minimum value of the free energy difference per unit volume between the superconducting and normal phases 
+\begin{align}
+    f_s(T) - f_n(T) &= -\frac{a(T)^2}{2b(T)}.
+\end{align}
+This corresponds to the condensation energy, and so, near $T_C$,
+\begin{align}
+    f_s(T) - f_n(T) &= -\frac{\dot{a}^2(T-T_C)^2}{2b} = -\mu_0\frac{H_C^2}{2}\implies H_C = \frac{\dot{a}}{\sqrt{\mu_0 b}}(T_C-T).
+\end{align}
+
+\section{Entropy and Heat Capacity per Unit Volume}
+Differentiating $f$ with respect to $T$ gives the entropy per unit volume $s=\frac{S}{V}$.
+Hence, from Eq. (9.21),
+\begin{align}
+    s_s(T) - s_n(T) &= -\frac{\dot{a}^2}{b}(T_C-T),
+\end{align}
+below $T_C$.
+There is \emph{no discontinuity in entropy} at $T_C$, i.e. the GL model corresponds to a \emph{second-order phase transition.}
+Differentiating $s$ to find the heat capacity per unit volume $C_V=T\frac{ds}{dT}$,
+\begin{align}
+    C_{V_s} - C_{V_n} &= \begin{cases} 0 & T>T_C, \\ T\frac{\dot{a}^2}{b} & T<T_C.\end{cases}
+\end{align}
+The heat capacity therefore has a discontinuity $\Delta C_V = T_C\frac{\dot{a}^2}{b}$ at $T_C$.
+The metallic normal state is linear in $T$ ($C_{V_n}=\gamma T$, where $\gamma$ is a material-dependent constant).
+The relationship of $C_V$ with $T$ is therefore quite different from BEC and the $\lambda$ point of superfluid ${}^4$He.
+
+\chapter{}
+\section{Ginzburg-Landau Free Energy of Inhomogeneous Systems}
+GL can be generalised to spatially-dependent order parameters $\psi(\vr)$ by incorporating a gradient \\-dependent term in the free energy density:
+\begin{align}
+    f_s(T) - f_n(T) &= \frac{\hbar^2}{2m^*}|\del\psi(\vr)|^2 + a(T)|\psi(\vr)|^2 + \frac{b(T)}{2}|\psi(\vr)|^4,
+\end{align}
+where $m^*$ is the effective mass. 
+The free energy is obtained by integrating the free energy density over all space:
+\begin{align}
+    F_s(T) - F_n(T) &= \int \left[\frac{\hbar^2}{2m^*}|\del\psi(\vr)|^2 + a(T)|\psi(|vr)|^2 + \frac{b(T)}{2}|\psi(\vr)|^4\right]\,d^3r \\
+                    &= \int \psi^*(\vr)\left[-\frac{\hbar^2\del^2}{2m^*}+a(T)+\frac{b(T)}{2}|\psi(|vr)|^2\right]\psi(\vr)\,d^3r,
+\end{align}
+where, strictly, we have assumed either that $\psi(\vr)$ is subject to periodic boundary conditions, or that $\psi(\vr)\to0$ as $r\to\pm\infty$.
+The Laplacian term describes the \emph{kinetic energy}.
+$F_s(T)-F_n(T)$ can be considered the \emph{Hamiltonian functional} $H[\psi,\psi^*]$ of a classical field, where the canonically-conjugate dynamical variables are $\psi(\vr)$ and $\psi^*(\vr)$.
+
+\section{Minimising the Free Energy}
+Consider an infinitesiaml variation of the order parameter, replacing $\psi$ with $\psi+\delta\psi$.
+Retaining terms of no greater than linear order in $\delta\psi,\delta\psi^*$ and noting that $F_n$ does not vary,
+\begin{align}
+    \delta F_s &= F_s[\psi+\delta\psi,\psi^*+\delta\psi^*] - F_s[\psi,\psi^*] \\
+               &= \int \left\{\delta\psi^*\left[\left(-\frac{\hbar^2\del^2}{2m^*}+a+b|\psi|^2\right)\psi\right] + \delta\psi\left[\left(-\frac{\hbar^2\del^2}{2m^*}+a+b|\psi|^2\right)\psi\right]^*\right\}\,d^3r.
+\end{align}
+Hence, $\delta F_s=0$ for arbitrary infinitesimal variations $\delta\psi,\delta\psi^*$ if and only if
+\begin{align}
+    \left[-\frac{\hbar^2\del^2}{2m^*}+a(T)+b(T)|\psi(\vr)|^2\right]\psi(\vr)=0.
+\end{align}
+
+\section{Functional Derivatives}
+Consider a \emph{functional} $K[\psi,\psi^*,A_1,A_2,\dots]$ which may incorporate additional independent spatially -dependent quantitites $\{A_1(\vr),A_2(\vr),\dots\}$.
+Retaining only terms linear in $\delta\psi,\delta\psi^*,\delta A_1,\delta A_2,\dots$,
+\begin{multline}
+    K[\psi+\delta\psi,\psi^*+\delta\psi^*,A_1+\delta A_1,A_2+\delta A_2,\dots] - K[\psi,\psi^*,A_1,A_2,\dots] = \\ \int \left(\alpha_\psi\delta\psi + \alpha_{\psi^*}\delta\psi^* + \alpha_{A_1}\delta A_1 + \alpha_{A_2}\delta A_2 + \dots\right)\,d^3x.
+\end{multline}
+This is reminiscent of the chain rule applied to a function, where the $\alpha$ terms are \emph{functional} or \emph{variational derivatives}.
+Using the most conventional notation, 
+\begin{align}
+    \alpha_\psi &= \frac{\delta K}{\delta\psi}, & \alpha_{\psi^*} &= \frac{\delta K}{\delta\psi^*}, & \alpha_{A_1} &= \frac{\delta K}{\delta A_1}, & \alpha_{A_2} &= \frac{\delta K}{\delta A_2},\cdots.
+\end{align}
+Setting the functional derivative to zero yields Eq. (10.6) directly, reading
+\begin{align}
+    \frac{\delta F_s[\psi,\psi^*]}{\delta\psi} &= \left(-\frac{\hbar^2\del^2}{2m^*}+a+b|\psi|^2\right)\psi.
+\end{align}
+
+\section{Surfaces of Superconductors}
+Consider an interface in the $yz$ plane between a normal metal ($x<0$ region) where $\psi=0$, and a superconductor ($x>0$ region), where $\psi$ must solve Eq. (10.6).
+Noting that $\psi$ is in this case independent of $y$ and $z$, this can be exactly solved:
+\begin{align}
+    \psi(x) &= \psi_0\tanh\left(\frac{x}{\sqrt{2}\xi(T)}\right), \text{ where } \xi(T) = \sqrt{\frac{\hbar^2}{2m^*|a(T)|}}
+\end{align}
+is called the GL \emph{coherence length}, a measure of the distance from the surface over which $\psi$ recovers back to its bulk value. 
+
+\section{Ginzburg-Landau Coherence Length}
+The Ginzburg-Landau coherence length arises when consdering most inhomogeneities, including surfaces, interfaces, defects, and vortices. 
+Using 
+\begin{align}
+    a(T) &= \dot{a}(T-T_C), & \xi(T) &= \sqrt{\frac{T_C}{T_C-T}}\xi(0),
+\end{align}
+which \emph{diverges} at $T=T_C$.
+Here $\xi(0)$ is essentially the same (barring order unity numerical factors) as the coherence length in Pippard's nonlocal extension of the London theory (see Section 8.5).
+
+\section{Proximity Effect}
+Lowering $T$ at an interface between two superconducting materials, that with higher $T_C$ becomes superconducting first, and will nucleate superconductivity at the surface of the other material. 
+If the lower $T_C$ superconductor is a layer of order $\xi(T)$ in thickness, the whole system will become superconducting at a higher $T$ than the lower $T_C$ material's natural critical temperature.
+
+\section{Interaction of Supercurrents with Magnetic Field}
+\emph{Supercurrents} imply the motion of \emph{charged particles}.
+The canonically conjugate momentum of a single \emph{charged particle} in a \emph{magnetic field} is displaced from the mechanical momentum by $q\vec{A}$ ($q$ is the charge, $\vec{A}$ the magnetic vector potential).
+To include magnetic fields in the free energy, GL postulate the field enters as if $\psi(\vr)$ is a wavefunction for charged particles, where $-i\hbar\del$ is replaced by $-i\hbar\del-q\vec{A}$.
+In all known superconductors, $q=-2e$.
+It turns out that $\psi(\vr)$ can be understood as the wavefunction for the center-of-mass motion of \emph{Cooper pairs} of electrons. 
+
+\section{Free Energy in the Presence of a Magnetic Field}
+We now choose to include the vacuum field energy of the electromagnetic field (excluded in Section 9.2 from consideration).
+Hence, replacing $-i\hbar\del$ with $i\hbar\del+2e\vec{A}$ yields
+\begin{align}
+    F_s &= F_n + \int_V \left[\frac{\hbar^2}{2m^*}\bigg|\left(\del+\frac{2ei}{\hbar}\vec{A}\right)\psi\bigg|^2 + a|\psi|^2 + \frac{b}{2}|\psi|^4\right] + \frac{1}{2\mu_0}\int B(\vr)^2\,d^3r.
+\end{align}
+Note that the integral is over the volume $V$ of the sample only, not all space. 
+Minimising $F_s(T)$ with respect to variations in $\psi,\psi^*$ (as in Section 10.2) yields
+\begin{align}
+    \left[-\frac{\hbar^2}{2m^*}\left(\del+\frac{2ei}{\hbar}\vec{A}\right)^2+a+b|\psi(\vr)|^2\right]\psi(\vr) &= 0.
+\end{align}
+The superconducting current density describing supercurrents due to a potentially spatially-dependent magnetic field is
+\begin{align}
+    \vec{j}_s &= -\frac{\delta F_s}{\delta A_x}\ve_x - \frac{\delta F_s}{\delta A_y}\ve_y - \frac{\delta F_s}{\delta A_z}\ve_z = \frac{2e\hbar i}{2m^*} \left(\psi^*\del\psi-\psi\del\psi^*\right) - \frac{4e^2}{m^*}|\psi|^2\vec{A}.
+\end{align}
+
+\section{Gauge Symmetry and Symmetry Breaking}
+Changing the phase of $\psi$ (replace $\psi$ with $\psi e^{i\theta}$) and applying the transformed momentum operator,
+\begin{align}
+    \left(-i\hbar\del+2e\vec{A}\right)\psi e^{i\theta} &= e^{i\theta}\left(-i\hbar\del+2e\vec{A}\right)\psi + \psi e^{i\theta}\hbar\del\theta,\\
+    \left(-i\hbar\del+2e\vec{A}\right)\psi e^{i\theta} &= e^{i\theta}\left[-i\hbar\del+2e\left(\vec{A}+\frac{\hbar}{2e}\del\theta\right)\right]\psi.
+\end{align}
+The \emph{free energy} is unchanged if we also \emph{gauge transform} $\vec{A}$ to $\vec{A}-\frac{\hbar}{2e}\del\theta$ (the theory satisfies \emph{local gauge invariance}).
+Consider a superconductor with constant $\psi$ and slowly varying $\theta(\vr)$.
+Then, relative to the ground state total free energy $F_s^0$ (constant $\theta$ and $\vec{A}=0$),
+\begin{align}
+    F_s &= F_s^0 + \rho_s\int\left(\del\theta+\frac{2e}{\hbar}\vec{A}\right)^2\,d^3r, \text{ where } \rho_s = \frac{\hbar^2}{2m^*}|\psi|^2
+\end{align}
+is the \emph{superfluid stiffness}.
+Within any gauge chosen for $\vec{A}(\vr)$, there is a free energy cost (\emph{phase stiffness}) associated with further gradients in $\theta(\vr)$.
+The system ``chooses" an (arbitrary) constant $\theta$ through (\emph{long range order} in $\theta$), i.e. has \emph{spontaneously broken global gauge symmetry}.
+
+\section{The London Equation Limit}
+From Eq. (10.17), and starting in the ground state (constant $\theta$), with a small constant $\vec{A}$,
+\begin{align}
+    \vec{j}_s &= -\frac{\delta F_s}{\delta A_x}\ve_x - \frac{\delta F_s}{\delta A_y}\ve_y - \frac{\delta F_s}{\delta A_z}\ve_z = -\frac{4e}{\hbar}\rho_s\left(\del\theta+\frac{2e}{\hbar}\vec{A}\right) \to \vec{j}_s = -\rho_s\frac{8e^2}{\hbar^2}\vec{A},
+\end{align}
+which is exactly the same as the London equation (Eq. (8.11) - $\rho_s$ is essentially $n_s$).
+It is conventional to relate the GL and London formulations by
+\begin{align}
+    n_s &= 2|\psi|^2, & m^* &= 2m_e.
+\end{align}
+In terms of $\dot{a}$ and $b$, the superfluid density is given by 
+\begin{align}
+    n_s &= 2|\psi|^2 = 2\dot{a}\frac{T_C-T}{b}.
+\end{align}
+The London penetration depth is then given by
+\begin{align}
+    \lambda(T) &= \sqrt{\frac{m_eb}{2\mu_0e^2\dot{a}(T_C-T)}}.
+\end{align}
+$\lambda(T)$ and the GL coherence length $\xi(T)$ (see Section 10.5) have the same $T$ dependence.
+Hence, the dimensionless ratio $\kappa \equiv \frac{\lambda(T)}{\xi(T)}$ is independent of $T$.
+
 
 
 
@@ -910,15 +1184,6 @@ Overall, the magnetic field:
 
 
 \end{document}
-
-
-
-
-
-
-
-
-
 
 
 
