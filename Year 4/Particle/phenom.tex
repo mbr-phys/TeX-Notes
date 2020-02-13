@@ -176,7 +176,7 @@ This makes the case for theorists to fixate with Lagrangians: there is the hope 
 
 Now we can connect to particle physics by
 \begin{align}
-    Q &\to \phi(t,\vx) & P &\to \p_t\phi(t,\vx) = \Pi, 
+    Q &\to \phi(t,\vx), & P &\to \p_t\phi(t,\vx) = \Pi, 
 \end{align}
 where we can now define our Lagrangian as
 \begin{align}
@@ -186,6 +186,11 @@ The commutation relation can be defined as
 \begin{align}
     [\hat{\phi}(\vx),\hat{\Pi}(\vec{y})] &= i\hbar\delta^3(\vx-\vec{y}).
 \end{align}
+We have a Hamiltonian and Action from these, reading
+\begin{align}
+    \Ham &= \frac{\p_t\hat{\phi}^2}{2} + \frac12\left(\del\hat{\phi}\right)^2+V(\hat{\phi}), \\
+    S[\phi] &= \int \left(\frac12\p_\mu\phi\p^\mu\phi - V(\phi)\right)\,dt\,dt^3\vx.
+\end{align}
 From here, we can build up our rules as previously, but we would only get a number of single-particles states. 
 For this to be a description of nature, we need multi-particle states as well. 
 To this end, we introduce the partition function:
@@ -193,6 +198,108 @@ To this end, we introduce the partition function:
     Z[0] &= \langle0|e^{-\frac{i}{\hbar}\Ham T}|0\rangle_{T\to\infty} = \int\mathcal{D}e^{iS[\phi]}\\
     Z[J] &= \int \mathcal{D}\phi\exp\left[iS[\phi]+i\int\phi(x)J(x)\,d^4x\right].
 \end{align}
+
+\chapter{Path Integrals and Feynman Rules, Contd.}
+From the scalar action of Eq. (3.21) and the two-point correlator,
+\begin{align}
+    \frac{\delta^2}{i\delta J(x)i\delta I(y)}\frac{Z[J]}{Z[0]}\bigg|_{j=0} &= \frac{1}{Z[0]}\int \mathcal{D}\phi(x)\phi(y)e^{iS[\phi]},
+\end{align}
+where functional derivatives are defined by
+\begin{align}
+    \frac{\delta J(y)}{\delta J(x)} &= \delta^4(x-y).
+\end{align}
+Now we can rewrite the action as
+\begin{align}
+    \int \left(\frac12\phi(-\Box-m^2)\phi+\phi J\right)\,d^4x &= \in \left(\frac12(\phi+\Delta J)(-\Box-m^2)(\phi+\Delta J) - \frac12 J\Delta J\right)\,d^4x\\
+                                                              &= \int \left(\frac12\tilde{\phi}(-\Box-m^2)\tilde{\phi} - \frac12 J\Delta J\right)\,d^4x,
+\end{align}
+using integration by parts with $\Box=\p^\mu\p_\mu$.
+Here, $\Delta = (-\Box-m^2)^{-1}$, and $\tilde{\phi}=\phi+\Delta J$.
+This result back in the path integral gives
+\begin{align}
+    \frac{1}{Z[0]}\int \mathcal{D}\tilde{\phi}e^{i\S[\tilde{\phi}]}\frac{\delta^2}{i^2\delta J^2}e^{-\frac{i}{2}\int J\Delta J}\bigg|_{J=0} &= \left(i\Delta + (\Delta J)^2\right)e^{\frac{i}{2}\int J\Delta J}\bigg|_{J=0} = i\Delta,
+\end{align}
+where we have identified the path integral in $\tilde{\phi}$ as $Z[0]$.
+Specifically,
+\begin{align}
+    (-\Box-m^2)(\Delta J)(x) &= (-\Box-m^2)\int \Delta(x,y)J(y)\,d^4y, \\
+    \Delta(x,y) &= \int \frac{e^{iq(x-y)}}{q^2-m^2}\frac{d^4q}{(2\pi)^4}.
+\end{align}
+So all we had to do to compute the integral is to invert the operator of the quadratic action in $\phi$.
+We obtain the propagation of a field from $x$ to $y$ in the absence of interactions, but now we want to include these. 
+We can study the scattering matrix $S$, computed from the path integral for $N$ particles as
+\begin{align}
+    S &= \frac{1}{Z[0]}\left((i\Delta)^{-1}\frac{\delta}{i\delta J}\right)^NZ[J]\bigg|_{J=0} = \frac{1}{Z[0]}\left((i\Delta)^{-1}\frac{\delta}{i\delta J}\right)^N \int \mathcal{D}\phi e^{iS[\phi]+\int J\phi}\bigg|_{J=0} \\
+      &= \frac{1}{Z[0]}\int \mathcal{D}\tilde{\phi}e^{iS_0[\tilde{\phi}]}\left((i\Delta)^{-1}\frac{\delta}{i\delta J}\right)^N \exp\left[-\frac{i}{2}\int J\Delta J + iS_{int}[\tilde{\phi}-\Delta J]\right]\bigg|_{J=0} \\
+      &= \frac{1}{Z[0]}\int \mathcal{D}\tilde{\phi}e^{iS_0[\tilde[\phi]-\frac{i}{2}\int J\Delta J} \left((i\Delta)^{-1}\frac{\delta}{i\delta J}\right)^N e^{iS_{int}[\tilde{\phi}-\Delta J]}+\text{ disconnected} \\
+      &= \frac{1}{Z[0]}\int \mathcal{D}\phi e^{iS_0[\phi]}\left(\frac{\delta}{\delta\phi(p)}\right)^Ne^{iS_{int}[\phi]}+\text{ disconnected}.
+\end{align}
+This is the \textbf{Lehmann Symanzyk Zimmerman} reduction formula and there is a lot to unpack. 
+The disconnected terms are best understand with a diagrammatic approach:
+\emph{doodle}
+Here we can see the disconnected refers to processes in which some particles travel freely and corresponds to letting $\frac{\delta}{\delta J}$ act on the free piece $\exp\left(-i\int J\Delta J/2\right)$.
+To get acquainted with this expression, consider the S matrix for the following interaction:
+\begin{align}
+    S_{int}[\phi] &= -\int \frac{\lambda}{4!}\phi(x)^4\,d^4x = -\frac{\lambda}{4!}\int d^4x \prod_{i=1}^4 \int e^{ip_ix}\phi(p_i)\,d^4p_i \\
+                  &= -\frac{\lambda}{4!}\prod_{i=1}^4 \left[\int \phi(p_i)\,d^4p_i\right](2\pi)^4\delta^4\left(\sum p_i\right).
+\end{align}
+We consider 2 to 2 particle scattering with incoming momenta $k_1,k_2$ and outgoing momenta $k_3,k_4$.
+Now taking the derivative, the out-states have flipped momenta:
+\begin{align}
+    e^{iS_0[\phi]}\frac{\delta^2}{\delta\phi(k_1)\delta\phi(k_2)}\frac{\delta^2}{\delta\phi(-k_4)\delta\phi(-k_3)}e^{iS_{int}[\phi]} &= e^{iS[\phi]}(-i\lambda)(2\pi)^2\delta(k_1+k_2-k_3-k_4)+\mathcal{O}(\lambda^2),
+\end{align}
+i.e. the path integral on $e^{iS}$ cancels out with the factor $Z[0]$ in the denominator and we have therefore obtained the first order in $\lambda$ matrix element $S$.
+The invariant matrix element is then defined as
+\begin{align}
+    S &= \Pi - i(2\pi)^4\delta^4(p_I-p_F)\mathcal{M},
+\end{align}
+where $p_{I,F}$ sum over the initial and final momenta. 
+We then find that $-i\mathcal{M}=-i\lambda$.
+
+Now consider the case of a proton with field $P(x)$ scattering off an electron with field $e(x)$ via the electromagnetic interaction:
+\begin{align}
+    D_\mu P(x) &= (\p_\mu+iQA_\mu)P(x) \\
+    S_{int} &= \int \left(Q\bar{e}(x)\gamma_\mu e(x)A^\mu(x) - Q\bar{P}(x)\gamma_\mu P(x)A^\mu(x)\right)\,d^4x.
+\end{align}
+The $S$ matrix is then computed from
+\begin{equation}
+    \begin{split}
+        &e^{iS_0[e,P,A_\mu]}\frac{\delta}{\delta\bar{e}(p_2)}\frac{\delta}{\delta e(p_1)}\frac{\delta}{\delta\bar{P}(k_2)}\frac{\delta}{\delta P(k_1)}e^{iS_{int}[e,P,A_\mu]} \\
+        =&e^{iS[e,P,A_\mu]}\int e^{i(p_1-p_2)x}[iQ\gamma_\mu]A^\mu(x)\,d^4x \int e^{i(k_1-k_2)y}[-iQ\gamma_\nu]A^\nu(y)\,d^4y + \mathcal{O}(Q^4) \\
+        =&e^{iS[e,P,A_\mu]-iS_0[A_\mu]}\int d^4x \int e^{i(p_1-p_2)x}(iQ\gamma_\mu)\left[A^\mu(x)A^\nu(y)e^{iS_0[A_\mu]}\right]e^{i(k_1-k_2)y}(-iQ\gamma_\nu)\,d^4y.
+    \end{split}
+\end{equation}
+We can perform the path integral in $A_\mu$ perturbatively and yield precisely the propagator
+\begin{equation}
+    \begin{split}
+        &Q^2\int d^4x \int d^4y e^{i(p_1-p_2)x}\gamma_\mu \int \frac{d^4q}{(2\pi)^4}\frac{-ie^{iq(x-y)}g^{\mu\nu}}{q^2}e^{i(k_1-k_2)y}\gamma_\nu \\
+        =&(2\pi)^4 \int \delta^4(p_1-p_2-q)\,d^4q\; \gamma_\mu\frac{-iQ^2g^{\mu\nu}}{q^2}(2\pi)^4\delta^4(k_1-k_2+q)\gamma_\nu \\
+        =&(2\pi)^4\delta^4(p_1-p_2-k_2+k_1)\gamma_\mu\frac{-iQ^2g^{\mu\nu}}{(p_1-p_2)^2}\gamma_\nu,
+    \end{split}
+\end{equation}
+which has an overall momentum conservation Dirac delta and ends up being simpler than the derivation machinery might have suggested. 
+To connect the above with the $S$ matrix, we still must contract this with the spinors $u(\vec{p},s),\bar{u}(\vec{p},s)$ which are the connection between field and particle states.
+In these lectures, we will only use these up to spin 1.
+\emph{doodle - write out spinors from notes}
+The simplicity of these spinors hints at a shortcut to the result which is simply a collection of rules which we can gather to skip all of the maths we have done above. 
+These are the \textbf{Feynman rules:}
+\begin{itemize}
+    \item \textbf{Interaction vertices} - to derive the Feynman rule for a given vertex, take the derivative of the interaction term in the Lagrangian with respect to fields until you obtain a constant and put an $i$ into it. 
+        We have seen a couple of examples of this:
+        \begin{align}
+            -\frac{\lambda}{4!}\phi^4 &\to -i\lambda, & \bar{e}A_\mu\gamma^\mu e &\to i\gamma_\mu.
+        \end{align}
+        The vertex is represented diagrammatically by each of the fields being a line joining in a point. 
+    \item For a initial/final state particle $\hag_{\vp,s}|0\rangle \equiv |\vp,s\rangle$ with momentum $\vp$ and spin $s$, one must supplement the derivative with respect to the field with the field-state connection, meaning a factor.
+        \emph{doodle diagrams}
+    \item For internal lines which connect two vertices, we put in the propagator $i\Delta$.
+        These are:
+        \emph{doodle diagrams}
+    \item For a given process, draw all possible diagrams (to a given order in your perturbative expansion) matching the external states and translate it into an amplitude $-i\mathcal{M}$ by summing over them and writing their contributions with the above prescriptions of factors for internal and external lines, and vertices.
+        Impose momentum conservation on each vertex to fix the momenta of propagators as much as possible.
+\end{itemize}
+
+
 
 
 

@@ -415,6 +415,160 @@ We can write our geodesic equation for this as
                             &= \ddot{\zeta}^a + \tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c + \frac{d}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right)+\tensor{\Gamma}{^a_{ef}}\left(\tensor{\Gamma}{^e_{bc}}\zeta^b\dot{x}^c\right)\dot{x}^f
 \end{align}
 
+\chapter{}
+\emph{Things are about to get a little more physics!} - Richard Bower. \\
+In this lecture:
+\begin{itemize}
+    \item Geodesic convergence.
+    \item Symmetry of the Riemann tensor, 
+        \begin{align}
+            \tensor{R}{^a_{dbc}} &= \tensor{\Gamma}{^a_{bc}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \p_b\tensor{\Gamma}{^a_{cd}}-\p_c\tensor{\Gamma}{^a_{bd}}.
+        \end{align}
+    \item We will look towards Einstein's equations by combining our knowledge of movement in curved space with gravity. 
+    \item We will do this through the stress-energy tensor, $T^{\mu\nu}$. (Not as simple as it could be, R has four indices, this has two, but we'll get to that.)
+    \item This will lead towards to conservation laws in GR.
+\end{itemize}
+At the end of last lecture, we considered divergent lines with a spatially-dependent separation $\zeta$:
+\begin{align}
+    \ddot{x}^a + \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{x}^c &= 0 \\
+    \ddot{\tilde{x}}^a + \tensor{\tilde{\Gamma}}{^a_{bc}}\dot{x}^b\dot{x}^c &= 0 \\
+    \ddot{\zeta} + \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{\zeta}^c + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c + \frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d}\zeta^d\dot{x}^b\dot{x}^c &= 0.
+\end{align}
+We want to find the Tensor equation from this! 
+\begin{align}
+    \frac{D^2\zeta^a}{ds^2} &= \ddot{\zeta}^a + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c + \frac{d}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right) + \tensor{\Gamma}{^a_{ef}}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right)\dot{x}^f.\\
+    \frac{d}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right) &= \tensor{\Gamma}{^a_{be}}\zeta^b\ddot{x}^e + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c + \zeta^b\dot{x}^c\left(\frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d}\dot{x}^d\right).
+\end{align}
+So we expanded out the derivative to get rid of something we didn't want, and now combine for the final result (as well as using the definition of a geodesic path, $\ddot{x}^e=-\tensor{\Gamma}{^e_{cd}}\dot{x}^c\dot{x}^d$, in Eq. (10.5)):
+\begin{align}
+    \frac{D^s\zeta^a}{ds^2} &+ \left(\tensor{\Gamma}{^a_{be}}\tensor{\Gamma}{^e_{cd}}-\tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}}+\p_b\tensor{\Gamma}{^a_{cd}}-\p_c\tensor{\Gamma}{^a_{bd}}\right)\zeta^b\dot{x}^c\dot{x}^d = 0.
+\end{align}
+This looks very confused as it is, but we can simplify by now defining the Riemann tensor:
+\begin{align}
+    \frac{D^2\zeta}{ds^2} &+ \tensor{R}{^a_{dbc}}\zeta^b\dot{x}^c\dot{x}^d = 0,\\
+    \tensor{R}{^a_{dbc}} &= \tensor{\Gamma}{^a_{bc}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \p_b\tensor{\Gamma}{^a_{cd}}-\p_c\tensor{\Gamma}{^a_{bd}}.
+\end{align}
+From this definition, we can quickly infer the symmetry relation
+\begin{align}
+    \tensor{R}{^a_{dcb}} &= -\tensor{R}{^a_{dbc}}.
+\end{align}
+
+\section{Symmetries of the Riemann tensor}
+In 4D space-time, the Riemann tensor contains $4\times4\times4\times4 = 256$ numbers. 
+This isn't very fun unless you are a computer, says Richard.
+However, using the symmetry of the Riemann tensor, there are only 20 indepedent elements, which can be a lot easier. 
+How do we demonstrate this though?
+We can use mathematical tricks for tensors, whereby if we prove something in one coordinate system, it must be true in all coordinate systems.
+
+\subsection{Local Geodesic Coordinates}
+Local geodesic coordinates describe a flat space at a local point in curved space.
+We know, therefore, that we can write the metric at this point as
+\begin{align}
+    g_{\alpha\beta} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix},
+\end{align}
+which is known as the \textbf{Minkowski metric} for flat space. 
+This is familiar from special relativity, where it represents the usual Minkowski product,
+\begin{align}
+    ds^2 &= c^2\,d\tau^2 = c\,dt^2 - dx^2 - dy^2 - dz^2.
+\end{align}
+So the Christoffel symbol at this local point is
+\begin{align}
+    \tensor{\Gamma}{^\alpha_{\beta\gamma}} &= 0,
+\end{align} 
+where we have only chosen a point to set this locally to zero. 
+However, the derivatives will not be zero, as if we move away from this local point, space will become curved again:
+\begin{align}
+    \frac{\p\tensor{\Gamma}{^\alpha_{\beta\gamma}}}{\p x^\delta} &= 0.
+\end{align}
+Now this will allow us to simplify the Riemann tensor from its definition in Eq. (10.9), where it can now be written as
+\begin{align}
+    \tensor{R}{^a_{dbc}} &= \p_b\tensor{\Gamma}{^a_{cd}} - \p_c\tensor{\Gamma}{^a_{bd}}.
+\end{align}
+What about the symmmetry relations of this simplified Riemann tensor?
+\begin{align}
+    \tensor{R}{^a_{cdb}} &= \p_d\tensor{\Gamma}{^a_{bc}} - \p_b\tensor{\Gamma}{^a_{dc}}, \\
+    \tensor{R}{^a_{bcd}} &= \p_c\tensor{\Gamma}{^a_{db}} - \p_d\tensor{\Gamma}{^a_{cb}}. 
+\end{align}
+What about the sum of these three tensors?
+Due to the symmetry of the Christoffel symbols' lower indicies, we can see that there will be lots of cancellations in this sum, leading to
+\begin{align}
+    \tensor{R}{^a_{dbc}} + \tensor{R}{^a_{cdb}} + \tensor{R}{^a_{bcd}} &= 0,
+\end{align}
+which is known as the cyclic relation of the Riemann tensor.
+The Riemann tensor can also be written in its covariant form:
+\begin{align}
+    \tensor{R}{_{abcd}} &= g_{ae}\tensor{R}{^e_{bcd}}.
+\end{align}
+In its covariant form, we can also go through similar steps to above to prove other symmetry relations, including:
+\begin{align}
+    R_{abcd} &= -R_{bacd}, & R_{abcd} &= -R_{abdc}, & R_{abcd} &= R_{cdab}.
+\end{align}
+From these relations, we see that repeated indices can lead to zero, such as
+\begin{align}
+    R_{aacd} = -R_{aacd} &\implies R_{aacd} = 0, \\
+    R_{abcc} = -R_{abcc} &\implies R_{abcc} = 0.
+\end{align}
+This allows us to neglect many of the 256 numbers as they will be zero, reducing the total of free elements of the Riemann tensor to 20.
+
+\section{How can we relate this to gravity?}
+Let's consider Eq. (10.4) for low speeds, i.e. non-relativistic. 
+\begin{align}
+    \zeta^\alpha = \begin{pmatrix} 0, & 0, & y, & 0 \end{pmatrix},
+\end{align}
+i.e. we have a simple separation in the y-direction between the two geodesic paths. 
+We would then get something like
+\begin{align}
+    \frac{D^y}{ds^2} &= -\tensor{R}{^2_{020}}yc^2,
+\end{align}
+where we only consider the indices relating to $y$ and time. 
+This should look somewhat familiar. 
+What would we have written for this in Newtonian physics, if we have these two objects both moving towards a large mass $M$ with a separation $y$ and a distance from the massive object $r$?
+\begin{align}
+    \frac{d^2y}{dt^2} &= -\frac{GM}{r^2}\cdot\frac{y}{r}.
+\end{align}
+Important note: the massive object is the Sun or a molecular cloud or something, according to Richard.
+\textbf{A black hole wouldn't be happy, you wouldn't be able to tell.}
+
+Using $ds=c\,dt$:
+\begin{align}
+    c^2\frac{d^2y}{ds^2} &= -\frac{GM}{r^3}y,\\
+    -\frac{GM}{r^3} &= -\tensor{R}{^2_{020}}.
+\end{align}
+So we now have an equivalence of curved space and Newtonian gravitational force. 
+We can see that the Newtonian expression in Eq. (10.27) is the energy density of space, if mass and energy can be equivalent.
+This is what lead Einstein to his famous equations. 
+
+\section{What is energy?}
+Energy is special relativity was defined in
+\begin{align}
+    E &= \gamma m_0c^2,
+\end{align}
+where we can now relate the mass and energy of objects.
+We also have a number density, $n_0$, for the number of particles ``in a box" or in the universe or whatever you're considering. 
+Recall from special relativity the four-velocity of a system:
+\begin{align}
+    u^\alpha &= \frac{dx^\alpha}{dt} = \gamma\begin{pmatrix} c, & -\frac{dx^i}{dt}\end{pmatrix}.
+\end{align}
+There is also the four-momentum of the system:
+\begin{align}
+    p^\alpha &= m_0u^\alpha = \gamma m_0\begin{pmatrix} c, & -\frac{dx^i}{dt} \end{pmatrix}.
+\end{align}
+The number per unit volume is $\gamma n_0$.
+We also have a flux through the surface,
+\begin{align}
+    N^\rho &= n_0u^\rho.
+\end{align}
+Using all this, we can write down an expression for the energy-momentum density:
+\begin{align}
+    T^{\mu\nu} &= N^\mu p^\nu = n_0u^\mu m_0u^\nu = \rho_0 u^\mu u^\nu.
+\end{align}
+In the rest frame, these two velocities will each be $c$, so the $T^{00}$ term will get us back to Eq. (10.28) as $\rho_0 c^2$.
+
+
+
+
+
+
 
 
 

@@ -779,7 +779,113 @@ We are going to use atoms from here, but the question is how to satisfy the 5 di
     \item Scalability.
 \end{enumerate}
 
+\chapter{Rydberg Atom Quantum Computer}
+\begin{enumerate}
+    \item Preparation: laser cooling (Nobel Prize 1997), and trapping with optical tweezers (Nobel Prize 2018) are used to assemble the atoms into our qubit states, all into state $|0\rangle$ for example to begin with.
+    \item Gates: qubit gates created using Rydberg states and dipole-dipole interactions.
+\end{enumerate}
 
+\textbf{Strike Impacts:}
+\begin{itemize}
+    \item Thursday Week 16 and possibly workshop Week 16
+    \item Tuesday Week 17 and possibly workshop Week 17
+    \item All lectures Week 18 and 19
+\end{itemize}
+These are the possible impacts of striking, if Charles strikes. 
+We need to believe in the many worlds interpretation of quantum mechanics and only by coming to the lectures and collapsing the wavefunction will we find out if we are in a universe where he is striking or not.
+
+\section{Optical Tweezing}
+We use one focussed laser beam to move an atom and place it exactly where we want it.
+Light exerts a force on atoms and they are forced either to the ends of the beam or the focus of it.
+Two types of light force:
+\begin{itemize}
+    \item Optical dipole force - cycles of absorption (stimulated emission and trapping)
+    \item Spontaneous scattering force - cycles of absorption (spontaneous emissing and cooling)
+\end{itemize}   
+For our optical dipole potential, we recall the two state model from Laser Physics, with $\hbar\om_0$ between $|g\rangle$ and $|e\rangle$, leading to the detuning frequency $\Delta$.
+(See diagram at start of Lecture 5.)
+We can form our interaction operator as we have done previously when looking at the Rabi model, yielding
+\begin{align}
+    \Ham_{int} &= \frac{\hbar}{2}\begin{pmatrix}\Delta & \Omega \\ \Omega & -\Delta\end{pmatrix}.
+\end{align}
+\emph{doodle diagrams from photos}
+We do not consider between $|g\rangle$ and $|e\rangle$, but $|g,1\rangle$ (the ground state plus a photon) and $|e,0\rangle$ (the excited state with no photon).
+These states are only slightly separated by $\hbar(\om_0-\om)$, i.e. $-\hbar\Delta$, from which we can see we have chosen negative detuning where $\Delta < 0$.
+This gives our bare states when $\Omega=0$, and then we see that increasing $\Omega$ \emph{dresses} the states, increasing the upper state and decreasing the lower state.
+\emph{doodle diagram}
+\begin{align}
+    \Ham_{int} &= \frac{\hbar}{2}\begin{pmatrix}\Delta & \Omega \\ \Omega & -\Delta\end{pmatrix}.
+\end{align}
+The energies of the states in the laser field are given by the eigenvalues of $\Ham_{int}$:
+\begin{align}
+    \left(\Ham_{int}-\frac{\hbar}{2}\lambda\hat{\sigma}_0\right)\begin{pmatrix}a\\ b\end{pmatrix} &= 0 \\
+    \frac{\hbar}{2}\begin{vmatrix} \Delta-\lambda & \Omega \\ \Omega & -\Delta-\lambda \end{vmatrix} &= 0 \\
+    -\Delta^2+\lambda^2-\Omega^2 &= 0 
+\end{align}
+\begin{align}
+    \lambda^2 &= \Delta^2+\Omega^2 \\
+    \lambda &= \pm\sqrt{\Delta^2+\Omega^2} \\
+    E_{\pm} &= \pm\frac{\hbar}{2}\sqrt{\Delta^2+\Omega^2},
+\end{align}
+where $E_\pm$ are our eigenenergies.
+We choose $\Delta<0$ (red detuning), and $|\Delta|\gg\omega$ (far detuned to avoid spontaneous emission).
+We then get
+\begin{align}
+    E_\pm &= \pm\frac{\hbar}{2}|\Delta|\sqrt{1+\frac{\Omega^2}{|\Delta|^2}} \\
+          &= \pm\frac{\hbar}{2}|\Delta|\left(1+\frac12\frac{\Omega^2}{|\Delta|^2}\right) \\
+          &= \pm\frac{\hbar}{2}|\Delta|\pm \frac{\hbar\Omega^2}{4|\Delta|}.
+\end{align}
+\emph{doodle diagram}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (2,0) -- (3,-0.5) -- (5,-0.5);
+        \draw (0,1.5) -- (2,1.5) -- (3,2) -- (5,2);
+    \end{tikzpicture}
+\end{figure}
+The shift of the lower state, 
+\begin{align}
+    U_0 &= -\frac{\hbar\Omega^2}{4|\Delta|},
+\end{align}
+is known as the \textbf{Light Shift} (or ac-Stark shift).
+This tells use the depth of the optical tweezer indent(handwriting?). 
+We want to rewrite this in terms of laser intensity. 
+Recall that
+\begin{align}
+    \Omega &= -\frac{d\mathcal{E}}{\hbar}, & I &= \frac12 c\e_0\mathcal{E}^2.
+\end{align}
+The dipole moment $d$ is related to the spontaneous emission rate of the excited state $|e\rangle$, $\Gamma$, by
+\begin{align}
+    \Gamma &= \frac{d^2}{3\pi\e_0(\lambda_0/2\pi)^3},
+\end{align}
+where $\lambda_0$ is the wavelength of the transition $|g\rangle\to|e\rangle$, $\om_0=\frac{2\pi c}{\lambda_0}$.
+Using these, 
+\begin{align}
+    \Omega &= \Gamma\sqrt{\frac{I}{2I_s}}, \text{ where } I_s = \frac{\pi}{3}\frac{hc\Gamma}{\lambda_0^3}
+\end{align}
+is the saturation intensity. 
+Our optical tweezer trap depth is now
+\begin{align}
+    U_0 &= -\frac{\hbar\Omega^2}{4|\Delta|} = -\frac{\hbar\Gamma^2}{4|\Delta|}\frac{I}{2I_s}.
+\end{align}
+The trap depth $U_0$ is proportional to the laser intensity and inversely proportional to detuning, $|\Delta|$.
+We set the limit of large detuning to avoid spontaneous emission, but this impacts the trap depth. 
+To get this back, however, we use a large laser intensity. \\
+A laser beam is described by
+\begin{align}
+    I(x,y,z) &= I_0\frac{w_0^2}{w^2}e^{-2(x^2+y^2)/w^2}, & w &= w_0\left(1+\frac{z^2}{z_R^2}\right)^{1/2}, & z_R &= \frac{\pi w_0^2}{\lambda}.
+\end{align}
+We can therefore plot what the potential $U_0$ looks like as $U_0(x,y,z)$:
+\emph{doodle}
+The atom is now trapped at the focus in all 3 dimensions, giving us an optical tweezer.\\
+Consider
+\begin{align}
+    \ifnt I(z=0)\,dx\,dy &= P \implies I_0 = \frac{2P}{\pi w_0^2},
+\end{align}
+where $P$ is the laser power. 
+This tells us that we want to have as powerful a laser as possible, with a smaller beam waist size. 
+However, we cannot focus the beam waist arbitrarily small because diffraction and other effects will take hold. 
+Typically, $w_{0,min}\approx \lambda$.
 
 
 
