@@ -707,7 +707,16 @@ All computations can be built up from these two basic gates.
 Let's consider the CNOT gate.
 This is a universal gate, i.e. having just CNOT gates $+$ single qubit rotations is sufficient to build a universal quantum computer. 
 We have:
-\textit{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {Target, $|T\rangle$} -- (3,0);
+        \draw (0,1.5) node[anchor=east] {Control, $|C\rangle$} -- (3,1.5);
+        \fill (1.5,1.5) circle (3pt);
+        \draw (1.5,0) circle (8pt);
+        \draw (1.5,1.5) -- (1.5,-0.3);
+    \end{tikzpicture}
+\end{figure}
 What does it do?
 If C is in state $|1\rangle$, then NOT on T, otherwise we do nothing. 
 This can be written as a matrix:
@@ -717,7 +726,17 @@ This can be written as a matrix:
 where the final term is in roughly what each line represents in the $4\times4$ matrix. 
 For the first two lines, where A is in $|0\rangle$, we do nothing to B, hence the identity form; the latter two lines, where A is in $|1\rangle$, we perform NOT on B - this resembles the Pauli $\hat{\sigma}_x$ matrix. 
 This is also called the Controlled-X (CX) gate, where X represents that Pauli $\hat{\sigma}_x$ matrix. 
-
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {Target, $|T\rangle$} -- (1.2,0);
+        \draw (1.8,0) -- (3,0);
+        \draw (0,1.5) node[anchor=east] {Control, $|C\rangle$} -- (3,1.5);
+        \fill (1.5,1.5) circle (3pt);
+        \draw (1.5,1.5) -- (1.5,0.3);
+        \draw (1.2,-0.3) rectangle (1.8,0.3) node[anchor=north,xshift=-8.6pt,yshift=-0.5pt] {X};
+    \end{tikzpicture}
+\end{figure}
 CNOT clearly involves entanglement then. 
 We cannot separate CNOT into a product of single-qubit matrices, e.g.
 \begin{align}
@@ -727,11 +746,25 @@ So CNOT is an entangling operator.
 
 \begin{example}[CNOT creates entanglement]
     Our Control and Target inputs are:
+    \begin{figure}[H]
+    \begin{multicols}{2}
+        \begin{center}
+        \begin{tikzpicture}
+            \draw (0,0) node[anchor=east] {Target, $|T\rangle$} -- (3,0);
+            \draw (0,1.5) node[anchor=east] {Control, $|C\rangle$} -- (3,1.5);
+            \fill (1.5,1.5) circle (3pt);
+            \draw (1.5,0) circle (8pt);
+            \draw (1.5,1.5) -- (1.5,-0.3);
+        \end{tikzpicture}
+        \end{center}
+    \columnbreak
     \begin{align}
         |C\rangle &= |+\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right) \\
         |T\rangle &= |0\rangle.
     \end{align}
-    \textit{doodle}
+    \end{multicols}
+    \end{figure}
+    \vspace{-2em}
     The full input state is then
     \begin{align}
         |C\rangle\otimes|T\rangle &= \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right)\otimes|0\rangle \\
@@ -747,8 +780,7 @@ So CNOT is an entangling operator.
 
     Let's work through this again in matrix form.
     \begin{align}
-        |CT\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1\end{pmatrix}\otimes\begin{pmatrix}1\\0\end{pmatrix} \\
-                   &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1\\0\\1\\0\end{pmatrix}. \\
+        |CT\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1\end{pmatrix}\otimes\begin{pmatrix}1\\0\end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1\\0\\1\\0\end{pmatrix}. \\
         \text{CNOT}|CT\rangle &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\1\\0\end{pmatrix}\\
                               &= \frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle\end{Bmatrix} \\
                               &= \frac{1}{\sqrt{2}}\left(|00\rangle+|11\rangle\right) = |\Phi^+\rangle.
@@ -758,7 +790,51 @@ So CNOT is an entangling operator.
 
 \subsection{How to realise CNOT?}
 We consider a conditional Ramsey interferometer:
-\textit{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        %Nodes
+        \node[squarenode] (maintopic) {H};
+        \node (uppercircle) [above right=2em and 7em of maintopic] {};
+        \node[squarenode] (lowercircle) [below right=2em and 7em of maintopic] {$-1$};
+        \node[squarenode] (output) [right=15em of maintopic] {H};
+        \node (start) [left=1em of maintopic] {$|T\rangle$};
+        \node (end) [right=1em of output] {};
+        \node (ups) [above right=0.7em and 3.7em of maintopic] {};
+        \node (ds) [below right=0.9em and 3.1em of maintopic] {};
+        \node (upe) [above left=0.7em and 3.9em of output] {};
+        \node (de) [below left=0.9em and 3em of output] {};
+
+        \node (start2) [below=4.7em of start] {$|C\rangle$};
+        \node (end2) [below=5.7em of end] {};
+        \node[squaredash] (main2) [below=5em of maintopic] {$\cdots$};
+        \node[squaredash] (out2) [below=5em of output] {$\cdots$};
+        \node (u2) [above right=0.7em and 3.5em of main2] {};
+        \node (l2) [below right=0.7em and 3.7em of main2] {};
+        \node (u2e) [above left=0.7em and 3.3em of out2] {};
+        \node (l2e) [below left=0.7em and 3.7em of out2] {};
+        \node (down2) [below right=2em and 7em of main2] {};
+        \node (zero0) [above right=0.3em and 0.3em of maintopic] {$|0\rangle$};
+        \node (one1) [below right=0.3em and 0.3em of maintopic] {$|1\rangle$};
+        \node (one2) [above right=0.3em and 0.3em of main2] {$|1\rangle$};
+        \node (zero1) [below right=0.3em and 0.3em of main2] {$|0\rangle$};
+
+        %Lines
+        \draw (start.east) -- (maintopic.west);
+        \draw (output.east) -- (end.west);
+        \draw (maintopic.east) cos (ups) sin (uppercircle);
+        \draw (maintopic.east) cos (ds) sin (lowercircle.west);
+        \draw (uppercircle) cos (upe) sin (output.west);
+        \draw (lowercircle.east) cos (de) sin (output.west);
+        \draw (start2.east) -- (main2.west);
+        \draw (out2.east) -- (end2.west);
+        \draw (main2.east) cos (u2) sin (lowercircle.west);
+        \draw (lowercircle.east) cos (u2e) sin (out2.west);
+        \draw (main2.east) cos (l2) sin (down2);
+        \draw (down2) cos (l2e) sin (out2.west);
+    \end{tikzpicture}
+\end{figure}
+
 If the Control is in state $|1\rangle$, then it applies a $-1$ factor to the state vector and this $-1$ factor flips the output of the Ramsey interferometer, i.e. perform the NOT.
 
 \section{Implementing Quantum Computing in real physical systems}
