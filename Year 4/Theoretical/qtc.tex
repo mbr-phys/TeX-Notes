@@ -1174,6 +1174,167 @@ The London penetration depth is then given by
 $\lambda(T)$ and the GL coherence length $\xi(T)$ (see Section 10.5) have the same $T$ dependence.
 Hence, the dimensionless ratio $\kappa \equiv \frac{\lambda(T)}{\xi(T)}$ is independent of $T$.
 
+\chapter{Magnetic Fluz in Superconductors}
+\section{Ginzburg-Landau Order Parameter in a Superconducting Ring}
+We use cylindrical polar coordinate $\vr=(r,\phi,z)$, with $z$ prependicular to the plane of the ring. 
+The GL order parameter must be periodic in $\phi$: $\psi(r,\phi,z)=\psi(r,\phi+2\pi,z)$.
+Assume variations of $\psi(\vr)$ across the cross-section of the ring (i.e. $r,z$ dependence) can be neglected.
+Hence, $\psi(\phi)=\psi_0e^{-ij\phi}$, where $j$ is in integer and $\psi_0$ is a constant, similar to the case of superfluid ${}^4$He (see Section 5.6).
+
+\section{Current-Induced Magnetic Fields}
+A circulating current in a superconductor, such as around a radius $R$ superconducting, will induce magnetic fields. 
+Assuming a magnetic flux $\Phi$ through the ring,
+\begin{align}
+    \Phi &\equiv \int \vec{B}\cdot\vec{dS} = \int \left(\del\times\vec{A}\right)\cdot\vec{dS} = \oint \vec{A}\cdot d\vr = 2\pi RA_\phi.
+\end{align}
+We can choose $\vec{A}$ to be oriented in the $\ve_\phi$ direction, calling this component $A_\phi$.
+Using the cylindrical polar formulation,
+\begin{align}
+    \del &= \frac{\p}{\p r}\ve_r + \frac{1}{r}\frac{\p}{\p\phi}\ve_\phi + \frac{\p}{\p z}\ve_z,
+\end{align}
+from Eq. (10.12) we determine the free energy for a volume $V$ ring to be
+\begin{align}
+    F_s(T) &= F_s^0(T) + V\frac{\hbar^2}{2m^*}\left(\frac{e\Phi}{\pi\hbar R}-\frac{j}{R}\right)^2|\psi|^2 + \frac{1}{2\mu_0}\int B^2\,d^3r.
+\end{align}
+$F_s^0(T)$ is the ground state free energy in the absence of currents or magnetic fluxes.
+
+\section{Flux Quantisation}
+The vacuum magnetic field energy,
+\begin{align}
+    E_B &= \frac{1}{2\mu_0}\int B^2\,d^3r,
+\end{align}
+can be expressed in terms of the inductance $L$ and the ring current $I$, through 
+\begin{align}
+    E_B &= \frac{LI^2}{2},
+\end{align}
+which will be proportional to $\Phi^2$.
+Hence, casting the second term of Eq. (11.3) in terms of the \emph{flux quantum} $\Phi=\frac{h}{2e}$ yields
+\begin{align}
+    F_s(T) &= F_s^0(T) + V\frac{\hbar^2}{2m^*R^2}|\psi|^2\left(\frac{\Phi}{\Phi_0}-j\right)^2 + \text{ constant } \times\Phi^2,
+\end{align}
+and there is a local energy minimum whenever $\Phi=j\Phi_0$, i.e. \emph{flux quantisation}.
+
+\section{Adoption of a Metastable State}
+A ring cooled to below $T_C$ falls into a metastable local free energy minimum, depending on the applied field, and a persistent current flows to maintain a constant flux $\Phi=j\Phi_0$ through the ring. 
+That $\Phi$ os observed in units of $\frac{h}{2e}$ is clear evidence of $-2e$ being the relevant unit of charge (Cooper pairs).
+Escape to a lower energy minimum (phase-slip) is in principle possible. 
+The rate for thermally hopping over the energy barriers between minima is $\tau^{-1}\approx e^{-E_0/k_BT}$ ($E_0$ is the barrier height, $\propto V$), which can be made arbitrarily small. 
+Tunnelling is also negligible in macroscopic systems.
+
+\section{Type II Superconductors Near the Upper Critical Field}
+In type II superconductors, for the phase transition occuring at $H_{C2}$, we expect $\psi$ and the magnetisation $M$ to be small just below $H_{C2}$, with both equal to 0 at $H=H_{C2}$.
+Just below $H_{C2}$, approximately $\vec{B}=\mu_0\vec{H}$. 
+Neglecting spatial variations in the B-field, $\vec{B}=(0,0,B)$, and in the convenient \emph{Landau gauge} $\vec{A}=(0,xB,0)$, Eq. (10.13) becomes
+\begin{align}
+    -\frac{\hbar^2}{2m^*}\left(\del+\frac{2eBi}{\hbar}x\ve_y\right)\cdot\left(\del+\frac{2eBi}{\hbar}x\ve_y\right)\psi + a\psi + b|\psi|^2\psi = 0.
+\end{align}
+
+\section{Small \texorpdfstring{$\psi$}{psi} Limit}
+Infinitesimally below $H_{C2}$, $\psi$ tends to zero, and we can drop the cubic term of Eq. (11.7).
+Expanding the kinetic terms, and noting that $a<0$,
+\begin{align}
+    \left(-\frac{\hbar^2\del^2}{2m^*} - i\hbar\om_cx\frac{\p}{\p y} + \frac{m^*\om_c^2x^2}{2}\right)\psi &= |a|\psi,\; \text{ where } \om_c = \frac{2eB}{m^*}
+\end{align}
+is called the \emph{cyclotron frequency}.
+This equation is equivalent to that of a charged particle in a magnetic field, which has \emph{Landau level} solutions. 
+Substituting such solutions of the form $\psi(\vr)=e^{i(k_yy+k_zz)}\phi(x)$ into Eq. (11.8) yields
+\begin{align}
+    -\frac{\hbar^2}{2m^*}\frac{d^2\phi}{dx^2} + \left(\hbar\om_ck_yx+\frac{m^*\om_c^2x^2}{2}\right)\phi &= \left(|a| - \frac{\hbar^2(k_y^2+k_z^2)}{2m^*}\right)\phi \\
+    -\frac{\hbar^2}{2m^*}\frac{d^2\phi}{dx^2}+\frac{m^*\om_c^2}{2}(x-x_0)^2\phi &= \left(|a|-\frac{\hbar^2k_z^2}{2m^*}\right)\phi,\; x_0 = -\frac{\hbar k_y}{m\om_c}.
+\end{align}
+This is the Schrodinger equation for a SHO in a displaced coordinate system. 
+The eigenvalues must satisfy
+\begin{align}
+    \left(n+\frac12\right)\hbar\om_c &= |a|-\frac{\hbar^2k_z^2}{2m^*},\\
+    \left(n+\frac12\right)\hbar\om_c + \frac{\hbar^2k_z^2}{2m^*} &= \dot{a}(T_C-T),
+\end{align}
+and the corresponding eigenfunctions $\phi_n$ are harmonic oscillator eigenfunctions, re-centered at $x=x_0$.
+
+\section{Temperature Dependence in Type II Superconductors}
+Cooling a type II superconductor in an external field $H$, Eq. (11.12) is not satisfied when $T=T_C$.
+Instead $T$ must be sufficiently below $T_C$ that
+\begin{align}
+    \frac{\hbar\om_c}{2} &= \dot{a}(T_C-T),
+\end{align}
+i.e. the $n=k_z=0$ lowest energy solution. 
+$T_C$ in the magnetic field is therefore
+\begin{align}
+    T_C(H) &= T_C(0) - \frac{1}{2\dot{a}}\hbar\om_c = T_C(0) - \frac{2e\hbar\mu_0}{2\dot{a}m^*}H.
+\end{align}
+Starting in a large magnetic field $H>H_{C2}$, we gradually decrease $H$ while keeping $T$ constant, until 
+\begin{align}
+    \frac{\hbar\om_c}{2} &= \frac{\hbar}{2}\frac{2eB}{m^*} = \dot{a}(T_C-T), \\
+    \mu_0H_{C2} &= B_{C2} = \frac{2m^*\dot{a}(T_C-T)}{\hbar^2}\frac{\hbar}{2e} = \frac{\Phi_0}{2\pi\xi(T)^2},
+\end{align}
+where $\xi(T)$ is the GL coherence length. 
+Hence, at $H_{C2}$, there is exactly one flux quantum (or equivalently vortex line) per unit area $2\pi\xi(T)^2$.
+Since 
+\begin{align}
+    \xi(T) &= \sqrt{\frac{T_C}{T_C-T}}\xi(0),
+\end{align}
+one can determine $\xi(0)$ from the gradient of $H_{C2}(T)$ near $T_C$:
+\begin{align}
+    \mu_0H_{C2} &= \frac{\Phi_0}{2\pi\xi(0)^2}\frac{T_C-T}{T_C}.
+\end{align}
+
+\section{Distinguishing Type I and Type II Superconductors}
+In type I superconductors, the free energy difference between the superconducting and normal states implies
+\begin{align}
+    H_C &= \frac{\dot{a}}{\sqrt{\mu_0b}}(T_C-T) = \frac{\Phi_0}{2\pi\mu_0\sqrt{2}\xi(T)\lambda(T)} = \frac{H_{C2}}{\sqrt{2}\kappa},
+\end{align}
+recalling that $H_{C2}$ is related to the coherence length in Eq. (11.16) and $\kappa=\frac{\lambda(T)}{\xi(T)}$.
+Note that $H_C$ is the \emph{thermodynamic} critical field. 
+It therefore follows that $H_{C2} = \sqrt{2}\kappa H_C$.
+Hence, if $\kappa>\frac{1}{\sqrt{2}}$, it follows that $H_{C2}>H_C$, and the phase transition has $\psi$ gorwing continuously from zero at $H$ just below $H_{C2}$ (a \emph{second-order} phase transition).
+This characterises a type II superconductor. 
+
+If $\kappa<\frac{1}{\sqrt{2}}$, then $H_{C2}<H_C$ and the order parameter jumps discontinuously at $H$ just below $H_C$ to a fintie value (a \emph{first-order} phase transition).
+This characterises a type I superconductor.
+
+\section{The Abrikosov Flux Lattice}
+To find $\psi$ below $H_{C2}$ in a type II superconductor, one must in principle solve the non-linear GL equation in Eq. (11.7).
+For the ground state, one can argue that only $n=0$, however, $k_z=0$ contributions are significant.
+This still leaves an infinite number of degenerate states:
+\begin{align}
+    \psi_{k_y}(\vr) &= Ce^{ik_yy}e^{(x-x_0)^2/\xi(T)^2},
+\end{align}
+where $C$ is a normalisation constant.
+This can be combined into a \emph{periodic lattice}.
+Hence, for a period $l_y,k_y=\frac{2\pi j}{l_y}$ and
+\begin{align}
+    x_0 &= -\frac{2\pi\hbar j}{m\om_c l_y} = -\frac{\Phi_0j}{Bl_y}.
+\end{align}
+We can therefore try a periodic solution,
+\begin{align}
+    \psi(\vr) &= \sum_{j=-\infty}^{\infty} C_je^{i2\pi jy/l_y}e^{-(x+j\Phi_0/Bl_y)^2/\xi(T)^2},
+\end{align}
+viewing $C_j$ as \emph{variational parameters}, to minimise the GL total free energy.
+This (periodic in $y$) solution can also be made periodic in $x$ if the coefficients obey $C_{j+v}=C_j$, with period $l_x=\frac{v\Phi_0}{Bl_y}$.
+$v=1$ corresponds to a square lattice, and $v=2$ corresponds to the (slightly lower energy) observed triangular lattice.
+$\psi$ goes to 0 at one point in each unit cell, and there is exactly one flux quantum $\Phi_0$ per unit cell, i.e. the solution is a periodic lattice of vortices (observable by e.g. a surface sprinkling of paramagnetic particles, or neutron scattering).
+
+\section{Estimation of the Lower Critical Field}
+The Abrikosov solution is essentially exact just below $H_{C2}$, but does not necessarily apply far from there. 
+Near $H_{C2}$, the vortices are very closely packed but at $H_{C1}$, there are very few and well-separated vortices. 
+One can show that a single London vortex has energy per unit length 
+\begin{align}
+    \frac{\e}{L} &\approx \frac{\Phi_0^2}{4\pi\mu_0\lambda^2}\ln\left(\frac{\lambda}{\xi}\right).
+\end{align}
+If there are $\frac{N}{A}$ flux lines per unit area $A$ in a sample of thickness $L$, there will be an energy cost of $\frac{\e N}{LA}$ per unit volume due to vortices. 
+Each vortex carries a flux $\Phi_0$, so the average magnetic induction is 
+\begin{align}
+    B &= \frac{\Phi_0N}{A}.
+\end{align}
+The magnetic work (at constant $H$) gained by the presence of vortices is $\mu_0H\,dM = H\,dB$.
+The presence of vortices is then energetically favoured when 
+\begin{align}
+    \frac{\e N}{AL} &< \frac{H\Phi_0N}{A}.
+\end{align}
+It is energetically favourable for vortices to enter the sample when $H$ is greater than the lower critical field $H_{C1}$, which we now see is given by
+\begin{align}
+    H_{C1} &= \frac{\Phi_0}{4\pi\mu_0\lambda(T)^2}\ln\left(\frac{\lambda(T)}{\xi(T)}\right) = \frac{H_C}{\sqrt{2}\kappa}\ln(\kappa).
+\end{align}
+This expression is valid when $\kappa\gg\frac{1}{\sqrt{2}}$, i.e. the \emph{London vertex limit}.
 
 
 
