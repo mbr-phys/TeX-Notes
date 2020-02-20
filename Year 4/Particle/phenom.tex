@@ -299,9 +299,76 @@ These are the \textbf{Feynman rules:}
         Impose momentum conservation on each vertex to fix the momenta of propagators as much as possible.
 \end{itemize}
 
+\chapter{Standard Model Overview}
 
+\chapter{Standard Model Overview Ctd.}
+\section{Matter}
+Matter can be defined by fields that are charged under the SM gauge groups, i.e. fermions and the Higgs doublet. 
+First, we remind ourselves of the definitions for chirality:
+\begin{align}
+    \gamma_5 &= i\gamma^0\gamma^1\gamma^2\gamma^3, & P_L &\equiv\frac{1-\gamma_5}{2}, & P_R &\equiv \frac{1+\gamma_5}{2},
+\end{align}
+where $P_{L,R}$ are the left/right-handed projectors. 
+These projections are useful because it commutes with Lorentz transformations, i.e.
+\begin{align}
+    [\gamma_5,[\gamma_\mu,\gamma_\nu]] = 0.
+\end{align}
+So we can define the left- and right-handed components of the fermion fields by projecting using the above, which will remain invariant after a Lorentz transformation. 
+The fermion fields (and Higgs) we then have are
+\emph{doodle table}
 
+\section{Lagrangian}
+As we've emphasised so far, the spacetime integral of the Lagrangian dictates the evolution of the system and possible outcomes; therefore it is the central construction from which we can derive observables.
+The construction of the Lagrangian of the Standard Model follows two rules: \emph{Lorentz and gauge invariance.}
+These symmetries imply conserved currents which form the basis of our predictions.
+Using the field strength definitions, 
+\begin{align}
+    G_{\mu\nu} &= \p_\mu \tensor{G}{_\nu^a}T_a - \p_\nu\tensor{G}{^a_\mu}T_a + \frac{ig_s}{2}\left[\tensor{G}{_\mu^a}T_a,\tensor{G}{^b_\mu}T_b\right], \\
+    W_{\mu\nu} &= \p_\mu \tensor{W}{_\nu^I}\sigma_I - \p_\nu\tensor{W}{^I_\mu}\sigma_I + \frac{ig}{2}\left[\tensor{W}{_\nu^I}\sigma_I,\tensor{W}{^J_\nu}\sigma_J\right], \\
+    B_{\mu\nu} &= \p_\mu B_\nu - \p_\nu B_\mu,
+\end{align}
+we start by expressing the kinetic Lagrangian expressing interactions of matter and gauge bosons:
+\begin{align}
+    \begin{split}
+        \La_{gauge} = &-\frac18\text{Tr}(G_{\mu\nu}G^{\mu\nu})-\frac18\text{Tr}(W_{\mu\nu}) - \frac14B_{\mu\nu}B^{\mu\nu} \\
+                      &+ \sum_{\psi_L} i\bar{\psi}\gamma^\mu D_\mu\psi_L + \sum_{\psi_R}i\bar{\psi}\gamma^\mu D_\mu \psi_R + D^\mu H^\dagger D_\mu H.
+    \end{split}
+\end{align}
+However, this Lagrangian does not include mass terms, which we will come onto later with the Higgs mechanism.
+We have a first guess of the Higgs potential to help introduce masses as the Mexican hat potential,
+\begin{align}
+    V(H) &= -m_H^2H^\dagger H + \lambda(H^\dagger H)^2.
+\end{align}
+From this, we can eventually arrive at the Yukawa interaction which will introduce fermion masses:
+\begin{align}
+    \La_{Yuk} &= -\sum_{\text{\tiny gauge inv.}} \left(Y\bar{\psi}_L H\psi_R + Y\bar{\psi}_L\tilde{H}\psi_R\right) + h.c. \\
+              &= -Y_u\bar{q}_L\tilde{H}u_R - Y_d\bar{q}_L Hd_R - Y_e\bar{l}_L He_R + h.c., \\
+    \tilde{H} &= i\sigma_2 H^* = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}H^*,
+\end{align}
+where we have introduced $\tilde{H}$ to protect the conservation of hypercharge where $H$ would not.
+We can now put everything together for the final SM Lagrangian:
+\begin{align}
+    \begin{split}
+        \La_{SM} = &-\frac18\text{Tr}(G_{\mu\nu}G^{\mu\nu}) - \frac18\text{Tr}(W_{\mu\nu}W^{\mu\nu}) - \frac14B_{\mu\nu}B^{\mu\nu} \\
+                   &+ \sum_{\psi_L}i\bar{\psi}\gamma^\mu D_\mu\psi_L + \sum_{\psi_R} i\bar{\psi}\gamma^\mu D_\mu \psi_R + D^\mu H^\dagger D_\mu H \\
+                   &- Y_u\bar{q}_L\tilde{H}u_R - Y_d\bar{q}_LHd_R - Y_e\bar{l}_LHe_R + h.c. \\
+                   &+ m_H^2 H^\dagger H - \lambda(H^\dagger H)^2.
+    \end{split}
+\end{align}
+This is the final result for a single generation of fermion. 
+Eventually, we would have to add another index onto matter fields to sum over the three currently-known generations of particles, i.e. $u_R^i = (u_R^1,u_R^2,U_R^3)$.
+This will cause us to move from Yukawa coupling numbers $Y$ to Yukawa $3\times3$ matrices, which introduces other phenomena later.
 
+\section{Conservation Laws}
+We have several conservation laws in the Standard Model. 
+Through conserved currents, we say the charges are conserved over interactions. 
+In addition, \textbf{Baryon number} is conserved, defined as
+\begin{align}
+    Q_B(q_L,u_R,d_R) &= \frac13(q_L,u_R,d_R).
+\end{align}
+Similarly, each generation of lepton has its own conservation, i.e. \textbf{Electron number}, \textbf{Muon number} are conserved, including their neutrinos in the count. 
+
+%\chapter{Deep Inelastic Scattering and Partons}
 
 
 

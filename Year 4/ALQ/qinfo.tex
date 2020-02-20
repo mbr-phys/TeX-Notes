@@ -1002,6 +1002,249 @@ This tells us that we want to have as powerful a laser as possible, with a small
 However, we cannot focus the beam waist arbitrarily small because diffraction and other effects will take hold. 
 Typically, $w_{0,min}\approx \lambda$.
 
+\chapter{}
+
+\begin{example}[Workshop 2, Question 2: Ramsey Interferometry and Decoherence]
+    The Hadamard is how we read out the `phase' of the state vector. 
+    Why is that?
+    We take a general state (as in part c of question),
+    \begin{align}
+        |\psi\rangle &= \begin{pmatrix} ae^{-i\Delta t/2} \\ be^{i\Delta t/2} \end{pmatrix}.
+    \end{align}
+    Then we must take the density matrix for this state - where it is a pure state, so it is completely coherent and has a well-defined state.
+    To describe decoherence, which is due to interaction with the environment, we use the density matrix description because it allows for mixed states, i.e. states without perfectly defined phases.
+    \begin{align}
+        \rho &= |\psi\rangle\langle\psi| = \begin{pmatrix} |a|^2 & ab^*e^{-i\Delta t} \\ ba^*e^{i\Delta t} & |b|^2 \end{pmatrix},
+    \end{align}
+    where the diagonal terms represent the probability to be in each state, and the off-diagonal terms are called \textbf{Coherences} which contain all the information about phase.\\
+    These may contain all the \emph{wave} information, but not necessarily all the \emph{quantum} information. 
+    If a state decoheres completely, i.e. coherence decay to zero:
+    \begin{align}
+        \rho_{dec} &= \begin{pmatrix} |a|^2 & 0 \\ 0 & |b|^2\end{pmatrix}\\
+                   &= |a|^2|0\rangle\langle0| + b^2|1\rangle\langle1|,
+    \end{align}
+    so we still have a superposition, but no phase information. 
+    This is called a \textbf{mixed state.}
+
+    For the read-out process, we go back to earlier on in the question now. 
+    We define a general density matrix as
+    \begin{align}
+        \rho &=  \frac12\begin{pmatrix} 1+w & u-iv \\ u+iv & 1-w\end{pmatrix}.
+    \end{align}
+    We now use the Hadamard to modify the density matrix, yielding
+    \begin{align}
+        \rho'= \hat{H}\rho\hat{H}^\dagger &= \frac12\begin{pmatrix} 1+u & w+iv \\ w-iv & 1-u\end{pmatrix}.
+    \end{align}
+    The probability to be in $|0\rangle$ is then
+    \begin{align}
+        P_{|0\rangle} &= \frac12(1+u),
+    \end{align}
+    where we can now read out the real part of coherence.
+    The Hadamard is used to measure the coherence of the qubit, by projecting the real part of the coherence $u$ from the off-diagonals to the diagonals.
+
+    Now let's jump down to part f of the question because Charles says so. 
+    We transform $u\to ue^{-it/T_2}$, where $T_2$ is some time constant representing how the coherence decays.
+    The probability will be modified by this, showing a decaying and oscillating amplitude:
+    \begin{align}
+        P_{|0\rangle} &= \frac12(1+ue^{-t/T_2}),\quad u=\cos(\Delta t) \\
+                      &= \frac12(1+\cos(\Delta t)e^{-t/T_2}).
+    \end{align}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[-Latex] (-2,0) -- (6,0) node[anchor=north] {$\Delta$};
+            \draw[-Latex] (2,0) -- (2,2.8) node[anchor=south] {$P_{|0\rangle}$};
+            \draw[purple] (-2,0) cos (-1,1.25) sin (0,2.5) cos (1,1.25) sin (2,0) cos (3,1.25) sin (4,2.5) cos (5,1.25) sin (6,0);
+            \draw[cyan,dashed] (-2,2.5) cos (-1,1.25) sin (0,0) cos (1,1.25) sin (2,2.5) node[anchor=north east,black] {1} cos (3,1.25) sin (4,0) cos (5,1.25) sin (6,2.5);
+        \end{tikzpicture}
+    \end{figure}
+    These are the Ramsey fringes for $t\ll T_2$. 
+    Pure states are good because we have no decoherence, so quantum computing will work. 
+    Over time, the oscillations can get smaller, begin to vibrate around $\frac12$, so the Ramsey fringe visibility is reduced, leading to decoherence.
+    Working at low temperatures, i.e. mK, reduces likelihood of decoherence.
+\end{example}
+
+\section{Optical Tweezing Ctd.}
+We used a laser to trap an atom qubit in its beam, with
+\begin{align}
+    U_0 &= -\frac{\hbar\Omega}{4|\Delta|}, & \Omega &= \Gamma\sqrt{\frac{I}{2I_s}}.
+\end{align} 
+The trap depth is proportional to the laser intensity (and power):
+\begin{align}
+    I &= I_0\frac{w_0^2}{w^2}e^{-2(x^2+y^2)/w_0^2}.
+\end{align}
+\emph{doodle}
+The trap depth forms a harmonic potential, $\frac12 m\om_zz^2$.
+This means we want to cool the atom to its Harmonic Oscillator ground state.
+\emph{doodle}
+This is the minimum size of the atomic wave packet.
+We then send in our laser beam with an electric field,
+\begin{align}
+    \mathcal{E} &= \mathcal{E}_0\cos(\phi_L-\om t),\quad \phi_L = \vec{k}\cdot\vr.
+\end{align}
+There is now an error in the phase, 
+\begin{align}
+    \Delta\phi_L &= k\Delta x,
+\end{align}
+if the field propagates in the $x$-direction (switch out $x$ for $y$ or $z$ depending on propagation direction).
+This error is a source of decoherence, so we need to try and minimise it. 
+However, the scaling is very bad, on the order of needing $10^4$ more laser power to decrease $\Delta x$ by a factor of 10.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$|g\rangle$} -- (1.5,0);
+        \draw[dashed] (0,1.3) -- (1.5,1.3);
+        \draw (0,1.6) node[anchor=east] {$|e\rangle$} -- (1.5,1.6);
+        \draw[-Latex] (0.3,0) -- (0.3,1.6) node[anchor=east,midway] {$\hbar\om_0$};
+        \draw[-Latex,red,thick] (1.2,0) -- (1.2,1.3) node[anchor=east,midway] {$\hbar\om$};
+        \draw[snake it,-Latex,red] (1.4,1.6) -- (1.6,0.8);
+    \end{tikzpicture}
+\end{figure}
+\vspace{-20pt}
+\begin{align}
+    \Delta &= \om-\om_0 < 0, \\
+    |\Delta| &\gg \Omega.
+\end{align}
+We need $|\Delta|$ large to avoid the decay of our excited state $|e\rangle$.
+Calculating the probability that qubit scatters a photon, we have
+\begin{itemize}
+    \item spontaneous decay rate of $|e\rangle$ is $\Gamma$
+    \item the photon scattering rate is $R=\Gamma P_{|e\rangle}$
+    \item $P_{|e\rangle}$ is the probability to be in state $|e\rangle$; for a two-level model, this is $|b|^2$
+\end{itemize}
+This model, however, did not include the possiblity of decay, so we need to add decay to our equations of motion of the Bloch vector.
+From Workshop 1,
+\begin{align}
+    \begin{pmatrix} \dot u \\ \dot v \\ \dot w \end{pmatrix} &= \begin{pmatrix} 0 &-\Delta &0\\ \Delta & 0 & -\Omega \\ 0 & \Omega & 0 \end{pmatrix}\begin{pmatrix}u \\ v \\ w\end{pmatrix}.
+\end{align}
+Where the RHS is Torque$\times$Bloch vector. 
+We now have
+\begin{align}
+    \dot{u} &= -\frac{u}{T_2} - \Delta v, \\
+    \dot{v} &= \Delta u - \frac{v}{T_2} - \Omega w, \\
+    \dot{w} &= \Omega v - \frac{1}{T_1}(w-1).
+\end{align}
+$T_2$ is the decay of coherence; $T_1$ is the decay of population. 
+These are the \textbf{Optical Bloch Equations.}
+
+\chapter{Spontaneous Photon Scattering}
+In our optical tweezer model described above, not all photons going into the qubit will hit the same way, so sometimes we will have scattering of photons off the photon. 
+Last time we discussed spontaneous emission from the excited state, $\Gamma$, where the rate of spontaneous scattering can then be described as
+\begin{align}
+    R &= \Gamma P_{|e\rangle}.
+\end{align}
+
+\section{Optical Bloch Equations}
+If spontaneous emission is the only decoherence/decay mechanism, then
+\begin{align}
+    T_1 &= \frac{1}{\Gamma}, & T_2 &= \frac2\Gamma, \\ 
+    \frac{1}{T_1} &= \Gamma = \frac1\tau, & \frac1{T_2} &= \frac{\Gamma}{2}, 
+\end{align}
+where $\tau$ is the lifetime of the excited state.
+We can then substitute these into the optical Bloch equations defined last lecture, yielding
+\begin{align}
+    \dot{u} &= -\frac{\Gamma}{2}u - \Delta v, \\
+    \dot{v} &= \Delta u - \frac{\Gamma}{2}v - \Omega w, \\
+    \dot{w} &= \Omega v - \Gamma(w-1).
+\end{align}
+From here, we solve for the steady state, $\dot u = \dot v = \dot w = 0.$
+Following lots of algebra, we find
+\begin{align}
+    P_{|e\rangle} &= \frac12\left(1-w_{ss}\right) = \frac{\Omega^2/4}{\Delta^2 + \Gamma^2/4 + \Omega^2/2}.
+\end{align}
+\textbf{This is one of our Very Important Equations.}
+We want to plot this for three cases:
+\begin{enumerate}
+    \item Small $\Omega$: $\Omega\ll|\Delta|$ and $\Gamma$. (NB: not the case for optical tweezer!) 
+        \begin{align}
+            P_{|e\rangle} &\approx \frac{\Omega^2/4}{\Delta^2 + \Gamma^2/4}.
+        \end{align}
+        This corresponds to weak driving, where it will result in low intensity and low probability.
+        This equation will look familiar as a Lorentzian, or a Cauchy distribution. 
+        \emph{doodle}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (-4,0) -- (4,0);
+                \draw (0,0) -- (0,3);
+                \draw (-4,0.1) .. controls (-1.2,0) and (-0.5,3) .. (0,2.7);
+                \draw (0,2.7) .. controls (0.5,3) and (1.2,0) .. (4,0.1);
+            \end{tikzpicture}
+        \end{figure}
+        Our Full Width Half Maximum is then
+        \begin{align}
+            \text{FWHM} &= \Gamma = \frac{1}{T_1}=\frac{1}{\tau},
+        \end{align}
+        which is the natural width of $|g\rangle\to|e\rangle$ transition.
+    \item $\Delta=0$, i.e. on resonance. 
+        Again, not like our tweezer where we are very far from resonance. 
+        Now, we have a probability of
+        \begin{align}
+            R_{|e\rangle} &= \frac{\Omega^2/4}{\Gamma^2/4 + \Omega^2/2}.
+        \end{align}
+        We can then plot the probability, now against $\Omega^2$:
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (0,0) -- (4,0);
+                \draw (0,0) -- (0,3);
+                \draw (0,0) .. controls (1.3,1.4) .. (4,1.5);
+                \draw[dashed] (0,1.5) -- (4,1.5);
+            \end{tikzpicture}
+        \end{figure}
+        \begin{align}
+            \frac{\Omega^2}{2} &= \frac{\Gamma^2}{4} \implies P_{|e\rangle} = 0.25
+        \end{align}
+        This is linear for $\Omega<\Gamma$.
+        Then
+        \begin{align}
+            \Omega^2 &= \Gamma^2\frac{I}{2I_S}, & P_{|e\rangle} &= 0.25 \text{ for } I=I_S,
+        \end{align}
+        where $I_S$ is the saturation intensity. 
+    \item $|\Delta|\gg\Gamma,\Omega$, i.e. the case for optical tweezing.
+        $\Omega\gg\Gamma$ also.
+        We have strong driving and strong detuning.
+        \begin{align}
+            P_{|e\rangle} &= \frac{\Omega^2/4}{\Delta^2} = \frac{\Omega^2}{4\Delta^2}.
+        \end{align}
+        Therefore, the photon scattering rate in an optical tweezer is
+        \begin{align}
+            R &= \Gamma P_{|e\rangle} = \Gamma\frac{\Omega^2}{4\Delta^2}.
+        \end{align}
+        Now to the trap depth, 
+        \begin{align}
+            U_0 &= -\frac{\hbar\Omega^2}{4|\Delta|} \implies \frac{|U_0|}{R} &= \frac{\hbar\Omega^2/4|\Delta|}{\Gamma\Omega^2/4\Delta^2} = \hbar\left(\frac{\Delta}{\Gamma}\right).
+        \end{align}
+        So we want to use $\Delta\gg\Gamma$ to minimise scattering for a given trap depth, i.e. \emph{far detuning.}
+\end{enumerate}
+We can use spontaneous scattering for cooling!
+Laser cooling works through a spontaneous scattering force.
+Each scattering event cause a recoil on the qubit or atom.
+\emph{doodle}
+Cycles of excitation and decay transfer, on average, $\hbar\vec{k}$ of momentum to the atom per cycle.
+This exerts a force
+\begin{align}
+    \vec{F} &= \hbar\vec{k}R = \hbar\vec{k}\Gamma P_{|e\rangle} \\
+            &= \hbar\vec{k}\Gamma\frac{\Omega^2/4}{\Delta^2+\Gamma^2/4+\Omega^2/2}.
+\end{align}
+This force is called the \textbf{Spontaneous Scattering Force.}
+The properties of this force will then follow the previous discussions on the behaviour of the probability in different regimes.
+
+How will we use this force for cooling?
+Use 2 counter-propagating lasers, both red detuned. 
+\emph{doodle}
+The force on the atom is then the sum of the force from laser 1 and laser 2:
+\begin{align}
+    F &= F_+ + F_-.
+\end{align}
+If the atom is moving, however, there is a Doppler shift. 
+\begin{itemize}
+    \item Laser 1: it's moving away, so detuning, $\Delta\to\Delta-kv_{atom}$.
+    \item Laser 2: it's moving towards, so detuning, $\Delta\to\Delta+kv_{atom}$.
+\end{itemize}
+\begin{align}
+    F_{\pm} &= \pm \hbar\vec{k}\Gamma\frac{\Omega^2/4}{\Gamma^2/4 + \Omega^2/2 + (\Delta\mp kv_{atom})^2}.
+\end{align}
 
 
 
