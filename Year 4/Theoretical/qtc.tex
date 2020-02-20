@@ -1336,6 +1336,94 @@ It is energetically favourable for vortices to enter the sample when $H$ is grea
 \end{align}
 This expression is valid when $\kappa\gg\frac{1}{\sqrt{2}}$, i.e. the \emph{London vertex limit}.
 
+\chapter{Ginzburg-Landau Treatment of Thermal Fluctuations}
+\section{Thermal Fluctuations about a Mean Field}
+GL theory as described up until now is a \emph{mean-field theory.}
+However, it can be relatively-easily extended to include \emph{thermal fluctuations.}
+In the mean-field approach, we find the value of the order parameter $\psi(\vr)$ that minimise the total free energy. 
+To go beyond this, we include fluctuations close to this minimising value, i.e. we replace $\psi(\vr)$ with $\psi(\vr)+\delta\psi(\vr)$, where $\delta\psi(\vr)$ is ``small", in the sense that the free energy yielded by $\psi(\vr)+\delta\psi(\vr)$ is no more than $\approx k_BT$ greater than the minimum energy.
+
+\section{Probability Dstribution}
+An effective (Boltzmann) probability $P$ for each possible state (i.e. each possible value of the order parameter, $\psi$) is given by
+\begin{align}
+    P[\psi,\psi^*] &= \frac{1}{Z}e^{-F[\psi,\psi^*]/k_BT}, & Z &= \int D[\psi]D[\psi^*]e^{-F[\psi,\psi^*]/k_BT},
+\end{align}
+where the partition function $Z$ is formally defined as a functional integral. 
+The symbols $D[\psi],D[\psi^*]$ indicate that we are technically integrating over an infinite continuum of variables, i.e. the values of $\psi(\vr),\psi^*(\vr)$ at every point $\vr$.
+A conceptually easier picture is arrived at through the Fourier transform of $\psi(\vr)$, i.e. assuming periodic boundary conditions,
+\begin{align}
+    \psi(\vr) &= \sum_{\vec{k}}\psi_{\vk}e^{i\vk\cdot\vr}, \\
+    Z &= \prod_{\vk} \int e^{-F[\psi,\psi^*]/k_BT} d\psi_{\vk}\,d\psi^{*}_{\vk},
+\end{align}
+which has a discrete infinity of integrals, two for each discrete point $\vk$.
+
+\section{Gaussian Approximation}
+For a superconductor in zero magnetic field, the free energy functional is
+\begin{align}
+    F[\psi,\psi^*] &= \int \left(\frac{\hbar^2}{2m^*}|\del\psi|^2 + a|\psi|^2 + \frac{b}{2}|\psi|^4\right)\,d^3r \\
+                   &= \sum_{\vk} \left(\frac{\hbar^2k^2}{2m^*}+a\right)\psi^*_{\vk}\psi_{\vk} + \frac{b}{2}\sum_{\vk_1,\vk_2,\vk_3} \psi^*_{\vk_1}\psi^*_{\vk_2}\psi_{\vk_3}\psi_{\vk_1+\vk_2-\vk_3},
+\end{align}
+where we neglect the constant normal state free energy $F_n$ as irrelevant.
+Simplifying further, we consider the \emph{Gaussian approximation}, in which we neglect the quartic ($\propto b$) term in the free energy. 
+This yields
+\begin{align}
+    \begin{split}
+    Z &= \prod_{\vk}\int \exp\left(-\frac{1}{k_BT}\left[\frac{\hbar^2k^2}{2m^*}+a\right]\psi^*_{\vk}\psi_{\vk}\right)\,d\psi_{\vk}\,d\psi^*_{\vk} \\
+      &= \prod_{\vk}\int \exp\left(-\frac{1}{k_BT}\left[\frac{\hbar^2k^2}{2m^*}+a\right]\left[\R(\psi_{\vk})^2+\mathbb{I}(\psi_{\vk})^2\right]\right)\,d\R(\psi_{\vk})\,d\mathbb{I}(\psi_{\vk}) \\
+      &= \prod_{\vk}\frac{\pi k_BT}{(\hbar^2k^2/2m^*)+a}.
+    \end{split}
+\end{align}
+
+\section{Internal Energy and Heat Capacity near Critical Temperature}
+All thermodynamic quantities can be calculated from the partition function. 
+For example (see Section 6.2), the total internal energy derived from Eq. (12.6) is
+\begin{align}
+    U &= -\frac{\p\ln Z}{\p(1/k_BT)} = k_BT^2\frac{\p\ln Z}{\p T} \approx -\sum_{\vk} \frac{1}{(\hbar^2k^2/2m^*)+a}\frac{da}{dT},
+\end{align}
+where we have kept only the most significant contribution, which comes from the change of the GL parameter $a$ with $T$, $da/dT=\dot{a}$.
+Differentiating $U$ again, we can determine how the heat capacity scales with $T$ (near $T_C$).
+We also make the continuum approximation:
+\begin{align}
+    C_V &= \frac{dU}{dT} = \sum_{\vk}\frac{\dot{a}^2}{(\hbar^2k^2/2m^* + a)^2} = \frac{V}{(2\pi)^3}\frac{\dot{a}^2}{a^2}\int \frac{d^3k}{[1+k^2\xi(T)^2]^2}.
+\end{align}
+This integral expression can be shown to scale as
+\begin{align}
+    C_V &\approx \frac{V}{(2\pi)^3}\frac{\dot{a}^2}{a^2}\frac{1}{\xi(T)^3} \approx \frac{1}{(T-T_C)^2}|T-T_C|^{3/2} \approx \frac{1}{|T-T_C|^{1/2}},
+\end{align}
+i.e. there is a divergence due to thermal fluctuations at $T_C$.
+Experimentally such fluctuations are difficult to observe in conventional low $T_C$ superconductors, as the range over which they are significant is of the order of a microKelvin. 
+The original mean-field approach is thus essentially fully justified. 
+In high $T_C$ superconductors, the coherence length $\xi(0)$ is very small, and the corresponding temperature range is of order $1-2$K.
+Heat capacity measurements near $T_C$ clearly show thermal critical fluctuations.
+
+\section{Vortex Matter}
+Abrikosov's result that vortices in type II superconductors arrange themselves in a periodic lattice is again a mean-field result. 
+In principle we must also include thermal fluctuation effects. 
+There are in fact a wide range of possible \emph{vortex matter} states.
+Vortices may also form liquid and glassy states, as well as nearly-perfected ordered crystalline states.
+A serious consequence is that thermal fluctuations lead to motion of vortices leading to a source of energy dissipation. 
+The resistivity in high $T_C$ superconductors is therefore not zero in a magnetic field. 
+Energy dissipation due to motion of vortices can be reduced or effectively eliminated by providing \emph{pinning centres} to prevent the vortex lattice from moving. 
+These are typically impurities or crystal defects.
+
+\section{Vortex Motion and Dissipation}
+A current density $\vec{j}$ flowing through a vortex lattice (perpendicular to the magnetic field) leads to a Lorentz/Magnus force $\vec{f}=\vec{j}\times\vec{B}$ per unit volume of the vortex lattice.
+The vortices will then tend to move perpendicular to the current. 
+If the vortices move, work is done and there is energy dissipation. 
+Consider a loop of superconducting wire, with a current flowing around it. 
+Vortices will drift transversely across the wire, e.g. entering on the inner side and drifting over to the outer side. 
+Each vortex carries a magnetic flux $\Phi_0$, and so the total magnetic flux $\Phi$ changes by $\Phi_0$ with each ``crossing-over" vortex.
+Note there is an EMF-induced in the wire $\mathcal{E}=-\frac{d\Phi}{dt}$, and power is dissipated at a rate $P=\mathcal{E}I$.
+Vortex motion leads directly to \emph{finite resistance.}
+In the mixed state (beyond mean-field), superconductors only truly have zero resistance when the vortices are pinned and unable to move.
+
+
+
+
+
+
+
+
 
 
 
