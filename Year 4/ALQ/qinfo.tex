@@ -1233,9 +1233,13 @@ Each scattering event cause a recoil on the qubit or atom.
         %Lines
         \draw[snake it,-Latex] (start) -- (first.west) node[anchor=south,midway] {$\hbar k$};
         \draw[-Latex] (first.north) arc (180:90:50pt) node[anchor=south,midway,rotate=45] {excitation};
-        \draw[-Latex] (second.east) arc (90:0:50pt) node[anchor=south,midway,rotate=-45] {recoil};
-        \draw[-Latex] (third.south) arc (0:-90:50pt) node[anchor=north,midway,rotate=45] {decay};
+        \draw[-Latex] (second.east) arc (90:0:50pt) node[anchor=south,midway,rotate=-45] {recoil} -- (third);
+        \draw[-Latex] (third) -- (third.south) arc (0:-90:50pt) node[anchor=north,midway,rotate=45] {decay};
         \draw[-Latex] (fourth.west) arc (270:180:50pt);
+        \draw[snake it,-Latex] (fourth.north west) arc (40:50:200pt);
+        \draw[snake it,-Latex] (fourth.north east) arc (140:130:200pt);
+        \draw[snake it,-Latex] (fourth.south west) arc (130:140:200pt);
+        \draw[snake it,-Latex] (fourth.south east) arc (50:40:200pt);
     \end{tikzpicture}
 \end{figure}
 Cycles of excitation and decay transfer, on average, $\hbar\vec{k}$ of momentum to the atom per cycle.
@@ -1263,7 +1267,104 @@ If the atom is moving, however, there is a Doppler shift.
     F_{\pm} &= \pm \hbar\vec{k}\Gamma\frac{\Omega^2/4}{\Gamma^2/4 + \Omega^2/2 + (\Delta\mp kv_{atom})^2}.
 \end{align}
 
-\chapter{}
+\chapter{Laser Cooling}
+We have cycles of absorption and spontaneous emission which give rise to the spontaneous force,
+\begin{align}
+    F &= \hbar\vec{k}R, \text{ where } R = \Gamma P_{|e\rangle} = \frac{\Gamma\Omega^2/4}{\Omega^2/2 + \Gamma^2/4 + \Delta^2}.
+\end{align}
+Note that $R_{max}=\frac{\Gamma}{2}$, for $\Omega\gg|\Delta|,\Gamma$.
+
+Laser cooling, counter-propagating red detuned ($\Delta<0$) laser beams. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[snake it,-Latex] (4,1) -- (6.5,1) node[anchor=south,midway] {$F_+$};
+        \draw (8,1) circle (30pt);
+        \draw (7.3,0.4) node[anchor=east,xshift=-5pt] {$|g\rangle$} -- (8.7,0.4) node[anchor=north,midway,yshift=-10pt] {$\Delta<0$};
+        \draw (7.3,1.6) node[anchor=east,xshift=-5pt] {$|e\rangle$} -- (8.7,1.6);
+        \draw[dashed] (7.3,1.3) -- (8.7,1.3);
+        \draw[-Latex,thick,red] (8.3,0.4) -- (8.3,1.3);
+        \draw[snake it,-Latex] (12,1) -- (10.4,1) node[anchor=south,midway] {$F_-$};
+        \draw[-Latex] (9,1) -- (9.8,1) node[anchor=south,midway] {$v_{at}$};
+    \end{tikzpicture}
+    \begin{align}
+        F_{\pm} &= \pm\frac{\Gamma}{2}\frac{I/I_r}{1+4(\Delta\mp kv)^2/\Gamma^2}, \text{ where } \Omega^2 = \Gamma^2\frac{I}{2I_s}.
+    \end{align}
+\end{figure}
+\textbf{If $I<I_s$:}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (-4,0) -- (4,0) node[anchor=north] {$v_{at}$};
+        \draw[-Latex] (0,-3) -- (0,3) node[anchor=north west] {$F=F_++F_-$};
+        \draw (-3,0) cos (-2.25,0.75) sin (-1.5,1.5) cos (-0.75,0.75) sin (0,0) cos (0.75,-0.75) sin (1.5,-1.5) cos (2.25,-0.75) sin (3,0);
+        \draw (-4,0) .. controls (-2.5,0.2) and (-2.8,2.7) .. (-1.8,3) node[anchor=south west] {$F_+$} -- (-1.7,3) .. controls (-0.7,2.7) and (-0.9,0.2) .. (0.5,0);
+        \draw (4,0) .. controls (2.5,-0.2) and (2.8,-2.7) .. (1.8,-3) node[anchor=north east] {$F_-$} -- (1.7,-3) .. controls (0.7,-2.7) and (0.9,-0.2) .. (-0.5,0);
+        \draw (-1.75,-0.1) node[anchor=north] {$-\frac{\Gamma}{2}$} -- (-1.75,0.1);
+        \draw (1.75,-0.1) node[anchor=north] {$\frac{\Gamma}{2}$} -- (1.75,0.1);
+        \draw[Latex-] (0,0) arc (-10:-70:100pt) node[anchor=south east,xshift=30pt,yshift=10pt] {\shortstack{at origin, detuning \\ is zero}}; 
+    \end{tikzpicture}
+    \begin{align}
+        \text{for} |v_{at}|<\frac{\Gamma}{k},\quad \vec{F} = -\alpha\vec{v}_{at}
+    \end{align}
+\end{figure}
+Defining the atomic momentum as $p$, we can use $F=\frac{dp}{dt} = -\alpha\frac{p}{m}$ to find the rate of change of kinetic energy:
+\begin{align}
+    \left(\frac{dE}{dt}\right) = \frac{d}{dt}\left(\frac{p^2}{2m}\right) &= \frac{p}{m}\frac{dp}{dt}= -\alpha\left(\frac{p}{m}\right)^2,
+\end{align}
+where the negative means the rate is decreasing. 
+We now have laser cooling!
+
+\section{How cold can we cool?}
+There is also a heating due to random recoils due to spontaneous emission. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[snake it,-Latex] (1.5,0) -- (2.7,0);
+        \draw (3,0) circle (5pt);
+        \draw (5,0) circle (5pt);
+        \draw[-Latex] (5.2,0) -- (6,0) node[anchor=north,midway] {$\hbar k$};
+        \draw (7,0) circle (5pt);
+        \draw[snake it,-Latex] (6.86,0.14) -- (6.5,0.5);
+        \draw[-Latex] (7.2,0) -- (7.6,0);
+        \draw[-Latex] (7.14,-0.14) -- (7.5,-0.5) node[anchor=north east,midway,xshift=10pt] {\shortstack{$\hbar k$\\ recoil}};
+    \end{tikzpicture}
+\end{figure}
+\begin{itemize}
+    \item Heating Rate:
+        \begin{align}
+            \left(\frac{dE}{dt}\right)_{heat} &= \frac{d}{dt}\left(\frac{p^2}{2m}\right).
+        \end{align}
+    \item Equilibrium temp (minimum temperature occurs at $\Delta=\frac{\Gamma}{2}$:
+        \begin{align}
+            \left(\frac{dE}{dt}\right)_{cool} &= -\left(\frac{dE}{dt}\right)_{heat}, \\
+            k_BT_{dopp} &= mv^2_{at} = \frac{\hbar\Gamma}{2}.
+        \end{align}
+        This is the Doppler Cooling Limit. 
+        Typically, $T_{dopp}\approx1-100\,\mu$K - the coldest thing in the Universe. 
+
+\end{itemize}   
+We can use laser cooling to load cold atoms into optical tweezers. 
+As with before, we have cycles of absorption and spontaneous emission, but this is only found in simple atoms as we need a \textbf{Closed Transition.}
+
+Let's focus on a particular atom. e.g. Cs (single valence electron).
+\begin{itemize}
+    \item Ground state $|g\rangle$, 6s ($n=6,l=0$)
+    \item Excited state $|e\rangle$, 6p ($n=6,l=1$)
+\end{itemize}   
+Laser cooling on $|g\rangle\to|e\rangle$ transition. 
+
+Cs atom has nuclear spin $I=\frac72$ and electron spin $s=\pm\frac12$.
+The total 'spin' (atomic angular momentum) is $F=I+S=3,4$.
+For each $F$, we ahve $2F+1$ magnetic sub-levels labelled $m_F$.
+So the ground state has 16-fold degeneracy. 
+We select 2 of these 16 as our qubit states $|0\rangle$ and $|1\rangle$:
+\begin{align*}
+    |F=3,m_f=3\rangle &= |0\rangle, \\
+    |F=4,m_F=4\rangle &= |1\rangle. 
+\end{align*}
+As both are ground states, they do not decay (not spontaneous emission), i.e. low decoherence (\textbf{DiVincenzo \#4).}
+
 
 \chapter{}
 
