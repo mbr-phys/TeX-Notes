@@ -370,6 +370,43 @@ Similarly, each generation of lepton has its own conservation, i.e. \textbf{Elec
 
 %\chapter{Deep Inelastic Scattering and Partons}
 
+\chapter{}
+
+\chapter{}
+
+\chapter{Deep Inelastic Scattering and Partons}
+\emph{draw electron-positron quark production}
+\begin{align}
+    -i\mathcal{M} &= \bar{\nu}_e(ie\gamma_\nu)u_e\frac{-ig^{\mu\nu}}{s}\bar{u}_q(-ieQ_{q})\gamma_\nu v_q
+\end{align}
+Here, $s = (p_{e^-} + p_{e^+})^2$. 
+We then have the differential cross-section:
+\begin{align}
+    d\sigma &= \frac14\sum_{spin} |\mathcal{M}| (2\pi)^2 \delta^2(p_{e^+}+p_{e^-}-p_{q}-p_{\bar{q}}) \frac{d^3p_q\,d^3p_{\bar{q}}}{(2\pi)^62E_{p_q}E_{p_{\bar{q}}}}
+\end{align}
+The extra terms here are to integrate over \textbf{Lorentz Invariant Phase Space.}
+We want to reduce this, however, such that we get rid of the $\delta$ functions for convenience. 
+\begin{align}
+    d\textbf{LIPS} &= \frac{1}{(2\pi)^2} \delta(\sqrt{s}-E_{p_q}-E_{p_{\bar{q}}})\delta^3(-p_{q}-p_{\bar{q}}) \frac{d^3p_q\,d^3p_{\bar{q}}}{2E_{p_q}2E_{p_{\bar{q}}}} \\
+                 &= \frac{1}{(2\pi)^2} \delta(\sqrt{s}-2E_{p_q})\frac{d^3p_{q}}{4E_{p_q}^2} \\
+                 &= \frac{1}{(2\pi)^2} \delta(\sqrt{s}-2E_{p_q})\frac{d\Omega\,p_q^2\,dp_q}{4E_{p_q}^2}
+\end{align}
+A useful trick for simplifying these $\delta$ functions is
+\begin{align}
+    \delta(f(x)) &= \frac{1}{|f'(x)|}\delta(x-x_0).
+\end{align}
+So now we can use this on the modulus of the momenta:
+\begin{align}
+    \sqrt{s} &- 2E_{p_q} = 0 \\
+    E_{p_q}^2 &= m^2 + p_q^2 = \frac{s}{4} \\
+    |p_q|^2 &= \frac{s-4m^2}{4}
+\end{align}
+Back to our $\lips$:
+\begin{align}
+    \lips &= \frac{1}{(2\pi)^2} \frac{1}{|2p_q/E_{p_q}|} \frac{d\Omega\, p_q^2\,dp_q}{4E_{p_q}^2} \delta(p_q-\sqrt{\frac{s-4m^2}{4}}) \\
+          &= \frac{d\Omega}{(2\pi)^2}\frac{|p_q|}{8E_{p_q}} = \frac{d\Omega}{(2\pi)^2}\frac{\sqrt{s-4m^2}}{8\sqrt{s}}
+\end{align}
+
 
 
 

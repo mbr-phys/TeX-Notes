@@ -1161,14 +1161,13 @@ We want to plot this for three cases:
         \end{align}
         This corresponds to weak driving, where it will result in low intensity and low probability.
         This equation will look familiar as a Lorentzian, or a Cauchy distribution. 
-        \emph{doodle}
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
-                \draw (-4,0) -- (4,0);
+                \draw (-3,0) -- (3,0);
                 \draw (0,0) -- (0,3);
-                \draw (-4,0.1) .. controls (-1.2,0) and (-0.5,3) .. (0,2.7);
-                \draw (0,2.7) .. controls (0.5,3) and (1.2,0) .. (4,0.1);
+                \draw (-3,0.1) .. controls (-1.2,0) and (-0.5,3) .. (0,2.7);
+                \draw (0,2.7) .. controls (0.5,3) and (1.2,0) .. (3,0.1);
             \end{tikzpicture}
         \end{figure}
         Our Full Width Half Maximum is then
@@ -1213,7 +1212,7 @@ We want to plot this for three cases:
         \end{align}
         Now to the trap depth, 
         \begin{align}
-            U_0 &= -\frac{\hbar\Omega^2}{4|\Delta|} \implies \frac{|U_0|}{R} &= \frac{\hbar\Omega^2/4|\Delta|}{\Gamma\Omega^2/4\Delta^2} = \hbar\left(\frac{\Delta}{\Gamma}\right).
+            U_0 &= -\frac{\hbar\Omega^2}{4|\Delta|} \implies \frac{|U_0|}{R} = \frac{\hbar\Omega^2/4|\Delta|}{\Gamma\Omega^2/4\Delta^2} = \hbar\left(\frac{\Delta}{\Gamma}\right).
         \end{align}
         So we want to use $\Delta\gg\Gamma$ to minimise scattering for a given trap depth, i.e. \emph{far detuning.}
 \end{enumerate}
@@ -1221,6 +1220,24 @@ We can use spontaneous scattering for cooling!
 Laser cooling works through a spontaneous scattering force.
 Each scattering event cause a recoil on the qubit or atom.
 \emph{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        %Nodes
+        \node (start) {};
+        \node[roundnode] (first) [right=5em of start] {$|g\rangle$};
+        \node[roundnode] (second) [above right=4em and 4em of first] {$|e\rangle$};
+        \node (third) [below right=-3pt and 10.4em of first] {};
+        \node[roundnode] (fourth) [below right=4em and 4em of first] {$|g\rangle$};  
+
+        %Lines
+        \draw[snake it,-Latex] (start) -- (first.west) node[anchor=south,midway] {$\hbar k$};
+        \draw[-Latex] (first.north) arc (180:90:50pt) node[anchor=south,midway,rotate=45] {excitation};
+        \draw[-Latex] (second.east) arc (90:0:50pt) node[anchor=south,midway,rotate=-45] {recoil};
+        \draw[-Latex] (third.south) arc (0:-90:50pt) node[anchor=north,midway,rotate=45] {decay};
+        \draw[-Latex] (fourth.west) arc (270:180:50pt);
+    \end{tikzpicture}
+\end{figure}
 Cycles of excitation and decay transfer, on average, $\hbar\vec{k}$ of momentum to the atom per cycle.
 This exerts a force
 \begin{align}
@@ -1246,6 +1263,9 @@ If the atom is moving, however, there is a Doppler shift.
     F_{\pm} &= \pm \hbar\vec{k}\Gamma\frac{\Omega^2/4}{\Gamma^2/4 + \Omega^2/2 + (\Delta\mp kv_{atom})^2}.
 \end{align}
 
+\chapter{}
+
+\chapter{}
 
 
 

@@ -1417,7 +1417,293 @@ Note there is an EMF-induced in the wire $\mathcal{E}=-\frac{d\Phi}{dt}$, and po
 Vortex motion leads directly to \emph{finite resistance.}
 In the mixed state (beyond mean-field), superconductors only truly have zero resistance when the vortices are pinned and unable to move.
 
+\chapter{Creation and Annihilation Operators}
+\section{Creation and Annihilation Operators in the Harmonic Oscillator}
+The Hamiltonian operator for the quantum harmonic oscillator is defined as
+\begin{align}
+    \hat{\Ham} &= \frac{\hat{p}^2}{2m} + \frac{m\om^2\hat{x}^2}{2}.
+\end{align}
+This can be written in terms of the creation and annihilation operators:
+\begin{align}
+    \hat{\Ham} &= \hbar\om\left(\hag\ha+\frac12\right), \text{ where } \ha = \sqrt{\frac{m\om}{2\hbar}}\hat{x} + \frac{i\hat{p}}{\sqrt{2m\om\hbar}}, \text{ and } [\ha,\hag] = 1.
+\end{align}
+If $\phi_n(x)=\langle x|\phi_n\rangle$ is the $n$th harmonic oscillator eigenfunction, then $\hag\ha|\phi_n\rangle=n|\phi_n\rangle$.
+$\hn=\hag\ha$ is often called the \emph{number} operator, associated in this context with the \emph{excitation} number. 
+It is often convenient to write $|\phi_n\rangle$ as $|n\rangle$.
+Using this notation, note also that
+\begin{align}
+    \ha|n\rangle &= \sqrt{n}|n-1\rangle, & \hat|n\rangle &= \sqrt{n+1}|n+1\rangle,
+\end{align}
+i.e. $\hag$ is a \emph{raising} or \emph{creation} operator, and $\ha$ a \emph{lowering} or \emph{annihilation} operator.
 
+\section{Action-Angle Representation of the Classical Harmonic Oscillator}
+Hamilton's equations of motion applied to the classical harmonic oscillator Hamiltonian yield
+\begin{align}
+    \frac{dx}{dt} &= \frac{\p \Ham}{\p p} = \frac{p}{m}, & \frac{dp}{dt} &= -\frac{\p\Ham}{\p x}=m\om x,\\
+    x(t) &= A\cos(\om t+\delta), & p(t) &= -Am\om\sin(\om t+\delta),
+\end{align}
+where $A$ and $\delta$ are integration constants related to $x(0),p(0)$.
+Implicitly defining $J$ and $\theta$ through
+\begin{align}
+    x &= \sqrt{\frac{2J}{m\om}}\sin\theta, & p &= \sqrt{2Jm\om}\cos\theta,
+\end{align}
+we can rewrite the Hamiltonian $\Ham =\om J$, with corresponding Hamilton's equations
+\begin{align}
+    \frac{d\theta}{dt} &= \frac{\p\Ham}{\p J} = \om, & \frac{dJ}{dt} &= -\frac{\p\Ham}{\p\theta} = 0,\\
+    \theta(t) &= \om t+\delta, & J(t) &= \frac{\Ham}{\om}\equiv m\om A^2.
+\end{align}
+Hence, one can define a \emph{canonically conjugate pair} composed of the phase angle $\theta$, and an action variable $J$; $\hbar\hn$ is then a quantised form of $J$.
+Viewed quantum-mechanically, we expect a \emph{phase-number uncertainty relation}, i.e. phase and number cannot be simultaneously known with complete certainty. 
+
+\section{Coherent States}
+Coherent states $|\alpha\rangle$ may be defined as eigenstates of the annihilation operator:
+\begin{align}
+    \ha|\alpha\rangle &= \alpha|\alpha\rangle \implies |\alpha\rangle = e^{-|\alpha|^2/2}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}}|n\rangle.
+\end{align}
+If the system is in a coherent state, then 
+\begin{align}
+    \langle\ha\rangle &= \langle\alpha|\ha|\alpha\rangle = \alpha,\quad \langle\hag\ha\rangle = |\alpha|^2.
+\end{align}
+For any (normally-ordered) product of creation and annihilation operators
+\begin{align}
+    \langle\ha^{\dagger n}\ha^m\rangle = \alpha^{*n}\alpha^m = \langle\hag\rangle^n\langle\ha\rangle^m,
+\end{align}
+i.e. the expectation values are \emph{factorisable}.
+This is reminiscent of what one would expect of quantities describing a classical particle. 
+Coherent states are minimum uncertainty wave packets and in some ways come closest to describing a classical particle in a quantum context.
+
+\section{Number and Phase in Coherent States}
+For a coherent state, the \emph{number variance} is defined 
+\begin{align}
+    \langle\hn^2\rangle-\langle\hn\rangle^2 = |\alpha|^2,
+\end{align}
+and so the number standard deviation relative to $\langle\hn\rangle$ is $1/|\alpha|$, which vanishes as $n=|\alpha|^2\to\infty$.
+The phase of the complex number $\alpha$ characterising a coherent state corresponds to the classical phase angle $\theta$, i.e. $\alpha=|\alpha|e^{i\theta}$.
+A coherent state thus has a well-defined \emph{mean} number and phase, with (minimum uncertainty) fluctuations.
+
+\section{Matrix Elements: Single Particles}
+Consider a single particle, moving in one spatial dimension, with kinetic and potential energy operators $\hat{T},\hat{V}$. 
+If we choose some orthonormal basis of states $|\phi_n\rangle$,
+\begin{align}
+    \hat{T} &= \sum_{jk} |\phi_j\rangle\langle\phi_j|\hat{T}|\phi_k\rangle\langle\phi_k|, & \hat{V} &= \sum_{jk} |\phi_j\rangle\langle\phi_j|\hat{V}|\phi_k\rangle\langle\phi_k|,
+\end{align}
+where the \emph{matrix elements} can also be written 
+\begin{align}
+    \langle\phi_j|\hat{V}|\phi_k\rangle &= \int \phi_j^*(x)V(x)\phi_k(x)\,dx, \\
+    \langle\phi_j|\hat{T}|\phi_k\rangle &= -\frac{\hbar^2}{2m}\int \phi_j^*(x)\frac{\p^2\phi_k(x)}{\p x^2}\,dx.
+\end{align}
+Note that, for example, the matrix element $\langle\phi_j|\hat{V}|\phi_k\rangle\neq0$ if and only if, in the expansion $V(x)\phi_k(x)=\sum_n\alpha_n\phi_n(x)$, the scalar $\alpha_{n=j}\neq0$; \emph{non-zero matrix elements} effectively describe \emph{removing} a particle from mode $\phi_k(x)$, and \emph{adding} it to mode $\phi_j(x)$.
+
+\section{Constructing an N-Body Basis}
+With the same single-particle basis, we construct an $N$-body basis from $N$-body wavefunctions specifying \emph{numbers} of particles $\{N_0,N_1,\dots\}$ occupying \emph{modes} $\{\phi_0,\phi_1,\dots\}$.
+For identical bosons, the $N$-body wavefunction must be \emph{symmetrised}:
+\begin{align}
+    \psi_{N_0 N_1\dots}(x_1,x_2,\dots,x_N) &= \sqrt{\frac{N_0!N_1!\dots}{N!}}\sum_P \phi_{p_1}(x_1)\phi_{p_2}(x_2)\dots\phi_{p_N}(x_N).
+\end{align}
+The $p_k$ index the different modes, and the sum is taken over all possible permutations of different numbers $p_k$.
+For identical fermions, the wavefunction must be \emph{antisymmetrised}:
+\begin{align}
+    \psi_{N_0 N_1\dots}(x_1,x_2,\dots,x_N) &= \sqrt{\frac{1}{N!}}\sum_P (-1)^P \phi_{p_1}(x_1)\phi_{p_2}(x_2)\dots\phi_{p_N}(x_N).
+\end{align}
+The $(-1)^P$ accounts for whether the permutation is even or odd.
+
+\section{Matrix Elements: N Bosonic Particles}
+The total potential energy due to external forces (i.e. excluding particle-particle interactions) can be written $\hat{V}=\sum_{l=1}^N V(\hat{x}_l)$.
+The corresponding matrix elements for $\hat{V}$ can be written
+\begin{align}
+    \begin{split}
+        \int\dots\int \psi^*_{N_0N_1\dots}(x_1,x_2,\dots,x_N)\sum_{l=1}^N V(x_l)\psi_{N_0'N_1'\dots}(x_1,x_2,\dots,x_N)\,dx_1\dots dx_N &= \\
+        \sqrt{\frac{N_0!N_1!\dots}{N!}}\sqrt{\frac{N_0'!N_1'!\dots}{N!}}\sum_{l=1}^N\sum_P\sum_{P'} \int \phi_{p_l}^*(x_l)V(x_l)\phi_{p_l'}(x_l)\,dx_l& \\
+        \times\int\phi_{p_1}^*(x_1)\phi_{p_1'}(x_1)\,dx_1\dots\int\phi_{p_N}^*(x_N)\phi_{p_N'}(x_N)\,dx_N.&
+    \end{split}
+\end{align}
+For this to be $\neq0$, all modes must match, i.e. $p_1=p_1',p_2=p_2'$, etc., except for $p_l$ and $p_l'$ which may be different. 
+Non-zero matrix elements are thus formed from $\psi^*_{N_0N_1\dots}(x_1,\dots,x_N)$ and $\psi_{N_0N_1\dots}(x_1,\dots,x_N)$ (idential occupation numbers) or $\psi^*_{N_0N_1\dots N_j\dots N_k-1\dots}(x_1,\dots,x_N)$ and $\psi_{N_0N_1\dots N_j-1\dots N_k\dots}(x_1,\dots,x_N)$ only, i.e. processes where a particle is annihilated in mode $k$, and then created in mode $j$.
+Considering diagonal matrix elements (where $N_0=N_0',N_1=N_1',\dots$), the RHS of Eq. (13.18) becomes
+\begin{align}
+    \begin{split}
+        \left(\frac{N_0!N_1!\dots}{N!}\right)& \sum_P \overbrace{\sum_{j=1}^N \int \phi_{p_j}^*(x_j)V(x_j)\phi_{p_j}(x_j)\,dx_j}^{=N_0\int\phi_0^*(x)V(x)\phi_0(x)\,dx + N_1\int\phi_1^*(x)V(x)\phi_1(x)\,dx + \dots} \\
+                                             &\times \int \phi_{p_1}^*(x_1)\phi_{p_1}(x_1)\,dx_1\dots\int \phi_{p_N}^*(x_N)\phi_{p_N}(x_N)\,dx_N.
+    \end{split}
+\end{align}
+There are $\frac{N!}{N_0!N_1!\dots}$ permutations to sum over, each producing the same result. 
+The above expression is therefore equal to
+\begin{align}
+    \sum_k N_k \int \phi_k^*(x)V(x)\phi_k(x)\,dx.
+\end{align}
+Considering off-diagonal matrix elements (where $N_0=N_0',\dots,N_k-1=N_j',\dots,N_j=N_k'-1,\dots$), a slightly more involved procedure shows that the RHS of Eq. (13.18) becomes
+\begin{align}
+    \sqrt{N_jN_k}\int \phi_j^*(x)V(x)\phi_k(x)\,dx.
+\end{align} 
+
+\section{Fock (Occupation Number) State Representation}
+States with $\{N_0,N_1,\dots\}$ particles occupying the modes $\{\phi_0,\phi_1,\dots\}$ can instead be represented by $|N_0,N_1,\dots\rangle$.
+Hence, the non-zero matrix elements,
+\begin{align}
+    \langle N_0,N_1,\dots|\hat{V}|N_0,N_1,\dots\rangle &= \sum_j N_j \int \phi_j^*(x)V(x)\phi_j(x)\,dx, \\
+    \langle N_0,\dots,N_j,\dots,N_k-1,\dots|\hat{V}|N_0,\dots,N_j-1,\dots,N_k,\dots\rangle &= \sqrt{N_jN_k}\int \phi_j^*(x)V(x)\phi_k(x)\,dx,
+\end{align}
+can be explained by setting
+\begin{align}
+    \hat{V} &= \sum_{jk}\left[\int \phi_j^*(x)V(x)\phi_k(x)\,dx\right]\,\hag_j\ha_k, \\
+    [\ha_j,\hag_k] &= \delta_{jk},\quad [\ha_j,\ha_k] = [\hag_j,\hag_k] = 0.
+\end{align}
+These are the \emph{bosonic commutation relations}.
+Similarly, when considering the kinetic energy $\hat{T}$, or a term accounting for the total two-body interactiong energy $\hat{U}$,
+\begin{align}
+    \hat{T} &= -\sum_{jk}\left[\int \phi_j^*(x)\frac{\hbar^2}{2m}\frac{\p^2}{\p x^2}\phi_k(x)\,dx\right]\hag_j\ha_k, \\
+    \hat{U} &= \frac12\sum_{jkln}\left[\iint \phi_j^*(x)\phi_k^*(x')U(x-x')\phi_l(x)\phi_n(x')\,dx\,dx'\right]\hag_j\hag_k\ha_l\ha_n.
+\end{align}
+For \emph{fermionic} particles, there is an analagous representation. 
+However, the creation and annihilation operators must have \emph{anti-commutation} relations, i.e. $[\ha_k,\hag_j]_+ = \ha_k\hag_j+\hag_j\ha_k = \delta_{jk},\; [\ha_j,\ha_k] = [\hag_j,\hag_k] = 0$.
+
+\chapter{The Weakly Interacting Bose Gas}
+\section{Bosonic Quantum Fields}
+We combine the annihilation operators $\ha_j$ with their associated orthonormal modes $\phi_j(\vr)$ to form a \emph{field operator}: in 3D, 
+\begin{align}
+    \hat{\Psi}(\vr) &= \sum_j \ha_j\phi_j(\vr), & [\hat{\Psi}(\vr),\hat{\Psi}^\dagger(\vr')] &= \delta(\vr-\vr'), & [\hat{\Psi}^{(\dagger)}(\vr),\hat{\Psi}^{(\dagger)}(\vr')] &= 0.
+\end{align}
+$\hat{\Psi}(x)$ annihilates a particle at position $\vx$.
+A many-body Hamiltonian operator, which in the position representation is
+\begin{align}
+    \hat{\Ham} &= \sum_{j=1}^N \frac{-\hbar^2}{2m}\del_j^2 + \sum_{j=1}^N V(\vr_j) + \sum_{j<k=1}^N U(\vr_j-\vr_k),
+\end{align} 
+can be written in terms of field operators as 
+\begin{align}
+    \begin{split}
+        \hat{\Ham} = &\int \hat{\Psi}^\dagger(\vr)\left(-\frac{\hbar^2}{2m}\del^2\right)\hat{\Psi}(\vr)\,d^3r + \int \hat{\Psi}^\dagger(\vr)V(\vr)\hat{\Psi}(\vr)\,d^3 r \\
+                     &+\frac12 \iint \hat{\Psi}^\dagger(\vr)\hat{\Psi}(\vr')U(\vr-\vr')\hat{\Psi}(\vr)\hat{\Psi}(\vr')\,d^3r\,d^3r'.
+    \end{split}
+\end{align}
+Note that this is a valid description for \emph{any number} of particles.
+
+\section{k-Space Representation}
+For a bulk fluid, we can assume translational invariance, and ignore the external potential $V(\vr)$.
+If we further assume periodic boundary conditions, 
+\begin{align}
+    \hat{\Psi}(\vr) &= \frac{1}{\sqrt{V}}\sum_{\vk}e^{i\vk\cdot\vr}\ha_{\vk} \implies \ha_{\vk} = \frac{1}{\sqrt{V}} \int_V e^{-i\vk\cdot\vr}\hat{\Psi}(\vr)\,d^3r,
+\end{align}
+i.e. the annihilation and field operators relate to each other via \emph{Fourier transforms} (as do their Hermitian conjugates).
+Substituting in this $k$-space field operator decomposition, it follows that the kinetic energy
+\begin{align}
+    \hat{T} &= \sum_{\vk} \frac{\hbar^2k^2}{2m}\hag_{\vk}\ha_{\vk}.
+\end{align}
+For the interaction energy $\hat{U}$, we deduce
+\begin{align}
+    \hat{U} &= \frac{1}{2V^2} \sum_{\vk_1\vk_2\vk_3\vk_4} \hag_{\vk_1}\hag_{\vk_2}\ha_{\vk_3}\ha_{\vk_4}\iint U(\vr-\vr')e^{-i(\vk_1\cdot\vr + \vk_2\cdot\vr' - \vk_3\cdot\vr' - \vk_4\cdot\vr)}\,d^3r\,d^3r'  \\ 
+            &= \frac{1}{2V} \sum_{\vk_1\vk_2\vk_3\vk_4} \hag_{\vk_1}\hag_{\vk_2}\ha_{\vk_3}\ha_{\vk_4}\delta_{\vk_3+\vk_4,\vk_1+\vk_2} \int U(\vr)e^{i(\vk_4-\vk_1)\cdot\vr}\,d^3r \\
+    \hat{\Ham} &= \sum_{\vk} \frac{\hbar^2k^2}{2m}\hag_{\vk}\ha_{\vk} + \frac12 \sum_{\vk\vk'\vec{q}} U_{\vec{q}}\hag_{\vk+\vec{q}}\hag_{\vk'-\vec{q}}\ha_{\vk'}\ha_{\vk}, \quad U_{\vec{q}} = \frac{1}{V}\int U(\vr)e^{-\vec{q}\cdot\vr}\,d^3r,
+\end{align}
+where we have set $\vk_1\to\vk+\vec{q}, \vk_2\to\vk'-\vec{q}, \vk_3\to\vk', \vk_4\to\vk$.
+The interaction term can be interpreted as a pair of particles scattered from initial states $\vk,\vk'$ to final states $\vk+\vec{q},\vk'-\vec{q}$.
+The momentum transferred between particles is $\vec{q}$, and the matrix element is $U_{\vec{q}}$.
+
+\section{Off-Diagonal Long-Ranged Order (ODLRO)}
+In terms of field operators, the one-particle density matrix is 
+\begin{align}
+    \rho_1(\vr',\vr) &= \langle\hat{\Psi}(\vr)\hat{\Psi}(\vr')\rangle.
+\end{align}
+For a translationally invariant (e.g. thermal equilibrium) state
+\begin{align}
+    \rho_1(\vr',\vr) &= \rho_1(\vr-\vr') = \frac{1}{V}\sum_{\vk\vk'} e^{i(\vk'\cdot\vr'-\vk\cdot\vr)}\langle\hag_{\vk}\ha_{\vk'}\rangle = \frac{1}{V}\sum_{\vk}e^{i\vk\cdot(\vr-\vr')}\langle\hag_{\vk}\ha_{\vk}\rangle,
+\end{align}
+which is the \emph{Fourier transform} of the momentum distribution $n_{\vk}\equiv \langle\hag_{\vk}\ha_{\vk}\rangle$.
+We are typically interested in the case where only one mode is macroscopically occupied (usually $\vk=0$).
+Suppose mode $\vk_0$ has macroscopic occupation $N_0=\langle\hag_{\vk_0}\ha_{\vk_0}\rangle$, and all other $\langle\hag_{\vk}\ha_{\vk}\rangle$ are small. 
+Then, recalling $n_0=N_0/V$,
+\begin{align}
+    n_{\vk} &= N_0\delta_{\vk\vk_0} + f(\vk) \implies \rho_1(\vr-\vr') = n_0 + \frac{1}{(2\pi)^3}\int e^{-i\vk\cdot(\vr-\vr')}f(\vk)\,d^3k,
+\end{align}
+where we have taken the continuum limit over $f(\vk)$.
+If $f(\vk)$ is sufficiently smooth, its Fourier transform will vanish for large $|\vr-\vr'|$, so that 
+\begin{align}
+    \langle\hat{\Psi}(\vr)\hat{\Psi}(\vr')\rangle \to n_0 \text{ as } |\vr-\vr'| \to \infty.
+\end{align}
+This is what is meant by ODLRO.
+
+\section{Coherent States and the Order Parameter}
+One typically links the order parameter to the field operator through $\psi_0(\vr)=\langle\hat{\Psi}(\vr)\rangle$, associated with the condensate mode being occupied by a \emph{coherent state}.
+Recalling the factorisability property of coherent states (Section 13.3), for $|\vr-\vr'|\to\infty$,
+\begin{align}
+    \rho_1(\vr-\vr') &= \langle\hat{\Psi}^\dagger(\vr)\hat{\Psi}(\vr')\rangle = \langle\hat{\Psi}^\dagger(\vr)\rangle\langle\hat{\Psi}(\vr')\rangle = \psi_0^*(\vr)\psi_0(\vr').
+\end{align}
+If the condensation occurs in the $\vk=0$ state, we must have $\psi_0(\vr)=\sqrt{n_0}e^{i\theta}$.
+If the condensate is in a coherent state, we cannot have an exactly defined number of particles. 
+Unlike in the case of an exact number of particles, the phase $\theta$ is then no longer completely random. 
+
+\section{The Weakly Interacting Bose Gas}
+The theory of the weakly interacting Bose gas was developed by \textbf{Nikolai Bogoliubov} to give a \emph{qualitative} picture of some features of superfluid helium. 
+It is however a quantatively useful description of BEC in ultracold atomic gases. 
+
+We assume we are very close to $T=0$ (typical experimental temperatures are $\approx$ nK), and that the system is in a coherent many-particle state, characterised by the macroscopic wavefunction $\psi_0(\vr)$.
+Suppose the many-particle quantum state $|\psi\rangle$ is an ideal coherent state at $T=0$. 
+Then $\hat{\Psi}(\vr)|\psi\rangle = \psi_0(\vr)|\psi\rangle$.
+We can view this as a trial many-particle wavefunction, varying $\psi_0(\vr)$ to variationally minimise the total energy. 
+
+\section{Minimising the Variational Energy}
+With a coherent state, we do not have an exactly defined particle number, and are working within the grand canonical ensemble. 
+We must minimise with respect to the \emph{grand canonical Hamiltonian} $\hat{K}=\hat{\Ham}-\mu\hat{N}$, where $\hat{\Ham}$ is as defined in Eq. (14.3).
+If $|\psi\rangle$ is a coherent state, the variational energy is
+\begin{align}
+    \begin{split}
+        E_0 = \langle\psi|\hat{K}|\psi\rangle = &\int \psi_0^*(\vr)\left[-\frac{\hbar^2\del^2}{2m}+V(\vr)\right]\psi_0(\vr)\,d^3r \\
+                                                &+\frac12 \iint U(\vr-\vr')|\psi_0(\vr)|^2|\psi_0(\vr')|^2\,d^3r\,d^3r' - \mu\int |\psi_0(\vr)|^2\,d^3r.
+    \end{split}
+\end{align}
+The chemical potential $\mu$ is a Lagrange multiplier which preserves the \emph{mean} particle number
+\begin{align}
+    N &= \langle\hat{N}\rangle = \int \langle\hat{\Psi}^\dagger(\vr)\hat{\Psi}(\vr)\rangle\,d^3r.
+\end{align}
+Hence, $\frac{\delta E_0}{\delta\psi_0^*(\vr)}=0$ implies a form of the Gross-Pitaevskii equation:
+\begin{align}
+    \mu\psi_0(\vr) &= \left[-\frac{\hbar^2\del^2}{2m}+V(\vr)+\int U(\vr-\vr')|\psi_0(\vr')|^2\,d^3r'\right]\psi_0(\vr).
+\end{align}
+
+\section{Fluctuations about the Coherent State}
+To examine effects of deviations from the coherent trial ground state $|\psi\rangle$, \textbf{Bogoliubov} expressed the field operator in terms of its expectation value plus a small quantum fluctuation term:
+\begin{align}
+    \hat{\Psi}(\vr) &= \psi_0(\vr) + \delta\hat{\Psi}(\vr).
+\end{align}
+These \emph{fluctuation operators} also have bosonic commutation relations:
+\begin{align}
+    [\delta\hat{\Psi}(\vr),\delta\hat{\Psi}^\dagger(\vr')] &= \delta(\vr-\vr'), & [\delta\hat{\Psi}(\vr),\delta\hat{\Psi}(\vr')] &= [\delta\hat{\Psi}^\dagger(\vr),\delta\hat{\Psi}^\dagger(\vr')] = 0.
+\end{align}
+Substituting this expansion of $\hat{\Psi}(\vr)$ into $\hat{K}$, we neglect terms involving products of 3 or 4 fluctuation operators as ``small".
+Hence, $\hat{K}\approx E_0+\hat{\Ham}_1+\hat{\Ham}_2$, where $\hat{\Ham}_1$ and $\hat{\Ham}_2$ collect terms linear and quadratic in the fluctuation operators, respectively. 
+Eq. (14.16) implies $\hat{\Ham}_1=0$, and so we concentrate on
+\begin{align}
+    \begin{split}
+        \hat{\Ham}_2 = &\int \delta\hat{\Psi}^\dagger(\vr)\left[-\frac{\hbar^2\del^2}{2m}+V(\vr)-\mu\right]\delta\hat{\Psi}(\vr)\,d^3r + 2g\int |\psi_0(\vr)|^2\delta\hat{\Psi}^\dagger(\vr)\delta\hat{\Psi}(\vr)\,d^3r \\
+                       &+\frac{g}{2}\int \left[\delta\hat{\Psi}^\dagger(\vr)\delta\hat{\Psi}^\dagger(\vr)\psi_0(\vr)^2 + \delta\hat{\Psi}(\vr)\delta\hat{\Psi}(\vr)\psi_0^*(\vr)^2\right]\,d^3r,
+    \end{split}
+\end{align}
+where we have approximated $U(\vr-\vr')=g\delta(\vr-\vr')$.
+This is legitimate for low-energy scattering, i.e. very cold temperatures.
+
+\section{Bogoliubov Transformation}
+In the homogeneous (setting $V(\vr)=0$), and letting $\psi_0=\sqrt{n_0}$, then in $k$-space,
+\begin{align}
+    \hat{\Ham}_2 &= \sum_{\vk}\left[\left(\frac{\hbar^2k^2}{2m}-\mu\right)\hag_{\vk}\ha_{\vk} + \frac{gn_0}{2}\left(\hag_{\vk}\hag_{-\vk} + 4\hag_{\vk}\ha_{\vk} + \ha_{-\vk}\ha_{\vk}\right)\right].
+\end{align}
+Note that from Eq. (14.16), we can determine that $\mu=gn_0$.
+$\hat{\Ham}_2$ can be diagonalised by means of a \emph{Bogoliubov transformation.}
+We define new operators $\hat{b}_{\vk},\hat{b}_{-\vk}$ implicitly through
+\begin{align}
+    \ha_{\vk} &= u_{\vk}\hat{b}_{\vk} - v_{\vk}\hat{b}^\dagger_{-\vk}, & \hag_{\vk} &= u_{\vk}\hat{b}^\dagger_{\vk} - v_{\vk}\hat{b}_{-\vk}.
+\end{align}
+The \emph{quasiparticle operators} $\hat{b}_{\vk},\hat{b}^\dagger_{\vk}$ have bosonic commutation relations if $u_{\vk}^2-v_{\vk}^2=1$.
+Substituting these into Eq. (14.20), we eliminate the anomalous terms ($\propto \hat{b}_{\vk}\hat{b}_{-\vk},\hat{b}^\dagger_{\vk}\hat{b}^\dagger_{-\vk}$) by setting
+\begin{align}
+    \left(\frac{\hbar^2k^2}{2m}+gn_0\right) \frac{2u_{\vk}}{v_{\vk}} + gn_0\left(1+\frac{u_{\vk}^2}{v_{\vk}^2}\right) = 0.
+\end{align}
+The quasiparticle excitations can then be shown to have the energy spectrum
+\begin{align}
+    E_{\vk} &= \sqrt{\frac{\hbar^2k^2}{2m}\left(\frac{\hbar^2k^2}{2m}+2gn_0\right)}.
+\end{align}
+For small $k$ ($\ll\sqrt{4gn_0m/\hbar}$), $E_{\vk}\approx ck$ where $c=\sqrt{\hbar^2gn_0/m}$ is the phonon velocity or \emph{speed of sound.}
+For large $k$, $E_{\vk}\approx \hbar^2k^2/2m$ tends to the free particle energy. 
+This explains the linear dispersion near $k=0$ necessary for superfluidity. 
+A weakly interacting Bose gas is a superfluid; a non-interacting Bose gas is not. 
 
 
 
