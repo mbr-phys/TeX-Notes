@@ -407,8 +407,57 @@ Back to our $\lips$:
           &= \frac{d\Omega}{(2\pi)^2}\frac{|p_q|}{8E_{p_q}} = \frac{d\Omega}{(2\pi)^2}\frac{\sqrt{s-4m^2}}{8\sqrt{s}}
 \end{align}
 
-
-
+\chapter{Electroweak Interactions}
+Spontaneous symmetry breaking induces SU(2)$_L\otimes$U(1)$_Y\to$U(1)$_{EM}$.
+We have the Higgs potential for this as
+\begin{align}
+    V(H) &= -m_H^2H^\dagger H + \lambda(H^\dagger H)^2, \\
+    \langle0|H|0\rangle &= \begin{pmatrix} 0 \\ \frac{v}{\sqrt{2}}\end{pmatrix},
+\end{align}
+producing a Mexican hat potential with a VEV shown above. 
+This Higgs mechanism allows us to generate gauge boson masses for the $W^\pm,Z$ bosons. 
+For the vacuum value, we have
+\begin{align}
+    D_\mu\langle H\rangle &= i\begin{pmatrix} \frac{g'}{2}B_\mu + \frac{g}{2}W_\mu^3 & \frac{g}{2}\left(W^1_\mu - iW_\mu^2\right) \\ \frac{g}{2}\left(W_\mu^1+iW_\mu^2\right) & \frac{g'}{2}B_\mu - \frac{g}{2}W_\mu^3\end{pmatrix} \begin{pmatrix} 0 \\ \frac{v}{\sqrt{2}} \end{pmatrix} = \frac{iv}{\sqrt{2}}\begin{pmatrix} \frac{g}{2}(W_\mu^1-iW_\mu^2) \\ \frac{g'}{2}B_\mu - \frac{g}{2}W_\mu^2\end{pmatrix}.
+\end{align}
+The kinetic term for the vec of the Higgs is the modulus of this, i.e.
+\begin{align}
+    D_\mu\langle H\rangle^\dagger D^\mu\langle H\rangle &= \frac{v^2}{2}\left(\frac{g^2}{4}|W_\mu^1-iW_\mu^2|^2 + \left(\frac{g'}{2}B_\mu - \frac{g}{2}W_\mu^3\right)^2\right).
+\end{align}
+The gauge fields $W^i,B$ do not themselves have mass terms, but from the above, we can introduce linear combinations of them which will:
+\begin{align}
+    W_\mu^\pm &= \frac{1}{\sqrt{2}}\left(W_\mu^1\mp iW_\mu^2\right) & \frac{g}{2}W_\mu^3 - \frac{g'}{2}B_\mu &= \frac{\sqrt{g^2+g'^2}}{2}Z_\mu,
+\end{align}
+so we now have the $W^\pm,Z$ fields corresponding to the real observable bosons, where the massless photon field $A_\mu$ comes from the relation
+\begin{align}
+    \begin{pmatrix} Z_\mu \\ A_\mu \end{pmatrix} &= \begin{pmatrix} \cos\theta_w & -\sin\theta_w \\ \sin\theta_w & \cos\theta_w\end{pmatrix}\begin{pmatrix} W_\mu^3 \\ B_\mu^3\end{pmatrix}, \quad \cos\theta_w = \frac{g}{\sqrt{g^2+g'^2}}.
+\end{align}
+We can feed these fields back into Eq. (10.4) as
+\begin{align}
+    D_\mu\langle H\rangle^\dagger D^\mu\langle H\rangle &= \frac{v^2}{2}\left(\frac{g^2}{2}W_\mu^+W^{-\mu} + \frac{g^2}{4\cos^2\theta_w}Z_\mu Z^\mu\right),
+\end{align}
+which produce mass terms in the Lagrangian appearing as
+\begin{align}
+    \La_M &= M_W^2W_\mu^+ W^{-\mu} + \frac12 M_Z^2 Z_\mu Z^\mu.
+\end{align}
+We can read the masses out from this, yielding
+\begin{align}
+    M_W &= \frac{gv}{2} = 80\,\text{GeV}, & M_Z &= \frac{gv}{2\cos\theta_w} = 91\,\text{GeV}.
+\end{align}
+From all this, we can then write our lengthy descriptions of $D_\mu$ to see the full self-interactions of these bosons where we will see three- and four-point vertices emerges. 
+It is then convenient to address the coupling of electroweak bosons to fermions. 
+The electromagnetic coupling is the U(1) symmetry left over from SSB, and we define its coupling strength as 
+\begin{align}
+    e &= g\sin\theta_w,
+\end{align}
+where the only gauge invariant combination of the weak isospin and hypercharge charges we had previously is now the electric charge, given by
+\begin{align}
+    Q^L_{em} &= \frac{\sigma_3}{2} + Q^L_Y,\quad Q_{em}^R = Q_Y^R \\
+    Q_{em} &= \left(\frac{\sigma_3}{2}+Q_Y^L\right)P_L + Q_Y^RP_R,
+\end{align}
+where $L,R$ denotes left- and right-handed fermions. 
+It is worth noting that electromagnetism is not chiral, i.e. $Q_{em}^L = Q^R_{em}$ and there is no $\gamma_5$ term in the coupling. 
+Chirality does however remain in the couplings of the $W^\pm,Z$ bosons, where $W^\pm$ bosons still only couple to left-handed fields.  
 
 
 

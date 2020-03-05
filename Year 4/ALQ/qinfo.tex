@@ -1342,8 +1342,7 @@ There is also a heating due to random recoils due to spontaneous emission.
         \end{align}
         This is the Doppler Cooling Limit. 
         Typically, $T_{dopp}\approx1-100\,\mu$K - the coldest thing in the Universe. 
-
-\end{itemize}   
+\end{itemize}
 We can use laser cooling to load cold atoms into optical tweezers. 
 As with before, we have cycles of absorption and spontaneous emission, but this is only found in simple atoms as we need a \textbf{Closed Transition.}
 
@@ -1368,8 +1367,171 @@ As both are ground states, they do not decay (not spontaneous emission), i.e. lo
 
 \chapter{}
 
+\chapter{Rydberg Atoms}
+Let's look at the DiVincenzo criteria for alkalia-atom QC!
+\begin{enumerate}
+    \item Initialisation
+        \begin{enumerate}
+            \item Optical tweezer traps \ding{51} 
+            \item Laser cooling \ding{51}
+            \item Optical pumping to initialise qubit state ($|0\rangle$ or $|1\rangle$) \ding{51}
+        \end{enumerate}
+    \item Gates
+        \begin{enumerate}
+            \item Single qubit gates \ding{51}
+            \item Stimulated Raman transition \ding{51}
+            \item Two-qubit gates \ding{56}
+        \end{enumerate}
+    \item Read-out
+        \begin{enumerate}
+            \item Fluorescence on $|g\rangle\to|e\rangle$ transition \ding{51}
+                \textit{doodle}
+        \end{enumerate}
+    \item Low decoherence
+        \begin{enumerate}
+            \item $|0\rangle$ and $|1\rangle$ are both `ground' state, i.e. hyperfine states with the $|g\rangle$ manifold \ding{51}
+        \end{enumerate}
+    \item Scaling 
+        \begin{enumerate}
+            \item Optical tweezer array \ding{51}
+        \end{enumerate}
+\end{enumerate}
+The only thing we have left to do is the two-qubit gates, i.e. we need interacting qubits. 
 
+\section{Two-Qubit Gates}
+Atoms in states $|g\rangle$ and $|e\rangle$ do not interact unless they are very close ($\ll100\,$nm apart), but we will create our atom qubit array with spacings of order $5-10\,\mu$m.
+We need some way of introducing interactions at these scales.
 
+To create interaction, we excite to \textbf{Highly-Excited Rydberg States,} i.e. states with principal quantum number $n\gtrapprox50$.
+
+\section{Rydberg Scalings}
+If we consider the Bohr model, and take a state with principal quantum number $n$, then 
+\begin{align}
+    mv_nr_n &= n\hbar.
+\end{align}
+Equating the centripetal force with the Coulomb force, we find
+\begin{align}
+    r_n &= n^2a_0.
+\end{align}
+This tells us that the size of the electronic wavefunction is $\propto n^2$; for $n\approx100$, the atom is $> 1\,\mu$m across.
+The dipole $D$ is also $\propto n^2$.
+The dipole-dipole $\propto D^2\propto n^4$, so using high $n$ we can induce strong interactions. 
+
+Using the Bohr model and virial theorem, the energy is $\frac12$ the potential energy:
+\begin{align}
+    E_n &= -\frac{e^2}{2(4\pi\e_0)r_n} = -\frac{R_H}{n^2},
+\end{align}
+where $R_H$ is the Rydberg constant for Hydrogen. 
+For Cs, 
+\begin{align}
+    E_n &= - \frac{R_{Cs}}{n^*},\quad n^* = n - \delta,
+\end{align}
+where $n^*$ is the reduced principal quantum number offset from $n$ by $\delta$.
+
+\section{Rydberg Interactions}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$|g\rangle$} -- (1.5,0);
+        \draw (2,0) -- (3.5,0) node[anchor=west] {$|g\rangle$};
+        \draw (0,1.5) node[anchor=east] {$|r\rangle$} -- (1.5,1.5);
+        \draw (2,1.5) -- (3.5,1.5) node[anchor=west] {$|r\rangle$};
+        \draw[-Latex] (0.75,0) -- (0.75,1.5) node[anchor=east,midway] {atom 1};
+        \draw[-Latex] (2.75,0) -- (2.75,1.5) node[anchor=west,midway] {atom 2};
+        \draw[-Latex] (1.5,-0.2) -- (2,-0.2) node[anchor=north,midway] {$R_{12}$};
+    \end{tikzpicture}
+\end{figure}
+\textit{finish doodle}
+Exciting two atoms into states $|r\rangle$ allows them to strongly via dipole-dipole interactions (DDI). 
+To calculate the DDI, we need to consider couplings to other Rydberg states, e.g. $|r'\rangle$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$|g\rangle$} -- (1.5,0);
+        \draw (2,0) -- (3.5,0) node[anchor=west] {$|g\rangle$};
+        \draw (0,1.5) node[anchor=east] {$|r\rangle$} -- (1.5,1.5);
+        \draw (2,1.5) -- (3.5,1.5) node[anchor=west] {$|r\rangle$};
+        \draw[-Latex] (0.75,0) -- (0.75,1.5) node[anchor=east,midway] {atom 1};
+        \draw[-Latex] (2.75,0) -- (2.75,1.5) node[anchor=west,midway] {atom 2};
+        \draw (0,2) node[anchor=east] {$|r'\rangle$} -- (1.5,2);
+        \draw (2,2) -- (3.5,2) node[anchor=west] {$|r'\rangle$};
+        \draw[Latex-Latex] (1,1.5) -- (1,2);
+        \draw[Latex-Latex] (3,1.5) -- (3,2);
+    \end{tikzpicture}
+\end{figure}
+The DDI mixes some of $|r'\rangle$ into the state $|r\rangle$ which gives rise to the Van Der Waals energy shift. 
+This can be written as a matrix
+\begin{align}
+    \hat{\Ham} &= \hbar\begin{pmatrix} 0 & 0 & 0 & V \\ 0 & \om_{rr'} & V & 0 \\ 0 & V & \om_{rr'} & 0 \\ V & 0 & 0 & 2\om_{rr'}\end{pmatrix},
+\end{align}
+where $\hbar\om_{rr'}$ is the energy splitting between $r$ and $r'$, and 
+\begin{align}
+    V &= \frac{D^2/\hbar}{4\pi\e_0 R_{12}^3}.
+\end{align}
+The basis for $\hat{\Ham}_{DDI}$ is $|rr\rangle,|rr'\rangle,|r'r\rangle,|r'r'\rangle$.
+Consider the sub-bases $|rr\rangle,|r'r'\rangle$:
+\begin{align}
+    \hat{\Ham} &= \hbar\begin{pmatrix} 0 & V \\ V & 2\om_{rr'}\end{pmatrix}.
+\end{align}
+This should be familiar from previous examples.
+This is analagous to the light shift $\frac{\Omega^2}{4\Delta}$.
+\textit{doodle}
+This is the Van Der Waals Interaction.
+\begin{align}
+    V &\propto \frac{1}{R_{12}^3},\quad V_{vdW} \propto \frac{1}{R_{12}^6} \\
+    V &\propto D^2,\quad D\propto n^2 \\
+    V &\propto n^4 \\ 
+    E_n &= -\frac{R_{Cs}}{n^2},\quad E_{n+1} -N \propto \frac{1}{n^3},\; n\gg 1, \\
+    V_{vdW} &\propto \frac{V^2}{\om_{rr'}} \propto \frac{n^8}{n^{-3}} \propto n^{11}.
+\end{align}
+So van der Waals has $n^{11}$ scaling! 
+Tunability is strength of interactions.
+
+\chapter{Rydberg Blockade and Entanglement}
+\textit{doodle}
+Excitation linewidth $|g\rangle\to|r\rangle$ for $\Omega\gg\Gamma$ is of order $\Omega$.
+If $V_{vdW}>\Omega$ (linewidth), the excitation is blocked. 
+This is called \textbf{Rydberg Blockade.}\\
+This occurs at distance $R_{12}$, where 
+\begin{align}
+    V_{vdW} &= \frac{C_6}{R_{12}^6} = \Omega \\
+    R_{12} &= \left(\frac{C_6}{\Omega}\right)^{1/6} = R_b,
+\end{align}
+where $R_b$ is the blockade radius, $R_b\approx10\mu$m which is relatively large!
+\emph{doodle}
+We cannot excite the second Rydberg atom within this sphere.
+
+Now we consider starting with both atoms in the ground state, and drive the $|g\rangle\to|r\rangle$ transition on resonance. 
+\emph{doodle}
+We have two two-level systems, giving a four state basis: $|gg\rangle,|gr\rangle,|rg\rangle,|rr\rangle$.
+Recall with one atom and $\Delta=0$, our interaction Hamiltonian was given as
+\begin{align}
+    \hat{\Ham}_{int} &= \frac{\hbar}{2}\begin{pmatrix} 0 & \Omega \\ \Omega & 0\end{pmatrix}.
+\end{align}
+Now for two atoms, our interaction Hamiltonian reads
+\begin{align}
+    \Ham &= \Ham_{int}\otimes\sigma_0 + \sigma_0\otimes\Ham_{int} \\
+         &= \begin{pmatrix}0 & \Omega \\ \Omega & 0\end{pmatrix}\otimes\begin{pmatrix}1&0\\0&1\end{pmatrix} + \begin{pmatrix}1&0\\0&1\end{pmatrix} \otimes\begin{pmatrix}0&\Omega\\\Omega&0\end{pmatrix} \\
+         &= \begin{pmatrix} 0&0&\Omega&0\\0&0&0&\Omega\\\Omega&0&0&0\\0&\Omega&0&0\end{pmatrix} + \begin{pmatrix} 0&\Omega&0&0\\\Omega&0&0&0\\0&0&0&\Omega\\0&0&\Omega&0\end{pmatrix} \\
+         &= \begin{pmatrix} 0&\Omega&\Omega&0\\\Omega&0&0&\Omega\\\Omega&0&0&\Omega\\0&\Omega&\Omega&0\end{pmatrix} + \begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&V_{vdW}\end{pmatrix} \\
+    \Ham_{|g\rangle\to|r\rangle} &= \frac{\hbar}{2}\begin{pmatrix} 0&\Omega&\Omega&0\\\Omega&0&0&\Omega\\\Omega&0&0&\Omega\\0&\Omega&\Omega&2V_{vdW}\end{pmatrix}
+\end{align}
+This is valid for $R_{12}<R_b,V_{vdW}\gg\Omega$ ($\frac{\hbar}{2}$ should be throughout it, but he missed it out and I'm lazy).
+The $|rr\rangle$ state is completely decoupled by the vdW shift, so we can neglect this and turn it into a 3 state basis as
+\begin{align}
+    \Ham_{|g\rangle\to|r\rangle} &= \frac{\hbar}{2}\begin{pmatrix} 0&\Omega&\Omega\\\Omega&0&0\\\Omega&0&0\end{pmatrix}.
+\end{align}
+We have the eigenvectors,
+\begin{align*}
+    |gg\rangle, \quad \frac{1}{\sqrt{2}}\left(|gr\rangle+|rg\rangle\right),\quad \frac{1}{\sqrt{2}}\left(|gr\rangle-|rg\rangle\right).
+\end{align*}
+If we then rewrite the interaction in the basis of these states, we get
+\begin{align}
+    \Ham &= \frac{\hbar}{2}\begin{pmatrix} 0 & \sqrt{2}\Omega & 0 \\\sqrt{2}\Omega & 0 & 0 \\ 0 & 0 & 0\end{pmatrix},
+\end{align}
+where we can now see that $|gg\rangle$ couples to $\frac{1}{\sqrt{2}}(|gr\rangle+|rg\rangle)$ with Rabi frequency $\sqrt{2}\Omega$, but it does not couple to $\frac{1}{\sqrt{2}}(|gr\rangle-|rg\rangle)$ at all.
+\emph{doodle}
+The effect of the Rydberg blockade is that we excite an entangled Bell state where only one atom is in the Rydberg state but we do not know (and cannot know) which one. 
 
 
 
