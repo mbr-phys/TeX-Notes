@@ -1219,7 +1219,6 @@ We want to plot this for three cases:
 We can use spontaneous scattering for cooling!
 Laser cooling works through a spontaneous scattering force.
 Each scattering event cause a recoil on the qubit or atom.
-\emph{doodle}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1733,17 +1732,82 @@ where we can now see that $|gg\rangle$ couples to $\frac{1}{\sqrt{2}}(|gr\rangle
 \emph{doodle}
 The effect of the Rydberg blockade is that we excite an entangled Bell state where only one atom is in the Rydberg state but we do not know (and cannot know) which one. 
 
+\chapter{Rydberg Interactions}
+\section{Review of last week}
+We have two atoms:
+\emph{doodle}
+We have both our qubit states $|0\rangle,|1\rangle$ contained as part of hyperfine splitting in a initial state $|g\rangle$.
+In order to create entanglement, we excite them to the highly-excited Rydberg state, $|r\rangle,n>50$.
+In $|r\rangle$, atoms interact strongly via dipole-dipole interactions (DDI) that couple to other states, e.g. $|r'\rangle$.
+Due to interactions, the energy levels of these states move. 
+If we have a distance between two atoms $R_{12}<R_b$ ($R_b$ the blockade radius), then excitation to $|r,r\rangle$ is blocked due to Van der Waals shift.
+Instead, we excited either or of
+\begin{align*}
+    \frac{1}{\sqrt{2}}\left(|gr\rangle+|rg\rangle\right),\quad \frac{1}{\sqrt{2}}\left(|0r\rangle+|r0\rangle\right).
+\end{align*}
+This will oscillate between $|00\rangle$ and $\frac{1}{\sqrt{2}}\left(|0r\rangle+|r0\rangle\right)$ with frequency $\sqrt{2}\Omega$.
+Alternatively:
+\emph{doodle}
+We excite $|r,r'\rangle$, and we find that this couples only to $|r',r\rangle$ and our excitation energy oscillates back and forth with a frequency
+\begin{align}
+    V &= \frac{D^2/\hbar^2}{4\pi\e_0 R_{12}^2}.
+\end{align}
+This is called a flip flop interaction. Apparently. 
+For example, if we excite one atom into the s series and the other into the corresponding p series, the coupled state can oscillate as one falls to p from s and the other rises to s from p then vice versa again. 
+
+\section{The Start Of The Lecture, Time Stamped 15:35}
+The Werner state,
+\begin{align}
+    |W\rangle &= \frac{1}{\sqrt{2}}\left(|0r\rangle + |r0\rangle\right).
+\end{align}
+With what fidelity have we created the state $|W\rangle$ experimentally?
+We need to creat the density matrix for this state,
+\begin{align}
+    \rho_W &= |W\rangle\langle W| = \frac12 \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 1 & 1 & 0 \\ 0 & 1 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}.
+\end{align}
+But if we measure the experimental value of the density, we have
+\begin{align}
+    \rho_{expt} &= \frac12 \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & \rho_{22} & \rho_{23} & 0 \\ 0 & \rho_{32} & \rho_{33} & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}.
+\end{align}
+This is an approximation, where the zero elements could in fact be very small numbers. 
+Then, we define \textbf{Fidelity} as
+\begin{align}
+    \mathcal{F} &= \langle W|\rho_{expt}|W\rangle.
+\end{align}
+To measure the components of the density matrix, we need to do perform a rotation on the state before measurement, allowing us access to off-diagonal elements.
+This is known as \textbf{Quantum State Tomography.}
+What we want to do is perturb one part of the superposition, thereby adding a phase.
+\emph{doodle}
+We want to shine on $|0\rangle\to|e\rangle$ transition on atom 1, $|1\rangle$, such that $|0\rangle$ on atom 1 accumulates a phase $e^{-i\phi}$ and state
+\begin{align}
+    |W'\rangle &= \frac{1}{\sqrt{2}}\left(e^{-i\phi}|0r\rangle + |r0\rangle\right).
+\end{align}
+Apply $\pi$ pulse on $|W\rangle\to|0\rangle$ transition. 
+This is given by the matrix
+\begin{align}
+    \hat{R} &= \begin{pmatrix} 0 & \frac{i}{\sqrt{2}} & \frac{i}{\sqrt{2}} & 0 \\ \frac{i}{\sqrt{2}} & \frac12 & -\frac12 & 0 \\ \frac{i}{\sqrt{2}} & -\frac12 & \frac12 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} = \begin{bmatrix} |00\rangle \\ |0r\rangle \\ |r0\rangle \\ |rr\rangle \end{bmatrix} \\
+    \hat{r}_{W'}\hat{R}^\dagger &= \frac12 \begin{pmatrix} 0 & 0 & 0 & 0 \\ -\frac{1}{\sqrt{2}}\left(1+e^{-i\phi}\right) & \frac12(1-e^{-i\phi}) & -\frac12(1-e^{-i\phi}) & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+\end{align}
+\emph{doodle - Write extra line from notes.}
+$P_{00}$, the probability to be in $|00\rangle$ is
+\begin{align}
+    P_{|00\rangle} &= \frac12(1+\cos\phi).
+\end{align}
+\emph{doodle THE SAME PLOT YET AGAIN}
+Application of light to one changes the observation on the other - this only applies within the blockade sphere, $R<R_b$. 
+
+
+
+
+
+
+
+
 
 
 
 
 \end{document}
-
-
-
-
-
-
 
 
 

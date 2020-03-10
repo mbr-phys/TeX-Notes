@@ -468,9 +468,82 @@ This parton will receive a large momentum transfer and break away from the proto
     \centering
     \includegraphics[scale=1.2]{dis.pdf}
 \end{figure}
-
+To see how if this agrees with experimental data, let's consider the scattering at a partonic level, specifically choosing a $u$ quark and the scattering $e+u\to e+u$.
+Let's assume the $u$ quark carries a fraction $x$ of the total momentum of the proton, then the partonic process is
+\begin{align}
+    -i\hat{\mathcal{M}} &= ie\bar{u}_e(k')\gamma_\mu u_e(k)\frac{-ig^{\mu\nu}}{q^2}\left(-i\frac{2e}{3}\right)\bar{u}_u(p')\gamma_\nu u_u(xp),
+\end{align}
+with $q=k-k'=p'-xp$ and we use the `hat' to denote partonic quantities. 
+Recall the formula for the cross-section, which in this case we can simplify a bit since we have \emph{relativistic particles} (we take $q^2\gg m_i^2$),
+\begin{align}
+    d\hat{\sigma} &= \frac12 \frac{1}{2|\vk|2x|\vec{p}|} \frac{d^3\vec{p}'\,d^3\vk'}{2|\vk'|(2\pi)^32|\vec{p}'|(2\pi)^3}|\hat{\mathcal{M}}|^2 (2\pi)^4 \delta^4(xp+k-p'-k').
+\end{align}
+If one works on the phase space for the final parton, 
+\begin{align}
+    \begin{split}
+        (2\pi)^4\delta^4(xp+q-p')\frac{d^3\vp'}{(2\pi)^32|\vp'|} &= \delta(x|\vp|+q^00|x\vp+\vec{q}|)\frac{2\pi}{2|x\vp+\vec{q}|} \\
+                                                                 &= \frac{\pi}{p\cdot p'}\delta\left(x+\frac{q^2}{2p\cdot q}\right) = 2\pi\frac{p\cdot q}{p\cdot p'}\delta(2p\cdot qx + q^2),
+    \end{split}
+\end{align}
+where $q=k-k'$.
+We can rewrite the above for the lepton phase space by changing the variables from $|\vk|,\cos\theta$ is the CoM frame to $q^2,p\cdot q$ as
+\begin{align}
+    \frac{d^3\vk'}{(2\pi)^32E_{\vk'}} &= \frac{d(q^2)\,d(p\cdot q)}{4(2\pi)^2p\cdot k},
+\end{align}
+where we also integrated over the angle $\phi\in[0,2\pi)$ since the amplitude does not depend on it.
+For the matrix element, since we do not know the spin of the particles involved, we average over incoming and sum over outgoing as
+\begin{align}
+    \frac{1}{2^2}\sum_{s_e,s_u}\sum_{s_e',s_u'} \hat{\mathcal{M}}\hat{\mathcal{M}}^\dagger &= \frac14 \sum_{s_e,s_u}\sum_{s_e',s_u'} \bigg|\bar{u}_e(k',s_e')\gamma_\mu u_e(k,s_e)\frac{e^2}{q^2}\frac23 \bar{u}_u(p',s_u')\gamma^\mu u_u(xp,s_u)\bigg|^2 \\
+                                                                                           &= \left(\frac{2e^2}{3q^2}\right)^2 4\text{Tr}(\gamma_\mu x\cancel{p}\gamma_\nu \cancel{p}')\text{Tr}(\gamma^\mu\cancel{k}\gamma^\nu\cancel{k}') \\
+                                                                                           &= \left(\frac{2e^2}{3q^2}\right)^28\left((xp\cdot k)(p'\cdot k')+(xp\cdot k')(p'\cdot k)\right) \\
+                                                                                           &= \left(\frac{2e^2}{3q^2}\right)^28\left((xp\cdot k)^2+(xp\cdot k')^2\right).
+\end{align} 
+We then put all this together for the cross-section and find
+\begin{align}
+    d\hat{\sigma} &= \left(\frac{2e^2}{3q^2}\right)^2\frac{1}{2(2xp^0)(2k^0)}8\left((xp\cdot k')^2\right) \frac{d(q^2)\,d(p\cdot q)}{4(2\pi)^2p\cdot k}\frac{\pi}{p\cdot q}\delta\left(x+\frac{q^2}{2p\cdot q}\right) \\
+                  &= x\left(\frac{2e^2}{3q^2}\right)^2\frac{(p\cdot k)^2+(p\cdot(k-q))^2}{8\pi p\cdot q(p\cdot k)^2}\delta\left(x+\frac{q^2}{2p\cdot q}\right)\,d(q^2)\,d(p\cdot q).
+\end{align}
+Now comes the part that we cannot compute: what is the probability of the photon bumping into  parton with fraction of the momentum $x$?
+This is a magnitude which we cannot estimate in perturbation theory. 
+Instead, we name it the \textbf{parton distribution function} $f_u(x)$ and sum over it:
+\begin{align}
+    \begin{split}
+        d\sigma = d\hat{\sigma}f_u(x)\,dx &= \left(\frac{2e^2}{3q^2}\right)^2\frac{p\cdot k}{4\pi}\left(1+\frac{\left(p\cdot(k-q)\right)^2}{(p\cdot k)^2}\right)\,d(p\cdot q)xf_u(x)\,dx \\
+                                          &= \frac{e^2}{8\pi}\frac{s}{q^4}\left(\frac{2e}{3}\right)^2\left(1+(1-y)^2\right)\,dy\,xf_u(x)\,dx,
+    \end{split}
+\end{align}
+where we used the Dirac delta to set
+\begin{align}
+    x &= -\frac{q^2}{(2p\cdot q)}, & s &= (p+k)^2\approx 2p\cdot k,
+\end{align}
+and found appropriate to change variable from $p\cdot q$ to variable $y=\frac{p\cdot q}{p\cdot k}$.
+Finally we know it's not only the $u$ quark in the proton but also the $d$, so we add it up too:
+\begin{align}
+    d\sigma_{eP\to eX} &= \frac{e^2}{8\pi}\frac{s}{q^4}\left(1+(1-y)^2\right)\,dy\,\left[\left(\frac{2e}{3}\right)^2f_u(x) + \left(\frac{-e}{3}\right)^2f_d(x)\right]\,dx,
+\end{align}
+where by $eX$ in the final state, we sum over all possible products of the collision, termed \emph{inclusive.}
+We do not know a priori $f_{u,d}(x)$, but this can still be a predictive results which can be tested against data.
+The general cross-section without assuming anything about the components of the proton, only using electromagnetic gauge invariance, reads
+\begin{align}
+    d\sigma_{eP\to eX} &= \frac{e^4}{4\pi}\frac{s}{q^4}\left(xy^2F_1(x,y) + (1-y)F_2(x,y)\right)\,dx\,dy,
+\end{align}
+where $F_{1,2}$ arbitrary functions. 
+Even if we start from arbitrary parton distribution functions, we cannot obtain arbitrary $F_{1,2}$, since one $f$ only depends on $x$. 
+Expressed in terms of $F_{1,2}$, the conditions that follow from our quark description read
+\begin{align}
+    F_2(x,y) &= 2xF_1(x) = \sum_i Q_i^2 xf_i(x),
+\end{align}
+with $Q_i$ the charge of the parton in units of $e$ ($\frac23,-\frac13$ for $u,d$).
+This relation is known as the Callan-Gross equation. 
+The fact that the functions $F_{1,2}$ depend only on $x$ is knon as Bjorken scaling and a way to test it is to extract $F_{1,2}$ from experiment and plot them for fixed $x$ and varying $y$; if they do not change, the Callan-Gross relation holds and the quark model prediction is right.
 
 \chapter{PDFs and Hadronic vs Partonic}
+Studying deep inelastic scattering showed that the cross-section of the process $eP\to eX$ (where $X$ represents anything that can be produced) can be expressed as an integral over the partonic process times a function $f(x)$ of the fraction of momentum $x$, i.e.
+\begin{align}
+    \int d\sigma_{eP\to eX} &= \int \sum_i f_i(x)\,d\sigma_{ei\to ei}\,dx.
+\end{align}
+These functions $f$ are called Parton Distribution Functions and their extraction from experiment (we cannot compute them) provides a window into the proton's inner structure. 
+We
 
 \chapter{Quantum Chromodynamics}
 \begin{figure}[H]

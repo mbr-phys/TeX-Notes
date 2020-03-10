@@ -13,7 +13,6 @@
 \newcommand\hsig{\hat{\sigma}}
 \newcommand\hd{\hat{\unl{d}}}
 \newcommand\hrho{\hat{\rho}}
-\newcommand\vk{\unl{k}}
 
 \title{General Relativity \vspace{-20pt}}
 \author{Richard Bower}
@@ -682,8 +681,124 @@ However, hovering at $r=2m$ requires an infinitely powerful rocket - you can't h
     \includegraphics[scale=0.7]{gg.jpg}
 \end{figure}
 
+\chapter{}
+Falling into a black hole!
+We have better ways of describing space-time. 
+For radial paths, we have the metric and the E-L equations:
+\begin{align}
+    c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 \\
+    \dot{t} &= \left(1-\frac{2m}{r}\right)^{-1},\quad \dot{r} = \sqrt{\frac{2m}{r}}
+\end{align}
+$\dot{t}$ is dropped as $\to\infty$.
+We will define a new time coordinate and it can rewritten as
+\begin{align}
+    c\,dT &= cd\tau = c\left(1-\frac{2m}{r}\right)\,dt, \\
+    c\,dT &= c\,dt - \frac{2mc}{r}\,dt,\\
+    dt &= \frac{\dot{t}}{\dot{r}} = \left(\frac{-1}{1-\frac{2m}{r}}\right)\sqrt{\frac{2m}{r}}\frac{1}{c}dr, \\
+    c\,dT &= c,dt + \sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right)^{-1}\,dr, \\
+    c^2d\tau^2 &= \left(1-\frac{2m}{r}\right)\left[c\,dT - \sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right)\,dr\right]^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2, \\
+    c^2d\tau^2 &= \left(1-\frac{2m}{r}\right)c^2dT^2 - 2\sqrt{\frac{2m}{r}}c\,dT\,dr - dr^2.
+\end{align}
+We now have a rewritten metric in terms of a time coordinate of someone falling into a black hole. 
+$\tau$ is the proper time on the radial path, $T$ is the proper time of the falling observer. 
+So we can now solve in the falling observer's perspective rather than the orbiting observer.
 
+What do we need to consider causally around the centre of the Black Hole?
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (4,0) node[anchor=north] {r};
+        \draw[-Latex] (0,0) -- (0,3) node[anchor=east] {$ct$};
+        \draw[dashed] (0,1.5) -- (4,1.5);
+        \fill (3,1.5) circle (3pt);
+        \draw (2.7,0.8) -- (3.3,0.8) -- (2.7,2.2) -- (3.3,2.2) -- cycle;
+%        \fill (3,1.5) circle (3pt);
+%        \draw (2.6,0.8) -- (3.4,0.8) -- (2.6,2.2) -- (3.4,2.2) -- cycle;
+%        \fill (2.5,1.5) circle (3pt);
+%        \draw (2.6,0.8) -- (3.4,0.8) -- (2.6,2.2) -- (3.4,2.2) -- cycle;
+%        \fill (3,1.5) circle (3pt);
+%        \draw (2.6,0.8) -- (3.4,0.8) -- (2.6,2.2) -- (3.4,2.2) -- cycle;
+    \end{tikzpicture}
+\end{figure}
+\emph{finish doodle}
+For photons, we have the null geodesic:
+\begin{align}
+    0 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2 \\
+    c^2dt^2 &= \left(1-\frac{2m}{r}\right)^{-2}dr^2 \\
+    c\frac{dt}{dr} &= \pm \left(1-\frac{2m}{r}\right)^{-1}
+\end{align}
+This breaks down as we approach the Schwarzchild radius.
+We need to think of a new coordinate system to describe the universe. 
 
+\section{Eddington-Finkelstein Coordinates}
+If we define 
+\begin{align}
+    dr_{*} &= \left(1-\frac{2m}{r}\right)^{-1}\,dr \implies \frac{dt}{dr_{*}} = \pm c
+\end{align}
+photons will not allows propagate at 45 degrees in space-time diagrams, to the expense of our radial coordinate.
+If we integrate this,
+\begin{align}
+    r_{*} &= r + 2m\log\bigg|\frac{r}{2m}-1\bigg|, \\
+    ct &= \pm r_{*} + v.
+\end{align}
+So we have a choice of two equations for defining our time variable, but we must choose one. 
+They chose the inward-going light rays for
+\begin{align}
+    v &= r_{*} + ct, \\
+    \frac{dv}{dr} &= \frac{dr_{*}}{dr} + c\frac{dt}{dr}, \\
+    dv &= \left(1-\frac{2m}{r}\right)^{-1}dr + cdt.
+\end{align}
+Again, we can substitute this in to the metric, and find a new form:
+\begin{align}
+    d\tau^2 &= \left(1-\frac{2m}{r}\right)\,dv^2 - 2\,dv\,dr.
+\end{align}
+When $v$ is constant and we set $d\tau=0$ we have the path taken by a photon. 
+We can solve for the photon paths:
+\begin{enumerate}
+    \item Inwards propagating, so $dv = 0$ 
+    \item 
+        \begin{align}
+            \frac{dv}{dr} &= \frac{2}{\left(1-\frac{2m}{r}\right)}
+        \end{align}
+\end{enumerate}
+Plotting this, for
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (4,0) node[anchor=north] {r};
+        \draw[-Latex] (0,0) -- (0,3) node[anchor=east] {$v$};
+    \end{tikzpicture}
+\end{figure}
+\emph{finish doodle}
+Light ray which is always horizontal - would want both at 45 degrees.
+Light cone tips over at $r=2m$.
+Transform variables again for
+\begin{align}
+    ct_{*} &= v-r \\
+    \frac{cdt_{*}}{dr} &= -1 \\
+    \frac{cdt_{*}}{dt} &= \frac{\left(1+\frac{2m}{r}\right)}{\left(1-\frac{2m}{r}\right)}
+\end{align}
+\emph{another doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (-1,0) -- (4,0) node[anchor=north] {r};
+        \draw[-Latex] (-1,0) -- (-1,3) node[anchor=east] {$v$};
+        \fill (3.5,1.5) circle (3pt);
+        \draw (3.2,0.8) -- (3.8,0.8) -- (3.2,2.2) -- (3.8,2.2) -- cycle;
+        \fill (2.5,1.5) circle (3pt);
+        \draw (2.3,0.7) -- (2.8,0.8) -- (2.2,2.2) -- (2.7,2.3) -- cycle;
+        \fill (1.5,1.5) circle (3pt);
+        \draw (1.4,0.6) -- (1.8,0.8) -- (1.2,2.2) -- (1.6,2.4) -- cycle;
+        \draw[dashed] (1,0) node[anchor=north] {$2m$} -- (1,2.7);
+        \fill (1,1.5) circle (3pt);
+        \draw (1,0.6) -- (1.2,0.8) -- (0.8,2.2) -- (1,2.4) -- cycle;
+    \end{tikzpicture}
+\end{figure}
+At large $r$, it always travels at 45 degrees. 
+The cones of influence are tipping over as the outward ray moves less and less, until we reach $r=2m$ and the outward propagating ray becomes purely time-like and cannot propagate outwards.
+Once we're inside this radius, both light rays are then tipping over and both move towards the centre of the black hole as our term in Eq. (17.22) goes negative for both.
+The zones of influence are aimed inwards to the Black Hole.
 
 
 
