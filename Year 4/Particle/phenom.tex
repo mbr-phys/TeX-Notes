@@ -236,7 +236,10 @@ We can study the scattering matrix $S$, computed from the path integral for $N$ 
 \end{align}
 This is the \textbf{Lehmann Symanzyk Zimmerman} reduction formula and there is a lot to unpack. 
 The disconnected terms are best understand with a diagrammatic approach:
-\emph{doodle}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fours.pdf}
+\end{figure}
 Here we can see the disconnected refers to processes in which some particles travel freely and corresponds to letting $\frac{\delta}{\delta J}$ act on the free piece $\exp\left(-i\int J\Delta J/2\right)$.
 To get acquainted with this expression, consider the S matrix for the following interaction:
 \begin{align}
@@ -280,7 +283,14 @@ We can perform the path integral in $A_\mu$ perturbatively and yield precisely t
 which has an overall momentum conservation Dirac delta and ends up being simpler than the derivation machinery might have suggested. 
 To connect the above with the $S$ matrix, we still must contract this with the spinors $u(\vec{p},s),\bar{u}(\vec{p},s)$ which are the connection between field and particle states.
 In these lectures, we will only use these up to spin 1.
-\emph{doodle - write out spinors from notes}
+\begin{align}
+    \langle0|\phi(x)|\vec{p}\rangle &= e^{-ipx} & \langle\vec{p}|\phi(x)|0\rangle &= e^{ipx} \\
+    \langle0|\psi(x)|\psi,\vec{p},s\rangle &= u(\vec{p},s)e^{-ipx} & \langle\psi,\vec{p},s|\bar{\psi}(x)|0\rangle &= \bar{u}(\vec{p},s)e^{ipx} \\
+    \langle0|\bar{\psi}(x)|\text{anti-}\psi,\vec{p},s\rangle &= \bar{v}(\vec{p},s)e^{-ipx} & \langle\text{anti-}\psi,\vec{p},s|\psi(x)|0\rangle &= v(\vec{p},s)e^{ipx} \\ 
+    \langle0|A_\mu(x)|\vec{p},\lambda\rangle &= \e_\mu(\vec{p},\lambda)e^{-ipx} & \langle\vec{p},\lambda|A^\mu(x)|0\rangle &= \e_\mu^*(\vec{p},\lambda)e^{ipx} \\
+    \langle0|W_\mu^+(x)|W^+,\vec{p},\lambda\rangle&\e_\mu(\vec{p},\lambda)e^{-ipx} & \langle W^+,\vec{p},\lambda|W_\mu^-(x)|0\rangle &= \e_\mu^*(\vec{p},\lambda)e^{ipx} \\
+    \langle0|W_\mu^-(x)|W^-,\vec{p},\lambda\rangle&\e_\mu(\vec{p},\lambda)e^{-ipx} & \langle W^-,\vec{p},\lambda|W_\mu^+(x)|0\rangle &= \e_\mu^*(\vec{p},\lambda)e^{ipx} 
+\end{align}
 The simplicity of these spinors hints at a shortcut to the result which is simply a collection of rules which we can gather to skip all of the maths we have done above. 
 These are the \textbf{Feynman rules:}
 \begin{itemize}
@@ -291,17 +301,84 @@ These are the \textbf{Feynman rules:}
         \end{align}
         The vertex is represented diagrammatically by each of the fields being a line joining in a point. 
     \item For a initial/final state particle $\hag_{\vp,s}|0\rangle \equiv |\vp,s\rangle$ with momentum $\vp$ and spin $s$, one must supplement the derivative with respect to the field with the field-state connection, meaning a factor.
-        \emph{doodle diagrams}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{intfin.png}
+        \end{figure}
     \item For internal lines which connect two vertices, we put in the propagator $i\Delta$.
         These are:
-        \emph{doodle diagrams}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{props.png}
+        \end{figure}
     \item For a given process, draw all possible diagrams (to a given order in your perturbative expansion) matching the external states and translate it into an amplitude $-i\mathcal{M}$ by summing over them and writing their contributions with the above prescriptions of factors for internal and external lines, and vertices.
         Impose momentum conservation on each vertex to fix the momenta of propagators as much as possible.
 \end{itemize}
 
 \chapter{Standard Model Overview}
+\section{Path Integrals Conclusion}
+It can be shown that all diagrams at first order in our perturbative expansion have the momenta of propagaotrs fixed in terms of the momenta of external states. 
+The next order does not and there's internal momenta which we have to integrate over. 
+These are the rules, but one only really learns how to use them with examples. 
+Finally, we can take the invariant matrix element $-i\mathcal{M}$ and find the cross-section. 
+For two particles collding and producing $n$ particles, we have
+\begin{align}
+    \sigma &= \frac{1}{|\vec{v}_a-\vec{v}_b|2E_{\vec{p}_a}2E_{\vec{p}_b}} \int \left(\prod_{i=1}^n\frac{d^3\vec{p}_i}{2E_{\vec{p}_i}(2\pi)^3}\right)(2\pi)^4\delta^4\left(p_a+p_b0\sum_{i=1}^np_i\right)|\mathcal{M}|^2,
+\end{align}
+where $\vec{v}=\vec{p}/E_{\vec{p}}$.
+The terms inside the inregral except for $\mathcal{M}$ constitute the \textbf{Lorentz Invariant Phase Space}, sometimes this will be called \lips, whereas the factors out front are related to our normalisation of states $\langle\vec{p}'|\vec{p}\rangle$. 
+On the other hand, a decay rate in the particle's rest frame is
+\begin{align}
+    \Gamma &= \frac{1}{2M_a}\int \prod_i \frac{d^3\vec{p}_i}{2E_{\vec{p}_i}(2\pi)^3}(2\pi)^4\delta^4\left(p_a-\sum_{i=1}^n p_i\right)|\mathcal{M}|^2,
+\end{align}
+with $p_a$ the four-momenta of the decaying particle. 
+So at last our trip from action to observables is done. 
 
-\chapter{Standard Model Overview Ctd.}
+A number of useful relations for the square of the matrix elements when we sum over spins are:
+\begin{align}
+    \sum_s u(\vec{p},s)\bar{u}(\vec{p},s) &= \cancel{p}+m, & \sum_{\lambda}\e_\mu(\vec{p},\lambda)\e_\nu^*(\vec{p},\lambda)&=-g_{\mu\nu}\,(m=0), \\
+    \sum_s v(\vec{p},s)\bar{v}(\vec{p},s) &= \cancel{p}-m, & \sum_\lambda \e_\mu(\vec{p},\lambda)\e_\nu^*(\vec{p},\lambda) &= \frac{p_\mu p_\nu}{m^2}-g_{\mu\nu},
+\end{align}
+and since $(\gamma^0)^\dagger = \gamma^0$, $(\gamma^\mu)^\dagger \gamma^0 = \gamma^0\gamma^\mu$, we have, for example, 
+\begin{align}
+    (\bar{u}\gamma^\mu v)^* &= v^\dagger (\gamma^\mu)^\dagger(\gamma^0)^\dagger u = v^\dagger \gamma^0\gamma^\mu u = \bar{v}\gamma^\mu u.
+\end{align}
+
+
+\section{Gauge Groups}
+The Standard Model is formed under the principles of gauge theory. 
+The group of the Standard Model is SU(3)$_c\otimes$SU(2)$_L\otimes$U(1)$_Y$, representing colour triplets, weak isospin doublets, and hypercharge respectively.
+SU(3)$_c$ is the gauge group of colour (QCD), and the rest of the SM group is the electroweak theory which can be approximately split into the weak isospin and hypercharge, although not quite, and will result in electromagnetism after introducing the Higgs mechanism later. 
+Let's overview how each gauge group is set up in terms of its bosons and generators:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{r|llc}
+        \hline\hline
+        & \textbf{Color} & \textbf{Weak Isospin} & \textbf{Hypercharge} \\
+        \hline\hline 
+        \textbf{Group:} & SU(3)$_c$ & SU(2)$_L$ & U(1)$_Y$ \\
+        \textbf{Bosons:} & $\tensor{G}{_\mu^a},a=1\to8$ & $\tensor{W}{_\mu^I},I=1\to3$ & $B_\mu$ \\
+        \textbf{Generators:} & $\frac{g_s}{2}T_a$ & $\frac{g}{2}\sigma_I$ & $Q_Y g'\mathbb{I}$ \\
+        \hline\hline
+    \end{tabular}
+\end{table}
+Here $g_s,g,g'$ are the couplings of colour, weak, and hypercharge respectively. 
+The matrices $T_a$ and $\sigma_I$ can be taken to be the Gell-Mann and Pauli matrices respectively, with the normalisations $\text{Tr}(T_aT_b) = 2\delta_{ab}$ and $\text{Tr}(\sigma_I\sigma_J) = 2\delta_{IJ}$.
+The field strengths for the gauge bosons transform in the adjoint representation and are defined as:
+\begin{align}
+    G_{\mu\nu} &= \p_\mu \tensor{G}{_\nu^a}T_a - \p_\nu\tensor{G}{_\mu^a}T_a + \frac{ig_s}{2}\left[\tensor{G}{_\mu^a}T_a,\tensor{G}{_\nu^b}T_b\right], \\
+    W_{\mu\nu} &= \p_\mu \tensor{W}{_\nu^I}\sigma_I - \p_\nu\tensor{W}{_\mu^I}\sigma_I + \frac{ig}{2}\left[\tensor{W}{_\mu^I}\sigma_I,\tensor{W}{_\nu^J}\sigma_J\right],  \\
+    B_{\mu\nu} &= \p_\mu B_\nu - \p_\nu B_\mu.
+\end{align}
+Gauge bosons couple to matter through the covariant derivative. 
+We can simplify this and select certain terms for different interactions, so we only use terms appropriate, (e.g. we would not use the colour term for leptons), but in its full form for the SM, it is defined as
+\begin{align}
+    D_\mu &= \p_\mu + i\frac{g_s}{2}\tensor{G}{_\mu^a}T_a + i\frac{g}{2}\tensor{W}{_\mu^I}\sigma_I + ig'Q_Y.
+\end{align}
+For example, we would need this full derivative when dealing with left-handed quarks.
+
+
+\chapter{Standard Model Overview Contd.}
 \section{Matter}
 Matter can be defined by fields that are charged under the SM gauge groups, i.e. fermions and the Higgs doublet. 
 First, we remind ourselves of the definitions for chirality:
@@ -315,7 +392,18 @@ These projections are useful because it commutes with Lorentz transformations, i
 \end{align}
 So we can define the left- and right-handed components of the fermion fields by projecting using the above, which will remain invariant after a Lorentz transformation. 
 The fermion fields (and Higgs) we then have are
-\emph{doodle table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c|c|c|c}
+        \hline\hline
+        Gauge Group & $q_L$ & $u_R$ & $d_R$ & $l_L$ & $e_R$ & $H$ \\
+        \hline\hline
+        SU(3)$_c$ & 3 & 3 & 3 & - & - & - \\
+        SU(2)$_L$ & 2 & - & - & 2 & - & 2 \\
+        U(1)$_Y$  & $\frac16$ & $\frac23$ & $-\frac13$ & $-\frac12$ & $-1$ & $\frac12$\\
+        \hline\hline
+    \end{tabular}
+\end{table}
 
 \section{Lagrangian}
 As we've emphasised so far, the spacetime integral of the Lagrangian dictates the evolution of the system and possible outcomes; therefore it is the central construction from which we can derive observables.
@@ -368,17 +456,31 @@ In addition, \textbf{Baryon number} is conserved, defined as
 \end{align}
 Similarly, each generation of lepton has its own conservation, i.e. \textbf{Electron number}, \textbf{Muon number} are conserved, including their neutrinos in the count. 
 
-%\chapter{Deep Inelastic Scattering and Partons}
-
-\chapter{}
-
-\chapter{}
-
 \chapter{Deep Inelastic Scattering and Partons}
-\emph{draw electron-positron quark production}
-\begin{align}
-    -i\mathcal{M} &= \bar{\nu}_e(ie\gamma_\nu)u_e\frac{-ig^{\mu\nu}}{s}\bar{u}_q(-ieQ_{q})\gamma_\nu v_q
-\end{align}
+Quarks and gluons, known together as partons, are no observed as final states in experiments, yet are claimed to be components of mesons and baryons. 
+What evidence is there then to this? 
+We look to deep inelastic scattering and the parton model for an explanation.
+
+Consider shooting electrons at protons at high CoM energy, $s\gg m_P^2\approx 1\,$GeV$^2$.
+At these energies, electrons can probe the internal structure of the proton and `catch' partons behaving as free particles inside the proton. 
+This parton will receive a large momentum transfer and break away from the proton such that, after further hadronisation to conserve colour, the proton has 'broken' into various other hadrons. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.2]{dis.pdf}
+\end{figure}
+
+
+\chapter{PDFs and Hadronic vs Partonic}
+
+\chapter{Quantum Chromodynamics}
+\begin{figure}[H]
+    \centering
+    \includegraphics{epq.pdf}
+    \begin{align}
+        -i\mathcal{M} &= \bar{\nu}_e(ie\gamma_\nu)u_e\frac{-ig^{\mu\nu}}{s}\bar{u}_q(-ieQ_{q})\gamma_\nu v_q
+    \end{align}
+    \vspace{-40pt}
+\end{figure}
 Here, $s = (p_{e^-} + p_{e^+})^2$. 
 We then have the differential cross-section:
 \begin{align}
@@ -458,6 +560,101 @@ where the only gauge invariant combination of the weak isospin and hypercharge c
 where $L,R$ denotes left- and right-handed fermions. 
 It is worth noting that electromagnetism is not chiral, i.e. $Q_{em}^L = Q^R_{em}$ and there is no $\gamma_5$ term in the coupling. 
 Chirality does however remain in the couplings of the $W^\pm,Z$ bosons, where $W^\pm$ bosons still only couple to left-handed fields.  
+
+\chapter{Electroweak Boson Properties}
+$W^\pm,Z$ bosons theorised in the 60s then discovered in the 80s. 
+We perform electron-positron collisions to produce the $Z$ boson, with a matrix element for the reaction $e^+e^-\to Z\to\mu^+\mu^-$,
+\begin{align}
+    -i\mathcal{M} &= -\frac{ig}{\cos\theta_w}\bar{v}_e\gamma^\rho\left(-\frac{P_L}{2}+\sin^2\theta_w\right)u_e\frac{ig_{\rho\nu}+i\frac{p_\rho^Zp_\nu^Z}{M_Z^2}}{s-m_Z^2+i\e}\left(-\frac{ig}{\cos\theta_w}\right)\bar{u}_{\mu^-}\gamma^\nu\left(-\frac{P_L}{2}+\sin^2\theta_w\right)v_{\mu^+},
+\end{align}
+with $s=(p_{e^+}+p_{e^-})^2$.
+Initially, this was run with $s=90\,$GeV, where the Z propagator seems to blow up. 
+When the particle is produced on resonance, i.e. $s=M_Z^2$, we have to reconsider what's going on. 
+In this regime, the Z boson is no longer a virtual short-distance mediator, but must be consider a possible final state itself, if the particle is stable. 
+If the Z boson is an unstable particle, with a short lifetime, we need to modify the particle propagator to say how it evolves.
+
+If we modify the propagator's denominator as $M_Z\to M_Z-\frac{i}{2}\Gamma_Z$ with $\Gamma_Z$ the total decay width of the Z boson. 
+This extram imaginary part in the action for the particle gives a time evolution, and hence an exponential decay for its probability. 
+The resulting propagator and cross-section scales as
+\begin{align}
+    d\sigma &\propto \frac{1}{|s-M_Z^2+i\Gamma_ZM_Z - \Gamma_Z^2/4|^2} \approx \frac{1}{(s-M_Z^2)^2+\Gamma_Z^2M_Z^2}.
+\end{align}
+This is called a Breit-Wigner distribution and looks like a peak at $s=M_Z^2$, which is sharper for smaller $\Gamma_Z/M_Z$. 
+We call a small (large) $\Gamma_Z/M_Z$ a narrow (broad) resonance.
+In the case of a well-defined peak, the Narrow Width Approximation applies and we can compute the cross-section as the exchange of an on-shell Z which implies production and decay are factorised which reads
+\begin{align}
+    \sigma_{N.W.A} &= \frac{12\pi s}{M_Z^2} \frac{\Gamma(Z\to e^+e^-)\Gamma(Z\to\mu^+\mu^-)}{(s-M_Z^2)^2+M_Z^2\Gamma_Z^2}.
+\end{align}
+We can use this to break down the calculation into smaller pieces and look for different decays and reconstruct couplings of the Z boson. 
+Let's focus on one decay in particular: $e^+e^-\to Z\to\bar{\nu}\nu$.
+The interaction term can be derived from the kinetic term, reading
+\begin{align}
+    \La_{int} &= i(\bar{l}_L\gamma^\mu D_\mu l_L) = i\bar{\nu}\frac{igZ^\mu}{\cos\theta_w}\gamma_\mu\left(\frac{(\sigma_3)_{11}}{2}P_L - \sin^2\theta_w Q_{em}^\nu\right)\nu + \cdots, \\
+              &= -\frac{gZ_\mu}{2\cos\theta_w}\bar{\nu}\gamma^\nu P_L\nu + \cdots, \\
+    -i\mathcal{M}_{Z\to\bar{\nu}\nu} &= \e^\mu(p_Z,\lambda)\bar{u}_\nu(p_\nu,s_\nu)\frac{-ig}{2\cos\theta_w}\gamma_\mu P_Lv_\nu(p_{\bar{\nu}},s_{\bar{\nu}}).
+\end{align}
+For computing the rate, we average over the initial states for the polarisations $\lambda=\pm1,0$, and we sum over all possible final states, i.e.
+\begin{align}
+    \frac13 \sum_{\lambda} \sum_{s_\nu s_{\bar{\nu}}} \mathcal{M}\mathcal{M}^* &= \frac13 \frac{g^2}{4\cos^2\theta_w} \sum_\lambda \sum_{s_\nu s_{\bar{\nu}}} \e_\mu\e_\rho^* \bar{u}\gamma^\mu P_L vv^\dagger P_L^\dagger (\gamma^\rho)^\dagger (\gamma^0)^\dagger u, \\
+                                                                               &= \frac13 \frac{g^2}{4\cos^2\theta_w} \sum_\lambda \sum_{s_\nu s_{\bar{\nu}}} \e_\mu\e_\rho^* \bar{u}\gamma^\mu v\bar{v}\gamma^\rho P_L u \\
+                                                                               &= \frac13 \frac{g^2}{4\cos^2\theta_w} \left(\frac{p^\mu_Z p^\rho_Z}{M_Z^2} - \eta^{\mu\rho}\right)\text{Tr}\left(\gamma_\mu P_L\cancel{p}_{\bar{\nu}}\gamma_\rho P_L\cancel{p}_\nu\right).
+\end{align}
+Now using the fact that we can bring one $P_L$ to the other and $P_L^2=P_L$, with the relation
+\begin{align}
+    \text{Tr}(\gamma_\mu\gamma_\alpha\gamma_\rho\gamma_\beta P_R) = 2\left(\eta^{\mu\alpha}\eta^{\rho\beta}+\eta^{\mu\beta}\eta^{\rho\beta}-\eta^{\rho\mu}\eta^{\alpha\beta}+i\e^{\mu\alpha\rho\beta}\right),
+\end{align}
+we can find that
+\begin{align}
+    \begin{split}
+        &\frac13 \frac{g^2}{4\cos^2\theta_w}\left(\frac{p_Z^\mu p_Z^\rho}{M_Z^2}-\eta^{\mu\rho}\right)\text{Tr}(\gamma_\mu P_L\cancel{p}_{\bar{\nu}}\gamma_\rho P_L\cancel{p}_\nu) \\
+        =&\frac{g^2}{6\cos^2\theta_w}\left(\frac{p_Z^\mu p_Z^\rho}{M_Z^2}-\eta^{\mu\rho}\right)\left((p_{\bar{\nu}})_\mu(p_\nu)_\rho + (p_{\bar{\nu}})_\rho(p_\nu)_\mu - \eta^{\rho\mu}p_{\bar{\nu}}\cdot p_\nu + i\e^{\mu\alpha\rho\beta}(p_{\bar{\nu}})_\alpha(p_\nu)_\beta\right) \\
+        =&\frac{g^2}{6\cos^2\theta_w}\left(2\frac{p_Z\cdot p_\nu p_Z\cdot p_{\bar{\nu}}}{M_Z^2} + p_\nu\cdot p_{\bar{\nu}}\right),
+    \end{split}
+\end{align}
+where given that $\e^{\mu\nu\rho\sigma}$ is fully antisymmetric, the contraction with the averaged $\e\e^*$ cancels. 
+Now working in phase space for the CoM frame, we get
+\begin{align}
+    \frac{d^3\vec{p}_\nu\,d^3\vec{p}_{\bar{\nu}}}{2|\vec{p}_\nu|2|\vec{p}_{\bar{\nu}}|(2\pi)^6} (2\pi)^4\delta(p_Z-p_\nu-p_{\bar{\nu}}) &= \frac{d^3\vec{p}_\nu}{4|\vec{p}_\nu|^2(2\pi)^2}\delta(M_Z-|p_\nu|-|p_\nu|) \\
+                                                                                                                                        &= \frac{\sin\theta\,d\theta\,d\phi}{4(2\pi)^2}\delta(M_Z-2|\vec{p}_\nu|)\,d|\vec{p}_\nu|\\
+                                                                                                                                        &= \frac{\sin\theta,d\theta\,d\phi}{8(2\pi)^2}.
+\end{align}
+The product of the momenta $p_i$ in the matrix element squared then read
+\begin{align}
+    p_\nu\cdot p_{\bar{\nu}} &= |\vec{p}_\nu||\vec{p}_{\bar{\nu}}| - \vec{p}_\nu\cdot \vec{p}_{\bar{\nu}} = 2|\vec{p}_\nu|^2 = \frac{M_Z^2}{2}, & p_\nu\cdot p_Z &= M_Z|\vec{p}_\nu| = \frac{M_Z^2}{2},
+\end{align}
+where we have used four-momentum conservation and in that the neutrinoes share the Z mass. 
+Finally, overall for the decay width, we get
+\begin{align}
+    \Gamma_{Z\to\nu\bar{\nu}} &= \frac{1}{2M_Z}\int \frac{d^3\vec{p}_\nu\,d^3\vec{p}_{\bar{\nu}}}{2|\vec{p}_\nu|2|\vec{p}_{\bar{\nu}}|(2\pi)^6} (2\pi)^4\delta(p_Z-p_\nu-p_{\bar{\nu}})\frac13\sum_{\lambda}\sum_{s_\nu s_{\bar{\nu}}} \mathcal{M}\mathcal{M}^* \\
+                              &= \frac{1}{2M_Z}\frac{1}{8\pi}\frac{g^2}{6\cos^2\theta_w}M_Z^2 = \frac{g^2 M_Z}{96\pi \cos^2\theta_w}.
+\end{align}
+How many neutrino flavours are there though?
+If we say there are $N_\nu$, then
+\begin{align}
+    \Gamma_{Z\to\sum_i\bar{\nu}_i\nu_i} &= \frac{g^2 N_\nu M_Z}{96\pi\cos^2\theta_w}.
+\end{align}
+We can compare this to experiment to find $N_\nu$.
+This isn't the easiest thing in experiment to pick up as neutrinos escape detection, but we can extract this from the total width of the Z boson, and subtracting all known decays. 
+What is leftover, is the decay to neutrinos. 
+Comparing this to Eq. (11.18), we find that 
+\begin{align}
+    N_\nu &= 2.9840 \pm 0.0082,
+\end{align}
+which is a pretty clear indication that there are 3 neutrino flavours. 
+
+The W boson cannot be produced like the Z that is `in the s channel', but we can produce $\pm$ pairs via, e.g., $e^+e^-\to\gamma/Z\to W^+W^-$.
+The condition for this is, however, stricter than for the Z boson. 
+We are now producing two W bosons where before we only had to produce the one Z boson, so we must have a CoM energy $s>2M_W$.
+It is also worth nothing that we can study the chiral structure of the $W^\pm,Z$ couplings through the angular dependence of their decays. 
+Another prediction from the SM is the mass ratio of the $W^\pm,Z$ bosons. 
+These masses are directly related through the weak-mixing $\cos\theta_w$.
+Experimentally, we can find this ratio to be
+\begin{align}
+    \frac{M_W^2}{\cos^2\theta_w M_Z^2} = 1.0010\pm0.0050,
+\end{align}
+where the SM predicts this to be eaxctly one. 
+We have another confirmation of the validity of the SM. 
+
 
 
 

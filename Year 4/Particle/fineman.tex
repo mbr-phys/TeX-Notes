@@ -17,32 +17,34 @@
 
 \begin{document}
 
-%\feynmandiagram [large, horizontal=a to b] {
-%    i1 [label=0:$\psi$] -- [fermion] a -- [fermion] i2 [label=0:$\bar{\psi}$],
-%    a [label=90:$e$] -- [photon] b [label=90:$A_\mu$],
-%    i1 -- [photon] i2,
+%\feynmandiagram [large,baseline=(a.base),horizontal=i1 to i4] {
+%    i1 [label=$p_1$] -- a [blob] -- {i2 [label=$p_2$], i3 [label=$p_3$], i4 [label=$p_4$]},
+%    i1 -- [opacity=0] i2, 
+%    i3 -- [opacity=0] i4,
 %};
-\feynmandiagram [small,baseline=(a.base),horizontal=z to y] {
-    i1 -- [fermion] a [crossed dot] -- [anti fermion] i2,
-    f1 -- [anti fermion] a -- [fermion] f2,
-    i1 -- [opacity=0] z -- [opacity=0] i2,
-    f1 -- [opacity=0] y -- [opacity=0] f2,
-    z -- [opacity=0] a -- [opacity=0] y,
+%=
+%\feynmandiagram [small,layered layout,baseline=(c.base),horizontal=a to b] {
+%    i1 [label=$p_1$] -- a -- b -- f1 [label=$p_3$],
+%    i2 -- [opacity=0] c -- [opacity=0] d -- [opacity=0] f2,
+%    i3 [label=$p_2$] -- e -- f -- f3 [label=$p_4$],
+%    { [same layer] a -- [opacity=0] c -- [opacity=0] e },
+%    { [same layer] b -- [opacity=0] f },
+%};
+%+
+\feynmandiagram [large,horizontal=a to b] {
+    i1 [label=$e^-$] -- [fermion] a -- [fermion] i2 [label=$e^+$], 
+    i3 [label=$\bar{q}$] -- [fermion] b -- [fermion] i4 [label=$q$],
+    a -- [photon, edge label=$\gamma$] b,
 };
-%        =
-%        \feynmandiagram [horizontal=b to c,baseline=(c.base)] {
-%            i3 -- [fermion] b [dot] -- [anti fermion] i4,
-%            b -- [boson] c [dot],
-%            f3 -- [anti fermion] c -- [fermion] f4,
-%        };
-%        +
-%        \feynmandiagram [small,baseline=(a.base),horizontal=z to y] {
-%            i1 -- [fermion] a [dot] -- [anti fermion] i2,
-%            f1 -- [anti fermion] a -- [fermion] f2,
-%            i1 -- [opacity=0] z -- [opacity=0] i2,
-%            f1 -- [opacity=0] y -- [opacity=0] f2,
-%            z -- [opacity=0] a -- [opacity=0] y,
-%        };
+%$+\cdots$
+\end{document}
+%\feynmandiagram [small,baseline=(a.base),horizontal=z to y] {
+%    i1 -- [fermion] a [crossed dot] -- [anti fermion] i2,
+%    f1 -- [anti fermion] a -- [fermion] f2,
+%    i1 -- [opacity=0] z -- [opacity=0] i2,
+%    f1 -- [opacity=0] y -- [opacity=0] f2,
+%    z -- [opacity=0] a -- [opacity=0] y,
+%};
 %        +
 %        \feynmandiagram [small,vertical=b to c,baseline=(c.base)] {
 %            i3 -- [fermion] b [dot] -- [fermion] i4,
@@ -68,4 +70,3 @@
 %        };
 %        + \cdots
 
-\end{document}

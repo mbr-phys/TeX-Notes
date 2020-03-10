@@ -564,13 +564,123 @@ Using all this, we can write down an expression for the energy-momentum density:
 \end{align}
 In the rest frame, these two velocities will each be $c$, so the $T^{00}$ term will get us back to Eq. (10.28) as $\rho_0 c^2$.
 
+\chapter{}
 
+\chapter{}
 
+\chapter{}
 
+\chapter{}
 
+\chapter{}
 
+\chapter{Time and Black Holes}
+\begin{itemize}
+    \item Last lecture - orbits around black holes
+    \item This lecture - time depends on \unl{where you are} and \unl{how you move}; falling into a black hole
+\end{itemize}
 
+\section{The Schwarzchild Metric}
+Defined as 
+\begin{align}
+    ds^2 &= c^2d\tau^2 = c^2\left(1-\frac{2m}{r}\right)dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 - r^2d\phi^2.
+\end{align}
+An observer experiences the proper time, $\tau$, whereas $t$ is the time coordinate.
+\textit{doodle}
+For the coordinate time seen from the distant observer,
+\begin{align}
+    t_{orb} &= 2\pi\left(\frac{r^3}{mc^2}\right)^{1/2}.
+\end{align}
+What does $S_0$ measure?
+\begin{align}
+    d\tau_0 &= \left(1-\frac{3m}{r}\right)^{1/2}dt,\\
+    \tau_{orb} &= \left(1-\frac{3m}{r}\right)^{1/2}t_{orb}
+\end{align}
+which tells us that there are no orbits possible with $r<3m$.
+For the rocket $S_1$, we arrange such that $d\phi=0,dr=0$, i.e. the rocket is being held stationary.
+We then get from the metric
+\begin{align}
+    c^2d\tau_1^2 &= c^2\left(1-\frac{2m}{r_1}\right)dt^2, \\
+    \tau_{hov} &= \left(1-\frac{2m}{r_1}\right)^{1/2}t_{orb},\\
+    \tau_{orb} &\neq \tau_{hov}.
+\end{align}
+Consider the example where $r=r=6m$.
+We will get 
+\begin{align}
+    \tau_{orb} &= \left(\frac12\right)^{1/2}t_{orb}, & \tau_{hov} &= \left(\frac23\right)^{1/2}t_{orb}, & \frac{\tau_{orb}}{\tau_{hov}} &= \frac{\sqrt{3}}{2} = 0.86.
+\end{align}
+So $S_1$ perceives themselves as older than $S_0$.
 
+\section{Radial Geodesics}
+Similar to before, but simpler form:
+\begin{align}
+    c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2. \\
+    \left(1-\frac{2m}{r}\right)\dot{t} &= E,
+\end{align}
+where we have solved the Euler-Lagrange equation in $t$, and $\dot{t}$ is $\frac{dt}{d\tau}$, and $E$ is a constant.
+Dividing by $d\tau^2$, we rewrite as
+\begin{align}
+    c^2 &= c^2\left(1-\frac{2m}{r}\right)\dot{t}^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2, \\
+    c^2 &= c^2\left(1-\frac{2m}{r}\right)^{-1}E^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2, \\
+    \dot{r}^2 &- c^2E^2 + c^2\left(1-\frac{2m}{r}\right) = 0.
+\end{align}
+We need to find constant, so we use the condition $\dot{r}=0$ at $r\gg2m$:
+\begin{align}
+    -c^2E^2 &+ c^2 = 0, \quad E = 1, \\
+    \dot{r}^2 &- c^2 + c^2\left(1-\frac{2m}{r}\right) = 0, \\
+    \dot{r}^2 &= \frac{2mc^2}{r} \implies \dot{r}^2 = -c\sqrt{\frac{2m}{r}},
+\end{align}
+where we have chosen the negative solution for when we are approaching the black hole. 
+This looks pretty Newtonian, but remember that $\dot{r}=\frac{dr}{d\tau}$, where $\tau$ is the proper time. 
+So this would be the speed measured by the falling observer.
+
+How long does it take to reach $r=0$?
+We can work out the proper time as observed by the person falling into the black hole, as
+\begin{align}
+    \tau &= \int_{r_1}^{r_2} \frac{d\tau}{dr}dr = \int_{r_1}^{r_2} \frac{1}{\dot{r}}dr = \frac{1}{c\sqrt{2m}}\int_{r_2}^{r_1} r^{1/2}\,dr = \frac{2}{3c\sqrt{2m}}\left(r_1^{3/2} - r_2^{3/2}\right).
+\end{align}
+We have a perfectly finite $\tau$ for $r_2=0$, e.g. $r_1=10m$, $r_2=0$ results in $\tau=14.9\frac{m}{c}$.
+
+If we consider the perspective of the person a long distance away, then 
+\begin{align}
+    \frac{dr}{dt} &= \frac{dr}{d\tau}\frac{d\tau}{dt} = -c\sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right).
+\end{align}
+At $r=2m,\frac{dr}{dt}\to0$.
+From a distance, we will observe them fall in to the black hole, but slow down and ``stop" at the event horizon; the person falling into the black hole will feel themselves falling in faster and faster. 
+We have a gravitational redshift, 
+\begin{align}
+    \frac{\lambda_R}{\lambda_E} &= \sqrt{\frac{1-\frac{2m}{r_2}}{1-\frac{2m}{r_E}}},
+\end{align}
+so the wavelength received $\lambda_R\to\infty$.
+It isn't quite that we see it come to rest, but rather its signal slowly fades out and gets weaker and weaker until we don't observe anything.
+
+Now let's look at dropping off at some general radius. 
+Drop the satellite at $r=r_0,\dot{r}=0$ at $r=0$.
+\begin{align}
+    E & \sqrt{1-\frac{2m}{r_0}},\\
+    \dot{r}^2 &= c^2\left[\left(1-\frac{2m}{r_0}\right)-\left(1-\frac{2m}{r}\right)\right] \\
+              &= c^2\left(\frac{2m}{r} - \frac{2m}{r_0}\right), \\
+    \dot{t} &= \left(1-\frac{2m}{r}\right)^{-1}\sqrt{1-\frac{2m}{r_0}},\\
+    \frac{dr}{dt} = \frac{\dot{r}}{\dot{t}} &= c\sqrt{\frac{2m}{r}-\frac{2m}{r_0}}\frac{\left(1-\frac{2m}{r}\right)}{\sqrt{1-\frac{2m}{r_0}}}.
+\end{align}
+We can also consider what happens for the hovering observer:
+\begin{align}
+    dR_h &= \sqrt{1-\frac{2m}{r}}\,dr,\quad  d\tau_h = \sqrt{1-\frac{2m}{r}}\,dr, \\
+    \frac{dR_h}{d\tau_h} &= \frac{dR_h}{dr}\frac{dr}{dt}\frac{dt}{d\tau_h} = \left(1-\frac{2m}{r}\right)^{-1}\frac{dr}{dt} = -c\sqrt{\frac{\frac{2m}{r}-\frac{2m}{r_0}}{1-\frac{2m}{r_0}}}.
+\end{align}
+If we hover at $r_0=2m,r=2m$, then $\frac{dR_h}{d\tau_h}=c$. 
+This is quite strange. 
+Let's check:
+\begin{align}
+    \frac{d^2R_h}{d\tau_h^2} &= \frac{d}{d\tau_h}\left(\frac{dR_h}{d\tau_h}\right) = -\frac{mc^2}{r^2}\frac{\sqrt{1-\frac{2m}{r}}}{\left(1-\frac{2m}{r_0}\right)}.
+\end{align}
+If $r\to\infty\implies$ Newtonian physics is back. 
+If $r_0\to2m$, then $\frac{d^2R_h}{d\tau_h}\to\infty$.
+However, hovering at $r=2m$ requires an infinitely powerful rocket - you can't hover at $r\leq2m$, i.e. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{gg.jpg}
+\end{figure}
 
 
 

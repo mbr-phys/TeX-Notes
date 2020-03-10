@@ -22,19 +22,28 @@
 
 \begin{tikzpicture}
     \begin{feynman}
-        \vertex (a1) {$\bar{\psi}$};
-        \vertex at ($(a1)+(0.5cm,-0.33cm)$) (a2);
-        \vertex[below=1.33cm of a2] (a3);
+        \vertex (a1) {$e^-,k$};
+        \vertex[right=5cm of a1] (a2) {$e^-,k'$};
+        \vertex[below=3.5cm of a2] (a3) {$u,p'$};
 
-        \vertex[below=2cm of a1] (b1) {$\psi$};
-        \vertex at ($(b1)+(1.5cm,1cm)$) (b2);
+        \vertex[below=3cm of a1] (b1);
+        \vertex[below=0.5cm of b1] (b2);
+        \vertex at ($(b1)+(1.5cm,0cm)$) (b3);
+        \vertex at ($(b1)+(1.5cm,0.5cm)$) (b5);
+        \vertex[above=-0.15cm of b3,blob] (b4) {};
 
-        \vertex[right=1cm of b2] (c1);
+        \vertex at ($(a1)+(3cm,-1cm)$) (c1);
+        \vertex[below=1cm of c1] (c2);
+        \vertex[right=0.8cm of c2] (c3);
+        \vertex[right=1.4cm of c2] (c4);
 
         \diagram* {
-            (a1) -- [anti fermion] (b2) -- [anti fermion] (b1),
-            (a2) -- [photon] (a3),
-            (b2) -- [photon] (c1),
+            (a1) -- [fermion] (c1) -- [fermion] (a2),
+            (c1) -- [photon,edge label={$\gamma,q^2>1$GeV$^2$}] (c2),
+            (c2) -- [anti fermion,edge label'={$u,xp$}] (b5) -- (b1) -- [plain,edge label'={$P,p$}] (b2) -- (b3),
+            (b4) --  [fermion] (c3),
+            (b3) -- [fermion] (c4),
+            (c2) -- [fermion] (a3),
         };
     \end{feynman}
 \end{tikzpicture}

@@ -1359,16 +1359,216 @@ For each $F$, we ahve $2F+1$ magnetic sub-levels labelled $m_F$.
 So the ground state has 16-fold degeneracy. 
 We select 2 of these 16 as our qubit states $|0\rangle$ and $|1\rangle$:
 \begin{align*}
-    |F=3,m_f=3\rangle &= |0\rangle, \\
+    |F=3,m_F=3\rangle &= |0\rangle, \\
     |F=4,m_F=4\rangle &= |1\rangle. 
 \end{align*}
 As both are ground states, they do not decay (not spontaneous emission), i.e. low decoherence (\textbf{DiVincenzo \#4).}
 
 
 \chapter{}
+Recall Cs in the ground state $F=4,F=3$ where we choose our qubits:
+\begin{align*}
+    |F=3,m_F=3\rangle &= |0\rangle, \\
+    |F=4,m_F=4\rangle &= |1\rangle. 
+\end{align*}
+This gave us the 16 ground state levels, with $h\nu_{hfs}$ energy between $|0\rangle,|1\rangle$.
+$F=3,4$ are split by the \emph{hyperfine interaction} between the electrons and nuclear spin. 
+The frequency of splitting is $\nu_{hfs}=9.2\,$GHz (microwaves) - this is the transition used in atomic clocks.
+
+The qubit choice is not unique - we could use others, e.g. $m_F=0$ states.
+The larger $|m_F|$ values are most sensitive to magnetic fields. 
+If your computer has magnets in some way, then you might want to use $m_F=0$ states which are not affected.
+Even the Earth's magnetic field is sufficient to perturb $4,3$ states but in a lab setting we can shield against magnetic effects, i.e. compensate by making a magnetic-free environment.
+The final stage of preparation is to initialise the atom in one or other qubit level - our Cs atom could be in a superposition of any of the 16 states!
+
+Initialisation is after laser cooling and trapping in an optical tweezer. 
+We can do this by \emph{optical pumping} the atom into either state $|0\rangle$ and $|1\rangle$, i.e. $|\psi(0)\rangle=|0\rangle$ or $|1\rangle$ - first step of DiVincenzo. 
+
+\section{Optical Pumping}
+This is the transfer of atomic population using \emph{polarisation selection rules.}
+If we apply light resonance with the $|g\rangle\to|e\rangle$ transition that for a particular polarisation then the atom is pumped into a particular magnetic sublevel. 
+The selection rules for optical pumping are:
+\begin{enumerate}
+    \item For excitations, we can select $\Delta m_F=-1,0,+1$ transitions using \emph{left-circular,linear, and right- circular} light, respectively, e.g.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (0,0) -- (1,0) node[anchor=north,midway] {\shortstack{$-1$ \\ $\Delta m_F=+1$}};
+                \draw (2,0) -- (3,0) node[anchor=north,midway] {\shortstack{$0$ \\ $\Delta m_F=0$}};
+                \draw (4,0) -- (5,0) node[anchor=north,midway] {\shortstack{$-1$ \\ $\Delta m_F=-1$}} node[anchor=west] {$m_F$};
+                \draw (2,2) -- (3,2) node[anchor=south,midway] {$0$} node[anchor=west] {$m_F'$};
+                \draw[-Latex] (0.5,0) -- (2.5,2) node[anchor=east,midway] {right ($\sigma^+$)};
+                \draw[-Latex,dashed] (2.5,0) -- (2.5,2) node[anchor=north east,midway] {\shortstack{linear \\ ($\pi$)}};
+                \draw[-Latex,snake it] (4.5,0) -- (2.5,2) node[anchor=west,midway,xshift=5pt] {left ($\sigma^-$)};
+
+                \draw[-Latex,snake it] (6,1) -- (7.5,1) node[anchor=south,midway] {$\hbar\vec{k}$}node[anchor=north,midway] {\shortstack{light propagates \\ along $z$}};
+            \end{tikzpicture}
+        \end{figure}
+        The photon has some angular momentum which depends on the polarisation. 
+        The linear route doesn't have any angular momentum along this axis. 
+        The $\sigma^+,\pi,\sigma^-$ are just labels/notation; the aren't related to the Pauli matrices. 
+    \item In decay $|e\rangle\to|g\rangle,\Delta m_F=-1,0,+1$ are all allowed. 
+        Which of these we observe depends on the polarisation of the emitted photon, i.e. if we detect a linearly polarised photon, we know we went $m_F'=0\to m_F'=0$, and we can similarly tell for left- and right-circularly polarised light. 
+    \item The exception to rules 1 and 2 is that $\Delta m_F=0$ is not allowed for a transition where the initial and final total angular momentum $F$ are the same, e.g. $F=F'$,
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (0,0) node[anchor=east] {$F=1$} -- (1,0) node[anchor=north,midway] {$-1$};
+                \draw (0,1.5) node[anchor=east] {$F'=1$} -- (1,1.5) node[anchor=south,midway] {$-1$};
+                \fill (0.5,0) circle (3pt);
+                \draw[-Latex] (0.5,0) -- (0.5,1.5);
+                \draw[snake it,-Latex] (0.5,1.5) -- (1.2,0.5);
+                \draw[snake it,-Latex] (0.5,1.5) -- (1.8,1.2);
+
+                \draw (2,0) -- (3,0) node[anchor=north,midway] {$0$} node[anchor=south,midway,yshift=15pt] {X};
+                \draw (2,1.5) -- (3,1.5) node[anchor=south,midway] {$0$};
+                \fill (2.5,0) circle (3pt);
+
+                \draw (4,0) node[anchor=west] {$|g\rangle$} -- (5,0) node[anchor=north,midway] {$+1$};
+                \draw (4,1.5) node[anchor=west] {$|e\rangle$} -- (5,1.5) node[anchor=south,midway] {$+1$};
+                \fill (4.5,0) circle (3pt);
+                \draw[-Latex] (4.5,0) -- (4.5,1.5);
+                \draw[snake it,-Latex] (4.5,1.5) -- (3.8,0.5);
+                \draw[snake it,-Latex] (4.5,1.5) -- (3.2,1.2);
+            \end{tikzpicture}
+        \end{figure}
+        The middle $0\to0$ transition is \unl{not} allowed!
+        The $0$ is made up of a superposition of states with opposite signs, if we look at the \emph{transition matrix element} for this particular transition then you get zero by symmetry. 
+        We can also drive the population on either side of this which can then decay. 
+        These \unl{can} decay back into the zero state so all population gets pumped into the middle state where it becomes trapped, i.e. all population pumped into $m_F=0$ in $F=1\,|g\rangle$ state.
+\end{enumerate}
+Cs has $F=3,4$ and we want to pump into one state. 
+How do we apply the above to Cs?
+Using $\Delta m_F=+1$ (right-circular):
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,2.5) -- (0.5,2.5) node[anchor=south,midway] {$-4$};
+        \draw (1,2.5) -- (1.5,2.5);
+        \draw (2,2.5) -- (2.5,2.5);
+        \draw (3,2.5) -- (3.5,2.5);
+        \draw (4,2.5) -- (4.5,2.5) node[anchor=south,midway] {$0$};
+        \draw (5,2.5) -- (5.5,2.5);
+        \draw (6,2.5) -- (6.5,2.5);
+        \draw (7,2.5) -- (7.5,2.5);
+        \draw (8,2.5) -- (8.5,2.5) node[anchor=south,midway] {$4$};
+
+        \draw[white] (8.9,2.5) -- (9,2.5) node[anchor=west,black] {$|e\rangle$};
+        \draw[decorate,decoration={brace,amplitude=5pt,mirror},xshift=-5pt] (9,-0.1) -- (9,0.6) node[anchor=west,midway,xshift=4pt] {$|g\rangle$};
+        \draw[white] (-0.5,0) node[anchor=east,black] {$F=3$} -- (-0.5,0.5) node[anchor=east,black] {$F=4$} -- (-0.5,2.5) node[anchor=east,black] {$F'=4$};
+
+        \draw (0,0.5) -- (0.5,0.5) node[anchor=north,midway] {$-4$};
+        \draw[-Latex] (0.25,0.5) -- (1.25,2.5);
+        \draw (1,0.5) -- (1.5,0.5);
+        \draw[-Latex] (1.25,0.5) -- (2.25,2.5);
+        \draw (2,0.5) -- (2.5,0.5);
+        \draw[-Latex] (2.25,0.5) -- (3.25,2.5);
+        \draw (3,0.5) -- (3.5,0.5);
+        \draw[-Latex] (3.25,0.5) -- (4.25,2.5);
+        \draw (4,0.5) -- (4.5,0.5);
+        \draw[-Latex] (4.25,0.5) -- (5.25,2.5);
+        \draw (5,0.5) -- (5.5,0.5);
+        \draw[-Latex] (5.25,0.5) -- (6.25,2.5);
+        \draw (6,0.5) -- (6.5,0.5);
+        \draw[-Latex] (6.25,0.5) -- (7.25,2.5);
+        \draw (7,0.5) -- (7.5,0.5);
+        \draw[-Latex] (7.25,0.5) -- (8.25,2.5);
+        \draw (8,0.5) -- (8.5,0.5) node[anchor=north,midway] {$4,|1\rangle$};
+
+        \draw (1,0) -- (1.5,0) node[anchor=north,midway] {$-3$};
+        \draw[-Latex] (1.25,0) -- (1.25,2.25);
+        \draw (2,0) -- (2.5,0);
+        \draw[-Latex] (2.25,0) -- (2.25,2.25);
+        \draw (3,0) -- (3.5,0);
+        \draw[-Latex] (3.25,0) -- (3.25,2.25);
+        \draw (4,0) -- (4.5,0);
+        \draw[-Latex] (4.25,0) -- (4.25,2.25);
+        \draw (5,0) -- (5.5,0);
+        \draw[-Latex] (5.25,0) -- (5.25,2.25);
+        \draw (6,0) -- (6.5,0);
+        \draw[-Latex] (6.25,0) -- (6.25,2.25);
+        \draw (7,0) -- (7.5,0) node[anchor=north,midway] {$3$};
+        \draw[-Latex] (7.25,0) -- (7.25,2.25);
+
+    \end{tikzpicture}
+\end{figure}
+We can see that the $F'$ states can decay, and we cannot drive out the $F=4,m_F=4$ state.
+Using right-circular light, we can drive tendency to the right side of the population. 
+As the excited states decay, they can fall to both $F=4,3$!
+We need to repump out of lower hyperfine state to excited. 
+As long as we repump out of $F=3$ state with right-circular light, all the population gets transferred to $|F=4,m_F=+4\rangle$ state which was $|1\rangle$ in the qubit. 
+We have initialised qubits to state $|1\rangle$.
+
+We now need the second DiVincenzo criteria - \unl{Gates}.
+
+\section{Gates}
+Single-qubit rotation, where we have a difference of $9.2\,$GHz$\to\lambda\approx3$cm:
+\begin{align*}
+    |F=4,m_F=4\rangle &\to |1\rangle, \\
+    |F=3,m_F=3\rangle &\to |0\rangle.
+\end{align*}
+Problem! 
+Ideally to address each qubit individually, we would like them to be separated by a distance of the order of the wavelength. 
+The microwave wavelength is still too long. 
+For microwaves, the qubits need to be $\approx3$cm apart; wires can be used to localise the microwave field, however, the large wavelength is an issue!
+To make the qubits interact, we also want them to be as close as possible. 
+A solution - use the ground state hyperfine states, but drive transitions between them optically via an excited state $|e\rangle$.
+
+\section{Stimulated Raman Transitions}
+Such a two-photon transition is known as a \emph{stimulated-Raman transition.}
+\emph{Raman scattering} is any process where we scatter light but end up in a different state to where we started, e.g. absorb then emit a photon and come back down to a different state. 
+This is opposed to \emph{Rayleigh scattering} when you absorb and emit the photon returning to the original state. 
+Laser cooling uses Rayleigh scattering as we always return to the same state; now we want Raman scattering. 
+
+Stimulated Raman transitions combine single-qubit addressability with low decoherence due to \\spontaneous emission. 
+Going via our excited state to get from $|0\rangle\to|1\rangle$:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0.5) -- (1.5,0.5) node[anchor=west] {$|0\rangle$};
+        \draw (2,1.5) -- (3.5,1.5) node[anchor=west] {$|1\rangle$};
+        \draw (2,2.5) -- (3.5,2.5);
+        \draw (2,3) -- (3.5,3);
+        \draw[-Latex] (2.75,1.5) -- (2.75,2.5) node[anchor=west,midway] {\shortstack{Laser 2 \\ freq $\Omega_2$}};
+        \draw[-Latex] (2.75,2.5) -- (0.75,0.5) node[anchor=east,midway,xshift=-5pt] {\shortstack{Laser 1 \\ freq $\Omega_1$}};
+        \draw[snake it,-Latex] (2,3) -- (1.3,2) node[anchor=east,midway] {$\Gamma$};
+    \end{tikzpicture}
+\end{figure}
+\emph{finish doodle}
+$|e\rangle$ can decay by spontaneous emission but we don't want this as we instead want to do the calculation. 
+Any emission of a photon will destroy it. 
+
+A resonant stimulated Raman transition is driven by how laser beams both detuned by $\Delta$ from the $|0\rangle\to|e\rangle$ and $|1\rangle\to|e\rangle$ transitions, where $|0\rangle$ and $|1\rangle$ are typically the lower and upper ground state hyperfine states.
+We choose large detuning $\Delta$ to avoid spontaneous emission similar to an optical tweezer.
+For $|\Delta|\gg\Omega_1,\Omega_2$, we can derive that the effective Rabi frequency from $|0\rangle\to|1\rangle$ is
+\begin{align}
+    \Omega_{eff} &= \frac{\Omega_1\Omega_2}{2|\Delta|}.
+\end{align}
+Note that since this is proportional to the individual Rabi frequencies, this is also proportional to the power of the laser beams. 
+The spontaneous scattering rate from $|e\rangle$ for large $|\Delta|$ is
+\begin{align}
+    R &= \frac{\Omega_{1,2}^2}{4|\Delta|^2}\Gamma.
+\end{align}
+For $\Omega_1=\Omega_2$,
+\begin{align}
+    \Omega_{eff} &= \frac{\Omega^2}{2|\Delta|} \implies R = \frac{\Omega^2}{4|\Delta|^2}\Gamma.
+\end{align}
+We can then work out the probability of a scattering event per Rabi angle.
+The average number of spontaneous emission events per Rabi angle is given by the Rabi period divided by the average time between spontaneous emissions, or inversely, the spontaneous emissions rate divided by the effective Rabi frequency, i.e.
+\begin{align}
+    N_{spont} &= \frac{R}{\Omega_{eff}} = \frac{(\Omega^2/4|\Delta|^2)\Gamma}{\Omega^2/2|\Delta|} = \frac{\Gamma}{2\Delta},
+\end{align}
+when $\Omega_1\approx\Omega_2$.
+This shows we can reduce spontaneous emission by increasing $\Delta\to$ achieve low decoherence single qubit operations.
+In a typical experiment, we might have
+\begin{align}
+    \Gamma &= 2\pi(6\,\text{MHz}),\; \Delta = 2\pi(80\,\text{GHz}) \implies N_{spont}\approx10^{-4}.
+\end{align}
+This wouldn't limit us in quantum computation. 
+However, the large detuning also reduces the \emph{effective Rabi frequency} and hence the gate speed - there is still a trade-off between speed and decoherence.
 
 \chapter{Rydberg Atoms}
-Let's look at the DiVincenzo criteria for alkalia-atom QC!
+Let's look at the DiVincenzo criteria for alkali-atom QC!
 \begin{enumerate}
     \item Initialisation
         \begin{enumerate}
