@@ -4,7 +4,43 @@
 \part{Particle Physics Phenomenology}
 \chapter{A Brief History...}
 The modern outlook of particle physics is based on these elementary particles:
-\textit{draw table of all particles}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[teal,rounded corners,thick] (0,2.3) rectangle (4.2,4.3);
+        \draw[magenta,rounded corners,thick] (0,0) rectangle (4.2,2);
+        \draw[blue!40!white,rounded corners,thick] (4.5,3) rectangle (7.6,4.3);
+        \draw[red,rounded corners,thick] (4.5,0) rectangle (5.9,1.2);
+        \draw[rounded corners,thick,violet!70!white] (4.5,1.4) rectangle (5.9,2.7);
+        \fill[teal] (0.7,2.8) circle (6pt) node[black] {$\nu_e$};
+        \fill[teal] (0.7,3.7) circle (9pt) node[black] {$e$};
+        \fill[teal] (2.1,2.8) circle (6pt) node[black] {$\nu_\mu$};
+        \fill[teal] (2.1,3.7) circle (11pt) node[black] {$\mu$};
+        \fill[teal] (3.5,2.8) circle (6pt) node[black] {$\nu_\tau$};
+        \fill[teal] (3.5,3.7) circle (13pt) node[black] {$\tau$};
+        \fill[magenta] (0.7,0.5) circle (7pt) node[black] {$d$};
+        \fill[magenta] (0.7,1.5) circle (7pt) node[black] {$u$};
+        \fill[magenta] (2.1,0.5) circle (9pt) node[black] {$s$};
+        \fill[magenta] (2.1,1.5) circle (11pt) node[black] {$c$};
+        \fill[magenta] (3.5,0.5) circle (12pt) node[black] {$b$};
+        \fill[magenta] (3.5,1.5) circle (14pt) node[black] {$t$};
+        \fill[red] (5.2,0.45) circle (6pt) node[black] {$g$} node[anchor=north west,black,yshift=-1pt] {$\times8$};
+        \fill[violet!70!white] (5.2,1.9) circle (10pt) node[black] {$h$};
+        \fill[blue!40!white] (5.02,3.5) circle (6pt) node[black] {$\gamma$};
+        \fill[blue!40!white] (6.05,3.5) circle (10pt) node[black] {$W^{\pm}$};
+        \fill[blue!40!white] (7.08,3.5) circle (10pt) node[black] {$Z^0$};
+        \draw[blue!40!white,snake it] (4.7,4) -- (7.4,4);
+        \draw[red,decorate,decoration={coil,segment length=4pt,amplitude=4pt}] (4.7,0.9) -- (5.7,0.9);
+        \draw[violet!70!white,dashed] (4.7,2.4) -- (5.7,2.4);
+        \draw[decorate,decoration={brace,amplitude=20pt}] (-0.1,4.4) -- (4.3,4.4) node[anchor=south,midway,yshift=20pt] {Fermions};
+        \draw[decorate,decoration={brace,amplitude=20pt}] (4.4,4.4) -- (7.7,4.4) node[anchor=south,midway,yshift=20pt] {Bosons};
+        \draw[decorate,decoration={brace,amplitude=10pt},teal] (-0.1,2.3) -- (-0.1,4.3) node[anchor=east,midway,xshift=-10pt] {Leptons};
+        \draw[decorate,decoration={brace,amplitude=10pt},magenta] (-0.1,0) -- (-0.1,2) node[anchor=east,midway,xshift=-10pt] {Quarks};
+        \draw[decorate,decoration={brace,amplitude=7pt,mirror},blue!40!white] (7.7,3) -- (7.7,4.3) node[anchor=west,midway,xshift=7pt] {Electroweak};
+        \draw[decorate,decoration={brace,amplitude=7pt,mirror},red] (6,0) -- (6,1.2) node[anchor=west,midway,xshift=7pt] {Strong};
+        \draw[decorate,decoration={brace,amplitude=7pt,mirror},violet!70!white] (6,1.4) -- (6,2.7) node[anchor=west,midway,xshift=7pt] {Higgs};
+    \end{tikzpicture}
+\end{figure}
 Back in the 1940s, we did not have the same scope. 
 We knew about protons, neutrons, and electrons. 
 Then we discovered pions and muons coming in from the atmosphere, using cloud chambers and their difference of decay rate to distinguish them.
