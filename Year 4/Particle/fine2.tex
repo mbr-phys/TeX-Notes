@@ -22,28 +22,40 @@
 
 \begin{tikzpicture}
     \begin{feynman}
-        \vertex (a1) {$e^-,k$};
-        \vertex[right=5cm of a1] (a2) {$e^-,k'$};
-        \vertex[below=3.5cm of a2] (a3) {$u,p'$};
+        \vertex (a1);
+        \vertex[above=-0.1cm of a1,blob] (a2) {};
+        \vertex[above=0.5cm of a1] (a3);
+        \vertex[left=1.5cm of a2] (a4);
+        \vertex[above=0.5cm of a4] (a5);
 
         \vertex[below=3cm of a1] (b1);
-        \vertex[below=0.5cm of b1] (b2);
-        \vertex at ($(b1)+(1.5cm,0cm)$) (b3);
-        \vertex at ($(b1)+(1.5cm,0.5cm)$) (b5);
-        \vertex[above=-0.15cm of b3,blob] (b4) {};
+        \vertex[below=-0.1cm of b1,blob] (b2) {};
+        \vertex[below=0.5cm of b1] (b3);
+        \vertex[left=1.5cm of b2] (b4);
+        \vertex[below=0.5cm of b4] (b5);
 
-        \vertex at ($(a1)+(3cm,-1cm)$) (c1);
-        \vertex[below=1cm of c1] (c2);
-        \vertex[right=0.8cm of c2] (c3);
-        \vertex[right=1.4cm of c2] (c4);
+        \vertex at ($(a1)+(1.5cm,-0.75cm)$) (c1);
+        \vertex at ($(c1)+(1cm,-0.25cm)$) (c2);
+        \vertex[above=0.25cm of c2] (c3);
+
+        \vertex[below=1.5cm of c1] (d1);
+        \vertex at ($(d1)+(1cm,0.25cm)$) (d2);
+        \vertex[below=0.25cm of d2] (d3);
+
+        \vertex at ($(c3)+(0.25cm,1.5cm)$) (e1) {$u,k_\mu'$};
+        \vertex at ($(d3)+(0.25cm,-1.5cm)$) (e2) {$u,p_\mu'$};
 
         \diagram* {
-            (a1) -- [fermion] (c1) -- [fermion] (a2),
-            (c1) -- [photon,edge label={$\gamma,q^2>1$GeV$^2$}] (c2),
-            (c2) -- [anti fermion,edge label'={$u,xp$}] (b5) -- (b1) -- [plain,edge label'={$P,p$}] (b2) -- (b3),
-            (b4) --  [fermion] (c3),
-            (b3) -- [fermion] (c4),
-            (c2) -- [fermion] (a3),
+            (a1) -- (a4) -- [plain,edge label={$P,k_\mu$}] (a5) -- (a3),
+            (a3) -- [fermion] (c3),
+            (a2) -- [fermion] (c2),
+            (a1) -- [fermion,edge label'={$u,x_2k_\mu$}] (c1) -- [gluon] (d1),
+            (b3) -- (b5) -- [plain,edge label={$P,p_\mu$}] (b4) -- (b1),
+            (b1) -- [fermion,edge label={$u,x_1p_\mu$}] (d1),
+            (b2) -- [fermion] (d2),
+            (b3) -- [fermion] (d3),
+            (e1) -- (c1),
+            (e2) -- (d1),
         };
     \end{feynman}
 \end{tikzpicture}

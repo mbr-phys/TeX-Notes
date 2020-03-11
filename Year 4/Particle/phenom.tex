@@ -543,7 +543,62 @@ Studying deep inelastic scattering showed that the cross-section of the process 
     \int d\sigma_{eP\to eX} &= \int \sum_i f_i(x)\,d\sigma_{ei\to ei}\,dx.
 \end{align}
 These functions $f$ are called Parton Distribution Functions and their extraction from experiment (we cannot compute them) provides a window into the proton's inner structure. 
-We
+Let's look at the pdf of the $u$ quark, taken from \href{http://hepdata.cedar.ac.uk/pdf/pdf3.html}{Durham's hepdata site.}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{pdf.png}
+    \includegraphics[width=0.45\textwidth]{valence.png}
+    \caption{PDFs for up and down quarks, and their anti-quarks. On the left shows the PDFs for any up/down quark; on the right, we see these compared with the PDFs specifically for valence quarks of the proton.}
+    \vspace{-20pt}
+\end{figure}
+We can see that the function $xf(x)$ peaks around $x=\frac13$ but the most salient feature is that at low $x$, $xf(x)$ does not vanish. 
+This means the the total probability $\int f(x)\,dx$ diverges since $f(x)\approx\frac1x$ as $x\to0$, so what have we missed?
+We have only considered the proton as 3 quarks sitting still, and not the interactions between them which bind the proton together. 
+Considering these interactions in the pdf gets us closer to the actual picture as we consider higher-order loop terms. 
+In the starting picture, each quark carries one third of the momentum of the proton and so its pdf would peak around $x=\frac13$.
+Nevertheless, quarks `talk' to one another by exchanging gluons and hence momentum will transfer between them, meaning they will not have a defined value of momentum and the width of the peaks will broaden.
+
+In addition, virtual processes occur such as the emission of a gluon and its splitting into a quark- antiquark pair. 
+Our photon in deep inelastic scattering could interact with one of these quarks rather than the valence quarks, although it is highly unlikely in perturbation theory as it will scale with $g_s^2$ and higher. 
+However, in this regime $g_s>1$, and so this will have an impact, which is why we see the increase of the pdf as $x\to0$.
+These quarks are called sea quarks as opposed to the valence quarks of the proton. 
+Antiquarks of course also have their own pdfs, so then we can take the difference of the quark and antiquark pdfs to cancel the effect of sea quarks and find just our valence quark pdf, e.g for $u_v$:
+\begin{align}
+    f_{u_v} &= f_u(x) - f_{\bar{u}}(x) & \int f_{u_v}(x)\,dx &= 2\\
+    f_{d_v} &= f_d(x) - f_{\bar{d}}(x) & \int f_{d_v}(x)\,dx &= 1
+\end{align}
+We can plot these valence pdfs and see the difference from what we had previously; these are shown on the right of Figure 8.1.
+
+Another integral result is that the total momentum must be summed over all parton pdfs times the fraction of momentum carried.
+If we include strange quarks which can also be present in the sea, we have
+\begin{align}
+    \int x\left(f_u(x)+f_{\bar{u}}(x)+f_d(x)+f_{\bar{d}}(x)+f_s(x)+f_{\bar{s}}(x)\right)\,dx &= 1.
+\end{align}
+We can do this integral, for example for $q^2=10$ we get the result $\frac12$, which is not equal to $1$ as we have said above. 
+We are missing something which is not seen in electrons scattering off protons, i.e. a neutral parton. 
+It turns out we have missed the gluon. 
+The gluon has its own pdf $f_g(x)$, and it is the gluon that is primary method of the production of the Higgs boson at the LHC.
+
+Nowadays at the LHC, we collide protons and protons, so how do we obtain the hadronic (`real-life') cross-section from the partonic process in this case?
+Well there will be two pdfs involved now and a double sum of the partons. 
+The total cross-section will read
+\begin{align}
+    \sigma(s) &= \int f(x_1)f(x_2)\hat{\sigma}(x_1x_2s)\,dx_1\,dx_2.
+\end{align}
+We have made explicit the dependence of the partonic process on the external CoM energy $s$.
+Why do we evaluate the partonic cross-section of $x_1x_2s$?
+Let's consider the kinematics and look at the partonic CoM energy. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.3]{propro.pdf}
+    \vspace{-30pt}
+\end{figure}
+\begin{align}
+    \hat{s} &= (x_1p+x_2k)^2 = x_1^2p^2 + x_2^2k^2 + 2x_1x_2p\cdot k \approx x_1x_2s,
+\end{align}
+since at the LHC energies we can neglect to a very good approximation the mass of partons. 
+The CoM energy then at the elementary process is a fraction of the total energy. 
+Given that at these energies, the pdfs peak to low $x$, it also explains why even if the LHC is set at $13\,$TeV, very few events carry the full energy. 
 
 \chapter{Quantum Chromodynamics}
 \begin{figure}[H]
