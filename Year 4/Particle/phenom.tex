@@ -67,8 +67,8 @@ Pions hinted towards the existence of quarks, made of u and d quarks.
     \item In the mid 50s, we found interactions between protons and neutrinos to form neutrons and leptons, both for first and second generation.
     \item We required the same number of generations of quarks and leptons, and slowly we found the third generation of leptons by 2000 with the discovery of $\nu_\tau$.
     \item The interactions with neutrinos studied hinted to some other interaction besides electromagnetism and QCD, with its strength described in the Fermi constant. 
-        These interactions all seemed pointlike to us as the particle mediating them was so much heavier than the others. 
-    \item Glashow et al formed this into a gauge theory to attempt to describe this, finding the $W^\pm,Z$ bosons, as well as combining this with the electromagntic gauge theory to form the electroweak of SU(2)$\times$U(1).
+        These interactions all seemed point-like to us as the particle mediating them was so much heavier than the others. 
+    \item Glashow et al formed this into a gauge theory to attempt to describe this, finding the $W^\pm,Z$ bosons, as well as combining this with the electromagnetic gauge theory to form the electroweak of SU(2)$\times$U(1).
     \item In the 1980s at CERN, electrons and positrons were collided to produce the $W^\pm,Z$ bosons and measured their masses as \~80 and 90 GeV respectively, values which were predicted back in the 60s by Weinberg and Salam.
 \end{itemize}
 
@@ -82,7 +82,7 @@ Pions hinted towards the existence of quarks, made of u and d quarks.
 
 \section{Some Notes on Notation and Terminology}
 \begin{itemize}
-    \item Pions, Kaons, and any other particles made of one quark and an anti-quark are known as \textbf{Mesons}.
+    \item Pions, Kaons, and any other particles made of one quark and an antiquark are known as \textbf{Mesons}.
     \item Neutrons, protons, and other three-quark particles are known as \textbf{Baryons}.
     \item Overall, any particle made of quarks is called a \textbf{Hadron}.
     \item Leptons never really form bound states until electrons are bound by atoms, so there is not much terminology for them. 
@@ -119,7 +119,7 @@ We consider the cross-section concept for proton collisions, where
 \begin{align}
     \frac{dN_{ev}}{dt} &= 2vn_2N_1\sigma = L\times\sigma,
 \end{align}
-so the number of events occuring is dependent on the cross-section of the beams.
+so the number of events occurring is dependent on the cross-section of the beams.
 We have defined $L$ as the instantaneous \emph{luminosity}, which is like flux in astronomy etc. 
 So the number of events is dependent on the cross-section of beam collisions and the how often particles are included within the cross-section (in the Luminosity).
 We can describe each of the particles in these collisions using a Gaussian profile density of form
@@ -154,7 +154,7 @@ Top quarks can however be observed on their own as their lifetime is shorted tha
 
 \chapter{Path Integrals and Feynman Rules}
 Consider a quantum system with our conjugate operators $\hat{Q}$ and $\hat{P}$. 
-These satisfy the familiar defintions:
+These satisfy the familiar definitions:
 \begin{align}
     [\hat{Q},\hat{P}] &= i\hbar & \hat{Q}|Q\rangle &= Q|Q\rangle \\
     \langle Q|P|\rangle &= e^{iQP/\hbar} & \hat{P}|P\rangle &= P|P\rangle.
@@ -199,16 +199,16 @@ The amplitude now reads
     \end{split}
 \end{align}
 with $Q_{N+1}=Q_F$.
-We can then write the infintesimal limit of $\delta t\to0$ to get
+We can then write the infinitesimal limit of $\delta t\to0$ to get
 \begin{align}
     \langle Q_F|Q_I\rangle &= \int_{Q_I}^{Q_F} \mathcal{D}Qe^{-\frac{i}{\hbar}S[Q]}, \text{ where }\\
     S[Q] &= \int_0^T \La(Q)\,dt = \int_0^T \left(\frac{\dot{Q}^2}{2}-V(Q)\right)\,dt, \\
     \mathcal{D}Q &= \lim_{\delta t\to0} \left(\frac{-i\hbar}{2\pi\delta t}\right)^{\frac{N+1}{2}}\prod_i dQ_i.
 \end{align}
 We call $S[Q]$ the \emph{action}, from which we can arrive at the Euler-Lagrange equations where $\frac{\delta S[Q]}{\delta Q} = 0$.
-So we sum over all paths and it is the action that determines the final results, the evolutions of the sytem. 
+So we sum over all paths and it is the action that determines the final results, the evolutions of the system. 
 From here already one can see the importance of the action and Lagrangian. Finding the fundamental action that describes the world is key to predict and understand the possible outcomes. 
-This makes the case for theorists to fixate with Lagrangians: there is the hope that the search for new phenomena will yield a complex description of Nature as specified by the Action. 
+This makes the case for theorists to fixate with Lagrangian: there is the hope that the search for new phenomena will yield a complex description of Nature as specified by the Action. 
 
 Now we can connect to particle physics by
 \begin{align}
@@ -353,16 +353,16 @@ These are the \textbf{Feynman rules:}
 
 \chapter{Standard Model Overview}
 \section{Path Integrals Conclusion}
-It can be shown that all diagrams at first order in our perturbative expansion have the momenta of propagaotrs fixed in terms of the momenta of external states. 
+It can be shown that all diagrams at first order in our perturbative expansion have the momenta of propagators fixed in terms of the momenta of external states. 
 The next order does not and there's internal momenta which we have to integrate over. 
 These are the rules, but one only really learns how to use them with examples. 
 Finally, we can take the invariant matrix element $-i\mathcal{M}$ and find the cross-section. 
-For two particles collding and producing $n$ particles, we have
+For two particles colliding and producing $n$ particles, we have
 \begin{align}
     \sigma &= \frac{1}{|\vec{v}_a-\vec{v}_b|2E_{\vec{p}_a}2E_{\vec{p}_b}} \int \left(\prod_{i=1}^n\frac{d^3\vec{p}_i}{2E_{\vec{p}_i}(2\pi)^3}\right)(2\pi)^4\delta^4\left(p_a+p_b0\sum_{i=1}^np_i\right)|\mathcal{M}|^2,
 \end{align}
 where $\vec{v}=\vec{p}/E_{\vec{p}}$.
-The terms inside the inregral except for $\mathcal{M}$ constitute the \textbf{Lorentz Invariant Phase Space}, sometimes this will be called \lips, whereas the factors out front are related to our normalisation of states $\langle\vec{p}'|\vec{p}\rangle$. 
+The terms inside the integral except for $\mathcal{M}$ constitute the \textbf{Lorentz Invariant Phase Space}, sometimes this will be called \lips, whereas the factors out front are related to our normalisation of states $\langle\vec{p}'|\vec{p}\rangle$. 
 On the other hand, a decay rate in the particle's rest frame is
 \begin{align}
     \Gamma &= \frac{1}{2M_a}\int \prod_i \frac{d^3\vec{p}_i}{2E_{\vec{p}_i}(2\pi)^3}(2\pi)^4\delta^4\left(p_a-\sum_{i=1}^n p_i\right)|\mathcal{M}|^2,
@@ -571,7 +571,7 @@ Expressed in terms of $F_{1,2}$, the conditions that follow from our quark descr
 \end{align}
 with $Q_i$ the charge of the parton in units of $e$ ($\frac23,-\frac13$ for $u,d$).
 This relation is known as the Callan-Gross equation. 
-The fact that the functions $F_{1,2}$ depend only on $x$ is knon as Bjorken scaling and a way to test it is to extract $F_{1,2}$ from experiment and plot them for fixed $x$ and varying $y$; if they do not change, the Callan-Gross relation holds and the quark model prediction is right.
+The fact that the functions $F_{1,2}$ depend only on $x$ is known as Bjorken scaling and a way to test it is to extract $F_{1,2}$ from experiment and plot them for fixed $x$ and varying $y$; if they do not change, the Callan-Gross relation holds and the quark model prediction is right.
 
 \chapter{PDFs and Hadronic vs Partonic}
 Studying deep inelastic scattering showed that the cross-section of the process $eP\to eX$ (where $X$ represents anything that can be produced) can be expressed as an integral over the partonic process times a function $f(x)$ of the fraction of momentum $x$, i.e.
@@ -584,11 +584,11 @@ Let's look at the pdf of the $u$ quark, taken from \href{http://hepdata.cedar.ac
     \centering
     \includegraphics[width=0.45\textwidth]{pdf.png}
     \includegraphics[width=0.45\textwidth]{valence.png}
-    \caption{PDFs for up and down quarks, and their anti-quarks. On the left shows the PDFs for any up/down quark; on the right, we see these compared with the PDFs specifically for valence quarks of the proton.}
+    \caption{PDFs for up and down quarks, and their antiquarks. On the left shows the PDFs for any up/down quark; on the right, we see these compared with the PDFs specifically for valence quarks of the proton.}
     \vspace{-20pt}
 \end{figure}
 We can see that the function $xf(x)$ peaks around $x=\frac13$ but the most salient feature is that at low $x$, $xf(x)$ does not vanish. 
-This means the the total probability $\int f(x)\,dx$ diverges since $f(x)\approx\frac1x$ as $x\to0$, so what have we missed?
+This means the total probability $\int f(x)\,dx$ diverges since $f(x)\approx\frac1x$ as $x\to0$, so what have we missed?
 We have only considered the proton as 3 quarks sitting still, and not the interactions between them which bind the proton together. 
 Considering these interactions in the pdf gets us closer to the actual picture as we consider higher-order loop terms. 
 In the starting picture, each quark carries one third of the momentum of the proton and so its pdf would peak around $x=\frac13$.
@@ -686,7 +686,7 @@ For the vacuum value, we have
 \begin{align}
     D_\mu\langle H\rangle &= i\begin{pmatrix} \frac{g'}{2}B_\mu + \frac{g}{2}W_\mu^3 & \frac{g}{2}\left(W^1_\mu - iW_\mu^2\right) \\ \frac{g}{2}\left(W_\mu^1+iW_\mu^2\right) & \frac{g'}{2}B_\mu - \frac{g}{2}W_\mu^3\end{pmatrix} \begin{pmatrix} 0 \\ \frac{v}{\sqrt{2}} \end{pmatrix} = \frac{iv}{\sqrt{2}}\begin{pmatrix} \frac{g}{2}(W_\mu^1-iW_\mu^2) \\ \frac{g'}{2}B_\mu - \frac{g}{2}W_\mu^2\end{pmatrix}.
 \end{align}
-The kinetic term for the vec of the Higgs is the modulus of this, i.e.
+The kinetic term for the vev of the Higgs is the modulus of this, i.e.
 \begin{align}
     D_\mu\langle H\rangle^\dagger D^\mu\langle H\rangle &= \frac{v^2}{2}\left(\frac{g^2}{4}|W_\mu^1-iW_\mu^2|^2 + \left(\frac{g'}{2}B_\mu - \frac{g}{2}W_\mu^3\right)^2\right).
 \end{align}
@@ -738,7 +738,7 @@ In this regime, the Z boson is no longer a virtual short-distance mediator, but 
 If the Z boson is an unstable particle, with a short lifetime, we need to modify the particle propagator to say how it evolves.
 
 If we modify the propagator's denominator as $M_Z\to M_Z-\frac{i}{2}\Gamma_Z$ with $\Gamma_Z$ the total decay width of the Z boson. 
-This extram imaginary part in the action for the particle gives a time evolution, and hence an exponential decay for its probability. 
+This extreme imaginary part in the action for the particle gives a time evolution, and hence an exponential decay for its probability. 
 The resulting propagator and cross-section scales as
 \begin{align}
     d\sigma &\propto \frac{1}{|s-M_Z^2+i\Gamma_ZM_Z - \Gamma_Z^2/4|^2} \approx \frac{1}{(s-M_Z^2)^2+\Gamma_Z^2M_Z^2}.
@@ -786,7 +786,7 @@ The product of the momenta $p_i$ in the matrix element squared then read
 \begin{align}
     p_\nu\cdot p_{\bar{\nu}} &= |\vec{p}_\nu||\vec{p}_{\bar{\nu}}| - \vec{p}_\nu\cdot \vec{p}_{\bar{\nu}} = 2|\vec{p}_\nu|^2 = \frac{M_Z^2}{2}, & p_\nu\cdot p_Z &= M_Z|\vec{p}_\nu| = \frac{M_Z^2}{2},
 \end{align}
-where we have used four-momentum conservation and in that the neutrinoes share the Z mass. 
+where we have used four-momentum conservation and in that the neutrinos share the Z mass. 
 Finally, overall for the decay width, we get
 \begin{align}
     \Gamma_{Z\to\nu\bar{\nu}} &= \frac{1}{2M_Z}\int \frac{d^3\vec{p}_\nu\,d^3\vec{p}_{\bar{\nu}}}{2|\vec{p}_\nu|2|\vec{p}_{\bar{\nu}}|(2\pi)^6} (2\pi)^4\delta(p_Z-p_\nu-p_{\bar{\nu}})\frac13\sum_{\lambda}\sum_{s_\nu s_{\bar{\nu}}} \mathcal{M}\mathcal{M}^* \\
@@ -816,10 +816,247 @@ Experimentally, we can find this ratio to be
 \begin{align}
     \frac{M_W^2}{\cos^2\theta_w M_Z^2} = 1.0010\pm0.0050,
 \end{align}
-where the SM predicts this to be eaxctly one. 
+where the SM predicts this to be exactly one. 
 We have another confirmation of the validity of the SM. 
 
+\chapter{The Higgs Boson and Flavour Physics}
+\section{The Higgs Boson}
+The Higgs boson corresponds to the radial component of its potential. 
+As opposed to the angular momentum along which we can move at no energy cost, the radial direction has curvature. 
+This means that when we expand around the vacuum $v+h$, the potential has
+\begin{align}
+    H &= \begin{pmatrix} 0 \\ \frac{v+h}{\sqrt{2}} \end{pmatrix}, & \begin{split} V(H) &= -m_H^2(H^\dagger H) + \lambda(H^\dagger H)^2 \\ &= -m_H^2\frac{(v+h)^2}{2}+\lambda\frac{(v+h)^4}{4}\end{split},
+\end{align}
+where given that $v^2=\frac{m_H^2}{\lambda}$, the term linear in $h$ cancels. 
+The next term, $h^2$, associated with the curvature at the minimum, will produce a mass for the Higgs. 
+We now know this mass to be $m_h=125\,$GeV.
+To find how this boson couples to matter, we do the same as we did to observe the electroweak-symmetry breaking and substitute $H$ in our Lagrangian. 
+Instead of doing this all over again, a shortcut is simply to take the formulae and substitute $v\to v+h$. 
+This means that the Higgs will couple proportionally to elementary particle masses, with proportionality constants $\frac{1}{v}$. 
+Let us then write the linear couplings of the Higgs at tree level:
+\begin{align}
+    \begin{split}
+        \La_{hXX} &= M_W^2 2\frac{h}{v}W_\mu^+ W^{\mu-} + M_Z^2\frac{h}{v}Z_\mu Z^\mu - \sum_{\psi} m_\psi \frac{h}{v}\bar{\psi}\psi \\
+                  &= gM_WhW_\mu^+ W^{\mu-} + \frac{g}{2\cos\theta_w}M_ZhZ_\mu Z^\mu - \sum_{\psi}\frac{y_\psi}{\sqrt{2}}h\bar{\psi}\psi,
+    \end{split}
+\end{align}
+where we omit higher powers of $h$. 
+We can translate this into the Feynman rules for the vertices as:
+\begin{figure}[H]
+    \centering
+    \includegraphics{higgscup.pdf}
+    \vspace{-10pt}
+\end{figure}
+So how did the discovery of the Higgs boson come about in terms of Feynman diagrams. 
+The LHC collides protons with protons, which in terms of the initial elementary particles means we have quarks, antiquarks, and gluons at our disposal. 
+So the problem we lay out first is how to produce a Higgs particle from these states. 
+There might be different ways to produce a Higgs and it might come with extra particles, but among all these possibilities, we are interested in those which are the most likely. 
+For this we should focus on what the Higgs couples more strongly to. 
+The processes need not even be a tree-level process - one-loop level processes have an extra power of coupling suppression. 
+One final consideration is how much of each initial state is there in the proton - information contained in the parton distribution functions. 
 
+\subsection{Higgs Production}
+Although there are quarks and antiquarks in the proton, they are predominantly the first few generations and they couple very weakly to the Higgs due to their light masses, e.g. $y_u,y_d\approx10^{-5}$.
+\begin{itemize}
+    \item What can happen is that a quark-antiquark pair annihilate into a $W^\pm,Z$ vector boson, to which they couple with strength $g$ and then this electroweak boson emits a Higgs; this is called \\ Higgstrahlung or \textbf{vector boson associative production.}
+    \item We can also have, using the same vertices, two vector bosons emitted from quarks or antiquarks, which increases the number of contributing initial states, annihilating into a Higgs. 
+        This process has one more coupling $g$ w.r.t. the previous, but this is made up for in density of initial states so that this is a more probable production mechanism. 
+        This is called \textbf{vector boson fusion.}
+    \item Another initial state available in abundance are gluons, which are however massless and do not couple directly to the Higgs. 
+        They do couple to the top however, and this is the particle that couples to the Higgs the strongest, with $y_t\approx1$.
+        One can then have two gluons producing a top-antitop pair out of which a Higgs is emitted. 
+        This comes at a higher energy cost since we have to produce not only the Higgs which `costs' $m_h$ but also the top pair which requires an extra $2m_t\approx350\,$GeV.
+        This is called \textbf{associative $t\bar{t}$ production.}
+    \item Finally, we can avoid having tops in our final state if we have them annihilate after they emit the Higgs. 
+        This implies a closed loop process, compared to the previous giving an extra factor of $\frac{1}{16\pi^2}$.
+        This nonetheless is made up for in phase space and pdfs and this process is called \textbf{gluon fusion.}
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.24\textwidth}
+        \imagebox{2.7cm}{\includegraphics[width=\textwidth]{higgs.pdf}}
+        \caption{Gluon Fusion}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \imagebox{3.5cm}{\includegraphics[width=\textwidth]{higgs1.pdf}}
+        \caption{Vector Boson Fusion}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \imagebox{3.1cm}{\includegraphics[width=\textwidth]{higgs2.pdf}}
+        \caption{$W^\pm,Z$ Associative}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \imagebox{3.5cm}{\includegraphics[width=\textwidth]{higgs3.pdf}}
+        \caption{$t\bar{t}h$ Fusion}
+    \end{subfigure}
+    \caption{Primary Higgs Production Methods}
+    \vspace{-10pt}
+\end{figure}
+We plot these cross-sections for Higgs production in Figure 12.2 as functions of the Higgs mass $m_h$. 
+These show how the relative magnitudes of Higgs production, indicating which channels are most favourable. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{higgscross.png}
+    \includegraphics[width=0.5\textwidth]{higgsbranch.png}
+    \caption{\textbf{Left:} Cross-section in (pb) vs $m_h$. \textbf{Right:} Higgs branching ratios.}
+\end{figure}
+
+\subsection{Higgs Decays}
+The diagrams for Higgs production do actually give a good idea of how it could decay by just turning back time. 
+The main difference, however, is that for the Higgs to decay to a given state, there must be enough phase space, or in simpler terms, enough energy. 
+\begin{itemize}
+    \item This precludes decays to the particles that couple the strongest to the Higgs: $h\to t\bar{t},W^+W^-,ZZ$ which roughly require respectively $350,160,180\,$GeV.
+    \item Next in line therefore are $b$ quarks, whose coupling is considerably smaller, $y_b=\frac{4.2}{174}\approx\frac{1}{40}$ but given the Higgs mass of $125\,$GeV, this is the main decay mode.
+    \item It is followed by the decay to two $W$s, but given the strength of the coupling to weak bosons, this second order in $g$ decay is the second source in relevance.
+        This decay is technically $W\bar{f}f$ for $m_h<160\,$GeV, as one $W$ will be virtual and form a fermion-antifermion pair. 
+    \item Next is the inverse of gluon fusion, which is $h\to gg$ and is a loop process with virtual tops which would be observed as two jets in the detector. 
+    \item This is followed by $h\to Z\bar{f}f$, $h\to\tau\tau$, and $h\to\bar{c}c$.
+    \item Finally, although much less likely, the Higgs can decay to two photons ($h\to\gamma\gamma$) via the loop diagram similar to gluon fusion but now with tops and $W$ in the loop (the electromagnetically- charged particles that couple the strongest to $h$), or $h\to\gamma Z$.
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[c]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.8]{higgs4.pdf}
+    \end{subfigure}
+    \begin{subfigure}[c]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{higgs5.pdf}
+    \end{subfigure}
+    \begin{subfigure}[c]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{higgs6.pdf}
+    \end{subfigure}\\
+    \begin{subfigure}[c]{0.7\textwidth}
+        \includegraphics[width=\textwidth]{higgs7.pdf}
+    \end{subfigure}
+    \caption{Primary Methods of Higgs Decay}
+\end{figure}
+These decays leave a clear signal in the detector and were an essential part of the Higgs discovery.
+The branching ratios are shown on the right of Figure 12.2.
+Note that given the Higgs mass, we have predictions for all of them and we can test the Standard Model against experiment here again.
+
+\section{Flavour}
+Now we move on to flavour physics, and aim to outline the flavour structure and phenomenology of the Standard Model. 
+For a while now, we have been setting the flavour structure aside, either focusing on the first family, or `hiding' flavour indices which are summed over, e.g. when we say the down-type quarks couple to the photon as $\frac{1}{3}A_\mu\bar{d}\gamma_\mu d$, we mean all of them couple the same $\frac{1}{3}A_\mu\bar{d}^i\gamma_\mu d^i$ with a sum on $i=1,2,3$ and $(d^1,d^2,d^3)=(d,s,b)$.
+Indeed, as far as the photon is concerned, all down-types are the same. 
+The only property that allows us to distinguish between flavours is their mass, and as we have seen, fermion masses come from the coupling to the Higgs in the Yukawa interaction:
+\begin{align}
+    \begin{split}
+        \La_Y &= -\bar{q}_L^i(Y_u)_{ij}\langle\tilde{H}\rangle u_R^j - \bar{q}_L^i(Y_d)_{ij}\langle H\rangle d_R^j - \bar{l}_L^i(Y_e)_{ij}\langle H\rangle e_R^j + h.c. \\
+              &= -\frac{v}{\sqrt{2}}\bar{u}_L Y_u u_R - \frac{v}{\sqrt{2}}\bar{d}_L Y_d d_R - \frac{v}{\sqrt{2}}\bar{e}_L Y_e e_R + h.c.
+    \end{split}
+\end{align}
+We have restored matrix notation in the second line above. 
+In this language, the Yukawa couplings are represented by a $3\times3$ matrix for each up, down, and lepton type. 
+Any complex matrix can be diagonalised by a unitary rotation from the left and from the right. That means
+\begin{align}
+    Y_u &= U_L^u\mathbf{y}_u(U_R^u)^\dagger, & Y_d &= U_L^d\mathbf{y}_d(U_R^d)^\dagger, & Y_e &= U_L^e\mathbf{y}_e(U_R^e)^\dagger, \\
+    \frac{v}{\sqrt{2}}\mathbf{y}_u &= \text{diag}(m_u,m_c,m_t), & \frac{v}{\sqrt{2}}\mathbf{y}_d &= \text{diag}(m_d,m_s,m_b), & \frac{v}{\sqrt{2}}\mathbf{y}_e &= \text{diag}(m_e,m_\mu,m_\tau),
+\end{align}
+with $U_{L,R}^f$ unitary $U^\dagger U=1$ and $\mathbf{y}_f$ and diag meaning a diagonal matrix. 
+The masses of the flavours vary over several orders of magnitude, meaning the entries of this diagonal matrix must have a strong relative hierarchy. 
+Just like we did for electroweak gauge bosons, we can rotate into the mass bases:
+\begin{align}
+    u_L &= U_L^uu_L', & d_L &= U_L^dd_L', & e_L &= U_L^ee_L',
+\end{align}
+and equivalently for the right-handed fields, so that the Yukawa interactions read, e.g.
+\begin{align}
+    \bar{u}_LY_uu_R &= \bar{u}_LU_L^u\mathbf{y}_u(U_R)^\dagger u_R = \bar{u}_L'(U_L^u)^\dagger U_L^u\mathbf{y}_u(U_R^u)^\dagger U_R^uu_R' = \bar{u}_L'\mathbf{y}_uu_R'.
+\end{align}
+What is important to realise now is which parts of our action `care' about this rotation. 
+As we said, the only couplings that had flavour structure are the Yukawas which we diagonalised above. 
+The Higgs couples proportional to mass, so this means that the Higgs couplings will also be diagonalised. 
+The remaining couplings of fermion are then to the gauge bosons. 
+In matrix notation, the couplings, for example, to the photon are proportional to the identity in flavour space $\bar{d}^i\gamma_\mu d^i$ which means that a unitary rotation of $d=Ud'$ (and so $\bar{d}=\bar{d}'U^\dagger$) leaves the couplings the same: $\bar{d}'U^\dagger U\gamma_\mu d'=\bar{d}'\gamma_\mu d'$.
+The rotations, however, are chiral (different for left- and right-handed), so does this still hold?
+Let's take a general fermion current and prove that it only couples left(right)-handed to left(right)-handed:
+\begin{align}
+    \begin{split}
+        \bar{\psi}\gamma_\mu(v+a\gamma_5)\psi &= (\psi^\dagger\gamma^0\gamma_\mu(v+a\gamma_5)(P_L+P_R)\psi \\
+                                              &= (\psi)^\dagger\gamma^0\gamma_\mu(v+a\gamma_5)P_R\psi_R + (\psi)^\dagger\gamma^0\gamma_\mu(v+a\gamma_5)P_L\psi_L \\
+                                              &= (\psi)^\dagger\gamma^0P_L\gamma_\mu(v+a\gamma_5)\psi_R + (\psi)^\dagger\gamma^0P_R\gamma_\mu(v+a\gamma_5)\psi_L \\
+                                              &= (\psi)^\dagger P_R\gamma^0\gamma_\mu(v+a\gamma_5)\psi_R + (\psi)^\dagger P_L\gamma^0\gamma_\mu(v+a\gamma_5)\psi_L \\
+                                              &= (P_R\psi)^\dagger\gamma^0\gamma_\mu(v+a\gamma_5)\psi_R + (P_L\psi)^\dagger\gamma^0\gamma_\mu(v+a\gamma_5)\psi_L \\
+                                              &= \bar{\psi}_R\gamma_\mu(v+a\gamma_5)\psi_R + \bar{\psi}_L\gamma_\mu(v+a\gamma_5)\psi_L,
+    \end{split}
+\end{align}
+where in the second line we used $P_{L/R}^2=P_{L/R}$.
+All of the gauge boson couplings are of the form above, so it looks like the unitary rotations might cancel out. 
+Just to make sure, we look at the $Z$ couplings and do it carefully:
+\begin{align}
+    \begin{split}
+        -&\frac{gZ_\mu}{\cos\theta_w}\left(\bar{u}\gamma_\mu\frac{P_L}{2}u - \frac23\bar{u}\sin^2(\theta_w)u - \bar{d}\gamma_\mu\frac{P_L}{2}d + \frac13\sin^2(\theta_w)\bar{d}\gamma_\mu d\right) \\
+       =-&\frac{gZ_\mu}{\cos\theta_w}\left(\frac12\bar{u}_L\gamma^\mu u_L - \frac23\sin^2(\theta_w)(\bar{u}_L\gamma_\mu u_L + \bar{u}_R\gamma_\mu u_R) - \frac12\bar{d}_L\gamma_\mu d_L + \frac13\sin^2(\theta_w)(\bar{d}_L\gamma_\mu d_L + \bar{d}_R\gamma_\mu d_R)\right) \\
+       =-&\frac{gZ_\mu}{\cos\theta_w}\bigg[\frac12\bar{u}_L'(U_L^u)^\dagger\gamma^\mu U_L^uu_L' - \frac23\sin^2(\theta_w)\left(\bar{u}_L'(U_L^u)^\dagger\gamma_\mu U_L^uu_L'+\bar{u}_R'(U_R^u)^\dagger\gamma_\mu U_L^uu_R'\right) \\
+         &\quad\quad\, -\frac12\bar{d}_L'(U_L^d)^\dagger\gamma_\mu U_L^dd_L' + \frac13\sin^2(\theta_w)\left(\bar{d}_L'(U_L^d)^\dagger\gamma_\mu U_L^dd_L' + \bar{d}_R'(U_R^d)^\dagger\gamma_\mu U_R^dd_R'\right)\bigg] \\
+       =-&\frac{gZ_\mu}{\cos\theta_w}\left(\bar{u}'\gamma_\mu\frac{P_L}{2}u' - \frac23\bar{u}'\sin^2(\theta_w)u' - \bar{d}'\gamma_\mu\frac{P_L}{2}d' + \frac13\sin^2(\theta_w)\bar{d}'\gamma_\mu d'\right).
+    \end{split}
+\end{align}
+Indeed the unitary rotations disappear. 
+This would happen as well for the photon couplings. 
+In fact, at tree level, there are no \textbf{Flavour Changing Neutral Currents.}
+However, if we look at the $W^\pm$ coupling, we see that there is a difference now, as it mediates currents between different-charge fermions:
+\begin{align}
+    \begin{split}
+        -&\frac{gW_\mu^+}{\sqrt{2}}\bar{u}_L\gamma^\mu d_L - \frac{gW_\mu^+}{\sqrt{2}}\bar{\nu}_L\gamma^\mu e_L = -\frac{gW_\mu^+}{\sqrt{2}}\bar{u}_L'(U_L^u)^\dagger\gamma^\mu U_L^dd_L' - \frac{gW_\mu^+}{\sqrt{2}}\bar{\nu}_L'(U_L^\nu)^\dagger\gamma^\mu U_L^ee_L' \\
+        \equiv-&\frac{gW_\mu^+}{\sqrt{2}}\bar{u}_L'\gamma^\mu V_{\text{CKM}}d'_L - \frac{gW_\mu^+}{\sqrt{2}}\bar{\nu}_L'\gamma^\mu(U_{\text{PMNS}})^\dagger e_L'.
+    \end{split}
+\end{align}
+We define the \textbf{Cabibbo-Kobayashi-Maskawa} and \textbf{Pontecorvo-Maki-Nakagawa-Sakata} unitary mixing matrices. 
+For leptons, we have not defined a mass term in the neutrino sector, but we assume they have a mass and get rotated to the mass basis as well. 
+If we were to stick strictly to the Standard Model, neutrinos would be massless and we cam choose $U_L^\nu=U_L^e$ to eliminate the mixing. 
+We know experimentally that neutrinos do have mass, which could be Dirac-like and have a mass term $\bar{l}_L^i(Y_\nu)_{ij}\tilde{H}\nu_R^j$, or Majorana and instead have a mass term $(\bar{l}_L^i\tilde{H})C_{ij}(\bar{l}_L^j\tilde{H})$; in both cases, we would have to rotate the neutrinos $\nu_L$ by $U_L^\nu$.\\
+These couplings to the $W^\pm$, if the mixing matrices have off-diagonal elements, are the only to `jump' between generations. 
+Indeed the `charged currents' (or couplings to the $W^\pm$) are the source of decay of heavier generations to lighter ones. 
+The shape of these mixing matrices have been determined experimentally, although not in full yet for the leptons. 
+The mixing matrix for quarks, the CKM matrix, is close to the identity, and we can parameterise it with 4 variables with allow us to more easily see the hierarchy of the quark mixing:
+\begin{align}
+    V_{\text{CKM}} &= \begin{pmatrix} 1 - \frac{\lambda_c^2}{2} & \lambda_c & A\lambda_c^3(\rho-i\eta) \\ -\lambda_c & 1-\lambda_c^2 & A\lambda_c^2 \\ A\lambda_c^3(1-\rho-i\eta) & -A\lambda_c^2 & 1 \end{pmatrix} + \mathcal{O}(\lambda_c^4),\quad \begin{matrix} \lambda_c \approx 0.23 \\ A \approx 0.84 \\ \rho\approx0.12 \\ \eta\approx0.36\end{matrix}.
+\end{align}
+This parameterisation is known as the \textbf{Wolfenstein parameterisation}, and is an approximation. 
+For example, we now measure experimentally $V_{13}(=V_{ub})$ closer to of order $\lambda_c^4$ rather than then $\lambda_c^3$ we wrote above.
+On the other side of things, the PMNS mixing matrix for leptons has larger angles and it is not close to the identity. 
+In this case, it is conventional to use the \textbf{Standard parameterisation} of the mixing matrices, which uses Euler angles:
+\begin{align}
+    \begin{split}
+        U_{\text{PMNS}} &= \begin{pmatrix} c_{\theta_{12}}c_{\theta_{13}} & s_{\theta_{12}}c_{\theta_{13}} & s_{\theta_{13}}e^{-i\delta} \\ -s_{\theta_{12}}c_{\theta_{23}}-c_{\theta_{12}}s_{\theta_{23}}s_{\theta_{13}}e^{i\delta} & c_{\theta_{12}}c_{\theta_{23}}-s_{\theta_{12}}s_{\theta_{23}}s_{\theta_{13}}e^{i\delta} & s_{\theta_{23}}c_{\theta_{13}} \\ s_{\theta_{12}}c_{\theta_{23}}-c_{\theta_{12}}c_{\theta_{23}}s_{\theta_{13}}e^{i\delta} & -c_{\theta_{12}}c_{\theta_{23}}-s_{\theta_{12}}c_{\theta_{23}}s_{\theta_{13}}e^{i\delta} & c_{\theta_{23}}c_{\theta_{13}} \end{pmatrix}, \\
+                        &\qquad\qquad \begin{matrix} s_{\theta_{12}}^2 \approx 0.30, & s_{\theta_{23}}^2 \approx 0.44, & s_{\theta_{13}}^2 \approx 0.020. \end{matrix}
+    \end{split}
+\end{align}
+The presence of complex coefficients in these matrices signals CP violation, which has been observed in quarks ($\eta\neq0$) but not yet in leptons ($\delta=0$).
+In addition, if neutrinos are Majorana particles, two extra Majorana phases appear, but this also is not yet known. 
+The relative sizes of these matrix elements, along with those of the flavour masses gives the flavour structure for elementary particles. 
+As to why this is the way it is, we do not know. 
+The fact that the only source of flavour (or possible generational) transitions appears in couplings to the $W^\pm$ bosons is referred to as no FCNC at tree level. 
+This has consequences for phenomenology since it means that certain decays are not allowed at tree level. 
+For example, $D^+(c\bar{d})\to\pi^0(d\bar{d})\mu^+\nu_\mu$ occurs at tree level mediated by the charged current $c\to W^+d\to(\mu^+\nu_\mu)d$.
+On the other hand, $D^+\to\pi^+\mu^+\mu^-$ cannot occur at tree level and the same goes for, for example, $K^0\to\bar{\nu}\nu,\mu\to e\gamma$.
+These processes occur at the one loop level and are mediated by the $W^\pm$ couplings and the mixing elements. 
+This means that the invariant matrix elements for each process will scale with the mixing and masses of the internal particles, respectively as:
+\begin{align}
+    \frac{\mathcal{M}_{\text{FCNC}}}{\mathcal{M}_{\text{CC}}}&\approx & \text{(a)}&\frac{g^2V_{dj}^\dagger m_{u_j}^2V_{js}}{(4\pi)^2M_W^2} & \text{(b)}&\frac{g^2V_{uj}m_{d_j}^2V_{jc}^\dagger}{(4\pi)^2M_W^2} & \text{(c)}&\frac{g^2U_{ej}m_{\nu_j}^2U_{ju}^\dagger}{(4\pi)^2M_W^2}.
+\end{align}
+We will not go into the specifics of the above, but these are to demonstrate that because of the $\frac{1}{16\pi^2}$ loop suppression factor and small mixing elements (for quarks) and/or small mass ratio (quarks and leptons), these effects are much more rare. 
+For clarity, \textbf{these do still occur in the Standard Model}, as opposed to e.g. baryon number violation, only rarely. 
+The rarity of these processes, and the large errors we have for them, mean that these can be good places for exploring physics beyond the Standard Model. 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fcnc1.pdf}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fcnc2.pdf}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fcnc3.pdf}
+        \caption{}
+    \end{subfigure}
+    \caption{One Loop Flavour Changing Neutral Currents}
+\end{figure}
 
 
 \end{document}
