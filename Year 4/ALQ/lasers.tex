@@ -23,8 +23,8 @@
     }
 }
 
-\input Starburst.fd
-\newcommand*\initfamily{\usefont{U}{Starburst}{xl}{n}}
+% \input Starburst.fd
+% \newcommand*\initfamily{\usefont{U}{Starburst}{xl}{n}}
 
 %\setlength{\epigraphwidth}{\textwidth}
 %\titleformat{\part}[display]
@@ -39,31 +39,57 @@
 %\newcommand{\printparttitle}[1]{\parttitlefon #1\vfil\@partimage\vfil\gdef  \@partimage{}}
 %\makeatother
 
-\title{Atoms, Lasers, and Qubits \vspace{-20pt}}
-\author{Dr Weatheril and Prof Adams}
-\date{\vspace{-15pt}Michaelmas Term 2019 - Epiphany Term 2020}
+% \title{Atoms, Lasers, and Qubits \vspace{-20pt}}
+% \author{Dr Weatheril and Prof Adams}
+% \date{\vspace{-15pt}Michaelmas Term 2019 - Epiphany Term 2020}
 \rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Michaelmas 2019}}\\[2cm]
+    {\LARGE\bfseries Atoms, Lasers, and Qubits}\\[1.5cm]
+    \HRule \\[0.3cm]
+    {\includegraphics[width=0.4\textwidth]{lasers.png}}\\[0.1cm]
+    \HRule \\[1.5cm]
 
-\maketitle
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Kevin Weatheril 
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[c]{0.55\textwidth}
+            \includegraphics[width=\textwidth]{lightsaber.png}
+        \end{subfigure}
+        \begin{subfigure}[c]{0.42\textwidth}
+            \includegraphics[width=\textwidth]{lightmo.jpg}
+        \end{subfigure}
+    \end{figure}
+    \vfill
+\end{titlepage}
 \tableofcontents
 
-%\epigraphhead[200]{\hfil\includegraphics[scale=0.5]{lasers.png}\hfil}
-%\partimage{width=\textwidth,keepaspectratio}{lasers.png}
-\part{\initfamily LASER PHYSICS}
 \chapter{Introduction}
 \begin{itemize}
-    \item \textbf{Note:} The course will be more reading based than math based. 
-Read the references on each summary sheet. 
-    \item Need light oscillation, not just amplification.  
+    \item \textbf{Note:} The course will be more reading based than math based.
+Read the references on each summary sheet.
+    \item Need light oscillation, not just amplification.
     \item 1 in $10^{18}$ atomic clock accuracy.
     \item LD: laser diode
     \item Non-linear crystals allow different wavelengths
     \item Laser transitions based on E group of materials
     \item Learn the unit conversions
     \item Magneto-optical trap to cool atoms
-    \item Optical frequency comb $\to$ accurate measurement of wavelength of light 
+    \item Optical frequency comb $\to$ accurate measurement of wavelength of light
     \item Sodium atoms in upper atmosphere which we fluoresce for AO
     \item \textbf{LEARN!} Q on paper always - contents of a laser
         \begin{enumerate}
@@ -76,9 +102,9 @@ Read the references on each summary sheet.
 \section{Introduction to lasers}
 Lasers - coherence $\to$ 2 types - longitudinal and transverse
 \begin{itemize}
-    \item Lasers are highly coherent, both transversely and longitudinally. 
-        Longitudinal and temporal coherence is related to linewidth, and will be discussed. 
-        Coherence length $l_c$ and coherence time $\tau_c$ are the distance and time over which a coherent wave maintains a specified degree of coherence, i.e. when its phase is predictable. 
+    \item Lasers are highly coherent, both transversely and longitudinally.
+        Longitudinal and temporal coherence is related to linewidth, and will be discussed.
+        Coherence length $l_c$ and coherence time $\tau_c$ are the distance and time over which a coherent wave maintains a specified degree of coherence, i.e. when its phase is predictable.
 \end{itemize}
 \begin{multicols}{2}
 \begin{figure}[H]
@@ -97,10 +123,10 @@ Coherence length and time:
 \end{align}
 \end{multicols}
 \begin{itemize}
-    \item Can't have an infinitely narrow spectrum. 
-        Monochromaticity - laser has a spectral linewidth $\delta\om$, this is much smaller than the actual carrier/centre frequency. $\delta\om\ll\om_0$ for a laser where $\om_0$ is the centre frequency. 
-        From mHz to GHz in range. 
-    \item Highly directional beam $\to$ energy contained in one region. 
+    \item Can't have an infinitely narrow spectrum.
+        Monochromaticity - laser has a spectral linewidth $\delta\om$, this is much smaller than the actual carrier/centre frequency. $\delta\om\ll\om_0$ for a laser where $\om_0$ is the centre frequency.
+        From mHz to GHz in range.
+    \item Highly directional beam $\to$ energy contained in one region.
 \end{itemize}
 Directionality:
 \begin{itemize}
@@ -119,7 +145,7 @@ Directionality:
     \end{tikzpicture}
 \end{figure}
 \begin{itemize}
-    \item All in a very low frequency range $\to$ all energy oscillating in small aarea in small frequency range - useful applications. 
+    \item All in a very low frequency range $\to$ all energy oscillating in small area in small frequency range - useful applications.
 \end{itemize}
 Brightness:
 \begin{itemize}
@@ -128,7 +154,7 @@ Brightness:
         \begin{equation}
             B_\om = \frac{P}{A\Delta\Om\Delta\om},
         \end{equation}
-        where $A$ is the area, $\Delta\Om$ is the solid angle, and $\Delta\om$ is the linewidth. 
+        where $A$ is the area, $\Delta\Om$ is the solid angle, and $\Delta\om$ is the linewidth.
 \end{itemize}
 Electromagnetic Field Modes - not examinable:
 \begin{itemize}
@@ -141,7 +167,7 @@ Electromagnetic Field Modes - not examinable:
 
 
 \chapter{Einstein's rate equations}
-A laser requires amplification due to stimulated emission of radiation. 
+A laser requires amplification due to stimulated emission of radiation.
 \begin{multicols}{2}
 \begin{figure}[H]
     \centering
@@ -155,7 +181,7 @@ A laser requires amplification due to stimulated emission of radiation.
 \end{align}
 \end{multicols}
 \begin{enumerate}
-    \item Spontaneous emission: Atom in some excited state, until some time later where it spontaneously decays into a lower state, with a photon emitted with energy shown in Eq (2.1). 
+    \item Spontaneous emission: Atom in some excited state, until some time later where it spontaneously decays into a lower state, with a photon emitted with energy shown in Eq (2.1).
         Rates: $A_{21}$ per $N_i$ atoms, or $A_{21}N_2$ per $m^3$.
         \begin{figure}[H]
             \centering
@@ -171,14 +197,14 @@ A laser requires amplification due to stimulated emission of radiation.
                 \draw[-{Latex[length=2.5mm,width=2.4mm]},snake it] (5.2,0.3) -- (6.9,0.3) node[anchor=west] {$\hbar\om_{12}$};
             \end{tikzpicture}
         \end{figure}
-    \item Absorption: Excite into excited state using energy of photon. 
+    \item Absorption: Excite into excited state using energy of photon.
         Rates: $B_{12}\rho(\om_{12})$, $B_{12}\rho(\om_{12})N_1$.
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
                 \draw (0,1) node[anchor=south east] {Before:} -- (2,1);
                 \draw[fill] (1,0) circle (3pt);
-                \draw (0,0) -- (2,0);    
+                \draw (0,0) -- (2,0);
                 \draw[-{Latex[length=2.5mm,width=2.4mm]},snake it] (-1.2,0.3) node[anchor=south east] {$\hbar\om_{12}$} -- (0.5,0.3);
 
                 \draw (4,1) node[anchor=south east] {After:} -- (6,1);
@@ -188,7 +214,7 @@ A laser requires amplification due to stimulated emission of radiation.
             \end{tikzpicture}
         \end{figure}
     \item Stimulated emission: At the initial time we have an atom in an excited state which we then apply a radiated field (photon) to. Later, the atom will decay into a lower state and there will be two outgoing photons - they have been emitted into the same mode.
-        Rates: $B_{21}\rho(\om_{12})$, $B_{21}\rho(\om_{12})N_2$. Note: 
+        Rates: $B_{21}\rho(\om_{12})$, $B_{21}\rho(\om_{12})N_2$. Note:
         \begin{itemize}
             \item Here, $\rho(\om_{12})$ is the spectral energy density - the energy density, per unit angular frequency range at $\om$, with units of $J\,m^{-3}\,s$.
             \item Generally, the light being used here is broad-band.
@@ -198,9 +224,9 @@ A laser requires amplification due to stimulated emission of radiation.
             \begin{tikzpicture}
                 \draw (0,1) node[anchor=south east] {Before:} -- (2,1);
                 \draw[fill] (1,1) circle (3pt);
-                \draw (0,0) -- (2,0);    
+                \draw (0,0) -- (2,0);
                 \draw[-{Latex[length=2.5mm,width=2.4mm]},snake it] (-1.2,0.3) node[anchor=south east] {$\hbar\om_{12}$} -- (0.5,0.3);
-                
+
                 \draw (4,1) node[anchor=south east] {After:} -- (6,1);
                 \draw (4,0) -- (6,0);
                 \draw[fill] (5,0) circle (3pt);
@@ -211,7 +237,7 @@ A laser requires amplification due to stimulated emission of radiation.
         \end{figure}
 \end{enumerate}
 
-\section{Apply the 3 processess}
+\section{Apply the 3 processes}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -249,20 +275,20 @@ This reveals:
 \end{align}
 Notes:
 \begin{itemize}
-    \item Effectively only 1 coefficient as if we know A, we know B. 
+    \item Effectively only 1 coefficient as if we know A, we know B.
     \item $A_{21}$ is the radiative decay rate,
         \begin{equation}
             A_{21} = \frac{1}{\tau_2}
         \end{equation}
     \item B has units $m^3\,J^{-1}\,s^{-2}$.
     \item A and B are constants for a particular atom.
-    \item From the $\om^3$ term, we can see that an infrared transition may decay very fast, but a microwave transition may decay very slow. 
+    \item From the $\om^3$ term, we can see that an infrared transition may decay very fast, but a microwave transition may decay very slow.
     \item Ratio of $A/B \propto \om^3$ - lasers at high frequency harder to achieve.
     \item The principle of detailed balance states that \textbf{\unl{in equilibrium}, the total number of particles entering a quantum state by a particular rate per unit time is the same as the number leaving by the same rate.}
 \end{itemize}
 
 \section{Steady State Solution}
-For simplicity, we will assume that $g_1=g_2$ such that the B coefficients are the same. 
+For simplicity, we will assume that $g_1=g_2$ such that the B coefficients are the same.
 \begin{align}
     N_1B_{12}\rho(\om_{12}) &= N_2A_{21} + N_2B_{12}\rho(\om_{12}) \\
     N_1 &= N - N_2
@@ -271,12 +297,12 @@ Now we can rearrange to eliminate $N_1$.
 \begin{align}
     \frac{N_2}{N} &= \frac{B_{12}\rho(\om_{12})}{A_{21}+2B_{12}\rho(\om_{12})}
 \end{align}
-Now consider the form of the above as the spectral energy density tends to infinity. 
+Now consider the form of the above as the spectral energy density tends to infinity.
 What we see  is that $N_2 \to \frac{N}{2}$.
 This tells us that for at least a two-level atom we cannot get population inversion, which is required for lasers, i.e. steady state inversion impossible.
 
 \section{Number of photons per mode}
-$\bar{n}$ can be thought of as the mean number of photons per mode, and $g(\om)\,d\om$ as the mode density. 
+$\bar{n}$ can be thought of as the mean number of photons per mode, and $g(\om)\,d\om$ as the mode density.
 \begin{align}
     \rho(\om)\,d\om &= \bar{n} \times g(\om)\,d\om \times \hbar\om
 \end{align}
@@ -323,13 +349,13 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
         \end{equation}
         This is only for a 2 level atom.
         \begin{figure}[H]
-            \centering 
+            \centering
             \begin{tikzpicture}
                 \draw[->] (0,0) -- (0,2) node[anchor=east] {$N_2$};
                 \draw[->] (0,0) -- (3,0) node[anchor=west] {$t$};
                 \draw (0.2,2) .. controls (0.5,1) and (1.5,0.3) .. (3,0.2) node[anchor=south west] {$e^{-\Gamma_Ht}$};
 
-                \draw[->] (5,0) -- (9,0) node[anchor=west] {$\om$}; 
+                \draw[->] (5,0) -- (9,0) node[anchor=west] {$\om$};
                 \draw (7,-0.1) node[anchor=north] {$\om_{12}$} -- (7,0.1);
                 \draw (5.1,0.1) cos (6.7,1.7) sin (7,2) cos (7.3,1.7) sin (8.9,0.1);
                 \draw[<->] (6.3,1) -- (7.7,1) node[anchor=south west] {FWHH $= \Gamma_H$};
@@ -340,7 +366,7 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
             L_H(\om) &= \frac{\Gamma_H/2\pi}{(\om-\om_{12})^2+\frac{\Gamma_H^2}{4}} \\
             \ofnt &L_H(\om)\;d\om = 1
         \end{align}
-    \item For multiple decay paths: 
+    \item For multiple decay paths:
         \begin{multicols}{2}
         \begin{figure}[H]
             \centering
@@ -369,7 +395,7 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
                 \draw (0.1,2.9) sin (1.7,2.4);
                 \draw (1.7,2.4) arc (90:-90:0.2cm);
                 \draw (1.7,2) cos (0.1,1.5);
-                
+
                 \draw (0.1,1.3) sin (1.7,0.8);
                 \draw (1.7,0.8) arc (90:-90:0.2cm);
                 \draw (1.7,0.4) cos (0.1,-0.1);
@@ -383,7 +409,7 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
             \Gamma_1 &= \sum A_{1i} = \frac{1}{\tau_1} \\
             \Gamma_{21} &= \Gamma_2 + \Gamma_1
         \end{align}
-        $\Gamma_{21}$ is the emission linewidth. 
+        $\Gamma_{21}$ is the emission linewidth.
 \end{itemize}
 \begin{example}[Argon ion laser]
     \begin{figure}[H]
@@ -398,7 +424,7 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
             \draw[-{Latex[length=2mm,width=1.5mm]}] (2,1) -- (2,0.5);
             \draw[-{Latex[length=2mm,width=1.5mm]}] (1,1) -- (1,0);
 
-            \draw[decorate,decoration={brace,amplitude=10pt},xshift=5pt] (-0.2,-0.2) -- (-0.2,0.7) node[midway,anchor=east,xshift=-10pt] {$3p^5$}; 
+            \draw[decorate,decoration={brace,amplitude=10pt},xshift=5pt] (-0.2,-0.2) -- (-0.2,0.7) node[midway,anchor=east,xshift=-10pt] {$3p^5$};
         \end{tikzpicture}
     \end{figure}
     $\lambda = 488\,nm$, $A= 7.8\times10^7\;s^{-1}$, $1:\,73,1\;nm;~ A=4.5\times10^8\;s^{-1}$, $2:\,72.3\;nm;~ A=23\times10^8\;s^{-1}$.\\
@@ -415,7 +441,7 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
 \textbf{Phonon broadening:}
 \begin{multicols}{2}
 \begin{itemize}
-    \item In a crystal, two distinct groups of energy levels packed together, quantised vibrational modes $\implies$ phonons. 
+    \item In a crystal, two distinct groups of energy levels packed together, quantised vibrational modes $\implies$ phonons.
     \item Occurs in solid state lasers, temp-dependent
     \item Dominant broadening at room temperature
 \end{itemize}
@@ -449,8 +475,8 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
     \item Arises due to motion of atoms - when a moving atom emits, there is a Doppler shift dependent on the component of velocity along the direction of the emitted photon.
         \begin{align}
             \om &= \om_{12}\left(1 \pm \frac{v_z}{c}\right)
-        \end{align} 
-        $\pm$ for blue/red shift - blue as velocity towards observer, red away. 
+        \end{align}
+        $\pm$ for blue/red shift - blue as velocity towards observer, red away.
     \item Broadening arises due to Maxwell-Boltzmann distribution of velocities,
         \begin{align}
             P(v_z)\,dv_z &= \left(\frac{M}{2\pi k_BT}\right)^{1/2} \exp\left(-\frac{Mv_z^2}{2k_BT}\right)\;dv_z
@@ -479,7 +505,7 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
         \begin{align}
             P(\om)\,d\om &= \frac{c}{\om_{12}}\left(\frac{M}{2\pi k_BT}\right)^{1/2}\exp\left[-\frac{Mc^2}{2k_B T}\frac{(\om-\om_{12})^2}{\om_{12}^2}\right]
         \end{align}
-    \item For Doppler broadening, 
+    \item For Doppler broadening,
         \begin{align}
             \Delta\om_I &= \frac{2\om_{12}}{c}\left(\frac{2k_BT}{M}\ln2\right)^{1/2} \\
                         &= 7.16\times10^{-7}\om_{12}\left(\frac{T}{M_A}\right)^{1/2}
@@ -491,7 +517,7 @@ $M_A = 40$, $\lambda=488\,nm$, Discharge temperature $\approx 1200^\circ C$.
 \begin{align}
     \Delta\om_I &= (2\pi) 2.7\,GHz
 \end{align}
-This is many times larger than the natural broadening. 
+This is many times larger than the natural broadening.
 \end{example}
 \textbf{Amorphous crystal broadening:}
 \begin{itemize}
@@ -513,9 +539,9 @@ This is many times larger than the natural broadening.
         \draw[-Latex] (-1.4,0) node[anchor=north] {Narrowband} -- (0,0);
     \end{tikzpicture}
 \end{figure}
-If the light beam is resonant with the atoms in the gas, we would expect some interaction. 
+If the light beam is resonant with the atoms in the gas, we would expect some interaction.
 But how is the medium excited?
-It depends on the broadening. 
+It depends on the broadening.
 \begin{enumerate}
     \item Homogeneous broadening (Lorentzian):
         \begin{figure}[H]
@@ -538,9 +564,9 @@ It depends on the broadening.
                 \draw[dashed] (4.2,-0.9) cos (6.4,0.8) sin (7,1.4) cos (7.6,0.8) sin (9.8,-0.9);
             \end{tikzpicture}
         \end{figure}
-        Turn on radiation within natural linewidth. 
+        Turn on radiation within natural linewidth.
         All of these distributions will be the same - all atoms are affected equally, and the population of $N_1$ is reduced slightly as it moves into $N_2$.
-    \item Inhomogeneous broadening (Gaussian): 
+    \item Inhomogeneous broadening (Gaussian):
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
@@ -561,8 +587,8 @@ It depends on the broadening.
             \end{tikzpicture}
         \end{figure}
         Distributions are now very different - atoms are affected differently, and only a subset of the atoms interact.
-        For example, with Doppler broadening, only particles with a specific velocity would be excited strongly by the light beam. 
-        The width of the N2 Gaussian is determined by natural broadening. 
+        For example, with Doppler broadening, only particles with a specific velocity would be excited strongly by the light beam.
+        The width of the N2 Gaussian is determined by natural broadening.
 \end{enumerate}
 \end{example}
 Reminder:
@@ -578,14 +604,14 @@ All atoms are affected the same $\implies$ simply define a new constant:
 \end{align}
 Then if we wanted to know the rate of emission now:
 \begin{align}
-    a_{21}(\om)\,d\om &= \text{rate of emission in range $\om\to\om+d\om$ per atom} 
+    a_{21}(\om)\,d\om &= \text{rate of emission in range $\om\to\om+d\om$ per atom}
 \end{align}
 We have to multiply by the $d\om$ because $L_H(\om)$ has units $\frac{1}{\om}$.
 Integrating recovers the result,
 \begin{align}
     \int L_H(\om)\,d\om &= 1
 \end{align}
-Inhomogeneous broadening is more difficult. 
+Inhomogeneous broadening is more difficult.
 We want to do this, but we can use the results from homogeneous broadening in certain circumstances, i.e. for narrowband light and $\Gamma_H \ll \Delta\om_I$.
 
 \begin{figure}[H]
@@ -614,9 +640,9 @@ Find change in power of beam.
 The term inside the square brackets above is the net rate of photons added to the field ($m^{-3}$).\\
 For a beam, the intensity is described as
 \begin{align}
-    I(z) &= c\rho(\om)\;d\om 
+    I(z) &= c\rho(\om)\;d\om
 \end{align}
-Substitute this into Eq (4.7) and rearrange, also using the expressions for A and B coefficients found in lecture 2: 
+Substitute this into Eq (4.7) and rearrange, also using the expressions for A and B coefficients found in lecture 2:
 \begin{align}
     \frac{1}{I}\frac{dI}{dz} &= \frac{\hbar\om}{c}L_H(\om)\left[N_2B_{21} - N_1B_{12}\right] \\
                              &= \frac{\pi^2c^2}{\om^2_{12}}A_{21}L_H(\om)\left[N_2 - \frac{g_2}{g_1}N_1\right]
@@ -635,9 +661,9 @@ There are two cases:
     \item Absorption:
         \begin{align}
             N_2 &< \frac{g_2}{g_1}N_1 \\
-            \implies I(z) &= I(0)e^{-\kappa(\om)z},~ \kappa(\om) = \sigma(\om)\left(\frac{g_2}{g_1}N_1 - N_2\right)  
+            \implies I(z) &= I(0)e^{-\kappa(\om)z},~ \kappa(\om) = \sigma(\om)\left(\frac{g_2}{g_1}N_1 - N_2\right)
         \end{align}
-        $\kappa$ is the absorption coefficient. 
+        $\kappa$ is the absorption coefficient.
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
@@ -652,7 +678,7 @@ There are two cases:
             N_2 &> \frac{g_2}{g_1}N_1 \\
             I(z) &= I(0)e^{g(\om)z},~ g(\om) = \sigma(\om)\left(N_2-\frac{g_2}{g_1}N_1\right)
         \end{align}
-        $g(\om)$ is the gain coefficient, $e^{g(\om)z}$ is the gain. 
+        $g(\om)$ is the gain coefficient, $e^{g(\om)z}$ is the gain.
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
@@ -672,10 +698,10 @@ Frequency dependence of the gain:
     g(\om) &= \sigma(\om)\times N^*, ~ N^* = N_2 - \frac{g_2}{g_1}N_1 \\
            &= \frac{\pi^2c^2}{\om_{12}^2}A_{21}L_H(\om)\times \left[N_2-\frac{g_2}{g_1}N_1\right]
 \end{align}
-We call $N^*$ the population inversion density. 
-\textbf{Note:} Frequency dependence is in the optical gain cross section via $L(\om)$. 
-$\sigma(\om)$ is determined by the atom, we cannot control it. 
-Broadening spreads gain over a range of frequencies. 
+We call $N^*$ the population inversion density.
+\textbf{Note:} Frequency dependence is in the optical gain cross section via $L(\om)$.
+$\sigma(\om)$ is determined by the atom, we cannot control it.
+Broadening spreads gain over a range of frequencies.
 
 \chapter{The Laser Oscillator: Cavity Basics and Threshold}
 \begin{figure}[H]
@@ -691,7 +717,7 @@ Broadening spreads gain over a range of frequencies.
         \draw[white] (2.6,-1.2) -- (3.4,-1.2) node[midway,black] {1 m};
     \end{tikzpicture}
 \end{figure}
-Imagine we have a sample which is our laser gain sample, and we will send one photon in. 
+Imagine we have a sample which is our laser gain sample, and we will send one photon in.
 For most lasers,  the peak gain, $g(\om_{12}) \approx 0.01\;cm^{-1}$.
 So one photon in to our 1m long sample, means $e^1 = 2.7$ photons out.
 We must add a cavity to recirculate the light, and now using mirrors either side of the gain medium,  we will pass through the gain medium 40 times, $e^{40} \approx 10^{17}$ photons.
@@ -726,8 +752,8 @@ We must add a cavity to recirculate the light, and now using mirrors either side
     \item $L_c$ is the mirror separation, the length of the cavity
     \item $\alpha$ is the distributed loss over the length of the gain medium
     \item a is the intracavity element - it can make pulsed lasers or change the frequency, or induce a fixed loss
-    \item The gain cell is angled, cut at Brewster's angle to minimise loss. 
-    \item The cavity imposes spectrum and characteristics to the laser. 
+    \item The gain cell is angled, cut at Brewster's angle to minimise loss.
+    \item The cavity imposes spectrum and characteristics to the laser.
     \item Distributed loss throughout cavity of $\alpha$ per meter.
 \end{itemize}
 
@@ -766,7 +792,7 @@ Trace intensity around the cavity:
 \end{align}
 \begin{multicols}{2}
 \begin{itemize}
-    \item Pass through the cavity twice, so $(1-a)$ twice. 
+    \item Pass through the cavity twice, so $(1-a)$ twice.
     \item $e^{-2\alpha L_c}$ is the distributed loss over length, $2L_c$.
 \end{itemize}
 \end{multicols}
@@ -782,7 +808,7 @@ Express as round trip loss,
 This is the \unl{Fractional Round Trip Loss.}
 
 \section{Cavity Lifetime}
-The lifetime of a photon in a cavity is a useful concept. 
+The lifetime of a photon in a cavity is a useful concept.
 Define cavity lifetime, $\tau_c$.
 \begin{align}
     I(t) &= I_0e^{-t/\tau_c} \\
@@ -790,7 +816,7 @@ Define cavity lifetime, $\tau_c$.
     \tau_c &= \frac{2L_c}{c\delta_c} = \frac{T_{RT}}{\delta_c}
 \end{align}
 $T_{RT}$ is called the Round Trip Time.
-Cavity has a quality factor, 
+Cavity has a quality factor,
 \begin{align}
     Q = \frac{\om}{\Delta\om_c} = \om\tau_c
 \end{align}
@@ -801,7 +827,7 @@ So we can then think of cavities as having a linewidth, $\Delta\om_c = \frac{1}{
     \text{Round Trip Gain}\times\text{Round Trip Loss} = 1
 \end{align}
 \begin{itemize}
-    \item Gain x loss $>1$, intensity grows $\implies$ laser oscillation 
+    \item Gain x loss $>1$, intensity grows $\implies$ laser oscillation
     \item Gain x loss $<1$, intensity decays $\implies$ no laser :(
 \end{itemize}
 Substitute for gain and loss:
@@ -844,7 +870,7 @@ Develop rate equations for $N_1$ and $N_2$.
     \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} \\
     \frac{dN_1}{dt} &= S_1 + N_2A_{21} - \frac{N_1}{\tau_1}
 \end{align}
-In the steady state, 
+In the steady state,
 \begin{align}
     \frac{dN_2}{dt} &= \frac{dN_1}{dt} = 0 \\
     N_2 &= S_2\tau_2 \\
@@ -952,15 +978,15 @@ This is usually an excellent approximation.
 Last time:
 \begin{align}
     \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} - \frac{N^*\sigma(\om)I}{\hbar\om} \\
-    \frac{dN_1}{dt} &= S_1 - \frac{N_1}{\tau_1} + \frac{N^*\sigma(\om)I}{\hbar\om} + N_2A_{21} 
+    \frac{dN_1}{dt} &= S_1 - \frac{N_1}{\tau_1} + \frac{N^*\sigma(\om)I}{\hbar\om} + N_2A_{21}
 \end{align}
 We need a third equation to describe the system.
-Develop equation governing the the intensity build up. 
+Develop equation governing the intensity build up.
 Consider photon density, $n_\phi$.
 \begin{align}
     \frac{dn_\phi}{dt} &= \left(N^*\sigma(\om)\frac{I}{\hbar\om}\right)\left(\frac{L_m}{L_c}\right) - \frac{n_\phi}{\tau_c}
 \end{align}
-Intensity of beam, 
+Intensity of beam,
 \begin{align}
     I &= \text{energy density}\times\text{velocity} \\
       &= n_\phi\hbar\om\times c \\
@@ -996,7 +1022,7 @@ We can take the expression found for gain last time and apply the above relation
     I_{ss} &= I_s(\om)\left[\frac{g_0(\om)}{g_{th}}-1\right]
 \end{align}
 \end{multicols}
-Consider simple cavity, 
+Consider simple cavity,
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1071,9 +1097,9 @@ Differentiate expression for $I_{out}$ with respect to T and set to zero:
 Develop rate equations for $N_1$ and $N_2$.
 \begin{align}
     \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} \\
-    \frac{dN_1}{dt} &= S_1 + N_2A_{21} - \frac{N_1}{\tau_1} 
+    \frac{dN_1}{dt} &= S_1 + N_2A_{21} - \frac{N_1}{\tau_1}
 \end{align}
-In steady state, 
+In steady state,
 \begin{align}
     N_2 &= \tau_2S_2 \\
     N_1 &= \tau_1S_1 + \tau_2S_2A_{21}\tau_1
@@ -1106,11 +1132,11 @@ We want:
         \draw (1,1.3) -- (2,1.3) node[anchor=west] {2};
         \draw (0,2) -- (2,2) node[anchor=west] {3};
         \draw[-Latex] (0.5,0) -- (0.5,2) node[anchor=east,midway] {Pump};
-        \draw[-Latex] (1.3,2) -- (1.3,1.3) node[anchor=west,midway] {Fast decay}; 
+        \draw[-Latex] (1.3,2) -- (1.3,1.3) node[anchor=west,midway] {Fast decay};
         \draw[-Latex] (1.7,1.3) -- (1.7,0) node[anchor=west,midway] {Laser};
     \end{tikzpicture}
 \end{figure}
-This is known as the traditional solid state three-level laser, e.g. Ruby. 
+This is known as the traditional solid state three-level laser, e.g. Ruby.
 
 \subsection{Gas lasers}
 \begin{figure}[H]
@@ -1161,7 +1187,7 @@ This is most solid state lasers and dye lasers, e.g. Nd:YAG.
 \begin{align}
     \text{Gain} &= e^{g(\om)L} = e^{\sigma(\om)N^*L_m}
 \end{align}
-$\sigma(\om)$ and $L_m$ are fixed (or practically so), so for us to maximise our gain, we have to maximise $N^*$ through pumping. 
+$\sigma(\om)$ and $L_m$ are fixed (or practically so), so for us to maximise our gain, we have to maximise $N^*$ through pumping.
 
 \section{Three-Level Traditional Solid State Lasers}
 \begin{figure}[H]
@@ -1177,7 +1203,7 @@ $\sigma(\om)$ and $L_m$ are fixed (or practically so), so for us to maximise our
         \draw[-Latex] (1.7,1.3) -- (1.7,0) node[anchor=west,midway] {$\Gamma_{21}$};
     \end{tikzpicture}
 \end{figure}
-To study the steady state small signal population inversion, we ignore the effects of the laser field on the populations. 
+To study the steady state small signal population inversion, we ignore the effects of the laser field on the populations.
 The rate equations are:
 \begin{align}
     \frac{dN_3}{dt} &= S_{13}N_1 - (\Gamma_{31}+\Gamma_{32})N_3 \\
@@ -1260,7 +1286,7 @@ Comparing power per unit volume absorbed at threshold:
     \end{align}
     Now for the ND:YAG,
     \begin{align}
-        \Gamma_{21} &= 1.8\times10^3\,s^{-1} & \sigma &= 9\times10^{-19}\,cm^2 
+        \Gamma_{21} &= 1.8\times10^3\,s^{-1} & \sigma &= 9\times10^{-19}\,cm^2
     \end{align}
     Assume cavity loss of $\delta_c = 0.05$, with diameter $4\,mm$, and length $5\,cm$.
     Pumped at $808\,nm$.
@@ -1303,7 +1329,7 @@ For population inversion, we need
     N^* &= N_2 - \frac{g_2}{g_1}N_1 > 0 \\
     \frac{N_2}{N_1} &= \frac{S_{02}\Gamma_{10}}{S_{01}(\Gamma_{20}+\Gamma_{21})+\Gamma_{21}S_{02}} > \frac{g_2}{g_1}
 \end{align}
-We have to find another pumping technique as we cannot use light. 
+We have to find another pumping technique as we cannot use light.
 Both down transitions are optical (radiative), so $S_{02}$ cannot be optical due to parity conservation, and $\Gamma_{20}$ is negligible.
 \begin{align}
     \frac{N_2}{N_1} &= \frac{S_{02}\Gamma_{10}}{(S_{01}+S_{02})\Gamma_{21}} > \frac{g_2}{g_1} \\
@@ -1335,7 +1361,7 @@ Both down transitions are optical (radiative), so $S_{02}$ cannot be optical due
 Gas lasers cannot be optically pumped, so they use collisions, or \textbf{particle pumping.}
 
 \chapter{The Fabry-Perot Etalon and Laser Cavity Modes}
-\section{The Fabry-Perot Elaton}
+\section{The Fabry-Perot Etalon}
 Consider two identical semi-reflecting parallel mirrors:
 \begin{figure}[H]
     \centering
@@ -1363,8 +1389,8 @@ Consider two identical semi-reflecting parallel mirrors:
         \draw (7.2,2.75) arc (180:225:13pt) node[anchor=east,midway] {$\theta$};
     \end{tikzpicture}
 \end{figure}
-$t$ and $r$ are the amplitude transmission and reflection coefficients respectively. 
-\subsection{Path different between succesive rays}
+$t$ and $r$ are the amplitude transmission and reflection coefficients respectively.
+\subsection{Path different between successive rays}
 \begin{align}
     P.D. &= AB + BD = AB + BC = AC \\
          &= 2d\cos\theta \\
@@ -1418,19 +1444,19 @@ Where we can define \textbf{Finesse:}
         \begin{align}
             \frac{I_T}{I_0}\bigg|_{max} &= 1
         \end{align}
-        So all light trnasmitted at cavity resonance.
+        So all light transmitted at cavity resonance.
     \item Phase difference:
         \begin{align}
             \delta &= \frac{4\pi d}{\lambda}\cos\theta
         \end{align}
-        Dependent on angle, separation, and wavelength. 
+        Dependent on angle, separation, and wavelength.
     \item For bright fringes, $\sin\frac{\delta}{2}=0$ so $\delta=2n\pi$, or $2d\cos\theta = n\lambda$.
-    \item Free spectral range, $\Delta\nu_{fsr}$. At maxima, 
+    \item Free spectral range, $\Delta\nu_{fsr}$. At maxima,
         \begin{align}
             \lambda &= \frac{2d\cos\theta}{n} \implies \nu = \frac{c}{\lambda} = \frac{nc}{\cos\theta} \\
             \Delta\nu_{fsr} &= \nu_{n+1}-\nu_n = \frac{c}{2d\cos\theta}
         \end{align}
-        Then, at normal incidence, 
+        Then, at normal incidence,
         \begin{align}
             \Delta\nu_{fsr} &= \frac{c}{2d}
         \end{align}
@@ -1443,12 +1469,12 @@ Where we can define \textbf{Finesse:}
             \text{FWHM} &= 2\delta_{1/2} = \frac{2\pi}{F}
         \end{align}
         Separation of adjacent peaks (in radians) $=2\pi$.
-        Hence, finesse, 
+        Hence, finesse,
         \begin{align}
             F &= \frac{\Delta\nu_{fsr}}{\Delta\nu_{FWHM}}.
         \end{align}
         So high finesse $\to$ sharp fringes, and vice versa.
-        Before, 
+        Before,
         \begin{align}
             F &= \frac{\pi\sqrt{R}}{1-R} \implies \Delta\nu_{FWHM} = \frac{c}{2d}\left(\frac{1-R}{\pi\sqrt{R}}\right).
         \end{align}
@@ -1462,12 +1488,12 @@ Where we can define \textbf{Finesse:}
         \Delta\nu_{FWHM} &= \frac{\Delta\nu_{fsr}}{F} = 1.6\,MHz
     \end{align}
     In visible range, say $\lambda=550\,nm,~ \nu =  545\,THz$.
-    We can use this etalon to reolve to 1 part in $10^8$.
+    We can use this etalon to revolve to 1 part in $10^8$.
 \end{example}
 
 \section{Laser Cavities}
 The Fabry-Perot etalon is not a good laser cavity.
-We need to place a gain medium between mirrors. 
+We need to place a gain medium between mirrors.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1491,7 +1517,7 @@ More fundamentally, diffraction will cause losses.
 \end{figure}
 Diffraction leads to large losses.
 The solution is to use curved mirrors:
-Each curved mirror acts as a lens, 
+Each curved mirror acts as a lens,
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1547,10 +1573,10 @@ Cavity acts as a sequence of lenses.
         \draw (3,0.6) sin (4,0.9) cos (5,0.6);
     \end{tikzpicture}
 \end{figure}
-Related by Fourier transform, so essentially we want a function that is its own Fourier transform, we will see Gauss-Hermite. 
+Related by Fourier transform, so essentially we want a function that is its own Fourier transform, we will see Gauss-Hermite.
 
 \chapter{Gaussian Beams and Cavity Stability}
-The electric field distribution needs to reproduce after a round trip, so it needs to be its own Fourier transform, i.e. Gause-Hermite modes.
+The electric field distribution needs to reproduce after a round trip, so it needs to be its own Fourier transform, i.e. Gauss-Hermite modes.
 \begin{align}
     U &= \frac{U_0}{q}e^{i(kz-\om t)}e^{ikr^2/2q}H_l\left(\frac{\sqrt{2}x}{w}\right)H_m\left(\frac{\sqrt{2}y}{w}\right)e^{-i(l+m)\alpha} \\
     q &= z-z_0-iZ_R,\; r^2 = x^2+y^2,\; \tan\alpha = \frac{z}{Z_R}
@@ -1566,7 +1592,7 @@ Gaussian beam ($\text{TEM}_{00}$):
 \begin{align}
     w(z) &= w_0\left(1+\left(\frac{z}{z_R}\right)^2\right)^{1/2} \implies \frac{w(z)^2}{w_0^2} - \frac{z^2}{z^2_R} = 1
 \end{align}
-This is the equation of hyperbola with asymptotes at 
+This is the equation of hyperbola with asymptotes at
 \begin{align}
     w(z) &= \pm\frac{w_0z}{z_R}
 \end{align}
@@ -1606,7 +1632,7 @@ So a Gaussian beam is diffraction limited, as we get a very similar result here 
     \end{tikzpicture}
 \end{figure}
 What values of $L_c$, $R_1$, and $R_2$ lead to a stable solution?
-Some things won't work. 
+Some things won't work.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1634,8 +1660,8 @@ This can often be represented graphically:
         \draw[-Latex,name path = Y] (0,-4) -- (0,4.2) node[anchor=east] {$1-\frac{L_c}{R_2}$};
         \draw[name path = A] (-4,-0.1) .. controls (-0.5,-0.5) .. (-0.1,-4);
         \draw[name path = B] (4,0.1) .. controls (0.5,0.5) .. (0.1,4);
-        \fill[lightgray] (-4,-0.1) -- (-4,0) -- (0,0) -- (0,-4) -- (-0.1,-4) .. controls (-0.5,-0.5) .. (-4,-0.1); 
-        \fill[lightgray] (4,0.1) -- (4,0) -- (0,0) -- (0,4) -- (0.1,4) .. controls (0.5,0.5) .. (4,0.1); 
+        \fill[lightgray] (-4,-0.1) -- (-4,0) -- (0,0) -- (0,-4) -- (-0.1,-4) .. controls (-0.5,-0.5) .. (-4,-0.1);
+        \fill[lightgray] (4,0.1) -- (4,0) -- (0,0) -- (0,4) -- (0.1,4) .. controls (0.5,0.5) .. (4,0.1);
         \draw[dashed] (-0.9,0) node[anchor=north west] {-1} -- (-0.9,-0.9) -- (0,-0.9) node[anchor=west] {-1};
         \draw[dashed] (0.9,0) node[anchor=north] {1} -- (0.9,0.9) -- (0,0.9) node[anchor=east] {1};
         \fill (0,0) circle (2pt) node[anchor=south east] {$R_1=R_2=L$};
@@ -1730,19 +1756,19 @@ The waist must be at the centre, so $R_1=R_2=R$.
         \draw (-0.1,1.5) sin (2,1.2) cos (4.1,1.5);
     \end{tikzpicture}
 \end{figure}
-At each mirror, the radius of curvature of the beam is the same as the mirror. 
+At each mirror, the radius of curvature of the beam is the same as the mirror.
 Recall
 \begin{align}
     R(z) &=\frac{z^2+z_R^2}{z} \\
     R\left(\frac{L_c}{2}\right) &= R = \frac{\frac{L^2_c}{4}+z_R^2}{\frac{L_c}{2}} \\
     z_R^2 &= \frac{L_c}{4}(2R-L_c) \equiv \left(\frac{\pi w_0^2}{\lambda}\right)^2 \\
-    w_0^2 &= \frac{\lambda}{2\pi}\left[L_c(2R-L_c)\right]^{1/2} 
+    w_0^2 &= \frac{\lambda}{2\pi}\left[L_c(2R-L_c)\right]^{1/2}
 \end{align}
 We know the beam waist is inside a symmetric cavity from $R$ and $L_c$.
 
 \section{Mode Volume}
 How do we choose what cavity parameters to use?
-Try to match mode volume to Gain medium. 
+Try to match mode volume to Gain medium.
 \begin{align}
     V \leq \pi w_0^2L_c
 \end{align}
@@ -1755,7 +1781,7 @@ This assume the beam is not spreading, i.e. $Z_R \gg L_c$.
         \draw[dashed] (1,0.3) rectangle (3,1.5);
         \draw (0,0.4) -- (4,0.4);
         \draw (0,1.4) -- (4,1.4);
-        
+
         \draw (6,0) arc (210:150:50pt);
         \draw (10,0) arc (-30:30:50pt);
         \draw[dashed] (7,0.3) rectangle (9,1.5);
@@ -1765,7 +1791,7 @@ This assume the beam is not spreading, i.e. $Z_R \gg L_c$.
 \end{figure}
 
 \chapter{Cavity Effects: Single Frequency Operation}
-Spectral and spatial hole burning occur for homegeneous and inhomogeneous systems $\to$ multimode lasing:
+Spectral and spatial hole burning occur for homogeneous and inhomogeneous systems $\to$ multimode lasing:
 \begin{itemize}
     \item Homogeneous - \textbf{spatial} hole burning
     \item Inhomogeneous - \textbf{spectral} hole burning
@@ -1773,12 +1799,12 @@ Spectral and spatial hole burning occur for homegeneous and inhomogeneous system
 This multimode (longitudinal) behaviour can be eliminated but to do so in each case is different.
 
 \section{Inhomogeneous - spectral hole burning}
-In a Doppler broadened gain medium, it is likely the laser will oscillate simultaneously on several longitudinal modes if the cavity mode spacing is less than the range of frequencies over which there is net gain. 
+In a Doppler broadened gain medium, it is likely the laser will oscillate simultaneously on several longitudinal modes if the cavity mode spacing is less than the range of frequencies over which there is net gain.
 $\Delta\om_{osc} =$ range over which the laser can lase on; $\Delta\om_{FSR} =$ the mode separation.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=0.8]
-        \draw[-Latex] (0,0) -- (8.2,0) node[anchor=north] {$\om$}; 
+        \draw[-Latex] (0,0) -- (8.2,0) node[anchor=north] {$\om$};
         \draw[-Latex] (0,0) -- (0,5.3) node[anchor=east] {$2g_0L$} node[anchor=east,midway] {Gain Spectrum};
         \draw (0,0) cos (2,2) sin (4,5) cos (6,2) sin (8,0);
 
@@ -1812,7 +1838,7 @@ $\Delta\om_{osc} =$ range over which the laser can lase on; $\Delta\om_{FSR} =$ 
         \draw[Latex-] (6.8,-2) arc (190:170:100pt) node[anchor=west] {$\Delta\om_{FSR}=2\pi\left(\frac{c}{2L}\right)$};
     \end{tikzpicture}
 \end{figure}
-A common solution to multimode lasing is to introduce an \textbf{intracavity etalon} (Fabry-Perot Etalon), whose thickness is such that only one longitudinal cavity mode lases. 
+A common solution to multimode lasing is to introduce an \textbf{intracavity etalon} (Fabry-Perot Etalon), whose thickness is such that only one longitudinal cavity mode lases.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1824,7 +1850,7 @@ A common solution to multimode lasing is to introduce an \textbf{intracavity eta
     \end{tikzpicture}
 \end{figure}
 As you decrease $d$, the free spectral range decreases. \\
-Etalon is usually solid and mounted at a small angle. 
+Etalon is usually solid and mounted at a small angle.
 This may allow for turning of the etalon transmission, since
 \begin{align}
     \Delta\om_{FSR} &= 2\pi\left(\frac{c}{2\eta d\cos\theta}\right)
@@ -1832,12 +1858,12 @@ This may allow for turning of the etalon transmission, since
 This can be a frequency control (moves transition peak around).
 
 There are now two cavities to consider: cavity length, $L$; and etalon length, $d$.
-It is instructive to think of the etalon as altering the round trip lenses; the etalon loss is high when light is reflected from the etalon, but then drops on its resonance. 
-So we end up with a single mode to lase on. 
+It is instructive to think of the etalon as altering the round trip lenses; the etalon loss is high when light is reflected from the etalon, but then drops on its resonance.
+So we end up with a single mode to lase on.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \draw[-Latex] (0,0) -- (8,0) node[anchor=north] {$\om$}; 
+        \draw[-Latex] (0,0) -- (8,0) node[anchor=north] {$\om$};
         \draw[-Latex] (0,0) -- (0,5.3) node[anchor=east] {$2g_0L$};
         \draw (0,0) cos (1.5,1.5) sin (4,4) cos (6.5,1.5) sin (8,0);
         \draw (0,5) cos (0.67,4.8) sin (1.33,2.5) cos (2,4.8) sin (2.67,5) cos (3.33,4.8) sin (4,2.5) cos (4.67,4.8) sin (5.33,5) cos (6,4.8) sin (6.67,2.5) cos (7.33,4.8) sin (8,5);
@@ -1853,14 +1879,14 @@ So we end up with a single mode to lase on.
         \draw[dashed] (0,2.2) -- (8,2.2) node[anchor=west] {$\delta_c$};
         \draw[Latex-Latex] (4,3.2) node[anchor=north west,xshift=4pt] {$\Delta\om_{FSR}$} -- (6.67,3.2);
         \draw[-Latex] (4,2.3) -- (6,2.3) node[anchor=north,midway] {$\om_{osc}/2$};
-        \draw[Latex-Latex] (3.6,3.5) -- (4.4,3.5); 
+        \draw[Latex-Latex] (3.6,3.5) -- (4.4,3.5);
         \draw[Latex-] (4,3.6) arc (200:110:50pt) node[anchor=west] {$\Delta\om_{FWHM}$};
     \end{tikzpicture}
 \end{figure}
 
 The etalon must satisfy two conditions:
 \begin{enumerate}
-    \item Etalon free spectral range must be greater than half the cavity spectral range $\to$ to prevent modes in wings from lasing. 
+    \item Etalon free spectral range must be greater than half the cavity spectral range $\to$ to prevent modes in wings from lasing.
         \begin{align}
             \Delta\om_{FSR} &= 2\pi\left(\frac{c}{2\eta d\cos\theta}\right) > \frac{\Delta\om_{osc}}{2}
         \end{align}
@@ -1869,23 +1895,23 @@ The etalon must satisfy two conditions:
             \Delta\om_{FWHM} &< 2\pi\left(\frac{c}{2L_c}\right)
         \end{align}
 \end{enumerate}
-Since 
+Since
 \begin{align}
     \Delta\om_{FSR} &= \frac{2\pi c}{2\eta d\cos\theta}, & F &= \frac{\Delta\om_{FSR}}{\Delta_{FWHM}},
 \end{align}
-the above conditions imply conditions on $d$ and $R$ $\to$ etalon thickness and reflectivity. 
+the above conditions imply conditions on $d$ and $R$ $\to$ etalon thickness and reflectivity.
 
 \section{Homogeneous - Spatial Hole Burning}
-For a homogeneously broadened gain medium, we may get \textbf{multimode operation} due to spatial hole burning. 
-We have a standing wave in the cavity of $\cos^2$ nature which depletes gain in some regions, but leaves unused gain in other regions. 
+For a homogeneously broadened gain medium, we may get \textbf{multimode operation} due to spatial hole burning.
+We have a standing wave in the cavity of $\cos^2$ nature which depletes gain in some regions, but leaves unused gain in other regions.
 This is bad because the laser generally finds a way to use this gain by running on additional modes.
-Solution: eliminate the standing wave to remove spatial hole burning. 
-We can do this by using a \textbf{ring cavity} (a square or ring), in which the laser mode only propagates in one direction using an optical diode. 
+Solution: eliminate the standing wave to remove spatial hole burning.
+We can do this by using a \textbf{ring cavity} (a square or ring), in which the laser mode only propagates in one direction using an optical diode.
 \begin{enumerate}
-    \item Mirror (M1) transmits the pump light (but reflects laser light) and allows pump beam into cavity. 
-        The beam is focused to a similar waist to the cavity mode within the crystal. 
+    \item Mirror (M1) transmits the pump light (but reflects laser light) and allows pump beam into cavity.
+        The beam is focused to a similar waist to the cavity mode within the crystal.
         Pump is $Ar^+$ or doubled Nd:YAG.
-    \item Crystal 
+    \item Crystal
         \begin{multicols}{2}
         \begin{figure}[H]
             \centering
@@ -1900,9 +1926,9 @@ We can do this by using a \textbf{ring cavity} (a square or ring), in which the 
         \end{figure}
         \columnbreak
         Cut such that it is inserted into the cavity as Brewster's angle.
-        Typically $\approx2cm$ long and $5mm$ diameter. 
+        Typically $\approx2cm$ long and $5mm$ diameter.
         Brewster's angle means we have zero reflection at the air-crystal boundary for one polarisation.
-        Boundary conditions $\implies$ Fresnal coefficients. 
+        Boundary conditions $\implies$ Fresnal coefficients.
         \begin{align}
             \tan\theta_B &= \frac{\eta_t}{\eta_i}
         \end{align}
@@ -1915,18 +1941,18 @@ We can do this by using a \textbf{ring cavity} (a square or ring), in which the 
                 \draw[-Latex] (0,0) -- (8,0) node[anchor=north] {$\theta_i$};
                 \draw[-Latex] (0,0) -- (0,5) node[anchor=east] {$R$};
             \draw (0,1) node[anchor=east] {$\left(\frac{\eta_t-\eta_i}{\eta_t+\eta_i}\right)^2$} parabola (6,4.7) node[anchor=south east] {$R_\perp$};
-                \draw (0,1) sin (5,0.1) cos (7.7,4) node[anchor=west] {$R_\parallel$}; 
+                \draw (0,1) sin (5,0.1) cos (7.7,4) node[anchor=west] {$R_\parallel$};
                 \draw (5,-0.05) node[anchor=north] {$\theta_B$} -- (5,0.1);
                 \draw[Latex-] (5,0.15) -- (5,0.3) node[anchor=south] {no loss};
                 \draw[Latex-] (4.2,2.9) -- (3.8,3.2) node[anchor=south east,xshift=10pt,yshift=-10pt] {\shortstack{Large loss for \\ one polarisation \\ in cavity}};
             \end{tikzpicture}
         \end{figure}
-    \item Optical Diode: Consists of 2 elements that rotate the polarisation of the light. 
+    \item Optical Diode: Consists of 2 elements that rotate the polarisation of the light.
         One is the standard waveplate, $\frac{\lambda}{2}$.
-        Other is a Faraday Rotator; this is a device based on the Faraday effect - for some materials placed in a magnetic field, the light polarisation is rotated. 
+        Other is a Faraday Rotator; this is a device based on the Faraday effect - for some materials placed in a magnetic field, the light polarisation is rotated.
         The direction of rotation depends on the direction of light propagation with respect to the direction of the $\B$-field. \\
-        There is no time reversal symmetry $\to$ it imposes directionality on the cavity such that if it is the wrong way, then there is complete loss. 
-        So the laser is forced to lase in a single direction; elimates spatial hole burning and makes it easier to achieve single frequency oscillation. 
+        There is no time reversal symmetry $\to$ it imposes directionality on the cavity such that if it is the wrong way, then there is complete loss.
+        So the laser is forced to lase in a single direction; eliminates spatial hole burning and makes it easier to achieve single frequency oscillation.
 \end{enumerate}
 A simple ring cavity might look something like:
 \begin{figure}[H]
@@ -1946,7 +1972,7 @@ A simple ring cavity might look something like:
         \draw[-{Latex[length=0.3cm,width=0.2cm]}] (4,0) -- (5,0) node[anchor=south,xshift=20pt] {some output};
     \end{tikzpicture}
 \end{figure}
-Instead of two mirrors, we now have multiple. 
+Instead of two mirrors, we now have multiple.
 
 How much is single frequency output, single frequency?
 
@@ -1987,11 +2013,11 @@ Usually high refractive index, $\eta=3.6$.
 \begin{align}
     \Delta\nu_{FSR} &= \frac{c}{2\eta d} \approx 100\,GHz
 \end{align}
-Relectivity of uncoated ends:
+Reflectivity of uncoated ends:
 \begin{align}
     R &= \left(\frac{\eta-1}{\eta+1}\right)^2 \approx 0.32
-\end{align} 
-I.e. expect $32\%$ reflection $\to$ just from interface of semiconductor and air. 
+\end{align}
+I.e. expect $32\%$ reflection $\to$ just from interface of semiconductor and air.
 
 We define Finesse:
 \begin{align}
@@ -2004,13 +2030,13 @@ Diffraction grating does two things:
         For 1800 lines $mm^{-1}$, $\lambda=780nm \implies \theta=45^\circ$.
         Selects a range of frequencies by resolving power:
         \begin{align}
-            \frac{\nu}{\Delta\nu} = N = \text{total no. of lines illuminated} 
+            \frac{\nu}{\Delta\nu} = N = \text{total no. of lines illuminated}
         \end{align}
     \item Forms an extended cavity
         \begin{enumerate}
             \item Broad gain of laser from semiconductor itself.
             \item Internal cavity modes from semiconductor $\implies$ expect low finesse oscillation from low F cavity.
-            \item Diffraction grating feedback - from a secondary cavity as some light is reflected straight back to initial cavity, which results in a longer cavity and extra spectra structure. 
+            \item Diffraction grating feedback - from a secondary cavity as some light is reflected straight back to initial cavity, which results in a longer cavity and extra spectra structure.
             \item External Cavity modes.
         \end{enumerate}
 \end{itemize}
@@ -2027,8 +2053,8 @@ Diffraction grating does two things:
         \draw[Latex-] (4,0.5) arc (0:-60:30pt) node[anchor=north] {Results in a single freq output};
     \end{tikzpicture}
 \end{figure}
-We want to tune all these such that lasing occurs where gain is large enough relative to loss. 
-We can have a very narrow frequency output from these systems but it \unl{cannot} be infinitely small $\implies$ there is a limit on size range. 
+We want to tune all these such that lasing occurs where gain is large enough relative to loss.
+We can have a very narrow frequency output from these systems but it \unl{cannot} be infinitely small $\implies$ there is a limit on size range.
 
 From Lecture 5, we saw \textbf{cavity linewidth,}
 \begin{align}
@@ -2043,20 +2069,20 @@ It depends on the cavity lifetime - if we had a cavity with some light in it, th
         \draw (0,3.5) sin (0.4,3.8) cos (0.75,2) sin (1,0.5) cos (1.25,2) sin (1.5,3.3) cos (1.75,2) sin (2,0.9) cos (2.25,2) sin (2.5,2.9) cos (2.75,2) sin (3,1.2) cos (3.25,2) sin (3.5,2.7) cos (3.75,2) sin (4,1.3) cos (4.1,2) sin (4.2,2.3);
     \end{tikzpicture}
 \end{figure}
-A Fourier transform gives $\Delta\om$ spread in frequency. 
-Here we now have an oscillating field that doesn't die away. 
-The $\tau_c$ is infinitely long lifetime and the gain exactly balances the loss and there is no decay of the field in the cavity. 
+A Fourier transform gives $\Delta\om$ spread in frequency.
+Here we now have an oscillating field that doesn't die away.
+The $\tau_c$ is infinitely long lifetime and the gain exactly balances the loss and there is no decay of the field in the cavity.
 We get a perfect single frequency out of the laser!
 So what have we missed..? $\implies$ \textbf{Spontaneous Emission.}
 
-Spontaneous Emission can occur instead of an atom being stimulated by the laser field; stimulated emission adds coherently to the cavity field whereas spontaneous emission does not. 
-It has no phase relationship to the cavity field and adds incoherently. 
-It also has an inherently Lorentzian distribution of frequencies. 
-Note: spontaneous emission has little effect on amplitude/intensity of laser output - on a plot of Power vs time, the power would appear very stable and constant, with only small oscillations about the central value. 
+Spontaneous Emission can occur instead of an atom being stimulated by the laser field; stimulated emission adds coherently to the cavity field whereas spontaneous emission does not.
+It has no phase relationship to the cavity field and adds incoherently.
+It also has an inherently Lorentzian distribution of frequencies.
+Note: spontaneous emission has little effect on amplitude/intensity of laser output - on a plot of Power vs time, the power would appear very stable and constant, with only small oscillations about the central value.
 \begin{align}
     P_{em} &= \frac{\hbar\om_{12}^3}{\pi^2c^3}(1+\bar{n})B_{21},\; \bar{n} \geq 10^6
 \end{align}
-Where $(1+\bar{n})$ represents the spontaneous and stimulated effects respectively, combined; and $\bar{n}$ is the number of photons per mode. 
+Where $(1+\bar{n})$ represents the spontaneous and stimulated effects respectively, combined; and $\bar{n}$ is the number of photons per mode.
 Remember:
 \begin{align}
     A_{21} &= \frac{\hbar\om_{12}^3}{\pi^2c^3}B_{21}
@@ -2069,7 +2095,7 @@ A full quantum optics treatment leads to the \textbf{Schawlow-Townes formula:}
 \begin{align}
     \Delta\om_{laser} &= \frac{\hbar\om}{2P_{out}}\Delta\om_c^2
 \end{align}
-This is the 'Quantum limit to laser linewidth' - can't get any better than this. 
+This is the 'Quantum limit to laser linewidth' - can't get any better than this.
 
 \begin{example}[HeNe Laser]
 $1mW$ - low output laser, $\lambda=632.8nm$.
@@ -2078,9 +2104,9 @@ Cavity: $L_c=1m,\;\delta_c=1\%$.
     \Delta\om_c &= \frac{c\delta_c}{2L_c} &= 2\pi\times0.24\,MHz \text{ - Cavity Linewidth} \\
     \Delta\om_{laser} &= \frac{\hbar\om}{2P_{out}}\Delta\om_c^2 = 2\pi\times0.006\,MHz \text{ - Laser linewidth}
 \end{align}
-The laser linewidth is the frequency spread of output. 
+The laser linewidth is the frequency spread of output.
 \end{example}
-Such low linewidths are very difficult to achieve as they require phenomenably stable cavities. 
+Such low linewidths are very difficult to achieve as they require phenomenably stable cavities.
 
 \section{Practical Limit}
 Recall modes:
@@ -2124,7 +2150,7 @@ We will consider two types of pulsed operation:
         \draw[Latex-Latex] (1.5,1.2) -- (2,1.2) node[anchor=south,midway] {$\Delta\om$};
     \end{tikzpicture}
 \end{figure}
-Modes - each with its own frequency and phase. 
+Modes - each with its own frequency and phase.
 If the phases are 'locked', the intensity output of the laser is
 \begin{align}
     I(t) &= \frac{I_0\sin^2\left(\frac12N\Delta\om t\right)}{\sin^2\left(\frac12\Delta\om t\right)}
@@ -2140,12 +2166,12 @@ If the phases are 'locked', the intensity output of the laser is
         \draw[-Latex] (2.7,1.1) node[anchor=south] {$\Delta\tau$} -- (2.36,1.1);
     \end{tikzpicture}
 \end{figure}
-There are $N-2$ intermediate peaks, where $N$ is the number of modes lasing. 
+There are $N-2$ intermediate peaks, where $N$ is the number of modes lasing.
 What is the time separation between these peaks, $\tau_{rep}$?
 
 \subsection{Repetition Rate}
 When numerator and denominator are simultaneously zero, i.e. when $\frac12\Delta\om t = m\pi$.
-Hence, 
+Hence,
 \begin{align}
     \tau_{rep} &= \frac{2\pi}{\Delta\om} = \frac{2L}{c}
 \end{align}
@@ -2164,7 +2190,7 @@ This is just the cavity round trip time - every time the beam in the cavity hits
 
 \subsection{Pulse Duration}
 Time separation between peak pulse and first minima, $\Delta\tau$.
-This will occur when numerator is zero, i.e. 
+This will occur when numerator is zero, i.e.
 \begin{align}
     \sin\frac12N\Delta\om t &= 0 \\
     \frac12 N\Delta\om\Delta \tau &= \pi \\
@@ -2186,7 +2212,7 @@ The final approximation is accurate when assuming very large $N$.
 \begin{align}
     I(t) &= N^2I_0
 \end{align}
-This can be huge. 
+This can be huge.
 $N$ can be $>1000$.
 You can deduce $\Delta\om_{osc}$ from gain and loss:
 \begin{figure}[H]
@@ -2213,7 +2239,7 @@ You can deduce $\Delta\om_{osc}$ from gain and loss:
             \tau_{rep} &= \frac{2L}{c} \approx 3ns &
             \Delta\tau &= \frac{1}{\Delta\nu_D} \approx 0.7ns
         \end{align}
-        There are four modes a lasing, 3 nanoseconds, 2 lectures left, and a partidge in a pear treeeeeee. 
+        There are four modes a lasing, 3 nanoseconds, 2 lectures left, and a partridge in a pear treeeeeee.
     \item Ti:Sapphire:\\
         $L=2m$, Gain from $700nm-1000nm \to 120 THz$.
         \begin{align}
@@ -2223,11 +2249,11 @@ You can deduce $\Delta\om_{osc}$ from gain and loss:
         This is roughly equivalent to 1.6 million modes lasing.
 \end{itemize}
 %\textit{lots more from powerpoints}
-Mode locking can be achieved using active or passive methods. 
+Mode locking can be achieved using active or passive methods.
 \begin{itemize}
     \item Active Mode Locking
         \begin{itemize}
-            \item Electro-Optic Modulator: used with a polarisor, applying a voltage can let light through at repetition rate, by rotating polarisation. 
+            \item Electro-Optic Modulator: used with a polariser, applying a voltage can let light through at repetition rate, by rotating polarisation.
                 \begin{figure}[H]
                     \centering
                     \begin{tikzpicture}
@@ -2261,7 +2287,7 @@ Mode locking can be achieved using active or passive methods.
 
 \section{Q Switching}
 Reminder - cavity linewidth $\Delta\om_c = \frac{1}{\tau_c}$, and a Quality factor, $Q = \frac{\om}{\Delta\om_c} = \om\tau_c$.
-The cavity Q factor is switched dynamically to control the build up of gain. 
+The cavity Q factor is switched dynamically to control the build up of gain.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -2280,14 +2306,14 @@ The cavity Q factor is switched dynamically to control the build up of gain.
             \item Exponential growth leads to development of a single giant pulse which extracts a large fraction of the energy from the gain medium (depletes $N^*$)
         \end{itemize}
 \end{itemize}
-Historically achieved using rotating mirrors, while modern lasers use the AOM or EOM methods - pulses limited to $\approx 100ps$. 
+Historically achieved using rotating mirrors, while modern lasers use the AOM or EOM methods - pulses limited to $\approx 100ps$.
 
 \chapter{Nonlinear Optics}
 We have net non-linear optical effects as \textbf{saturation}, \textbf{frequency doubling}, and \textbf{Keir lensing}; here we consider the physics of optical non-linearities, and how non-linearities are used in laser physics and fundamental research. \\
 Nonlinear optics - \emph{"the modification of the optical properties of a medium by the presence of light."}
-Typically, only laser light is intense enough to do this. 
+Typically, only laser light is intense enough to do this.
 
-Consider the \textbf{dipole moment per unit volumen}, or \textbf{polarisation}:
+Consider the \textbf{dipole moment per unit volume}, or \textbf{polarisation}:
 \begin{align}
     P(t) &= \e_0\chi E(t)
 \end{align}
@@ -2297,7 +2323,7 @@ Where our variables are: $\e_0$ - permittivity of free space; $E(t)$ - electric 
 \end{align}
 \begin{itemize}
     \item Electron moving in a parabolic (harmonic) potential:\\
-        Charge radiated with the same frequency as the driving field. 
+        Charge radiated with the same frequency as the driving field.
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
@@ -2307,7 +2333,7 @@ Where our variables are: $\e_0$ - permittivity of free space; $E(t)$ - electric 
             \end{tikzpicture}
         \end{figure}
     \item If the potential is \textbf{anharmonic}, the picture changes:\\
-        This is what the potential might look like for a non centro-symmetric material. 
+        This is what the potential might look like for a non centro-symmetric material.
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
@@ -2341,10 +2367,10 @@ For an anharmonic potential, express the polarisation as a power series in field
     P(t) &= \e_0\left[\chi^{(1)}E(t) + \chi^{(2)}E^2(t) + \chi^{(3)}E^3(t) + \dots\right] \\
     P(t) &= P^{(1)}(t) + P^{(2)}(t) + P^{(3)}(t) + \dots
 \end{align}
-The $(i)$ numbers are just notation differentiating $\chi^{(i)}$ as the different order susceptibilities. 
-We take these as scalar quantities for simplicity ($P^{(1)}$ etc). 
-In general, $\chi$ are frequency dependent but we neglect that here. 
-Also assume the response to driving is instantaneous. 
+The $(i)$ numbers are just notation differentiating $\chi^{(i)}$ as the different order susceptibilities.
+We take these as scalar quantities for simplicity ($P^{(1)}$ etc).
+In general, $\chi$ are frequency dependent but we neglect that here.
+Also assume the response to driving is instantaneous.
 
 \section{Second Order Effects}
 \begin{figure}[H]
@@ -2354,7 +2380,7 @@ Also assume the response to driving is instantaneous.
         \draw (1.5,-0.5) rectangle (4,0.5) node[anchor=north,midway,yshift=10pt] {$\chi^{(2)}$};
     \end{tikzpicture}
 \end{figure}
-Consider the time dependence of the electric field. 
+Consider the time dependence of the electric field.
 \begin{align}
     E(t) &= E_0e^{-i\om t} + E_0^*e^{i\om t}
 \end{align}
@@ -2364,7 +2390,7 @@ Second Order polarisation:
                &= \e_0\chi^{(2)}\left[E_0^*E_0 + E_0E_0^* + E_0^2e^{-i2\om t} + E_0^{*2}e^{-2\om t}\right] \\
                &= 2\e_0\chi^{(2)}E_0E_0^* + \e_0\chi^{(2)}E_0^2e^{-i2\om t} + \e_0\chi^{(2)}E_0^{*2}e^{i2\om t}
 \end{align}
-The first term describes the time-dependent DC field referred to as \textbf{optical rectification}; the latter terms which contain frequencies at twice the original frequency. 
+The first term describes the time-dependent DC field referred to as \textbf{optical rectification}; the latter terms which contain frequencies at twice the original frequency.
 
 \subsection{Second Harmonic Generation}
 \begin{figure}[H]
@@ -2384,10 +2410,10 @@ The first term describes the time-dependent DC field referred to as \textbf{opti
     \end{tikzpicture}
 \end{figure}
 \begin{itemize}
-    \item Not all light converted but can be highly efficient. 
+    \item Not all light converted but can be highly efficient.
     \item For every two photons with angular momentum $\om$, we get one out with $2\om$.
     \item Note: spin is \unl{not} conserved here (but not of concern).
-    \item Initial path is shining a laser onto a crystal. 
+    \item Initial path is shining a laser onto a crystal.
     \item This is used for \textbf{frequency doubling}, e.g. Nd:YAG at $1064nm\to532mm$.
 \end{itemize}
 
@@ -2399,7 +2425,7 @@ Consider applied field,
 \begin{align}
     E(t) &= E_0\cos(\om t)
 \end{align}
-Using the trig identity: 
+Using the trig identity:
 \begin{align}
     \cos^3(\om t) &= \frac14\cos(3\om t) + \frac34\cos(\om t) \\
     \implies P^{(3)}(t) &= \frac14\e_0\chi^{(3)}E_0^3\cos(3\om t) + \frac34\e_0\chi^{(3)}E_0^3\cos(\om t) \\
@@ -2448,7 +2474,7 @@ Using a Taylor expansion, since $\chi_{NL}\ll\eta_0^2$:
     \eta &= \eta_0 + \frac38\frac{\chi^{(3)}}{\eta_0}E_0^2 = \eta_0 + \eta_2I
 \end{align}
 $\eta_2$ is the \textbf{Second Order Non-linear Refractive Index.}
-It is very small for most materials, e.g. $10^{-20} m^2/W$ for glass. 
+It is very small for most materials, e.g. $10^{-20} m^2/W$ for glass.
 This is often called the optical (or AC) Kerr effect, and leads to \textbf{self-focusing}:
 \begin{figure}[H]
     \centering
@@ -2471,27 +2497,12 @@ This is often called the optical (or AC) Kerr effect, and leads to \textbf{self-
     \end{tikzpicture}
 \end{figure}
 \begin{itemize}
-    \item Care is required as it can lead to damage due to 'runaway' effect. 
-    \item Used to create ultrafast pulses in mode-locked lasers. 
-    \item The intensity profile of the beam creates equivalent to graded refractive index (GRIN) lens. 
-    \item Also interesting physics, e.g. optical solitons. 
+    \item Care is required as it can lead to damage due to 'runaway' effect.
+    \item Used to create ultrafast pulses in mode-locked lasers.
+    \item The intensity profile of the beam creates equivalent to graded refractive index (GRIN) lens.
+    \item Also interesting physics, e.g. optical solitons.
 \end{itemize}
 
-\subfile{qinfo.tex}
+% \subfile{qinfo.tex}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

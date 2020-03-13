@@ -1,8 +1,57 @@
-\documentclass[lasers.tex]{subfiles}
+\documentclass[a4paper, 11pt, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+\usepackage{subfiles}
+\usepackage{epigraph}
+%\usepackage{pgfplots}
+%\usepgfplotslibrary{fillbetween}
+%\pgfdeclarelayer{bg}
+%\pgfsetlayers{bg,main}
+\usetikzlibrary{intersections}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
+
+\tikzset{snake it/.style={decorate,decoration=snake}}
+\tikzset{roundnode/.style={circle,draw=black,fill=lightgray!5,thick,minimum size=7mm}}
+\tikzset{squarenode/.style={rectangle,draw=black,thick,minimum size=5mm}}
+\tikzset{squaredash/.style={rectangle,draw=black,thick,dashed,minimum size=5mm}}
+\tikzset{
+    partial ellipse/.style args={#1:#2:#3}{
+        insert path={+ (#1:#3) arc (#1:#2:#3)}
+    }
+}
+
+\rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
-\part{Quantum Information and Computing}
-\chapter{}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2020}}\\[2.5cm]
+    {\LARGE\bfseries Atoms, Lasers, and Qubits}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Quantum Information and Computing}\\[0.4cm]
+    \HRule \\[1.5cm]
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Charles Adams
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+    \includegraphics[width=\textwidth]{csa.jpg}\\[1cm]
+    \vfill
+\end{titlepage}
+\tableofcontents
+
+\chapter{Introduction}
 \section{What is a quantum computer?}
 It's like a classical computer, but we replace 'bits' (0s and 1s) with \emph{qubits.}
 But what is a qubit?
@@ -12,26 +61,26 @@ Examples of 2-level systems:
 \begin{itemize}
     \item Spin-$\frac12$ particle: 2 states are spin 'up' and spin 'down'.
     \item Photon: 2 polarisations, e.g. vertical and horizontal or left-circular and right-circular.
-    \item Atoms, ions, molecules with many energy levels and we can select 2 as our qubit states. 
-    \item 'Artifical atoms' in solid state, e.g. quantum dots in semiconductors or LC resonator in a superconductor. 
+    \item Atoms, ions, molecules with many energy levels and we can select 2 as our qubit states.
+    \item 'Artificial atoms' in solid state, e.g. quantum dots in semiconductors or LC resonator in a superconductor.
 \end{itemize}
 
 List five physical implementations of qubits and their problems:
 \begin{itemize}
-    \item Two energy levels in an atom trapped by an optical tweezer - difficult to localise. 
-    \item Two energy levels in an ion trapped using electrodes - it's only in one dimension (scaling problem). 
+    \item Two energy levels in an atom trapped by an optical tweezer - difficult to localise.
+    \item Two energy levels in an ion trapped using electrodes - it's only in one dimension (scaling problem).
     \item Two energy levels of an impurity ion (spin) in a semi-conductor (e.g. phosphorous in Si) - interacts with surroundings, i.e. Silicon.
-    \item Two energy levels of an LC circuit in a superconductor - very bulky and needs $10mK$ cryostat. 
-    \item Two polarisation modes of a photon - photons don't interact. 
+    \item Two energy levels of an LC circuit in a superconductor - very bulky and needs $10mK$ cryostat.
+    \item Two polarisation modes of a photon - photons don't interact.
 \end{itemize}
 
-\chapter{}
+\chapter{DiVincenzo Criteria and Motivations}
 \section{DiVincenzo Criteria}
-The DiVincenzo criteria are often used to frame discussions about the advantages and disadvantages of different quantum computing platforms. 
+The DiVincenzo criteria are often used to frame discussions about the advantages and disadvantages of different quantum computing platforms.
 The five criteria are:
 \begin{enumerate}
     \item Initialisation (\textbf{state preparation}) - typically means the ability to prepare identical qubits through cooling and address each qubit independently (localisation).
-    \item A universal set of quantum \textbf{gates} - single- and two-qubit gates at minimum. 
+    \item A universal set of quantum \textbf{gates} - single- and two-qubit gates at minimum.
     \item Measurement (\textbf{read out}) of $|0\rangle$ or $|1\rangle$.
     \item Low \textbf{decoherence} - qubits isolated from environment (external world).
     \item \textbf{Scalability} - the ability to scale up to say 100 or 1000 or more qubits.
@@ -39,16 +88,16 @@ The five criteria are:
 
 \section{Why Quantum Computing?}
 \begin{enumerate}
-    \item Moore's law - as transistor size is reduced, we approach atomic dimensions.  
+    \item Moore's law - as transistor size is reduced, we approach atomic dimensions.
     \item Energy efficiency - replace dissipative classical gates with reversible quantum gates.
     \item Quantum 'advantage' - quantum computers can store more information and compute (certain problems) much faster.
 \end{enumerate}
-A classical bit has states 0 and 1: N bits have $2N$ states; a qubit has states $0\rangle$ and $|0\rangle$: N qubits have $2^N$ states, i.e. exponential scaling. 
+A classical bit has states 0 and 1: N bits have $2N$ states; a qubit has states $0\rangle$ and $|0\rangle$: N qubits have $2^N$ states, i.e. exponential scaling.
 To see why, we need the \textbf{Qubit State Vector}.
 \begin{align}
     |\psi\rangle = a|0\rangle + b|1\rangle,
 \end{align}
-where $a$ and $b$ are complex coefficients that may be time-dependent which obey the normalisation criterion. 
+where $a$ and $b$ are complex coefficients that may be time-dependent which obey the normalisation criterion.
 
 Now we want a 2 qubit state vector, where our two qubits are A and B, as a normalised product state:
 \begin{align}
@@ -61,11 +110,11 @@ What about 3 qubits, $A,B,C$?
 \begin{align}
     |\Psi\rangle_{ABC} &= c_{000}|000\rangle + c_{001}|001\rangle + c_{010}|010\rangle + c_{011}|011\rangle + c_{100}|100\rangle + c_{101}|101\rangle + c_{110}|110\rangle + c_{111}|111\rangle,
 \end{align}
-which is $2^3=8$ states. 
-For 4 qubits, we would have $2^4=16$ states; for $N$ qubits, $2^N$ states. 
+which is $2^3=8$ states.
+For 4 qubits, we would have $2^4=16$ states; for $N$ qubits, $2^N$ states.
 For 40 qubits, $2^{40}\approx10^{12}$; for 100 qubits, $2^{100}\approx10^{30}$.
 
-\chapter{Two-level quantum mechanics}
+\chapter{Two-Level Quantum Mechanics}
 Can think of the state vector similar to spin:
 \begin{align}
     |\psi\rangle &= a|0\rangle + b|1\rangle = a|\uparrow\rangle + b|\downarrow\rangle = \begin{pmatrix} a \\ b\end{pmatrix}.
@@ -93,18 +142,18 @@ We define
 \end{align}
 So only have two free parameters in the ratio $\frac{a}{b}$ and the phase $\phi$.
 \begin{align}
-    |\psi\rangle &= \begin{pmatrix}\cos\frac{\theta}{2} \\ e^{i\phi}\sin\frac{\theta}{2}\end{pmatrix} = \begin{pmatrix} a \\ be^{i\phi}\end{pmatrix} 
+    |\psi\rangle &= \begin{pmatrix}\cos\frac{\theta}{2} \\ e^{i\phi}\sin\frac{\theta}{2}\end{pmatrix} = \begin{pmatrix} a \\ be^{i\phi}\end{pmatrix}
 \end{align}
-$\tan\frac{\theta}{2} = \frac{b}{a}$ and $\theta$ and $\phi$ are angles (from $z$ down and $x$ round respectively as spherical coordinates. 
+$\tan\frac{\theta}{2} = \frac{b}{a}$ and $\theta$ and $\phi$ are angles (from $z$ down and $x$ round respectively as spherical coordinates.
 So we can talk about our state vector as a Bloch vector, with all possible states of the qubit are points on the Bloch sphere.
 
 \section{Single-qubit gates}
-All single qubits are rotations on the Bloch sphere. 
+All single qubits are rotations on the Bloch sphere.
 These rotations are described by unitary operator, e.g. $U$,
 \begin{align}
     |\psi_f\rangle &= U|\psi_i\rangle,
 \end{align}
-where $U$ is a $2\times2$ matrix. 
+where $U$ is a $2\times2$ matrix.
 We can write $U$ as a sum of Pauli spin matrices (and the identity matrix),
 \begin{align}
     \hat{\sigma}_x &= \begin{pmatrix}0&1\\1&0\end{pmatrix}, & \hat{\sigma}_y &= \begin{pmatrix}0&-i\\i&0\end{pmatrix}, & \hat{\sigma}_z &= \begin{pmatrix}1&0\\0&-1\end{pmatrix}, & \hat{\sigma}_0 &= \begin{pmatrix}1&0\\0&1\end{pmatrix}.
@@ -132,7 +181,7 @@ We can write $U$ as a sum of Pauli spin matrices (and the identity matrix),
     \begin{align}
         \cos\frac{\theta}{2} &= \sin\frac{\theta}{2} = \frac{1}{\sqrt{2}} \implies \frac{\theta}{2} = \frac{\pi}{4} \implies \theta = \frac{\pi}{2}.
     \end{align}
-    Bloch vector is in equatorial plane. 
+    Bloch vector is in equatorial plane.
     Now calculate expectation values of $\hat{\sigma}_i$:
     \begin{align}
         \langle\psi|\hat{\sigma}_x|\psi\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & e^{-i\phi}\end{pmatrix}\begin{pmatrix}0 & 1 \\ 1 & 0 \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}1 \\ e^{i\phi}\end{pmatrix} \\
@@ -145,12 +194,12 @@ We can write $U$ as a sum of Pauli spin matrices (and the identity matrix),
         \langle\psi|\hat{\sigma}_z|\psi\rangle &= \frac12\begin{pmatrix} 1 & e^{-i\phi}\end{pmatrix}\begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}\begin{pmatrix}1 \\ e^{i\phi}\end{pmatrix} \\
                                                &= \frac12\left(1-1\right) = 0.
     \end{align}
-    So the Bloch vector is in equatorial plain as thought. 
+    So the Bloch vector is in equatorial plain as thought.
 \end{example}
 
-\chapter{}
+\chapter{The Density Matrix and Qubit Rotations}
 \begin{itemize}
-    \item Any qubit can be represented by a point on the Bloch sphere. 
+    \item Any qubit can be represented by a point on the Bloch sphere.
     \item We have two parameters: the polar angle, $\theta$; and the azimuthal angle, $\phi$.
     \item The qubit state vector is defined as
         \begin{align}
@@ -185,22 +234,22 @@ If we have a normalised wavefunction, $\langle\psi|\rho|\psi\rangle = \langle\ps
     \langle\psi|\rho|\psi\rangle &= \frac12\left(\langle\psi|\sigma_0|\psi\rangle + u\langle\psi|\sigma_x|\psi\rangle + \cdots\right) \\
                                  &= \frac12\left(1 + u^2 + v^2 + w^2\right) = 1
 \end{align}
-For mixed states, $\sqrt{u^2+v^2+w^2}<1$, so this will no longer be the case. 
-We will explore that properly later. 
+For mixed states, $\sqrt{u^2+v^2+w^2}<1$, so this will no longer be the case.
+We will explore that properly later.
 
 \section{Qubit Rotations}
-All unitary operations (that conserve the norm $\langle\psi|\psi\rangle$) can be described as rotations of the Bloch vector. 
+All unitary operations (that conserve the norm $\langle\psi|\psi\rangle$) can be described as rotations of the Bloch vector.
 A general rotation by an angle $\Theta$ about a unit vector $\vec{n}=(n_x,n_y,n_z)$.
-We define the Rotation operator, 
+We define the Rotation operator,
 \begin{align}
     \hat{R} &= \exp\left(-i\frac12\hat{\vec{\sigma}}\cdot\vec{n}\Theta\right) \\
             &= \hat{\sigma}_0\cos\frac{\Theta}{2} - i\hat{\vec{\sigma}}\cdot\vec{n}\sin\frac{\Theta}{2} \\
             &= \begin{pmatrix} \cos\frac{\Theta}{2}-in_z\sin\frac{\Theta}{2} & \left(-in_x-ny\right)\sin\frac{\Theta}{2} \\ \left(-in_x+n_y\right)\sin\frac{\Theta}{2} & \cos\frac{\Theta}{2}+in_z\sin\frac{\Theta}{2}  \end{pmatrix}
 \end{align}
 
-\chapter{}
+\chapter{Qubit Rotations on the Bloch Sphere}
 How do we implement rotation on the Bloch sphere?
-We need to drive the qubit with a resonant (or near-resonant) EM field. 
+We need to drive the qubit with a resonant (or near-resonant) EM field.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -211,46 +260,45 @@ We need to drive the qubit with a resonant (or near-resonant) EM field.
         \draw[-Latex] (8.4,0.4) -- (8.4,1.6) node[anchor=east,midway] {$\hbar\om_0$};
     \end{tikzpicture}
 \end{figure}
-The qubit is like an oscillator we can drive. 
+The qubit is like an oscillator we can drive.
 EM field:
 \begin{align}
     \mathcal{E} &= \mathcal{E}_0\cos(\phi_L-\om t),
 \end{align}
 where $\phi_L$ is the laser phase.
-We could include any phase offset. 
+We could include any phase offset.
 We assume the qubit is at $\vr=0$, and $\phi=0$ at $t=0$, so $\phi_L=\vec{k}\cdot\vr$.
-This then depends on the relative position of the qubit and field. 
-Note that since there is always some $\delta r$ uncertainty in position of the qubit, this gives rise to a range of phase $\phi_L$ which can influence the qubit behaviour, e.g. phonons are solid vibrating all the time $\to$ phase is changing. 
-Hence inside the sphere for the qubit and not on the sphere. 
-We can try to reduce this by lowering temperatures. 
+This then depends on the relative position of the qubit and field.
+Note that since there is always some $\delta r$ uncertainty in position of the qubit, this gives rise to a range of phase $\phi_L$ which can influence the qubit behaviour, e.g. phonons are solid vibrating all the time $\to$ phase is changing.
+Hence inside the sphere for the qubit and not on the sphere.
+We can try to reduce this by lowering temperatures.
 Other notation:
 \begin{align}
     \Delta &= \om-\om_0,
 \end{align}
-where $\om_0$ is the qubit frequency, $\om$ the field frequency, and $\Delta$ is defined as the qubit-field detuning. 
+where $\om_0$ is the qubit frequency, $\om$ the field frequency, and $\Delta$ is defined as the qubit-field detuning.
 If the qubit is subject to an external field, the coefficients $a$ and $b$ may become functions of time, and we should write the qubit state vector in the form
 \begin{align}
     |\psi(t)\rangle &= a(t)|0\rangle e^{-iE_0t/\hbar} + b(t)|1\rangle e^{-iE_1t/\hbar}.
 \end{align}
-The time dependence of the coefficients $a$ and $b$ depends on the interaction between the qubit and the EM field. 
+The time dependence of the coefficients $a$ and $b$ depends on the interaction between the qubit and the EM field.
 We can use the Schrodinger equation:
 \begin{align}
     i\hbar\dpt|\psi\rangle &= (\Ham_0+\Ham')|\psi\rangle.
 \end{align}
 Previously we just had $\Ham_0$ which describes the qubit, but now we add $\Ham'$ which is the perturbation due to the EM field.
-Typically, this interaction is of the form 
+Typically, this interaction is of the form
 \begin{align}
     \Ham' &= -\hat{\vec{d}}\cdot\vec{\mathcal{E}},
           &= -d\mathcal{E}_0\cos(\phi_L-\om t),
 \end{align}
-where $\vec{d}=-e\hat{\vr}$ is the electric dipole operator.
-and we can also define the Rabi frequency in Hz as
+where $\vec{d}=-e\hat{\vr}$ is the electric dipole operator, and we can also define the Rabi frequency in Hz as
 \begin{align}
     \Omega &= -\frac{d\mathcal{E}_0}{\hbar}, \\
     \Ham' &= \hbar\Omega\cos(\phi_L-\om t).
 \end{align}
-The Rabi frequency is a measure of the coupling between the field and the qubit. 
-If the field is put on and left on, then the state will oscillate between $|0\rangle$ and $|1\rangle$ at the Rabi frequency. 
+The Rabi frequency is a measure of the coupling between the field and the qubit.
+If the field is put on and left on, then the state will oscillate between $|0\rangle$ and $|1\rangle$ at the Rabi frequency.
 Subbing the perturbation, we get two equations for $a$ and $b$:
 \begin{align}
     i\dot{a}(t) &= \frac12\Omega e^{-i\phi_L}e^{i\Delta\cdot t}b, & i\dot{b}(t) &= \frac12\Omega e^{i\phi_L}e^{-i\Delta\cdot t}a.
@@ -260,7 +308,7 @@ To deal with this, we can go into a rotating frame using a substitution:
 \begin{align}
     \tilde{a} &= ae^{-it\cdot\Delta/2}, & \tilde{b} &= be^{it\cdot\Delta/2}.
 \end{align}
-This is so that we spin at the same frequency as the qubit and since we are interested in the relative phase of the field and qubit, this makes sense. 
+This is so that we spin at the same frequency as the qubit and since we are interested in the relative phase of the field and qubit, this makes sense.
 The Schrodinger equation for the interaction between a qubit and an oscillatory EM field is
 \begin{align}
     i\hbar\dpt|\psi\rangle &= \Ham_{int}|\psi\rangle,
@@ -270,12 +318,12 @@ where for the vector for of the state vector, the \textbf{interaction Hamiltonia
     \Ham_{int} &= \frac{\hbar}{2}\begin{pmatrix} \Delta & \Omega e^{-i\phi_L} \\ \Omega e^{i\phi_L} & -\Delta\end{pmatrix}, \\
     i\hbar\dpt \begin{pmatrix}\tilde{a}\\ \tilde{b}\end{pmatrix} &= \frac{\hbar}{2}\begin{pmatrix}\Delta & \Omega e^{-i\phi_L} \\ \Omega e^{i\phi_L} & -\Delta\end{pmatrix}\begin{pmatrix}\tilde{a}\\ \tilde{b}\end{pmatrix}.
 \end{align}
-We can also write $\Ham_{int}$ in terms of the spin matrices. 
+We can also write $\Ham_{int}$ in terms of the spin matrices.
 Note that we have the detuning on the diagonals (like $\hat{\sigma}_z$) and to get the exponential, we need $\cos$ and $\sin$ terms:
 \begin{align}
     \Ham_{int} &= \frac{\hbar}{2}\left[\Delta\hat{\sigma}_z + \Omega\left(\cos\phi_L\hat{\sigma}_x + \sin\phi_L\hat{\sigma}_y\right)\right],
 \end{align}
-where $\hat{\sigma}_y$ contains the imaginary values necessary for the exponents. 
+where $\hat{\sigma}_y$ contains the imaginary values necessary for the exponents.
 Consider zero detuning, i.e. $\Delta=0,\om_0=\om,$ and $\phi_L=0$:
 \begin{align}
     i\dot{a} &= \frac12 \Omega b, & i\dot{b} &= \frac12\Omega a.
@@ -299,11 +347,11 @@ Getting probabilities:
         \draw[cyan] (0,0) node[anchor=east,black] {0} cos (1,1.25) sin (2,2.5) cos (3,1.25) sin (4,0) node[anchor=north,black] {$\frac{2\pi}{\Omega}$} cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
     \end{tikzpicture}
 \end{figure}
-$\theta=\frac{\Omega t}{2}$ is the rotation angle. 
-The effect of the resonant EM field is to drive the qubit from $|0\rangle\to|1\rangle$ and back at $\Omega$ frequency. 
+$\theta=\frac{\Omega t}{2}$ is the rotation angle.
+The effect of the resonant EM field is to drive the qubit from $|0\rangle\to|1\rangle$ and back at $\Omega$ frequency.
 
-The qubit follows a line of longitude. 
-$\phi_L$ determines the direction in the $xy$ plane about which we rotate, i.e. can change which longitude line we travel around. 
+The qubit follows a line of longitude.
+$\phi_L$ determines the direction in the $xy$ plane about which we rotate, i.e. can change which longitude line we travel around.
 Derive rotation matrix $\hat{R}$ from the interaction Hamiltonian:
 \begin{align}
     |\psi(t)\rangle &= e^{-i\Ham_{int}t/\hbar}|\psi(0)\rangle = \hat{R}|\psi(0)\rangle.
@@ -312,7 +360,7 @@ To find the rotation matrix, we rewrite the interaction in the form:
 \begin{align}
     \hat{R} &= e^{-i\Ham_{int}t/\hbar} = e^{-(i/2)\hat{\sigma}\cdot\hat{\vec{n}}\Theta},\quad \Theta = t\sqrt{\Omega^2+\Delta^2}.
 \end{align}
-We had defined $\Ham_{int}$ as 
+We had defined $\Ham_{int}$ as
 \begin{align}
     \Ham_{int} &= \frac{\hbar}{2}\left[\Delta\hat{\sigma}_z + \Omega\left(\cos\phi_L\hat{\sigma_x}+\sin\phi_L\hat{\sigma}_y\right)\right],
 \end{align}
@@ -321,7 +369,7 @@ so using this in $\hat{R}$ above, we can determine $\hat{\vec{n}}$ to be
     \hat{\vec{n}} &= \frac{1}{\Theta}\begin{pmatrix} \Omega\cos\phi_L & \Omega\sin\phi_L & \Delta\end{pmatrix}.
 \end{align}
 
-\chapter{}
+\chapter{Single Qubit Rotations and Hadamard Operations}
 From normalisation we define $\Theta=t\sqrt{\Omega^2+\Delta^2}$, with the quantity in brackets known as the \emph{effective Rabi frequency.}
 Substituting the unit vector $\hat{\vec{n}}$ above into the rotation matrix:
 \begin{align}
@@ -335,7 +383,7 @@ Case 1: $\Delta=0$, i.e. on resonance. The Rabi solution reduces to
     \hat{R} &= \begin{pmatrix} \cos\frac{\Omega t}{2} & -ie^{i\phi_L}\sin\frac{\Omega t}{2} \\ -ie^{-i\phi_L}\sin\frac{\Omega t}{2} & \cos\frac{\Omega t}{2}\end{pmatrix},
 \end{align}
 which corresponds to a rotation about a vector in the equatorial plane in the Bloch sphere.
-For $\Delta=0$, we often use notation $\hat{R}(\theta,\phi_L)$ where $\theta=\frac{\Omega t}{2}$ is the rotation angle and $\phi_L$ determines the direction in the $xy$ plane about which we rotate. 
+For $\Delta=0$, we often use notation $\hat{R}(\theta,\phi_L)$ where $\theta=\frac{\Omega t}{2}$ is the rotation angle and $\phi_L$ determines the direction in the $xy$ plane about which we rotate.
 For an atom initially in state $|0\rangle$, i.e.
 \begin{align}
     |\psi(0)\rangle &= \begin{pmatrix}1\\ 0\end{pmatrix} = |0\rangle,
@@ -352,7 +400,7 @@ and we get the populations in states $|0\rangle,|1\rangle$ from
 \end{align}
 which are the \textbf{Rabi oscillations.}
 The population oscillates between the two states at the Rabi frequency, $\Omega$.
-The Rabi frequency is proportional to the field amplitude, i.e. the square root of the field intensity. 
+The Rabi frequency is proportional to the field amplitude, i.e. the square root of the field intensity.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -364,21 +412,21 @@ The Rabi frequency is proportional to the field amplitude, i.e. the square root 
     \end{tikzpicture}
 \end{figure}
 Another interesting case is when there is no interaction ($\Omega=0$) but the field and the qubit have a different frequency $\Delta\neq0$, i.e. \emph{free evolution rotations}.
-In this case, the rotation matrix is 
+In this case, the rotation matrix is
 \begin{align}
     \hat{R} &= \begin{pmatrix} \exp\left(-i\frac{\Delta t}{2}\right) & 0 \\ 0 & \exp\left(i\frac{\Delta t}{2}\right)\end{pmatrix},
 \end{align}
-which corresponds to a rotation about the z-axis in the Bloch sphere. 
+which corresponds to a rotation about the z-axis in the Bloch sphere.
 We use this matrix to describe the free evolution in a \emph{Ramsey interferometer}.
 
 \section{Single Qubit Rotations}
-The Rabi solution describes how a near-resonance EM field may be used to drive the qubit from any initial state to any final state. 
+The Rabi solution describes how a near-resonance EM field may be used to drive the qubit from any initial state to any final state.
 Refer to this operation as a \textbf{single-qubit rotation} or \textbf{single-qubit gate.}
 Three useful interactions come from the times you pulse, e.g. as above the $\frac{\pi}{2}$-, $\pi$-, and $2\pi$-pulse.
 For all except the \textbf{Hadamard gate}, we use resonant driving $\Delta=0$.
 \begin{itemize}
     \item $\frac{\pi}{2}$-pulse (particularly useful):\\
-        For a $\frac{\pi}{2}$ pulse, we choose the EM field intensity and the pulse duration such that $\Omega t=\frac{\pi}{2}$. 
+        For a $\frac{\pi}{2}$ pulse, we choose the EM field intensity and the pulse duration such that $\Omega t=\frac{\pi}{2}$.
         This corresponds to a rotation of $90^\circ$ on the Bloch sphere which could take us from pole to equator, i.e. a qubit initially in $|0\rangle$ or $|1\rangle$ is excited $\to$ an equal superposition on the equator (or start on the equator and rotate to a pole).
         Substituting $\Omega t=\frac{\pi}{2}$ in the Rabi solution, we obtain
         \begin{align}
@@ -394,20 +442,20 @@ For all except the \textbf{Hadamard gate}, we use resonant driving $\Delta=0$.
                                     &= \frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\-1&1\end{pmatrix}\begin{pmatrix}1\\0\end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}1\\-1\end{pmatrix} \\
                                     &= \frac{1}{\sqrt{2}}\left(|0\rangle-|1\rangle\right),
         \end{align}
-        which is a superposition between $|0\rangle$ and $|1\rangle$. 
+        which is a superposition between $|0\rangle$ and $|1\rangle$.
         This corresponds to a rotation around the $y$ axis, ending up in the $-x$ direction, i.e. the expectation value $\langle\hat{\sigma}\rangle=-1$.
         If we apply an arbitrary phase $\phi_L$ to $|1\rangle$, we find
         \begin{align}
             |1\rangle &\to \frac{1}{\sqrt{2}}\left(-ie^{i\phi_L}|0\rangle+|1\rangle\right).
         \end{align}
-        For $\phi_L=0$, we would rotate around the $x$ axis and end up along $y$. 
-        So the laser phase sets the vector in the $xy$ plane that we rotate around. 
+        For $\phi_L=0$, we would rotate around the $x$ axis and end up along $y$.
+        So the laser phase sets the vector in the $xy$ plane that we rotate around.
         If we had started with a superposition, e.g. in Eq (6.14), it carries on to the $|1\rangle$ state if we apply the same $\hat{R}\left(\frac{\pi}{2},\frac{\pi}{2}\right)$:
         \begin{align}
             \hat{R}\left(\frac{\pi}{2},\frac{\pi}{2}\right)\frac{1}{\sqrt{2}}\begin{pmatrix}1 \\ -1\end{pmatrix} &= \frac12\begin{pmatrix}1&1\\-1&1\end{pmatrix}\begin{pmatrix}1\\-1\end{pmatrix} = - \begin{pmatrix} 0 \\ 1\end{pmatrix}.
         \end{align}
         So 2 $\frac{\pi}{2}$ pulses are equivalent to a $\pi$-pulse and takes us from $|0\rangle\to|1\rangle$.
-        We shouldn't be concerned about the '$-1$' as when we take the modulus this global phase disappears. 
+        We shouldn't be concerned about the '$-1$' as when we take the modulus this global phase disappears.
     \item $\pi$-pulse: For $\Omega t_\pi = \pi$,
         \begin{align}
             |\psi(t_\pi)\rangle &= \begin{pmatrix} 0 & -ie^{i\phi_L}\\ -ie^{-i\phi_L} & 0 \end{pmatrix}|\psi(0)\rangle,\\
@@ -424,20 +472,20 @@ For all except the \textbf{Hadamard gate}, we use resonant driving $\Delta=0$.
             \hat{R}\left(2\pi,\phi_L\right) &= \begin{pmatrix}-1&0\\0&-1\end{pmatrix} = -\hat{\sigma}_0,
         \end{align}
         so it effectively just multiplies the entire wavefunction by $-1$, which is a global phase factor (and property of spin-$\frac12$ particles) that can be useful in gate operations.
-        In the case of two qubits, if one of them picks up a $-1$, then it does become significant as they are entangled and we can now detect this. 
+        In the case of two qubits, if one of them picks up a $-1$, then it does become significant as they are entangled and we can now detect this.
 \end{itemize}
 
 \section{Hadamard Gate}
-The application of two successive $\frac{\pi}{2}$-pulses inverts the state. 
-However, it is also useful to have a pulse that takes us into a superposition and back to the same state. 
+The application of two successive $\frac{\pi}{2}$-pulses inverts the state.
+However, it is also useful to have a pulse that takes us into a superposition and back to the same state.
 This is a \textbf{Hadamard gate} or \textbf{Hadamard transform}.
-The Hadamard operator is 
+The Hadamard operator is
 \begin{align}
     \Ham &= \frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\1&-1\end{pmatrix},
 \end{align}
 and the application of two of these leave the state unchanged, i.e. $\Ham^2 = \hat{\sigma}_0$ (as long as nothing happens in-between applying them).
-There are different ways to implement a Hadamard. 
-One os to set $\Delta=\Omega$, in which case the Rabi solution becomes
+There are different ways to implement a Hadamard.
+One is to set $\Delta=\Omega$, in which case the Rabi solution becomes
 \begin{align}
     \hat{R} &= \begin{pmatrix} \cos\frac{\Omega}{\sqrt{2}}t-\frac{i}{\sqrt{2}}\sin\frac{\Omega}{\sqrt{2}}t & -\frac{i}{\sqrt{2}}e^{i\phi_L}\sin\frac{\Omega}{\sqrt{2}}t \\  -\frac{i}{\sqrt{2}}e^{-i\phi_L}\sin\frac{\Omega}{\sqrt{2}}t & \cos\frac{\Omega}{\sqrt{2}}t+\frac{i}{\sqrt{2}}\sin\frac{\Omega}{\sqrt{2}}t \end{pmatrix},
 \end{align}
@@ -445,10 +493,10 @@ and if we set $\frac{\Omega}{\sqrt{2}}t = \frac{\pi}{2}$ and $\phi_L=0$, we obta
 \begin{align}
     \hat{R} &= -\frac{i}{\sqrt{2}}\begin{pmatrix}1&1\\1&-1\end{pmatrix},
 \end{align}
-so $\hat{R}$ is the Hadamard up to some global factor which can be ignored. 
+so $\hat{R}$ is the Hadamard up to some global factor which can be ignored.
 The Hadamard is a rotation around some $45^\circ$; applying twice brings us back to the start.
 
-\chapter{}
+\chapter{Ramsey Interferometry and Two-Qubit Operations}
 \section{Ramsey Interferometry}
 We have two $\frac{\pi}{2}$ pulses separated by time $t$ (or Hadamards):
 \begin{figure}[H]
@@ -496,8 +544,8 @@ We can also schematically represent paths in Hilbert space:
         \draw[Latex-Latex] (1.75,2.35) -- (4.25,2.35) node[anchor=south,midway] {$t$};
     \end{tikzpicture}
 \end{figure}
-There is a read-out of relative phase. 
-This interval $t$ is often called the \emph{free evolution time,} but this could include an interaction. 
+There is a read-out of relative phase.
+This interval $t$ is often called the \emph{free evolution time,} but this could include an interaction.
 During this free evolution, the qubit Bloch vector rotates around the $z$-axis.
 We can describe this precession using a rotation matrix:
 \begin{align}
@@ -506,7 +554,7 @@ We can describe this precession using a rotation matrix:
 so we can say that the Bloch vector precesses around the $z$-axis at a rate given by the difference between the field and qubit evolution, $\Delta=\om-\om_0$.
 The total rotation angle is $\phi=\Delta t$.
 
-The complete Ramsey sequence is given by two $\frac{\pi}{2}$ pulses separated by free evolution. 
+The complete Ramsey sequence is given by two $\frac{\pi}{2}$ pulses separated by free evolution.
 The $\frac{\pi}{2}$ pulse matrix is obtained from the Rabi solution for $\Delta = 0$.
 \begin{align}
     \hat{R} &= \begin{pmatrix} \cos\frac{\theta}{2} & -ie^{i\phi_L}\sin\frac{\theta}{2} \\ -ie^{-i\phi_L}\sin\frac{\theta}{2} & \cos\frac{\theta}{2}\end{pmatrix},
@@ -516,7 +564,7 @@ We choose $\phi_L=\frac{\pi}{2}$:
 \begin{align}
     \hat{R}\left(\frac{\pi}{2},\frac{\pi}{2}\right) &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ -1 & 1\end{pmatrix} = \hat{R}_y\left(\frac{\pi}{2}\right).
 \end{align}
-Our complete sequence is given by $\hat{R}\left(\frac{\pi}{2}\right)\hat{R}\left(\phi\right)\hat{R}_y\left(\frac{\pi}{2}\right)$, where we write our sequence of rotations in reverse order. 
+Our complete sequence is given by $\hat{R}\left(\frac{\pi}{2}\right)\hat{R}\left(\phi\right)\hat{R}_y\left(\frac{\pi}{2}\right)$, where we write our sequence of rotations in reverse order.
 \begin{align}
     \hat{R}_y\left(\frac{\pi}{2}\right)\hat{R}(\phi)\hat{R}\left(\frac{\pi}{2}\right) &= \frac12 \begin{pmatrix} 1 & 1 \\ -1 & 1\end{pmatrix}\begin{pmatrix} e^{-i\phi/2} & 0 \\ 0 & e^{i\phi/2}\end{pmatrix} \begin{pmatrix} 1 & 1 \\ -1 & 1\end{pmatrix} \\
                                                                                       &= \frac12 \begin{pmatrix} 1 & 1 \\ -1 & 1\end{pmatrix} \begin{pmatrix} e^{-i\phi/2} & e^{-i\phi_2} \\ -e^{-\phi/2} & e^{i\phi/2}\end{pmatrix} \\
@@ -525,11 +573,11 @@ Our complete sequence is given by $\hat{R}\left(\frac{\pi}{2}\right)\hat{R}\left
 Initial Condition (at the North Pole):
 \begin{align}
     |\psi\rangle &= |0\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
-    \hat{R}\left(\frac{\pi}{2}\right)\hat{R}_z(\phi)\hat{R}_y\left(\frac{\pi}{2}\right)|\psi\rangle &= \begin{pmatrix} -\sin\frac{\phi}{2} \\ -\cos\frac{\phi}{2}\end{pmatrix} 
+    \hat{R}\left(\frac{\pi}{2}\right)\hat{R}_z(\phi)\hat{R}_y\left(\frac{\pi}{2}\right)|\psi\rangle &= \begin{pmatrix} -\sin\frac{\phi}{2} \\ -\cos\frac{\phi}{2}\end{pmatrix}
 \end{align}
 Our output state has:
 \begin{align}
-    \begin{pmatrix} a \\ b \end{pmatrix} &= \begin{pmatrix} -\sin\frac{\phi}{2} \\ -\cos\frac{\phi}{2}\end{pmatrix} 
+    \begin{pmatrix} a \\ b \end{pmatrix} &= \begin{pmatrix} -\sin\frac{\phi}{2} \\ -\cos\frac{\phi}{2}\end{pmatrix}
 \end{align}
 The probability to be in state $|0\rangle$ at the output is then
 \begin{align}
@@ -560,7 +608,7 @@ Now we need to write our two-qubit state vector to describe our two-qubit system
 \begin{align}
     |\psi\rangle_{AB} &= a|00\rangle + b|01\rangle + c|10\rangle + d|11\rangle.
 \end{align}
-Here, $|ij\rangle=|0\rangle\otimes|1\rangle$, i.e. it is an abbreviation for the tensor product. 
+Here, $|ij\rangle=|0\rangle\otimes|1\rangle$, i.e. it is an abbreviation for the tensor product.
 The state vector can also be represented as a column vector:
 \begin{align}
     |\psi\rangle_{AB} &= \begin{pmatrix} a \\ b \\ c \\ d\end{pmatrix},
@@ -582,11 +630,11 @@ For $\Delta=0$:
 \end{align}
 It follows that the operators acting on three-qubit systems correspond to $8\times8$ matrices, and in general, operators acting on $N$-qubit systems correspond to $2^N\times2^N$ matrices.
 
-\chapter{}
+\chapter{Quantum Entanglement}
 \section{Entanglement}
 Entanglement is what gives quantum computing its `advantage'.
 It is essential in all forms of two-qubit gates, such as CNOT (`Control-NOT').
-An entangled state cannot be separated into a product of individual qubit state vectors. 
+An entangled state cannot be separated into a product of individual qubit state vectors.
 
 \subsection{Examples of entangled states}
 The complete set of ``maximally entangled" two-qubit states are the so-called \emph{Bell states:}
@@ -594,7 +642,7 @@ The complete set of ``maximally entangled" two-qubit states are the so-called \e
     |\Phi^\pm\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle\pm|11\rangle\right) \\
     |\Phi^\pm\rangle &= \frac{1}{\sqrt{2}}\left(|01\rangle\pm|10\rangle\right)
 \end{align}
-We then can tell something about B if we know A and vice versa: for (8.1), if we measure A in 0, then we know B is 0 too regardless of where B is (non-local effect). 
+We then can tell something about B if we know A and vice versa: for (8.1), if we measure A in 0, then we know B is 0 too regardless of where B is (non-local effect).
 We cannot transmit information though, so the limit of transferring is still less than the speed of light; we may know something about B if we observe A, but we cannot tell B that.
 
 \subsection{Measuring a part of a two-qubit state}
@@ -606,7 +654,7 @@ We use a projection operator $\hat{P}$ that projects $|\psi_{AB}\rangle$ onto th
 \begin{align}
     \text{Probability} = \langle\hat{P}\rangle &= \text{Tr}(\hat{\rho}_{AB}\hat{P}), \text{ where } \hat{\rho} = |\psi\rangle_{AB} {}_{AB}\langle\psi|
 \end{align}
-is the density matrix and $\hat{P}$ is the projection operator. 
+is the density matrix and $\hat{P}$ is the projection operator.
 The trace Tr is the sum of diagonal elements.
 \begin{example}
     Consider the entangled Bell state
@@ -623,7 +671,7 @@ The trace Tr is the sum of diagonal elements.
     \begin{align}
         \hat{P} &= |+\rangle\langle+| \otimes \hat{\sigma}_0.
     \end{align}
-    For a single qubit, 
+    For a single qubit,
     \begin{align}
         \hat{P} &= \langle\psi|+\rangle\langle+|\psi\rangle = |\langle+|\psi\rangle|^2,
     \end{align}
@@ -633,7 +681,7 @@ The trace Tr is the sum of diagonal elements.
         \hat{P} &= \frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1\end{pmatrix} \otimes \begin{pmatrix} 1 & 0 \\ 0 & 1\end{pmatrix} \\
                 &= \frac12\begin{pmatrix} 1 & 1 \\ 1 & 1\end{pmatrix} \otimes \begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix} \\
                 &= \frac12 \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1\end{pmatrix}.
-    \end{align} 
+    \end{align}
     Now we define the density matrix as
     \begin{align}
         \hat{\rho} &= |\Phi^+\rangle\langle\Phi^+| \\
@@ -650,7 +698,7 @@ The trace Tr is the sum of diagonal elements.
     The probability that B is in state $|+\rangle$ is also $\frac12$.
 
     What is the probability that both A and B are in state $|+\rangle$?
-    Classically, we would say that $P_{AB}=P_AP_B=\frac14$; this is wrong. 
+    Classically, we would say that $P_{AB}=P_AP_B=\frac14$; this is wrong.
     A and B now have a correlation between them in the quantum system, so we use the projection operators to find the probability that both A and B are in $|+\rangle$.
     The projection operator reads
     \begin{align}
@@ -668,7 +716,7 @@ The trace Tr is the sum of diagonal elements.
     Therefore, $P_{AB}\neq P_AP_B$, because A and B are \textbf{correlated} - whenever A is $|+\rangle$, then B is in $|+\rangle$.
 \end{example}
 
-\chapter{}
+\chapter{Entangled Correlation and Qubit Gates}
 Last time, we looked at entanglement in the Bell states - which are maximally entangled:
 \begin{align}
     |\Phi^\pm\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle\pm|11\rangle\right).
@@ -692,8 +740,8 @@ Using these definitions, we simply rearrange the Bell state:
                    &= \frac{1}{\sqrt{2}}\left(|++\rangle+|--\rangle\right).
 \end{align}
 This is an example of the rotational invariance of the Bell state.
-So the Bell state appears the same in this basis as before - we have simply `rotated' the state vector around the Bloch sphere to align along the x-axis. 
-In fact, the Bell state will appear the same regardless of the basis/rotation. 
+So the Bell state appears the same in this basis as before - we have simply `rotated' the state vector around the Bloch sphere to align along the x-axis.
+In fact, the Bell state will appear the same regardless of the basis/rotation.
 The Bell state represents quantum entanglement and correlations which is invariant under rotations, \emph{providing that we choose to measure A and B in the same basis.}
 
 \section{Qubit Gates}
@@ -705,7 +753,7 @@ We have two basic types of gates:
 All computations can be built up from these two basic gates.
 
 Let's consider the CNOT gate.
-This is a universal gate, i.e. having just CNOT gates $+$ single qubit rotations is sufficient to build a universal quantum computer. 
+This is a universal gate, i.e. having just CNOT gates $+$ single qubit rotations is sufficient to build a universal quantum computer.
 We have:
 \begin{figure}[H]
     \centering
@@ -718,14 +766,14 @@ We have:
     \end{tikzpicture}
 \end{figure}
 What does it do?
-If C is in state $|1\rangle$, then NOT on T, otherwise we do nothing. 
+If C is in state $|1\rangle$, then NOT on T, otherwise we do nothing.
 This can be written as a matrix:
 \begin{align}
     \text{CNOT} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle\end{Bmatrix},
 \end{align}
-where the final term is in roughly what each line represents in the $4\times4$ matrix. 
-For the first two lines, where A is in $|0\rangle$, we do nothing to B, hence the identity form; the latter two lines, where A is in $|1\rangle$, we perform NOT on B - this resembles the Pauli $\hat{\sigma}_x$ matrix. 
-This is also called the Controlled-X (CX) gate, where X represents that Pauli $\hat{\sigma}_x$ matrix. 
+where the final term is in roughly what each line represents in the $4\times4$ matrix.
+For the first two lines, where A is in $|0\rangle$, we do nothing to B, hence the identity form; the latter two lines, where A is in $|1\rangle$, we perform NOT on B - this resembles the Pauli $\hat{\sigma}_x$ matrix.
+This is also called the Controlled-X (CX) gate, where X represents that Pauli $\hat{\sigma}_x$ matrix.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -737,12 +785,12 @@ This is also called the Controlled-X (CX) gate, where X represents that Pauli $\
         \draw (1.2,-0.3) rectangle (1.8,0.3) node[anchor=north,xshift=-8.6pt,yshift=-0.5pt] {X};
     \end{tikzpicture}
 \end{figure}
-CNOT clearly involves entanglement then. 
+CNOT clearly involves entanglement then.
 We cannot separate CNOT into a product of single-qubit matrices, e.g.
 \begin{align}
     \text{CNOT} &\neq \hat{\sigma}_0\otimes\hat{\sigma}_x.
 \end{align}
-So CNOT is an entangling operator. 
+So CNOT is an entangling operator.
 
 \begin{example}[CNOT creates entanglement]
     Our Control and Target inputs are:
@@ -770,12 +818,12 @@ So CNOT is an entangling operator.
         |C\rangle\otimes|T\rangle &= \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right)\otimes|0\rangle \\
                        |CT\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle+|10\rangle\right).
     \end{align}
-    This is a \textbf{product state} - there is no entanglement between these yet. 
+    This is a \textbf{product state} - there is no entanglement between these yet.
     Now we pass this product state through the CNOT operator to give
     \begin{align}
         \text{CNOT}|CT\rangle &= \frac{1}{\sqrt{2}}\left(|00\rangle+|11\rangle\right),
     \end{align}
-    where we not have the Bell state which is maximally entangled by definition. 
+    where we not have the Bell state which is maximally entangled by definition.
     Therefore, we see \textit{CNOT creates entanglement.}
 
     Let's work through this again in matrix form.
@@ -785,7 +833,7 @@ So CNOT is an entangling operator.
                               &= \frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle\end{Bmatrix} \\
                               &= \frac{1}{\sqrt{2}}\left(|00\rangle+|11\rangle\right) = |\Phi^+\rangle.
     \end{align}
-    We get the same result as before. 
+    We get the same result as before.
 \end{example}
 
 \subsection{How to realise CNOT?}
@@ -838,15 +886,15 @@ We consider a conditional Ramsey interferometer:
 If the Control is in state $|1\rangle$, then it applies a $-1$ factor to the state vector and this $-1$ factor flips the output of the Ramsey interferometer, i.e. perform the NOT.
 
 \section{Implementing Quantum Computing in real physical systems}
-We have a choice of our five possiblities:
+We have a choice of our five possibilities:
 \begin{enumerate}
     \item Atoms
-    \item Ions 
+    \item Ions
     \item Semiconductors
     \item Superconductors
     \item Photons
 \end{enumerate}
-We are going to use atoms from here, but the question is how to satisfy the 5 diVincenzo criteria:
+We are going to use atoms from here, but the question is how to satisfy the 5 DiVincenzo criteria:
 \begin{enumerate}
     \item Initialisation: prepare qubits
     \item Gates: single-qubit rotations and two-qubit gates (CNOT)
@@ -867,9 +915,9 @@ We are going to use atoms from here, but the question is how to satisfy the 5 di
     \item Tuesday Week 17 and possibly workshop Week 17
     \item All lectures Week 18 and 19
 \end{itemize}
-These are the possible impacts of striking, if Charles strikes. 
+These are the possible impacts of striking, if Charles strikes.
 We need to believe in the many worlds interpretation of quantum mechanics and only by coming to the lectures and collapsing the wavefunction will we find out if we are in a universe where he is striking or not.
-The question of what universe Charles is in has been one considered by some of the greatest thinkers of modern times; the results are inconclusive. 
+The question of what universe Charles is in has been one considered by some of the greatest thinkers of modern times; the results are inconclusive.
 
 \section{Optical Tweezing}
 We use one focussed laser beam to move an atom and place it exactly where we want it.
@@ -877,8 +925,8 @@ Light exerts a force on atoms and they are forced either to the ends of the beam
 Two types of light force:
 \begin{itemize}
     \item Optical dipole force - cycles of absorption (stimulated emission and trapping)
-    \item Spontaneous scattering force - cycles of absorption (spontaneous emissing and cooling)
-\end{itemize}   
+    \item Spontaneous scattering force - cycles of absorption (spontaneous emission and cooling)
+\end{itemize}
 For our optical dipole potential, we recall the two state model, with $\hbar\om_0$ between $|g\rangle$ and $|e\rangle$, leading to the detuning frequency $\Delta$.
 \begin{figure}[H]
     \centering
@@ -912,7 +960,7 @@ The energies of the states in the laser field are given by the eigenvalues of $\
 \begin{align}
     \left(\Ham_{int}-\frac{\hbar}{2}\lambda\hat{\sigma}_0\right)\begin{pmatrix}a\\ b\end{pmatrix} &= 0 \\
     \frac{\hbar}{2}\begin{vmatrix} \Delta-\lambda & \Omega \\ \Omega & -\Delta-\lambda \end{vmatrix} &= 0 \\
-    -\Delta^2+\lambda^2-\Omega^2 &= 0 
+    -\Delta^2+\lambda^2-\Omega^2 &= 0
 \end{align}
 \begin{align}
     \lambda^2 &= \Delta^2+\Omega^2 \\
@@ -939,13 +987,13 @@ We then get
           &= \pm\frac{\hbar}{2}|\Delta|\pm \frac{\hbar\Omega^2}{4|\Delta|}.
 \end{align}
 \end{multicols}
-The shift of the lower state, 
+The shift of the lower state,
 \begin{align}
     U_0 &= -\frac{\hbar\Omega^2}{4|\Delta|},
 \end{align}
 is known as the \textbf{Light Shift} (or ac-Stark shift).
-This tells use the depth of the optical tweezer indent(handwriting?). 
-We want to rewrite this in terms of laser intensity. 
+This tells use the depth of the optical tweezer indent(handwriting?).
+We want to rewrite this in terms of laser intensity.
 Recall that
 \begin{align}
     \Omega &= -\frac{d\mathcal{E}}{\hbar}, & I &= \frac12 c\e_0\mathcal{E}^2.
@@ -955,17 +1003,17 @@ The dipole moment $d$ is related to the spontaneous emission rate of the excited
     \Gamma &= \frac{d^2}{3\pi\e_0(\lambda_0/2\pi)^3},
 \end{align}
 where $\lambda_0$ is the wavelength of the transition $|g\rangle\to|e\rangle$, $\om_0=\frac{2\pi c}{\lambda_0}$.
-Using these, 
+Using these,
 \begin{align}
     \Omega &= \Gamma\sqrt{\frac{I}{2I_s}}, \text{ where } I_s = \frac{\pi}{3}\frac{hc\Gamma}{\lambda_0^3}
 \end{align}
-is the saturation intensity. 
+is the saturation intensity.
 Our optical tweezer trap depth is now
 \begin{align}
     U_0 &= -\frac{\hbar\Omega^2}{4|\Delta|} = -\frac{\hbar\Gamma^2}{4|\Delta|}\frac{I}{2I_s}.
 \end{align}
 The trap depth $U_0$ is proportional to the laser intensity and inversely proportional to detuning, $|\Delta|$.
-We set the limit of large detuning to avoid spontaneous emission, but this impacts the trap depth. 
+We set the limit of large detuning to avoid spontaneous emission, but this impacts the trap depth.
 To get this back, however, we use a large laser intensity. \\
 A laser beam is described by
 \begin{align}
@@ -997,15 +1045,15 @@ Consider
 \begin{align}
     \ifnt I(z=0)\,dx\,dy &= P \implies I_0 = \frac{2P}{\pi w_0^2},
 \end{align}
-where $P$ is the laser power. 
-This tells us that we want to have as powerful a laser as possible, with a smaller beam waist size. 
-However, we cannot focus the beam waist arbitrarily small because diffraction and other effects will take hold. 
+where $P$ is the laser power.
+This tells us that we want to have as powerful a laser as possible, with a smaller beam waist size.
+However, we cannot focus the beam waist arbitrarily small because diffraction and other effects will take hold.
 Typically, $w_{0,min}\approx \lambda$.
 
-\chapter{}
+\chapter{Optical Tweezing}
 
 \begin{example}[Workshop 2, Question 2: Ramsey Interferometry and Decoherence]
-    The Hadamard is how we read out the `phase' of the state vector. 
+    The Hadamard is how we read out the `phase' of the state vector.
     Why is that?
     We take a general state (as in part c of question),
     \begin{align}
@@ -1017,16 +1065,16 @@ Typically, $w_{0,min}\approx \lambda$.
         \rho &= |\psi\rangle\langle\psi| = \begin{pmatrix} |a|^2 & ab^*e^{-i\Delta t} \\ ba^*e^{i\Delta t} & |b|^2 \end{pmatrix},
     \end{align}
     where the diagonal terms represent the probability to be in each state, and the off-diagonal terms are called \textbf{Coherences} which contain all the information about phase.\\
-    These may contain all the \emph{wave} information, but not necessarily all the \emph{quantum} information. 
+    These may contain all the \emph{wave} information, but not necessarily all the \emph{quantum} information.
     If a state decoheres completely, i.e. coherence decay to zero:
     \begin{align}
         \rho_{dec} &= \begin{pmatrix} |a|^2 & 0 \\ 0 & |b|^2\end{pmatrix}\\
                    &= |a|^2|0\rangle\langle0| + b^2|1\rangle\langle1|,
     \end{align}
-    so we still have a superposition, but no phase information. 
+    so we still have a superposition, but no phase information.
     This is called a \textbf{mixed state.}
 
-    For the read-out process, we go back to earlier on in the question now. 
+    For the read-out process, we go back to earlier on in the question now.
     We define a general density matrix as
     \begin{align}
         \rho &=  \frac12\begin{pmatrix} 1+w & u-iv \\ u+iv & 1-w\end{pmatrix}.
@@ -1042,7 +1090,7 @@ Typically, $w_{0,min}\approx \lambda$.
     where we can now read out the real part of coherence.
     The Hadamard is used to measure the coherence of the qubit, by projecting the real part of the coherence $u$ from the off-diagonals to the diagonals.
 
-    Now let's jump down to part f of the question because Charles says so. 
+    Now let's jump down to part f of the question because Charles says so.
     We transform $u\to ue^{-it/T_2}$, where $T_2$ is some time constant representing how the coherence decays.
     The probability will be modified by this, showing a decaying and oscillating amplitude:
     \begin{align}
@@ -1058,8 +1106,8 @@ Typically, $w_{0,min}\approx \lambda$.
             \draw[cyan,dashed] (-2,2.5) cos (-1,1.25) sin (0,0) cos (1,1.25) sin (2,2.5) node[anchor=north east,black] {1} cos (3,1.25) sin (4,0) cos (5,1.25) sin (6,2.5);
         \end{tikzpicture}
     \end{figure}
-    These are the Ramsey fringes for $t\ll T_2$. 
-    Pure states are good because we have no decoherence, so quantum computing will work. 
+    These are the Ramsey fringes for $t\ll T_2$.
+    Pure states are good because we have no decoherence, so quantum computing will work.
     Over time, the oscillations can get smaller, begin to vibrate around $\frac12$, so the Ramsey fringe visibility is reduced, leading to decoherence.
     Working at low temperatures, i.e. mK, reduces likelihood of decoherence.
 \end{example}
@@ -1068,7 +1116,7 @@ Typically, $w_{0,min}\approx \lambda$.
 We used a laser to trap an atom qubit in its beam, with
 \begin{align}
     U_0 &= -\frac{\hbar\Omega}{4|\Delta|}, & \Omega &= \Gamma\sqrt{\frac{I}{2I_s}}.
-\end{align} 
+\end{align}
 The trap depth is proportional to the laser intensity (and power):
 \begin{align}
     I &= I_0\frac{w_0^2}{w^2}e^{-2(x^2+y^2)/w_0^2}.
@@ -1082,12 +1130,12 @@ We then send in our laser beam with an electric field,
 \begin{align}
     \mathcal{E} &= \mathcal{E}_0\cos(\phi_L-\om t),\quad \phi_L = \vec{k}\cdot\vr.
 \end{align}
-There is now an error in the phase, 
+There is now an error in the phase,
 \begin{align}
     \Delta\phi_L &= k\Delta x,
 \end{align}
 if the field propagates in the $x$-direction (switch out $x$ for $y$ or $z$ depending on propagation direction).
-This error is a source of decoherence, so we need to try and minimise it. 
+This error is a source of decoherence, so we need to try and minimise it.
 However, the scaling is very bad, on the order of needing $10^4$ more laser power to decrease $\Delta x$ by a factor of 10.
 \begin{figure}[H]
     \centering
@@ -1112,23 +1160,23 @@ Calculating the probability that qubit scatters a photon, we have
     \item the photon scattering rate is $R=\Gamma P_{|e\rangle}$
     \item $P_{|e\rangle}$ is the probability to be in state $|e\rangle$; for a two-level model, this is $|b|^2$
 \end{itemize}
-This model, however, did not include the possiblity of decay, so we need to add decay to our equations of motion of the Bloch vector.
+This model, however, did not include the possibility of decay, so we need to add decay to our equations of motion of the Bloch vector.
 From Workshop 1,
 \begin{align}
     \begin{pmatrix} \dot u \\ \dot v \\ \dot w \end{pmatrix} &= \begin{pmatrix} 0 &-\Delta &0\\ \Delta & 0 & -\Omega \\ 0 & \Omega & 0 \end{pmatrix}\begin{pmatrix}u \\ v \\ w\end{pmatrix}.
 \end{align}
-Where the RHS is Torque$\times$Bloch vector. 
+Where the RHS is Torque$\times$Bloch vector.
 We now have
 \begin{align}
     \dot{u} &= -\frac{u}{T_2} - \Delta v, \\
     \dot{v} &= \Delta u - \frac{v}{T_2} - \Omega w, \\
     \dot{w} &= \Omega v - \frac{1}{T_1}(w-1).
 \end{align}
-$T_2$ is the decay of coherence; $T_1$ is the decay of population. 
+$T_2$ is the decay of coherence; $T_1$ is the decay of population.
 These are the \textbf{Optical Bloch Equations.}
 
 \chapter{Spontaneous Photon Scattering}
-In our optical tweezer model described above, not all photons going into the qubit will hit the same way, so sometimes we will have scattering of photons off the photon. 
+In our optical tweezer model described above, not all photons going into the qubit will hit the same way, so sometimes we will have scattering of photons off the photon.
 Last time we discussed spontaneous emission from the excited state, $\Gamma$, where the rate of spontaneous scattering can then be described as
 \begin{align}
     R &= \Gamma P_{|e\rangle}.
@@ -1137,8 +1185,8 @@ Last time we discussed spontaneous emission from the excited state, $\Gamma$, wh
 \section{Optical Bloch Equations}
 If spontaneous emission is the only decoherence/decay mechanism, then
 \begin{align}
-    T_1 &= \frac{1}{\Gamma}, & T_2 &= \frac2\Gamma, \\ 
-    \frac{1}{T_1} &= \Gamma = \frac1\tau, & \frac1{T_2} &= \frac{\Gamma}{2}, 
+    T_1 &= \frac{1}{\Gamma}, & T_2 &= \frac2\Gamma, \\
+    \frac{1}{T_1} &= \Gamma = \frac1\tau, & \frac1{T_2} &= \frac{\Gamma}{2},
 \end{align}
 where $\tau$ is the lifetime of the excited state.
 We can then substitute these into the optical Bloch equations defined last lecture, yielding
@@ -1155,12 +1203,12 @@ Following lots of algebra, we find
 \textbf{This is one of our Very Important Equations.}
 We want to plot this for three cases:
 \begin{enumerate}
-    \item Small $\Omega$: $\Omega\ll|\Delta|$ and $\Gamma$. (NB: not the case for optical tweezer!) 
+    \item Small $\Omega$: $\Omega\ll|\Delta|$ and $\Gamma$. (NB: not the case for optical tweezer!)
         \begin{align}
             P_{|e\rangle} &\approx \frac{\Omega^2/4}{\Delta^2 + \Gamma^2/4}.
         \end{align}
         This corresponds to weak driving, where it will result in low intensity and low probability.
-        This equation will look familiar as a Lorentzian, or a Cauchy distribution. 
+        This equation will look familiar as a Lorentzian, or a Cauchy distribution.
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
@@ -1175,8 +1223,8 @@ We want to plot this for three cases:
             \text{FWHM} &= \Gamma = \frac{1}{T_1}=\frac{1}{\tau},
         \end{align}
         which is the natural width of $|g\rangle\to|e\rangle$ transition.
-    \item $\Delta=0$, i.e. on resonance. 
-        Again, not like our tweezer where we are very far from resonance. 
+    \item $\Delta=0$, i.e. on resonance.
+        Again, not like our tweezer where we are very far from resonance.
         Now, we have a probability of
         \begin{align}
             R_{|e\rangle} &= \frac{\Omega^2/4}{\Gamma^2/4 + \Omega^2/2}.
@@ -1199,7 +1247,7 @@ We want to plot this for three cases:
         \begin{align}
             \Omega^2 &= \Gamma^2\frac{I}{2I_S}, & P_{|e\rangle} &= 0.25 \text{ for } I=I_S,
         \end{align}
-        where $I_S$ is the saturation intensity. 
+        where $I_S$ is the saturation intensity.
     \item $|\Delta|\gg\Gamma,\Omega$, i.e. the case for optical tweezing.
         $\Omega\gg\Gamma$ also.
         We have strong driving and strong detuning.
@@ -1210,7 +1258,7 @@ We want to plot this for three cases:
         \begin{align}
             R &= \Gamma P_{|e\rangle} = \Gamma\frac{\Omega^2}{4\Delta^2}.
         \end{align}
-        Now to the trap depth, 
+        Now to the trap depth,
         \begin{align}
             U_0 &= -\frac{\hbar\Omega^2}{4|\Delta|} \implies \frac{|U_0|}{R} = \frac{\hbar\Omega^2/4|\Delta|}{\Gamma\Omega^2/4\Delta^2} = \hbar\left(\frac{\Delta}{\Gamma}\right).
         \end{align}
@@ -1227,7 +1275,7 @@ Each scattering event cause a recoil on the qubit or atom.
         \node[roundnode] (first) [right=5em of start] {$|g\rangle$};
         \node[roundnode] (second) [above right=4em and 4em of first] {$|e\rangle$};
         \node (third) [below right=-3pt and 10.4em of first] {};
-        \node[roundnode] (fourth) [below right=4em and 4em of first] {$|g\rangle$};  
+        \node[roundnode] (fourth) [below right=4em and 4em of first] {$|g\rangle$};
 
         %Lines
         \draw[snake it,-Latex] (start) -- (first.west) node[anchor=south,midway] {$\hbar k$};
@@ -1251,13 +1299,13 @@ This force is called the \textbf{Spontaneous Scattering Force.}
 The properties of this force will then follow the previous discussions on the behaviour of the probability in different regimes.
 
 How will we use this force for cooling?
-Use 2 counter-propagating lasers, both red detuned. 
+Use 2 counter-propagating lasers, both red detuned.
 \emph{doodle}
 The force on the atom is then the sum of the force from laser 1 and laser 2:
 \begin{align}
     F &= F_+ + F_-.
 \end{align}
-If the atom is moving, however, there is a Doppler shift. 
+If the atom is moving, however, there is a Doppler shift.
 \begin{itemize}
     \item Laser 1: it's moving away, so detuning, $\Delta\to\Delta-kv_{atom}$.
     \item Laser 2: it's moving towards, so detuning, $\Delta\to\Delta+kv_{atom}$.
@@ -1273,7 +1321,7 @@ We have cycles of absorption and spontaneous emission which give rise to the spo
 \end{align}
 Note that $R_{max}=\frac{\Gamma}{2}$, for $\Omega\gg|\Delta|,\Gamma$.
 
-Laser cooling, counter-propagating red detuned ($\Delta<0$) laser beams. 
+Laser cooling, counter-propagating red detuned ($\Delta<0$) laser beams.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1301,7 +1349,7 @@ Laser cooling, counter-propagating red detuned ($\Delta<0$) laser beams.
         \draw (4,0) .. controls (2.5,-0.2) and (2.8,-2.7) .. (1.8,-3) node[anchor=north east] {$F_-$} -- (1.7,-3) .. controls (0.7,-2.7) and (0.9,-0.2) .. (-0.5,0);
         \draw (-1.75,-0.1) node[anchor=north] {$-\frac{\Gamma}{2}$} -- (-1.75,0.1);
         \draw (1.75,-0.1) node[anchor=north] {$\frac{\Gamma}{2}$} -- (1.75,0.1);
-        \draw[Latex-] (0,0) arc (-10:-70:100pt) node[anchor=south east,xshift=30pt,yshift=10pt] {\shortstack{at origin, detuning \\ is zero}}; 
+        \draw[Latex-] (0,0) arc (-10:-70:100pt) node[anchor=south east,xshift=30pt,yshift=10pt] {\shortstack{at origin, detuning \\ is zero}};
     \end{tikzpicture}
     \begin{align}
         \text{for} |v_{at}|<\frac{\Gamma}{k},\quad \vec{F} = -\alpha\vec{v}_{at}
@@ -1311,11 +1359,11 @@ Defining the atomic momentum as $p$, we can use $F=\frac{dp}{dt} = -\alpha\frac{
 \begin{align}
     \left(\frac{dE}{dt}\right) = \frac{d}{dt}\left(\frac{p^2}{2m}\right) &= \frac{p}{m}\frac{dp}{dt}= -\alpha\left(\frac{p}{m}\right)^2,
 \end{align}
-where the negative means the rate is decreasing. 
+where the negative means the rate is decreasing.
 We now have laser cooling!
 
 \section{How cold can we cool?}
-There is also a heating due to random recoils due to spontaneous emission. 
+There is also a heating due to random recoils due to spontaneous emission.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1339,53 +1387,53 @@ There is also a heating due to random recoils due to spontaneous emission.
             \left(\frac{dE}{dt}\right)_{cool} &= -\left(\frac{dE}{dt}\right)_{heat}, \\
             k_BT_{dopp} &= mv^2_{at} = \frac{\hbar\Gamma}{2}.
         \end{align}
-        This is the Doppler Cooling Limit. 
-        Typically, $T_{dopp}\approx1-100\,\mu$K - the coldest thing in the Universe. 
+        This is the Doppler Cooling Limit.
+        Typically, $T_{dopp}\approx1-100\,\mu$K - the coldest thing in the Universe.
 \end{itemize}
-We can use laser cooling to load cold atoms into optical tweezers. 
+We can use laser cooling to load cold atoms into optical tweezers.
 As with before, we have cycles of absorption and spontaneous emission, but this is only found in simple atoms as we need a \textbf{Closed Transition.}
 
-Let's focus on a particular atom. e.g. Cs (single valence electron).
+Let's focus on a particular atom, e.g. Cs (single valence electron).
 \begin{itemize}
     \item Ground state $|g\rangle$, 6s ($n=6,l=0$)
     \item Excited state $|e\rangle$, 6p ($n=6,l=1$)
-\end{itemize}   
-Laser cooling on $|g\rangle\to|e\rangle$ transition. 
+\end{itemize}
+Laser cooling on $|g\rangle\to|e\rangle$ transition.
 
 Cs atom has nuclear spin $I=\frac72$ and electron spin $s=\pm\frac12$.
 The total 'spin' (atomic angular momentum) is $F=I+S=3,4$.
-For each $F$, we ahve $2F+1$ magnetic sub-levels labelled $m_F$.
-So the ground state has 16-fold degeneracy. 
+For each $F$, we have $2F+1$ magnetic sub-levels labelled $m_F$.
+So the ground state has 16-fold degeneracy.
 We select 2 of these 16 as our qubit states $|0\rangle$ and $|1\rangle$:
 \begin{align*}
     |F=3,m_F=3\rangle &= |0\rangle, \\
-    |F=4,m_F=4\rangle &= |1\rangle. 
+    |F=4,m_F=4\rangle &= |1\rangle.
 \end{align*}
 As both are ground states, they do not decay (not spontaneous emission), i.e. low decoherence (\textbf{DiVincenzo \#4).}
 
 
-\chapter{}
+\chapter{Optical Pumping and Raman Transitions}
 Recall Cs in the ground state $F=4,F=3$ where we choose our qubits:
 \begin{align*}
     |F=3,m_F=3\rangle &= |0\rangle, \\
-    |F=4,m_F=4\rangle &= |1\rangle. 
+    |F=4,m_F=4\rangle &= |1\rangle.
 \end{align*}
 This gave us the 16 ground state levels, with $h\nu_{hfs}$ energy between $|0\rangle,|1\rangle$.
-$F=3,4$ are split by the \emph{hyperfine interaction} between the electrons and nuclear spin. 
+$F=3,4$ are split by the \emph{hyperfine interaction} between the electrons and nuclear spin.
 The frequency of splitting is $\nu_{hfs}=9.2\,$GHz (microwaves) - this is the transition used in atomic clocks.
 
 The qubit choice is not unique - we could use others, e.g. $m_F=0$ states.
-The larger $|m_F|$ values are most sensitive to magnetic fields. 
+The larger $|m_F|$ values are most sensitive to magnetic fields.
 If your computer has magnets in some way, then you might want to use $m_F=0$ states which are not affected.
 Even the Earth's magnetic field is sufficient to perturb $4,3$ states but in a lab setting we can shield against magnetic effects, i.e. compensate by making a magnetic-free environment.
 The final stage of preparation is to initialise the atom in one or other qubit level - our Cs atom could be in a superposition of any of the 16 states!
 
-Initialisation is after laser cooling and trapping in an optical tweezer. 
-We can do this by \emph{optical pumping} the atom into either state $|0\rangle$ and $|1\rangle$, i.e. $|\psi(0)\rangle=|0\rangle$ or $|1\rangle$ - first step of DiVincenzo. 
+Initialisation is after laser cooling and trapping in an optical tweezer.
+We can do this by \emph{optical pumping} the atom into either state $|0\rangle$ and $|1\rangle$, i.e. $|\psi(0)\rangle=|0\rangle$ or $|1\rangle$ - first step of DiVincenzo.
 
 \section{Optical Pumping}
 This is the transfer of atomic population using \emph{polarisation selection rules.}
-If we apply light resonance with the $|g\rangle\to|e\rangle$ transition that for a particular polarisation then the atom is pumped into a particular magnetic sublevel. 
+If we apply light resonance with the $|g\rangle\to|e\rangle$ transition that for a particular polarisation then the atom is pumped into a particular magnetic sublevel.
 The selection rules for optical pumping are:
 \begin{enumerate}
     \item For excitations, we can select $\Delta m_F=-1,0,+1$ transitions using \emph{left-circular,linear, and right- circular} light, respectively, e.g.
@@ -1403,11 +1451,11 @@ The selection rules for optical pumping are:
                 \draw[-Latex,snake it] (6,1) -- (7.5,1) node[anchor=south,midway] {$\hbar\vec{k}$}node[anchor=north,midway] {\shortstack{light propagates \\ along $z$}};
             \end{tikzpicture}
         \end{figure}
-        The photon has some angular momentum which depends on the polarisation. 
-        The linear route doesn't have any angular momentum along this axis. 
-        The $\sigma^+,\pi,\sigma^-$ are just labels/notation; the aren't related to the Pauli matrices. 
-    \item In decay $|e\rangle\to|g\rangle,\Delta m_F=-1,0,+1$ are all allowed. 
-        Which of these we observe depends on the polarisation of the emitted photon, i.e. if we detect a linearly polarised photon, we know we went $m_F'=0\to m_F'=0$, and we can similarly tell for left- and right-circularly polarised light. 
+        The photon has some angular momentum which depends on the polarisation.
+        The linear route doesn't have any angular momentum along this axis.
+        The $\sigma^+,\pi,\sigma^-$ are just labels/notation; the aren't related to the Pauli matrices.
+    \item In decay $|e\rangle\to|g\rangle,\Delta m_F=-1,0,+1$ are all allowed.
+        Which of these we observe depends on the polarisation of the emitted photon, i.e. if we detect a linearly polarised photon, we know we went $m_F'=0\to m_F'=0$, and we can similarly tell for left- and right-circularly polarised light.
     \item The exception to rules 1 and 2 is that $\Delta m_F=0$ is not allowed for a transition where the initial and final total angular momentum $F$ are the same, e.g. $F=F'$,
         \begin{figure}[H]
             \centering
@@ -1432,11 +1480,11 @@ The selection rules for optical pumping are:
             \end{tikzpicture}
         \end{figure}
         The middle $0\to0$ transition is \unl{not} allowed!
-        The $0$ is made up of a superposition of states with opposite signs, if we look at the \emph{transition matrix element} for this particular transition then you get zero by symmetry. 
-        We can also drive the population on either side of this which can then decay. 
+        The $0$ is made up of a superposition of states with opposite signs, if we look at the \emph{transition matrix element} for this particular transition then you get zero by symmetry.
+        We can also drive the population on either side of this which can then decay.
         These \unl{can} decay back into the zero state so all population gets pumped into the middle state where it becomes trapped, i.e. all population pumped into $m_F=0$ in $F=1\,|g\rangle$ state.
 \end{enumerate}
-Cs has $F=3,4$ and we want to pump into one state. 
+Cs has $F=3,4$ and we want to pump into one state.
 How do we apply the above to Cs?
 Using $\Delta m_F=+1$ (right-circular):
 \begin{figure}[H]
@@ -1492,10 +1540,10 @@ Using $\Delta m_F=+1$ (right-circular):
     \end{tikzpicture}
 \end{figure}
 We can see that the $F'$ states can decay, and we cannot drive out the $F=4,m_F=4$ state.
-Using right-circular light, we can drive tendency to the right side of the population. 
+Using right-circular light, we can drive tendency to the right side of the population.
 As the excited states decay, they can fall to both $F=4,3$!
-We need to repump out of lower hyperfine state to excited. 
-As long as we repump out of $F=3$ state with right-circular light, all the population gets transferred to $|F=4,m_F=+4\rangle$ state which was $|1\rangle$ in the qubit. 
+We need to repump out of lower hyperfine state to excited.
+As long as we repump out of $F=3$ state with right-circular light, all the population gets transferred to $|F=4,m_F=+4\rangle$ state which was $|1\rangle$ in the qubit.
 We have initialised qubits to state $|1\rangle$.
 
 We now need the second DiVincenzo criteria - \unl{Gates}.
@@ -1506,20 +1554,20 @@ Single-qubit rotation, where we have a difference of $9.2\,$GHz$\to\lambda\appro
     |F=4,m_F=4\rangle &\to |1\rangle, \\
     |F=3,m_F=3\rangle &\to |0\rangle.
 \end{align*}
-Problem! 
-Ideally to address each qubit individually, we would like them to be separated by a distance of the order of the wavelength. 
-The microwave wavelength is still too long. 
+Problem!
+Ideally to address each qubit individually, we would like them to be separated by a distance of the order of the wavelength.
+The microwave wavelength is still too long.
 For microwaves, the qubits need to be $\approx3$cm apart; wires can be used to localise the microwave field, however, the large wavelength is an issue!
-To make the qubits interact, we also want them to be as close as possible. 
+To make the qubits interact, we also want them to be as close as possible.
 A solution - use the ground state hyperfine states, but drive transitions between them optically via an excited state $|e\rangle$.
 
 \section{Stimulated Raman Transitions}
 Such a two-photon transition is known as a \emph{stimulated-Raman transition.}
-\emph{Raman scattering} is any process where we scatter light but end up in a different state to where we started, e.g. absorb then emit a photon and come back down to a different state. 
-This is opposed to \emph{Rayleigh scattering} when you absorb and emit the photon returning to the original state. 
-Laser cooling uses Rayleigh scattering as we always return to the same state; now we want Raman scattering. 
+\emph{Raman scattering} is any process where we scatter light but end up in a different state to where we started, e.g. absorb then emit a photon and come back down to a different state.
+This is opposed to \emph{Rayleigh scattering} when you absorb and emit the photon returning to the original state.
+Laser cooling uses Rayleigh scattering as we always return to the same state; now we want Raman scattering.
 
-Stimulated Raman transitions combine single-qubit addressability with low decoherence due to \\spontaneous emission. 
+Stimulated Raman transitions combine single-qubit addressability with low decoherence due to \\spontaneous emission.
 Going via our excited state to get from $|0\rangle\to|1\rangle$:
 \begin{figure}[H]
     \centering
@@ -1534,8 +1582,8 @@ Going via our excited state to get from $|0\rangle\to|1\rangle$:
     \end{tikzpicture}
 \end{figure}
 \emph{finish doodle}
-$|e\rangle$ can decay by spontaneous emission but we don't want this as we instead want to do the calculation. 
-Any emission of a photon will destroy it. 
+$|e\rangle$ can decay by spontaneous emission but we don't want this as we instead want to do the calculation.
+Any emission of a photon will destroy it.
 
 A resonant stimulated Raman transition is driven by how laser beams both detuned by $\Delta$ from the $|0\rangle\to|e\rangle$ and $|1\rangle\to|e\rangle$ transitions, where $|0\rangle$ and $|1\rangle$ are typically the lower and upper ground state hyperfine states.
 We choose large detuning $\Delta$ to avoid spontaneous emission similar to an optical tweezer.
@@ -1543,7 +1591,7 @@ For $|\Delta|\gg\Omega_1,\Omega_2$, we can derive that the effective Rabi freque
 \begin{align}
     \Omega_{eff} &= \frac{\Omega_1\Omega_2}{2|\Delta|}.
 \end{align}
-Note that since this is proportional to the individual Rabi frequencies, this is also proportional to the power of the laser beams. 
+Note that since this is proportional to the individual Rabi frequencies, this is also proportional to the power of the laser beams.
 The spontaneous scattering rate from $|e\rangle$ for large $|\Delta|$ is
 \begin{align}
     R &= \frac{\Omega_{1,2}^2}{4|\Delta|^2}\Gamma.
@@ -1563,7 +1611,7 @@ In a typical experiment, we might have
 \begin{align}
     \Gamma &= 2\pi(6\,\text{MHz}),\; \Delta = 2\pi(80\,\text{GHz}) \implies N_{spont}\approx10^{-4}.
 \end{align}
-This wouldn't limit us in quantum computation. 
+This wouldn't limit us in quantum computation.
 However, the large detuning also reduces the \emph{effective Rabi frequency} and hence the gate speed - there is still a trade-off between speed and decoherence.
 
 \chapter{Rydberg Atoms}
@@ -1571,7 +1619,7 @@ Let's look at the DiVincenzo criteria for alkali-atom QC!
 \begin{enumerate}
     \item Initialisation
         \begin{enumerate}
-            \item Optical tweezer traps \ding{51} 
+            \item Optical tweezer traps \ding{51}
             \item Laser cooling \ding{51}
             \item Optical pumping to initialise qubit state ($|0\rangle$ or $|1\rangle$) \ding{51}
         \end{enumerate}
@@ -1590,12 +1638,12 @@ Let's look at the DiVincenzo criteria for alkali-atom QC!
         \begin{enumerate}
             \item $|0\rangle$ and $|1\rangle$ are both `ground' state, i.e. hyperfine states with the $|g\rangle$ manifold \ding{51}
         \end{enumerate}
-    \item Scaling 
+    \item Scaling
         \begin{enumerate}
             \item Optical tweezer array \ding{51}
         \end{enumerate}
 \end{enumerate}
-The only thing we have left to do is the two-qubit gates, i.e. we need interacting qubits. 
+The only thing we have left to do is the two-qubit gates, i.e. we need interacting qubits.
 
 \section{Two-Qubit Gates}
 Atoms in states $|g\rangle$ and $|e\rangle$ do not interact unless they are very close ($\ll100\,$nm apart), but we will create our atom qubit array with spacings of order $5-10\,\mu$m.
@@ -1604,7 +1652,7 @@ We need some way of introducing interactions at these scales.
 To create interaction, we excite to \textbf{Highly-Excited Rydberg States,} i.e. states with principal quantum number $n\gtrapprox50$.
 
 \section{Rydberg Scalings}
-If we consider the Bohr model, and take a state with principal quantum number $n$, then 
+If we consider the Bohr model, and take a state with principal quantum number $n$, then
 \begin{align}
     mv_nr_n &= n\hbar.
 \end{align}
@@ -1614,14 +1662,14 @@ Equating the centripetal force with the Coulomb force, we find
 \end{align}
 This tells us that the size of the electronic wavefunction is $\propto n^2$; for $n\approx100$, the atom is $> 1\,\mu$m across.
 The dipole $D$ is also $\propto n^2$.
-The dipole-dipole $\propto D^2\propto n^4$, so using high $n$ we can induce strong interactions. 
+The dipole-dipole $\propto D^2\propto n^4$, so using high $n$ we can induce strong interactions.
 
 Using the Bohr model and virial theorem, the energy is $\frac12$ the potential energy:
 \begin{align}
     E_n &= -\frac{e^2}{2(4\pi\e_0)r_n} = -\frac{R_H}{n^2},
 \end{align}
-where $R_H$ is the Rydberg constant for Hydrogen. 
-For Cs, 
+where $R_H$ is the Rydberg constant for Hydrogen.
+For Cs,
 \begin{align}
     E_n &= - \frac{R_{Cs}}{n^*},\quad n^* = n - \delta,
 \end{align}
@@ -1641,7 +1689,7 @@ where $n^*$ is the reduced principal quantum number offset from $n$ by $\delta$.
     \end{tikzpicture}
 \end{figure}
 \textit{finish doodle}
-Exciting two atoms into states $|r\rangle$ allows them to strongly via dipole-dipole interactions (DDI). 
+Exciting two atoms into states $|r\rangle$ allows them to strongly via dipole-dipole interactions (DDI).
 To calculate the DDI, we need to consider couplings to other Rydberg states, e.g. $|r'\rangle$.
 \begin{figure}[H]
     \centering
@@ -1658,12 +1706,12 @@ To calculate the DDI, we need to consider couplings to other Rydberg states, e.g
         \draw[Latex-Latex] (3,1.5) -- (3,2);
     \end{tikzpicture}
 \end{figure}
-The DDI mixes some of $|r'\rangle$ into the state $|r\rangle$ which gives rise to the Van Der Waals energy shift. 
+The DDI mixes some of $|r'\rangle$ into the state $|r\rangle$ which gives rise to the Van Der Waals energy shift.
 This can be written as a matrix
 \begin{align}
     \hat{\Ham} &= \hbar\begin{pmatrix} 0 & 0 & 0 & V \\ 0 & \om_{rr'} & V & 0 \\ 0 & V & \om_{rr'} & 0 \\ V & 0 & 0 & 2\om_{rr'}\end{pmatrix},
 \end{align}
-where $\hbar\om_{rr'}$ is the energy splitting between $r$ and $r'$, and 
+where $\hbar\om_{rr'}$ is the energy splitting between $r$ and $r'$, and
 \begin{align}
     V &= \frac{D^2/\hbar}{4\pi\e_0 R_{12}^3}.
 \end{align}
@@ -1673,25 +1721,25 @@ Consider the sub-bases $|rr\rangle,|r'r'\rangle$:
     \hat{\Ham} &= \hbar\begin{pmatrix} 0 & V \\ V & 2\om_{rr'}\end{pmatrix}.
 \end{align}
 This should be familiar from previous examples.
-This is analagous to the light shift $\frac{\Omega^2}{4\Delta}$.
+This is analogous to the light shift $\frac{\Omega^2}{4\Delta}$.
 \textit{doodle}
 This is the Van Der Waals Interaction.
 \begin{align}
     V &\propto \frac{1}{R_{12}^3},\quad V_{vdW} \propto \frac{1}{R_{12}^6} \\
     V &\propto D^2,\quad D\propto n^2 \\
-    V &\propto n^4 \\ 
+    V &\propto n^4 \\
     E_n &= -\frac{R_{Cs}}{n^2},\quad E_{n+1} -N \propto \frac{1}{n^3},\; n\gg 1, \\
     V_{vdW} &\propto \frac{V^2}{\om_{rr'}} \propto \frac{n^8}{n^{-3}} \propto n^{11}.
 \end{align}
-So van der Waals has $n^{11}$ scaling! 
+So van der Waals has $n^{11}$ scaling!
 Tunability is strength of interactions.
 
 \chapter{Rydberg Blockade and Entanglement}
 \textit{doodle}
 Excitation linewidth $|g\rangle\to|r\rangle$ for $\Omega\gg\Gamma$ is of order $\Omega$.
-If $V_{vdW}>\Omega$ (linewidth), the excitation is blocked. 
+If $V_{vdW}>\Omega$ (linewidth), the excitation is blocked.
 This is called \textbf{Rydberg Blockade.}\\
-This occurs at distance $R_{12}$, where 
+This occurs at distance $R_{12}$, where
 \begin{align}
     V_{vdW} &= \frac{C_6}{R_{12}^6} = \Omega \\
     R_{12} &= \left(\frac{C_6}{\Omega}\right)^{1/6} = R_b,
@@ -1700,7 +1748,7 @@ where $R_b$ is the blockade radius, $R_b\approx10\mu$m which is relatively large
 \emph{doodle}
 We cannot excite the second Rydberg atom within this sphere.
 
-Now we consider starting with both atoms in the ground state, and drive the $|g\rangle\to|r\rangle$ transition on resonance. 
+Now we consider starting with both atoms in the ground state, and drive the $|g\rangle\to|r\rangle$ transition on resonance.
 \emph{doodle}
 We have two two-level systems, giving a four state basis: $|gg\rangle,|gr\rangle,|rg\rangle,|rr\rangle$.
 Recall with one atom and $\Delta=0$, our interaction Hamiltonian was given as
@@ -1730,7 +1778,7 @@ If we then rewrite the interaction in the basis of these states, we get
 \end{align}
 where we can now see that $|gg\rangle$ couples to $\frac{1}{\sqrt{2}}(|gr\rangle+|rg\rangle)$ with Rabi frequency $\sqrt{2}\Omega$, but it does not couple to $\frac{1}{\sqrt{2}}(|gr\rangle-|rg\rangle)$ at all.
 \emph{doodle}
-The effect of the Rydberg blockade is that we excite an entangled Bell state where only one atom is in the Rydberg state but we do not know (and cannot know) which one. 
+The effect of the Rydberg blockade is that we excite an entangled Bell state where only one atom is in the Rydberg state but we do not know (and cannot know) which one.
 
 \chapter{Rydberg Interactions}
 \section{Review of last week}
@@ -1739,7 +1787,7 @@ We have two atoms:
 We have both our qubit states $|0\rangle,|1\rangle$ contained as part of hyperfine splitting in a initial state $|g\rangle$.
 In order to create entanglement, we excite them to the highly-excited Rydberg state, $|r\rangle,n>50$.
 In $|r\rangle$, atoms interact strongly via dipole-dipole interactions (DDI) that couple to other states, e.g. $|r'\rangle$.
-Due to interactions, the energy levels of these states move. 
+Due to interactions, the energy levels of these states move.
 If we have a distance between two atoms $R_{12}<R_b$ ($R_b$ the blockade radius), then excitation to $|r,r\rangle$ is blocked due to Van der Waals shift.
 Instead, we excited either or of
 \begin{align*}
@@ -1752,8 +1800,8 @@ We excite $|r,r'\rangle$, and we find that this couples only to $|r',r\rangle$ a
 \begin{align}
     V &= \frac{D^2/\hbar^2}{4\pi\e_0 R_{12}^2}.
 \end{align}
-This is called a flip flop interaction. Apparently. 
-For example, if we excite one atom into the s series and the other into the corresponding p series, the coupled state can oscillate as one falls to p from s and the other rises to s from p then vice versa again. 
+This is called a flip flop interaction. Apparently.
+For example, if we excite one atom into the s series and the other into the corresponding p series, the coupled state can oscillate as one falls to p from s and the other rises to s from p then vice versa again.
 
 \section{The Start Of The Lecture, Time Stamped 15:35}
 The Werner state,
@@ -1761,7 +1809,7 @@ The Werner state,
     |W\rangle &= \frac{1}{\sqrt{2}}\left(|0r\rangle + |r0\rangle\right).
 \end{align}
 With what fidelity have we created the state $|W\rangle$ experimentally?
-We need to creat the density matrix for this state,
+We need to create the density matrix for this state,
 \begin{align}
     \rho_W &= |W\rangle\langle W| = \frac12 \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 1 & 1 & 0 \\ 0 & 1 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}.
 \end{align}
@@ -1769,7 +1817,7 @@ But if we measure the experimental value of the density, we have
 \begin{align}
     \rho_{expt} &= \frac12 \begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & \rho_{22} & \rho_{23} & 0 \\ 0 & \rho_{32} & \rho_{33} & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}.
 \end{align}
-This is an approximation, where the zero elements could in fact be very small numbers. 
+This is an approximation, where the zero elements could in fact be very small numbers.
 Then, we define \textbf{Fidelity} as
 \begin{align}
     \mathcal{F} &= \langle W|\rho_{expt}|W\rangle.
@@ -1782,10 +1830,10 @@ We want to shine on $|0\rangle\to|e\rangle$ transition on atom 1, $|1\rangle$, s
 \begin{align}
     |W'\rangle &= \frac{1}{\sqrt{2}}\left(e^{-i\phi}|0r\rangle + |r0\rangle\right).
 \end{align}
-Apply $\pi$ pulse on $|W\rangle\to|0\rangle$ transition. 
+Apply $\pi$ pulse on $|W\rangle\to|0\rangle$ transition.
 This is given by the matrix
 \begin{align}
-    \hat{R} &= \begin{pmatrix} 0 & \frac{i}{\sqrt{2}} & \frac{i}{\sqrt{2}} & 0 \\ \frac{i}{\sqrt{2}} & \frac12 & -\frac12 & 0 \\ \frac{i}{\sqrt{2}} & -\frac12 & \frac12 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} = \begin{bmatrix} |00\rangle \\ |0r\rangle \\ |r0\rangle \\ |rr\rangle \end{bmatrix} \\
+    \hat{R} &= \begin{pmatrix} 0 & \frac{i}{\sqrt{2}} & \frac{i}{\sqrt{2}} & 0 \\ \frac{i}{\sqrt{2}} & \frac12 & -\frac12 & 0 \\ \frac{i}{\sqrt{2}} & -\frac12 & \frac12 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} = \begin{Bmatrix} |00\rangle \\ |0r\rangle \\ |r0\rangle \\ |rr\rangle \end{Bmatrix} \\
     \hat{r}_{W'}\hat{R}^\dagger &= \frac12 \begin{pmatrix} 0 & 0 & 0 & 0 \\ -\frac{1}{\sqrt{2}}\left(1+e^{-i\phi}\right) & \frac12(1-e^{-i\phi}) & -\frac12(1-e^{-i\phi}) & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
 \end{align}
 \emph{doodle - Write extra line from notes.}
@@ -1794,9 +1842,57 @@ $P_{00}$, the probability to be in $|00\rangle$ is
     P_{|00\rangle} &= \frac12(1+\cos\phi).
 \end{align}
 \emph{doodle THE SAME PLOT YET AGAIN}
-Application of light to one changes the observation on the other - this only applies within the blockade sphere, $R<R_b$. 
+Application of light to one changes the observation on the other - this only applies within the blockade sphere, $R<R_b$.
 
-
+\chapter{Rydberg CNOT Gates}
+\emph{lots of doodles}
+We want to realise a CNOT gate using Rydberg blockade.
+\begin{align}
+    \text{CNOT} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle \end{Bmatrix}.
+\end{align}
+We start is $|10\rangle$ (last column), and
+\begin{align}
+    \text{CNOT}|10\rangle &= |11\rangle.
+\end{align}
+\textit{doodle}
+\begin{align}
+    \text{CZ} &= \begin{pmatrix} 1 &0&0&) \\ 0&1&0&0 \\ 0&0&1&0 \\ 0&0&0&-1\end{pmatrix}.
+\end{align}
+This is what we call a Conditional Ramsey Interferometer.
+\textit{doodle}
+\begin{enumerate}
+    \item $\frac{\pi}{2}$ pulse (or Hadamard) on $|0\rangle\to|1\rangle$ on target.
+        \begin{align}
+            \hat{H} &= \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1\end{pmatrix}.
+        \end{align}
+        We want to write this in the $|CT\rangle$ basis.
+        $\hat{H}$ acts on $|T\rangle$ only:
+        \begin{align}
+            \hat{H}_{|CT\rangle} &= \hat{\sigma}_0\otimes\hat{H} = \begin{pmatrix}1&0\\0&1\end{pmatrix} \otimes \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \\
+                                 &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 & 0 & 0 \\ 1 & -1 & 0 & 0 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & -1\end{pmatrix}.
+        \end{align}
+        This is also for 5.
+    \item $\pi$ pulse $|0\rangle\to|1\rangle$ on control.
+        \begin{align}
+            U_{2,4} &= \begin{pmatrix} -1 &0&0&0\\ 0&-1&0&0\\ 0&0&1&0 \\ 0&0&0&1\end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle\end{Bmatrix}.
+        \end{align}
+    \item $2\pi$ pulse on $|0\rangle\to|1\rangle$ on target.
+        It only happens if target is in $|0\rangle$ and control is in $|1\rangle$.
+        If control were in $|0\rangle$, then it goes to $|r\rangle$ and blocks excitation of a 2nd Rydberg.
+        \begin{align}
+            U_3 &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle\end{Bmatrix}.
+        \end{align}
+    \item $\pi$ pulse on $|0\rangle\to|1\rangle$ on control.
+    \item $\frac{\pi}{2}$ pulse (or Hadamard) on $|0\rangle\to|1\rangle$ on target.
+\end{enumerate}
+Let's start putting this all together then:
+\begin{align}
+    U_2U_3U_4 &= \begin{pmatrix} -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1\end{pmatrix} \begin{pmatrix} -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \\
+              &= -CZ = -\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix} \\
+    \hat{H}U_2U_3U_4\hat{H} &= -\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \\
+                            &= -\text{CNOT}.
+\end{align}
+Another $2\pi$ pulse on either $|C\rangle$ or $|T\rangle$ could give CNOT.
 
 
 
@@ -1808,23 +1904,3 @@ Application of light to one changes the observation on the other - this only app
 
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

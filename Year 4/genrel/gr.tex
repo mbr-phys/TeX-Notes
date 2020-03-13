@@ -800,6 +800,98 @@ The cones of influence are tipping over as the outward ray moves less and less, 
 Once we're inside this radius, both light rays are then tipping over and both move towards the centre of the black hole as our term in Eq. (17.22) goes negative for both.
 The zones of influence are aimed inwards to the Black Hole.
 
+\chapter{}
+\section{Initial Overview}
+\begin{itemize}
+    \item We had the \textbf{Principle of Equivalence} - all bodies feel the same gravity
+    \item Mass $\implies$ curved space $\implies$ curved paths \emph{Yoda meme here}
+    \item In Special Relativity, we had
+        \begin{align}
+            \begin{split}
+                c^2d\tau^2 &= c^2dt^2 - dx^2 - dy^2 - dz^2 \\
+                           &= \eta_{\alpha\beta}dx^\alpha dx^\beta,
+            \end{split}
+        \end{align}
+        where we can express this using the Minkowski metric $\eta_{\alpha\beta}$.
+    \item Einstein realised we can express this in a more general metric in General Relativity:
+        \begin{align}
+            c^2d\tau^2 &= g_{\alpha\beta}dx^\alpha dx^\beta,\quad g_{\alpha_\beta} = (\ve_{\alpha}\cdot\ve_{\beta}).
+        \end{align}
+    \item $\frac{\p\lambda^\beta}{\p x^\alpha} \implies \tensor{\lambda}{^\beta_{j\alpha}}$.
+\end{itemize}
+
+\section{Tensor Maths Toolkit}
+We now need to figure out ways to represent everything in tensors.
+This follows from defining contra- variant and covariant tensors respectively:
+\begin{align}
+    A^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}A^a, & A_{\bar{b}} &= \frac{\p x^a}{\p x^{\bar{b}}}A_a.
+\end{align}
+We can convert between these two forms using 
+\begin{align}
+    \lambda_b &= g_{ab}\lambda^a,
+\end{align}
+where we need to remember we are using the Einstein Summation Convention over repeated indices.
+
+\section{Geodesic paths and curved space}
+When you move a tensor around in curved space, you get changes due to how the coordinate space changes. 
+To accomodate for this, we introduce the Total Derivative:
+\begin{align}
+    \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds} = \tensor{\lambda}{^a_{;c}}\frac{dx^c}{ds}, \\
+    \tensor{\lambda}{^a_{;c}} &= \frac{\p\lambda^a}{\p x^c} + \tensor{\Gamma}{^a_{bc}}\lambda^b, \\
+    \tensor{\Gamma}{^f_{bc}} &= \frac12 g^{bf}\left(\p_a g_{bc} - \p_b g_{ca} + \p_c g_{ab}\right).
+\end{align}
+We then introduce the concept of \emph{parallel transport}, which led us to geodesic paths:
+\begin{align}
+    \ddot{x}^a + \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{x}^c = 0.
+\end{align}
+For working in equations of motion, we turn to the Euler-Lagrange equations. 
+So we express our Lagrangian and then write the E-L equation:
+\begin{align}
+    \La &= \frac12 g_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta, & \frac{d}{d\tau}\left(\frac{\p\La}{\p\dot{x}^a}\right) - \frac{\p\La}{\p x^\alpha} &= 0.
+\end{align}
+The definition of geodesic paths and Euler-Lagrange equation are equivalent, although generally we will find the E-L equation easier to work with. 
+This is all well and good, but then we realised that the Riemann curvature tensor $\tensor{R}{^a_{dbc}}$ was like the `second derivative' and can tell us a lot about space.
+But we can't equate this with our other tensors yet. 
+
+\section{Eintein's Equations}
+We want to describe how mass and the shape of space are related. 
+This is derived in the \textbf{Stress-Energy Tensor}:
+\begin{align}
+    T^{\mu\nu} &= \left(\rho_0+\frac{p}{c^2}\right)u^\mu u^\nu - Pg^{\mu\nu},
+\end{align}
+so the `00' element describes energy, and the other elements describe momentum. 
+In the last term above, we subtract by pressure to get the right form. 
+All of physics then can be written as
+\begin{align}
+    \tensor{T}{^{\mu\nu}_{;\mu}} &= 0.
+\end{align}
+To help equate different quantities, we introduce the Ricci tensor, which is a \emph{compressed} form of the Riemann tensor:
+\begin{align}
+    R_{\mu\nu} &= \tensor{R}{^\alpha_{\mu\nu\alpha}}.
+\end{align}
+We can then compress the Ricci tensor by performing its trace, yielding the \textbf{Curvature Scalar}:
+\begin{align}
+    \mathcal{R} &= \tensor{R}{^\alpha_\alpha}.
+\end{align}
+Einstein then used all this to define his `guess' as a way of writing down a relation between the curvature of space and the stress-energy:
+\begin{align}
+    \left(R^{\mu\nu}-\frac12 g^{\mu\nu}\mathcal{R}\right) &= \kappa T^{\mu\nu}.
+\end{align}
+Turns out this wasn't quite right - there is also a small \emph{cosmological constant} that needs to be added, which is famous for being Einstein's big blunder. 
+The metric is then useful to be redefined once we have reached this point, so we now introduce the Schwarzschild Metric, defining $m=\frac{GM}{c^2}$:
+\begin{align}
+    c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2 - r^2d\theta^2 - r^2\sin^2\theta\,d\phi^2.
+\end{align}
+The rest of the lecture series was pretty much focused on how we solve this metric in different regimes.
+\begin{itemize}
+    \item Particles in weak gravity - here, we seemed to recover essentially Newtonian physics, with slight corrections. This resolved the perihelion of Mercury and was the first big success of GR.
+    \item Photons in weak gravity - leading us to gravitational lensing and photons' movement. 
+    \item Orbits in strong gravity - the metric terms are no longer small as in weak gravity, more complex to solve.
+    \item Radial paths in strong gravity.
+    \item Alternative ways of writing the metric - looking at causality and where the metric should fail and how we fix that (i.e. inside $r=2m$).
+\end{itemize}
+
+
 
 
 

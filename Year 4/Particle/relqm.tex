@@ -18,18 +18,35 @@
 
 \graphicspath{{diagrams/}}
 
-\title{Particle Theory \vspace{-20pt}}
-\author{Prof Krauss, Prof Khoze, and Dr Alonso}
-\date{\vspace{-15pt}Michaelmas Term 2019 - Epiphany Term 2020}
 \rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Michaelmas 2019}}\\[2.5cm]
+    {\LARGE\bfseries Particle Theory}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Relativistic Quantum Mechanics}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Frank Krauss
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+    \includegraphics[width=0.8\textwidth]{rqm.png}\\[1cm]
+    \vfill
+\end{titlepage}
 \tableofcontents
 
-\part{Relativistic Quantum Mechanics}
-\chapter{Recapitulation of important ingredients}
+\chapter{Recapitulation of Important Ingredients}
 
 \section{Natural Units}
 \begin{align}
@@ -121,16 +138,16 @@ Eigenvalues of Hermitian operators are real numbers, therefore the eigenvalues o
     \ha|0\rangle &= 0 \implies E_0 = \frac{\om}{2}
 \end{align}
 
-\chapter{}
+\chapter{Lagrangian Mechanics in Quantum Theory}
 \section{Lagrange Formalism for Point Particles}
 Put point particles along one dimension at even intervals, $i=1,2,\dots$.
-Can write a Lagrangian for the system which is the Lagrangian for all the points and their relative veolicties, $\La(q_i,\dot{q}_i,t)$.
+Can write a Lagrangian for the system which is the Lagrangian for all the points and their relative velocities, $\La(q_i,\dot{q}_i,t)$.
 \begin{align}
     \frac{d}{dt}\frac{\p L}{\p \dot{q}_i} - \frac{\p L}{\p q_i} = 0
 \end{align}
-Now instead of these discrete labels, call the one dimension a continous "label" x.
-Now you have a chain where each "x" is a point on a continous chain, $\La\left(q(x),\dot{q}(x),t\right)$.
-Note that the time dependence is implicit in each variable of the Lagrangian - this reduces the discrete case to a function of one variable, however more complicated in the continous case. \\
+Now instead of these discrete labels, call the one dimension a continuous "label" x.
+Now you have a chain where each "x" is a point on a continuous chain, $\La\left(q(x),\dot{q}(x),t\right)$.
+Note that the time dependence is implicit in each variable of the Lagrangian - this reduces the discrete case to a function of one variable, however more complicated in the continuous case. \\
 This $q(x)$ is not a particle like the $q_i$, but a field.
 
 \section{Fields}
@@ -217,7 +234,7 @@ Now we demand the action is unchanged.
     \delta S &= \int d^4x\; \left\{\delta\phi\left[\p_\mu\frac{\p\La}{\p(\p_\mu\phi)} + \frac{\p\La}{\p\phi} + \phi\leftrightarrow\phi^* + \p_\mu\left(\frac{\p\La}{\p(\p_\mu\phi)}\phi\right)\right]\right\}
 \end{align}
 
-\chapter{}
+\chapter{Quantisation and Field Theory of a Scalar}
 \section{Conserved Current}
 The Lagrangian is invariant under transformations of the form
 \begin{align}
@@ -225,9 +242,9 @@ The Lagrangian is invariant under transformations of the form
     \delta\phi &= \phi'-\phi = (e^{i\theta}-1)\phi \\
     \delta(\p_\mu\phi) &= \p_\mu\phi' - \p_\mu\phi = (e^{i\theta}-1)\p_\mu\phi
 \end{align}
-The next step from this is to figure out the change to the action. 
-If the Lagrangian is invariant, the action should be - but this condition is a bit too tough. 
-So the condition is that the action is invariant as it will be what changes the theory. 
+The next step from this is to figure out the change to the action.
+If the Lagrangian is invariant, the action should be - but this condition is a bit too tough.
+So the condition is that the action is invariant as it will be what changes the theory.
 Therefore, we demand that $\delta S = 0$.
 \begin{align}
     \delta S &= \delta\left( \int \La\;d^4x\right) \\
@@ -242,13 +259,13 @@ Term two above:
     \implies &\p_\mu\left[\frac{\p\La}{\p(\p_\mu\phi)} \phi - \frac{\p\La}{\p(\p_\mu\phi^*)}\phi^*\right] = 0 \\
     j^\mu &= (\p^\mu\phi^*)\phi - (\p^\mu\phi)\phi^*
 \end{align}
-This is the conserved current. 
+This is the conserved current.
 \begin{align}
-    \p_\mu j^r &= 0 & \p_t\rho - \grad\unl{j} &= 0 
+    \p_\mu j^r &= 0 & \p_t\rho - \grad\unl{j} &= 0
 \end{align}
 We can then define conserved charge:
 \begin{align}
-    Q &= j^0 = (\p_t\phi^*)\phi - (\p_t\phi)\phi^* 
+    Q &= j^0 = (\p_t\phi^*)\phi - (\p_t\phi)\phi^*
 \end{align}
 
 \section{Quantising the field}
@@ -264,15 +281,15 @@ We can then define conserved charge:
             \La \to \Ham &= \dot{\phi}\pi - \La \\
                         &= \frac12\pi^2 + \frac12(\grad\phi)^2 + \frac{m^2}{2}\phi^2
         \end{align}
-    \item Go from a Hamiltonian to an operator Hamiltonian: $\Ham \to \hat{\Ham}$. 
-        We turn all classical fields into field operators, add hats. 
+    \item Go from a Hamiltonian to an operator Hamiltonian: $\Ham \to \hat{\Ham}$.
+        We turn all classical fields into field operators, add hats.
         Lives in Fock space.
-    \item We demand equal time commutator. 
+    \item We demand equal time commutator.
         \begin{align}
             [\hphi(\vx,t),\hpi(\vy,t)] &= i\delta^3(\vx-\vy) \\
-            [\hphi(\vx,t),\hphi(\vy,t)] &= [\hpi(\vx,t),\hpi(\vy,t)] = 0 
+            [\hphi(\vx,t),\hphi(\vy,t)] &= [\hpi(\vx,t),\hpi(\vy,t)] = 0
         \end{align}
-    \item Define creation and annihilation operators, which will "inherit" commutator relations. 
+    \item Define creation and annihilation operators, which will "inherit" commutator relations.
         \begin{align}
             \phi(x) &= \sum_{\unl{p}} \left[\ha(p)e^{-ip\cdot x} + \hag(p)e^{ip\cdot x}\right]
                     &\to \int \frac{d^4p}{(2\pi)^4} \left[\ha(p)e^{-ipx} + \hat(p)e^{ipx}\right](2\pi)\delta(p^2-m^2)\Theta(p_0)
@@ -290,12 +307,12 @@ We can then define conserved charge:
             [\ha(p),\hag(q)] &= \delta^3(p-q) \\
             [\ha,\ha] &= [\hag,\hag] = 0
         \end{align}
-        Finally, we can write the Hamiltonian operator in terms of the ladder operators. 
+        Finally, we can write the Hamiltonian operator in terms of the ladder operators.
         \begin{align}
             \hat{\Ham} &= \frac12 \int \frac{d^3k}{(2\pi)^32k_0} k_0\left[\hag(k)\ha(k) + \ha(k)\hag(k)\right]
         \end{align}
         One interpretation of a Quantum Field Theory is as a continuous sum of harmonic oscillator Hamiltonians, one for each frequency vector $\unl{k}$.
-    \item Spectrum of states. 
+    \item Spectrum of states.
         We will start by defining a ground state, or a vacuum, $|0\rangle,\;\langle0|0\rangle$.
         We can annihilate/create the vacuum with the ladder operators:
         \begin{align}
@@ -303,27 +320,27 @@ We can then define conserved charge:
             \hag(\unl{k})|0\rangle &= |\unl{k}_1\rangle \\
             \langle0|\hat{\Ham}|0\rangle &= \int d^3x \to \infty
         \end{align}
-        But the vacuum is an eigenstate of a Hamiltonian with infinite energy. 
+        But the vacuum is an eigenstate of a Hamiltonian with infinite energy.
         This is one of the many divergences in QFT.
-        Now we want to use normal ordering to get rid of the infinities. 
-        We demand that $\langle0|:\hat{\Ham}:|0\rangle$ is finite - this is \textit{normal ordering}. 
+        Now we want to use normal ordering to get rid of the infinities.
+        We demand that $\langle0|:\hat{\Ham}:|0\rangle$ is finite - this is \textit{normal ordering}.
 \end{enumerate}
 
 
-\chapter{}
-We have to use creation and annihilation operators that propagate forwards and backwards in time for the plane wave to work. 
+\chapter{Quantisation and Propagators}
+We have to use creation and annihilation operators that propagate forwards and backwards in time for the plane wave to work.
 What propagates backwards in time though?
-Essentially anti-particles - recall the negative energy solutions from last year in Dirac theory. 
-Particles propagating backwards in time are equivalent to anti-particles propagating forwards - this is where the backwards pointing arrows for Feynman diagrams come from. 
+Essentially anti-particles - recall the negative energy solutions from last year in Dirac theory.
+Particles propagating backwards in time are equivalent to anti-particles propagating forwards - this is where the backwards pointing arrows for Feynman diagrams come from.
 
 \section{Green's functions for QM}
 \begin{align}
     G(\vx,t;\vx',t'):~ \psi(\vx,t) &= \int d^3x\; G(\vx,t;\vx',t)\psi(\vx',t')
 \end{align}
 This makes use of the superposition in QM.
-In principle, you can use this with any theory. 
+In principle, you can use this with any theory.
 Note: the wavefunction used above is $\psi(\vx,t) \equiv \langle\vx|\psi(t)\rangle$.
-THis solves the time-dependent Schrodinger equation, 
+This solves the time-dependent Schrodinger equation,
 \begin{align}
     (i\p_t - \hh)|\psi\rangle &= 0 \\
     (i\p_t - H)_xG(\vx,t;\vx',t') &= \delta^3(\vx-\vx')\delta(t-t') \\
@@ -333,10 +350,10 @@ This is called the retarded Green's function.
 \begin{align}
     G(\vx,t;\vx',t') &= \langle\vx,t|\hat{U}(t,t')|\vx',t'\rangle\Theta(t-t')
 \end{align}
-$\hat{U}$ is the time evolution operator. 
+$\hat{U}$ is the time evolution operator.
 This solves everything really, but the issue is it doesn't give practical solutions.
 \begin{align}
-    \hat{U}(t-t') &= \exp\left[-i\int_{t'}^{t} \hh(\tau)\; d\tau\right] \to_{\cancel{\propto} t}  \exp\left[-i\hh(t-t')\right] 
+    \hat{U}(t-t') &= \exp\left[-i\int_{t'}^{t} \hh(\tau)\; d\tau\right] \to_{\cancel{\propto} t}  \exp\left[-i\hh(t-t')\right]
 \end{align}
 Now we take a free Hamiltonian:
 \begin{align}
@@ -346,14 +363,14 @@ This then gives the free Green's function, $G_0$.
 \begin{align}
     \left(i\p_t-\frac{\vp^2}{2m}\right)_xG_0(\vx,t;\vx',t') &= \delta^3(\vx-\vx')\delta(t-t')
 \end{align}
-Can either go from p space to x space, or can transform time derivatives to energy and solve it in energe space. 
+Can either go from p space to x space, or can transform time derivatives to energy and solve it in energy space.
 \begin{align}
     \left(\om-\frac{\vp^2}{2m}\right) G_0(\vp,\om) &= 1 \\
     G_0(\vp,\om) &= \frac{1}{\om-\frac{\vp^2}{2m}} \\
     G_0(\vx,t;\vx',t') &= \int \frac{e^{-i\om(t-t')-i\vp(\vx-\vx')}}{w-\frac{\vp^2}{2m}}  \;d^3p\;d\om
 \end{align}
-Notice that we have developed a problem here in the form of a pole in the denominator. 
-This is solved using usual Cauchy tactics: 
+Notice that we have developed a problem here in the form of a pole in the denominator.
+This is solved using usual Cauchy tactics:
 \begin{align}
     G_0^{(R)}(\vx,t;\vx',t') &= \int \frac{e^{-i\om(t-t')-i\vp(\vx-\vx')}}{w-\frac{\vp^2}{2m} - i\e^+}  \;d^3p\;d\om
 \end{align}
@@ -364,9 +381,9 @@ This now transforms back to the retarded function, as the $\e$ term gives back $
 We can make this look very Gaussian for a simpler solve, quadratic in x and divided by t - a quadratic extension.
 Therefore, it is finite. \\
 Now what happens adding a term to the Hamiltonian: $\hh = \hh_0 + V(\vx)$?
-Pretty much the only example of a term that is solvable under this is a harmonic oscillator. 
+Pretty much the only example of a term that is solvable under this is a harmonic oscillator.
 It becomes increasingly more complicated going down this path for real systems.\\
-To solve this new Hamiltonian, must do something slightly different. 
+To solve this new Hamiltonian, must do something slightly different.
 Let us say we know the solution for the free Green's function:
 \begin{align}
     \F\left[(i\p_t - H_0)G_0\right] &= 1 \\
@@ -375,33 +392,33 @@ Let us say we know the solution for the free Green's function:
     \F\left[(i\p_t-H_0-V)G\right] &= 1 \\
     (\tilde{G}_0^{-1} - \tilde{V})\tilde{G} &= 1
 \end{align}
-From this, you can realise that you can write a formal solution for this as an expansion in how the particle interacts with the potential - Born potential from TP3. 
+From this, you can realise that you can write a formal solution for this as an expansion in how the particle interacts with the potential - Born potential from TP3.
 \begin{align}
     G(\vx_N,t_N;\vx_0,t_0) &= G_0(t_N,t_0) + G_0(t_N,t_1)V(t_1)G_0(t_1,t_0) + G_0(t_N,t_2)V(t_2)G_0(t_2,t_1)V(t_1)G_0(t_1,t_0) + \dots
 \end{align}
 The second term here is the first Born approximation, but can then can be continued onward, on the condition of $t_N \geq t_{N_1} \geq \dots t_2\geq t_1\geq t_0$.
-The Born expansion is just the first term in a process known as perturbative expansion, or the Dyson series. 
+The Born expansion is just the first term in a process known as perturbative expansion, or the Dyson series.
 This is just a Taylor expansion in V.
 
-\chapter{}
+\chapter{Causality and Propagators in Quantum Field Theory}
 \section{Causality}
 \begin{align}
     i\Delta(x-y) &= [\hphi(x),\hphi(y)]
 \end{align}
 For equal times, $x_0=y_0$, $i\Delta(x-y) = 0$ unless $\vx = \unl{y}$.
-This is the equal time commutator, i.e. it is zero unless the two times are zero. 
-The properties of $(x-y)$ depend on $(x-y)^2$, as $(x-y) = \sqrt{(x-y)^2}$ to make it meaningful and remove four-vector indices. 
+This is the equal time commutator, i.e. it is zero unless the two times are zero.
+The properties of $(x-y)$ depend on $(x-y)^2$, as $(x-y) = \sqrt{(x-y)^2}$ to make it meaningful and remove four-vector indices.
 For everything that x and y have space-like distance $(x-y)^2\leq0$, this must be zero; for light-like distances, it is something like the delta function.
 \begin{align}
     i\Delta(x-y) &= \int \frac{d^3k\;d^3k'}{(2\pi)^32\om_k (2\pi)^3\om_{k'}} \left\{ \left[\ha(k),\hag(k')\right]e^{-ikx + ik'y} + \left[\hag(k),\ha(k')\right]e^{ikx-ik'y}\right\} \\
-                 &= \int \frac{d^3k}{(2\pi)^3 2\om_k} \left[e^{-ik\cdot(x-y)} - e^{ik\cdot(x-y)}\right] 
+                 &= \int \frac{d^3k}{(2\pi)^3 2\om_k} \left[e^{-ik\cdot(x-y)} - e^{ik\cdot(x-y)}\right]
 \end{align}
 \begin{itemize}
     \item manifestly Lorentz invariant (only scalar products of four-vectors)
-    \item micro-causality: vanishes for space-like distances because $\Delta(x-y)$ vanishes for $t_x = t_y$ (equal time commutator) - this is true only because sum is over positive and negative energy waves, ignoring the negative energy solutions, $\Delta$ does no longer vanish for space-like distances, and signals could be transmitted with superluminal speed. 
-    \item 
+    \item micro-causality: vanishes for space-like distances because $\Delta(x-y)$ vanishes for $t_x = t_y$ (equal time commutator) - this is true only because sum is over positive and negative energy waves, ignoring the negative energy solutions, $\Delta$ does no longer vanish for space-like distances, and signals could be transmitted with superluminal speed.
+    \item
         \begin{align}
-            \p_t\Delta(x-y)|_{x_0=y_0} = -\delta^3(x-y) 
+            \p_t\Delta(x-y)|_{x_0=y_0} = -\delta^3(x-y)
         \end{align}
     \item $\Delta(x-y)$ solves the Klein-Gordon equation:
         \begin{equation}
@@ -411,7 +428,7 @@ For everything that x and y have space-like distance $(x-y)^2\leq0$, this must b
         \begin{align}
             \Delta_+(x-y) &= \langle0|\Delta(x-y)|0\rangle = \dots \int\frac{d^3k}{(2\pi)^32\om_k} e^{-ik(x-y)}
         \end{align}
-        If $x\to y$, this will explode to infinity, i.e. all of space-time. 
+        If $x\to y$, this will explode to infinity, i.e. all of space-time.
         To ignore this, define another operator
         \begin{align}
             \Delta_-(x-y) &= \int \frac{d^3k}{(2\pi)^32\om_k}e^{ik(x-y)} \\
@@ -425,14 +442,14 @@ For everything that x and y have space-like distance $(x-y)^2\leq0$, this must b
     (-p^2 + m^2)G(p) &= i \\
     G(p) &= \frac{-i}{p^2-m^2 - i\e^+}
 \end{align}
-This is classical field theory. 
+This is classical field theory.
 Must connect this with quantum operators and fields:
 \begin{align}
     G(x,x') &= \langle0|T[\hphi(x)\hphi(x')]|0\rangle = \Delta_F \\
-    T[\hphi(x)\hphi(x')] &= \Theta(t-t')\hphi(x)\hphi(x') + \Theta(t'-t)\hphi(x')\hphi(x) 
+    T[\hphi(x)\hphi(x')] &= \Theta(t-t')\hphi(x)\hphi(x') + \Theta(t'-t)\hphi(x')\hphi(x)
 \end{align}
-This is the time-ordered product. 
-The first term describes forwards time, the second backwards time. 
+This is the time-ordered product.
+The first term describes forwards time, the second backwards time.
 Now we can look at $i\e^+$ and convince ourselves that this is the equivalent of the $\Theta$ functions above:
 \begin{align}
     \Theta(t) &= -\int \frac{d\om}{2\pi} \frac{ie^{-i\om t}}{\om - i\e^+} = \Delta_F
@@ -441,34 +458,34 @@ The $-i\e^+$ is the causal structure that leads into the time ordering of Eq (5.
 We call this then $\Delta_F$, the Feynman propagator.
 
 \section{Interacting Theory}
-We want to apply the above theory to reality, to see it working on actual physics and prove it is not just a consistent mathematical framework, but also a valid physical one. 
+We want to apply the above theory to reality, to see it working on actual physics and prove it is not just a consistent mathematical framework, but also a valid physical one.
 We start with the $\phi^4$ theory Lagrangian.
 \begin{align}
     \La &= \La_{free} + \La_{int} = \frac12(\p_\mu\phi)(\p^\mu\phi) - \frac{m^2}{2}\phi^2 - \frac{\lambda}{4!}\phi^4
 \end{align}
-This Lagrangian is said to not be realistic, as it is not one found in nature, but it is useful to test quantum field theory as it is useful for certain things and also awfully similar to the Higgs field after breaking electroweak symmetry, exlcuding the $\phi^3$ term. \\
+This Lagrangian is said to not be realistic, as it is not one found in nature, but it is useful to test quantum field theory as it is useful for certain things and also awfully similar to the Higgs field after breaking electroweak symmetry, excluding the $\phi^3$ term. \\
 We want to calculate some scattering amplitude where some initial state becomes a final state, $M_{i\to f}$, or transition amplitude.
 \begin{align}
     M_{i\to f} &= \langle f|i\rangle
 \end{align}
-We pretend we are dealing with particles that are isolated from all other interactions coming from an infinite distance. 
-This is not the case as there is constant "bubbles" of particles being created and annihilated instantaneously throughout space-time. 
-We use perturbation theory to expand around the bubbles and subtract the eventual infinities that then plague us. 
+We pretend we are dealing with particles that are isolated from all other interactions coming from an infinite distance.
+This is not the case as there is constant "bubbles" of particles being created and annihilated instantaneously throughout space-time.
+We use perturbation theory to expand around the bubbles and subtract the eventual infinities that then plague us.
 The most useful quantity for now to calculate is the S-matrix:
 \begin{align}
     M_{i\to f} &= \langle f|\hat{S}|i\rangle = S_{fi}
 \end{align}
 
-\chapter{}
+\chapter{Interpretations of QFT and Scattering}
 \section{Pictures}
 \begin{itemize}
     \item Schrodinger - $\hat{O}^{s}$ operators do no depend on time, but wavefunctions do, $\psi^s(t)$
     \item Heisenberg - $\hat{O}^H(t)$ operators do depend on time, but wavefunction does not, $\psi^H$.
-        We can switch between Schrodinger and Heisenberg using the time-evolution operator: 
+        We can switch between Schrodinger and Heisenberg using the time-evolution operator:
         \begin{align}
             \hat{O}^H(t) &= \exp[i\hh(t-t_0)]\hat{O}^s\exp[-i\hh(t-t_0)] \\
         \end{align}
-    \item Interaction - $\hh$ is independent of time, and we define it as $\hh = \hh_0 + \hh_{int}$, wehre $\hh_0$ is the free particle Hamiltonian and $\hh_{int}$ describes interactions,
+    \item Interaction - $\hh$ is independent of time, and we define it as $\hh = \hh_0 + \hh_{int}$, where $\hh_0$ is the free particle Hamiltonian and $\hh_{int}$ describes interactions,
         \begin{equation}
             \hat{O}^I(t) = \exp[i\hh_0(t-t_0)]\hat{O}^s\exp[-i\hh_0(t-t_0)]
         \end{equation}
@@ -481,7 +498,7 @@ The most useful quantity for now to calculate is the S-matrix:
                            &= \exp\left[-iT \int_{t_0}^t \hh_{int}^I(\tau)\,d\tau\right]
         \end{align}
         Note that $t_1>t_2>t_3>\dots>t_n$, and we put the T in the exponential to say that we have time-ordered to remove an incorrect factor $n!$.
-        We can then notice that this is exactly the $\hat{S}$ matrix: 
+        We can then notice that this is exactly the $\hat{S}$ matrix:
         \begin{align}
             \hat{S} &= T\exp\left[-i\int_{t_0}^t \hh_{int}^I(\tau)\,d\tau\right] \\
                     &= 1 - \underbrace{i\int \hh_{int}}_{\text{Born approx}} + (-i)^2 \int \int \hh_{int} + \dots
@@ -490,14 +507,14 @@ The most useful quantity for now to calculate is the S-matrix:
 
 \section{Scattering in QFT}
 Look at $2\to2$ scattering: $p_1 + p_2 \to q_1 + q_2$.
-We set our incoming particles way back in the past so we can approximate with plane waves, and similarly in the future for outgoing particles - aymptotic states.
+We set our incoming particles way back in the past so we can approximate with plane waves, and similarly in the future for outgoing particles - asymptotic states.
 \begin{align}
     {}_{t\to +\infty}\langle q_1,q_2;\text{OUT}|p_1,p_2;\text{IN}\rangle_{t\to-\infty} &= \langle q_1,q_2|\hag_{in}(p_1)|p_2\rangle \\
                                                                                        &= \langle q_1,q_2|\hag_{out}(p_1)|p_2\rangle + \langle q_1,q_2|\hag_{in}(p_1)-\hag_{out}(p_1)|p_2\rangle
 \end{align}
 The first term in this is zero unless $q_1,q_2=p_1$, which would lead to a "disconnected diagram", or no "real scattering".
 So this is irrelevant for $\hat{S}$ if $f \neq i$.
-We need to rewrite the creation and annihlation operators:
+We need to rewrite the creation and annihilation operators:
 \begin{align}
     \ha(k) &= \int e^{ikx}\left[k_0\hphi(x,t) + i\hpi(x,t)\right]\,d^3x,~ \phi = \p_t\hphi,~ k_0 = -i\p_te^{ikx} \\
            &= i\int \left[e^{ikx}(-i\overleftarrow{\p_t})\hphi+e^{ikx}\p_t(i\phi)\right]\,d^3x \\
@@ -513,10 +530,10 @@ We can do this again to pull a particle out the "out" state:
 \end{align}
 LSZ-theorem: external particle $\to$ $\phi$ in time-ordered particle + plane wave part + diff. kernel.
 
-\chapter{}
+\chapter{Wick's Theorem and Dirac's Equation}
 
 \section{Wick's Theorem}
-To evaluate the perturbative series, resort to Wick's theorem. 
+To evaluate the perturbative series, resort to Wick's theorem.
 It tells us what happens with a time ordered product of two fields.
 \begin{align}
     T[\hphi(x)\hphi(y)] &= \underbrace{\Delta_F(x-y)}_{\text{Feynman propagator}} + \underbrace{:\hphi(x)\hphi(y):}_{\text{Normal ordered product}} \\
@@ -527,7 +544,7 @@ It tells us what happens with a time ordered product of two fields.
 \end{align}
 Back to scattering from before:
 \begin{align}
-    \begin{split} \langle q_1,q_2|p_1,p_2\rangle &\propto \int \dots (\Box_{x_1}+m^2)(\Box_{x_2}+m^2)(\Box_{y_1}+m^2)(\Box_{y_2}+m^2)\\ 
+    \begin{split} \langle q_1,q_2|p_1,p_2\rangle &\propto \int \dots (\Box_{x_1}+m^2)(\Box_{x_2}+m^2)(\Box_{y_1}+m^2)(\Box_{y_2}+m^2)\\
                                                  &\qquad\qquad\qquad\qquad\qquad\qquad\times\langle0|T[\hphi(x_1)\hphi(x_2)\hphi(y_1)\hphi(y_2)]|0\rangle\end{split} \\
     \langle q_1,q_2|T[i\lambda\phi^4(z)]|p_1,p_2\rangle &\propto \dots \langle0|T[\hphi(x_1)\hphi(x_2)i\lambda\phi^4(z)\hphi(y_1)\hphi(y_2)]|0\rangle
 \end{align}
@@ -555,16 +572,16 @@ Solution to both: abandon concept of a single-particle theory, construct a quant
     i\p_t\psi(\vx,t) &= -i\unl{\alpha}\cdot\grad\psi(\vx,t) + \beta m\psi(\vx,t)
 \end{align}
 We want to square this ansatz and get the Klein-Gordon equation back. \\
-First requirement is that $\alpha$ and $\beta$ are matrices. 
+First requirement is that $\alpha$ and $\beta$ are matrices.
 To get KG back when squaring, we require the following relations:
 \begin{align}
     \left\{\alpha_i,\alpha_j\right\} &= 2\delta_{ij} & \beta^2 &= \alpha^2 = 1 \\
     \left\{\alpha_i,\beta\right\} &= 0 & \text{Tr}[\alpha_i] &= \text{Tr}[\beta] = 0 \\
 \end{align}
-$\alpha_i$ conditions can be fulfilled by the Pauli matrices. 
+$\alpha_i$ conditions can be fulfilled by the Pauli matrices.
 $\alpha_i,\beta$ must be of \unl{even} dimension, and then we see that because of $\{\alpha_i,\beta\} = 0$, the matrices must be of $\text{dim} = 4$ or $m=0$.
 \begin{align}
-    \alpha_i &= \begin{pmatrix} 0 & \sigma_i \\ \sigma_i & 0\end{pmatrix} & \beta &= \begin{pmatrix}1 & 0\\ 0& -1\end{pmatrix} 
+    \alpha_i &= \begin{pmatrix} 0 & \sigma_i \\ \sigma_i & 0\end{pmatrix} & \beta &= \begin{pmatrix}1 & 0\\ 0& -1\end{pmatrix}
 \end{align}
 These matrices aren't very easy to work with though, so we can put them into a single four-vector:
 \begin{align}
@@ -580,18 +597,17 @@ First we need a Hermitian conjugate of the equation, starting with the ansatz in
 \begin{align}
     -i\p_t\psi^\dagger &= i\grad\psi^\dagger\cdot\unl{\alpha}^\dagger + m\psi^\dagger\beta^\dagger\\
 \end{align}
-Then, multiplying from the right with $\beta^\dagger$ and using the matrix relations above, \textit{put left arrow on slash}
+Then, multiplying from the right with $\beta^\dagger$ and using the matrix relations above,
 \begin{align}
     -i\psi^\dagger\p_\mu\gamma^\mu &= m\psi^\dagger \\
-    \bar{\psi}(i\cancel{\p}+m) &= 0,~ \bar{\psi} = \psi^\dagger\gamma_0 
+    \bar{\psi}(i\overleftarrow{\cancel{\p}}+m) &= 0,~ \bar{\psi} = \psi^\dagger\gamma_0
 \end{align}
 Now that we have both of these, we can write down our Lagrangian:
 \begin{align}
-    \La &= \bar{\psi}(i\cancel{\p}-m)\psi
+    \La &= \bar{\psi}(i\overleftrightarrow{\cancel{\p}}-m)\psi.
 \end{align}
-\textit{put left right arrow above pslash.}
 
-\chapter{}
+\chapter{Following the Dirac Theory}
 \section{Quantising the Dirac equation}
 \begin{align}
     \La &= \bar{\psi}(i\cancel{\p}-m)\psi  \\
@@ -603,7 +619,7 @@ Perform a plane wave expansion:
 \end{align}
 $u$ and $v$ are spinor solutions of positive and negative energy respectively, or particle and anti-particle solutions.
 \begin{align}
-    (\cancel{p}-m)_{\alpha\beta}u_\beta(p) &= 0 & (\cancel{p}+m)v_\beta(p) &= 0 & p^\mu &= (E,\unl{0}) = (m,\unl{0}) 
+    (\cancel{p}-m)_{\alpha\beta}u_\beta(p) &= 0 & (\cancel{p}+m)v_\beta(p) &= 0 & p^\mu &= (E,\unl{0}) = (m,\unl{0})
 \end{align}
 So the only matrix that survives this condition is $\gamma^0$, or $\beta$.
 \begin{align}
@@ -619,7 +635,7 @@ To boost these spinors:
     (\cancel{p}+m)(\cancel{p}-m)u &= (p^2-m^2)u \\
     u(p) &= \eta(\cancel{p}+m)u((m,\unl{0}))
 \end{align}
-Here, $\eta$ is some renormalisation factor. 
+Here, $\eta$ is some renormalisation factor.
 \begin{align}
     \cancel{p} &= p^\mu\gamma_\mu = E\gamma^0 - p_x\gamma^1 - p_y\gamma^2 - p_z\gamma^3 \\
     u(p) &\to \bar{u}(p) = u^\dagger(p)\gamma^0
@@ -645,12 +661,12 @@ Reverse the order of above and obtain the completeness relations:
         \end{equation}
     \item Construct Hamiltonian:
         \begin{align}
-            \Ham &= \pi\dot{\psi} + \bar{\pi}\bar{\dot{\psi}} - \La 
+            \Ham &= \pi\dot{\psi} + \bar{\pi}\bar{\dot{\psi}} - \La
         \end{align}
     \item Make everything operators
     \item Demand equal-time (anti-)commutators for bosons(fermions) - anti-commutator $= 0$ means no two particles in same state.
         \begin{align}
-            \left\{\psi_\alpha(\vx,t),\psi^\dagger_\beta(\vec{y},t)\right\} &= \delta_{\alpha\beta}\delta^3(x-y) 
+            \left\{\psi_\alpha(\vx,t),\psi^\dagger_\beta(\vec{y},t)\right\} &= \delta_{\alpha\beta}\delta^3(x-y)
         \end{align}
         All others are zero.
     \item Expand in waves with creation and annihilation operators
@@ -661,11 +677,11 @@ Reverse the order of above and obtain the completeness relations:
     \item Use completeness relations for $u(p)$ and $v(p)$:
         \begin{align}
             \left\{\hat{b}_\alpha(p),\hat{b}_\alpha^\dagger(q)\right\} &= (2\pi)^3\frac{E}{m}\delta^3(\vec{p}-\vec{q})\delta_{\alpha\beta} \\
-            \left\{\hat{d}_\alpha(p),\hat{d}_\alpha^\dagger(q)\right\} &= (2\pi)^3\frac{E}{m}\delta^3(\vec{p}-\vec{q})\delta_{\alpha\beta} 
+            \left\{\hat{d}_\alpha(p),\hat{d}_\alpha^\dagger(q)\right\} &= (2\pi)^3\frac{E}{m}\delta^3(\vec{p}-\vec{q})\delta_{\alpha\beta}
         \end{align}
 \end{enumerate}
 
-\chapter{}
+\chapter{Propagators and Electrodynamics}
 \section{Dirac Propagator}
 \begin{align}
     \psi(x) &= \sum_{i=1}^2 \int d^3p \left[e^{-ipx}u^{(i)}(p)\hat{b}^{(i)} + e^{ipx}v^{(i)}(p)\hat{d}^{\dagger(i)}\right]
@@ -688,9 +704,9 @@ In Feynman diagrams, we rarely deal with propagators in position space, so again
 \end{align}
 
 \section{Quantising Electrodynamics}
-We will start from scratch with electrodynamics, beginning with proposing two vector fields. 
+We will start from scratch with electrodynamics, beginning with proposing two vector fields.
 We want these to be related somehow, so there is no point having two vectors, we will have a vector field $\E$, and an axial vector field, $\B$.
-We will also set the restraint that we can only use first derivates for equations of motion. 
+We will also set the restraint that we can only use first derivates for equations of motion.
 \begin{align}
     \grad\cdot\E &= 4\pi\rho, \text{ - scalar} \\
     \grad\cdot\B &= 0, \text{ - pseudo-scalar} \\
@@ -702,7 +718,7 @@ The conditions we have used are that we have no magnetic monopoles, and $\E$ and
 Now let's reintroduce the vector potential, $A^\mu = (\phi,\vec{A})$
 \begin{align}
     E &= -\grad A^0 - \p_t\vec{A} & \B &= \grad\times\vec{A}
-\end{align} 
+\end{align}
 So what is the free Lagrangian from this?
 \begin{align}
     \La &= -\frac14F^{\mu\nu}F_{\mu\nu} + \cancel{j^\mu A_\mu} \\
@@ -722,7 +738,7 @@ Eq (9.14) is in fact the Euler-Lagrange equation,
 \section{Gauge Invariance}
 \textbf{Problems:}
 \begin{itemize}
-    \item 
+    \item
         \begin{align}
             \pi^0 &= \frac{\p\La}{\p A^0} = 0 \implies [\hat{A}^0,\hpi^0] \propto \delta
         \end{align}
@@ -731,7 +747,7 @@ Eq (9.14) is in fact the Euler-Lagrange equation,
             A_\mu &\to A_\mu' = A_\mu + \p_\mu\Lambda \\
             \implies F_{\mu\nu}' &= F_{\mu\nu}
         \end{align}
-        Our current standing of $A^\mu$ leaves us with four degrees of freedom, which is too many. 
+        Our current standing of $A^\mu$ leaves us with four degrees of freedom, which is too many.
         We need to reduce the degrees of freedom by two if we want to develop a viable theory.
         $A^\mu$ is gauge dependent, whereas $F^{\mu\nu}$ is gauge independent, so $\E,\B$ are independent too.
 \end{itemize}
@@ -744,14 +760,14 @@ There are some gauges we can choose to help us solve this:
 \end{itemize}
 Any physical quantity we want to calculate must be gauge-independent.
 
-\chapter{}
+\chapter{The Coulomb Gauge}
 \section{Quantisation in Coulomb Gauge}
 We start by recognising that $A^0$ is not dynamical: $\p_t A^0 = 0$.
 We give a condition to fix the gauge:
 \begin{align}
     \grad\cdot\vec{A}&= 0.
 \end{align}
-This condition follows the logic of fixing the longitudinal component of $\vec{A}$ as a constant, which can just be set to zero since it has no bearing on the equations of motion. 
+This condition follows the logic of fixing the longitudinal component of $\vec{A}$ as a constant, which can just be set to zero since it has no bearing on the equations of motion.
 We then have two degrees of freedom left in the two transverse components of $\vec{A}$.
 For $\vec{A}\parallel\vec{z}$,
 \begin{align}
@@ -782,15 +798,15 @@ We use the quantisation process discussed previously:
             [A^0(\vx,t),\pi^0(\vec{y},t)] &= i\delta^3(\vx-\vec{y}) \\
             [A^i(\vx,t),\pi^j(\vec{y},t)] &= i\delta_{ij}\delta^3(\vx-\vec{y})
         \end{align}
-        We want Eq (10.9) to be vanishing, so the fact it is not is problematic. 
+        We want Eq (10.9) to be vanishing, so the fact it is not is problematic.
         Note that putting a nabla in front of $A^0$ will give you something of the form of Gauss' law, so this isn't bad physics; it's bad formalism.
         Our issue here is that our notation is not dynamical; $A^0$ is not an operator, just an inconsequential number.
         However, we cannot use this constraint on the commutators as one side will vanish while the other will not.
         Therefore, we cannot implement Gauss' law as an operator equation.\\
         What about trying the constraint on "physical states", $\grad\cdot\Eh|\psi\rangle = 0$?
-        But this doesn't work either as it would violate our commutation relations again. 
+        But this doesn't work either as it would violate our commutation relations again.
         The only way to get this to work is $\langle\psi|\grad\cdot\Eh|\psi\rangle=0$ - \textbf{this means that Maxwell's laws are only realised as an average over physical states.}
-        We will return to this solution when we address the Loretnz gauge.\\
+        We will return to this solution when we address the Lorentz gauge.\\
         \textit{This makes sense because we don't care about the unphysical ones as long as they go into the corner and kill themselves.}
     \item Our solution to the commutator problem is by replacing the $\delta$-function:
         \begin{align}
@@ -808,8 +824,8 @@ We use the quantisation process discussed previously:
         This clearly gives us the Coulomb gauge automatically, as $\grad\cdot\vec{A}=0$.\\
         Using $\delta^{tr}$ implies that $A_i$ and $E_j$ do commute at space-like distances - is this a problem?
         \begin{itemize}
-            \item $A$ is gauge-dependent and unphysical - it can not be measured anyway, and therefore it cannot harm causality 
-            \item From $[A_i,E_j]$ commutators for physical fields $[B_i,E_j]$ can be deduced - they vanish for space-like distance and infact are idential irrespective of choice of $\delta$-function.
+            \item $A$ is gauge-dependent and unphysical - it can not be measured anyway, and therefore it cannot harm causality
+            \item From $[A_i,E_j]$ commutators for physical fields $[B_i,E_j]$ can be deduced - they vanish for space-like distance and in fact are identical irrespective of choice of $\delta$-function.
         \end{itemize}
     \item Expanding fields in plane waves:
         \begin{align}
@@ -820,7 +836,7 @@ We use the quantisation process discussed previously:
     \item \textbf{Summary:} Pain! Pain! Pain! \textit{Cheat!} Phew!
 \end{itemize}
 
-\chapter{}
+\chapter{The Lorentz Gauge}
 \section{Quantisation in Lorentz Gauge}
 The Coulomb gauge is not manifestly Lorentz invariant - we introduced $\delta_{ij}^{tr}$, so to achieve this we demand Lorentz-invariant form of equal-time commutators.
 \begin{align}
@@ -835,24 +851,24 @@ $\alpha$ here is a gauge parameter - it is unphysical, so physics must be indepe
 
 Now we can write our conjugate momenta
 \begin{align}
-    \pi^\mu &= \frac{\p\La}{\p\dot{A}_\mu} = F^{\mu 0} - \alpha g^{\mu 0}(\p_\mu A^\mu) = \begin{cases} \pi^0 = -\alpha(\p_tA^0) & \\ \pi^i = -E^i & \end{cases} 
+    \pi^\mu &= \frac{\p\La}{\p\dot{A}_\mu} = F^{\mu 0} - \alpha g^{\mu 0}(\p_\mu A^\mu) = \begin{cases} \pi^0 = -\alpha(\p_tA^0) & \\ \pi^i = -E^i & \end{cases}
 \end{align}
 What about Maxwell's equations?
 \begin{align}
     \p_\mu\p^\mu A^\nu - (1-\alpha)\p^\nu(\p_\mu A^\mu) = 0
 \end{align}
-We will choose $\alpha=1$ to use from now on - this is the Feynman gauge. 
+We will choose $\alpha=1$ to use from now on - this is the Feynman gauge.
 
 Now, we want to find our polarisation vectors, $\e^\mu_\lambda$.
 Naively because we have four degrees of freedom in $A^\mu$, we could pick four independent polarisation vectors going down the indices, but this would create problems later, as some of these are unphysical.
 We demand that
 \begin{align}
     \sum_\lambda \e_\lambda^\mu \e^{*\nu}_\lambda = -g^{\mu\nu}.
-\end{align} 
+\end{align}
 Now we can expand the fields, noting that we include the unphysical polarisations.
 \begin{align}
     \hat{A}_\mu(x) &= \int \frac{d^3k}{(2\pi)^32k_0} \sum_{\lambda=0}^3 \left[\e_{\mu}^{(\lambda)}(k)\ha(k,\lambda)e^{-ikx} + \e_{\mu}^{*(\lambda)}(k)\hag(k,\lambda)e^{ikx}\right]
-\end{align} 
+\end{align}
 The only non-vanishing commutator of creation and annihilation operators is
 \begin{align}
     [\ha(k,\lambda),\hag(q,\kappa)] &= -(2\pi)^3(2k_0)g^{\lambda\kappa}\delta^3(k-q)
@@ -861,9 +877,9 @@ Now the normal-ordered Hamiltonian, i.e. creation to the left of annihilation,
 \begin{align}
     :\Ham: &= \int \frac{d^3k}{(2\pi)^32k_0} k_0\left[\sum_{i=1}^3 \hag(k,\lambda)\ha(k,\lambda) - \hag(k,0)\ha(k,0)\right]
 \end{align}
-So before we had quanta that we counted into the Hamiltonian to each give a $+\omega$ of energy as they were particles. 
+So before we had quanta that we counted into the Hamiltonian to each give a $+\omega$ of energy as they were particles.
 Now we see quanta that give us $-\omega$ like anti-particles even though we wrote them down as particles.
-So something has gone wrong. 
+So something has gone wrong.
 \textit{It is important to reiterate however that $\hag(k,\lambda)|0\rangle = 0$.}
 
 What if we create a state with a scalar photon ($\lambda=0$), $|1_S\rangle$?
@@ -872,13 +888,13 @@ What if we create a state with a scalar photon ($\lambda=0$), $|1_S\rangle$?
     \langle1_S|1_S\rangle &= \int \frac{d^3k}{(2\pi)^32k_0} \int \frac{d^3k'}{(2\pi)^32k_0} f(k)f^*(k')\langle0|\ha(k',0)\hag(k,0)|0\rangle \\
                           &= -\langle0|0\rangle \int\frac{d^3k}{(2\pi)^32k_0} |f(k)| < 0
 \end{align}
-So we realise this is an unphysical state - we cannot have a real scalar photon, and should never have a negative norm.  
+So we realise this is an unphysical state - we cannot have a real scalar photon, and should never have a negative norm.
 Is this a sign of failed quantisation?
 No, as we must still impose the constraint $\p\cdot\hat{A}=0$.
 So we implement gauge constraint by demanding that
 \begin{align}
     \langle\psi|\p\cdot\hat{A}|\psi\rangle = 0.
-\end{align} 
+\end{align}
 We can then decompose $\hat{A}$ into positive and negative energy modes:
 \begin{align}
     0 &= \langle\psi|(\p\cdot\hat{A}^{(+)}+\p\cdot\hat{A}^{(-)})|\psi\rangle \\
@@ -895,7 +911,7 @@ If we assume $k\parallel\e_z$, then $k\cdot\e^{(1,2)}(k)$ is trivially fulfilled
 \end{align}
 So the two unphysical polarisations compensate each other.
 
-\chapter{}
+\chapter{Calculating Matrix Elements in QED}
 \begin{figure}[H]
     \centering
     \includegraphics{etomu.pdf}
@@ -936,9 +952,9 @@ Now the rules:
             \item Propagators related to the external particles are "amputated"
         \end{itemize}
     \item Internal lines give rise to the corresponding propagators
-    \item Interactions are represented by vertices and corresponding expression. 
+    \item Interactions are represented by vertices and corresponding expression.
         We impose four momentum conservation at each vertex, thereby fixing the momenta of internal lines.
-    \item $i$ (imaginary unit) times the amplitude related to a single diagram is given by the product of all building blocks, the single-diagram amplitudes are summed to yield the overal amplitude. 
+    \item $i$ (imaginary unit) times the amplitude related to a single diagram is given by the product of all building blocks, the single-diagram amplitudes are summed to yield the overall amplitude.
 \end{enumerate}
 \begin{figure}[H]
     \centering
@@ -948,7 +964,7 @@ Now the rules:
 \begin{align}
     i\mathcal{M} &= \left[\bar{u}_{\alpha}(p_3)(-ie\gamma^\mu_{\alpha\beta})v_\beta(p_4)\right]\frac{-ig_{\mu\nu}}{(p_3+p_4)^2+i\e^+}\left[\bar{v}_\gamma(p_2)(-ie\gamma^\nu_{\gamma\delta}u_\delta(p_1)\right]
 \end{align}
-We now want to square this, so we sum over outgoing polarisations, average over incomings. 
+We now want to square this, so we sum over outgoing polarisations, average over incomings.
 \begin{align}
     \frac14\sum_{spins}|\mathcal{M}|^2 &= -\frac{e^4}{4}\sum_{spins}\left[\bar{u}_\alpha(p_3)\gamma_{\alpha\beta}^\mu v_\beta(p_4)\bar{v}_{\beta'}(p_4)\gamma_{\beta'\alpha'}^{\mu'}u_{\alpha'}(p_3)\right]\frac{g_{\mu\nu}g_{\mu'\nu'}}{(p_3+p_4)^4}\left[\bar{v}_\gamma(p_2)\gamma^\nu_{\gamma\delta}u_\delta(p_1)\bar{u}_{\delta'}(p_1)\gamma^{\nu'}_{\delta'\gamma'}v_{\gamma'}(p_2)\right] \\
     \sum_{spin} &u_{\delta}(p)\bar{u}_{\delta'}(p) = (\cancel{p}-m)_{\delta\delta'},~ \sum_{spin} v_\beta\bar{v}_{\beta'} = (\cancel{p}+m)_{\beta\beta'} \\
@@ -961,27 +977,6 @@ We now want to square this, so we sum over outgoing polarisations, average over 
                                       &= \frac{8e^4}{(p_3+p_4)^2}\left[(p_2p_4)(p_1p_3)+(p_1p_4)(p_2p_3)\right]
 \end{align}
 
-\subfile{gauge.tex}
-\subfile{phenom.tex}
+%\subfile{gauge.tex}
+%\subfile{phenom.tex}
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

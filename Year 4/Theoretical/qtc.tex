@@ -1,20 +1,59 @@
-\documentclass[qo.tex]{subfiles}
+\documentclass[a4paper, 11pt, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+\usepackage{subfiles}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{snake it/.style={decorate,decoration=snake}}
+
+\newcommand\xo{\hat{X}_1}
+\newcommand\xt{\hat{X}_2}
+\newcommand\hsig{\hat{\sigma}}
+\newcommand\hd{\hat{\unl{d}}}
+\newcommand\hrho{\hat{\rho}}
+
+\rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
-\part{Quantum Theory In Condensed Matter}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2020}}\\[2.5cm]
+    {\LARGE\bfseries Advanced Theoretical Physics}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Quantum Theory in Condensed Matter}\\[0.4cm]
+    \HRule \\[1.5cm]
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Simon Gardiner
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+    \includegraphics[width=\textwidth]{wig.jpg}\\[1cm]
+    \vfill
+\end{titlepage}
+\tableofcontents
+
 \chapter{Bose-Einstein Statistics}
 \section{Statistical Ensembles}
-In statistical mechanics, one frequently formally considers $N$ copies of the system under consideration. 
+In statistical mechanics, one frequently formally considers $N$ copies of the system under consideration.
 Such an assembly is a \emph{statistical ensemble.}
 \begin{itemize}
-    \item In the \emph{microcanonical ensemble}, each copy has the same total poarticle number $N$ and total energy $U$.
-    \item In the \emph{canonical ensemble}, each copy has the same total particle number $N$, however the total energy may fluctuate. 
+    \item In the \emph{microcanonical ensemble}, each copy has the same total particle number $N$ and total energy $U$.
+    \item In the \emph{canonical ensemble}, each copy has the same total particle number $N$, however the total energy may fluctuate.
         The system is considered to be in equilibrium with an external heat bath (maintaining a constant temperature $T$.
-    \item In the \emph{grand canonical ensemble}, the total particle number and the total energy may fluctuate. 
+    \item In the \emph{grand canonical ensemble}, the total particle number and the total energy may fluctuate.
         The system is considered to be in equilibrium with an external heat bath, and a particle bath (maintaining a constant chemical potential $\mu$).
 \end{itemize}
-We are generally interested in macroscopic systems of an effectively infinite number of particles, and may take the \emph{thermodynamic limit} $V\to\infty$ in which the particle density $n=N/V$ is held constant. 
-The thermodynamic predictions of the three ensembles are then identical, and it is usually more convenient to use the grand canonical ensemble. 
+We are generally interested in macroscopic systems of an effectively infinite number of particles, and may take the \emph{thermodynamic limit} $V\to\infty$ in which the particle density $n=N/V$ is held constant.
+The thermodynamic predictions of the three ensembles are then identical, and it is usually more convenient to use the grand canonical ensemble.
 If the $N$-body quantum states of $N$ quantum particles have energy $E_n^{(N)}$ for $n=1,2,\dots$, then in the grand canonical ensemble, each state occurs with probability
 \begin{align}
     P_n^{(N)} &= \frac{1}{Z}\exp\left(-\frac{1}{k_BT}\left[E_n^{(N)}-\mu N\right]\right),
@@ -23,8 +62,8 @@ If the $N$-body quantum states of $N$ quantum particles have energy $E_n^{(N)}$ 
 is the \emph{grand partition function.}
 
 \section{Particle with Periodic Boundary Conditions}
-Consider a point particle of mass $m$ moving within a volume $V=L_xL_yL_z$, where $L_i$ are lengths in the $i=x,y,z$ directions. 
-The Hamiltonian 
+Consider a point particle of mass $m$ moving within a volume $V=L_xL_yL_z$, where $L_i$ are lengths in the $i=x,y,z$ directions.
+The Hamiltonian
 \begin{equation}
     \hat{H} = \frac{1}{2m}\left(\hat{p}_x^2+\hat{p}_y^2+\hat{p}_z^2\right),
 \end{equation}
@@ -40,7 +79,7 @@ The $k$-space density of the available states is therefore
 \end{align}
 
 \section{Spherical Shells in k}
-We divide up $k$-space into thin concentric shells. 
+We divide up $k$-space into thin concentric shells.
 A shell of radius $k_S$ and thickness $\delta k_S$ has volume $4\pi k_S^2\delta k_S$, and therefore contains $M_S$ states, where
 \begin{align}
     M_S &= 4\pi k_S^2\delta k_S\rho(\unl{k}) = 4\pi k_S^2\delta k_S \frac{V}{(2\pi)^3}.
@@ -50,12 +89,12 @@ Hence, the number of available states between energies $\e_S$ and $\e_S+\delta\e
 \begin{align}
     M_S = Vg(\e_S)\delta\e_S, \text{ where } g(\e) = \frac{m^{3/2}}{\sqrt{2}\pi^2\hbar^3}\e^{1/2}
 \end{align}
-is the (energy) density of states per unit volume. 
+is the (energy) density of states per unit volume.
 \emph{All states on a given shell have the same energy.}
 
 \section{Thermal Equilibrium and the Bose-Einstein Distribution}
-Consider an \emph{ideal Bose gas}, i.e. a system of many identical, non-interacting bosons, e.g. in a box subject to periodic boundary conditions. 
-In \emph{thermal equilibrium}, the particles are distributed so that the occupation numbers $N_S$ in each shell of energy $\e_S$ maximise the total entropy. 
+Consider an \emph{ideal Bose gas}, i.e. a system of many identical, non-interacting bosons, e.g. in a box subject to periodic boundary conditions.
+In \emph{thermal equilibrium}, the particles are distributed so that the occupation numbers $N_S$ in each shell of energy $\e_S$ maximise the total entropy.
 This yields the \emph{Bose-Einstein distribution:}
 \begin{align}
     f_{BE}(\e) = \frac{1}{e^{(\e-\mu)/k_BT}-1}.
@@ -90,7 +129,7 @@ As $x>0$, this expansion is convergent for $z<1$, and we can evaluate the integr
 \begin{align}
     \ofnt e^{-jx}x^{1/2}\,dx &= \frac{1}{j^{3/2}}\underbrace{\ofnt e^{-y}y^{1/2}\,dy}_{\equiv \Gamma(3/2)} = \frac{1}{j^{3/2}}\frac{\sqrt{\pi}}{2}.
 \end{align}
-This implies 
+This implies
 \begin{align}
     n &= \left(\frac{mk_BT}{2\pi\hbar^2}\right)^{3/2}g_{3/2}(z), \text{ where } g_{3/2}(z) = \sum_{j=1}^\infty \frac{z^j}{j^{3/2}}.
 \end{align}
@@ -115,31 +154,31 @@ With these limiting values, we can make a sketch of $g_{3/2}(z)$ for $0\leq z\le
 \end{figure}
 
 \section{Critical Temperature}
-We can invert Eq (2.4) to get 
+We can invert Eq (2.4) to get
 \begin{align}
     g_{3/2}(z) &= \left(\frac{2\pi\hbar^2}{mk_BT}\right)^{3/2}n.
 \end{align}
 If we are in a regime of high $T$ or low $n$, it follows that $g_{3/2}(z)$ must take a small value.
-From the plot of $g_{3/2}(z)$ above, we see that this implies small $z$, which from the definition of $g_{3/2}(z)$ means we can approximate $g_{3/2}(z)\approx z$. 
+From the plot of $g_{3/2}(z)$ above, we see that this implies small $z$, which from the definition of $g_{3/2}(z)$ means we can approximate $g_{3/2}(z)\approx z$.
 Hence, recalling $z=e^{\mu/k_BT}$,
 \begin{align}
     \mu &\approx -\frac32 k_BT\ln\left(\frac{mk_BT}{2\pi\hbar^2n^{2/3}}\right),
 \end{align}
 i.e., the chemical potential is negative. \\
 As $n$ is fixed, it follows from Eq (2.4) that as $T$ is lowered (but assumed $T>0$), $z$ must increase, with maximum finite value of $z=1$, i.e. $\mu=0$.
-It straightforwardly follows that this occurs at a \emph{critical temperature} (recalling $g_{3/2}(1)=2.612$) of 
+It straightforwardly follows that this occurs at a \emph{critical temperature} (recalling $g_{3/2}(1)=2.612$) of
 \begin{align}
     T_C &= \frac{2\pi\hbar^2}{k_Bm}\left(\frac{n}{2.612}\right)^{2/3}.
 \end{align}
 
 \section{Macroscopic Occupation of the Ground State}
-Recall that the Bose-Einstein distribution from Eq (1.7) predicts the occupation of $\e=\e_{\unl{k}=0}=0$ state to be 
+Recall that the Bose-Einstein distribution from Eq (1.7) predicts the occupation of $\e=\e_{\unl{k}=0}=0$ state to be
 \begin{align}
     N_0 &= \frac{1}{e^{-\mu/k_BT}-1}.
 \end{align}
 Hence, $\mu=0\implies N_0\to\infty$ (Bose-Einstein condensation).
 Recalling that we are in the thermodynamic limit ($N,V\to\infty$), what this actually means is that $n_0=N_0/V$ is some finite fraction of $n$.
-Rewriting Eq (2.10) for large $N_0$, we obtain 
+Rewriting Eq (2.10) for large $N_0$, we obtain
 \begin{align}
     \mu &= -k_BT\ln\left(1+\frac{1}{N_0}\right) \approx -\frac{k_BT}{N_0}.
 \end{align}
@@ -151,11 +190,11 @@ Below $T_C$, we must take $\vk=0$ point into account separately, and so we set $
 \begin{align}
     N &= N_0 + \sum_{\vk\neq0}^\infty \frac{1}{e^{\e_{\vk}/k_BT}-1}.
 \end{align}
-Again, replacing the sum by an integral (excluding $\vk=0$), the particle density is given by 
+Again, replacing the sum by an integral (excluding $\vk=0$), the particle density is given by
 \begin{align}
     n = n_0 + \frac{(mk_BT)^{3/2}}{\sqrt{2}\pi^2\hbar^3}\ofnt \frac{e^{-x}}{1-e^{-x}}x^{1/2}\,dx.
 \end{align}
-The integral is identical to that evaluated in Sec (2.1), and so for $T<T_C$, 
+The integral is identical to that evaluated in Sec (2.1), and so for $T<T_C$,
 \begin{align}
     n &= n_0 + 2.612\left(\frac{mk_BT}{2\pi\hbar^2}\right)^{3/2}.
 \end{align}
@@ -175,7 +214,7 @@ The total internal energy $U$ can be determined by multiplying the density of st
 \begin{align}
     U &= V\ofnt \frac{\e g(\e)\,d\e}{e^{(\e-\mu)/k_BT}-1} = \frac{V(k_BT)^{5/2}m^{3/2}}{\sqrt{2}\pi^2\hbar^3}\ofnt \frac{ze^{-x}}{1-ze^{-x}}x^{3/2}\,dx.
 \end{align}
-To calculate the average energy per particle, 
+To calculate the average energy per particle,
 \begin{align}
     u &= \frac{U}{N} \equiv \frac{U/V}{N/V},
 \end{align}
@@ -202,34 +241,31 @@ while for $T<T_C$,
 When plotted as a function of $T$, the curves for $T<T_C$ and $T>T_C$ meet at a cusp (discontinuity in slope).
 This implies that the free energy is not analytic at $T_C$, and so BEC is a true thermodynamic \emph{phase transition.}
 
-\emph{doodle plot from visualiser}
-
-
 \chapter{BEC in Ultracold Dilute Gases of Alkali Atoms}
 \section{Bosonic Alkali Atomic Gases}
-Alkali metals are group 1 elements, and have a single valence electron in the outermost $s$-orbital: $2s$ for Li, $3s$ for Na, $4s$ for K, $5s$ for Rb. 
+Alkali metals are group 1 elements, and have a single valence electron in the outermost $s$-orbital: $2s$ for Li, $3s$ for Na, $4s$ for K, $5s$ for Rb.
 The other electrons are in fully occupied shells, and therefore have total orbital and spin angular momentum $=0$.
 If the isotope is such that the nucleus is composed of an odd total number of protons and neutrons, the nucleus will have a net half-integer spin ($=\frac32$ for $^{87}$Rb, $^{23}$Na, $^7$Li).
 The \emph{total spin} will then take an integer value ($=1,2$ for $^{87}$Rb, $^{23}$Na, $^7$Li).
 It is possible to prepare the gas such that only one of these states is present, which can be considered a gas of identical particles having integer spin, i.e. \emph{identical bosons.}
 
 \section{Critical Temperature}
-Densities of trapped atomic gases are typically $\approx10^{11}-10^{15}$cm$^{-3}$. 
-Using such values and appropriate atomic masses to determine $T_C$ for the \emph{ideal, homogeneous} Bose gase yield $T_C$ between 10 nanoKelvin and 1 microKelvin.
+Densities of trapped atomic gases are typically $\approx10^{11}-10^{15}$cm$^{-3}$.
+Using such values and appropriate atomic masses to determine $T_C$ for the \emph{ideal, homogeneous} Bose gas yield $T_C$ between 10 nanoKelvin and 1 microKelvin.
 Such temperatures can be achieved relatively straightforwardly by methods of laser and evaporative cooling; BEC was first observed in 1995 in magnetically trapped gases of $^{87}$Rb and $^{23}$Na (Nobel prize in physics 2001).
 
 \section{Atom-Atom Interactions}
 The atoms interact with each other, and so we do not have an ideal Bose gas (interactions are in fact essential to establish thermal equilibrium during cooling).
 Interactions are dominated by elastic two-body collisions (in such dilute gases, the probability of 3 atoms meeting at the same point in space is extremely low).
-No binding takes place in elastic collisions, and so atomic clusters do not tend to form. 
+No binding takes place in elastic collisions, and so atomic clusters do not tend to form.
 At the very cold temperatures under consideration, the collisions are very low energy, and the pair-interaction may be approximated by
 \begin{align}
     V(\vr-\vr') &\approx g\delta(\vr-\vr'), \text{ where } g = \frac{4\pi\alpha_s\hbar^2}{m},
 \end{align}
-and $\alpha_s$ is the $s$-wave scattering length. 
+and $\alpha_s$ is the $s$-wave scattering length.
 
 \section{Mean-Field Potential}
-Usually $\alpha_s$ is positive, implying a net repulsive interaction. 
+Usually $\alpha_s$ is positive, implying a net repulsive interaction.
 On average this can be represented by an additional potential, proportional to the \emph{atomic density} $n(\vr)$, felt by each particle due to its interaction with all other particles:
 \begin{align}
     V_{\text{eff}}(\vr) &= gn(\vr).
@@ -238,12 +274,12 @@ In this approximation, the trapped atoms obey an effective Schrodinger equation,
 \begin{align}
     H_{\text{eff}}\psi(\vr) &= \left[-\frac{\hbar^2}{2m}\del^2 + V_{\text{trap}}(\vr) + V_{\text{eff}}(\vr)\right] \psi(\vr) = \e\psi(\vr),
 \end{align}
-where the trapping potential $V_{\text{trap}}(\vr)$ can usually be considered harmonic. 
+where the trapping potential $V_{\text{trap}}(\vr)$ can usually be considered harmonic.
 Finding the steady states $\psi(\vr)$ and their corresponding "eigenvalues" $\e$ is not simply a matter of diagonalising $H_{\text{eff}}$ however, as $V_{\text{eff}}(\vr)$ is dependent on the state of the system, i.e. the effective Schrodinger equation is \emph{non-linear.}
 
 \section{Gross-Pitaevskii Equation}
 An appropriate thermodynamic limit is to let $N\to\infty$ while relaxing the trap.
-If 
+If
 \begin{align}
     V_{\text{trap}}(\vr) &= \frac{m\om^2 r^2}{2},
 \end{align}
@@ -251,8 +287,8 @@ mathematically this corresponds to keeping $N\alpha_s/\alpha_h$ constant, as whi
 \begin{align}
     \alpha_h &\equiv \sqrt{\frac{\hbar}{m\om}}\to\infty.
 \end{align}
-Below a critical temperature $T_C$, a transition to a "macroscopically occupied" quantum state occurs, but the mode (i.e. the spatical dependency of this state) changes with varying $T<T_C$ due to the combination of $V_{\text{trap}}(\vr)$ and atom-atom interactions.
-In the thermodynamic limit and as $T\to0$, all but a vanishingly small proportion of atoms enter a "ground state" mode $\psi_0(\vr)$, which obeys the \emph{Gross-Pitaevski equation}:
+Below a critical temperature $T_C$, a transition to a "macroscopically occupied" quantum state occurs, but the mode (i.e. the spatial dependency of this state) changes with varying $T<T_C$ due to the combination of $V_{\text{trap}}(\vr)$ and atom-atom interactions.
+In the thermodynamic limit and as $T\to0$, all but a vanishingly small proportion of atoms enter a "ground state" mode $\psi_0(\vr)$, which obeys the \emph{Gross-Pitaevskii equation}:
 \begin{align}
     \left[-\frac{\hbar^2}{2m}+V_{\text{trap}}(\vr)+gN|\psi_0(\vr)|^2\right]\psi_0(\vr) = \e_0\psi_0(\vr).
 \end{align}
@@ -260,7 +296,7 @@ This is a very useful equation for typical atom numbers $(\approx 10^3-10^8)$.
 
 \section{Thomas-Fermi Limit}
 Consider $V_{\text{trap}}(\vr) = m\om^2r^2/2$.
-All other things being equal, of $gN$ is allowed to become very large (this corresponds to letting $N\alpha_s/\alpha_h\to\infty$), the kinetic energy is completely dominated over most of the mode bby the potential energy. 
+All other things being equal, of $gN$ is allowed to become very large (this corresponds to letting $N\alpha_s/\alpha_h\to\infty$), the kinetic energy is completely dominated over most of the mode by the potential energy.
 Hence,
 \begin{align}
     \left[\frac{m\om^2r^2}{2}+gN|\psi_0(\vr)|^2\right]\approx \e_0.
@@ -283,7 +319,7 @@ Defining the probability density $\rho(\vr)=|\psi(\vr)|^2$ and a velocity field
 \begin{align}
     \vec{v}(\vr) &= \frac{\hbar}{2im\rho(\vr)}\left[\psi^*(\vr)\del\psi(\vr) - \psi(\vr)\del\psi^*(\vr)\right],
 \end{align}
-it is possible to formulate a hydrodynamic description. 
+it is possible to formulate a hydrodynamic description.
 The (coupled) equations of motion are the \emph{continuity equation},
 \begin{align}
     \dpt\rho(\vr) &= -\del\cdot\left[\rho(\vr)\vec{v}(\vr)\right],
@@ -292,15 +328,15 @@ and the equation of motion for the velocity field,
 \begin{align}
     m\dpt\vec{v}(\vr) &+ -\del\left[\frac{m}{2}\vec{v}(\vr)^2 + V_{\text{trap}}(\vr) + gN\rho(\vr) - \frac{\hbar^2}{2m\sqrt{\rho(\vr)}}\del^2\sqrt{\rho(\vr)}\right].
 \end{align}
-If the density is relatively smooth, the final term above can be neglected. 
+If the density is relatively smooth, the final term above can be neglected.
 In this case, together with the continuity equation, we have a dynamical description of a fluid with \emph{zero viscosity}, i.e. \emph{a superfluid}.
 When considering a fluid, one would typically not have a $V_{\text{trap}}(\vr)$ term, and it would also be more usual to write the equations in terms of $n(\vr)=N\rho(\vr)$, i.e. the condensate number density, in the present context.
 
 \chapter{Classical and Quantum Fluids}
 \section{Characteristic Properties of Classical and Quantum Fluids}
-A \emph{fluid} freely deforms or \emph{flows}, i.e. a gas or liquid. 
+A \emph{fluid} freely deforms or \emph{flows}, i.e. a gas or liquid.
 In normal (classical) fluids, their physical properties are determined from classical statistical mechanics.
-A \emph{quantum fluid} remains fluid at sufficiently low temperatures for the effects of quantum mechanics to have a dominant role. 
+A \emph{quantum fluid} remains fluid at sufficiently low temperatures for the effects of quantum mechanics to have a dominant role.
 
 \section{Statistical Mechanics of Classical Interacting Many-Body Systems}
 The classical Hamiltonian for $N$ mass $m$ interacting identical point particles is
@@ -309,17 +345,17 @@ The classical Hamiltonian for $N$ mass $m$ interacting identical point particles
 \end{align}
 The probability of each possible configuration is given by the Boltzmann probability density for $N$ particles and temperature $T$,
 \begin{align}
-    P(\vec{p}_1,\dots,\vec{p}_N,\vr_1,\dots,\vr_N) &= \frac{1}{Z_N}e^{-H/k_BT}, \\ 
+    P(\vec{p}_1,\dots,\vec{p}_N,\vr_1,\dots,\vr_N) &= \frac{1}{Z_N}e^{-H/k_BT}, \\
     \text{where } Z_N &= \left(\frac{1}{N!}\right)\int e^{-H/k_BT}\,d^3p_1\dots d^3p_N\,d^3r_1\dots d^3r_N
 \end{align}
-is the \emph{classical partition function}. 
-The $\frac{1}{N!}$ accounts for the particles' indistinguishability. 
+is the \emph{classical partition function}.
+The $\frac{1}{N!}$ accounts for the particles' indistinguishability.
 $Z_N$ factorises into position- and momentum-dependent terms:
 \begin{align}
     Z_N &= \left(\prod_{k=1}^N \int e^{-p_k^2/2mk_BT}\,d^3p_k\right)Q_N = \left(2\pi mk_BT\right)^{3N/2}Q_N, \\
     \text{where } Q_N &= \left(\frac{1}{N!}\right)\int \exp\left(-\sum_{j\neq k=1}^N \frac{V(\vr_j-\vr_k)}{2k_BT}\right)\,d^3r_1\dots d^3r_N.
 \end{align}
-The momentum part of $Z_N$ is a product of independent individual particle terms. 
+The momentum part of $Z_N$ is a product of independent individual particle terms.
 Hence, individual particle momenta are statistically independent, and a particle has momentum which is in a region $d^3p$ of momentum space with probability
 \begin{align}
     P(\vec{p})\,d^3p &= \frac{e^{-p^2/2mk_BT}}{(2\pi mk_BT)^{3/2}}\,dp.
@@ -339,7 +375,7 @@ $V(r)$ contains a short-ranged repulsion and a weak, long-range van der Waals at
 where $\e_0$ is the potential depth, and $r_0$ is the position of the potential minimum.
 
 \section{Thermal de Broglie Wavelength}
-The de Broglie wavelength is defined as 
+The de Broglie wavelength is defined as
 \begin{align}
     \lambda &= \frac{2\pi\hbar}{p}.
 \end{align}
@@ -348,13 +384,13 @@ For a finite temperature system, a characteristic length scale is set by the \em
     \lambda_{dB} &= \frac{2\pi\hbar}{\sqrt{2\pi mk_BT}} = \sqrt{\frac{2\pi\hbar^2}{mk_BT}}.
 \end{align}
 $\lambda_{dB}$ corresponds to a momentum $\sqrt{2\pi mk_BT}$, which is distinct from both the \emph{mean} momentum \\ $\sqrt{8mk_BT/\pi}$ and the \emph{most probable} momentum $\sqrt{2mk_BT}$.
-Quantum effects should be significant once $\lambda_{dB}$ is comparable to other typical length scales in the fluid. 
+Quantum effects should be significant once $\lambda_{dB}$ is comparable to other typical length scales in the fluid.
 
 \section{Significance of Quantum Effects in the Liquid Phase(s)}
-At standard atmospheric pressure, Neon (atomic mass 20) liquifies at $\approx27\,$K and freezes at $\approx24\,$K.
-The $\lambda_{dB}\approx0.07\,$nm is much less than $r_0=0.296\,$nm, and quantum effects are unimportant throughout the gas and liquid phases. 
-Helium 4 (atomic mass 4) liquifies at $4\,$K.
-There are two liquid phases (He I and He II) and no solid phase at standard atmospheric pressure. 
+At standard atmospheric pressure, Neon (atomic mass 20) liquefies at $\approx27\,$K and freezes at $\approx24\,$K.
+The $\lambda_{dB}\approx0.07\,$nm is much less than $r_0=0.296\,$nm, and quantum effects are unimportant throughout the gas and liquid phases.
+Helium 4 (atomic mass 4) liquefies at $4\,$K.
+There are two liquid phases (He I and He II) and no solid phase at standard atmospheric pressure.
 Hence $\lambda_{dB}\approx0.4\,$nm is comparable to $r_0=0.264\,$nm, ad quantum effects are significant.
 
 \section{Phenomenological Low Temperature Model of a Solid Phase}
@@ -362,22 +398,22 @@ Assume each atom vibrates with angular frequency $\om_0$ around its equilibrium 
 \begin{align}
     E_0 &= \frac32\hbar\om_0.
 \end{align}
-Assume a face-centred cubic lattice structure (12 nearest neighbours, equivalent to 4 springs of spring constant $k$ acting in each of the $x,y,$ and $z$ directions).
+Assume a face-centered cubic lattice structure (12 nearest neighbours, equivalent to 4 springs of spring constant $k$ acting in each of the $x,y,$ and $z$ directions).
 The spring constant $k$ (and hence $\om_0=\sqrt{4k/m}$) can be taken from the second-order coefficient from a Taylor expansion of a Lennard-Jones potential about the equilibrium position $r_0$:
 \begin{align}
     k &= \frac12 \frac{d^2V(r)}{dr^2}\bigg|_{r=r_0} = \frac{36\e_0}{r^2_0}.
 \end{align}
 
 \section{Absence of a Solid Phase in Helium}
-From this simple model, for Neon ($\e_0=3.94\,$meV, $r_0=0.296\,$nm), the zero-point energy 
+From this simple model, for Neon ($\e_0=3.94\,$meV, $r_0=0.296\,$nm), the zero-point energy
 \begin{align}
     E_0 &\equiv 3\hbar\sqrt{\frac{36\e_0}{mr_0^2}}\approx 4\,\text{meV},
 \end{align}
 which is comparable to $\e_0$.
-Thus Neon supports a solid phase. 
-For Helium ($\e_0=1.03\,$meV, $r_0=0.265\,$nm), this yields a zero-point energy $E_0\approx7\,$meV which is must greater than the potential well depth $\e_0$, and there is no solid phase. 
+Thus Neon supports a solid phase.
+For Helium ($\e_0=1.03\,$meV, $r_0=0.265\,$nm), this yields a zero-point energy $E_0\approx7\,$meV which is must greater than the potential well depth $\e_0$, and there is no solid phase.
 
-\section{Singularity in Heat Capcity/Specific Heat as a Function of Temperature}
+\section{Singularity in Heat Capacity/Specific Heat as a Function of Temperature}
 Plotting $C_V$ as a function of $T$, at the boundary between the He I and He II phases ($T=T_C=2.17\,$K) one observes a singularity, known as the \emph{lambda point} (due to the alleged resemblance of such a plot near $T_C$ to the letter $\lambda$).
 At low $T$, $C_V\propto T^3$ (unlike BEC).
 Near $T_C$, $C_V$ has a weak power law behaviour:
@@ -385,23 +421,23 @@ Near $T_C$, $C_V$ has a weak power law behaviour:
     C_V &= \begin{cases} C(T) + A_+|T-T_C|^{-\alpha}, & T > T_C, \\ C(T) + A_-|T-T_C|^{-\alpha}, & T < T_C,\end{cases}
 \end{align}
 where $C(T)$ is a smooth function of $T$ near $T_C$.
-Within the theory of phase transitions, measured values of the \emph{critical exponent} $\alpha(=-0.009)$, $A_+$, and $A_-$ are consistent with this phase transition belonging to a \emph{universality class} known as the three-dimensional XY-model. 
+Within the theory of phase transitions, measured values of the \emph{critical exponent} $\alpha(=-0.009)$, $A_+$, and $A_-$ are consistent with this phase transition belonging to a \emph{universality class} known as the three-dimensional XY-model.
 The \emph{order} of such systems is described by a two-dimensional unit vector at every point in space $\vec{n}(\vr)$.
-In He I, this vector is spatially random; in He II, there is a spatial ordering, like the ordering in a ferromagnet. 
+In He I, this vector is spatially random; in He II, there is a spatial ordering, like the ordering in a ferromagnet.
 
 \section{The Macroscopic Wavefunction}
-A two-dimensional unit vector can be equivalently described by the phase of a \emph{complex number}, such as the Gross-Pitaevskii wavefunction, motivating the introduction of a similar macroscopic wavefunction $\psi_0(\vr)$ here. 
-The wavefunction corresponds to a \emph{condensate}, or macroscopic number of particles. 
-We can normalise $\psi_0(\vr)$ such that 
+A two-dimensional unit vector can be equivalently described by the phase of a \emph{complex number}, such as the Gross-Pitaevskii wavefunction, motivating the introduction of a similar macroscopic wavefunction $\psi_0(\vr)$ here.
+The wavefunction corresponds to a \emph{condensate}, or macroscopic number of particles.
+We can normalise $\psi_0(\vr)$ such that
 \begin{align}
     n_0 &= |\psi_0|^2 \text{ is the condensate density,} \\
     N_0 &= n_0V = \int |\psi_0(\vr)|^2\,d^3r \text{ is the number of condensed particles, and} \\
     \psi_0(\vr) &= \sqrt{n_0(\vr)}e^{i\theta(\vr)}.
 \end{align}
-If $|\psi_0(\vr)|=0$, the phase $\theta(\vr)$ is undefinedl if $|\psi_0(\vr)|\neq0$, the phase $\theta(\vr)$ is a natural parameter of the system. 
-$\psi_0(\vr)$ is the \emph{order parameter} of the He II phase. 
+If $|\psi_0(\vr)|=0$, the phase $\theta(\vr)$ is undefined if $|\psi_0(\vr)|\neq0$, the phase $\theta(\vr)$ is a natural parameter of the system.
+$\psi_0(\vr)$ is the \emph{order parameter} of the He II phase.
 
-\chapter{Superfluiditity in Helium II}
+\chapter{Superfluidity in Helium II}
 \section{Superfluid Viscosity}
 Assuming a macroscopic wavefunction $\psi_0(\vr)=\sqrt{n_0}e^{i\theta}$, we define the \emph{superfluid velocity} $\vec{v}_s$, which defines a \emph{current density} (particle flow) $\vec{j}_0=n_0\vec{v}_s$.
 
@@ -412,19 +448,19 @@ A normal fluid's flow viscosity $v$ through a (length $L$, radius $R$) capillary
 \end{align}
 \textbf{Piotr Kapitza} found that with He II, $\Delta P$ was always 0 whatever the value of $v$.
 \emph{Superflow} is therefore fluid flow with \emph{zero viscosity}.\\
-Alternatively, consider a disc suspended in fluid and made to undergo torsional oscillations about its axis. 
-The oscillation frequency depends on the torsional stiffness of the support, and the moment of inertia of the disc. 
-In a viscous fluid, a thin layer of fluid is dragged along with the disc's motion, effectively increasing the intertia of the disc. 
-With a stack of closely spaced discs, all fluid between the discs should be dragged along, contributing to the inertia. 
-Immersing a stack of discs in He II, \textbf{Elepter Andronikashvili} showed that a temperature-dependent fraction of He II contributed to the intertia but a fraction did not. 
+Alternatively, consider a disc suspended in fluid and made to undergo torsional oscillations about its axis.
+The oscillation frequency depends on the torsional stiffness of the support, and the moment of inertia of the disc.
+In a viscous fluid, a thin layer of fluid is dragged along with the disc's motion, effectively increasing the inertia of the disc.
+With a stack of closely spaced discs, all fluid between the discs should be dragged along, contributing to the inertia.
+Immersing a stack of discs in He II, \textbf{Elepter Andronikashvili} showed that a temperature-dependent fraction of He II contributed to the inertia but a fraction did not.
 This motivated a \emph{two fluid} model of He II.
 
 \section{Two Fluid Model}
-The total particle density of the fluid is $n=n_s+n_n$, and the \emph{normal component} $n_n$ acts like a conventional viscous fluid. 
-It contributes to the inertia of the rotating discs, but friction with the walls prevents flow down the capillary. 
-The superfluid component $n_s$ flows with zero viscosity. 
+The total particle density of the fluid is $n=n_s+n_n$, and the \emph{normal component} $n_n$ acts like a conventional viscous fluid.
+It contributes to the inertia of the rotating discs, but friction with the walls prevents flow down the capillary.
+The superfluid component $n_s$ flows with zero viscosity.
 It does not contribute to the inertia of the rotating discs, but flows freely down the capillary.
-The two fluid components move relative to each other without friction. 
+The two fluid components move relative to each other without friction.
 
 \section{Temperature Dependence of the Superfluid and Normal Components}
 As $T\to0$, almost all fluid is superfluid, i.e. $n_s\approx n,n_n\approx0$, and near $T=0$ the temperature dependence is $n_s(T)\approx n-AT^4$ (A is a constant).
@@ -444,20 +480,20 @@ and $\vec{v}_s,\vec{v}_n$ are the velocities of the two fluid components.
 
 \section{Flow Quantisation}
 From the definition of superfluid velocity, we have $\vec{v}_s = \frac{\hbar}{m}\grad\theta$.
-Hence, 
+Hence,
 \begin{align}
     \grad\times\vec{v}_s &\equiv \frac{\hbar}{m}\grad\times\grad\theta=0,
 \end{align}
 i.e. the flow is \emph{irrotational}.
-Consider a flow around the inside of a torus, in particular a closed path going all the way around the torus exactly once. 
+Consider a flow around the inside of a torus, in particular a closed path going all the way around the torus exactly once.
 The flow circulation $\kappa$ is defined by the integral
 \begin{align}
     \kappa &= \oint \vec{v}_s\cdot\,d\vr = \frac{\hbar}{m}\oint \grad\theta\cdot\,d\vr = \frac{\hbar}{m}\Delta\theta,
 \end{align}
-where $\Delta\theta$ is the phase change after having traversed the path. 
-The value of any such line integral of $\vec{v}_s$ should be \emph{independent} of the (topologically similar) path between two endpoints. 
-Hence, $\Delta\theta$ is the same for any path wrapping around the torus exactly once. 
-If $\psi_0(\vr)$ is to be single-valued, we must have $\psi_0(\vr)=\psi_0(\vr)e^{i\Delta\theta}$, i.e. $\Delta\theta=2\pi j$ where $j$ is an integer. 
+where $\Delta\theta$ is the phase change after having traversed the path.
+The value of any such line integral of $\vec{v}_s$ should be \emph{independent} of the (topologically similar) path between two endpoints.
+Hence, $\Delta\theta$ is the same for any path wrapping around the torus exactly once.
+If $\psi_0(\vr)$ is to be single-valued, we must have $\psi_0(\vr)=\psi_0(\vr)e^{i\Delta\theta}$, i.e. $\Delta\theta=2\pi j$ where $j$ is an integer.
 Hence $\kappa=\frac{h}{m}j$ is quantised in units of $\frac{h}{m}$.
 
 \section{Phase Slips and Persistent Currents}
@@ -466,14 +502,14 @@ Rotating the cylinders accelerates the normal component until it has the same an
 If the system is then cooled slowly, particles from the normal fluid will gradually be added to the superfluid component.
 Hence, their angular momentum will be transferred to the superfluid component, which will begin to rotate.
 The circulation $\kappa$ is observed to increase in sudden jumps of $\frac{h}{m}$, called \emph{phase slip} events.
-These correspond to changes in the quantum number $j$, and are therefore analagous to transitions between quantum states in an atom. 
-Conversely, cooling an initially rotating normal fluid below $T_C$ yields a circulating superflow. 
-Without viscosity, in principle this flow continues indefinitely. 
+These correspond to changes in the quantum number $j$, and are therefore analogous to transitions between quantum states in an atom.
+Conversely, cooling an initially rotating normal fluid below $T_C$ yields a circulating superflow.
+Without viscosity, in principle this flow continues indefinitely.
 
 \section{Irrotational Flow and Vortices}
-Consider a cylindrical container of liquid Helium. 
+Consider a cylindrical container of liquid Helium.
 In this case (topological considerations would appear to be absent), the irrotational flow condition $\grad\times\vec{v}_s=0\implies\oint\vec{v}_s\cdot\,d\vr=0$ around any closed path.
-A \emph{vortex}, however, can satisfy $\grad\times\vec{v}_s=0$ almost everywhere and still allow a net rotation. 
+A \emph{vortex}, however, can satisfy $\grad\times\vec{v}_s=0$ almost everywhere and still allow a net rotation.
 In cylindrical polar coordinates,
 \begin{align}
     \grad\times\vec{v}_s &= \frac{1}{r}\begin{vmatrix}\ve_r & r\ve_\phi & \ve_z \\ \frac{\p}{\p r} & \frac{\p}{\p\phi} & \frac{\p}{\p z} \\ v_r & rv_\phi & v_z\end{vmatrix}.
@@ -483,14 +519,14 @@ The flow velocity around the vortex must therefore be of the form
 \begin{align}
     \vec{v}_s &= \frac{\kappa}{2\pi r}\ve_\phi,
 \end{align}
-where $\kappa$ is the (quantised) net circulation. 
+where $\kappa$ is the (quantised) net circulation.
 In practice only the lowest energy ($j=\pm1$) vortices are observed.
 
 \section{Vortex Core}
 Eq (5.7) satisfies $\grad\times\vec{v}_s=0$ except at $r=0$, the \emph{vortex core} (in Helium, the core region is $\approx1$\AA).
 In the vortex core $\psi_0(0)=0$, and so $\theta$ is undefined there.
 Hence $n_s\equiv|\psi_0(0)|^2=0$ at the core, and also the superfluid current density $\vec{j}_s\equiv n_s\vec{v}_s=0$.
-This avoids any singularity in the supercurrent at the centre of the vortex (topological considerations are thus not entirely absent).
+This avoids any singularity in the supercurrent at the center of the vortex (topological considerations are thus not entirely absent).
 Superfluid Helium inside a rotating cylinder manifests a centrifugally curved free surface, implying circulation.
 The \emph{net circulation provided by many vortices}, circumventing a naive interpretation of the irrotationality conditions, explains this.
 
@@ -508,7 +544,7 @@ At low rotation rates, vortices from ordered triangular arrays.
 
 \chapter{Interactions and Excitations in Helium II}
 \section{Interacting Many-Body Quantum Systems}
-Considering pairwise interactions only, the quantum-mechanical Hamiltonian for $N$ interacting particles is given in the position representation by 
+Considering pairwise interactions only, the quantum-mechanical Hamiltonian for $N$ interacting particles is given in the position representation by
 \begin{align}
     \Ham = -\sum_{j=1}^N \frac{\hbar^2}{2m}\grad_j^2 + \frac12\sum_{j\neq k=1}^N V(\vr_j-\vr_k).
 \end{align}
@@ -517,7 +553,7 @@ If the particles are bosons, the wavefunction must be \emph{symmetric} under par
 \begin{align}
     \Psi(\dots,\vr_j,\dots,\vr_k,\dots) &= \Psi(\dots,\vr_k,\dots,\vr_j,\dots).
 \end{align}
-In general, a basis of $N$-body energy eigenfunctions $\Psi_n^{(N)}(\vr_1,\vr_2,\dots,\vr_N)$ exists, such that 
+In general, a basis of $N$-body energy eigenfunctions $\Psi_n^{(N)}(\vr_1,\vr_2,\dots,\vr_N)$ exists, such that
 \begin{align}
     \Ham\Psi(\vr_1,\vr_2,\dots,\vr_N) &= E_n^{(N)}\Psi_n^{(N)}(\vr_1,\vr_2,\dots,\vr_N).
 \end{align}
@@ -529,12 +565,12 @@ At finite $T$, the quantum state with energy eigenvalue $E_n^{(N)}$ has Boltzman
     P_n &= \frac{1}{\mathcal{Z}}e^{-(E_n^{(N)}-\mu N)/k_BT}, & \mathcal{Z} &= \sum_{N,n}e^{-(E_n^{(N)}-\mu N)/k_BT},
 \end{align}
 where $\mathcal{Z}$ is the grand canonical partition function.
-All thermodynamic quantities can be calculated from $\mathcal{Z}$, e.g. 
+All thermodynamic quantities can be calculated from $\mathcal{Z}$, e.g.
 \begin{align}
     \langle N\rangle &= k_BT\frac{\p\ln\mathcal{Z}}{\p\mu}, & U &= \langle\Ham\rangle = \mu\langle N\rangle - \frac{\p\ln\mathcal{Z}}{\p(k_BT)^{-1}}.
 \end{align}
-In principle, this provides a direct way to calculate observable properties of interacting many-particle systems; in practice, this is generally a formidable task. 
-Perturbation theory often produces nearly exact results in the weakly-interacting Bose gas, but in a strongly-interacting system such as liquid Helium, predictions will be qualitative at best. 
+In principle, this provides a direct way to calculate observable properties of interacting many-particle systems; in practice, this is generally a formidable task.
+Perturbation theory often produces nearly exact results in the weakly-interacting Bose gas, but in a strongly-interacting system such as liquid Helium, predictions will be qualitative at best.
 Quantum Monte Carlo (QMC) methods can be used to directly calculate observables of many-particle bosonic systems; one can extrapolate to the $N\to\infty$ thermodynamic limit by varying $N$.
 
 \section{One-Particle Density Matrix}
@@ -543,7 +579,7 @@ It is helpful to define the \emph{one-particle density matrix} (for a pure state
     \rho_1(\vr_1',\vr_1) &= N\int \Psi(\vr_1',\vr_2,\dots,\vr_N)\Psi^*(\vr_1,\vr_2,\dots,\vr_N)\,d^3r_2,\dots,d^3r_N,
 \end{align}
 i.e. a correlation function of the wavefunction between coordinates $\vr_1,\vr_2,\dots,\vr_N$ and $\vr_1',\vr_2,\dots,\vr_N$, averaged over the configurations of all particles except the first.
-The choice of coordinate $\vr_1$ is arbitrary. 
+The choice of coordinate $\vr_1$ is arbitrary.
 As the wavefunction must be symmetric under particle exchange, we say
 \begin{align}
     \rho_1(\vr',\vr) &\equiv \rho_1(\vr_1',\vr_1) = \rho_1(\vr_2',\vr_2) = \cdots = \rho_1(\vr_N',\vr_N).
@@ -568,7 +604,7 @@ In the presence of interactions, we define the condensate density $n_0$ to be
 \begin{align}
     n_0 = \lim_{|\vr-\vr'|\to\infty} \rho_1(\vr-\vr').
 \end{align}
-We can then define the macroscopic wavefunction $\phi_0(\vr)$ through 
+We can then define the macroscopic wavefunction $\phi_0(\vr)$ through
 \begin{align}
     \rho_1(\vr-\vr') \approx \psi_0(\vr')\psi_0^*(\vr), \text{ for large } |\vr-\vr'|.
 \end{align}
@@ -599,7 +635,7 @@ Neutron scattering experiments and QMC integrations both indicate that in liquid
 
 \section{Galilean Invariance}
 If $\Psi_0(\vr_1,\vr_2,\dots,\vr_N)$ is the ground state wavefunction for a superfluid at rest, a uniformly moving (with velocity $\vec{v}=\hbar\vec{q}/m$) trial wavefunction is $e^{i\vec{q}\cdot(\vr_1+\vr_2+\cdots+\vr_N)}\Psi_0(\vr_1,\vr_2,\dots,\vr_N)$.
-If $\vec{q}$ is very small ($\approx 1/L$, where $L$ is the macroscopic sample length), this trial function is a near-exact eigenstate of the (Galilean invariant) Hamiltonian $\Ham$. 
+If $\vec{q}$ is very small ($\approx 1/L$, where $L$ is the macroscopic sample length), this trial function is a near-exact eigenstate of the (Galilean invariant) Hamiltonian $\Ham$.
 The total momentum is then $\langle\hat{P}\rangle=N\hbar q$, where $\hat{P}=\sum_{j=1}^N \hat{p}_j$, and the total energy
 \begin{align}
     \langle\Ham\rangle &\approx E_0 + N\frac{\hbar^2 q^2}{2m} = E_0 + \frac{1}{2M}\langle\hat{P}\rangle^2, \text{ where } M = Nm.
@@ -617,7 +653,7 @@ According to Fermi's golden rule for time-dependent perturbation theory, a singl
     \e_f &= \e_i-\vec{v}\cdot(\vec{p}_i-\vec{p}_f).
 \end{align}
 For a particle initially in-condensate ($\vec{p}=0$), we create an \emph{elementary excitation} only if $\e(\vec{p})=\vec{v}\cdot\vec{p}$.
-In a normal fluid $\e(\vec{p})=\frac{p^2}{2m}$, and the condition $\frac{p^2}{2m}=\vec{v}\cdot\vec{p}$ is obeyed on a cone described by 
+In a normal fluid $\e(\vec{p})=\frac{p^2}{2m}$, and the condition $\frac{p^2}{2m}=\vec{v}\cdot\vec{p}$ is obeyed on a cone described by
 \begin{align}
     |\vec{p}| = 2mv\cos\phi,
 \end{align}
@@ -628,8 +664,8 @@ This applies to classical fluids, strongly-interacting normal quantum fluid (He 
 \section{Helium II Quasiparticle Spectrum}
 The elementary excitation or \emph{quasiparticle} spectrum for a superfluid must be very different, such that it is impossible to satisfy $\e(\vec{p})=\vec{v}\cdot\vec{p}$.
 \textbf{Lev Landau} postulated an "N-shaped" spectrum, which has been confirmed by many experiments.
-At small $\vec{p}$, the energy is approximately linear: $\e(\vec{p})=c|\vec{p}|$. as is typical of phonons in solids (\emph{phonon branch}).
-A single He atom couples strongly to the many-particle condensate, leading to near rigid-body motion, and a phonon-like spectrum. 
+At small $\vec{p}$, the energy is approximately linear: $\e(\vec{p})=c|\vec{p}|$ as is typical of phonons in solids (\emph{phonon branch}).
+A single He atom couples strongly to the many-particle condensate, leading to near rigid-body motion, and a phonon-like spectrum.
 At very large $\vec{p}$, the spectrum approaches that of a conventional liquid: $\e(\vec{p}) = \frac{p^2}{2m^*}$, where $m^*$ is the \emph{effective mass} which is used as the particles interact strongly.
 A single atom can then move relatively independently, hence a \emph{free particle}-like spectrum.
 Between these two extremes, the spectrum has a local minimum (\emph{roton branch}):
@@ -651,7 +687,7 @@ The wavefunction of electrons in crystalline solids obey \emph{Bloch's theorem,}
 \begin{equation}
     \psi_{q\vec{k}}=u_{q\vec{k}}(\vr)e^{i\vec{k}\cdot\vr},
 \end{equation}
-where $u_{q\vec{k}}(\vr)$ is a periodic function, $\hbar\vec{k}$ is the crystal momentum or \emph{quasimomentum}, and $\vec{k}$ takes values in the first Brillouin zone of the reciprocal lattice. 
+where $u_{q\vec{k}}(\vr)$ is a periodic function, $\hbar\vec{k}$ is the crystal momentum or \emph{quasimomentum}, and $\vec{k}$ takes values in the first Brillouin zone of the reciprocal lattice.
 The energies of the Bloch wave states give the \emph{energy bands,} $\e_{q\vec{k}}$.
 A state with energy $\e$ is occupied according to the \emph{Fermi-Dirac} distribution:
 \begin{equation}
@@ -659,23 +695,23 @@ A state with energy $\e$ is occupied according to the \emph{Fermi-Dirac} distrib
 \end{equation}
 (the net electron density per unit volume) sets the chemical potential $\mu$, and $T$ is the temperature.
 The factor $2$ is due to the two electron spin states.
-At very low temperatures ($k_BT\ll\mu$), the Fermi gas assumes a highly degenerate state, where $f(\e_{q\vk})$ is nearly equal to unity `inside' the Fermi surface, and equal to zero outside. 
-The Fermi surface can be defined by $\e_{q\vk}=\e_F$, where $\e_F=\mu$ is the Fermi energy. 
+At very low temperatures ($k_BT\ll\mu$), the Fermi gas assumes a highly degenerate state, where $f(\e_{q\vk})$ is nearly equal to unity `inside' the Fermi surface, and equal to zero outside.
+The Fermi surface can be defined by $\e_{q\vk}=\e_F$, where $\e_F=\mu$ is the Fermi energy.
 We shall generally assume there to be only one conduction band at the Fermi surface, and ignore the band index $q$.
 The density of \emph{conduction electrons} is then
 \begin{equation}
     n = \frac{2}{(2\pi)^3}\int \frac{d^3k}{e^{(\e_{\vk}-\mu)/k_BT}+1},
 \end{equation}
-where $\e_{\vk}$ is the nergy of the single band which crosses the Fermi surface.
+where $\e_{\vk}$ is the energy of the single band which crosses the Fermi surface.
 
 \section{Fermi Gas Description of Electrons in Metals}
 Metallic conduction is dominated by the thin shell of quantum states with energies $\e_F-k_BT<\e<\e_F+k_BT$, i.e. the only states that can be thermally excited at temperature $T$ (dilute gas of electrons excited above $\e_F$ and holes below $\e_F$).
-Electrical conductivity is given in the \emph{Drude theory} of conduction as 
+Electrical conductivity is given in the \emph{Drude theory} of conduction as
 \begin{equation}
     \sigma=\frac{ne^2\tau}{m},
 \end{equation}
-where $m$ is the effective mass of the conduction electrons, $-e$ is the electron charge, and $\tau$ is the average time between collisions with impurities or other electrons. 
-The conductivity is defined by the \emph{constitutive equaiton},
+where $m$ is the effective mass of the conduction electrons, $-e$ is the electron charge, and $\tau$ is the average time between collisions with impurities or other electrons.
+The conductivity is defined by the \emph{constitutive equation},
 \begin{equation}
     \vec{j}=\sigma\E,
 \end{equation}
@@ -700,7 +736,7 @@ Hence, at very low $T$, we expect
 \begin{align}
     \rho &= \rho_0 + aT^2 + \cdots,
 \end{align}
-where the residual resistivity $\rho_0$ depends only on the impurities. 
+where the residual resistivity $\rho_0$ depends only on the impurities.
 For a \emph{superconductor} upon cooling, the resistivity $\rho$ first follows the typical behaviour, and then \emph{suddenly vanishes} at a critical temperature $T_C$.
 \textbf{Heike Kamerlingh Onnes} first observed superconductivity in mercury ($T_C=4.1\,$K) in 1911.
 Other metal elements also exhibit superconductivity at standard pressures, with niobium ($T_C=9.3\,$K) having the highest critical temperature.
@@ -708,11 +744,11 @@ Other metal elements also exhibit superconductivity at standard pressures, with 
 \section{Zero Resistivity}
 Within superconductors, $\rho=0$, which implies $\sigma$ is infinite below $T_C$.
 Consistency with the constitutive equation and a finite current density $\vec{j}$ demands $\E=0$.
-Note that all superconductors also have a critical current $I_C$ above which the superconductivity is destroyed and the resistance becomes finite again. 
+Note that all superconductors also have a critical current $I_C$ above which the superconductivity is destroyed and the resistance becomes finite again.
 The sharp change from finite to zero resistivity implies a thermodynamic phase transition from a \emph{normal state} to a \emph{superconducting state}.
 
-\section{Magnetic Field Flux through the Centre of a Superconducting Ring}
-Flux through the centre of a ring of superconducting wire is defined by the surface integral
+\section{Magnetic Field Flux through the Center of a Superconducting Ring}
+Flux through the center of a ring of superconducting wire is defined by the surface integral
 \begin{align}
     \Phi &= \int \B\cdot \vec{dS},
 \end{align}
@@ -721,22 +757,22 @@ We use the Maxwell equation and Stoke's theorem, respectively given as
 \begin{align}
     \del\times\E &= -\frac{\p\B}{\p t}, & \int(\del\times\E)\cdot\vec{dS} &= \oint \E\cdot d\vr.
 \end{align}
-Then, considering a closed line integral around the inside of the ring, 
+Then, considering a closed line integral around the inside of the ring,
 \begin{align}
     -\frac{d\Phi}{dt} &= \oint \E\cdot d\vr.
 \end{align}
-As $\E=0$ within a superconductor, $\frac{d\Phi}{dt}=0$, so the flux does not change with time. 
+As $\E=0$ within a superconductor, $\frac{d\Phi}{dt}=0$, so the flux does not change with time.
 
 \section{Persistent Currents}
-A current $I$ set up to circulate in a ring of superconducting wire, because there is no dissipatoin of energy due to finite resistance, \emph{never} (up to years) decays. 
+A current $I$ set up to circulate in a ring of superconducting wire, because there is no dissipation of energy due to finite resistance, \emph{never} (up to years) decays.
 To set up such a current, we apply an external magnetic field $\B_{ext}$ to the wire ring at $T>T_C$.
-The superconductor is in its normal state, and $\B_{ext}$ passes easily through it. 
+The superconductor is in its normal state, and $\B_{ext}$ passes easily through it.
 Now cool the system below $T_C$.
-If we now set $\B_{ext}=0$, the flux $\Phi$ can remain constant only if the superconductor generates its own magnetic field $\B$ through the centre of the ring, by having a constant circulating current $I$ around it. 
+If we now set $\B_{ext}=0$, the flux $\Phi$ can remain constant only if the superconductor generates its own magnetic field $\B$ through the center of the ring, by having a constant circulating current $I$ around it.
 
 \section{The Meissner-Ochsenfeld Effect}
 Consider a sample cooled below $T_C$, and then slowly turn on a small external magnetic field $\B_{ext}$.
-As $\E=0$ inside the superconducting smaple, the Maxwell equation
+As $\E=0$ inside the superconducting sample, the Maxwell equation
 \begin{align}
     \del\times\E &= -\frac{\p\B}{\p t} \implies \frac{\p\B}{\p t}=0.
 \end{align}
@@ -747,16 +783,16 @@ It is technically simpler to demonstrate flux expulsion (Meissner-Ochsenfeld eff
 More fundamentally, it is a property of \emph{thermal equilibrium} rather than a \emph{non-equilibrium transport effect.}
 
 \section{Application of Maxwell's Equations in a Magnetic Medium}
-To maintain $\B=0$ inside the sample whatever (small) external fields are imposed, there must be screening currents flowing around the edges of the sample producing a magnetic field equal and opposite to the applied. 
-We split $\vec{j}$ into components from \emph{externally applied currents} (e.g. in coils producing the external field) and \emph{internal screening currents}: 
+To maintain $\B=0$ inside the sample whatever (small) external fields are imposed, there must be screening currents flowing around the edges of the sample producing a magnetic field equal and opposite to the applied.
+We split $\vec{j}$ into components from \emph{externally applied currents} (e.g. in coils producing the external field) and \emph{internal screening currents}:
 \begin{equation}
     \vec{j}=\vec{j}_{ext}+\vec{j}_{int}.
 \end{equation}
-The \emph{screening currents} produce a magnetisation $\vec{M}$ per unit volume in the sample, through 
+The \emph{screening currents} produce a magnetisation $\vec{M}$ per unit volume in the sample, through
 \begin{equation}
     \del\times\vec{M}=\vec{j}_{int}.
 \end{equation}
-We also define a magnetic field $\vec{H}$ in terms of external currents only through 
+We also define a magnetic field $\vec{H}$ in terms of external currents only through
 \begin{equation}
     \del\times\vec{H}=\vec{j}_{ext}.
 \end{equation}
@@ -766,28 +802,28 @@ Put together, these two equations yield the familiar phrase
 \end{equation}
 
 \section{Perfect Diamagnetism}
-Consider an infinitely long cylindrical sample with an external current flowing around it in solenoidal coils. 
+Consider an infinitely long cylindrical sample with an external current flowing around it in solenoidal coils.
 \begin{equation}
     \vec{H}=I\frac{N}{L}\ve_z
 \end{equation}
-($N$ coils per unit length $L$) is then uniform within it. 
+($N$ coils per unit length $L$) is then uniform within it.
 Imposing the \emph{Meissner condition} ($\B=0$) yields the magnetisation $\vec{M}=-\vec{H}$.
 The \emph{magnetic susceptibility} $\chi$ is defined by
 \begin{equation}
     \chi = \frac{dM}{dH}\bigg|_{H=0}.
 \end{equation}
 For superconductors, $\chi=-1$.
-Solids with negative $\chi$ are \emph{diamagnets} (for positive $\chi$, paramagnets), i.e. they screen out part of the external magnetic field. 
-Superconductors are \emph{perfect diamagnets}, and $\chi=-1$ below $T_C$ implies the Meissner-Ochsenfeld effect, hence superconductivity. 
+Solids with negative $\chi$ are \emph{diamagnets} (for positive $\chi$, paramagnets), i.e. they screen out part of the external magnetic field.
+Superconductors are \emph{perfect diamagnets}, and $\chi=-1$ below $T_C$ implies the Meissner-Ochsenfeld effect, hence superconductivity.
 
 \section{Type I and Type II Superconductors}
 $\chi$ is defined in the limit of very weak $\vec{H}$.
-If $\vec{H}$ is increased for a \emph{type I superconductor}, the $\B$ field remains zero inside the sample (i.e. $\vec{M}=-\vec{H}$) until suddenly at a critical field magnitude $H_C$, the superconductivity is destroyed. 
-With \emph{type II superconductors}, there is a lower critical $H_{C1}$ and an upper critical field $H_{C2}$. 
+If $\vec{H}$ is increased for a \emph{type I superconductor}, the $\B$ field remains zero inside the sample (i.e. $\vec{M}=-\vec{H}$) until suddenly at a critical field magnitude $H_C$, the superconductivity is destroyed.
+With \emph{type II superconductors}, there is a lower critical $H_{C1}$ and an upper critical field $H_{C2}$.
 Increasing $H$ from zero, initially $\vec{M}=-\vec{H}\implies\B=0$.
-Above $H_{C1}$, magnetic flux starts to enter the sample ($\B\neq0$) and $\vec{M}$ starts to decrease until at $H_{C1}$, $\vec{M}=0$ and the superconductivity is destroyed. 
-\textbf{Alexei Abrikosov} showed the magnetic field can enter a type II superconductor because of \emph{vortices} - regions of circulating supercurrent around small normal metal cores. 
-The magnetic field passes through the vortex cores, and the circulating currents screen the rest of the superconductor from the magnetic field. 
+Above $H_{C1}$, magnetic flux starts to enter the sample ($\B\neq0$) and $\vec{M}$ starts to decrease until at $H_{C1}$, $\vec{M}=0$ and the superconductivity is destroyed.
+\textbf{Alexei Abrikosov} showed the magnetic field can enter a type II superconductor because of \emph{vortices} - regions of circulating supercurrent around small normal metal cores.
+The magnetic field passes through the vortex cores, and the circulating currents screen the rest of the superconductor from the magnetic field.
 
 \chapter{London Theory of Superconductivity}
 \section{Drude Theory for Finite Frequency Electric Fields}
@@ -795,7 +831,7 @@ Using the complex number representation of AC currents and fields, the equivalen
 \begin{align}
     \vec{j}e^{-i\om t} = \sigma(\om)\vec{E}e^{-i\om t}.
 \end{align}
-The real part of the complex conductivity $\sigma(\om)$ corresponds to currents in phase with the applie electrical field (resistive), nd the imaginary part to out of phase currents (inductive and capacitive).
+The real part of the complex conductivity $\sigma(\om)$ corresponds to currents in phase with the applied electrical field (resistive), nd the imaginary part to out of phase currents (inductive and capacitive).
 Generalising the Drude theory to $\om\neq0$, the conductivity is given by
 \begin{align}
     \sigma(\om) = \frac{ne^2}{m}\frac{\tau}{1-i\om\tau} = \frac{ne^2}{m}\frac{1}{\tau^{-1}-i\om} \implies \R(\sigma) = \frac{ne^2}{m}\frac{\tau}{1+\om^2\tau^2},
@@ -809,13 +845,13 @@ The area under this curve,
 is a constant independent of the lifetime $\tau$.
 
 \section{Perfect Conduction within the Drude Theory}
-In an ideal conductor, there should be \emph{no scattering} of the electrons. 
-Taking the limit $\tau^{-1}\to0$ in Eq. (8.2), for any finite $\om$ there is no dissipation as $\sigma(\om)$ is imaginary:
+In an ideal conductor, there should be \emph{no scattering} of the electrons.
+Taking the limit $\tau^{-1}\to0$ in Eq (8.2), for any finite $\om$ there is no dissipation as $\sigma(\om)$ is imaginary:
 \begin{align}
     \sigma(\om) \to \frac{ine^2}{\om m}.
 \end{align}
-In this limit, $\R(\sigma)=0$ for any $\om\neq0$, but according to Eq. (8.2) must integrate to a finite value. 
-Hence, 
+In this limit, $\R(\sigma)=0$ for any $\om\neq0$, but according to Eq (8.2) must integrate to a finite value.
+Hence,
 \begin{align}
     \R(\sigma) = \frac{\pi ne^2}{m}\delta(\om).
 \end{align}
@@ -827,13 +863,13 @@ The \emph{superfluid} electrons would move without dissipation ($\tau=\infty$), 
 \begin{align}
     \sigma(\om) = \frac{\pi n_se^2}{m_e}\delta(\om) + i\frac{n_se^2}{\om m_e}.
 \end{align}
-By convention, we use the electron mass $m_e$, rather than the effective mass. 
+By convention, we use the electron mass $m_e$, rather than the effective mass.
 When measured, $\R(\sigma)$ shows a sharp peak at $\om=0$, the size of which defines $n_s$.
-At higher $\om$, the measured total $\R(\sigma)=0$, until $\om=\frac{2\Delta}{\hbar}$ ($2\Delta$ is known as the energy gap), when the conductivity again becomes finite. 
+At higher $\om$, the measured total $\R(\sigma)=0$, until $\om=\frac{2\Delta}{\hbar}$ ($2\Delta$ is known as the energy gap), when the conductivity again becomes finite.
 
 \section{Derivation of the London Equation}
-If we restrict ourselves to frequencies below the energy gap, then the measured conductivity $\sigma(\om)$ is as given in Eq. (8.6).
-From Eqs. (8.1) and (8.4),
+If we restrict ourselves to frequencies below the energy gap, then the measured conductivity $\sigma(\om)$ is as given in Eq (8.6).
+From Eqs (8.1) and (8.4),
 \begin{align}
     \del\times\vec{j}e^{-i\om t} &= \sigma(\om)\del\times\vec{E}e^{-i\om t} = -\sigma(\om)\frac{d\vec{B}e^{-i\om t}}{dt} = i\om\sigma(\om)\vec{B}e^{-i\om t} \\
                                  &= -\frac{n_se^2}{m_e}\vec{B}e^{-i\om t}.
@@ -846,7 +882,7 @@ Combining this with the static Maxwell equation $\del\times\vec{B}=\mu_0\vec{j}$
 \begin{align}
     \del\times(\del\times\vec{B}) = -\frac{1}{\lambda^2}\vec{B},\quad \lambda = \sqrt{\frac{m_e}{\mu_0n_se^2}},
 \end{align}
-where the \emph{penetration depth} $\lambda$ is the distance inside the surface over which the external field is screened out to 0, given that $B=0$ in the bulk. 
+where the \emph{penetration depth} $\lambda$ is the distance inside the surface over which the external field is screened out to 0, given that $B=0$ in the bulk.
 Combining the definition $\vec{B}=\del\times\vec{A}$ of the magnetic vector potential $\vec{A}$ with our previous expression for $\del\times\vec{j}$ yields the \emph{London equation}:
 \begin{align}
     \vec{j} = -\frac{n_se^2}{m_e}\vec{A} = -\frac{1}{\mu_0\lambda^2}\vec{A}.
@@ -864,12 +900,12 @@ Points in space contributing to the integral are separated by $\approx r_0$ or l
 $\xi_0$ is called the \emph{coherence length}, a third characteristic length scale in addition to the penetration depth $\lambda$ and the mean free path $l$.
 
 \section{The London Vortex}
-Consider a vortex (in a type II superconductor) with a radius $\approx\xi_0$ core, within which is a finite magnetic field $B_0$. 
-Outside, we use Eq. (8.10) to write, for $\vec{B}=(0,0,B_z)$,
+Consider a vortex (in a type II superconductor) with a radius $\approx\xi_0$ core, within which is a finite magnetic field $B_0$.
+Outside, we use Eq (8.10) to write, for $\vec{B}=(0,0,B_z)$,
 \begin{align}
     \frac{d^2 B_z}{dr^2} + \frac{1}{r}\frac{dB_z}{dr} - \frac{B_z}{\lambda^2} = 0,
 \end{align}
-where we have used the expression for curl in cylindrical coordinates. 
+where we have used the expression for curl in cylindrical coordinates.
 This (multiplied by $r^2$ is a form of Bessel equation, solved by $K_0(r/\lambda)$ (a modified Bessel function of the second kind).
 Hence, nothing that $\ofnt K_0(z)\,dz = 1$,
 \begin{align}
@@ -886,16 +922,16 @@ With $\mu_0\vec{j}=\del\times\vec{B}$, one can deduce that the corresponding cir
 \begin{align}
     \vec{j} \approx \frac{1}{r}\ve_\phi.
 \end{align}
-The divergence at $r=0$ is unphysical, as Eqs. (8.14) and (8.15) only apply outside the core region. 
+The divergence at $r=0$ is unphysical, as Eqs (8.14) and (8.15) only apply outside the core region.
 The London vortex model is only valid in superconductors where $\xi_0\ll\lambda$.
 For large $z$, $K_0(z)\to\sqrt{\pi/2z}e^{-z}$ asymptotically.
-Hence, very far from the vortex core, 
+Hence, very far from the vortex core,
 \begin{align}
     B_z(r) = \frac{\Phi_0}{2\pi\lambda^2}\sqrt{\frac{\pi\lambda}{2r}}e^{-r/\lambda}.
 \end{align}
 Overall, the magnetic field:
 \begin{itemize}
-    \item has a constant value $B_0$ inside the vortex core ($r<\xi_0$), 
+    \item has a constant value $B_0$ inside the vortex core ($r<\xi_0$),
     \item decreases logarithmically for $\xi_0<r<\lambda$,
     \item and then goes to zero exponentially on a length scale of order $\lambda$.
 \end{itemize}
@@ -903,12 +939,12 @@ Overall, the magnetic field:
 \chapter{The Ginzburg-Landau Model}
 \section{Magnetic Work}
 Consider a single circuit with constant $I$.
-If the flux $\Phi$ \emph{through} the circuit changes, an emf $\mathcal{E}$ is induced \emph{around} it. 
-To keep the current constant, the sources of current must do work, at a rate 
+If the flux $\Phi$ \emph{through} the circuit changes, an emf $\mathcal{E}$ is induced \emph{around} it.
+To keep the current constant, the sources of current must do work, at a rate
 \begin{align}
     \frac{dW}{dt} &= -I\mathcal{E} = I\frac{d\Phi}{dt}.
 \end{align}
-Hence, if the flux change through the circuit is $\delta\Phi$, the work done by the sources is 
+Hence, if the flux change through the circuit is $\delta\Phi$, the work done by the sources is
 \begin{align}
     \delta W &= I\delta\Phi.
 \end{align}
@@ -916,8 +952,8 @@ For a length $L$ long z-oriented cylindrical sample with $N$ equally-spaced sole
 \begin{align}
     \delta W &= NI\delta\Phi.
 \end{align}
-The magnetic flux is then equal to the cylinder's cross-sectional area $A$ multiplied by the magnitude of the (z-oriented) B field. 
-Hence, 
+The magnetic flux is then equal to the cylinder's cross-sectional area $A$ multiplied by the magnitude of the (z-oriented) B field.
+Hence,
 \begin{align}
     \delta W &= NIA\delta B.
 \end{align}
@@ -925,12 +961,12 @@ Inside the sample, $\unl{H}=\frac{N}{L}I\ve_z$, and so, where the volume $V=AL$,
 \begin{align}
     \frac{\delta W}{V} &= \unl{H}\cdot\delta\unl{B} = \mu_0(\vec{H}\cdot\delta\vec{M}+\vec{H}\cdot\delta\vec{H}).
 \end{align}
-The first term is the \emph{magnetic work} per unit volume doneon the sample; the second is the work per unit volume in the \emph{absence} of a sample (\emph{self-inductance}).
+The first term is the \emph{magnetic work} per unit volume done on the sample; the second is the work per unit volume in the \emph{absence} of a sample (\emph{self-inductance}).
 
 \section{Thermodynamics of Magnetic Materials}
-Eq. (9.5) is valid for any bulk sample with homogeneous magnetic fields. 
+Eq (9.5) is valid for any bulk sample with homogeneous magnetic fields.
 By convention, we do not consider the second term as ``work done on the sample" in the internal energy.
-Hence, 
+Hence,
 \begin{align}
     dU &= T\,dS + \mu_0V\vec{H}\cdot\,d\vec{M}.
 \end{align}
@@ -938,12 +974,12 @@ In terms of $U(S,\vec{M})$, the temperature and magnetic field are
 \begin{align}
     T &= \frac{\p U}{\p S}, & \vec{H} &= \frac{1}{\mu_0V}\frac{\p U}{\p M}\vec{n},\quad \left(\vec{n}=\frac{\vec{M}}{M}\right).
 \end{align}
-It is useful to define analogs of the Helmholtz and Gibbs free energyes:
+It is useful to define analogs of the Helmholtz and Gibbs free energies:
 \begin{align}
     F(T,\vec{M}) &= U - TS, & G(T,\vec{H}) &= U-TS-\mu_0V\vec{H}\cdot\vec{M}.
 \end{align}
-As $T$ and $\vec{H}$ are the most naturally-controlled experimental variables, it is often convenient to work with $G(T,\vec{H})$. 
-That this is the most naturally-viewed as a function of $T$ and $\vec{H}$ can be seen from 
+As $T$ and $\vec{H}$ are the most naturally-controlled experimental variables, it is often convenient to work with $G(T,\vec{H})$.
+That this is the most naturally-viewed as a function of $T$ and $\vec{H}$ can be seen from
 \begin{align}
     dG &= -S\,dT - \mu_0V\vec{M}\cdot d\vec{H}.
 \end{align}
@@ -951,7 +987,7 @@ In terms of $G$, one can calculate the entropy and magnetisation:
 \begin{align}
     S &= -\frac{\p G}{\p T}, & \vec{M} &= -\frac{1}{\mu_0V}\frac{\p G}{\p H}\vec{n}\quad \left(\vec{n}=\frac{\vec{H}}{H}\right).
 \end{align}
-Note also that 
+Note also that
 \begin{align}
     F &= G+\mu_0V\vec{H}\cdot\vec{M}, & U &= F+TS.
 \end{align}
@@ -963,47 +999,47 @@ If we change the magnitude of an H field from 0 to the value $H_C$ where, in a t
 \end{align}
 where we have used $\vec{M}=-\vec{H}$ as defined in the Meissner-Ochsenfeld effect.
 At the critical field $H_C$, the normal and superconducting state are in thermal equilibrium, i.e. the Gibbs free energies are equal: $G_s(T,H_C) = G_n(T,H_C)$.
-In the normal state, $M\approx0$ (we neglect the small normal metal paramagnetism or diamagnetism). 
-If the normal state had persisted below $H_C$ down to $H=0$, then 
+In the normal state, $M\approx0$ (we neglect the small normal metal paramagnetism or diamagnetism).
+If the normal state had persisted below $H_C$ down to $H=0$, then
 \begin{align}
     G_n(T,H_C) - G_n(T,0) &= \int dG \approx 0 \implies G_s(T,0) - G_n(T,0) = -\mu_0\frac{H_C^2}{2}V,
 \end{align}
-i.e. the Gibbs potential for the (stable) superconducting state is lower. 
+i.e. the Gibbs potential for the (stable) superconducting state is lower.
 Substituting $\vec{H}=\vec{M}=0$ gives the same result for $F_s(T,0)-F_n(T,0)$.
-$\mu_0\frac{H_C^2}{2}$ is called the \emph{condensation energy} (actually an energy density), and is a measure of the gain in free energy per unit volume in the superconducting state compared to the normal state at the same temperature. 
+$\mu_0\frac{H_C^2}{2}$ is called the \emph{condensation energy} (actually an energy density), and is a measure of the gain in free energy per unit volume in the superconducting state compared to the normal state at the same temperature.
 
 \section{Condensation Energy in Type II Superconductors}
-Similarly to Eq. (9.12), we integrate over $H$ between 0 and $H_{C2}$, yielding
+Similarly to Eq (9.12), we integrate over $H$ between 0 and $H_{C2}$, yielding
 \begin{align}
     G_s(T,H_{C2}) - G_s(T,0) &= \int dG = -\mu_0V\int_0^{H_{C2}}\vec{M}\cdot d\vec{H} = \mu_0\frac{H_C^2}{2}V.
 \end{align}
-Here $H_C$, called in this context the \emph{thermodynamic critical field}, is \emph{defined} through 
+Here $H_C$, called in this context the \emph{thermodynamic critical field}, is \emph{defined} through
 \begin{align}
     \frac{H_C^2}{2} &\equiv \int_0^{H_{C2}}\vec{M}\cdot d\vec{H}.
 \end{align}
 It is a convenient measure of the energy - there is no phase transition at $H_C$ in a type II superconductor (as does occur at $H_{C1}$ and $H_{C2}$).
 
 \section{Ginzburg-Landau Order Parameter}
-\textbf{Ginzburg} and \textbf{Landau} (GL) postulated a complex order parameter $\psi$ that characterises the super -conducting state like the magnetisation $\vec{M}$ does a ferromagnet. 
+\textbf{Ginzburg} and \textbf{Landau} (GL) postulated a complex order parameter $\psi$ that characterises the super -conducting state like the magnetisation $\vec{M}$ does a ferromagnet.
 As with the superfluid order parameter in ${}^4$He,
 \begin{align}
     \psi &= \begin{cases} 0 & T>T_C, \\ \psi(T) \neq 0 & T<T_C.\end{cases}
 \end{align}
-Here $\psi$ is of purely phenomenological origin. 
-However, in the microscopic BCS theory, $|\psi|^2$ can be identified with the density of Cooper pairs. 
+Here $\psi$ is of purely phenomenological origin.
+However, in the microscopic BCS theory, $|\psi|^2$ can be identified with the density of Cooper pairs.
 
 \section{Temperature Dependence of the Helmholtz Free Energy Density}
-GL assumed the (real) superconductor free energy must \emph{depend smootly} on $\psi$ (be differentiable with respect to $\psi,\psi^*$), effectively meaning it must be a function of $|\psi|^2$.
-Since $\psi\to0$ when $T\to T_C$ from below, we can Taylor expand the free energy in powers of $|\psi|^2$, keeping only a limited number of terms. 
+GL assumed the (real) superconductor free energy must \emph{depend smoothly} on $\psi$ (be differentiable with respect to $\psi,\psi^*$), effectively meaning it must be a function of $|\psi|^2$.
+Since $\psi\to0$ when $T\to T_C$ from below, we can Taylor expand the free energy in powers of $|\psi|^2$, keeping only a limited number of terms.
 Hence, the free energy density $f=\frac{F}{V}$ has the form
 \begin{align}
     f_s(T) &= f_n(T) + a(T)|\psi|^2 + \frac{b(T)}{2}|\psi|^2+\cdots.
 \end{align}
-$a(T)$ and $b(T)$ are phenomenological parameters, assumed to be smooth functions of temperature $T$. 
+$a(T)$ and $b(T)$ are phenomenological parameters, assumed to be smooth functions of temperature $T$.
 We also assume $b(T)>0$, ensuring $f$ has a minimum (or minima).
 
 \section{Minima near Critical Temperature}
-If $a(T)>0,\, f_s-f_n$ has a single minimum at $\psi=0$. 
+If $a(T)>0,\, f_s-f_n$ has a single minimum at $\psi=0$.
 However, if $a(T)<0$, then $f_s-f_n$ has minima where $|\psi|^2=-\frac{a(T)}{b(T)}$.
 GL assumed that above $T_C$ (normal state), $a(T)>0$, and below $T_C$ (superconducting state), $a(T)<0$.
 While slowly changing $T$, the state of the system \emph{changes suddenly} when $a(T)=0$.
@@ -1020,11 +1056,11 @@ Within this simple picture
 
 \section{Phase of the Ginzburg-Landau Order Parameter}
 There are an infinite set of minima for $f_s-f_n$ corresponding to all possible values of the phase $\theta$ in $\psi=|\psi|e^{i\theta}$.
-The value of $\theta$ is arbitrary, resulting in the same free energy. 
-As in the case of direction of $\vec{M}$ in a ferromagnet, the system \emph{spontaneously chooses} a particular value. 
+The value of $\theta$ is arbitrary, resulting in the same free energy.
+As in the case of direction of $\vec{M}$ in a ferromagnet, the system \emph{spontaneously chooses} a particular value.
 
 \section{Minimum of the Free Energy Density Difference}
-According to Eq. (9.17), the minimum value of the free energy difference per unit volume between the superconducting and normal phases 
+According to Eq (9.17), the minimum value of the free energy difference per unit volume between the superconducting and normal phases
 \begin{align}
     f_s(T) - f_n(T) &= -\frac{a(T)^2}{2b(T)}.
 \end{align}
@@ -1035,7 +1071,7 @@ This corresponds to the condensation energy, and so, near $T_C$,
 
 \section{Entropy and Heat Capacity per Unit Volume}
 Differentiating $f$ with respect to $T$ gives the entropy per unit volume $s=\frac{S}{V}$.
-Hence, from Eq. (9.21),
+Hence, from Eq (9.21),
 \begin{align}
     s_s(T) - s_n(T) &= -\frac{\dot{a}^2}{b}(T_C-T),
 \end{align}
@@ -1049,13 +1085,13 @@ The heat capacity therefore has a discontinuity $\Delta C_V = T_C\frac{\dot{a}^2
 The metallic normal state is linear in $T$ ($C_{V_n}=\gamma T$, where $\gamma$ is a material-dependent constant).
 The relationship of $C_V$ with $T$ is therefore quite different from BEC and the $\lambda$ point of superfluid ${}^4$He.
 
-\chapter{}
+\chapter{Inhomogeneous Ginzburg-Landau Theory}
 \section{Ginzburg-Landau Free Energy of Inhomogeneous Systems}
 GL can be generalised to spatially-dependent order parameters $\psi(\vr)$ by incorporating a gradient \\-dependent term in the free energy density:
 \begin{align}
     f_s(T) - f_n(T) &= \frac{\hbar^2}{2m^*}|\del\psi(\vr)|^2 + a(T)|\psi(\vr)|^2 + \frac{b(T)}{2}|\psi(\vr)|^4,
 \end{align}
-where $m^*$ is the effective mass. 
+where $m^*$ is the effective mass.
 The free energy is obtained by integrating the free energy density over all space:
 \begin{align}
     F_s(T) - F_n(T) &= \int \left[\frac{\hbar^2}{2m^*}|\del\psi(\vr)|^2 + a(T)|\psi(|vr)|^2 + \frac{b(T)}{2}|\psi(\vr)|^4\right]\,d^3r \\
@@ -1066,7 +1102,7 @@ The Laplacian term describes the \emph{kinetic energy}.
 $F_s(T)-F_n(T)$ can be considered the \emph{Hamiltonian functional} $H[\psi,\psi^*]$ of a classical field, where the canonically-conjugate dynamical variables are $\psi(\vr)$ and $\psi^*(\vr)$.
 
 \section{Minimising the Free Energy}
-Consider an infinitesiaml variation of the order parameter, replacing $\psi$ with $\psi+\delta\psi$.
+Consider an infinitesimal variation of the order parameter, replacing $\psi$ with $\psi+\delta\psi$.
 Retaining terms of no greater than linear order in $\delta\psi,\delta\psi^*$ and noting that $F_n$ does not vary,
 \begin{align}
     \delta F_s &= F_s[\psi+\delta\psi,\psi^*+\delta\psi^*] - F_s[\psi,\psi^*] \\
@@ -1078,32 +1114,32 @@ Hence, $\delta F_s=0$ for arbitrary infinitesimal variations $\delta\psi,\delta\
 \end{align}
 
 \section{Functional Derivatives}
-Consider a \emph{functional} $K[\psi,\psi^*,A_1,A_2,\dots]$ which may incorporate additional independent spatially -dependent quantitites $\{A_1(\vr),A_2(\vr),\dots\}$.
+Consider a \emph{functional} $K[\psi,\psi^*,A_1,A_2,\dots]$ which may incorporate additional independent spatially -dependent quantities $\{A_1(\vr),A_2(\vr),\dots\}$.
 Retaining only terms linear in $\delta\psi,\delta\psi^*,\delta A_1,\delta A_2,\dots$,
 \begin{multline}
     K[\psi+\delta\psi,\psi^*+\delta\psi^*,A_1+\delta A_1,A_2+\delta A_2,\dots] - K[\psi,\psi^*,A_1,A_2,\dots] = \\ \int \left(\alpha_\psi\delta\psi + \alpha_{\psi^*}\delta\psi^* + \alpha_{A_1}\delta A_1 + \alpha_{A_2}\delta A_2 + \dots\right)\,d^3x.
 \end{multline}
 This is reminiscent of the chain rule applied to a function, where the $\alpha$ terms are \emph{functional} or \emph{variational derivatives}.
-Using the most conventional notation, 
+Using the most conventional notation,
 \begin{align}
     \alpha_\psi &= \frac{\delta K}{\delta\psi}, & \alpha_{\psi^*} &= \frac{\delta K}{\delta\psi^*}, & \alpha_{A_1} &= \frac{\delta K}{\delta A_1}, & \alpha_{A_2} &= \frac{\delta K}{\delta A_2},\cdots.
 \end{align}
-Setting the functional derivative to zero yields Eq. (10.6) directly, reading
+Setting the functional derivative to zero yields Eq (10.6) directly, reading
 \begin{align}
     \frac{\delta F_s[\psi,\psi^*]}{\delta\psi} &= \left(-\frac{\hbar^2\del^2}{2m^*}+a+b|\psi|^2\right)\psi.
 \end{align}
 
 \section{Surfaces of Superconductors}
-Consider an interface in the $yz$ plane between a normal metal ($x<0$ region) where $\psi=0$, and a superconductor ($x>0$ region), where $\psi$ must solve Eq. (10.6).
+Consider an interface in the $yz$ plane between a normal metal ($x<0$ region) where $\psi=0$, and a superconductor ($x>0$ region), where $\psi$ must solve Eq (10.6).
 Noting that $\psi$ is in this case independent of $y$ and $z$, this can be exactly solved:
 \begin{align}
     \psi(x) &= \psi_0\tanh\left(\frac{x}{\sqrt{2}\xi(T)}\right), \text{ where } \xi(T) = \sqrt{\frac{\hbar^2}{2m^*|a(T)|}}
 \end{align}
-is called the GL \emph{coherence length}, a measure of the distance from the surface over which $\psi$ recovers back to its bulk value. 
+is called the GL \emph{coherence length}, a measure of the distance from the surface over which $\psi$ recovers back to its bulk value.
 
 \section{Ginzburg-Landau Coherence Length}
-The Ginzburg-Landau coherence length arises when consdering most inhomogeneities, including surfaces, interfaces, defects, and vortices. 
-Using 
+The Ginzburg-Landau coherence length arises when considering most inhomogeneities, such as surfaces, interfaces, defects, and vortices.
+Using
 \begin{align}
     a(T) &= \dot{a}(T-T_C), & \xi(T) &= \sqrt{\frac{T_C}{T_C-T}}\xi(0),
 \end{align}
@@ -1111,7 +1147,7 @@ which \emph{diverges} at $T=T_C$.
 Here $\xi(0)$ is essentially the same (barring order unity numerical factors) as the coherence length in Pippard's nonlocal extension of the London theory (see Section 8.5).
 
 \section{Proximity Effect}
-Lowering $T$ at an interface between two superconducting materials, that with higher $T_C$ becomes superconducting first, and will nucleate superconductivity at the surface of the other material. 
+Lowering $T$ at an interface between two superconducting materials, that with higher $T_C$ becomes superconducting first, and will nucleate superconductivity at the surface of the other material.
 If the lower $T_C$ superconductor is a layer of order $\xi(T)$ in thickness, the whole system will become superconducting at a higher $T$ than the lower $T_C$ material's natural critical temperature.
 
 \section{Interaction of Supercurrents with Magnetic Field}
@@ -1119,7 +1155,7 @@ If the lower $T_C$ superconductor is a layer of order $\xi(T)$ in thickness, the
 The canonically conjugate momentum of a single \emph{charged particle} in a \emph{magnetic field} is displaced from the mechanical momentum by $q\vec{A}$ ($q$ is the charge, $\vec{A}$ the magnetic vector potential).
 To include magnetic fields in the free energy, GL postulate the field enters as if $\psi(\vr)$ is a wavefunction for charged particles, where $-i\hbar\del$ is replaced by $-i\hbar\del-q\vec{A}$.
 In all known superconductors, $q=-2e$.
-It turns out that $\psi(\vr)$ can be understood as the wavefunction for the center-of-mass motion of \emph{Cooper pairs} of electrons. 
+It turns out that $\psi(\vr)$ can be understood as the wavefunction for the center-of-mass motion of \emph{Cooper pairs} of electrons.
 
 \section{Free Energy in the Presence of a Magnetic Field}
 We now choose to include the vacuum field energy of the electromagnetic field (excluded in Section 9.2 from consideration).
@@ -1127,7 +1163,7 @@ Hence, replacing $-i\hbar\del$ with $i\hbar\del+2e\vec{A}$ yields
 \begin{align}
     F_s &= F_n + \int_V \left[\frac{\hbar^2}{2m^*}\bigg|\left(\del+\frac{2ei}{\hbar}\vec{A}\right)\psi\bigg|^2 + a|\psi|^2 + \frac{b}{2}|\psi|^4\right] + \frac{1}{2\mu_0}\int B(\vr)^2\,d^3r.
 \end{align}
-Note that the integral is over the volume $V$ of the sample only, not all space. 
+Note that the integral is over the volume $V$ of the sample only, not all space.
 Minimising $F_s(T)$ with respect to variations in $\psi,\psi^*$ (as in Section 10.2) yields
 \begin{align}
     \left[-\frac{\hbar^2}{2m^*}\left(\del+\frac{2ei}{\hbar}\vec{A}\right)^2+a+b|\psi(\vr)|^2\right]\psi(\vr) &= 0.
@@ -1154,16 +1190,16 @@ Within any gauge chosen for $\vec{A}(\vr)$, there is a free energy cost (\emph{p
 The system ``chooses" an (arbitrary) constant $\theta$ through (\emph{long range order} in $\theta$), i.e. has \emph{spontaneously broken global gauge symmetry}.
 
 \section{The London Equation Limit}
-From Eq. (10.17), and starting in the ground state (constant $\theta$), with a small constant $\vec{A}$,
+From Eq (10.17), and starting in the ground state (constant $\theta$), with a small constant $\vec{A}$,
 \begin{align}
     \vec{j}_s &= -\frac{\delta F_s}{\delta A_x}\ve_x - \frac{\delta F_s}{\delta A_y}\ve_y - \frac{\delta F_s}{\delta A_z}\ve_z = -\frac{4e}{\hbar}\rho_s\left(\del\theta+\frac{2e}{\hbar}\vec{A}\right) \to \vec{j}_s = -\rho_s\frac{8e^2}{\hbar^2}\vec{A},
 \end{align}
-which is exactly the same as the London equation (Eq. (8.11) - $\rho_s$ is essentially $n_s$).
+which is exactly the same as the London equation (Eq (8.11) - $\rho_s$ is essentially $n_s$).
 It is conventional to relate the GL and London formulations by
 \begin{align}
     n_s &= 2|\psi|^2, & m^* &= 2m_e.
 \end{align}
-In terms of $\dot{a}$ and $b$, the superfluid density is given by 
+In terms of $\dot{a}$ and $b$, the superfluid density is given by
 \begin{align}
     n_s &= 2|\psi|^2 = 2\dot{a}\frac{T_C-T}{b}.
 \end{align}
@@ -1174,15 +1210,15 @@ The London penetration depth is then given by
 $\lambda(T)$ and the GL coherence length $\xi(T)$ (see Section 10.5) have the same $T$ dependence.
 Hence, the dimensionless ratio $\kappa \equiv \frac{\lambda(T)}{\xi(T)}$ is independent of $T$.
 
-\chapter{Magnetic Fluz in Superconductors}
+\chapter{Magnetic Flux in Superconductors}
 \section{Ginzburg-Landau Order Parameter in a Superconducting Ring}
-We use cylindrical polar coordinate $\vr=(r,\phi,z)$, with $z$ prependicular to the plane of the ring. 
+We use cylindrical polar coordinate $\vr=(r,\phi,z)$, with $z$ perpendicular to the plane of the ring.
 The GL order parameter must be periodic in $\phi$: $\psi(r,\phi,z)=\psi(r,\phi+2\pi,z)$.
 Assume variations of $\psi(\vr)$ across the cross-section of the ring (i.e. $r,z$ dependence) can be neglected.
 Hence, $\psi(\phi)=\psi_0e^{-ij\phi}$, where $j$ is in integer and $\psi_0$ is a constant, similar to the case of superfluid ${}^4$He (see Section 5.6).
 
 \section{Current-Induced Magnetic Fields}
-A circulating current in a superconductor, such as around a radius $R$ superconducting, will induce magnetic fields. 
+A circulating current in a superconductor, such as around a radius $R$ superconducting, will induce magnetic fields.
 Assuming a magnetic flux $\Phi$ through the ring,
 \begin{align}
     \Phi &\equiv \int \vec{B}\cdot\vec{dS} = \int \left(\del\times\vec{A}\right)\cdot\vec{dS} = \oint \vec{A}\cdot d\vr = 2\pi RA_\phi.
@@ -1192,7 +1228,7 @@ Using the cylindrical polar formulation,
 \begin{align}
     \del &= \frac{\p}{\p r}\ve_r + \frac{1}{r}\frac{\p}{\p\phi}\ve_\phi + \frac{\p}{\p z}\ve_z,
 \end{align}
-from Eq. (10.12) we determine the free energy for a volume $V$ ring to be
+from Eq (10.12) we determine the free energy for a volume $V$ ring to be
 \begin{align}
     F_s(T) &= F_s^0(T) + V\frac{\hbar^2}{2m^*}\left(\frac{e\Phi}{\pi\hbar R}-\frac{j}{R}\right)^2|\psi|^2 + \frac{1}{2\mu_0}\int B^2\,d^3r.
 \end{align}
@@ -1203,46 +1239,46 @@ The vacuum magnetic field energy,
 \begin{align}
     E_B &= \frac{1}{2\mu_0}\int B^2\,d^3r,
 \end{align}
-can be expressed in terms of the inductance $L$ and the ring current $I$, through 
+can be expressed in terms of the inductance $L$ and the ring current $I$, through
 \begin{align}
     E_B &= \frac{LI^2}{2},
 \end{align}
 which will be proportional to $\Phi^2$.
-Hence, casting the second term of Eq. (11.3) in terms of the \emph{flux quantum} $\Phi=\frac{h}{2e}$ yields
+Hence, casting the second term of Eq (11.3) in terms of the \emph{flux quantum} $\Phi=\frac{h}{2e}$ yields
 \begin{align}
     F_s(T) &= F_s^0(T) + V\frac{\hbar^2}{2m^*R^2}|\psi|^2\left(\frac{\Phi}{\Phi_0}-j\right)^2 + \text{ constant } \times\Phi^2,
 \end{align}
 and there is a local energy minimum whenever $\Phi=j\Phi_0$, i.e. \emph{flux quantisation}.
 
 \section{Adoption of a Metastable State}
-A ring cooled to below $T_C$ falls into a metastable local free energy minimum, depending on the applied field, and a persistent current flows to maintain a constant flux $\Phi=j\Phi_0$ through the ring. 
-That $\Phi$ os observed in units of $\frac{h}{2e}$ is clear evidence of $-2e$ being the relevant unit of charge (Cooper pairs).
-Escape to a lower energy minimum (phase-slip) is in principle possible. 
-The rate for thermally hopping over the energy barriers between minima is $\tau^{-1}\approx e^{-E_0/k_BT}$ ($E_0$ is the barrier height, $\propto V$), which can be made arbitrarily small. 
+A ring cooled to below $T_C$ falls into a metastable local free energy minimum, depending on the applied field, and a persistent current flows to maintain a constant flux $\Phi=j\Phi_0$ through the ring.
+That $\Phi$ is observed in units of $\frac{h}{2e}$ is clear evidence of $-2e$ being the relevant unit of charge (Cooper pairs).
+Escape to a lower energy minimum (phase-slip) is in principle possible.
+The rate for thermally hopping over the energy barriers between minima is $\tau^{-1}\approx e^{-E_0/k_BT}$ ($E_0$ is the barrier height, $\propto V$), which can be made arbitrarily small.
 Tunnelling is also negligible in macroscopic systems.
 
 \section{Type II Superconductors Near the Upper Critical Field}
-In type II superconductors, for the phase transition occuring at $H_{C2}$, we expect $\psi$ and the magnetisation $M$ to be small just below $H_{C2}$, with both equal to 0 at $H=H_{C2}$.
-Just below $H_{C2}$, approximately $\vec{B}=\mu_0\vec{H}$. 
-Neglecting spatial variations in the B-field, $\vec{B}=(0,0,B)$, and in the convenient \emph{Landau gauge} $\vec{A}=(0,xB,0)$, Eq. (10.13) becomes
+In type II superconductors, for the phase transition occurring at $H_{C2}$, we expect $\psi$ and the magnetisation $M$ to be small just below $H_{C2}$, with both equal to 0 at $H=H_{C2}$.
+Just below $H_{C2}$, approximately $\vec{B}=\mu_0\vec{H}$.
+Neglecting spatial variations in the B-field, $\vec{B}=(0,0,B)$, and in the convenient \emph{Landau gauge} $\vec{A}=(0,xB,0)$, Eq (10.13) becomes
 \begin{align}
     -\frac{\hbar^2}{2m^*}\left(\del+\frac{2eBi}{\hbar}x\ve_y\right)\cdot\left(\del+\frac{2eBi}{\hbar}x\ve_y\right)\psi + a\psi + b|\psi|^2\psi = 0.
 \end{align}
 
 \section{Small \texorpdfstring{$\psi$}{psi} Limit}
-Infinitesimally below $H_{C2}$, $\psi$ tends to zero, and we can drop the cubic term of Eq. (11.7).
+Infinitesimally below $H_{C2}$, $\psi$ tends to zero, and we can drop the cubic term of Eq (11.7).
 Expanding the kinetic terms, and noting that $a<0$,
 \begin{align}
     \left(-\frac{\hbar^2\del^2}{2m^*} - i\hbar\om_cx\frac{\p}{\p y} + \frac{m^*\om_c^2x^2}{2}\right)\psi &= |a|\psi,\; \text{ where } \om_c = \frac{2eB}{m^*}
 \end{align}
 is called the \emph{cyclotron frequency}.
-This equation is equivalent to that of a charged particle in a magnetic field, which has \emph{Landau level} solutions. 
-Substituting such solutions of the form $\psi(\vr)=e^{i(k_yy+k_zz)}\phi(x)$ into Eq. (11.8) yields
+This equation is equivalent to that of a charged particle in a magnetic field, which has \emph{Landau level} solutions.
+Substituting such solutions of the form $\psi(\vr)=e^{i(k_yy+k_zz)}\phi(x)$ into Eq (11.8) yields
 \begin{align}
     -\frac{\hbar^2}{2m^*}\frac{d^2\phi}{dx^2} + \left(\hbar\om_ck_yx+\frac{m^*\om_c^2x^2}{2}\right)\phi &= \left(|a| - \frac{\hbar^2(k_y^2+k_z^2)}{2m^*}\right)\phi \\
     -\frac{\hbar^2}{2m^*}\frac{d^2\phi}{dx^2}+\frac{m^*\om_c^2}{2}(x-x_0)^2\phi &= \left(|a|-\frac{\hbar^2k_z^2}{2m^*}\right)\phi,\; x_0 = -\frac{\hbar k_y}{m\om_c}.
 \end{align}
-This is the Schrodinger equation for a SHO in a displaced coordinate system. 
+This is the Schrodinger equation for a SHO in a displaced coordinate system.
 The eigenvalues must satisfy
 \begin{align}
     \left(n+\frac12\right)\hbar\om_c &= |a|-\frac{\hbar^2k_z^2}{2m^*},\\
@@ -1251,24 +1287,24 @@ The eigenvalues must satisfy
 and the corresponding eigenfunctions $\phi_n$ are harmonic oscillator eigenfunctions, re-centered at $x=x_0$.
 
 \section{Temperature Dependence in Type II Superconductors}
-Cooling a type II superconductor in an external field $H$, Eq. (11.12) is not satisfied when $T=T_C$.
+Cooling a type II superconductor in an external field $H$, Eq (11.12) is not satisfied when $T=T_C$.
 Instead $T$ must be sufficiently below $T_C$ that
 \begin{align}
     \frac{\hbar\om_c}{2} &= \dot{a}(T_C-T),
 \end{align}
-i.e. the $n=k_z=0$ lowest energy solution. 
+i.e. the $n=k_z=0$ lowest energy solution.
 $T_C$ in the magnetic field is therefore
 \begin{align}
     T_C(H) &= T_C(0) - \frac{1}{2\dot{a}}\hbar\om_c = T_C(0) - \frac{2e\hbar\mu_0}{2\dot{a}m^*}H.
 \end{align}
-Starting in a large magnetic field $H>H_{C2}$, we gradually decrease $H$ while keeping $T$ constant, until 
+Starting in a large magnetic field $H>H_{C2}$, we gradually decrease $H$ while keeping $T$ constant, until
 \begin{align}
     \frac{\hbar\om_c}{2} &= \frac{\hbar}{2}\frac{2eB}{m^*} = \dot{a}(T_C-T), \\
     \mu_0H_{C2} &= B_{C2} = \frac{2m^*\dot{a}(T_C-T)}{\hbar^2}\frac{\hbar}{2e} = \frac{\Phi_0}{2\pi\xi(T)^2},
 \end{align}
-where $\xi(T)$ is the GL coherence length. 
+where $\xi(T)$ is the GL coherence length.
 Hence, at $H_{C2}$, there is exactly one flux quantum (or equivalently vortex line) per unit area $2\pi\xi(T)^2$.
-Since 
+Since
 \begin{align}
     \xi(T) &= \sqrt{\frac{T_C}{T_C-T}}\xi(0),
 \end{align}
@@ -1282,17 +1318,17 @@ In type I superconductors, the free energy difference between the superconductin
 \begin{align}
     H_C &= \frac{\dot{a}}{\sqrt{\mu_0b}}(T_C-T) = \frac{\Phi_0}{2\pi\mu_0\sqrt{2}\xi(T)\lambda(T)} = \frac{H_{C2}}{\sqrt{2}\kappa},
 \end{align}
-recalling that $H_{C2}$ is related to the coherence length in Eq. (11.16) and $\kappa=\frac{\lambda(T)}{\xi(T)}$.
-Note that $H_C$ is the \emph{thermodynamic} critical field. 
+recalling that $H_{C2}$ is related to the coherence length in Eq (11.16) and $\kappa=\frac{\lambda(T)}{\xi(T)}$.
+Note that $H_C$ is the \emph{thermodynamic} critical field.
 It therefore follows that $H_{C2} = \sqrt{2}\kappa H_C$.
-Hence, if $\kappa>\frac{1}{\sqrt{2}}$, it follows that $H_{C2}>H_C$, and the phase transition has $\psi$ gorwing continuously from zero at $H$ just below $H_{C2}$ (a \emph{second-order} phase transition).
-This characterises a type II superconductor. 
+Hence, if $\kappa>\frac{1}{\sqrt{2}}$, it follows that $H_{C2}>H_C$, and the phase transition has $\psi$ growing continuously from zero at $H$ just below $H_{C2}$ (a \emph{second-order} phase transition).
+This characterises a type II superconductor.
 
-If $\kappa<\frac{1}{\sqrt{2}}$, then $H_{C2}<H_C$ and the order parameter jumps discontinuously at $H$ just below $H_C$ to a fintie value (a \emph{first-order} phase transition).
+If $\kappa<\frac{1}{\sqrt{2}}$, then $H_{C2}<H_C$ and the order parameter jumps discontinuously at $H$ just below $H_C$ to a finite value (a \emph{first-order} phase transition).
 This characterises a type I superconductor.
 
 \section{The Abrikosov Flux Lattice}
-To find $\psi$ below $H_{C2}$ in a type II superconductor, one must in principle solve the non-linear GL equation in Eq. (11.7).
+To find $\psi$ below $H_{C2}$ in a type II superconductor, one must in principle solve the non-linear GL equation in Eq (11.7).
 For the ground state, one can argue that only $n=0$, however, $k_z=0$ contributions are significant.
 This still leaves an infinite number of degenerate states:
 \begin{align}
@@ -1314,19 +1350,19 @@ $v=1$ corresponds to a square lattice, and $v=2$ corresponds to the (slightly lo
 $\psi$ goes to 0 at one point in each unit cell, and there is exactly one flux quantum $\Phi_0$ per unit cell, i.e. the solution is a periodic lattice of vortices (observable by e.g. a surface sprinkling of paramagnetic particles, or neutron scattering).
 
 \section{Estimation of the Lower Critical Field}
-The Abrikosov solution is essentially exact just below $H_{C2}$, but does not necessarily apply far from there. 
-Near $H_{C2}$, the vortices are very closely packed but at $H_{C1}$, there are very few and well-separated vortices. 
-One can show that a single London vortex has energy per unit length 
+The Abrikosov solution is essentially exact just below $H_{C2}$, but does not necessarily apply far from there.
+Near $H_{C2}$, the vortices are very closely packed but at $H_{C1}$, there are very few and well-separated vortices.
+One can show that a single London vortex has energy per unit length
 \begin{align}
     \frac{\e}{L} &\approx \frac{\Phi_0^2}{4\pi\mu_0\lambda^2}\ln\left(\frac{\lambda}{\xi}\right).
 \end{align}
-If there are $\frac{N}{A}$ flux lines per unit area $A$ in a sample of thickness $L$, there will be an energy cost of $\frac{\e N}{LA}$ per unit volume due to vortices. 
-Each vortex carries a flux $\Phi_0$, so the average magnetic induction is 
+If there are $\frac{N}{A}$ flux lines per unit area $A$ in a sample of thickness $L$, there will be an energy cost of $\frac{\e N}{LA}$ per unit volume due to vortices.
+Each vortex carries a flux $\Phi_0$, so the average magnetic induction is
 \begin{align}
     B &= \frac{\Phi_0N}{A}.
 \end{align}
 The magnetic work (at constant $H$) gained by the presence of vortices is $\mu_0H\,dM = H\,dB$.
-The presence of vortices is then energetically favoured when 
+The presence of vortices is then energetically favoured when
 \begin{align}
     \frac{\e N}{AL} &< \frac{H\Phi_0N}{A}.
 \end{align}
@@ -1340,15 +1376,15 @@ This expression is valid when $\kappa\gg\frac{1}{\sqrt{2}}$, i.e. the \emph{Lond
 \section{Thermal Fluctuations about a Mean Field}
 GL theory as described up until now is a \emph{mean-field theory.}
 However, it can be relatively-easily extended to include \emph{thermal fluctuations.}
-In the mean-field approach, we find the value of the order parameter $\psi(\vr)$ that minimise the total free energy. 
+In the mean-field approach, we find the value of the order parameter $\psi(\vr)$ that minimise the total free energy.
 To go beyond this, we include fluctuations close to this minimising value, i.e. we replace $\psi(\vr)$ with $\psi(\vr)+\delta\psi(\vr)$, where $\delta\psi(\vr)$ is ``small", in the sense that the free energy yielded by $\psi(\vr)+\delta\psi(\vr)$ is no more than $\approx k_BT$ greater than the minimum energy.
 
-\section{Probability Dstribution}
+\section{Probability Distribution}
 An effective (Boltzmann) probability $P$ for each possible state (i.e. each possible value of the order parameter, $\psi$) is given by
 \begin{align}
     P[\psi,\psi^*] &= \frac{1}{Z}e^{-F[\psi,\psi^*]/k_BT}, & Z &= \int D[\psi]D[\psi^*]e^{-F[\psi,\psi^*]/k_BT},
 \end{align}
-where the partition function $Z$ is formally defined as a functional integral. 
+where the partition function $Z$ is formally defined as a functional integral.
 The symbols $D[\psi],D[\psi^*]$ indicate that we are technically integrating over an infinite continuum of variables, i.e. the values of $\psi(\vr),\psi^*(\vr)$ at every point $\vr$.
 A conceptually easier picture is arrived at through the Fourier transform of $\psi(\vr)$, i.e. assuming periodic boundary conditions,
 \begin{align}
@@ -1364,7 +1400,7 @@ For a superconductor in zero magnetic field, the free energy functional is
                    &= \sum_{\vk} \left(\frac{\hbar^2k^2}{2m^*}+a\right)\psi^*_{\vk}\psi_{\vk} + \frac{b}{2}\sum_{\vk_1,\vk_2,\vk_3} \psi^*_{\vk_1}\psi^*_{\vk_2}\psi_{\vk_3}\psi_{\vk_1+\vk_2-\vk_3},
 \end{align}
 where we neglect the constant normal state free energy $F_n$ as irrelevant.
-Simplifying further, we consider the \emph{Gaussian approximation}, in which we neglect the quartic ($\propto b$) term in the free energy. 
+Simplifying further, we consider the \emph{Gaussian approximation}, in which we neglect the quartic ($\propto b$) term in the free energy.
 This yields
 \begin{align}
     \begin{split}
@@ -1375,8 +1411,8 @@ This yields
 \end{align}
 
 \section{Internal Energy and Heat Capacity near Critical Temperature}
-All thermodynamic quantities can be calculated from the partition function. 
-For example (see Section 6.2), the total internal energy derived from Eq. (12.6) is
+All thermodynamic quantities can be calculated from the partition function.
+For example (see Section 6.2), the total internal energy derived from Eq (12.6) is
 \begin{align}
     U &= -\frac{\p\ln Z}{\p(1/k_BT)} = k_BT^2\frac{\p\ln Z}{\p T} \approx -\sum_{\vk} \frac{1}{(\hbar^2k^2/2m^*)+a}\frac{da}{dT},
 \end{align}
@@ -1391,27 +1427,27 @@ This integral expression can be shown to scale as
     C_V &\approx \frac{V}{(2\pi)^3}\frac{\dot{a}^2}{a^2}\frac{1}{\xi(T)^3} \approx \frac{1}{(T-T_C)^2}|T-T_C|^{3/2} \approx \frac{1}{|T-T_C|^{1/2}},
 \end{align}
 i.e. there is a divergence due to thermal fluctuations at $T_C$.
-Experimentally such fluctuations are difficult to observe in conventional low $T_C$ superconductors, as the range over which they are significant is of the order of a microKelvin. 
-The original mean-field approach is thus essentially fully justified. 
+Experimentally such fluctuations are difficult to observe in conventional low $T_C$ superconductors, as the range over which they are significant is of the order of a microKelvin.
+The original mean-field approach is thus essentially fully justified.
 In high $T_C$ superconductors, the coherence length $\xi(0)$ is very small, and the corresponding temperature range is of order $1-2$K.
 Heat capacity measurements near $T_C$ clearly show thermal critical fluctuations.
 
 \section{Vortex Matter}
-Abrikosov's result that vortices in type II superconductors arrange themselves in a periodic lattice is again a mean-field result. 
-In principle we must also include thermal fluctuation effects. 
+Abrikosov's result that vortices in type II superconductors arrange themselves in a periodic lattice is again a mean-field result.
+In principle we must also include thermal fluctuation effects.
 There are in fact a wide range of possible \emph{vortex matter} states.
 Vortices may also form liquid and glassy states, as well as nearly-perfected ordered crystalline states.
-A serious consequence is that thermal fluctuations lead to motion of vortices leading to a source of energy dissipation. 
-The resistivity in high $T_C$ superconductors is therefore not zero in a magnetic field. 
-Energy dissipation due to motion of vortices can be reduced or effectively eliminated by providing \emph{pinning centres} to prevent the vortex lattice from moving. 
+A serious consequence is that thermal fluctuations lead to motion of vortices leading to a source of energy dissipation.
+The resistivity in high $T_C$ superconductors is therefore not zero in a magnetic field.
+Energy dissipation due to motion of vortices can be reduced or effectively eliminated by providing \emph{pinning centers} to prevent the vortex lattice from moving.
 These are typically impurities or crystal defects.
 
 \section{Vortex Motion and Dissipation}
 A current density $\vec{j}$ flowing through a vortex lattice (perpendicular to the magnetic field) leads to a Lorentz/Magnus force $\vec{f}=\vec{j}\times\vec{B}$ per unit volume of the vortex lattice.
-The vortices will then tend to move perpendicular to the current. 
-If the vortices move, work is done and there is energy dissipation. 
-Consider a loop of superconducting wire, with a current flowing around it. 
-Vortices will drift transversely across the wire, e.g. entering on the inner side and drifting over to the outer side. 
+The vortices will then tend to move perpendicular to the current.
+If the vortices move, work is done and there is energy dissipation.
+Consider a loop of superconducting wire, with a current flowing around it.
+Vortices will drift transversely across the wire, e.g. entering on the inner side and drifting over to the outer side.
 Each vortex carries a magnetic flux $\Phi_0$, and so the total magnetic flux $\Phi$ changes by $\Phi_0$ with each ``crossing-over" vortex.
 Note there is an EMF-induced in the wire $\mathcal{E}=-\frac{d\Phi}{dt}$, and power is dissipated at a rate $P=\mathcal{E}I$.
 Vortex motion leads directly to \emph{finite resistance.}
@@ -1428,7 +1464,7 @@ This can be written in terms of the creation and annihilation operators:
     \hat{\Ham} &= \hbar\om\left(\hag\ha+\frac12\right), \text{ where } \ha = \sqrt{\frac{m\om}{2\hbar}}\hat{x} + \frac{i\hat{p}}{\sqrt{2m\om\hbar}}, \text{ and } [\ha,\hag] = 1.
 \end{align}
 If $\phi_n(x)=\langle x|\phi_n\rangle$ is the $n$th harmonic oscillator eigenfunction, then $\hag\ha|\phi_n\rangle=n|\phi_n\rangle$.
-$\hn=\hag\ha$ is often called the \emph{number} operator, associated in this context with the \emph{excitation} number. 
+$\hn=\hag\ha$ is often called the \emph{number} operator, associated in this context with the \emph{excitation} number.
 It is often convenient to write $|\phi_n\rangle$ as $|n\rangle$.
 Using this notation, note also that
 \begin{align}
@@ -1453,14 +1489,14 @@ we can rewrite the Hamiltonian $\Ham =\om J$, with corresponding Hamilton's equa
     \theta(t) &= \om t+\delta, & J(t) &= \frac{\Ham}{\om}\equiv m\om A^2.
 \end{align}
 Hence, one can define a \emph{canonically conjugate pair} composed of the phase angle $\theta$, and an action variable $J$; $\hbar\hn$ is then a quantised form of $J$.
-Viewed quantum-mechanically, we expect a \emph{phase-number uncertainty relation}, i.e. phase and number cannot be simultaneously known with complete certainty. 
+Viewed quantum-mechanically, we expect a \emph{phase-number uncertainty relation}, i.e. phase and number cannot be simultaneously known with complete certainty.
 
 \section{Coherent States}
 Coherent states $|\alpha\rangle$ may be defined as eigenstates of the annihilation operator:
 \begin{align}
     \ha|\alpha\rangle &= \alpha|\alpha\rangle \implies |\alpha\rangle = e^{-|\alpha|^2/2}\sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}}|n\rangle.
 \end{align}
-If the system is in a coherent state, then 
+If the system is in a coherent state, then
 \begin{align}
     \langle\ha\rangle &= \langle\alpha|\ha|\alpha\rangle = \alpha,\quad \langle\hag\ha\rangle = |\alpha|^2.
 \end{align}
@@ -1469,11 +1505,11 @@ For any (normally-ordered) product of creation and annihilation operators
     \langle\ha^{\dagger n}\ha^m\rangle = \alpha^{*n}\alpha^m = \langle\hag\rangle^n\langle\ha\rangle^m,
 \end{align}
 i.e. the expectation values are \emph{factorisable}.
-This is reminiscent of what one would expect of quantities describing a classical particle. 
+This is reminiscent of what one would expect of quantities describing a classical particle.
 Coherent states are minimum uncertainty wave packets and in some ways come closest to describing a classical particle in a quantum context.
 
 \section{Number and Phase in Coherent States}
-For a coherent state, the \emph{number variance} is defined 
+For a coherent state, the \emph{number variance} is defined
 \begin{align}
     \langle\hn^2\rangle-\langle\hn\rangle^2 = |\alpha|^2,
 \end{align}
@@ -1482,12 +1518,12 @@ The phase of the complex number $\alpha$ characterising a coherent state corresp
 A coherent state thus has a well-defined \emph{mean} number and phase, with (minimum uncertainty) fluctuations.
 
 \section{Matrix Elements: Single Particles}
-Consider a single particle, moving in one spatial dimension, with kinetic and potential energy operators $\hat{T},\hat{V}$. 
+Consider a single particle, moving in one spatial dimension, with kinetic and potential energy operators $\hat{T},\hat{V}$.
 If we choose some orthonormal basis of states $|\phi_n\rangle$,
 \begin{align}
     \hat{T} &= \sum_{jk} |\phi_j\rangle\langle\phi_j|\hat{T}|\phi_k\rangle\langle\phi_k|, & \hat{V} &= \sum_{jk} |\phi_j\rangle\langle\phi_j|\hat{V}|\phi_k\rangle\langle\phi_k|,
 \end{align}
-where the \emph{matrix elements} can also be written 
+where the \emph{matrix elements} can also be written
 \begin{align}
     \langle\phi_j|\hat{V}|\phi_k\rangle &= \int \phi_j^*(x)V(x)\phi_k(x)\,dx, \\
     \langle\phi_j|\hat{T}|\phi_k\rangle &= -\frac{\hbar^2}{2m}\int \phi_j^*(x)\frac{\p^2\phi_k(x)}{\p x^2}\,dx.
@@ -1517,24 +1553,24 @@ The corresponding matrix elements for $\hat{V}$ can be written
         \times\int\phi_{p_1}^*(x_1)\phi_{p_1'}(x_1)\,dx_1\dots\int\phi_{p_N}^*(x_N)\phi_{p_N'}(x_N)\,dx_N.&
     \end{split}
 \end{align}
-For this to be $\neq0$, all modes must match, i.e. $p_1=p_1',p_2=p_2'$, etc., except for $p_l$ and $p_l'$ which may be different. 
-Non-zero matrix elements are thus formed from $\psi^*_{N_0N_1\dots}(x_1,\dots,x_N)$ and $\psi_{N_0N_1\dots}(x_1,\dots,x_N)$ (idential occupation numbers) or $\psi^*_{N_0N_1\dots N_j\dots N_k-1\dots}(x_1,\dots,x_N)$ and $\psi_{N_0N_1\dots N_j-1\dots N_k\dots}(x_1,\dots,x_N)$ only, i.e. processes where a particle is annihilated in mode $k$, and then created in mode $j$.
-Considering diagonal matrix elements (where $N_0=N_0',N_1=N_1',\dots$), the RHS of Eq. (13.18) becomes
+For this to be $\neq0$, all modes must match, i.e. $p_1=p_1',p_2=p_2'$, etc., except for $p_l$ and $p_l'$ which may be different.
+Non-zero matrix elements are thus formed from $\psi^*_{N_0N_1\dots}(x_1,\dots,x_N)$ and $\psi_{N_0N_1\dots}(x_1,\dots,x_N)$ (identical occupation numbers) or $\psi^*_{N_0N_1\dots N_j\dots N_k-1\dots}(x_1,\dots,x_N)$ and $\psi_{N_0N_1\dots N_j-1\dots N_k\dots}(x_1,\dots,x_N)$ only, i.e. processes where a particle is annihilated in mode $k$, and then created in mode $j$.
+Considering diagonal matrix elements (where $N_0=N_0',N_1=N_1',\dots$), the RHS of Eq (13.18) becomes
 \begin{align}
     \begin{split}
         \left(\frac{N_0!N_1!\dots}{N!}\right)& \sum_P \overbrace{\sum_{j=1}^N \int \phi_{p_j}^*(x_j)V(x_j)\phi_{p_j}(x_j)\,dx_j}^{=N_0\int\phi_0^*(x)V(x)\phi_0(x)\,dx + N_1\int\phi_1^*(x)V(x)\phi_1(x)\,dx + \dots} \\
                                              &\times \int \phi_{p_1}^*(x_1)\phi_{p_1}(x_1)\,dx_1\dots\int \phi_{p_N}^*(x_N)\phi_{p_N}(x_N)\,dx_N.
     \end{split}
 \end{align}
-There are $\frac{N!}{N_0!N_1!\dots}$ permutations to sum over, each producing the same result. 
+There are $\frac{N!}{N_0!N_1!\dots}$ permutations to sum over, each producing the same result.
 The above expression is therefore equal to
 \begin{align}
     \sum_k N_k \int \phi_k^*(x)V(x)\phi_k(x)\,dx.
 \end{align}
-Considering off-diagonal matrix elements (where $N_0=N_0',\dots,N_k-1=N_j',\dots,N_j=N_k'-1,\dots$), a slightly more involved procedure shows that the RHS of Eq. (13.18) becomes
+Considering off-diagonal matrix elements (where $N_0=N_0',\dots,N_k-1=N_j',\dots,N_j=N_k'-1,\dots$), a slightly more involved procedure shows that the RHS of Eq (13.18) becomes
 \begin{align}
     \sqrt{N_jN_k}\int \phi_j^*(x)V(x)\phi_k(x)\,dx.
-\end{align} 
+\end{align}
 
 \section{Fock (Occupation Number) State Representation}
 States with $\{N_0,N_1,\dots\}$ particles occupying the modes $\{\phi_0,\phi_1,\dots\}$ can instead be represented by $|N_0,N_1,\dots\rangle$.
@@ -1549,17 +1585,17 @@ can be explained by setting
     [\ha_j,\hag_k] &= \delta_{jk},\quad [\ha_j,\ha_k] = [\hag_j,\hag_k] = 0.
 \end{align}
 These are the \emph{bosonic commutation relations}.
-Similarly, when considering the kinetic energy $\hat{T}$, or a term accounting for the total two-body interactiong energy $\hat{U}$,
+Similarly, when considering the kinetic energy $\hat{T}$, or a term accounting for the total two-body interaction energy $\hat{U}$,
 \begin{align}
     \hat{T} &= -\sum_{jk}\left[\int \phi_j^*(x)\frac{\hbar^2}{2m}\frac{\p^2}{\p x^2}\phi_k(x)\,dx\right]\hag_j\ha_k, \\
     \hat{U} &= \frac12\sum_{jkln}\left[\iint \phi_j^*(x)\phi_k^*(x')U(x-x')\phi_l(x)\phi_n(x')\,dx\,dx'\right]\hag_j\hag_k\ha_l\ha_n.
 \end{align}
-For \emph{fermionic} particles, there is an analagous representation. 
+For \emph{fermionic} particles, there is an analogous representation.
 However, the creation and annihilation operators must have \emph{anti-commutation} relations, i.e. $[\ha_k,\hag_j]_+ = \ha_k\hag_j+\hag_j\ha_k = \delta_{jk},\; [\ha_j,\ha_k] = [\hag_j,\hag_k] = 0$.
 
 \chapter{The Weakly Interacting Bose Gas}
 \section{Bosonic Quantum Fields}
-We combine the annihilation operators $\ha_j$ with their associated orthonormal modes $\phi_j(\vr)$ to form a \emph{field operator}: in 3D, 
+We combine the annihilation operators $\ha_j$ with their associated orthonormal modes $\phi_j(\vr)$ to form a \emph{field operator}: in 3D,
 \begin{align}
     \hat{\Psi}(\vr) &= \sum_j \ha_j\phi_j(\vr), & [\hat{\Psi}(\vr),\hat{\Psi}^\dagger(\vr')] &= \delta(\vr-\vr'), & [\hat{\Psi}^{(\dagger)}(\vr),\hat{\Psi}^{(\dagger)}(\vr')] &= 0.
 \end{align}
@@ -1567,8 +1603,8 @@ $\hat{\Psi}(x)$ annihilates a particle at position $\vx$.
 A many-body Hamiltonian operator, which in the position representation is
 \begin{align}
     \hat{\Ham} &= \sum_{j=1}^N \frac{-\hbar^2}{2m}\del_j^2 + \sum_{j=1}^N V(\vr_j) + \sum_{j<k=1}^N U(\vr_j-\vr_k),
-\end{align} 
-can be written in terms of field operators as 
+\end{align}
+can be written in terms of field operators as
 \begin{align}
     \begin{split}
         \hat{\Ham} = &\int \hat{\Psi}^\dagger(\vr)\left(-\frac{\hbar^2}{2m}\del^2\right)\hat{\Psi}(\vr)\,d^3r + \int \hat{\Psi}^\dagger(\vr)V(\vr)\hat{\Psi}(\vr)\,d^3 r \\
@@ -1579,7 +1615,7 @@ Note that this is a valid description for \emph{any number} of particles.
 
 \section{k-Space Representation}
 For a bulk fluid, we can assume translational invariance, and ignore the external potential $V(\vr)$.
-If we further assume periodic boundary conditions, 
+If we further assume periodic boundary conditions,
 \begin{align}
     \hat{\Psi}(\vr) &= \frac{1}{\sqrt{V}}\sum_{\vk}e^{i\vk\cdot\vr}\ha_{\vk} \implies \ha_{\vk} = \frac{1}{\sqrt{V}} \int_V e^{-i\vk\cdot\vr}\hat{\Psi}(\vr)\,d^3r,
 \end{align}
@@ -1590,7 +1626,7 @@ Substituting in this $k$-space field operator decomposition, it follows that the
 \end{align}
 For the interaction energy $\hat{U}$, we deduce
 \begin{align}
-    \hat{U} &= \frac{1}{2V^2} \sum_{\vk_1\vk_2\vk_3\vk_4} \hag_{\vk_1}\hag_{\vk_2}\ha_{\vk_3}\ha_{\vk_4}\iint U(\vr-\vr')e^{-i(\vk_1\cdot\vr + \vk_2\cdot\vr' - \vk_3\cdot\vr' - \vk_4\cdot\vr)}\,d^3r\,d^3r'  \\ 
+    \hat{U} &= \frac{1}{2V^2} \sum_{\vk_1\vk_2\vk_3\vk_4} \hag_{\vk_1}\hag_{\vk_2}\ha_{\vk_3}\ha_{\vk_4}\iint U(\vr-\vr')e^{-i(\vk_1\cdot\vr + \vk_2\cdot\vr' - \vk_3\cdot\vr' - \vk_4\cdot\vr)}\,d^3r\,d^3r'  \\
             &= \frac{1}{2V} \sum_{\vk_1\vk_2\vk_3\vk_4} \hag_{\vk_1}\hag_{\vk_2}\ha_{\vk_3}\ha_{\vk_4}\delta_{\vk_3+\vk_4,\vk_1+\vk_2} \int U(\vr)e^{i(\vk_4-\vk_1)\cdot\vr}\,d^3r \\
     \hat{\Ham} &= \sum_{\vk} \frac{\hbar^2k^2}{2m}\hag_{\vk}\ha_{\vk} + \frac12 \sum_{\vk\vk'\vec{q}} U_{\vec{q}}\hag_{\vk+\vec{q}}\hag_{\vk'-\vec{q}}\ha_{\vk'}\ha_{\vk}, \quad U_{\vec{q}} = \frac{1}{V}\int U(\vr)e^{-\vec{q}\cdot\vr}\,d^3r,
 \end{align}
@@ -1599,7 +1635,7 @@ The interaction term can be interpreted as a pair of particles scattered from in
 The momentum transferred between particles is $\vec{q}$, and the matrix element is $U_{\vec{q}}$.
 
 \section{Off-Diagonal Long-Ranged Order (ODLRO)}
-In terms of field operators, the one-particle density matrix is 
+In terms of field operators, the one-particle density matrix is
 \begin{align}
     \rho_1(\vr',\vr) &= \langle\hat{\Psi}(\vr)\hat{\Psi}(\vr')\rangle.
 \end{align}
@@ -1609,13 +1645,13 @@ For a translationally invariant (e.g. thermal equilibrium) state
 \end{align}
 which is the \emph{Fourier transform} of the momentum distribution $n_{\vk}\equiv \langle\hag_{\vk}\ha_{\vk}\rangle$.
 We are typically interested in the case where only one mode is macroscopically occupied (usually $\vk=0$).
-Suppose mode $\vk_0$ has macroscopic occupation $N_0=\langle\hag_{\vk_0}\ha_{\vk_0}\rangle$, and all other $\langle\hag_{\vk}\ha_{\vk}\rangle$ are small. 
+Suppose mode $\vk_0$ has macroscopic occupation $N_0=\langle\hag_{\vk_0}\ha_{\vk_0}\rangle$, and all other $\langle\hag_{\vk}\ha_{\vk}\rangle$ are small.
 Then, recalling $n_0=N_0/V$,
 \begin{align}
     n_{\vk} &= N_0\delta_{\vk\vk_0} + f(\vk) \implies \rho_1(\vr-\vr') = n_0 + \frac{1}{(2\pi)^3}\int e^{-i\vk\cdot(\vr-\vr')}f(\vk)\,d^3k,
 \end{align}
 where we have taken the continuum limit over $f(\vk)$.
-If $f(\vk)$ is sufficiently smooth, its Fourier transform will vanish for large $|\vr-\vr'|$, so that 
+If $f(\vk)$ is sufficiently smooth, its Fourier transform will vanish for large $|\vr-\vr'|$, so that
 \begin{align}
     \langle\hat{\Psi}(\vr)\hat{\Psi}(\vr')\rangle \to n_0 \text{ as } |\vr-\vr'| \to \infty.
 \end{align}
@@ -1628,21 +1664,21 @@ Recalling the factorisability property of coherent states (Section 13.3), for $|
     \rho_1(\vr-\vr') &= \langle\hat{\Psi}^\dagger(\vr)\hat{\Psi}(\vr')\rangle = \langle\hat{\Psi}^\dagger(\vr)\rangle\langle\hat{\Psi}(\vr')\rangle = \psi_0^*(\vr)\psi_0(\vr').
 \end{align}
 If the condensation occurs in the $\vk=0$ state, we must have $\psi_0(\vr)=\sqrt{n_0}e^{i\theta}$.
-If the condensate is in a coherent state, we cannot have an exactly defined number of particles. 
-Unlike in the case of an exact number of particles, the phase $\theta$ is then no longer completely random. 
+If the condensate is in a coherent state, we cannot have an exactly defined number of particles.
+Unlike in the case of an exact number of particles, the phase $\theta$ is then no longer completely random.
 
 \section{The Weakly Interacting Bose Gas}
-The theory of the weakly interacting Bose gas was developed by \textbf{Nikolai Bogoliubov} to give a \emph{qualitative} picture of some features of superfluid helium. 
-It is however a quantatively useful description of BEC in ultracold atomic gases. 
+The theory of the weakly interacting Bose gas was developed by \textbf{Nikolai Bogoliubov} to give a \emph{qualitative} picture of some features of superfluid helium.
+It is however a quantatively useful description of BEC in ultracold atomic gases.
 
 We assume we are very close to $T=0$ (typical experimental temperatures are $\approx$ nK), and that the system is in a coherent many-particle state, characterised by the macroscopic wavefunction $\psi_0(\vr)$.
-Suppose the many-particle quantum state $|\psi\rangle$ is an ideal coherent state at $T=0$. 
+Suppose the many-particle quantum state $|\psi\rangle$ is an ideal coherent state at $T=0$.
 Then $\hat{\Psi}(\vr)|\psi\rangle = \psi_0(\vr)|\psi\rangle$.
-We can view this as a trial many-particle wavefunction, varying $\psi_0(\vr)$ to variationally minimise the total energy. 
+We can view this as a trial many-particle wavefunction, varying $\psi_0(\vr)$ to variationally minimise the total energy.
 
 \section{Minimising the Variational Energy}
-With a coherent state, we do not have an exactly defined particle number, and are working within the grand canonical ensemble. 
-We must minimise with respect to the \emph{grand canonical Hamiltonian} $\hat{K}=\hat{\Ham}-\mu\hat{N}$, where $\hat{\Ham}$ is as defined in Eq. (14.3).
+With a coherent state, we do not have an exactly defined particle number, and are working within the grand canonical ensemble.
+We must minimise with respect to the \emph{grand canonical Hamiltonian} $\hat{K}=\hat{\Ham}-\mu\hat{N}$, where $\hat{\Ham}$ is as defined in Eq (14.3).
 If $|\psi\rangle$ is a coherent state, the variational energy is
 \begin{align}
     \begin{split}
@@ -1669,8 +1705,8 @@ These \emph{fluctuation operators} also have bosonic commutation relations:
     [\delta\hat{\Psi}(\vr),\delta\hat{\Psi}^\dagger(\vr')] &= \delta(\vr-\vr'), & [\delta\hat{\Psi}(\vr),\delta\hat{\Psi}(\vr')] &= [\delta\hat{\Psi}^\dagger(\vr),\delta\hat{\Psi}^\dagger(\vr')] = 0.
 \end{align}
 Substituting this expansion of $\hat{\Psi}(\vr)$ into $\hat{K}$, we neglect terms involving products of 3 or 4 fluctuation operators as ``small".
-Hence, $\hat{K}\approx E_0+\hat{\Ham}_1+\hat{\Ham}_2$, where $\hat{\Ham}_1$ and $\hat{\Ham}_2$ collect terms linear and quadratic in the fluctuation operators, respectively. 
-Eq. (14.16) implies $\hat{\Ham}_1=0$, and so we concentrate on
+Hence, $\hat{K}\approx E_0+\hat{\Ham}_1+\hat{\Ham}_2$, where $\hat{\Ham}_1$ and $\hat{\Ham}_2$ collect terms linear and quadratic in the fluctuation operators, respectively.
+Eq (14.16) implies $\hat{\Ham}_1=0$, and so we concentrate on
 \begin{align}
     \begin{split}
         \hat{\Ham}_2 = &\int \delta\hat{\Psi}^\dagger(\vr)\left[-\frac{\hbar^2\del^2}{2m}+V(\vr)-\mu\right]\delta\hat{\Psi}(\vr)\,d^3r + 2g\int |\psi_0(\vr)|^2\delta\hat{\Psi}^\dagger(\vr)\delta\hat{\Psi}(\vr)\,d^3r \\
@@ -1685,14 +1721,14 @@ In the homogeneous (setting $V(\vr)=0$), and letting $\psi_0=\sqrt{n_0}$, then i
 \begin{align}
     \hat{\Ham}_2 &= \sum_{\vk}\left[\left(\frac{\hbar^2k^2}{2m}-\mu\right)\hag_{\vk}\ha_{\vk} + \frac{gn_0}{2}\left(\hag_{\vk}\hag_{-\vk} + 4\hag_{\vk}\ha_{\vk} + \ha_{-\vk}\ha_{\vk}\right)\right].
 \end{align}
-Note that from Eq. (14.16), we can determine that $\mu=gn_0$.
+Note that from Eq (14.16), we can determine that $\mu=gn_0$.
 $\hat{\Ham}_2$ can be diagonalised by means of a \emph{Bogoliubov transformation.}
 We define new operators $\hat{b}_{\vk},\hat{b}_{-\vk}$ implicitly through
 \begin{align}
     \ha_{\vk} &= u_{\vk}\hat{b}_{\vk} - v_{\vk}\hat{b}^\dagger_{-\vk}, & \hag_{\vk} &= u_{\vk}\hat{b}^\dagger_{\vk} - v_{\vk}\hat{b}_{-\vk}.
 \end{align}
 The \emph{quasiparticle operators} $\hat{b}_{\vk},\hat{b}^\dagger_{\vk}$ have bosonic commutation relations if $u_{\vk}^2-v_{\vk}^2=1$.
-Substituting these into Eq. (14.20), we eliminate the anomalous terms ($\propto \hat{b}_{\vk}\hat{b}_{-\vk},\hat{b}^\dagger_{\vk}\hat{b}^\dagger_{-\vk}$) by setting
+Substituting these into Eq (14.20), we eliminate the anomalous terms ($\propto \hat{b}_{\vk}\hat{b}_{-\vk},\hat{b}^\dagger_{\vk}\hat{b}^\dagger_{-\vk}$) by setting
 \begin{align}
     \left(\frac{\hbar^2k^2}{2m}+gn_0\right) \frac{2u_{\vk}}{v_{\vk}} + gn_0\left(1+\frac{u_{\vk}^2}{v_{\vk}^2}\right) = 0.
 \end{align}
@@ -1701,46 +1737,461 @@ The quasiparticle excitations can then be shown to have the energy spectrum
     E_{\vk} &= \sqrt{\frac{\hbar^2k^2}{2m}\left(\frac{\hbar^2k^2}{2m}+2gn_0\right)}.
 \end{align}
 For small $k$ ($\ll\sqrt{4gn_0m/\hbar}$), $E_{\vk}\approx ck$ where $c=\sqrt{\hbar^2gn_0/m}$ is the phonon velocity or \emph{speed of sound.}
-For large $k$, $E_{\vk}\approx \hbar^2k^2/2m$ tends to the free particle energy. 
-This explains the linear dispersion near $k=0$ necessary for superfluidity. 
-A weakly interacting Bose gas is a superfluid; a non-interacting Bose gas is not. 
+For large $k$, $E_{\vk}\approx \hbar^2k^2/2m$ tends to the free particle energy.
+This explains the linear dispersion near $k=0$ necessary for superfluidity.
+A weakly interacting Bose gas is a superfluid; a non-interacting Bose gas is not.
 
 \chapter{Coherence in Superconductors}
 \section{Fermionic Quantum Fields}
-The creation and annihilation operatos of fermionic particles $\hat{c}^\dagger,\hat{c}$ have anti-commutation relations (see Section 13.8). 
-This is due to the antisymmetric nature of fermionic wavefunctions, which is itself due to the Pauli exclusion principle. 
+The creation and annihilation operators of fermionic particles $\hat{c}^\dagger,\hat{c}$ have anti-commutation relations (see Section 13.8).
+This is due to the antisymmetric nature of fermionic wavefunctions, which is itself due to the Pauli exclusion principle.
 Hence, in the occupation number representation, the only possible states $|n\rangle$ are for $n=0,1$ and $\hat{c}\hat{c}|n\rangle=\hat{c}^\dagger\hat{c}^\dagger|n\rangle=0$.
-As with bosons (see Section 14.1), we can combine such creation and annihilation operatoes with their associated spatial modes to form fermionic field operators. Hence
+As with bosons (see Section 14.1), we can combine such creation and annihilation operators with their associated spatial modes to form fermionic field operators. Hence
 \begin{align}
-    \left[\hat{\Psi}_\sigma(\vr),\hat{\Psi}_{\sigma'}(\vr')\right]_+ &= \delta(\vr-\vr')\delta_{\sigma\sigma'},
-\end{align} 
+    \left[\hat{\Psi}_\sigma(\vr),\hat{\Psi}_{\sigma'}(\vr')\right]_+ &= \delta(\vr-\vr')\delta_{\sigma\sigma'}, & \left[\hat{\Psi}_\sigma(\vr),\hat{\Psi}_{\sigma'}(\vr')\right]_+ &= \left[\hat{\Psi}_\sigma^\dagger(\vr),\hat{\Psi}_{\sigma'}^\dagger(\vr')\right]_+ = 0,
+\end{align}
+where $\sigma$ is a spin index.
 
+\section{Fermionic Pair States}
+In BCS theory, every electron near the Fermi surface participates in a pairing.
+A \emph{single pair} of electrons binds into a spin singlet state with a two-body wavefunction,
+\begin{align}
+    \psi_{\sigma_1\sigma_2}(\vr_1,\vr_2) &= \phi(\vr_1-\vr_2)\frac{1}{\sqrt{2}}\left(|\uparrow\downarrow\rangle-|\downarrow\uparrow\rangle\right).
+\end{align}
+A many-particle wavefunction in which every particle is paired can be written:
+\begin{align}
+    \psi_{\sigma_1\dots\sigma_N}(\vr_1,\dots,\vr_N) &= \frac{1}{\sqrt{N!}}\sum_P (-1)^P\psi_{\sigma_1\sigma_2}(\vr_1,\vr_2)\psi_{\sigma_3\sigma_4}(\vr_3,\vr_4)\dots\psi_{\sigma_{N-1}\sigma_N}(\vr_{N-1}\vr_N).
+\end{align}
+Alternatively (and equivalently), one can define operators which create or annihilate pairs of electrons:
+\begin{align}
+    \hat{\phi}^\dagger(\vec{R}) &\equiv \int \phi(\vr)\hat{\Psi}_{\uparrow}^\dagger\left(\vec{R}+\frac{\vr}{2}\right)\hat{\Psi}_{\downarrow}^\dagger\left(\vec{R}-\frac{\vr}{2}\right)\,d^3r.
+\end{align}
+This operator creates a spin singlet electron pair, where the electrons are separated by $\vr$ and with center of mass at $\vec{R}$.
 
+\section{One- and Two-Particle Density Matrices}
+One might expect such a fermion pair as created by $\hat{\phi}^\dagger(\vec{R})$ to behave as a boson.
+This is not true, however, as can be seen from the fact that $\hat{\phi}(\vec{R}),\hat{\phi}^\dagger(\vec{R}')$ do not obey bosonic commutation relations.
+These pairs therefore do not Bose-condense.
+However, it is possible to find a state of ODLRO of Cooper pairs.
+We can define a one-particle density matrix for pairs $\rho_1(\vec{R}-\vec{R}')=\langle\hat{\phi}^\dagger(\vec{R})\hat{\Phi}(\vec{R}')\rangle$, related to the two-particle density matrix for the electrons, as
+\begin{align}
+    \rho_{2_{\sigma_1\sigma_2\sigma_3\sigma_4}}(\vr_1,\vr_2,\vr_3,\vr_4) &= \langle\hat{\Psi}_{\sigma_1}^\dagger(\vr_1)\hat{\Psi}_{\sigma_2}^\dagger(\vr_2)\hat{\Psi}_{\sigma_3}^\dagger(\vr_3)\hat{\Psi}_{\sigma_4}^\dagger(\vr_4)\rangle.
+\end{align}
+Inserting Eq (15.4) into the pair density matrix yields
+\begin{align}
+    \rho_1(\vec{R}-\vec{R}') &= \iint \phi(\vr)\phi^*(\vr')\rho_{2_{\uparrow\downarrow\downarrow\uparrow}}\left(\vec{R}+\frac{\vr}{2},\vec{R}-\frac{\vr}{2},\vec{R}'-\frac{\vr'}{2},\vec{R}'+\frac{\vr'}{2}\right).
+\end{align}
 
+\newpage
+\section{Off-Diagonal Long-Ranged Order}
+The pair wavefunction $\phi(\vr)$ is a quantum mechanical bound state, and therefore tends to zero for large $|\vr|$.
+We define the scale of the range of the bound state by $\xi_0$ (the BCS \emph{coherence length}).
+The main contributions to the pair density matrix are where $\vr_!$ and $\vr_2$ are separated by less than $\xi_0$, and similarly $\vr_3$ and $\vr_4$ are separated by less than $\xi_0$.
+The pair $\vr_1,\vr_2$ and the pair $\vr_3,\vr_4$ can be separated by any distance however.
+We can have ODLRO in the pair density matrix, provided that $\rho_1(\vec{R}-\vec{R}')$ tends to a constant value as $|\vec{R}-\vec{R}'|\to\infty$.
+The ODLRO, and the associated coherent state, is of Cooper pairs, not single electrons.
+In terms of the two-particle electron density matrix, this ODLRO corresponds to a limit where $\vr_1$ and $\vr_2$, and $\vr_3$ and $\vr_4$, are close, but these two pairs are separated by an arbitrarily large distance.
 
+\section{Macroscopic Wavefunction and the Ginzburg-Landau Order Parameter}
+In a similar fashion as in the weakly-interacting Bose gas (see Section 14.4), we assume the pair density matrix to be factorisable, in that
+\begin{align}
+    \rho_1(\vec{R}-\vec{R}')&\approx\langle\hat{\phi}^\dagger(\vec{R})\rangle\langle\hat{\phi}(\vec{R}')\rangle,\quad |\vec{R}-\vec{R}'|\to\infty.
+\end{align}
+We can therefore also define a \emph{macroscopic wavefunction} by $\psi(\vec{R}) = \langle\hat{\phi}(\vec{R})\rangle$, which is effectively the Ginzburg-Landau order parameter for the superconductor.
 
+\section{Dynamics: Heisenberg's Equations of Motion}
+In more conventional condensed matter systems, one is usually more interested in equilibrium properties.
+In ensembles of ultracold atoms, however, one quite commonly considers the dynamics of the system.
+Consider the expectation value $\langle\hat{A}\rangle$ of a general operator $\hat{A}$.
+For a pure state $\psi\rangle,\langle\hat{A}\rangle=\langle\psi|\hat{A}|\psi\rangle$.
+In general,
+\begin{align}
+    \dt\langle\hat{A}\rangle &= \left(\dt\langle\psi|\right)\hat{A}|\psi\rangle + \langle\hat{A}\left(\dt|\psi\rangle\right) + \langle\psi|\frac{\p\hat{A}}{\p t}|\psi\rangle,
+\end{align}
+where $\frac{\p\hat{A}}{\p t}\neq0$ only if $\hat{A}$ has an explicit time-dependence, e.g. $\hat{A}=\hat{x}\cos(\om t)$.
+From the Schrodinger equation,
+\begin{align}
+    \begin{split}
+        \dt\langle\hat{A}\rangle &= \frac{i}{\hbar}\left(-i\hbar\dt\langle\psi|\right)\hat{A}|\psi\rangle - \frac{i}{\hbar}\langle\psi|\hat{A}\left(i\hbar\dt|\psi\rangle\right) + \langle\psi|\frac{\p\hat{A}}{\p t}|\psi\rangle \\
+                                 &= \frac{i}{\hbar}\langle\psi|\hat{\Ham}\hat{A}|\psi\rangle - \frac{i}{\hbar}\langle\psi|\hat{A}\hat{\Ham}|\psi\rangle + \langle\psi|\frac{\p\hat{A}}{\p t}|\psi\rangle \\
+                                 &= \langle\psi|\left(\frac{i}{\hbar}[\hat{\Ham},\hat{A}]+\frac{\p\hat{A}}{\p t}\right)|\psi\rangle.
+    \end{split}
+\end{align}
+Shifting the time-dependence from the wavefunction to the operators,
+\begin{align}
+    \frac{d\hat{A}}{dt} &= \frac{i}{\hbar}[\hat{\Ham},\hat{A}]+\frac{\p\hat{A}}{\p t}
+\end{align}
+is the \textbf{Heisenberg equation of motion} for $\hat{A}$.
+Using the Hamiltonian operator of Eq (14.3), one can quite readily determine
+\begin{align}
+    i\hbar\dt\hat{\Psi}(\vr) &= \left[-\frac{\hbar^2\del^2}{2m}+V(\vr)+\int U(\vr-\vr')\hat{\Psi}^\dagger(\vr')\hat{\Psi}(\vr')\,d^3r'\right]\hat{\Psi}(\vr),
+\end{align}
+and the time-dependent Gross-Pitaevskii equation can be seen to be the classical limit of this equation (the bosonic field operators are replaced by classical fields), when the interaction potential is replaced by a contact term.
 
+\chapter{Phonons and Cooper Pairs}
+\section{Key Points in BCS Theory}
+\begin{itemize}
+    \item The effective forces between electrons may be attractive in a solid, due to coupling between electrons and phonons of the underlying crystal lattice.
+    \item \textbf{Leon Cooper} considered two electrons outside an occupied Fermi surface, and found they formed a stable pair bound state, however weak the attractive force.
+    \item \textbf{John Robert Schrieffer} constructed a many-particle wavefunction, having the form of a coherent state, with all electrons near to the Fermi surface paired up.
+        The \emph{BCS energy gap} $2\Delta$ corresponds to the energy needed to break up such a pair.
+\end{itemize}
 
+\section{Electron-Electron Interactions}
+Electrons in free space (\emph{bare} electrons) mutually repel via the Coulomb interaction,
+\begin{align}
+    V(\vr-\vr') &= \frac{e^2}{4\pi\e_0|\vr-\vr'|}.
+\end{align}
+In a metal, however, we should properly think about \emph{quasiparticles} rather than bare electrons.
+The relevant quasiparticles are excitations consisting of a moving electron surrounded by an \emph{exchange correlation hole.}
+This is due to the fact that when an electron moves, other electrons must move out of the way.
+In a metal, the effective Coulomb interaction between quasiparticles is substantially reduced by screening.
+The Thomas-Fermi model of screening produces
+\begin{align}
+    V_{TF}(\vr-\vr') &= \frac{e^2}{4\pi\e_0|\vr-\vr'|}e^{-|\vr-\vr'|/r_{TF}},
+\end{align}
+where $r_{TF}$ is the \emph{screening length.}
+The effective repulsion is now \emph{short-range.}
 
+\section{Phonons in a Solid}
+One can view the ionic cores in a metallic solid as a system of weakly-coupled harmonic oscillators, with equilibrium positions set by the crystal lattice structure.
+Phonons then correspond to excitations of the \emph{normal modes.}
+The effective Hamiltonian for phonons in a solid is therefore a set of quantum harmonic oscillators, one for each wave-vector $\vec{q}$ and phonon mode,
+\begin{align}
+    \hat{\Ham} &= \sum_{\vec{q},\lambda}\hbar\om_{\vec{q}\lambda}\left(\hag_{\vec{q}\lambda}\ha_{\vec{q}\lambda}+\frac12\right),
+\end{align}
+where $\hag_{\vec{q}\lambda},\ha_{\vec{q}\lambda}$ create or annihilate a phonon in mode $\lambda$.
+There are $3N_a$ phonon branches in a crystal with $N_a$ atoms per unit cell.
+We assume one atom per unit cell, in which case there are two transverse branches and one longitudinal.
 
+\section{Electron-Phonon Interactions}
+An electron in Bloch state $\psi_{n\vk}(\vr)$ can excite a phonon of quasimomentum $\hbar q$, leaving the electron in a state $\psi_{n\vk'}(\vr)$ with quasimomentum $\hbar\vk'=\hbar\vk-\hbar\vec{q}$.
+A second electron can then absorb the phonon and pick up the momentum $\hbar\vec{q}$.
+There is thus an effective \emph{phonon-mediated interaction} between electrons.
 
+Consider the effect of phonon propagation.
+In the crystal lattice, the $j$th mass $M$ ionic core with equilibrium position $\vec{R}_j$ will be displaced by
+\begin{align}
+    \delta\vec{R}_j &= \sum_{\vec{q}\lambda} \ve_{\vec{q}\lambda}\sqrt{\frac{\hbar}{2M\om_{\vec{q}\lambda}}}\left(\hag_{\vec{q}\lambda}+\ha_{-\vec{q}\lambda}\right)e^{i\vec{q}\cdot\vec{R}_j},
+\end{align}
+where $\ve_{\vec{q}\lambda}$ is a unit vector in the direction of the atomic displacements for mode $\vec{q}\lambda$ (e.g. the direction of propagation for the longitudinal branch).
+The creation and annihilation operators are like quantised complex oscillation amplitudes.
+Such a displacement of the crystal lattice modulates the electron density and the effective external potential for the electrons $V_1(\vr)$.
+We define the \emph{deformation potential} by
+\begin{align}
+    \delta V_1(\vr) &= \sum_j \left(\frac{\p V_1(\vr)}{\p\vec{R}_j}\right)\delta\vec{R}_j.
+\end{align}
+A moving electron will experience the periodic deformation potential and undergo diffraction.
+If initially in Bloch state $\psi_{n\vk}(\vr)$, it can be diffracted to another Bloch state $\psi_{n'\vk-\vec{q}}(\vr)$.
+The ``missing momentum" is removed by the phonon.
+The emitted phonon can propagate for a time, and may then be absorbed by a second electron.
+Momentum is thus transferred from one electron to another.
 
+\section{Effective Interaction due to Exchange of Phonons}
+In Fourier space, the effective interaction potential, when the phonon has wave-vector $\vec{q}$ and frequency $\om_{\vec{q}\lambda}$, turns out to have the form
+\begin{align}
+    V_{eff}(\vec{q},\om) &= |g_{\vec{q}\lambda}|^2\frac{1}{\om^2-\om_{\vec{q}\lambda}^2},\quad g_{\vec{q}\lambda} \approx \sqrt{\frac{m}{M}}.
+\end{align}
+$g_{\vec{q}\lambda}$ is related to the matrix element for scattering an electron from $\vk$ to $\vk+\vec{q}$, and $m$ is the electron's effective mass at the Fermi surface ($\frac{m}{M}\approx10^{-4}\implies$ weak coupling).
+Simplifying, we replace $g_{\vec{q}\lambda}$ with a constant averaged value $g_{\text{eff}}$ and $\om_{\vec{q}\lambda}$ with $\om_D$, a typical phonon frequency (usually taken to be the Debye frequency).
+$V_{\text{eff}}(\om)$ is then attractive for $\om<\om_D$, and repulsive for $\om>\om_D$.
+We are only interested in electrons within $\pm k_BT$ of the Fermi energy, $\e_F$ (in the low temperature regime relevant to superconductors $\hbar\om_D\gg k_BT$).
+The effective interaction is essentially always attractive, and we set
+\begin{align}
+    V_{eff}(\om) &= -|g_{\text{eff}}|^2,\quad \om<\om_D.
+\end{align}
+The corresponding Hamiltonian due to the effective electron-electron interaction is
+\begin{align}
+    \hat{\Ham}_1 &= -|g_{\text{eff}}|^2 \sum \hat{c}^\dagger_{\vk_1+\vec{q}\sigma_1}\hat{c}^\dagger_{\vk_2-\vec{q}\sigma_2}\hat{c}_{\vk_1\sigma_1}\hat{c}_{\vk_2\sigma_"}.
+\end{align}
+The sum is over all values of the indices with the restriction that $|\e_{\vk_j}-\e_F|<\hbar\om_D$; electrons near the Fermi surface interact, but distant Bloch states are unaffected.
 
+\section{Cooper's Model}
+At $T=0$, all states with $k<k_F$ within a spherical Fermi surface are occupied.
+Two electrons placed outside the Fermi surface will interact via phonon exchange.
+The two-particle wavefunction of these extra electrons is
+\begin{align}
+    \psi_{\sigma_1\sigma_2}(\vr_1,\vr_2) &= e^{i\vk\cdot\vec{R}}\phi(\vr_1-\vr_2)|\varphi\rangle, \text{ where } \vec{R} = \frac{(\vr_1+\vr_2)}{2}
+\end{align}
+is the CoM, $\hbar\vk$ is the total momentum, and $|\varphi\rangle$ describes the spin state.
+In the ground state, $\vk=0$, which we assume from now on.
+The spin wavefunction can be singlet (left, total spin $S=0$) or triplet (right, $S=1$):
+\begin{align}
+    |\varphi\rangle &= \frac{1}{\sqrt{2}}\left(|\uparrow\downarrow\rangle-|\downarrow\uparrow\rangle\right), & |\varphi\rangle &= \begin{cases} |\uparrow\uparrow\rangle \\ \frac{1}{\sqrt{2}}\left(|\uparrow\downarrow\rangle+|\downarrow\uparrow\rangle\right) \\ |\downarrow\downarrow\rangle \end{cases}.
+\end{align}
+Almost all superconductors have singlet Cooper pairs (assumed from now on).
+
+\section{Cooper Pair Wavefunction}
+Fermion antisymmetry implies $\psi_{\sigma_1\sigma_2}(\vr_1,\vr_2)=-\psi_{\sigma_2\sigma_2}(\vr_2,\vr_1)$.
+Hence, with a spin singlet, $\phi(\vr_1-\vr_2)$ must be equal to $\phi(\vr_2-\vr_1)$, i.e. an \emph{even} function.
+In terms of plane waves,
+\begin{align}
+    \phi(\vr_1-\vr_1) &= \sum_{\vk}\phi_{\vk}e^{i\vk(\vr_1-\vr_2)},
+\end{align}
+where the $\phi_{\vk}$ are expansion coefficients.
+Since $\phi(\vr_1-\vr_2)$ is even, $\phi_{\vk}=\phi_{-\vk}$; the full pair wavefunction can thus be written
+\begin{align}
+    \psi_{\sigma_1\sigma_2}(\vr_1,\vr_2) &= \sum_{\vk}\phi_{\vk}\psi_{\vk,S=0}(\vr_1-\vr_2) \equiv \sum_{\vk} \phi_{\vk}\frac{e^{i\vk\cdot(\vr_1-\vr_2)}|\uparrow\downarrow\rangle-e^{-i\vk\cdot(\vr_1-\vr_2)}|\downarrow\uparrow\rangle}{\sqrt{2}}.
+\end{align}
+The state is thus a pairing of electrons at $\vk$ with those of opposite spin at $-\vk$.
+As all states below $k_F$ are already filled, the range of the sum is restricted to $k\equiv|\vk|>k_F$.
+
+\section{Energy and the Existence of a Bound State}
+Substituting $\psi_{\sigma_1\sigma_2}(\vr_1,\vr_2)$ into an appropriate two-particle Schrodinger equation gives
+\begin{align}
+    E\phi_{\vk} &= 2\e_{\vk}\phi_{\vk}-|g_{\text{eff}}|^2\sum_{\vk'}\phi_{\vk'},
+\end{align}
+where $E$ is the total two-particle energy.
+The effective interaction takes a momentum $\vec{q}=\vk'-\vk$ from one electron and transfers it to the other.
+A pair of electrons $\vk,-\vk$ thus becomes $\vk',-\vk'$ with a matrix element $-|g_{\text{eff}}|^2$.
+As $\e(\vk)<\hbar\om_D$, we are in fact further limited to $k<k_F+\frac{\om_D}{v}$, where $v$ is the Bloch wave group velocity at the Fermi surface.
+We define $C=\sum_{\vk}\phi_{\vk}$ and solve the Schrodinger equation for $\phi_{\vk}$:
+\begin{align}
+    \phi_{\vk} &= -C|g_{\text{eff}}|^2\frac{1}{E-2\e_{\vk}}.
+\end{align}
+Self-consistency then requires
+\begin{align}
+    C &\equiv \sum_{\vk} \phi_{\vk} = -C|g_{\text{eff}}|^2\sum_{\vk}\frac{1}{E-2\e_{\vk}} \implies 1 = -|g_{\text{eff}}|^2\sum_{\vk}\frac{1}{E-2\e_{\vk}}.
+\end{align}
+Converting the sum over $\vk$ to an integral over the density of states gives
+\begin{align}
+    1 &= -|g_{\text{eff}}|^2g(\e_F)\int_0^{\hbar\om_D} \frac{d\e}{E_2\e} \implies E = -2\hbar\om_De^{-1/\lambda},
+\end{align}
+where the \emph{electron-phonon coupling parameter} is defined by $\lambda=|g_{\text{eff}}|^2g(\e_F)$ (assumed small, $\lambda\ll1$).
+Hence, a bound state exists, with exponentially small energy when $\lambda$ is small.
+Typical Debye energies $\hbar\om_D$ correspond to energy scales $\approx100-300\,$K.
+The very small exponential factor leads to $T_C\approx1\,$K for most metallic superconductors.
+
+\chapter{Coherent States and the BCS Gap Parameter}
+\section{Coherent State of Cooper Pairs}
+From the solution to Cooper's model, it follows that the whole Fermi surface should be unstable to the creation of Cooper pairs.
+Once there is an attractive effective interaction, effectively every electron at the Fermi surface binds into a Cooper pair.
+Schrieffer proposed a suitable many-particle wavefunction to be a coherent state of Cooper pairs.
+We look for a uniform translationally-invariant solution, making it convenient to work in $\vk$ space.
+Hence, rather than using $\hat{\phi}(\vec{R})$, we define $\hat{P}_{\vk}^\dagger=\hat{c}^\dagger_{\vk\uparrow}\hat{c}^\dagger_{-\vk\downarrow}$, which creates a pair of electrons of zero total crystal momentum, and opposite spins.
+Recalling that a single-mode bosonic coherent state $|\alpha\rangle=e^{-|\alpha|^2/2}\exp(\alpha\hag)|0\rangle$, Schrieffer proposed the following coherent state:
+\begin{align}
+    |\psi_{BCS}\rangle &\propto \exp\left(\sum_{\vk}\alpha_{\vk}\hat{P}_{\vk}^\dagger\right)|0\rangle,
+\end{align}
+where $|0\rangle$ designates the vacuum (zero occupation in the band at the Fermi surface) state, and the $\alpha_{\vk}$ are adjustable (to minimise the energy) complex parameters.
+
+\section{Normalising the BCS State}
+The pair commutation relations are such that
+\begin{align}
+    [\hat{P}_{\vk},\hat{P}^\dagger_{\vk}]&\neq1, & [\hat{P}_{\vk},\hat{P}_{\vk'}] &= [\hat{P}_{\vk}^\dagger,\hat{P}_{\vk'}^\dagger] = 0.
+\end{align}
+Note also that
+\begin{align}
+    [\hat{c}_{\vk\uparrow}^\dagger,\hat{c}_{\vk\uparrow}^\dagger]_+ &= 0 \implies \left(\hat{c}_{\vk\uparrow}^\dagger\right)^2 = 0 \implies \left(\hat{P}_{\vk}^\dagger\right)^2 = \hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}^\dagger\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}^\dagger = 0.
+\end{align}
+We can therefore rewrite Eq (17.1) as
+\begin{align}
+    |\psi_{BCS}\rangle &\propto \prod_{\vk}\exp(\alpha_{\vk}\hat{P}_{\vk}^\dagger)|0\rangle = \prod_{\vk}(1+\alpha_{\vk}\hat{P}_{\vk}^\dagger)|0\rangle.
+\end{align}
+The state is normalised by noting that
+\begin{align}
+    \begin{split}
+        \langle\psi_{BCS}|\psi_{BCS}\rangle &\propto \langle0|\prod_{\vk,\vk'}(1+\alpha_{\vk}^*\hat{P}_{\vk})(1+\alpha_{\vk'}\hat{P}_{\vk'}^\dagger)|0\rangle \\
+                                            &= \langle0|\prod_{\vk}(1+\alpha_{\vk}^*\hat{P}_{\vk})(1+\alpha_{\vk}\hat{P}_{\vk}^\dagger)|0\rangle \\
+                                            &= \prod_{\vk}(1+|\alpha_{\vk}|^2).
+    \end{split}
+\end{align}
+The normalised BCS state is then
+\begin{align}
+    |\psi_{BCS}\rangle &= \prod_{\vk}(u_{\vk}^*+v_{\vk}^*\hat{P}_{\vk}^\dagger)|0\rangle, & u_{\vk}^* &= \frac{1}{\sqrt{1+|\alpha_{\vk}|^2}}, & v_{\vk}^* &= \frac{\alpha_{\vk}}{\sqrt{1+|\alpha_{\vk}|^2}},
+\end{align}
+where clearly $|u_{\vk}|^2+|v_{\vk}|^2=1$.
+One can also write the BCS state so that it treats electrons and holes symmetrically
+\begin{align}
+    |\psi_{BCS}\rangle &= \prod_{k>k_F} (u_{\vk}^*+v_{\vk}^*\hat{P}_{\vk}^\dagger)\prod_{k'<k_F}(u_{\vk'}^*\hat{P}_{\vk'}+v_{\vk'}^*)|\psi_0\rangle,
+\end{align}
+where $|\psi_0\rangle$ is the $T=0$ Fermi sea, in which all states with $k<k_F$ are occupied, and the rest are unoccupied.
+
+\section{(Further) Simplified Hamiltonian}
+Using the BCS approximation for the effective interaction, the relevant Hamiltonian is
+\begin{align}
+    \hat{\Ham} &= \sum \e_{\vk}\hat{c}^\dagger_{\vk\sigma}\hat{c}_{\vk\sigma} - |g_{\text{eff}}|^2\sum \hat{c}_{\vk_1+\vec{q}\sigma_1}^\dagger\hat{c}_{\vk_1\sigma_1}\hat{c}_{\vk_2\sigma_2},
+\end{align}
+where the interaction is restricted to $\vk$ such that $\e_{\vk}$ is within $\pm\hbar\om_D$ of the Fermi energy.
+Assuming the most important interactions are those involving Cooper pairs $\vk\uparrow$ and $-\vk\downarrow$, we drop all interaction terms except those where $\vk_1=-\vk_2$ and $\sigma_1=-\sigma_2$:
+\begin{align}
+    \hat{\Ham} &= \sum_{\vk,\sigma} \e_{\vk}\hat{c}_{\vk\sigma}^\dagger\hat{c}_{\vk\sigma} - |g_{\text{eff}}|^2\sum_{\vk,\vk'} \hat{c}^\dagger_{\vk\uparrow}\hat{c}_{-\vk\downarrow}^\dagger\hat{c}_{-\vk'\downarrow}\hat{c}_{\vk'\uparrow}.
+\end{align}
+
+\section{Inserting the BCS Trial Wavefunction}
+Using the trial BCS wavefunction, we can treat $u_{\vk}$ and $v_{\vk}$ as variational parameters, adjustable to minimise the total energy, $E=\langle\psi_{BCS}|\hat{\Ham}|\psi_{BCS}\rangle$.
+Doing this, the mean total particle number $\langle\hat{N}\rangle$ must be kept constant, and we must keep $|u_{\vk}|^2+|v_{\vk}|^2=1$.
+The average spin-up occupation of Bloch state $\vk$ is
+\begin{align}
+    \begin{split}
+        \langle\hat{n}_{\vk\uparrow}\rangle &= \langle\psi_{BCS}|\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{\vk\uparrow}|\psi_{BCS}\rangle \\
+                                            &= \langle0|(u_{\vk}+v_{\vk}\hat{c}_{-\vk\downarrow}\hat{c}_{\vk\uparrow})\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{\vk\uparrow}(u_{\vk}^*+v_{\vk}^*\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}^\dagger)|0\rangle \\
+                                            &= \langle0|v_{\vk}\hat{c}_{\vk\uparrow}v_{\vk}^*\hat{c}_{\vk\uparrow}^\dagger|0\rangle = |v_{\vk}|^2,
+    \end{split}
+\end{align}
+and similarly $\langle\hat{n}_{\vk\downarrow}\rangle=|v_{\vk}|^2$.
+Note that (normally-ordered) creation/annihilation operators acting on $\langle0|/|0\rangle$ return $0$.
+It follows that the total number of electrons is
+\begin{align}
+    \langle\hat{N}\rangle &= 2\sum_{\vk}|v_{\vk}|^2.
+\end{align}
+Similarly, one can show
+\begin{align}
+    \langle\sum_{\vk\sigma}\e_{\vk}\hat{c}_{\vk\sigma}\hat{c}_{\vk\sigma}\rangle &= 2\sum_{\vk}\e_{\vk}|v_{\vk}|^2, & \langle\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}^\dagger\hat{c}_{-\vk\downarrow}\hat{c}_{\vk'\uparrow}\rangle &= v_{\vk}v_{\vk'}^*u_{\vk'}u_{\vk}^*.
+\end{align}
+From this, we can then derive
+\begin{align}
+    E &= 2\sum_{\vk} \e_{\vk}|v_{\vk}|^2 - |g_{\text{eff}}|^2\sum_{\vk\vk'}v_{\vk}v_{\vk'}^*u_{\vk'}u_{\vk}^*.
+\end{align}
+
+\section{Minimising the Energy}
+It is convenient to use the normalisation constraint $|u_{\vk}|^2+|v_{\vk}|^2=1$ to express
+\begin{align}
+    E &= \sum_{\vk}\e_{\vk}\left(|v_{\vk}|^2-|u_{\vk}|^2+1\right) - |g_{\text{eff}}|^2\sum_{\vk\vk'}v_{\vk}v_{\vk'}^*u_{\vk'}u_{\vk}^*, & N &= \sum_{\vk}\left(|v_{\vk}|^2-|u_{\vk}|^2+1\right),
+\end{align}
+and use the method of Lagrange multipliers to find the minimum energy solution.
+Differentiating with respect to $u_{\vk}^*$ and $v_{\vk}^*$, the condition for a minimum is
+\begin{align}
+    0 &= \frac{\p E}{\p u_{\vk}^*} -\mu\frac{\p N}{\p u_{\vk}^*}+E_{\vk}u_{\vk}, & 0 &= \frac{\p E}{\p v_{\vk}^*}-\mu\frac{\p N}{\p v_{\vk}^*}+E_{\vk}v_{\vk}.
+\end{align}
+The chemical potential $\mu$ enters as the Lagrange multiplier enforcing conservation of the mean total particle number, and $E_{\vk}$ is the Lagrange multiplier associated with the normalisation constraint.
+Evaluating Eq (17.15) gives, where $\Delta=|g_{\text{eff}}|^2\sum_{\vk}u_{\vk}v_{\vk}^*$ is the \emph{BCS gap parameter},
+\begin{align}
+    (\e_{\vk}-\mu)u_{\vk} + \Delta v_{\vk} &= E_{\vk}u_{\vk}, & \Delta^*u_{\vk}-(\e_{\vk}-\mu)v_{\vk} &= E_{\vk}v_{\vk}.
+\end{align}
+The gap parameter can also be expressed as
+\begin{align}
+    \Delta &= |g_{\text{eff}}|^2\sum_{\vk}\langle\hat{c}_{-\vk\downarrow}\hat{c}_{\vk\uparrow}\rangle \equiv |g_{\text{eff}}|^2 \sum_{\vk}\langle\hat{P}_{\vk}\rangle.
+\end{align}
+
+\section{Evaluating the Gap Parameter}
+To determine $\Delta$, we must solve the equations of Eq (17.16), which can be cast as an eigenvalue problem:
+\begin{align}
+    \begin{pmatrix} \e_{\vk}-\mu & \Delta \\ \Delta^* & -\e_{\vk}+\mu\end{pmatrix}\begin{pmatrix}u_{\vk} \\ v_{\vk}\end{pmatrix} &= E_{\vk}\begin{pmatrix}u_{\vk} \\ v_{\vk}\end{pmatrix}.
+\end{align}
+$E_{\vk}$ corresponds to the excitation energy for addition of a hole or electron to the BCS ground state, and is expressed as eigenvalues:
+\begin{align}
+    \pm E_{\vk} &= \pm\sqrt{(\e_{\vk}-\mu)^2+|\Delta|^2}.
+\end{align}
+Acting with $(u_{\vk}^*,0)$ and $(0,v_{\vk}^*)$ on the left of Eq (17.18) yields two equations which, with $|u_{\vk}|^2+|v_{\vk}|^2=1$, can be solved simultaneously to give
+\begin{align}
+    |u_{\vk}|^2 &= \frac12\left(1+\frac{\e_{\vk}-\mu}{E_{\vk}}\right), & |v_{\vk}|^2 &= \frac12\left(1-\frac{\e_{\vk}-\mu}{E_{\vk}}\right), & u_{\vk}v_{\vk}^* &= \frac{\Delta}{2E_{\vk}}.
+\end{align}
+Combining the rightmost expression with the definition of the BCS gap parameter (see Section 17.5) yields the \textbf{BCS gap equation} (at $T=0$):
+\begin{align}
+    \Delta &= |g_{\text{eff}}|^2\sum_{\vk}\frac{\Delta}{2E_{\vk}} \implies 1 = \frac{|g_{\text{eff}}|^2}{2}\sum_{\vk}\frac{1}{\sqrt{(\e_{\vk}-\mu)^2+|\Delta|^2}}.
+\end{align}
+Recall we always work within the thin shell of Bloch states around the Fermi energy with $|\e_{\vk}-\mu|<\hbar\om_D$, where the BCS phonon-mediated electron-electron interaction is attractive.
+We therefore replace $\sum_{\vk}$ by $g(\e_F)\int\,d\e$:
+\begin{align}
+    1 &= \lambda \int_0^{\hbar\om_D} \frac{d\e}{\sqrt{\e^2+|\Delta|^2}},\quad \lambda = |g_{\text{eff}}|^2g(\e_F).
+\end{align}
+The result of the energy integral is approximately
+\begin{align}
+    1 &= \lambda\ln\left(\frac{2\hbar\om_D}{|\Delta|}\right) \implies |\Delta| = 2\hbar\om_De^{-1/\lambda},
+\end{align}
+which is the expression for the gap parameter at $T=0$.
+Note the strong similarity to the binding energy of a Cooper pair.
+In the same way (see Section 16.8), there is always a solution to the gap equation, for however small $\lambda$, and it follows that $T_C$ is typically much lower than other relevant energy scales in metals.
+
+\chapter{The BCS Energy Gap and Quasiparticle States}
+\section{Beyond the BCS Variational Ground State}
+Having found the variational ground state wavefunction $|\psi_{BCS}\rangle$, we wish to consider the case of $T>0$, and determine the energies of the lowest energy excited states.
+We consider only the case where the dimensionless \emph{electron-phonon coupling constant} $\lambda\ll1$ (weak coupling limit), which is usually justifiable.
+We consider $|\psi_{BCS}\rangle$ as a reference state, and consider small excitations (such as adding one extra electron or hole) relative to that state.
+
+\section{Effective Hamiltonian}
+We use the approximation
+\begin{align}
+    \hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}^\dagger\hat{c}_{-\vk'\downarrow}\hat{c}_{\vk'\uparrow} &\approx \langle\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}^\dagger\rangle\hat{c}_{-\vk'\downarrow}\hat{c}_{\vk'\uparrow}+\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}^\dagger\langle\hat{c}_{-\vk'\downarrow}\hat{c}_{\vk'\uparrow}\rangle,
+\end{align}
+which derives from a result known as \textbf{Wick's theorem} (that expectation values of products of operators are approximated by averages over all possible operator pairings).
+We have dropped ``uninteresting" averages such as $\langle\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{\vk\uparrow}\rangle$, which do not differ from the normal state.
+These can effectively be absorbed into the definitions of the single particle energies $\e_{\vk}$.
+The Hamiltonian of Eq (17.9) can therefore be replaced by
+\begin{align}
+    \begin{split}
+        \hat{\Ham} &= \sum_{\vk\sigma} (\e_{\vk}-\mu)\hat{c}_{\vk\sigma}^\dagger\hat{c}_{\vk\sigma} - |g_{\text{eff}}|^2\sum_{\vk\vk'}\left(\langle\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}^\dagger\rangle\hat{c}_{-\vk'\downarrow}\hat{c}_{\vk'\uparrow}+\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}\langle\hat{c}_{-\vk'\downarrow}\hat{c}_{\vk'\uparrow}\rangle\right) \\
+                   &= \sum_{\vk\sigma} (\e_{\vk}-\mu)\hat{c}_{\vk\sigma}^\dagger\hat{c}_{\vk\sigma} - \sum_{\vk} \left(\Delta^*\hat{c}_{-\vk\downarrow}\hat{c}_{\vk\uparrow}+\hat{c}_{\vk\uparrow}^\dagger\hat{c}_{-\vk\downarrow}^\dagger\Delta\right).
+    \end{split}
+\end{align}
+
+\section{Bogoliubov-Valatin Transformation}
+The above Hamiltonian can be solved exactly by Bogoliubov-Valatin transformation.
+We rewrite Eq (18.2) in matrix form:
+\begin{align}
+    \hat{\Ham} &= \sum_{\vk}\begin{pmatrix} \hat{c}_{\vk\uparrow}^\dagger & \hat{c}_{-\vk\downarrow}\end{pmatrix} \begin{pmatrix} \e_{\vk}-\mu & -\Delta \\ -\Delta^* & -\e_{\vk}+\mu \end{pmatrix}\begin{pmatrix} \hat{c}_{\vk\uparrow} \\ \hat{c}_{-\vk\downarrow}^\dagger\end{pmatrix}.
+\end{align}
+Noting that
+\begin{align}
+    \begin{pmatrix} \e_{\vk}-\mu & \Delta \\ \Delta^* & -\e_{\vk}+\mu \end{pmatrix} &= \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\begin{pmatrix} \e_{\vk}-\mu & -\Delta \\ -\Delta^* & -\e_{\vk}+\mu\end{pmatrix}\begin{pmatrix}1&0\\0&-1\end{pmatrix},
+\end{align}
+we can then see, using Eq (17.18), that
+\begin{align}
+    E_{\vk} &= \begin{pmatrix} u_{\vk}^* & -v_{\vk}^*\end{pmatrix}\begin{pmatrix} \e_{\vk}-\mu & -\Delta \\ -\Delta^* & -\e_{\vk}+\mu \end{pmatrix}\begin{pmatrix}u_{\vk} \\-v_{\vk}\end{pmatrix},
+\end{align}
+and we have determined the eigenvector of the matrix of Eq (18.4) with eigenvalue
+\begin{align}
+    E_{\vk} &= \sqrt{(\e_{\vk}-\mu)^2+|\Delta|^2}.
+\end{align}
+By orthogonality, the eigenvector with eigenvalue $-E_{\vk}$ must be $\begin{pmatrix} v_{\vk}^* \\ u_{\vk}^*\end{pmatrix}$.
+Now we know the eigenvalues and eigenvectors, we can diagonalise the matrix:
+\begin{align}
+    U^\dagger \begin{pmatrix}\e_{\vk}-\mu & -\Delta \\ -\Delta^* & -\e_{\vk}+\mu\end{pmatrix}U &= \begin{pmatrix}E_{\vk} & 0 \\ 0 & -E_{\vk}\end{pmatrix}, & U &= \begin{pmatrix} u_{\vk} & v_{\vk}^* \\ -v_{\vk} & u_{\vk}^* \end{pmatrix}.
+\end{align}
+Making use of this unitary transformation, the Hamiltonian becomes
+\begin{align}
+    \hat{\Ham} &= \sum_{\vk} \begin{pmatrix} \hat{b}_{\vk\uparrow}^\dagger & \hat{b}_{-\vk\downarrow}\end{pmatrix}\begin{pmatrix} E_{\vk} & 0 \\ 0 & -E_{\vk}\end{pmatrix}\begin{pmatrix}\hat{b}_{\vk\uparrow} \\ \hat{b}_{-\vk\downarrow}^\dagger\end{pmatrix}, & \begin{pmatrix} \hat{b}_{\vk\uparrow} \\ \hat{b}_{-\vk\downarrow}^\dagger \end{pmatrix} &= U^\dagger\begin{pmatrix}\hat{c}_{\vk\uparrow} \\ \hat{c}_{-\vk\downarrow}^\dagger\end{pmatrix}.
+\end{align}
+The new \emph{quasiparticle} operators can be written out explicitly as
+\begin{align}
+    \hat{b}_{\vk\uparrow} &= u_{\vk}^*\hat{c}_{\vk\uparrow}-v_{\vk}^*\hat{c}_{-\vk\downarrow}^\dagger, & \hat{b}_{-\vk\downarrow}^\dagger &= v_{\vk}\hat{c}_{\vk\uparrow}+u_{\vk}\hat{c}_{-\vk\downarrow}^\dagger,
+\end{align}
+and the Hamiltonian as
+\begin{align}
+    \hat{\Ham} &= \sum_{\vk} E_{\vk}\left(\hat{b}_{\vk\uparrow}^\dagger\hat{b}_{\vk\uparrow}-\hat{b}_{-\vk\downarrow}\hat{b}_{-\vk\downarrow}^\dagger\right) = \sum_{\vk} E_{\vk}\left(\hat{b}_{\vk\uparrow}^\dagger\hat{b}_{\vk\uparrow}+\hat{b}_{-\vk\downarrow}^\dagger\hat{b}_{-\vk\downarrow}\right) + \text{constant}.
+\end{align}
+
+\section{Properties of the Quasiparticle Operators}
+One can easily show that the quasiparticle operators obey fermionic anti-commutation relations, i.e.
+\begin{align}
+    [\hat{b}_{\vk\sigma},\hat{b}_{\vk'\sigma'}^\dagger]_+ &= \delta_{kk'}\delta_{\sigma\sigma'}, & [\hat{b}_{\vk\sigma},\hat{b}_{\vk'\sigma'}]_+ &= [\hat{b}_{\vk\sigma}^\dagger,\hat{b}_{\vk'\sigma'}^\dagger]_+ = 0.
+\end{align}
+Furthermore, the quasiparticles created and annihilated by these operators are not present in the variational ground state, since $\hat{b}_{\vk\uparrow}|\psi_{BCS}\rangle=\hat{b}_{-\vk\downarrow}|\psi_{BCS}\rangle=0$.
+This ground state is therefore the \emph{quasiparticle vacuum.}
+Excited states then correspond to adding one or more quasiparticles to the variational ground state.
+The excitation energy to do this is $E_{\vk}$.
+
+\section{Finite Temperature Quasiparticle Distribution}
+At finite $T$, the quasiparticles will have occupations given by the Fermi-Dirac distribution.
+Hence
+\begin{align}
+    \langle\hat{b}_{\vk\uparrow}^\dagger,\hat{b}_{\vk\uparrow}\rangle &= f(E_{\vk}), & \langle\hat{b}_{-\vk\downarrow}\hat{b}_{-\vk\downarrow}^\dagger\rangle &= 1-f(E_{\vk}), & f(E) &= \frac{1}{e^{E/k_BT}+1}.
+\end{align}
+One can then show that at finite $T>0$, the BCS gap parameter is given by
+\begin{align}
+    \Delta &= |g_{\text{eff}}|^2\sum_{\vk} \langle\hat{c}_{-\vk\downarrow}\hat{c}_{\vk\uparrow}\rangle = |g_{\text{eff}}|^2\sum_{\vk}u_{\vk}v_{\vk}^*[1-2f(E_{\vk})].
+\end{align}
+
+\section{Excitations in the Normal and Superconducting States}
+In the \emph{normal state}, $\Delta=0$ and the excitation energies are $\e_{\vk}$ for adding an electron to an unoccupied state, or $-\e_{\vk}$ for removing an electron/adding a hole.
+In the \emph{superconducting state}, the excitation energies become modified to $E_{\vk}$ for adding a quasiparticle, and $-E_{\vk}$ for removing one.
+Since $E_{\vk}\geq\Delta,-E_{\vk}\leq-\Delta$, the minimum energy needed to make an excitation (or \emph{energy gap}) is $2\Delta$.
+The quasiparticle excitations are in general superpositions of particle and hole excitations, although they tend to purely particle-/hole-like far above/below the Fermi surface.
+It turns out that $|v_{\vk}|^2$ is the probability the excitation is an electron when measuring the charge, and $|u_{\vk}|^2$ the probability that it is a hole.
+
+\section{Self-Consistent Determine of the Gap Parameter}
+Recalling the definition of $\Delta$ from Eq (18.13), the fact that at finite $T$ the quasiparticle occupations are given by the Fermi-Dirac distribution (see Section 18.5), Bardeen, Cooper, and Schrieffer obtained the general form of the \emph{BCS gap equation}:
+\begin{align}
+    \Delta &= |g_{\text{eff}}|^2\sum_{\vk} \frac{\Delta}{2E_{\vk}}\tanh\left(\frac{E_{\vk}}{2k_BT}\right) \implies 1 = \lambda \int_0^{\hbar\om_D} \tanh\left(\frac{\sqrt{\e^2+|\Delta|^2}}{2k_BT}\right)\,d\e,
+\end{align}
+where $\lambda=|g_{\text{eff}}|^2g(\e_F)$ is the electron-phonon coupling parameter.
+The BCS gap equation implicitly determines the gap $\Delta(T)$ for all $T$.
+Taking the limit $\Delta\to0$, one can obtain an expression for $T_C$:
+\begin{align}
+    k_BT_C &= 1.13\hbar\om_D\exp\left(-\frac{1}{\lambda}\right),
+\end{align}
+which is very similar to the binding energy in the Cooper model (see Section 16.8).
+At $T=0$, one can also solve the integral to determine $2\Delta(0)=3.52k_BT_C$, which is obeyed for a wide range of superconductors.
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

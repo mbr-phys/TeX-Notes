@@ -1,40 +1,83 @@
-\documentclass[relqm.tex]{subfiles}
+\documentclass[a4paper, 11pt, normalem]{report}
+
+\usepackage{../../../LaTeX-Templates/Notes}
+\usepackage{subfiles}
+\usepackage{tensor}
+
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+\tikzset{snake it/.style={decorate,decoration=snake}}
+
+\def\imagebox#1#2{\vtop to #1{\null\hbox{#2}\vfill}}
+
+\newcommand\hphi{\hat{\phi}}
+\newcommand\hpi{\hat{\pi}}
+\newcommand\hpsi{\hat{\psi}}
+\newcommand\vy{\unl{y}}
+
+\graphicspath{{diagrams/}}
+\rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
-\part{Gauge Theories}
-\chapter{}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries \shortstack{Michaelmas 2019  \\ -- Epiphany 2020}}}\\[2.5cm]
+    {\LARGE\bfseries Particle Theory}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Gauge Field Theories}\\[0.4cm]
+    \HRule \\[1.5cm]
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Valya Khoze
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+    \includegraphics[width=0.8\textwidth]{gauge.png}\\[1cm]
+    \vfill
+\end{titlepage}
+\tableofcontents
+
+\chapter{Introduction}
 \section{Plan}
 \begin{itemize}
-    \item Lectures 1-2: Introduction and Motivation, Intro to Group theory $\to$ Lie groups (continoues symmetries).
+    \item Lectures 1-2: Introduction and Motivation, Intro to Group theory $\to$ Lie groups (continuous symmetries).
         \begin{itemize}
-            \item Why group theory?\\ Gauge theories are quantum field theories with an emphasis on symmetry, as gauge theories have gauge symmetries. Mathematically, symmetries are described by group theory. 
+            \item Why group theory?\\ Gauge theories are quantum field theories with an emphasis on symmetry, as gauge theories have gauge symmetries. Mathematically, symmetries are described by group theory.
         \end{itemize}
-    \item Lecture 3: Different types of symmetries - global and local (gauge) symmetries. 
-    \item Lecture 4: From these gauge symmetries, we will construct Abelian, and non-Abelian gauge field theories. 
+    \item Lecture 3: Different types of symmetries - global and local (gauge) symmetries.
+    \item Lecture 4: From these gauge symmetries, we will construct Abelian, and non-Abelian gauge field theories.
     \item By the end of the course, we will learn about the Higgs mechanism and Spontaneous Symmetry Breaking, and ultimately reach the full Standard Model of Particle Physics.
 \end{itemize}
-The Standard Model is a gauge field theory of SU(3)$\times$SU(2)$\times$U(1) - this is the gauge group of the Standard Model. 
+The Standard Model is a gauge field theory of SU(3)$\times$SU(2)$\times$U(1) - this is the gauge group of the Standard Model.
 \begin{itemize}
     \item SU(3) is the gauge theory of strong interactions (QCD).
     \item SU(2)$\times$U(1) is the gauge theory of the unified electroweak interactions.
 \end{itemize}
 
 \section{Introduction to Group Theory}
-Groups are needed in order to describe and define symmetry transformations. 
+Groups are needed in order to describe and define symmetry transformations.
 So what is a group?
 
 There are four properties that define a group:
 \begin{enumerate}
-    \item \textbf{Closure} under group multiplication. 
+    \item \textbf{Closure} under group multiplication.
         \begin{align}
             g_1\cdot g_2 = g_3 \in G,\; \forall g_1,g_2 \in G
         \end{align}
         So group multiplication is confined to within the bounds of the group.
-    \item \textbf{Associativity} of group multiplication. 
+    \item \textbf{Associativity} of group multiplication.
         \begin{align}
             g_1\cdot(g_2\cdot g_3) &= (g_1\cdot g_2)\cdot g_3,\; \forall g_1,g_2,g_3 \in G
         \end{align}
-    \item \textbf{Identity element}. 
+    \item \textbf{Identity element}.
         \begin{align}
             \exists\, e \in G\,:\, e\cdot g = g\cdot e = g,\; \forall g \in G
         \end{align}
@@ -46,7 +89,7 @@ There are four properties that define a group:
 
 Now some notes:
 \begin{itemize}
-    \item The group is called \textbf{Abelian} iff
+    \item The group is called \textbf{Abelian} if and only if
         \begin{align}
             g_1\cdot g_2 = g_2\cdot g_1,\; g_1,g_2 \in G
         \end{align}
@@ -61,14 +104,14 @@ Matrix multiplication (of square matrices) is an example of a non-Abelian group 
 
 \subsection{Important Examples}
 \begin{itemize}
-    \item SU(N) is a group of unitary $N\times N$ matrices, with $\text{det}=1$. For SU(N), N is for $N\times N$ matrices, and the U says it is unitary. 
+    \item SU(N) is a group of unitary $N\times N$ matrices, with $\text{det}=1$. For SU(N), N is for $N\times N$ matrices, and the U says it is unitary.
         Unitary is defined by
         \begin{align}
             SU(N) \ni U\,:\, U^\dagger\cdot U = U\cdot U^\dagger = \mathbb{I}_{N\times N},~ U^\dagger = (U^*)^T
         \end{align}
-        where $U^\dagger$ is called Hermitian conjugation. 
+        where $U^\dagger$ is called Hermitian conjugation.
         The S then defines the group as "Special", which means $\text{det}(U) = 1$.\\
-        Let's check these group properties. 
+        Let's check these group properties.
         \begin{enumerate}
             \item Matrix multiplication:
                 \begin{align}
@@ -81,7 +124,7 @@ Matrix multiplication (of square matrices) is an example of a non-Abelian group 
             \item Associativity is satisfied by the definition of matrix multiplication.
             \item Unit matrix:
                 \begin{align}
-                    e &= \mathbb{I}_{N\times N} 
+                    e &= \mathbb{I}_{N\times N}
                 \end{align}
             \item The inverse matrix element:
                 \begin{align}
@@ -89,12 +132,12 @@ Matrix multiplication (of square matrices) is an example of a non-Abelian group 
                 \end{align}
         \end{enumerate}
         So we have a group that holds all the properties, a very important group at that. \\
-        Consider some general $U \in SU(N)$. 
+        Consider some general $U \in SU(N)$.
         How many real independent parameters (real degrees of freedom) does $U$ have?
-        An $N\times N$ complex matrix will have $2N^2$ real degrees of freedom. 
-        Now if we require unitarity, $U^\dagger = U$, there are $N^2$ constraints on the degrees of freedom, so now we are left with only $N^2$ degrees of freedom by this requirement. 
-        Now if we impose that $\text{det}U = 1$, which is a single condition, we are left with $N^2-1$ real degrees of freedom. 
-    \item U(1) is a group of unitary $1\times1$ matrices, so $U^\dagger U = 1$. 
+        An $N\times N$ complex matrix will have $2N^2$ real degrees of freedom.
+        Now if we require unitarity, $U^\dagger = U$, there are $N^2$ constraints on the degrees of freedom, so now we are left with only $N^2$ degrees of freedom by this requirement.
+        Now if we impose that $\text{det}U = 1$, which is a single condition, we are left with $N^2-1$ real degrees of freedom.
+    \item U(1) is a group of unitary $1\times1$ matrices, so $U^\dagger U = 1$.
         \begin{align}
             \forall U \in U(1)\,:\, U = e^{i\alpha},\; \alpha \in \R
         \end{align}
@@ -113,7 +156,7 @@ Matrix multiplication (of square matrices) is an example of a non-Abelian group 
         We can see that for SO(2), we have one real parameter in $\theta\in\R,0\leq\theta\leq2\pi$.
 \end{itemize}
 
-\chapter{}
+\chapter{Group Theory}
 Continuing last time, SO(2) is isomorphic to U(1):
 \begin{align}
     SO(2):~ O &= \begin{pmatrix}\cos\theta & \sin\theta \\ -\sin\theta & \cos\theta\end{pmatrix} & U(1):~ U &= e^{i\theta} = \cos\theta + i\sin\theta
@@ -123,7 +166,7 @@ So both these groups depend only on the value of $\theta$, and knowing any matri
 \section{Group Theory Continued}
 \subsection{Direct Products of Groups}
 Consider a group $G \ni \{g_1,g_2,\dots\}$, and another group $H \ni \{h_1,h_2,\dots\}$.
-We can define a product group from these, $G\times H$, which is also a group. 
+We can define a product group from these, $G\times H$, which is also a group.
 The definition of this direct product is by construction.
 If we consider a matrix element of matrix $g \in G,\, g_{ij}$, and similarly for in $H$ we consider the matrix element $h_{\alpha\beta}, h \in H$.
 Now we construct an object
@@ -131,7 +174,7 @@ Now we construct an object
     g_{ij}\cdot h_{\alpha\beta} &\equiv (gh)_{i\alpha;j\beta} \\
     G\times H &= \{g_{ij}\cdot h_{\alpha\beta}\}
 \end{align}
-Let us consider the example of $U(1)\times SU(2)$, where this direct product is equal to $U(2)$, which is a untary group, but the determinant is not $=1$, but $\text{det}=e^{i2\alpha}$, where $\alpha$ was the parameter of $U(1)$.
+Let us consider the example of $U(1)\times SU(2)$, where this direct product is equal to $U(2)$, which is a unitary group, but the determinant is not $=1$, but $\text{det}=e^{i2\alpha}$, where $\alpha$ was the parameter of $U(1)$.
 
 An important example to keep in mind is the Gauge Field Theory of the Standard Model: $SU(3)\times SU(2)\times U(1)$.
 
@@ -141,13 +184,13 @@ A group U(N) is not simple, as
 \begin{align}
     U(N) &\approx U(1)\times SU(N),
 \end{align}
-where SU(N) and U(1) are both trivially simple groups. 
+where SU(N) and U(1) are both trivially simple groups.
 
 \subsection{Representations of Groups}
 We can describe group in two equivalent ways:
 \begin{itemize}
     \item A group is some formal mathematical structure - it is some set of elements which satisfies the four definitions of the group and some precise descriptions of what we mean by that.
-    \item \textbf{The Fundamental Represenation of the Group} - we can derive a group via an explicit matrix representation, e.g. SU(N) are $N\times N$ complex matrices such that $U^\dagger U=1 = UU^\dagger$ and $\text{det}U=1$.
+    \item \textbf{The Fundamental Representation of the Group} - we can derive a group via an explicit matrix representation, e.g. SU(N) are $N\times N$ complex matrices such that $U^\dagger U=1 = UU^\dagger$ and $\text{det}U=1$.
 \end{itemize}
 Each group can have many different representations; the fundamental representation is what we used for its definitions.
 A group SU(N) in the fundamental representation is given by the $N\times N$ matrices.
@@ -169,9 +212,9 @@ So the fundamental representation of any group is irreducible, while rank-two te
 
 A group element in some general representation can be written as some matrix which can be brought into some block diagonal form, where off-diagonal elements are all zero, where each minimal block along the diagonal is an irreducible representation (irrep) of the group.
 
-\chapter{}
+\chapter{Lie Algebra for Gauge Theory}
 \section{Lie Groups}
-For a Lie group, $G$, with an element of this group, $a(\alpha^1,\dots,\alpha^k)$, $a$ depends continuously on parameters $\alpha^1,\dots,\alpha^k$. 
+For a Lie group, $G$, with an element of this group, $a(\alpha^1,\dots,\alpha^k)$, $a$ depends continuously on parameters $\alpha^1,\dots,\alpha^k$.
 Elements of Lie groups can be represented by
 \begin{align}
     a &= e^{-i\sum_{a=1}^k T^a\alpha^a}.
@@ -198,7 +241,7 @@ This will find our generators for the Lie group, but these generators will not c
 \begin{align}
     [T^a,T^b] &= if^{abc}T^c
 \end{align}
-This is not an elephant, but another generator with some prefactor, where the $f^{abc}$ is the structure constant of the Lie group. 
+This is not an elephant, but another generator with some prefactor, where the $f^{abc}$ is the structure constant of the Lie group.
 Following from the definition of the commutator relation, $f^{abc}$ is completely anti-symmetric around its three indices.
 
 \textbf{Any given Lie group is defined by this relation in Eq (3.8).}
@@ -206,7 +249,7 @@ Essentially, the explicit form of the structure constants is what defines any gi
 From this relation, we can find the set of all generators, $\{T^a\}^k_{a=1}$, which will allow us to write down all elements of our Lie group, $a\in G$ through Eq (3.1).
 
 \subsection{Notations}
-Sometimes in the notes, we may use 
+Sometimes in the notes, we may use
 \begin{align}
     a &= e^{i\theta^a X_a},~ \theta^a = -\alpha^a,~ X^a = T^a \\
     c^{abc} &=  f^{abc}
@@ -233,7 +276,7 @@ So we want to know:
         \begin{align}
             U &= \exp\left(-i\sum_{a=1}^3 \alpha^a\frac{\sigma^a}{2}\right)
         \end{align}
-        So we have three real parameters in $\alpha^a$ and the generators, $\frac{\sigma^a}{2}$ are the Pauli matrices (over 2). 
+        So we have three real parameters in $\alpha^a$ and the generators, $\frac{\sigma^a}{2}$ are the Pauli matrices (over 2).
         Is this right?
         Well Pauli matrices are Hermitian, and they provide us with a complete basis of $2\times2$ Hermitian matrices (-1, as it excludes the unit matrix).
         Let's consider the Hermitian conjugate of $U$ to check:
@@ -242,13 +285,13 @@ So we want to know:
         \end{align}
         So we have unitarity, and we can easily check the other group properties if needed.
 
-        We have learned that the generators of SU(2) (in the fundamental representation) are 
+        We have learned that the generators of SU(2) (in the fundamental representation) are
         \begin{align}
             T^a &= \frac{\sigma^a}{2},~ a = \{1,2,3\}
         \end{align}
-        This agrees with the argument of free parameters from last lecture where SU(N) has $N^2-1$ free parameters, which for SU(2) requires three free parameters, which we have in our three generators. 
-        
-        But why is it $\frac{\sigma}{2}$ and not $\sigma$? The $\frac12$ factor is due to normalisation, and depends on how we choose normalisation. 
+        This agrees with the argument of free parameters from last lecture where SU(N) has $N^2-1$ free parameters, which for SU(2) requires three free parameters, which we have in our three generators.
+
+        But why is it $\frac{\sigma}{2}$ and not $\sigma$? The $\frac12$ factor is due to normalisation, and depends on how we choose normalisation.
         In the fundamental representation, we choose
         \begin{align}
             \text{Tr}(T^aT^b) &= \frac12 \delta^{ab},
@@ -259,7 +302,7 @@ So we want to know:
         \begin{align}
             \left[\frac{\sigma^a}{2},\frac{\sigma^b}{2}\right] &= i\e^{abc}\frac{\sigma^c}{2}
         \end{align}
-        We can check this directly using the defining properties of Pauli matrices, or just working it out by hand. 
+        We can check this directly using the defining properties of Pauli matrices, or just working it out by hand.
         So our structure constants of SU(2) are $\e^{abc}$, and now we have our full Lie algebra for SU(2):
         \begin{align}
             [T^a,T^b] &= i\e^{abc}T^c
@@ -268,22 +311,22 @@ So we want to know:
         We can choose any representation of SU(2), and we may get different descriptions of generators, but the Lie group is always defined by Eq (3.8), and for SU(2), $f^{abc} = \e^{abc}$ in any representation, but the simplest one will always be the fundamental one.
 \end{itemize}
 
-\chapter{}
+\chapter{Symmetries in QFT}
 \section{Symmetries: An Introduction}
 Recall: The Fundamental representation of SU(N) has $T^a_{N\times N}$ acting on $\phi=\begin{pmatrix}x_1\\ n_N\end{pmatrix} \in \C$.
-The conjugate to the fundamental representation takes $\phi^\dagger$ instead. 
+The conjugate to the fundamental representation takes $\phi^\dagger$ instead.
 
 In the adjoint representation, $(T^a)_{bc} = -if^{bca}$, a running from 1 to the number of generators, which is $N^2-1$ for SU(N).
 
 Symmetries:\\
-Let $\phi(x)$ be a field. 
-Its Lagrangian is 
+Let $\phi(x)$ be a field.
+Its Lagrangian is
 \begin{align}
     \La &= \frac{1}{\lambda}\p_\mu\phi\p^\mu\phi - \frac12m^2\phi^2 - \frac{\lambda}{4}\phi^4
 \end{align}
 for a simply-interacting real scalar field, $\phi(x)\in\R$.
-The kinetic term is quadratic (bilinear) in the field, the interaction term is of a higher order. 
-The kinetic terms yield propagators, here being $\frac{i}{p^2-m^2}$. 
+The kinetic term is quadratic (bilinear) in the field, the interaction term is of a higher order.
+The kinetic terms yield propagators, here being $\frac{i}{p^2-m^2}$.
 The interaction terms yield vertices in the Feynman diagrams.
 
 For a complex field,
@@ -294,47 +337,47 @@ For a general field, the action is
 \begin{align}
     S = \int \La[\phi]\;d^4x
 \end{align}
-A transform of the fields which leaves the action invariant is called a symmetry. 
-Additionally, a quantum theory must also leave the vacuum invariant. 
+A transform of the fields which leaves the action invariant is called a symmetry.
+Additionally, a quantum theory must also leave the vacuum invariant.
 
 Symmetries can be discrete, e.g. $\phi(x)\to-\phi(x)$, or continuous, e.g. $\phi(x)\to e^{-i\alpha(x)}\phi(x),\alpha\in\R$.
-The Lagrangian of a real scalar field is invariant under $\phi\to\phi(x)$, so the action is also invariant. 
-Thus $\phi\to-\phi$ is a symmetry of this theory; for the complex scalar Lagrangian, $\phi\to e^{i\alpha}\phi$ is a symmetry. 
-A continous symmetry can be local, depending on $x_N$, or global, being independent of $x_N$, i.e. if $\alpha$ in $e^{i\alpha}\phi$ is $\alpha(x)$ then it is local, and global if just $\alpha$.\\
-Continuous transforms are described by Lie groups. 
+The Lagrangian of a real scalar field is invariant under $\phi\to\phi(x)$, so the action is also invariant.
+Thus $\phi\to-\phi$ is a symmetry of this theory; for the complex scalar Lagrangian, $\phi\to e^{i\alpha}\phi$ is a symmetry.
+A continuous symmetry can be local, depending on $x_N$, or global, being independent of $x_N$, i.e. if $\alpha$ in $e^{i\alpha}\phi$ is $\alpha(x)$ then it is local, and global if just $\alpha$.\\
+Continuous transforms are described by Lie groups.
 Global continuous symmetries provide conserved quantities - this is the basis of Noether's theorem which states that for every generator of a global continuous system, there exists a conserved current $j^\nu(x)$ such that $\p^\nu j = 0$.
 This is a Noether current. \\
-For U(1), $\phi\to e^{-i\alpha}\phi$, which gives us the conserved electric charge, 
+For U(1), $\phi\to e^{-i\alpha}\phi$, which gives us the conserved electric charge,
 \begin{align}
     Q = \int j^\nu(x)\;d^3x,~ \frac{dQ}{dt} = 0
 \end{align}
 
-Noether's theorem does not necessarily hold for local symmetries. 
-These are gauge symmetries. 
-We consider a local U(1) transform, $\phi\to e^{-i\alpha(x)}\phi$, with the Dirac Lagrangian for free Dirac fermions, 
+Noether's theorem does not necessarily hold for local symmetries.
+These are gauge symmetries.
+We consider a local U(1) transform, $\phi\to e^{-i\alpha(x)}\phi$, with the Dirac Lagrangian for free Dirac fermions,
 \begin{align}
     \La &= \bar{\psi}(i\gamma^\nu\p_\nu - m)\psi \\
     \La &\to \La + \bar{\psi}i\gamma^\nu\p_\nu(-i\alpha(x))\psi \text{ - not invariant}
 \end{align}
-To attain invariance, we add a gauge field $A$, that transforms as $A_\mu(x)\to A_\mu(x)+\frac{1}{e}\p_\mu\alpha(x)$, $e$ being the gauge coupling constant. 
-We then replace the standard derivative with a covariant derivative of the form, 
+To attain invariance, we add a gauge field $A$, that transforms as $A_\mu(x)\to A_\mu(x)+\frac{1}{e}\p_\mu\alpha(x)$, $e$ being the gauge coupling constant.
+We then replace the standard derivative with a covariant derivative of the form,
 \begin{align}
     D_\mu &= \p_\mu + ieA_\mu \\
     \La &= \bar{\psi}(i\gamma^\mu D_\mu - m)\psi
 \end{align}
-We now have a gauge invariant Lagrangian above which describes not only the propagatino of $\bar{\psi}$ and $\psi$, but it also includes the interaction between $A_\mu$ and $\psi$.
+We now have a gauge invariant Lagrangian above which describes not only the propagation of $\bar{\psi}$ and $\psi$, but it also includes the interaction between $A_\mu$ and $\psi$.
 To give $A_\mu$, the photon propagation, we include a term $-\frac14 F^{\mu\nu}F_{\mu\nu}$ in the Lagrangian, where,
 \begin{align}
     F^{\mu\nu} &= \p^\mu A^\nu - \p^\nu A^\mu,
 \end{align}
-which is plainly gauge invariant in the U(1) case. 
-Thus, 
+which is plainly gauge invariant in the U(1) case.
+Thus,
 \begin{align}
     \La_{QED} &= \bar{\psi}(i\cancel{D} - m)\psi - \frac14 F^{\mu\nu}F_{\mu\nu}
 \end{align}
 
 
-\chapter{}
+\chapter{QED: A U(1) Gauge Theory}
 \section{QED}
 The Lagrangian of QED:
 \begin{align}
@@ -346,12 +389,12 @@ The Dirac fields describe $e^{\pm}$, and the gauge field describes the photons, 
 If we consider just the gauge field part of QED:
 \begin{align}
     \La[A_\mu] &= -\frac14 F^{\mu\nu}F_{\mu\nu}
-\end{align} 
+\end{align}
 We can then begin to write down equations of motion from this, first considering the action.
 \begin{align}
     \mathcal{S} &= \int \La[A_\mu]\,d^4x
 \end{align}
-We take the extremum of the action, where $\frac{\delta\mathcal{S}[A]}{\delta A_\nu}=0$, to find the Euler-Lagrange equations. 
+We take the extremum of the action, where $\frac{\delta\mathcal{S}[A]}{\delta A_\nu}=0$, to find the Euler-Lagrange equations.
 \begin{align}
     \p_\mu \frac{\p\La[A]}{\p(\p_\mu A_\nu)} &= \frac{\p\La[A]}{\p A_\nu} = 0 \\
     \p_\mu F^{\mu\nu} &= 0
@@ -361,27 +404,27 @@ However, if we look at the full Lagrangian again and fully express $D_\mu = \p_\
     \p_\mu F^{\mu\nu} &= e\bar{\psi}\gamma^\nu\psi \equiv j^\nu
 \end{align}
 These are two of the Maxwell equations (out of four) for QED.
-The other two Maxwell equations are trivial in QED, following from the Bianchi identity, 
+The other two Maxwell equations are trivial in QED, following from the Bianchi identity,
 \begin{align}
     \p_\lambda F_{\mu\nu} + \p_\mu F_{\nu\lambda} + \p_\nu F_{\lambda\mu} = 0.
 \end{align}
 This identity is automatically satisfied for $F_{\mu\nu} = \p_\mu A_\nu - \p_\nu A_\mu$.
-So all four classical Maxwell equations can be written in QED as 
+So all four classical Maxwell equations can be written in QED as
 \begin{align}
     \frac{\p S}{\p A_\nu} = 0 &\implies \p_\mu F^{\mu\nu} = j^\nu \\
-    \frac{\p S}{\p \bar{\psi}} = 0 &\implies (i\gamma^\mu D_\mu - m)\psi = 0  
+    \frac{\p S}{\p \bar{\psi}} = 0 &\implies (i\gamma^\mu D_\mu - m)\psi = 0
 \end{align}
-Eq (5.9) is the Dirac equation with the field $A_\mu$ in the $D_\mu$ term. 
+Eq (5.9) is the Dirac equation with the field $A_\mu$ in the $D_\mu$ term.
 
 \subsection{How many degrees of freedom does the photon field have?}
-Naively, it looks like it has four degrees of freedom, as we have $A_\nu, \nu = 0,1,2,3$. 
+Naively, it looks like it has four degrees of freedom, as we have $A_\nu, \nu = 0,1,2,3$.
 In reality, there are only two physical degrees of freedom of the photon.
 Why is that?
-$A_0$ field decouples $\to$ it is not a dynamical field as it does not have a kinetic term, i.e. $\frac12(\p_t A_0(x))^2$ is absent in the Lagrangian, but this term is required for any fieldto be kinetic as it would describe velocity.\\
+$A_0$ field decouples $\to$ it is not a dynamical field as it does not have a kinetic term, i.e. $\frac12(\p_t A_0(x))^2$ is absent in the Lagrangian, but this term is required for any field to be kinetic as it would describe velocity.\\
 We can always fix the gauge freedom by setting $A_0\equiv0$.
 We can further set $\p_iA_i=0$ - this is the Coulomb gauge.
 So we have two constraints from fixing the gauge, so two \emph{unphysical} degrees of freedom are removed, leaving us with $4-2=2$ physical degrees of freedom (assuming unbroken gauge invariance).
-These 2 degrees of freedom of the photon are its 2 transverse polarisations. 
+These 2 degrees of freedom of the photon are its 2 transverse polarisations.
 
 $A_\mu$ describes spin-1 fields (or particles), and we have the two gauges of $A_0 = 0$ and $\p_i A_i = 0 \implies p_i A_i = 0$, where $p_i$ is the three-momenta.
 If we then choose momentum to be wholly along the z-coordinate, so $\vec{p}=(0,0,p)$, then $\vec{A} = (A_1,A_2,0)$, and then we see that we have two transverse polarisations along x and y, while the momentum transfer is all in z - this is the simplest choice for example but any physical orientation of $\vec{p}$ and $\vec{A}$ will lead to the same two transverse polarisations.
@@ -393,7 +436,7 @@ Again, we write down the QED Lagrangian:
                 &+ \bar{\psi}(i\gamma^\mu\p_\mu -m)\psi \text{ - free propagation of fermions} \nonumber \\
                 &- e\bar{\psi}\gamma^\mu A_\mu\psi \text{ - 3 point vertex describing interactions}
 \end{align}
-$\La_{QED}$ is uniquely constructed from the requirement of gauge invariance. 
+$\La_{QED}$ is uniquely constructed from the requirement of gauge invariance.
 Can we add other gauge invariant interactions?
 Consider
 \begin{align}
@@ -402,51 +445,51 @@ Consider
 For mass dimension, $[\:]$: we have
 \begin{align}
     [A_\mu] &= 1 & [\phi] & = 1 & [\La] &= 4 \\
-    [\psi] &= \frac32 & [\bar{\psi}] &= \frac32 & [\mathcal{S}] &= 0 
+    [\psi] &= \frac32 & [\bar{\psi}] &= \frac32 & [\mathcal{S}] &= 0
 \end{align}
-So we can see the mass dimension of the above $\La$ will be 6. 
+So we can see the mass dimension of the above $\La$ will be 6.
 We could add it to the QED Lagrangian with some pre-factor to get it to work?
 \begin{align}
     \La &= \La_{QED} + \frac{1}{M^2}F_{\mu\nu}F^{\nu\alpha}\tensor{F}{_\alpha^\mu}
 \end{align}
-Any terms of $\La$ that have a coefficient of negative mass dimension in front are not UV-renormalisable, and any operators is $\La$ of mass dimension greater than 4 are not renormalisable. 
+Any terms of $\La$ that have a coefficient of negative mass dimension in front are not UV-renormalisable, and any operators is $\La$ of mass dimension greater than 4 are not renormalisable.
 
 \subsection{What is UV Renormalisation?}
-Any Quantum Field Theory which constains quantum corrections such as a tree level interaction, then one loop correction and up to higher loops, e.g.
+Any Quantum Field Theory which constrains quantum corrections such as a tree level interaction, then one loop correction and up to higher loops, e.g.
 \begin{equation}
     \includegraphics[valign=c,scale=0.2]{diagrams/renorm1.png} + \includegraphics[valign=c,scale=0.2]{diagrams/norm2.png} + \dots
-\end{equation}  
+\end{equation}
 All loop-level corrections contain $\infty$ in the UV, so we need to have a prescription to remove this divergence.
 
 \textbf{UV Renormalisation} is the prescription to remove UV divergences.
 
-So now $\La_{QED}$ is completed and is shown that we cannot remove or add anything from/to it. 
+So now $\La_{QED}$ is completed and is shown that we cannot remove or add anything from/to it.
 
-\chapter{}
+\chapter{Yang-Mills Theories}
 \section{Non-Abelian Gauge Invariance}
 Start from a free Lagrangian for Dirac fermions
 \begin{align}
     \La &= \bar{\psi}(i\gamma^\mu\p_\mu - m)\psi
 \end{align}
-$\psi(x)$ transform in the fundamental representation of a Lie group, G. 
-Assume that G is a SU(N) group, so $\psi(x)$ is a column vector with $N$ rows 
+$\psi(x)$ transform in the fundamental representation of a Lie group, G.
+Assume that G is a SU(N) group, so $\psi(x)$ is a column vector with $N$ rows
 $\bar{\psi}(x)$ will transform in the anti-fundamental representation, or conjugate to fundamental, as a row vector of $N$ columns.
-This is invariant under global transformations. 
+This is invariant under global transformations.
 \begin{align}
     \psi(x) &\to U\psi(x),~ \bar{\psi}(x) \to \bar{\psi}(x)\,U^\dagger,~ U \in SU(N)
 \end{align}
-Here, U is not dependent on x, i.e. a global symmetry. 
-The Lagrangian will be invariant. 
-Upgrade this construction to $U(x)$, i.e. a gauge (local) symmetry. 
+Here, U is not dependent on x, i.e. a global symmetry.
+The Lagrangian will be invariant.
+Upgrade this construction to $U(x)$, i.e. a gauge (local) symmetry.
 \begin{align}
-    \psi(x)&\to U(x)\,\psi(x),\; \bar{\psi}(x) \to \bar{\psi}(x)\,U^\dagger(x),\; U(x) = e^{-i\alpha^a(x)T^a} \in SU(N) 
+    \psi(x)&\to U(x)\,\psi(x),\; \bar{\psi}(x) \to \bar{\psi}(x)\,U^\dagger(x),\; U(x) = e^{-i\alpha^a(x)T^a} \in SU(N)
 \end{align}
-Here, $T^a$ are the generators of SU(N) in the fundamental representation. 
+Here, $T^a$ are the generators of SU(N) in the fundamental representation.
 But here we will not see an invariant Lagrangian, so we must add something to the Lagrangian:
 \begin{align}
     A_\mu(x) &\to U(x)(A_\mu(x)+i\p_\mu)U^\dagger(x)
 \end{align}
-In the fundamental representation, $U(x)$ is an $N\times N$ matrix, and $A_\mu$ must also be one for the equations to make sense - but this is still a single gauge field. 
+In the fundamental representation, $U(x)$ is an $N\times N$ matrix, and $A_\mu$ must also be one for the equations to make sense - but this is still a single gauge field.
 The gauge field in matrix notation is then,
 \begin{align}
     A_\mu(x) &= gT^aA_\mu^a(x).
@@ -472,10 +515,10 @@ Now we can set out requirements to make our original $\La$ gauge invariant:
         \begin{align}
             F_{\mu\nu} &= \p_\mu A_\nu - \p_\nu A_\mu - i[A_\mu,A_\nu]
         \end{align}
-        This is almost the field strength that we had for QED, but we must add the final commutator term in order to make it transform as we are now in non-Abelian algebra. 
+        This is almost the field strength that we had for QED, but we must add the final commutator term in order to make it transform as we are now in non-Abelian algebra.
         $F_{\mu\nu}$ is the field strength in matrix notation, and can be written in component notation as well:
         \begin{align}
-            F_{\mu\nu}(x) &= gT^aF^a_{\mu\nu}(x) & 
+            F_{\mu\nu}(x) &= gT^aF^a_{\mu\nu}(x) &
             F^a_{\mu\nu} &= \frac2g \text{Tr}[T^aF_{\mu\nu}] &
             F_{\mu\nu}^a &= \p_\mu A_\nu^a - \p_\nu A_\mu^a + gf^{abc}A_\mu^bA_\nu^c
         \end{align}
@@ -484,7 +527,7 @@ And our Lagrangian becomes
 \begin{align}
     \La &= -\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}] + \bar{\psi}(i\gamma^\mu D_\mu - m)\psi.
 \end{align}
-We still need to check if this is gauge invariant or not. 
+We still need to check if this is gauge invariant or not.
 How do $D_\mu\psi$ and $F_{\mu\nu}$ transform under gauge transforms?
 \begin{align}
     F_{\mu\nu} &\to U\,F_{\mu\nu}\,U^\dagger & D_\mu\psi &\to U\,D_\mu\psi
@@ -511,13 +554,13 @@ So under gauge transformation, our Lagrangian transforms as:
 \end{align}
 Hence, the Lagrangian is completely gauge invariant.
 
-This is a universal prescription. 
+This is a universal prescription.
 For any Lagrangian with any matter fields (scalars, fermions, whatever else) that is invariant under global symmetry, performing the transformations
 \begin{align}
     \p_\mu &\to D_\mu & \oplus \La_{kin} &= -\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}]
 \end{align}
-will induce a gauge-invariant Lagrangian. 
-Thus, we have constructed a non-Abelian gauge theory. 
+will induce a gauge-invariant Lagrangian.
+Thus, we have constructed a non-Abelian gauge theory.
 
 Where does the kinetic pre-factor come from?
 \begin{align}
@@ -525,12 +568,12 @@ Where does the kinetic pre-factor come from?
     F_{\mu\nu} &= gT^aF_{\mu\nu}^a,\; \text{Tr}[T^aT^b] = \frac12\delta^{ab}
 \end{align}
 
-This gauge theory is known as Yang-Mills theory, which is just meaning a non-Abelian theory. 
-This theory is no longer free. 
+This gauge theory is known as Yang-Mills theory, which is just meaning a non-Abelian theory.
+This theory is no longer free.
 It automatically contains interactions through the inclusion of $A_\mu$ which forms three-point vertices (interactions): between the fermions and gauge bosons, three gauge bosons; and four-point vertices between four gauge bosons.
-This is not something we saw in QED, but nonetheless required for the Lagrangian to be physical at all. 
+This is not something we saw in QED, but nonetheless required for the Lagrangian to be physical at all.
 
-\chapter{}
+\chapter{Higher-Order Vertices and Coupling Constants}
 We want to find a Lagrangian with terms with powers $>2$ of gauge fields, i.e. interactions of $A_\mu$s.
 \begin{align}
     \La &= \dots - gf^{abc}\p_\mu A_\nu^aA^{\mu b}A^{\nu c} - \frac{g^2}{4}f^{abc}f^{ade}A_\mu^b A_\nu^c A^{\mu d}A^{\nu e} + \text{ nothing else}
@@ -548,16 +591,16 @@ From the second, we find four-point vertices of the form $gf^{abc}f^{ade}$:
     \includegraphics[scale=0.4]{diagrams/fourpoint.pdf}
 \end{figure}
 \end{multicols}
-Interactions are automatically included and there are no higher levels of gauge field interactions. 
+Interactions are automatically included and there are no higher levels of gauge field interactions.
 Both the terms above had to appear in the Lagrangian as they come from $\frac{1}{2g^2}\text{Tr}[F_{\mu\nu}F^{\mu\nu}]$.
-The relative coefficients between the three- and four-point vertices, and also between vertices with fermions, are fixed and uniquely determined by gauge invariance of the total Lagrangian. 
+The relative coefficients between the three- and four-point vertices, and also between vertices with fermions, are fixed and uniquely determined by gauge invariance of the total Lagrangian.
 In a non-Abelian gauge theory, we cannot arbitrarily change the coupling constant $g$, e.g. if we coupled a matter field $\phi_1$ to $A_\mu$ with a coupling constant $g$, and try to couple some other matter field $\phi_2$ to $A_\mu$ with a coupling constant $\kappa g$, then $\kappa=1$.
-If $\kappa\neq1$, then the $f^{abc}$s will be altered by this, which cannot be done as these define the group and will be constant. 
-However, in an Abelian theory, we can couple different matter fields to gauge fields with $\kappa g$, where $\kappa$ is arbitrary. 
+If $\kappa\neq1$, then the $f^{abc}$s will be altered by this, which cannot be done as these define the group and will be constant.
+However, in an Abelian theory, we can couple different matter fields to gauge fields with $\kappa g$, where $\kappa$ is arbitrary.
 
 \section{Running Coupling Constants}
 In a classical gauge theory, the coupling constant is a constant.
-In a quantum gauge theory, it is no longer constant; instead, it depends on the energy scale at which we make observations. 
+In a quantum gauge theory, it is no longer constant; instead, it depends on the energy scale at which we make observations.
 For a scattering experiment, at energy scale, $E = \sqrt{s}$, $s=(p_1+p_2)^2$.
 \begin{figure}[H]
     \centering
@@ -575,9 +618,9 @@ In QCD, we have a SU(3) gauge theory with $N_f$ flavour of quarks (fermions), wi
 \begin{align}
     \alpha_s(p) = \frac{g^2_{SU(3)}(p)}{4\pi} = \frac{2\pi}{b_0\log\frac{p}{\Lambda_{QCD}}}
 \end{align}
-Here, $\Lambda_{QCD}\approx300\,MeV$, $b_0=11-\frac23 N_f$. 
+Here, $\Lambda_{QCD}\approx300\,MeV$, $b_0=11-\frac23 N_f$.
 
-\chapter{}
+\chapter{Energy Scales in Gauge Theories}
 For non-Abelian gauge theory, all matter fields couple to $A_\mu^a$ with the same gauge coupling $g$:
 \begin{align}
     D_\mu &= \p_\mu - igA_\mu^aT^a.
@@ -597,9 +640,9 @@ In an SU(N) gauge theory with $N_f$ flavours of Dirac fermions,
 \begin{align}
     b_0 &= \frac{11}{3}N - \frac23 N_f.
 \end{align}
-Strong interactions in the Standard Model are described by QCD, the non-Abelian SU(3) gauge theory with $N_f=6$ quarks. 
-In QCD, $b_0=7$, and what is important to note about that is that it is positively valued. 
-$b_0$ is called the first coefficient of the $\beta$-function - the sign of the $\beta$-function and the sign of its first coefficient determines how the coupling constant runs. 
+Strong interactions in the Standard Model are described by QCD, the non-Abelian SU(3) gauge theory with $N_f=6$ quarks.
+In QCD, $b_0=7$, and what is important to note about that is that it is positively valued.
+$b_0$ is called the first coefficient of the $\beta$-function - the sign of the $\beta$-function and the sign of its first coefficient determines how the coupling constant runs.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -608,19 +651,19 @@ $b_0$ is called the first coefficient of the $\beta$-function - the sign of the 
         \draw (0.5,0) node[anchor=north] {$\Lambda$} -- (4.5,1.7);
     \end{tikzpicture}
 \end{figure}
-We can see at the scale of $\Lambda$, the coupling constant $\alpha$ becomes infinitely strong. 
+We can see at the scale of $\Lambda$, the coupling constant $\alpha$ becomes infinitely strong.
 More carefully:
 \begin{itemize}
     \item Assume that our 1-loop approximation to $\alpha(p)$ is correct
-    \item $p\to\Lambda \implies \frac{1}{\alpha}\to 0\implies\alpha\to\infty$, so we have an infinite strength interaction, which results in the confinement of quarks and gluons. 
+    \item $p\to\Lambda \implies \frac{1}{\alpha}\to 0\implies\alpha\to\infty$, so we have an infinite strength interaction, which results in the confinement of quarks and gluons.
 \end{itemize}
 This is non actually a full proof as the assumption is incorrect, but it does result in the real picture of confinement. \\
-Similarly, $p\to\infty\implies\frac{1}{\alpha(p)}\to\infty\implies\alpha(p)\to0$, which results in \emph{asymptotic freedom}, i.e. at high energies, QCD interactions become irrelevant. 
-The theory of QCD at high energies becomes free, or non-interacting. 
+Similarly, $p\to\infty\implies\frac{1}{\alpha(p)}\to\infty\implies\alpha(p)\to0$, which results in \emph{asymptotic freedom}, i.e. at high energies, QCD interactions become irrelevant.
+The theory of QCD at high energies becomes free, or non-interacting.
 
-\chapter{}
+\chapter{Gauge Theories of Physics and The Standard Model}
 \section{The Standard Model}
-The Standard Model of particle physics is an SU(3)$_c\otimes$SU(2)$_L\otimes$U(1)$_Y$ gauge theory. 
+The Standard Model of particle physics is an SU(3)$_c\otimes$SU(2)$_L\otimes$U(1)$_Y$ gauge theory.
 SU(3) is the theory of strong interaction (QCD); and SU(2)$\otimes$U(1) is the GWS electroweak theory, where SU(2) describes what will become weak interactions, and U(1) describes what will become electromagnetic interactions (after spontaneous symmetry breaking).
 \begin{itemize}
     \item $b_0>0$ for non-Abelian gauge theories (if $N_f <$ some critical number)
@@ -639,12 +682,12 @@ If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$
     \end{tikzpicture}
 \end{figure}
 \begin{itemize}
-    \item At the electroweak scale $\approx m_{W,Z,H}\approx100$ GeV, the weak force fails as its mediators are no longer present. 
+    \item At the electroweak scale $\approx m_{W,Z,H}\approx100$ GeV, the weak force fails as its mediators are no longer present.
     \item EM will hit zero in the graph at what is known as $\Lambda_{Landau}$ and freaks out from there.
     \item EM will fail like weak at the electron mass scale.
-    \item All three coupling constants almost converge on a single point in the middle, but not quite. 
-        If they did, it would be indicative of a Grand Unified Theory (GUT) scale, i.e. SU(5)$_{GUT}\to$ SU(3)$\otimes$SU(2)$\otimes$U(1). 
-        A single gauge theory of SU(5) would split into the three known groups at lower energy scales, below the GUT scale. 
+    \item All three coupling constants almost converge on a single point in the middle, but not quite.
+        If they did, it would be indicative of a Grand Unified Theory (GUT) scale, i.e. SU(5)$_{GUT}\to$ SU(3)$\otimes$SU(2)$\otimes$U(1).
+        A single gauge theory of SU(5) would split into the three known groups at lower energy scales, below the GUT scale.
         SU(5) is currently ruled out, but maybe SO(10)?
     \item $\alpha_W$ is small for all regions where the weak force manifests, so it can always be studied in perturbation theory.
     \item $\alpha_{\text{EM}}$ is fine in the IR regime (low energy) but then freaks out at higher energies, and cannot be studied perturbatively.
@@ -653,20 +696,20 @@ If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$
 \section{QCD}
 \begin{itemize}
     \item QCD has gauge group SU(3).
-    \item What are the matter fields of QCD? Dirac fermions known as quarks, which transform in the fundamental representation of SU(3). 
-        Quarks are in triplet states of colour, $q=\begin{pmatrix}q_1\\q_2\\q_3\end{pmatrix}$, where $q_i$ indicates the colour (1,2,3). 
-        There are six flavours of quarks as well, so $q^f_i$ where $f$ is the flavour running $1\to6$ and $i$ is the colour running $1\to3$. 
+    \item What are the matter fields of QCD? Dirac fermions known as quarks, which transform in the fundamental representation of SU(3).
+        Quarks are in triplet states of colour, $q=\begin{pmatrix}q_1\\q_2\\q_3\end{pmatrix}$, where $q_i$ indicates the colour (1,2,3).
+        There are six flavours of quarks as well, so $q^f_i$ where $f$ is the flavour running $1\to6$ and $i$ is the colour running $1\to3$.
         (Of course, each quark is also a Dirac spinor of 4 components.)
     \item In the infrared regime (low energy), $\alpha_S\to\infty$ which implies colour confinement.
     \item We cannot find free quarks or gluons in nature (in the IR range).
-    \item What we can observe instead are colourless (SU(3) singlets) composite particles, i.e. mesons and baryons. 
+    \item What we can observe instead are colourless (SU(3) singlets) composite particles, i.e. mesons and baryons.
     \item Mesons are quark-antiquark pairs: $\bar{q}_i^{f_1}q_i^{f_2}$, e.g. $\pi$-meson:
         \begin{align}
             \pi^0 &= \frac{\bar{u}u + \bar{d}d}{\sqrt{2}}, &
             \pi^- &= \bar{u}d, &
             \pi^+ &= \bar{d}u.
         \end{align}
-        These are the lightest mesons using only the first generation of quarks. 
+        These are the lightest mesons using only the first generation of quarks.
         $Q(u) = \frac23$, and $Q(d)=-\frac13$.
     \item Baryons are three quark states each with different colour:
         \begin{align}
@@ -686,14 +729,14 @@ If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$
         \end{align}
         which is the Higgs field.
         H is a doublet of SU(2), as it transforms in the fundamental representation.
-    \item If we compute a vacuum expectation value of the Higgs field, 
+    \item If we compute a vacuum expectation value of the Higgs field,
         \begin{align}
             \langle0|H|0\rangle &\equiv \langle H\rangle = \begin{pmatrix}0\\\frac{v}{\sqrt{2}}\end{pmatrix},
         \end{align}
         where $v\neq0$. In fact, $v\approx246$GeV.
         More on this later.
     \item All other matter fields are fermions transforming under the fundamental representation of SU(2), so they are doublets.
-        We have both quarks and leptons. 
+        We have both quarks and leptons.
         Leptons are defined as fermions which do not transform under SU(3)$_{QCD}$.
     \item The six quarks we have from 3 SU(2) doublets:
         \begin{align}
@@ -715,18 +758,18 @@ If we define three coupling constants: for QCD, $\alpha_S$; for weak, $\alpha_W$
             \begin{pmatrix}\nu_\tau\\\tau\end{pmatrix}_L.
         \end{align}
         Each lepton also has its right-handed singlet, such as $e_R,\mu_R$, in principal.
-        However no right-handed neutrinos have been observed so we say there are none. 
-    \item So we have three families, or generations, of both quarks and leptons. 
+        However no right-handed neutrinos have been observed so we say there are none.
+    \item So we have three families, or generations, of both quarks and leptons.
 \end{itemize}
 
-\chapter{}
+\chapter{Finding Gauge Invariant Mass Terms: Spontaneous Symmetry Breaking}
     So far we discussed how the Standard Model is a gauge field theory with symmetry SU(3)$_{QCD}\otimes$ SU(2)$_W\otimes$U(1)$_{Y}$.
 \begin{itemize}
     \item We define the gauge fields of the electroweak sector as $W^\pm_\mu,Z_\mu^0,A_\mu$, so altogether four (3 from SU(2) and 1 from U(1)).
-    \item The photon is strictly massless because the gauge symmetry of U(1)$_{QED}$ is unbroken. 
-    \item There is a way to break a gauge symmetry spontaneously to induce masses for the other electroweak gauge fields. 
-    \item SU(2)$_W\otimes$U(1)$_Y\to$U(1)$_{QED}$ from spontaneous symmetry breaking.  
-    \item In the limit where the centre-of-mass energy $E_{com}\ll M_{Z,W^{\pm}}^2$, then the propagator can be reduced to $-\frac{g_{w}^2}{M_{Z,W^{\pm}}^2}$, and the interaction can be reduced to a point-like interaction between four fermions. 
+    \item The photon is strictly massless because the gauge symmetry of U(1)$_{QED}$ is unbroken.
+    \item There is a way to break a gauge symmetry spontaneously to induce masses for the other electroweak gauge fields.
+    \item SU(2)$_W\otimes$U(1)$_Y\to$U(1)$_{QED}$ from spontaneous symmetry breaking.
+    \item In the limit where the centre-of-mass energy $E_{com}\ll M_{Z,W^{\pm}}^2$, then the propagator can be reduced to $-\frac{g_{w}^2}{M_{Z,W^{\pm}}^2}$, and the interaction can be reduced to a point-like interaction between four fermions.
         \begin{figure}[H]
             \centering
             \includegraphics[scale=0.8]{diagrams/fermi.pdf}
@@ -749,7 +792,7 @@ These symmetries can be one of three cases:
 \begin{itemize}
     \item exact, not broken
     \item explicitly broken, adding clear terms in the Lagrangian to break the symmetry
-    \item spontaneously broken 
+    \item spontaneously broken
 \end{itemize}
 \end{multicols}
 Spontaneous symmetry breaking preserves the invariance of the Lagrangian and Action under the field transformation, but the vacuum state of the Hilbert space is not invariant.
@@ -758,7 +801,7 @@ Spontaneous symmetry breaking preserves the invariance of the Lagrangian and Act
         \begin{align}
             \La &= \underbrace{\frac12\p_\mu\phi\p^\mu\phi}_{K} \underbrace{- \frac12 m^2\phi^2 - \frac{\lambda}{4}\phi^4}_{-V(\phi)}
         \end{align}
-    \item Consider the discrete field transformation $\phi(x)\to-\phi(x)$: the Lagrangian is invariant. 
+    \item Consider the discrete field transformation $\phi(x)\to-\phi(x)$: the Lagrangian is invariant.
         \begin{figure}[H]
             \centering
             \begin{tikzpicture}
@@ -770,7 +813,7 @@ Spontaneous symmetry breaking preserves the invariance of the Lagrangian and Act
         \end{figure}
     \item There is a global minimum at $\phi=0$; the ground state of the theory (or the vacuum state) is at $\phi=0$.
     \item $\langle0|\hat{\phi}(x)|0\rangle = \langle\phi\rangle = 0$: this the vacuum expectation value (VEV).
-    \item In $\phi\to-\phi$, the symmetry is exact and is not spontaneously broken because $\langle\phi\rangle=0$ ($0\to-0$). 
+    \item In $\phi\to-\phi$, the symmetry is exact and is not spontaneously broken because $\langle\phi\rangle=0$ ($0\to-0$).
     \item What if we consider $m^2\to-m^2$?
         \begin{align}
             \La &= \frac12\p_\mu\phi\p^\mu\phi + \frac12m^2\phi^2 - \frac{\lambda}{4}\phi^4 \\
@@ -790,8 +833,8 @@ Spontaneous symmetry breaking preserves the invariance of the Lagrangian and Act
         \end{figure}
     \item $\langle\phi\rangle=\pm v$ - the universe has to spontaneously choose a vacuum, e.g. $\langle\phi\rangle=+v$ yields multiparticle states again using the creation operator $\hag$ and we have the Hilbert space, but the vacuum is not invariant under the transformation: $\langle\phi\rangle=v\to-v\neq v$.
         Thus, a spontaneously broken discrete symmetry of $\phi\to-\phi$.
-    \item There are no interesting implications from this, so we need to look at continous symmetries to find some physical meaning.
-    \item We are going to consider spontaneous breaking of a global continuous symmetry. 
+    \item There are no interesting implications from this, so we need to look at continuous symmetries to find some physical meaning.
+    \item We are going to consider spontaneous breaking of a global continuous symmetry.
         Now taking a complex scalar field $\phi(x)\in\C$, and noting the Lagrangian as
         \begin{align}
             \La &= \p_\mu\phi^*\p^\mu\phi + m^2|\phi|^2 - \frac{\lambda}{4}|\phi|^4.
@@ -804,49 +847,49 @@ Spontaneous symmetry breaking preserves the invariance of the Lagrangian and Act
         \begin{align}
             V(\phi) &= \frac{\lambda}{4}\left(|\phi|^2-v^2\right)^2.
         \end{align}
-        $V(\phi)$ has the same form as it did before, but now rotated around z-axis as scalar field is complex, arriving at the Mexican hat potential. 
+        $V(\phi)$ has the same form as it did before, but now rotated around z-axis as scalar field is complex, arriving at the Mexican hat potential.
         \emph{find image of Mexican hat potential}
-        There is now a whole circle of minima at $|\phi|=v$, so $\langle\phi\rangle = ve^{i\xi}$. 
-        The universe has to choose a single vacuum state spontaneously. 
+        There is now a whole circle of minima at $|\phi|=v$, so $\langle\phi\rangle = ve^{i\xi}$.
+        The universe has to choose a single vacuum state spontaneously.
     \item Let's say we choose $\langle\phi\rangle = v$, i.e. $\xi=0$. (It doesn't matter which we choose, but it's easiest to choose $\xi=0$ for mathematical convenience.)
-    \item So $\phi\to e^{-i\alpha}\phi$ keeps the Lagrangian invariant, but it does not keep the VEV invariant, so we do indeed have a spontaneously broken global continuous symmetry. 
+    \item So $\phi\to e^{-i\alpha}\phi$ keeps the Lagrangian invariant, but it does not keep the VEV invariant, so we do indeed have a spontaneously broken global continuous symmetry.
 \end{itemize}
 
-\chapter{}
+\chapter{Spontaneous Symmetry Breaking: The Higgs Mechanism}
 \section{Spontaneous Breaking of a Continuous Global Symmetry}
 For a scalar field $\phi(x)\in\C$, we consider a global U(1) symmetry, i.e. $\phi(x)\to e^{-i\alpha}\phi(x),\alpha\in\R$.
 We must look at the Lagrangian for this symmetry:
 \begin{align}
     \La &= (\p_\mu\phi^*)(\p^\mu\phi) - \lambda\left(|\phi|^2-\frac{v^2}{2}\right)^2.
 \end{align}
-Note we have made a slight change of normalisations from the previous lecture, but the constants don't matter as long as we are consistent throughout any example. 
+Note we have made a slight change of normalisations from the previous lecture, but the constants don't matter as long as we are consistent throughout any example.
 Following the Mexican hat potential for $V(\phi)$, we have a circle of local minima at $|\phi|=\frac{v}{\sqrt{2}}$.
 Our U(1) symmetry is spontaneously broken like before, by the choice of a particular minima as the vacuum: $\langle\phi\rangle = \frac{v}{\sqrt{2}}$.
 Again, the Lagrangian will be invariant, but the vacuum state is not.\\
-So now, we need to give a particle interpretation to the field. 
-We build up the Hilbert space above the vacuum as small fluctuations from the vacuum to build a multi-particle state. 
+So now, we need to give a particle interpretation to the field.
+We build up the Hilbert space above the vacuum as small fluctuations from the vacuum to build a multi-particle state.
 To this end, we shift the scalar field $\phi(x)$ by the VEV:
 \begin{align}
     \phi(x) - \frac{v}{\sqrt{2}} = \phi(x) - \langle\phi\rangle = \chi(x),
 \end{align}
 and it is fluctuations in this field $\chi$ which give rise to particle creation operators $\hag$, owing to the zero VEV of $\chi$, $\langle\chi\rangle=0$.
-We write $\chi$ as 
+We write $\chi$ as
 \begin{align}
     \chi(x) &= \frac{1}{\sqrt{2}}\left(\phi_1(x) + i\phi_2(x)\right),
 \end{align}
-where $\phi_i$ are both \textbf{real} scalar fields. 
+where $\phi_i$ are both \textbf{real} scalar fields.
 So the original scalar field $\phi$ would be
 \begin{align}
     \phi(x) &= \frac{1}{\sqrt{2}}\left(v+\phi_1(x)+i\phi_2(x)\right).
 \end{align}
-We must check that this change of field variables is still allowed in the Lagrangian. 
+We must check that this change of field variables is still allowed in the Lagrangian.
 The Lagrangian will become
 \begin{align}
     \La &= \frac12(\p_\mu\phi_1)(\p^\mu\phi_1) + \frac12(\p_\mu\phi_2)(\p^\mu\phi_2) - \frac{\lambda}{4}\left((v+\phi_1(x))^2+\phi_2(x)^2 - v^2\right)^2.
 \end{align}
-We can see from direct comparison that this is the same equation as Eq (11.1) just with a variable change. 
+We can see from direct comparison that this is the same equation as Eq (11.1) just with a variable change.
 So it is still invariant.
-If we consider the potential term of this, 
+If we consider the potential term of this,
 \begin{equation}
     \begin{split}
         -V(\phi) = -&\frac{\lambda}{4}(\phi_1^2+\phi_2^2)^2 \quad\quad\to\text{ four-point interactions} \\
@@ -868,9 +911,9 @@ Let's consider QCD with $N_f=2$ massless flavours of quarks, i.e. $m_{u,d}\to0$ 
 There is then a global symmetry of SU(2)$_L$.
 Under this symmetry, the massless quarks will transform as
 \begin{align}
-    \begin{pmatrix} u_L \\ d_L\end{pmatrix} &\to e^{-i\alpha^aT^{a\in\{1,2,3\}}}\begin{pmatrix}u_L\\ d_L\end{pmatrix}, & \begin{pmatrix} u_R \\ d_R\end{pmatrix} &\to e^{+i\alpha^aT^{a\in\{1,2,3\}}}\begin{pmatrix}u_R\\ d_R\end{pmatrix}. 
+    \begin{pmatrix} u_L \\ d_L\end{pmatrix} &\to e^{-i\alpha^aT^{a\in\{1,2,3\}}}\begin{pmatrix}u_L\\ d_L\end{pmatrix}, & \begin{pmatrix} u_R \\ d_R\end{pmatrix} &\to e^{+i\alpha^aT^{a\in\{1,2,3\}}}\begin{pmatrix}u_R\\ d_R\end{pmatrix}.
 \end{align}
-It is a phenomenological fact that SU(2)$_L$ is spontaneously broken, which implies $N_f^2-1=3$ massless bosons. 
+It is a phenomenological fact that SU(2)$_L$ is spontaneously broken, which implies $N_f^2-1=3$ massless bosons.
 They are the three pions, $\pi^0,\pi^+,\pi^-$:
 \begin{align}
     \pi^0 &= \frac{\bar{u}u + \bar{d}d}{\sqrt{2}}, & \pi^+ &= u\bar{d}, & \pi^- &= d\bar{u}.
@@ -891,11 +934,11 @@ This is fine, but we need to add some stuff on:
     D_\mu &= \p_\mu + ieA_\mu(x), \\
     \La &= -\frac14 F_{\mu\nu}F^{\mu\nu} + (D_\mu\phi)^*(D^\mu\phi)-V(\phi).
 \end{align}
-This form of the Lagrangian will be invariant under our gague transformations defined above.
+This form of the Lagrangian will be invariant under our gauge transformations defined above.
 Again, the potential $V(\phi)$ will give us a Mexican hat potential with local minima at $|\langle\phi\rangle|=\frac{v}{\sqrt{2}}$.
 We choose the vacuum $\langle\phi\rangle=\frac{v}{\sqrt{2}}$ such that it breaks the gauge U(1) symmetry spontaneously.
 
-\chapter{}
+\chapter{The Higgs Mechanism and the Outlook of Particle Physics}
 Last time, we did the Abelian Higgs model.
 A U(1) gauge theory with transforms
 \begin{align}
@@ -907,19 +950,19 @@ We have an invariant Lagrangian under U(1) symmetry:
     F_{\mu\nu} &\equiv \p_\mu A_\nu - \p_\nu A_\mu, \\
     D_\mu &\equiv \p_\mu + ieA_\mu.
 \end{align}
-We break the U(1) gauge symmetry spontaneously to get a Mexican hat potential with VEV $\langle\phi\rangle=\frac{v}{\sqrt{2}}$. 
+We break the U(1) gauge symmetry spontaneously to get a Mexican hat potential with VEV $\langle\phi\rangle=\frac{v}{\sqrt{2}}$.
 The symmetry goes $U(1)\to\cancel{0}$.\\
-Now we need to analyse the particle spectrum. 
-We start by writing down our scalar field as 
+Now we need to analyse the particle spectrum.
+We start by writing down our scalar field as
 \begin{align}
     \phi(x) &= \frac{1}{\sqrt{2}}\left(v+\rho(x)\right)e^{i\xi(x)},
 \end{align}
-where $\phi(x)$ is a complex scalar field and we have no loss of generality as $\rho(x)$ and $\xi(x)$ are real fields which are our real field degrees of freedom which we needed as before. 
+where $\phi(x)$ is a complex scalar field and we have no loss of generality as $\rho(x)$ and $\xi(x)$ are real fields which are our real field degrees of freedom which we needed as before.
 For a vev to be $\langle\phi\rangle=\frac{v}{\sqrt{2}}$, the two real fields $\rho$ and $\xi$ have vevs $=0$.\\
 Before, we worked with Cartesian coordinate degrees of freedom in $\phi_1$ and $\phi_2$, but now we are describing it in polar coordinates $\rho$ and $\xi$.
 Now, we have a gauge theory so to do any analytical calculations (e.g. perturbation theory etc), we need to fix the gauge by removing the unphysical gauge degrees of freedom.
 So how do we fix the gauge?
-We will choose the unitary gauge, 
+We will choose the unitary gauge,
 \begin{align}
     \alpha(x) &= \xi(x).
 \end{align}
@@ -927,7 +970,7 @@ In the unitary gauge, the complex scalar field is going to become
 \begin{align}
     \phi(x) &= \frac{1}{\sqrt{2}}(v+\rho(x)),
 \end{align}
-where we have got rid of one real field degree of freedom. 
+where we have got rid of one real field degree of freedom.
 \emph{Fixing the gauge is something which must be done in any gauge theory, not just when considering spontaneous symmetry breaking.}
 What is our Lagrangian now?
 \begin{align}
@@ -945,11 +988,11 @@ From the second and third terms in Eq (12.8) respectively, we get
 \end{align}
 So we see that the gauge field is massive, but we see it is proportional to the vev of the symmetry breaking, so it would become massless if we did not have this symmetry breaking.
 The $\rho(x)$ term is a real scalar field (i.e. the Higgs boson field) which is also massive through symmetry breaking.
-The Higgs field mass is also proportional to $\lambda$, which is the self-coupling constant of the Higgs field. 
+The Higgs field mass is also proportional to $\lambda$, which is the self-coupling constant of the Higgs field.
 In this case, we do not find a massless Goldstone boson.
-The unrealised Goldstone boson field is $\xi(x)$, which is "eaten" by the unitary gauge fixing. 
+The unrealised Goldstone boson field is $\xi(x)$, which is "eaten" by the unitary gauge fixing.
 But what if we fixed the gauge in a different way?
-The calculation may be more complicated, but any gauge fixing would ultimately result in the removal of one real field degree of freedom which would be "eaten" in some way. 
+The calculation may be more complicated, but any gauge fixing would ultimately result in the removal of one real field degree of freedom which would be "eaten" in some way.
 
 Let's count the degrees of freedom before and after spontaneous symmetry breaking:
 \begin{itemize}
@@ -961,35 +1004,35 @@ Let's count the degrees of freedom before and after spontaneous symmetry breakin
         \end{itemize}
     \item After spontaneous symmetry breaking:
         \begin{itemize}
-            \item $A_\mu$ with $m_A\neq0\implies$ 3 degrees of freedom in 2 transverse polarisations and 1 longitudinal. 
+            \item $A_\mu$ with $m_A\neq0\implies$ 3 degrees of freedom in 2 transverse polarisations and 1 longitudinal.
             \item However, $\phi(x)$ only has 1 degree of freedom in $\rho(x)$ (for the unitary gauge in polar coords)
             \item $3+1=4$
         \end{itemize}
 \end{itemize}
-We thus have studied the U(1) realisation of the Higgs mechanism. 
+We thus have studied the U(1) realisation of the Higgs mechanism.
 Key points:
 \begin{itemize}
-    \item For every broken generator of the gauge group, the corresponding gauge boson becomes massive. 
-    \item There are no Goldstone bosons left in the spectrum. They now give rise to the longitudinal polarisations of massive gauge bosons. 
+    \item For every broken generator of the gauge group, the corresponding gauge boson becomes massive.
+    \item There are no Goldstone bosons left in the spectrum. They now give rise to the longitudinal polarisations of massive gauge bosons.
     \item There is remaining massive scalar boson(s) $\to$ Higgs field(s).
 \end{itemize}
 
 \section{The Final Section}
 For the Standard Model, we have the symmetry SU(3)$_c\otimes$SU(2)$_L\otimes$U(1)$_Y$.
-We need to look through the matter fields of the theory. 
+We need to look through the matter fields of the theory.
 \begin{table}[H]
     \centering
     \begin{tabular}{c|ccc}
         \hline\hline
         \bfseries Particle &\bfseries SU(3)$_c$ &\bfseries SU(2)$_L$ &\bfseries U(1)$_Y$ \\
         \hline\hline
-        $q_L$ & $3$ & $2$ & $+\frac16$ \\ 
+        $q_L$ & $3$ & $2$ & $+\frac16$ \\
         $\bar{u}_R$ & $\bar{3}$ & $1$ & $-\frac23$ \\
         $\bar{d}_R$ & $\bar{3}$ & $1$ & $+\frac13$ \\
         $L_L$ & $1$ & $2$ & $-\frac12$ \\
         $\bar{\nu}_R$ & $1$ & $1$ & $0$ \\
         $\bar{e}_R$ & $1$ & $1$ & $+1$ \\
-        \hline 
+        \hline
         $H$ & $1$ & $2$ & $+\frac12$ \\
         \hline\hline
     \end{tabular}
@@ -1005,7 +1048,7 @@ The full Covariant Derivative of the Standard Model is defined as
 \begin{align}
     D_\mu &= \p_\mu - ig_1\frac{Y}{2}B_\mu - ig_2\frac{\sigma^i}{2}W^i_\mu - ig_3\frac{\lambda^a}{2}G_\mu^a,
 \end{align}
-with $g_{1,2,3}$ the gauge couplings of U(1)$_Y$, SU(2)$_L$, and SU(3)$_c$, where the gauge fields and generators of each group are in the term of their coupling. 
+with $g_{1,2,3}$ the gauge couplings of U(1)$_Y$, SU(2)$_L$, and SU(3)$_c$, where the gauge fields and generators of each group are in the term of their coupling.
 Now we write down the full Lagrangian of the Standard Model:
 \begin{align}
     \La &= -\frac14F^{\mu\nu}F_{\mu\nu} + i\bar{\Psi}\cancel{D}\Psi + (D_\mu\Phi)^\dagger(D^\mu\Phi) - V(\Phi) - Y_{ij}\bar{\Psi}_i\Phi\Psi_j + h.c.
@@ -1017,22 +1060,3 @@ Now we write down the full Lagrangian of the Standard Model:
 
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

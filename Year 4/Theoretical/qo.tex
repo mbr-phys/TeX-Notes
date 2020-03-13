@@ -13,18 +13,38 @@
 \newcommand\hd{\hat{\unl{d}}}
 \newcommand\hrho{\hat{\rho}}
 
-\title{Advanced Theoretical Physics \vspace{-20pt}}
-\author{Dr Kendon and Prof Gardiner}
-\date{\vspace{-15pt}Michaelmas Term 2019 - Epiphany Term 2020}
+% \title{Advanced Theoretical Physics \vspace{-20pt}}
+% \author{Dr Kendon and Prof Gardiner}
+% \date{\vspace{-15pt}Michaelmas Term 2019 - Epiphany Term 2020}
 \rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Michaelmas 2019}}\\[2.5cm]
+    {\LARGE\bfseries Advanced Theoretical Physics}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Quantum Optics}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Viv Kendon
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+    \includegraphics[width=0.7\textwidth]{qo.jpg}\\[1cm]
+    \vfill
+\end{titlepage}
 \tableofcontents
 
-\part{Quantum Optics}
-\chapter{}
+\chapter{Introduction}
 \textbf{Syllabus:}
 \begin{multicols}{2}
 \begin{itemize}
@@ -77,7 +97,7 @@ Hanbury Brown and Tiss:
     G(\tau) = I_A(t)I_B(t+\tau)
 \end{equation}
 
-\chapter{}
+\chapter{Creation and Annihilation Operators}
 \section{Learning Outcomes}
 To be able to state, explain and apply the operator formalism of the quantum harmonic oscillator, including:
 \begin{itemize}
@@ -99,7 +119,7 @@ To be able to state, explain and apply the operator formalism of the quantum har
     \frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} &+ V(x)\psi(x) = E\psi \\
     E_n &= \left(n+\frac12\right)\hbar\om
 \end{align}
-   
+
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -145,7 +165,7 @@ Ladder operators move the system up or down the energy levels of the harmonic po
         \draw (-1,0.3) -- (1,0.3) node[anchor=south,midway,xshift=7pt,yshift=-3pt] {\tiny $n=1$};
     \end{tikzpicture}
 \end{figure}
-We now have a partly new mathematical representation. 
+We now have a partly new mathematical representation.
 Notice that the potential still remains positive, it does not go negative.
 Therefore we must have:
 \begin{align}
@@ -195,21 +215,21 @@ Now we have the operators, $\ha_0,\hag_0,\ha_1,\hag_1$:
 \begin{align}
     \ha_0 \otimes \mathbb{I}_1&,~ \mathbb{I}_0\otimes \ha_1,\dots \\
     [\ha_0,\ha_1] &= [\ha_0,\hag_1] = 0 \\
-    \hh &= \hh_0\otimes\mathbb{I}_1 + \mathbb{I}_1\otimes\hh_1 
+    \hh &= \hh_0\otimes\mathbb{I}_1 + \mathbb{I}_1\otimes\hh_1
 \end{align}
-Note this is for non-interacting oscillators. 
-For interacting, 
+Note this is for non-interacting oscillators.
+For interacting,
 \begin{align}
     \hh &= \hh_0\otimes\mathbb{I}_1 + \mathbb{I}_1\otimes\hh_1 + \mathcal{H}_{int}.
 \end{align}
 
-\chapter{}
+\chapter{Quantisation of the Electromagnetic Field}
 \section{Learning Outcomes}
 To be familiar with the route to quantisation of the electromagnetic field, in particular to:
 \begin{itemize}
     \item Explain and state the description of the electromagnetic field in terms of modes and polarization
     \item Be familiar with the equivalence between a mode of the field and a quantum harmonic oscillator
-    \item To explain the form of (but not derive) expressions for the Hamiltonian of the electromagnetic field, and the electric and magnetic fields in terms of the creation and annihilation operatoes
+    \item To explain the form of (but not derive) expressions for the Hamiltonian of the electromagnetic field, and the electric and magnetic fields in terms of the creation and annihilation operators
     \item To recognise and explain the concepts of the Schrodinger and Heisenberg representations, and to explain which is being applied
     \item To explain and apply the concepts of adjoint and self-adjoint operators and their matrix elements
 \end{itemize}
@@ -230,7 +250,7 @@ Polarisation vectors, $\ve_{k1},\ve_{k2}$ - orthonormal vectors perpendicular to
     \unl{A}_k &= A_{k1}\ve_{k1} + A_{k2}\ve_{k2} \\
     \unl{A} &= \sum_{\unl{k},s} A_{\unl{k},s}\ve_{\unl{k},s}\exp\left\{i(\unl{k}\cdot\vr-\om_kt)\right\} + A_{\unl{k},s}^*\ve_{\unl{k},s}\exp\left\{-i(\unl{k}\cdot\vr-\om_kt)\right\}
 \end{align}
-The labels of the modes are $\unl{k},s$, $s\in1,2$. 
+The labels of the modes are $\unl{k},s$, $s\in1,2$.
 They gives us the: direction; wavelength, $\frac{2\pi}{|\unl{k}|}$; and polarisation, $s$.\\
 To quantise this classically:
 \begin{align}
@@ -244,7 +264,7 @@ $q_{\unl{k},s},p_{\unl{k},s}$ canonical coordinates $(x,p)$.
     H_{\unl{k},s} &= \frac12\left(p^2_{\unl{k},s} + \om_k^2q_{\unl{k},s}\right)
 \end{align}
 Harmonic oscillator $m=1$, $x\leftrightarrow p$.
-To transfer this from classical to quantum, you simply convert everything to its operator form. 
+To transfer this from classical to quantum, you simply convert everything to its operator form.
 For a single mode:
 \begin{align}
     \hh_{\unl{k},s} &= \left(\hag_{\unl{k},s}\ha_{\unl{k},s} + \frac12\right)\hbar\om_k \\
@@ -257,8 +277,8 @@ Going back on the substitution:
 \begin{align}
     \hat{A}_{\unl{k},s} &= \sqrt{\frac{\hbar}{2\om_k\e_0V}}\ha_{\unl{k},s} & \hat{A}_{\unl{k},s}^\dagger &= \sqrt{\frac{\hbar}{2\om_k\e_0V}}\hag_{\unl{k},s}
 \end{align}
-From these, we can find the quantised electric and magnetic field expressions. 
-We will mostly be concerned with the electric field throughout this course as it has a much stronger interaction with matter than the magnetic. 
+From these, we can find the quantised electric and magnetic field expressions.
+We will mostly be concerned with the electric field throughout this course as it has a much stronger interaction with matter than the magnetic.
 \begin{align}
     \hat{\E}_{\unl{k},s}(\vr,t) &= i\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\left[\ha_{\unl{k},s}\exp\{i(\unl{k}\cdot\vr-\om_kt)\} - \hag_{\unl{k},s}\exp\{-i(\unl{k}\cdot\vr-\om_kt)\}\right]
 \end{align}
@@ -267,8 +287,8 @@ We will mostly be concerned with the electric field throughout this course as it
 \begin{align}
     \hat{H}_{\unl{k},s} &= \sum_{\unl{k},s} \hbar\om_k \left(\hag_{\unl{k},s}\ha_{\unl{k},s} + \frac12\right)
 \end{align}
-So the modes are independent of each other, but will interact through matter. 
-We have a basis of 
+So the modes are independent of each other, but will interact through matter.
+We have a basis of
 \begin{equation}
     |n_1n_2n_3\dots\rangle \equiv |n_1\rangle_{\unl{k}1,s}\otimes|n_2\rangle_{\unl{k}2,s}\otimes\dots
 \end{equation}
@@ -277,22 +297,21 @@ Now we can write the electric field operator:
     \hat{\E}(\vr,t) &= \sum_{\unl{k},s} \hat{\E}_{\unl{k},s}(\vr,t) \\
                     &= \sum_{\unl{k},s} i\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\left\{\ha_{\unl{k},s}\exp[i(\unl{k}\cdot\vr-\om_kt)] + \hag_{\unl{k},s}\exp[-i(\unl{k}\cdot\vr-\om_kt)]\right\}
 \end{align}
-This is written in the Heisenberg representation. 
+This is written in the Heisenberg representation.
 Now if we look at the expectation value, for one mode of the electric field
 \begin{align}
     {}_{\unl{k},s}\langle n|\hat{\E}(\vr,t)|n'\rangle_{\unl{k},s}
 \end{align}
-This is time dependent as seen by the field operator and will oscillate in time through some means. 
+This is time dependent as seen by the field operator and will oscillate in time through some means.
 As a reminder, consider an operator in the Heisenberg picture:
 \begin{align}
-    \hat{O}_H(t) &= \hat{U}^\dagger(t,t_0)\hat{O}\hat{U}(t,t_0) \\ 
+    \hat{O}_H(t) &= \hat{U}^\dagger(t,t_0)\hat{O}\hat{U}(t,t_0) \\
     \hat{U}(t,t_0) &= \exp\left[-i\frac{\hat{H}(t-t_0)}{\hbar}\right]
 \end{align}
 
-\chapter{}
+\chapter{Quantum States of the Electromagnetic Field.}
 \section{Learning Outcomes}
-Quantum States of the EM field. 
-We will cover three important families of quantum states of light: number states, coherent states, and squeezed states. 
+We will cover three important families of quantum states of light: number states, coherent states, and squeezed states.
 After studying this part, you should:
 \begin{itemize}
     \item recognise each of these types of states, and be able to provide a simple definition
@@ -307,12 +326,12 @@ After studying this part, you should:
 \section{Single Mode Fields}
 \begin{align}
     \hn_{\unl{k},s} &= \hag_{\unl{k},s}\ha_{\unl{k},s} \\
-    \hh_{\unl{k},s} &= \left(\hn_{\unl{k},s}+\frac12\right)\hbar\om_k 
+    \hh_{\unl{k},s} &= \left(\hn_{\unl{k},s}+\frac12\right)\hbar\om_k
 \end{align}
 The eigenstates are the number states, a.k.a Fock states, $|n\rangle_{\unl{k},s}$.
 \begin{align}
     \hn_{\unl{k},s}|n\rangle_{\unl{k},s} &= n|n\rangle_{\unl{k},s} \\
-    \hh_{\unl{k},s}|n\rangle_{\unl{k},s} &= \hbar\om_k\left(n+\frac12\right)|n\rangle_{\unl{k},s} 
+    \hh_{\unl{k},s}|n\rangle_{\unl{k},s} &= \hbar\om_k\left(n+\frac12\right)|n\rangle_{\unl{k},s}
 \end{align}
 It follows that the vacuum state has energy as well - $|0\rangle_{\unl{k},s}$, with energy $\frac12\hbar\om_k$.
 \begin{align}
@@ -321,7 +340,7 @@ It follows that the vacuum state has energy as well - $|0\rangle_{\unl{k},s}$, w
 \end{align}
 
 \section{Multimode fields}
-For multimode states, we just do the sum of all of these states. 
+For multimode states, we just do the sum of all of these states.
 \begin{align}
     \hh &= \sum_{\unl{k},s} \left(\hn_{\unl{k},s} + \frac12\right)\hbar\om_k \\
     |n_0n_1n_2\dots n_k\dots\rangle &= |n_0\rangle_0\otimes|n_1\rangle\otimes\dots\otimes|n_k\rangle_k\otimes\dots
@@ -354,7 +373,7 @@ From analogy to the classical Hamiltonian, we can see how the variance would be 
 The vacuum state fluctuates in its energy around zero, and this has observable effects.
 
 \section{Electric Field in Multimode Fields}
-For a multimode field's vacuum, 
+For a multimode field's vacuum,
 \begin{align}
     \langle(\Delta\E)^2\rangle &= \sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right).
 \end{align}
@@ -362,7 +381,7 @@ This term sums to infinity, which can be a problem, and leads to some effects:
 \begin{itemize}
     \item The Lamb shift in atoms' energy levels
     \item The Casimir effect causes a series of modes to form in between two plates that can be zero at the plates, while the modes outside the plates have no restrictions. The difference in the two areas of modes causes a force that pushes the plates together.
-        The Casimir effect has a classical analogue when boats close to a harbor wall are pushed into the wall by the difference in waves from out in the open water and between the boat and the wall. 
+        The Casimir effect has a classical analogue when boats close to a harbor wall are pushed into the wall by the difference in waves from out in the open water and between the boat and the wall.
 \end{itemize}
 
 \section{The Number States - A Summary}
@@ -374,7 +393,7 @@ This term sums to infinity, which can be a problem, and leads to some effects:
     \item Most non-classical states you can get, and you can do experiments with them to show this using single or a few photons in the modes
 \end{itemize}
 
-\chapter{}
+\chapter{Towards the Classical Limit}
 \section{States with Classical Limits}
 \begin{align}
     E_x(z,t) &\propto \sin(kx-\om t) \\
@@ -390,7 +409,7 @@ We did this because right eigenstates of $\hag$ do not exist.
     \hag|\beta\rangle &\neq \beta|\beta\rangle,\forall \beta \in \C \\
     \langle\alpha|\hag &= \alpha^*\langle\alpha|
 \end{align}
-However, $\hag$ does form eigenstates with left states. 
+However, $\hag$ does form eigenstates with left states.
 \begin{align}
     |\alpha\rangle &= \sum_{n=0}^\infty c_n|n\rangle \\
     \ha|\alpha\rangle = \sum_{n=1}^\infty c_n\sqrt{n}|n-1\rangle &= \alpha\sum_{n=0}^\infty c_n|n\rangle \\
@@ -430,19 +449,19 @@ What we want to calculate now is the variance of photon number, i.e. $\langle(\D
 We wish to normal order Eq (5.21) by switching the middle two operators.
 Using commutators, we have:
 \begin{align}
-    [\ha,\hag] &= \ha\hag - \hag\ha = 1 \\ 
+    [\ha,\hag] &= \ha\hag - \hag\ha = 1 \\
     \implies (5.21) &= \langle\alpha|\hag(\hag\ha + 1)\ha|\alpha\rangle \\
                     &= \langle\alpha|\hag\hag\ha\ha|\alpha\rangle + \langle\alpha|\hag\ha|\rangle \\
                     &= |\alpha|^4 + |\alpha|^2 \\
     \langle(\Delta n)^2\rangle &= |\alpha|^2 \\
     \langle n\rangle &= \langle(\Delta n)^2\rangle
 \end{align}
-So the mean is equal to the variance. 
+So the mean is equal to the variance.
 This is what is described in the Poisson distribution.
 \begin{align}
     \frac{\Delta n}{n} &= \langle n\rangle^{-1/2}
 \end{align}
-So this gets smaller as n gets larger, i.e. more classical for large n. 
+So this gets smaller as n gets larger, i.e. more classical for large n.
 
 \section{The electric field of a more classical state}
 \begin{align}
@@ -471,23 +490,23 @@ This looks like classical EM field, with $|\alpha|$ the amplitude, and $\langle 
                                &= \exp\left\{-\frac{|\beta|^2+|\alpha|^2}{2}\right\}\exp\left\{\beta^*\alpha\right\} \\
     \langle\beta|\alpha\rangle^2 &= \exp\left\{-|\alpha-\beta|^2\right\}
 \end{align}
-So two states will depend on how much they differ from one another, they form an over-complete basis. 
+So two states will depend on how much they differ from one another, they form an over-complete basis.
 \begin{align}
     \frac{1}{\pi}\int |\alpha\rangle\langle\alpha|\;d^2\alpha &= \sum_n |n\rangle\langle n| = \mathbb{I} \\
     |\phi\rangle &= \frac{1}{\pi}\int |\alpha\rangle\langle\alpha|\phi\rangle\;d^2\alpha
 \end{align}
 
-\chapter{}
+\chapter{Harmonic Oscillators}
 \begin{align}
-    \langle\Eh_x(z,t)\rangle &= 2|\alpha\rangle\left(\frac{\hbar\om_k}{3\e_0V}\right)^{1/2}\sin\left\{\om t - kz - \theta\right\}\ve_{\unl{k},\alpha} \\ 
-    \alpha &= |\alpha|e^{i\theta} 
+    \langle\Eh_x(z,t)\rangle &= 2|\alpha\rangle\left(\frac{\hbar\om_k}{3\e_0V}\right)^{1/2}\sin\left\{\om t - kz - \theta\right\}\ve_{\unl{k},\alpha} \\
+    \alpha &= |\alpha|e^{i\theta}
 \end{align}
 Now back to thinking about the harmonic oscillator, using $\hp,\hq$.
 \begin{align}
     \hat{X}_1 &= \frac12\left(\ha+\hag\right),\, \hq \\
     \hat{X}_2 &= \frac{1}{2i}\left(\ha-\hag\right),\, \hp \\
     [\hat{X}_1,\hat{X}_2] &= \frac{i}{2} \\
-    \langle\xo\rangle_\alpha &= \langle\alpha|\xo|\alpha\rangle = \frac12 \left\{\langle\alpha|\ha|\alpha\rangle + \langle\alpha|\hag|\alpha\rangle\right\} \\ 
+    \langle\xo\rangle_\alpha &= \langle\alpha|\xo|\alpha\rangle = \frac12 \left\{\langle\alpha|\ha|\alpha\rangle + \langle\alpha|\hag|\alpha\rangle\right\} \\
                              &= \frac12 \left\{\alpha+\alpha^*\right\} = \text{Re}(\alpha) \\
     \langle\xt\rangle_\alpha &= \frac{1}{2i}\left\{\alpha-\alpha^*\right\} = \text{Im}(\alpha) \\
     \langle(\Delta\xo)^2\rangle &= \langle(\Delta\xt)^2\rangle = \frac14
@@ -498,7 +517,7 @@ Consider two Hermitian operators, $\hat{A},\hat{B}$, then the modulus commutator
     (\Delta A)^2 &= \langle(\Delta A)^2\rangle = \langle\hat{A}^2\rangle - \langle\hat{A}\rangle^2\\
     \langle(\Delta\xo)^2\rangle\langle(\Delta\xt)^2\rangle &\geq \frac14\Big|[\xo,\xt]\Big|^2 = \frac{1}{16}
 \end{align}
-For coherent states, Eq (6.12) is equal to $\frac{1}{16}$. 
+For coherent states, Eq (6.12) is equal to $\frac{1}{16}$.
 So the coherent state is a minimum uncertainty state, where the remaining uncertainty is all in the vacuum fluctuations.
 We can represent the classical harmonic oscillator in phase space, but we want to do the same thing for a quantum harmonic oscillator, for a state $|\alpha\rangle$:
 \begin{multicols}{2}
@@ -607,25 +626,24 @@ Then in the interaction picture,
     U &= \exp\left(-\frac{i}{\hbar}\hh_{int}\right) = \exp\left(\eta^*\ha^2 - \eta(\hag)^2 \right)
 \end{align}
 
-\chapter{}
+\chapter{Atom-Light Interactions}
 \section{Learning Outcomes}
-Atom-light interaction and a model for photodetection.
-We will develop a fully quantum mechanical model for the interaction of light with atoms. 
+We will develop a fully quantum mechanical model for the interaction of light with atoms.
 After studying this part, you should:
 \begin{itemize}
     \item Be familiar with the atom-light interaction Hamiltonian in the electric dipole approximation, and explain this approximation.
-    \item Be familiar with the Pauli operators asa quantum description of the two-level atom.
+    \item Be familiar with the Pauli operators as quantum description of the two-level atom.
     \item Explain the physical basis of the Jaynes-Cummings model for atom-light interactions. Explain and use, but not derive, the resulting Hamiltonian.
     \item Be familiar with the concept of dressed state, and vacuum Rabi splitting in the context of the Jaynes Cummings Hamiltonian.
     \item Be able to perform simple calculations with combinations of atomic and field operators.
-    \item Provide a simple explanation of a photodetector in the context of quantum optics. 
+    \item Provide a simple explanation of a photodetector in the context of quantum optics.
     \item Be familiar with the operator expression for the photodetection probability, and understand the meaning of normal ordering in this context.
 \end{itemize}
 
 \section{Atom-Light Interactions}
 \begin{align}
     \hh &= \hh_{atom} + \hh_{field} + \hh_{int} \\
-    \hh_{atom} &= \frac{\hp^2}{2m} + \hat{V}(r) 
+    \hh_{atom} &= \frac{\hp^2}{2m} + \hat{V}(r)
 \end{align}
 So for the EM field, classical version in something of $\hat{A}$.
 Interaction: force on $e^-$ due to EM field,
@@ -633,7 +651,7 @@ Interaction: force on $e^-$ due to EM field,
     \unl{F} &- q\left[\E(\vr,t) + \unl{v}\times\B(\vr,t)\right]
 \end{align}
 where $\unl{F}$ is the Lorentz force. \textit{We do not need to know the derivation for this, only to use it.}
-This is known as the minimal coupling Hamiltonian. 
+This is known as the minimal coupling Hamiltonian.
 Choose Coulomb gauge, $\phi=0,\,\del\cdot A = 0$, but note that this is not Lorentz invariant.
 Now we apply the electric dipole approximation, where light $\gg$ atoms.
 \begin{align}
@@ -671,7 +689,7 @@ Two level atom - the two that match EM field.
     \hh &= \hh_{atom} + \hh_{field} + \hh_{int} \\
     \hh_{field} &= \hbar\left(\hag\ha + \frac12\right)
 \end{align}
-The $\frac12$ is the zero-point energy. 
+The $\frac12$ is the zero-point energy.
 A two-level atom is equivalent to a spin-$\frac12$ particle.
 \begin{align}
     \hsig_+ &= |e\rangle\langle g| & \hsig_- &= |g\rangle\langle e| = \hsig^\dagger_+ \\
@@ -695,7 +713,7 @@ Note that $\lambda$ here is \unl{not a wavelength} but just the constant from Eq
 So in the Heisenberg picture, we have
 \begin{align}
     \ha(t) &= \ha(0)e^{-i\om t} & \hag(t) &= \hag(0)e^{+i\om t} \\
-    \hsig_+(t) &= \hsig_+(0)e^{+i\om_0t} & \hsig_-(t) &= \hsig_-(0)e^{-i\om_0 t} 
+    \hsig_+(t) &= \hsig_+(0)e^{+i\om_0t} & \hsig_-(t) &= \hsig_-(0)e^{-i\om_0 t}
 \end{align}
 $\hh_{int}$ has:
 \begin{align}
@@ -703,12 +721,12 @@ $\hh_{int}$ has:
     \hsig_+\hag &\approx e^{i(\om+\om_0)t} & \hsig_-\ha &\approx e^{-i(\om+\om_0)t}
 \end{align}
 Eqs (7.23) oscillate slowly and conserve energy, while Eqs (7.24) oscillate fast and do not conserve energy.
-So we want to drop the fast oscillating terms as these are not useful to our picture of the Hamiltonian, and this is the rotating wave approximation. 
+So we want to drop the fast oscillating terms as these are not useful to our picture of the Hamiltonian, and this is the rotating wave approximation.
 From this, we arrive at the Jaynes-Cummings Hamiltonian:
 \begin{align}
     \hh_{JC} &= \frac12\hbar\om_0\hsig_z + \hbar\om\left(\hag\ha+\frac12\right) + \hbar\lambda(\hsig_+\ha +\hsig_-\hag)
 \end{align}
-This describes: 
+This describes:
 \begin{itemize}
     \item energy of atom
     \item energy of photons/cavity mode (single mode)
@@ -733,7 +751,7 @@ So what assumptions did we use?
         \draw (0,0) -- (1,0) node[anchor=north west] {$|g\rangle|n+1\rangle$};
         \draw (0,3) -- (1,3) node[anchor=south west] {$|e\rangle|n\rangle$};
         \draw[Latex-Latex] (1,3) -- (1,0) node[anchor=west,midway,yshift=-20pt] {$\hbar\om_0$};
-        \draw[dashed] (1,1.5) -- (0.5,1.5) node[anchor=east] {$E=0$}; 
+        \draw[dashed] (1,1.5) -- (0.5,1.5) node[anchor=east] {$E=0$};
         \draw (1,2.25) -- (0.5,2.25) node[anchor=east] {$\hbar\Delta$};
         \draw[Latex-Latex] (0.6,2.25) -- (0.6,0) node[anchor=east,midway,yshift=-10pt] {$\hbar\om$};
     \end{tikzpicture}
@@ -748,7 +766,7 @@ We can then form two basis states:
 \end{equation}
 Matrix elements obtained from $\langle i|\hh(n)|i\rangle$, etc.
 
-\chapter{}
+\chapter{Rotating Wave Approximation}
 \section{Rotating Wave Approx Ctd}
 We will take $\Delta=0$, and for an initial state $|i\rangle = |e\rangle|n\rangle$,
 \begin{align}
@@ -759,7 +777,7 @@ So the energies are equal, and conserved.
 We can then solve the Schrodinger equation for Eq (8.1), and find relations for the co-factors:
 \begin{align}
     \dot{c}_i &= -i\lambda\sqrt{n+1}c_f & \ddot{c}_i &+ \lambda^2(n+1)c_i = 0 \\
-    c_i(t) &= \cos\left(\lambda t\sqrt{n+1}\right) & c_f(t) &= i\sin\left(\lambda t\sqrt{n+1}\right) 
+    c_i(t) &= \cos\left(\lambda t\sqrt{n+1}\right) & c_f(t) &= i\sin\left(\lambda t\sqrt{n+1}\right)
 \end{align}
 \begin{equation}
     P_i(t) = |c_i(t)|^2 = \cos^2\left(\lambda t\sqrt{n+1}\right)
@@ -774,7 +792,7 @@ Now we will define the \textbf{Rabi frequency}, as
     \Om(n) &= 2\lambda\sqrt{n+1}
 \end{align}
 Note that there are even Rabi oscillations for $n=0$.
-This may seem a strange possibility at first, but there are many experiments to prove this is in fact the case, where it occurs in our cavity model as the vacuum of the single mode focused on the atom. 
+This may seem a strange possibility at first, but there are many experiments to prove this is in fact the case, where it occurs in our cavity model as the vacuum of the single mode focused on the atom.
 This can appear quite classical at first, but in the more general case as you increase the number of states involved, it will seem more quantum.
 We can write general descriptions for our ground and excited states:
 \begin{align}
@@ -787,7 +805,7 @@ For a single number state, $P_i$ oscillates between ground and excited in a clas
 
 Now, we want to analyse the Jaynes-Cummings Hamiltonian through the calculation of the matrix elements instead, so we will start with our same two pairs of states, this time with $\Delta\neq0$.
 \begin{align}
-    |i\rangle &= |e\rangle|n\rangle & |f\rangle &= |g\rangle|n+1\rangle 
+    |i\rangle &= |e\rangle|n\rangle & |f\rangle &= |g\rangle|n+1\rangle
 \end{align}
 \begin{equation}
     \hh(n) = \hbar\begin{pmatrix}n\om+\frac12\om_0 & \lambda\sqrt{n+1} \\ \lambda\sqrt{n+1} & (n+1)\om-\frac12\om_0 \end{pmatrix}
@@ -795,9 +813,9 @@ Now, we want to analyse the Jaynes-Cummings Hamiltonian through the calculation 
 This has eigenenergies with the Rabi frequency, which is the same as before if $\Delta=0$.
 \begin{align}
     E_{\pm} &= \hbar\left\{\left(n+\frac12\right)\om \pm \frac12\Om_n(\Delta)\right\} \\
-    \Om_n(\Delta) &= \left[\Delta^2+ 4\lambda^2(n+1)\right]^{1/2} 
+    \Om_n(\Delta) &= \left[\Delta^2+ 4\lambda^2(n+1)\right]^{1/2}
 \end{align}
-We then have eigenstates, 
+We then have eigenstates,
 \begin{align}
     |n,+\rangle &= \cos\left(\frac12\Phi_n\right)|i\rangle + \sin\left(\frac12\Phi_n\right)|f\rangle & |n,-\rangle &= -\sin\left(\frac12\Phi_n\right)|i\rangle + \cos\left(\frac12\Phi_n\right)|f\rangle
 \end{align}
@@ -806,7 +824,7 @@ We have used a new angle here, $\Phi_n$, where this is defined as
     \Phi_n &= \arctan\left(\frac{2\lambda\sqrt{n+1}}{\Delta}\right) = \arctan\left(\frac{\Om_n(0)}{\Delta}\right).
 \end{align}
 We are happy with this definition even in the limit of $\Delta\to0$, as $\tan$s have known angles even at $\infty$.\\
-The eigenstates above are known as \emph{dressed states} of the atom, so when the atom is in a single-mode field like this, the field changes the eigenstates so they become eigenstates of the whole system. 
+The eigenstates above are known as \emph{dressed states} of the atom, so when the atom is in a single-mode field like this, the field changes the eigenstates so they become eigenstates of the whole system.
 This looks like the energies of the eigenstates being changed by the application of the field.
 The original eigenstates we considered, $|e\rangle|n\rangle$ and $|g\rangle|n+1\rangle$, are called \emph{bare states.}
 These bare states do not have the same energy, unless $\Delta=0$.
@@ -816,22 +834,22 @@ These bare states do not have the same energy, unless $\Delta=0$.
         \draw (0,0) -- (1,0) node[anchor=north west] {$|g\rangle|n+1\rangle$};
         \draw (0,3) -- (1,3) node[anchor=south west] {$|e\rangle|n\rangle$};
         \draw[Latex-Latex] (0,3) -- (0,0) node[anchor=east,midway,yshift=-20pt] {$\hbar\om_0$};
-        \draw[dashed] (0,1.5) -- (0.5,1.5) node[anchor=west] {$E=0$}; 
+        \draw[dashed] (0,1.5) -- (0.5,1.5) node[anchor=west] {$E=0$};
         \draw (0.5,2.25) -- (1,2.25) node[anchor=south,midway] {$\hbar\Delta$} node[anchor=west] {$|g\rangle|n+1\rangle$};
         \draw[Latex-Latex] (0.6,2.25) -- (0.6,0) node[anchor=west,midway,yshift=-10pt] {$\hbar\om$};
 
         \draw (3,2.25) -- (3.5,2.25) node[anchor=south,midway] {$\Delta$} node[anchor=north,midway] {$\lambda=0$};
         \draw (3,3) -- (3.5,3);
         \draw[dashed] (3.5,2.25) -- (4.5,2);
-        \draw (4.5,2) -- (5,2) node[anchor=north,midway] {$|n,-\rangle$} node[anchor=north,midway,yshift=-15pt] {$\lambda\neq0$}; 
+        \draw (4.5,2) -- (5,2) node[anchor=north,midway] {$|n,-\rangle$} node[anchor=north,midway,yshift=-15pt] {$\lambda\neq0$};
         \draw[dashed] (3.5,3) -- (4.5,3.25);
         \draw (4.5,3.25) -- (5,3.25) node[anchor=south,midway] {$|n,+\rangle$};
         \draw[white] (4.75,3.25) -- (4.75,2) node[black,midway] {$\hbar\Om_n(\Delta)$};
     \end{tikzpicture}
 \end{figure}
-So if we define $\Delta=\om_0-\om$, we can see that now $\Delta$ is the energy splitting between the states $|e\rangle|n\rangle$ and $|g\rangle|n+1\rangle$, but this is for $\lambda=0$ and we can see the dependence on $\lambda$ on these energy states through the Rabi frequency. 
+So if we define $\Delta=\om_0-\om$, we can see that now $\Delta$ is the energy splitting between the states $|e\rangle|n\rangle$ and $|g\rangle|n+1\rangle$, but this is for $\lambda=0$ and we can see the dependence on $\lambda$ on these energy states through the Rabi frequency.
 It is then clear that this energy splitting $\Delta$, will increase for the eigenenergies, $|n,-\rangle$ and $n,+\rangle$.
-This is known as a \emph{Stark Shift}, since it is interacting through the E-field of light. 
+This is known as a \emph{Stark Shift}, since it is interacting through the E-field of light.
 Specifically, it is known as the AC or dynamic Stark shift, as the source of the electric field is not static, but dynamic.\\
 So as $\Delta\to0$, we are on resonance, and the bare states are degenerate, but the dressed states are still split.
 \begin{align}
@@ -841,7 +859,7 @@ So as $\Delta\to0$, we are on resonance, and the bare states are degenerate, but
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \draw (0,0) node[anchor=east] {$n=0$} -- (2,0) node[anchor=north,midway] {$\lambda,\Delta=0$}; 
+        \draw (0,0) node[anchor=east] {$n=0$} -- (2,0) node[anchor=north,midway] {$\lambda,\Delta=0$};
         \draw (0,1) node[anchor=east] {$n=1$} -- (2,1);
         \draw (0,2) node[anchor=east] {$n=2$} -- (2,2);
         \draw[Latex-Latex] (1,0) -- (1,1) node[anchor=west,midway] {$\hbar\om$};
@@ -860,11 +878,11 @@ So as $\Delta\to0$, we are on resonance, and the bare states are degenerate, but
         \draw[Latex-Latex] (5.1,1.5) -- (5.1,2.5) node[anchor=west,midway] {$2\sqrt{3}\hbar\lambda$};
     \end{tikzpicture}
 \end{figure}
-The phenomenom shown above is known as vacuum Rabi splitting, where we get anharmonic energy levels due to coupling as $\lambda\neq0$.
+The phenomenon shown above is known as vacuum Rabi splitting, where we get anharmonic energy levels due to coupling as $\lambda\neq0$.
 This is the underlying physics that allows us to engineer quantum technology by compressing waves down several orders of magnitude.
 This all begins as the light and atom when allowed to interact begin to behave as a composite system.
 
-\chapter{}
+\chapter{Photodetection and Correlation Functions}
 \section{Photodetection}
 We are interested in detecting low numbers of photons, so we will make use of the physics previously discussed, in terms of Hamiltonians
 \begin{align}
@@ -876,7 +894,7 @@ We then want to use the electric dipole approximation to build our interaction H
 \begin{align}
     \hh_{int} &= e\hat{\vr}\cdot\Eh = -\hat{d}\cdot\Eh(\vec{R},t)
 \end{align}
-We are aiming to ionise the atom, because then we have a free electron to detect as well. 
+We are aiming to ionise the atom, because then we have a free electron to detect as well.
 Once we have one electron freed, we can pull many more until we have multiple electrons to form a current, which we can detect.
 Of course to ionise the atom, we require the photon to add enough energy to free the electron.
 
@@ -931,7 +949,7 @@ Two types of photodetectors:
                 \draw (8.2,-1.45) -- (8.2,-1.35);
             \end{tikzpicture}
         \end{figure}
-        It is in a tube so it has a high vacuum. 
+        It is in a tube so it has a high vacuum.
         This tube can result in a gain $\approx 10^8$.
     \item Avalanche Photo Detector (APD)
         \begin{figure}[H]
@@ -970,20 +988,20 @@ Two types of photodetectors:
         \draw[-Latex] (0.5,0) -- (0.5,2);
         \draw (0,2) node[anchor=east] {$F\rangle$} -- (1,2);
         \draw (0.2,2.1) -- (0.8,2.1);
-        \draw (0.4,2.2) -- (0.6,2.2); 
+        \draw (0.4,2.2) -- (0.6,2.2);
         \draw[decorate,decoration={brace,amplitude=5pt,mirror}] (1,1.9) -- (1,2.3) node[anchor=west,midway,xshift=5pt] {$|e\rangle|f\rangle_{field}$};
     \end{tikzpicture}
 \end{figure}
-For a free electron, 
+For a free electron,
 \begin{align}
     |e\rangle &= \frac{1}{\sqrt{V}}e^{i\vec{q}\cdot\vr}
 \end{align}
-So for our interaction Hamiltonian then, 
+So for our interaction Hamiltonian then,
 \begin{align}
     \hh_{int} &= -\hat{d}\cdot\Eh(\vr,t) \\
     \Eh(\vr,t) &= i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\left[\hag_{\unl{k},s}(t)e^{i\unl{k}\cdot\vr} - \ha_{\unl{k},s}(t)e^{-i\unl{k}\cdot\vr}\right]
 \end{align}
-This is clearly in the Heisenberg picture as we have time-dependent operators. 
+This is clearly in the Heisenberg picture as we have time-dependent operators.
 Here, $\ve$ is the polarisation vector.
 \begin{align}
     \ha_{\unl{k},s}(t) &= \ha_{\unl{k},s}e^{-i\om_kt} & \hag_{\unl{k},s}(t) &= \hag_{\unl{k},s}e^{i\om_kt}
@@ -993,12 +1011,12 @@ We want to split the electric field into two parts for absorption and emission:
     \Eh_+(\vr,t) &\equiv i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\ha_{\unl{k},s}(t)e^{i\vec{k}\cdot\vr} \\
     \Eh_-(\vr,t) &\equiv -i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\hag_{\unl{k},s}(t)e^{-i\vec{k}\cdot\vr} \\
 \end{align}
-These have been defined such that $\Eh_- \equiv \Eh_+^\dagger$ and vice versa; these operators have taken on the properties of the creation and annihilation operators. 
-We only want to use $\Eh_+$ as this deals with absorption, which is what we're interested in. 
+These have been defined such that $\Eh_- \equiv \Eh_+^\dagger$ and vice versa; these operators have taken on the properties of the creation and annihilation operators.
+We only want to use $\Eh_+$ as this deals with absorption, which is what we're interested in.
 \begin{align}
-    \langle F|\hh|I\rangle &\approx -\underbrace{\langle e|\hat{d}|g\rangle}_{\text{atom}} \underbrace{\langle f|\Eh_+(\vr,t)|i\rangle}_{\text{field}} 
+    \langle F|\hh|I\rangle &\approx -\underbrace{\langle e|\hat{d}|g\rangle}_{\text{atom}} \underbrace{\langle f|\Eh_+(\vr,t)|i\rangle}_{\text{field}}
 \end{align}
-The atom term above is equal to $d$, but the field term isn't so clear. 
+The atom term above is equal to $d$, but the field term isn't so clear.
 We must sum over all possible final states to find this expectation value, using the \textbf{broadband detector assumption.}
 \begin{align}
     P_f &= |\langle F|\hh|I\rangle|^2 \propto |\langle f|\Eh_+(\vr,t)|i\rangle|^2 \\
@@ -1008,16 +1026,16 @@ We must sum over all possible final states to find this expectation value, using
 If this sum is over all possible $f$ and doesn't depend on any of the other terms, then the $|f\rangle\langle f|$ will sum to the identity.
 \begin{align}
     P_i &\propto \langle i|\Eh_-(\vr,t)\Eh_+(\vr,t)|i\rangle \\
-    \Eh_+(\vr,t) &\equiv i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\ha_{\unl{k},s}(t)e^{i\vec{k}\cdot\vr} 
+    \Eh_+(\vr,t) &\equiv i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\ha_{\unl{k},s}(t)e^{i\vec{k}\cdot\vr}
 \end{align}
 Depending on what our state is, wrapping it around the electric field operators can produce some fairly non-trivial outcomes.
 Note that the ordering of these operators is important; if the operators were the other way around, they would be acting on the f bra/kets instead of the i bra/kets, and we would not have been able to sum and cancel the fs.\\
-Reminding ourselves that we are trying to count photons, we can see that $\Eh_-\Eh_+ \propto \hag\ha = \hn$, the number operator. 
+Reminding ourselves that we are trying to count photons, we can see that $\Eh_-\Eh_+ \propto \hag\ha = \hn$, the number operator.
 Therefore our current result makes sense as it will indeed count photons, for discrete states or coherent states (detecting average number of photons instead).
 We will see more on this when we discuss correlation functions in lecture 11, but we first need to understand beamsplitters in lecture 10.
 
 \section{Coherence/correlation functions}
-First, we will remind ourselves of the classical functions. 
+First, we will remind ourselves of the classical functions.
 An early example is Young's slits experiment:
 \begin{figure}[H]
     \centering
@@ -1034,14 +1052,14 @@ An early example is Young's slits experiment:
         \draw[Latex-Latex] (1.5,1.1) -- (3.6,1.1) node[anchor=south,midway] {$s_1$};
         \draw[Latex-Latex] (1.5,0) -- (3.6,0.55) node[anchor=north west,midway] {$s_2$} node[anchor=north,midway,xshift=30pt,yshift=-10pt] {$\Delta s = |s_1-s_2|$};
     \end{tikzpicture}
-\end{figure}    
-We need 
+\end{figure}
+We need
 \begin{align}
     \Delta s &\leq \frac{c}{\Delta\om} \\
     \Delta t &= \frac{\Delta s}{c} = \frac{1}{\Delta\om}
 \end{align}
 $\frac{c}{\Delta\om}$ is the coherence length, and $\Delta t$ is the coherence time.
-Now what about the fiel at the detector?
+Now what about the field at the detector?
 \begin{align}
     t_1 &= t-\frac{s_1}{c},\; t_2 = t-\frac{s_2}{c} \\
     \E(\vr,t) &= k_1\E(\vr_1,t_1) + k_2\E(\vr_2,t_2) \\
@@ -1050,7 +1068,7 @@ Now what about the fiel at the detector?
            &= I_1 + I_2 + 2\text{Re}[\text{interference}]
 \end{align}
 So we introduce $\gamma^{(1)}(x_1,x_2)$.
-This is the first order normalised mutual coherence function. 
+This is the first order normalised mutual coherence function.
 \begin{align}
     \gamma^{(1)}(x_1,x_2) &= \frac{\langle\E^*(\vr_1,t_1)\E(\vr_2,t_2)\rangle}{\left\{\langle|\E(\vr_1,t_1)|^2\rangle\langle|\E(\vr_2,t_2)|^2\rangle\right\}^{1/2}} \\
     I(\vr) &= I_1 + I_2 + 2\sqrt{I_1I_2}\text{Re}\left[k_1^*k_2\gamma^{(1)}(x_1,x_2)\right]
@@ -1060,23 +1078,23 @@ Now we set $k_j = |k_j|e^{i\phi_j}$.
     I(\vr) &= I_1 + I_2 + 2\sqrt{I_1I_2}|\gamma^{(1)}(x_1,x_2)|\cos(\phi_1-\phi_2) \\
 \end{align}
 The $\cos$ term in this is the phase difference from path difference.
-The value of $\gamma^{(1)}$ sets the amount of coherence: 
+The value of $\gamma^{(1)}$ sets the amount of coherence:
 \begin{equation}
     \gamma^{(1)} \begin{cases} = 1 & \text{full coherence} \\ >0,\,<1 & \text{partial coherence} \\ = 0 & \text{no coherence}\end{cases}
 \end{equation}
 
-\chapter{}
+\chapter{Quantum Theory of Beamsplitters}
 \section{Learning Outcomes}
-We will develop the quantum mechanical theory of the beamsplitter. 
+We will develop the quantum mechanical theory of the beamsplitter.
 After studying this section, you should
 \begin{itemize}
-    \item Be familiar with the clasical description of a lossless beamsplitter.
+    \item Be familiar with the classical description of a lossless beamsplitter.
     \item Be able to derive equations that relate the creation and annihilation operators for a lossless beamsplitter.
-    \item Understand the meaning of coincidence in the context of the beamsplitter. 
-    \item Understand the meaning of unitary transforms in the context of the beamsplitter. 
+    \item Understand the meaning of coincidence in the context of the beamsplitter.
+    \item Understand the meaning of unitary transforms in the context of the beamsplitter.
     \item Be familiar with the significance of a beamsplitter for single photon states, and the results when the two input modes each contain a single photon (Hong-Ou-Mandel effect).
-    \item Be familiar with the operation of a beamsplitter with coherent states. 
-    \item Be able to calculate the joint output state of a beamsplitter for any number state or coherent state input, or combinations thereof. 
+    \item Be familiar with the operation of a beamsplitter with coherent states.
+    \item Be able to calculate the joint output state of a beamsplitter for any number state or coherent state input, or combinations thereof.
 \end{itemize}
 
 \section{The beam splitter}
@@ -1094,18 +1112,18 @@ A general beamsplitter will look like the following:
         \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) node[anchor=north east,midway] {$r,t$} -- (3.1,-1.4) -- (1.1,1.6) node[anchor=south west,midway] {$r',t'$} -- cycle;
     \end{tikzpicture}
 \end{figure}
-$r,t,r',t'$ are complex, so they introduce phases. 
+$r,t,r',t'$ are complex, so they introduce phases.
 We will only deal with \textbf{lossless beamsplitters:} $|r| = |r'|,\; |t| = |t'|$.
 Beamsplitters mix modes, so 2 and 3 are both linear combinations of 0 and 1.
 In a quantum beamsplitter, there will \textbf{always} be two inputs; if we do not put two in, then the second will be the vacuum, which must still be considered.
-For now, we will not consider polarisation dependence, but this will be addressed later on. 
+For now, we will not consider polarisation dependence, but this will be addressed later on.
 Classically,
 \begin{align}
     \begin{pmatrix} a_2\\a_3\end{pmatrix} &= \begin{pmatrix} t' & r \\ r' & t\end{pmatrix} \begin{pmatrix}a_0\\a_1\end{pmatrix}
 \end{align}
-For the quantum case, 
+For the quantum case,
 \begin{align}
-    \begin{pmatrix} \ha_2\\ \ha_3\end{pmatrix} &= \begin{pmatrix} t' & r \\ r' & t\end{pmatrix} \begin{pmatrix}\ha_0\\ \ha_1\end{pmatrix} 
+    \begin{pmatrix} \ha_2\\ \ha_3\end{pmatrix} &= \begin{pmatrix} t' & r \\ r' & t\end{pmatrix} \begin{pmatrix}\ha_0\\ \ha_1\end{pmatrix}
 \end{align}
 and similarly for $\hag$ but with the complex conjugates of $t,r$ etc.
 We shall fix the phase shift so reflected vs transmitted $\pm i$, $\exp\left(\pm i\frac{\pi}{2}\right)$.
@@ -1115,7 +1133,7 @@ Using a 50:50 beam splitter, $|r|=|t|=\frac{1}{\sqrt{2}}$.
 \end{align}
 This is the balanced Hadamard operator used in Quantum information.\\
 We want to calculate $\langle\hn_2\rangle$.
-So for the input, we have 
+So for the input, we have
 \begin{align}
     |0\rangle_0|1\rangle_1 &\equiv |0_01_1\rangle \\
     \langle\hn_2\rangle &= \langle 0_01_1|\hag_2\ha_2|0_01_1\rangle
@@ -1144,17 +1162,17 @@ We can approach this problem in another way:
 \begin{align}
     |0\rangle_0|1\rangle_1 &= \hag_1|0\rangle_0|0\rangle_1
 \end{align}
-So this time we start with two vacuum states and use the creation operator to add photons. 
+So this time we start with two vacuum states and use the creation operator to add photons.
 \begin{align}
     \hag_2 &= \frac{1}{\sqrt{2}}\left\{\hag_0 - i\hag_1\right\} & \hag_3 &= \frac{1}{\sqrt{2}}\left\{-i\hag_0 + \hag_1\right\} \\
     \hag_1 &= \frac{1}{\sqrt{2}}\left\{i\hag_2+\hag_3\right\} & \hag_0 &= \frac{1}{\sqrt{2}}\left\{\hag_2+i\hag_3\right\}
 \end{align}
 Note that vacuum in means vacuum out, i.e. $|0_00_1\rangle \to |0_20_3\rangle$.
-Now let's apply $\hag_1$, which means adding a photon to port 1. 
+Now let's apply $\hag_1$, which means adding a photon to port 1.
 \begin{align}
     |0_01_1\rangle &\to \frac{1}{\sqrt{2}}\left\{i\hag_2+\hag_3\right\}|0_20_3\rangle \\
                    &= \frac{1}{\sqrt{2}}\left\{i|1_20_3\rangle + |0_21_3\rangle\right\} \\
-    \langle\hn_2\rangle &= \langle\hn_3\rangle = \frac12,\; \langle\hn_2\hn_3\rangle &= 0 
+    \langle\hn_2\rangle &= \langle\hn_3\rangle = \frac12,\; \langle\hn_2\hn_3\rangle &= 0
 \end{align}
 So this method reproduces the same results as before.
 Note that we cannot write Eq (10.16) as a product state, i.e. $|1_20_3\rangle \neq |1_2\rangle|0_3\rangle$.
@@ -1188,7 +1206,7 @@ We now have four equally likely possibilities:
             \draw[-Latex,thick,magenta] (2,2) -- (2,1);
             \draw[-Latex,thick,magenta] (2,1) -- (2,-1);
             \draw[thick,magenta] (2,-1) -- (2,-2);
-    
+
             \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
         \end{tikzpicture}
         \caption{}
@@ -1203,7 +1221,7 @@ We now have four equally likely possibilities:
             \draw[-Latex,thick,magenta] (2,2) -- (2,1);
             \draw[-Latex,thick,magenta] (2,1) -- (2,0) -- (3,0);
             \draw[thick,magenta] (3,0) -- (4,0);
-    
+
             \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
         \end{tikzpicture}
         \caption{}
@@ -1219,7 +1237,7 @@ We now have four equally likely possibilities:
             \draw[thick,magenta] (2,1) -- (2,0);
             \draw[-Latex,thick,magenta] (2.1,0) -- (2.1,-1);
             \draw[thick,magenta] (2.1,-1) -- (2.1,-2);
-    
+
             \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
         \end{tikzpicture}
         \caption{}
@@ -1246,7 +1264,7 @@ We now have four equally likely possibilities:
     \end{tikzpicture}
 \end{figure}
 \begin{align}
-    |0\rangle_0|\alpha_1\rangle_1 \to |\alpha_2\rangle_2|\alpha_3\rangle_3 
+    |0\rangle_0|\alpha_1\rangle_1 \to |\alpha_2\rangle_2|\alpha_3\rangle_3
 \end{align}
 So inputting one coherent state with a vacuum, yields coherent states in both outputs.
 For 50:50,
@@ -1255,24 +1273,24 @@ For 50:50,
 \end{align}
 Now what if we have
 \begin{align}
-    |\alpha_0\rangle_0|\alpha_1\rangle_1 &\to |\alpha_2\rangle_2|\alpha_3\rangle_3 
+    |\alpha_0\rangle_0|\alpha_1\rangle_1 &\to |\alpha_2\rangle_2|\alpha_3\rangle_3
 \end{align}
 We want to have the same amplitude going into both 1 and 0, but with a phase difference, so $|\alpha_0| = |\alpha_1| = |\alpha|$, with $\alpha_1 = |\alpha|\e^{i\theta}$ and $\alpha_0=|\alpha|$.
 We will find that
 \begin{align}
     P_2 &\propto \sin^2\frac{\theta}{2}
 \end{align}
-This can be compared to the coherent state results in Lecture 6. 
+This can be compared to the coherent state results in Lecture 6.
 
-\chapter{}
+\chapter{Interference and Coherence}
 \section{Learning Outcomes}
-We will discuss interference, and both the classical and quantum definitions of first and second order coherence. 
+We will discuss interference, and both the classical and quantum definitions of first and second order coherence.
 After studying this section, you should
 \begin{itemize}
-    \item Be able to calculate the output state of an interferomater with number states or coherent states in the input modes.
-    \item Understand and be able to apply the definition of first-order coherence, and be familiar with its link to the visibility of interference fringes. 
+    \item Be able to calculate the output state of an interferometer with number states or coherent states in the input modes.
+    \item Understand and be able to apply the definition of first-order coherence, and be familiar with its link to the visibility of interference fringes.
     \item Be familiar with, and able to apply, the definition of second-order coherence.
-    \item In each of the above cases, to be familiar with and able to apply the quantum definitions in terms of correlation functions involving electric field operators. 
+    \item In each of the above cases, to be familiar with and able to apply the quantum definitions in terms of correlation functions involving electric field operators.
     \item To understand, and be able to apply the terms incoherent, partially coherent, and fully coherent in the context of first-order coherence.
     \item To understand and be able to apply the terms Poissonian, sub-Poissonian, bunching, and\\ anti-bunching in the context of second-order coherence.
     \item To be familiar with the first- and second-order coherence properties of single-mode number states, coherent states, and thermal states.
@@ -1292,14 +1310,14 @@ The Mach-Zehnder interferometer is the simplest and cleanest interferometer:
         \draw[ultra thick,gray] (-0.5,0.5) -- (0.5,-0.5);
     \end{tikzpicture}
 \end{figure}
-Let's work through it. 
+Let's work through it.
 Going through the first beamsplitter, we get:
 \begin{align}
     |0\rangle_0|1\rangle_1 &\to \frac{1}{\sqrt{2}}\left(|0\rangle_A|1\rangle_B + i|1\rangle_A|0\rangle_B\right)
 \end{align}
 The phase from the mirrors is $e^{i\pi/2}$ on both, but we don't need to know it. \\
-Now, we need to put in a phase shift, $e^{i\theta}$. 
-We can only phase shift the second term, as we can't phase shift the vacuum - it has no well defined phase to shift. 
+Now, we need to put in a phase shift, $e^{i\theta}$.
+We can only phase shift the second term, as we can't phase shift the vacuum - it has no well defined phase to shift.
 \begin{align}
     |0\rangle_0|1\rangle_1 &\to \frac{1}{\sqrt{2}}\left(|0\rangle_A|1\rangle_B + i|1\rangle_A|0\rangle_B\right)\\
                            &\to \frac{1}{\sqrt{2}}\left(|0\rangle_A|1\rangle_B + ie^{i\theta}|1\rangle_A|0\rangle_B\right)
@@ -1307,7 +1325,7 @@ We can only phase shift the second term, as we can't phase shift the vacuum - it
 Then, we have the second beamsplitter, which transforms as:
 \begin{align}
     |0\rangle_A|1\rangle_B &\to \frac{1}{\sqrt{2}}\left(|1\rangle_2|0\rangle_3 + i|0\rangle_3|1\rangle_3\right) \\
-    |1\rangle_A|0\rangle_B &\to \frac{1}{\sqrt{2}}\left(|0\rangle_2|1\rangle_3 + i|1\rangle_2|0\rangle_3\right) 
+    |1\rangle_A|0\rangle_B &\to \frac{1}{\sqrt{2}}\left(|0\rangle_2|1\rangle_3 + i|1\rangle_2|0\rangle_3\right)
 \end{align}
 So we can then put both beamsplitters together for the full transform:
 \begin{align}
@@ -1315,7 +1333,7 @@ So we can then put both beamsplitters together for the full transform:
     P_2 &= \frac14(1-e^{i\theta})^2 = \frac12 (1-\cos\theta) \\
     P_3 &= \frac12(1+\cos\theta)
 \end{align}
-Single photons $\to$ wavelike interference, averaging over many. 
+Single photons $\to$ wavelike interference, averaging over many.
 
 What we had before interferometers was double beam experiments:
 \begin{figure}[H]
@@ -1356,13 +1374,13 @@ Reminder that our first order coherence depends on $\langle\E^*(\vr_1,t_1)\E(\vr
 \begin{align}
     P_i &\propto \langle i|\Eh_-(\vr,t)\Eh_+(\vr,t)|i\rangle \propto \hag\ha = \hn
 \end{align}
-This is the quantum version of the first order coherence. 
+This is the quantum version of the first order coherence.
 What about our \textbf{quantum} first-order normalised mutual coherence function?
 \begin{align}
     g^{(1)}(\vr_1,t_1,\vr_2,t_2) &= \frac{\langle\Eh_-(\vr_1,t_1)\Eh_+(\vr_2,t_2)\rangle}{\left\{\langle\Eh_-\Eh_+(\vr_1,t_1)\rangle\langle\Eh_-\Eh_+(\vr_2,t_2)\rangle\right\}^{1/2}}
 \end{align}
 We find that both number and coherent states can be fully coherent, i.e. $g^{(1)}=1$.
-The first order coherent function tells you how coherent you are and how visible your fringes will be. 
+The first order coherent function tells you how coherent you are and how visible your fringes will be.
 
 \section{Second Order Coherence}
 \begin{figure}[H]
@@ -1388,9 +1406,9 @@ Now let's look at the quantum version again:
     g^{(2)}(\vr_3,t_3,\vr_2,t_2) &= \frac{\langle\Eh_-(\vr,t_3)\Eh_-(\vr_2,t_2)\Eh_+(\vr_2,t_2)\Eh_+(\vr_3,t_3)\rangle}{\langle\Eh_-\Eh_+(\vr_3,t_3)\rangle\langle(\Eh_-\Eh_+(\vr_2,t_2)\rangle}
 \end{align}
 
-\chapter{}
+\chapter{Beam Splitters and Interferometry}
 For the Mach-Zehnder interferometer, what if $\theta=0$?
-If for a single photon going through one beamsplitter, we have the Hadamard operator, 
+If for a single photon going through one beamsplitter, we have the Hadamard operator,
 \begin{align}
     H = \frac{1}{\sqrt{2}}\begin{pmatrix}1&i\\i&1\end{pmatrix}
 \end{align}
@@ -1398,7 +1416,7 @@ then, for two beamsplitters, as seen in the interferometer, without a phase shif
 \begin{align}
     H^2 &= \frac12\begin{pmatrix}1&i\\i&1\end{pmatrix}\begin{pmatrix}1&-i\\-i&1\end{pmatrix} = I
 \end{align}
-which makes the identity matrix and the one photon will simply come out of a single port again. 
+which makes the identity matrix and the one photon will simply come out of a single port again.
 
 \section{Single mode field (no beamsplitter)}
 The only difference here is that everything that commutes can be cancelled out, and we are left with the dagger operators:
@@ -1406,7 +1424,7 @@ The only difference here is that everything that commutes can be cancelled out, 
     g^{(2)}_{\text{\tiny single}} &= \frac{\langle\hag\hag\ha\ha\rangle}{\langle\hag\ha\rangle\langle\hag\ha\rangle} \\
                                   &=  \frac{\langle\hn(\hn-1)\rangle}{\langle\hn\rangle^2}
 \end{align}
-Where we use the ladder operators' commutation relation to redefine. 
+Where we use the ladder operators' commutation relation to redefine.
 \begin{enumerate}
     \item Coherent state:
         \begin{align}
@@ -1420,11 +1438,11 @@ Where we use the ladder operators' commutation relation to redefine.
             \frac{\langle n|\hn(\hn-1)|n\rangle}{\langle\hn\rangle^2} &= \frac{n^2-n}{n^2} = 1-\frac{1}{n}
         \end{align}
 \end{enumerate}
-For $g^{(2)}$, number states with more photons look more classical. 
-For a $g^{(2)}<1$, we call it sub-Poissonian, because for a coherent state with $g^{(2)}=1$, we have a Poisson distribution. 
+For $g^{(2)}$, number states with more photons look more classical.
+For a $g^{(2)}<1$, we call it sub-Poissonian, because for a coherent state with $g^{(2)}=1$, we have a Poisson distribution.
 
 \section{Two modes}
-The Hanburg, Brown, and Twiss experiment (didn't quite manage this), actually Jeff Kimble and Herbert Waller. 
+The Hanburg, Brown, and Twiss experiment (didn't quite manage this), actually Jeff Kimble and Herbert Waller.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1441,11 +1459,11 @@ The Hanburg, Brown, and Twiss experiment (didn't quite manage this), actually Je
 \begin{align}
     |0_01_1\rangle &\to \frac{1}{\sqrt{2}}\left\{i|1_20_3\rangle + |0_21_3\rangle\right\}
 \end{align}
-So single time, two modes. 
+So single time, two modes.
 \begin{align}
-    g^{(2)}(t_2=t_3) &= \frac{\langle\hag_3\hag_2\ha_2\ha_3\rangle}{\langle\hag_3\ha_3\rangle\langle\hag_2\hag_2\rangle} = \frac{\langle\hn_3\hn_2\rangle}{\langle\hn_3\rangle\langle\hn_2\rangle} = 0 
+    g^{(2)}(t_2=t_3) &= \frac{\langle\hag_3\hag_2\ha_2\ha_3\rangle}{\langle\hag_3\ha_3\rangle\langle\hag_2\hag_2\rangle} = \frac{\langle\hn_3\hn_2\rangle}{\langle\hn_3\rangle\langle\hn_2\rangle} = 0
 \end{align}
-But if we take it at different times, then the input is now $|0_01_1\rangle_{t_2}|0_01_1\rangle_{t_3}$, so now $\langle\hn_2\hn_3\rangle = \frac14$, and 
+But if we take it at different times, then the input is now $|0_01_1\rangle_{t_2}|0_01_1\rangle_{t_3}$, so now $\langle\hn_2\hn_3\rangle = \frac14$, and
 \begin{align}
     g^{(2)}(t_2-t_3) &= 1
 \end{align}
@@ -1459,7 +1477,7 @@ So this is definitely non-classical.
 \section{Coherent states in beamsplitter}
 \begin{align}
     |0_1\alpha_1\rangle &\to \frac{i}{\sqrt{2}}|\alpha_2,\alpha_3\rangle \\
-    \langle\hn_2\rangle\hn_3\rangle &= \langle\hn_2\hn_3\rangle \implies g^{(2)} = 1 
+    \langle\hn_2\rangle\hn_3\rangle &= \langle\hn_2\hn_3\rangle \implies g^{(2)} = 1
 \end{align}
 
 \section{Summary}
@@ -1474,29 +1492,29 @@ How coherent the EM fields are:
     g^{(1)} &\leq 1, \text{ (coherent)}
 \end{align}
 
-For second order, we have $\gamma^{(2)}$ for classical, and $g^{(2)}$ for quantum. 
+For second order, we have $\gamma^{(2)}$ for classical, and $g^{(2)}$ for quantum.
 \begin{align}
     1 &\leq \gamma^{(2)} < \infty \\
     0 &\leq g^{(2)} < 1
 \end{align}
 
-We looked at small number states, where 
+We looked at small number states, where
 \begin{align}
-    g^{(2)} &= 1-\frac1n 
+    g^{(2)} &= 1-\frac1n
 \end{align}
 We also looked at coherent states, where we have:
 \begin{align}
     g^{(2)} &= 1, \text{ (Poissonian)}\\
-    g^{(2)} &< 1, \text{ (sub-Poissonian)} 
+    g^{(2)} &< 1, \text{ (sub-Poissonian)}
 \end{align}
 
-\chapter{}
+\chapter{Polarisation in Two-Mode States}
 \section{Learning Outcomes}
-We will discuss polarisation in terms of two-mode states and projective measurements. 
+We will discuss polarisation in terms of two-mode states and projective measurements.
 After studying this section, you will:
 \begin{itemize}
-    \item Be able to calculate the probability of detecting a photon after a linear polariser, for any two-mode input state (number, coherent) and any combination of polariser angle and initial polarisation. 
-    \item Understand the action of a linear polariser in terms of projective measurements; be familiar with the use of the projection operator, and be able to disucss the state before and after the measurement.
+    \item Be able to calculate the probability of detecting a photon after a linear polariser, for any two-mode input state (number, coherent) and any combination of polariser angle and initial polarisation.
+    \item Understand the action of a linear polariser in terms of projective measurements; be familiar with the use of the projection operator, and be able to discuss the state before and after the measurement.
 \end{itemize}
 
 \section{Polarisation}
@@ -1505,7 +1523,7 @@ After studying this section, you will:
 \end{align}
 We are now concerned with $\ve_{\unl{k},s}$, the polarisation vector of the field.
 There are two polarisations to make up a complete basis, contained in the index $s$.
-Above is what we will see classically. 
+Above is what we will see classically.
 
 Consider two modes with same $\unl{k},\om_k$, where $\unl{k}\propto\hat{z}$, so we have $\ve_x,\ve_y$.
 \begin{align}
@@ -1526,7 +1544,7 @@ Consider two modes with same $\unl{k},\om_k$, where $\unl{k}\propto\hat{z}$, so 
     \ve_\theta &= \cos\theta\ve_x + \sin\theta\ve_y \\
     \ve_{\theta'} &= -\sin\theta\ve_x + \cos\theta\ve_y
 \end{align}
-Hnece, for the amplitudes, $A_x,A_y\to A_\theta,A_{\theta'}$:
+Hence, for the amplitudes, $A_x,A_y\to A_\theta,A_{\theta'}$:
 \begin{align}
     \begin{pmatrix}A_\theta \\ A_{\theta'} \end{pmatrix} &= \begin{pmatrix}\cos\theta & \sin\theta \\ -\sin\theta & \cos\theta\end{pmatrix} \begin{pmatrix}A_x \\A_y\end{pmatrix}
 \end{align}
@@ -1549,8 +1567,8 @@ Now we must have our polarising beamsplitters:
 \end{align}
 \end{multicols}
 What about the quantum setting?
-We have our operator that we will split into the different cartesian polarisations, $\ha_{\unl{k},s}\to \ha_x,\ha_y$, and we have a rotation matrix, $\ha_{\theta},\ha_{\theta'}$. 
-Note that 
+We have our operator that we will split into the different Cartesian polarisations, $\ha_{\unl{k},s}\to \ha_x,\ha_y$, and we have a rotation matrix, $\ha_{\theta},\ha_{\theta'}$.
+Note that
 \begin{align}
     [\ha_{\theta},\ha_{\theta'}] &= 0 \\
     [\ha_{\theta},\hag_\theta] &= 1
@@ -1590,15 +1608,15 @@ So these are just the creation and annihilation operators in a specific orientat
 \begin{align}
     \text{Prob} &\propto \langle\hn\rangle = \langle\psi|\hag_\theta\ha_\theta|\psi\rangle
 \end{align}
-So what if we have a state $|\psi\rangle$ of one photon, but we don't know polarisation. 
-Depending on this polarisation, we will be likelier to get different measurements. 
+So what if we have a state $|\psi\rangle$ of one photon, but we don't know polarisation.
+Depending on this polarisation, we will be likelier to get different measurements.
 In a single measurement, we record 0 or 1.
 \begin{align}
     P_0 &= |\langle0,0|\psi\rangle|^2 & P_1 &= |\langle1_{\theta P}|\psi\rangle|^2
 \end{align}
-All we can do with one measurement is if we detect photon, i.e. 1. 
-So then we know something: that is definitely not polarised in $\theta'$ direction, because then it definitely wouldn't have come through. 
-To determine $\theta$, we need to make many measurements, or many copies, of $|\psi\rangle$ - this need gives rise to the concept of ensembles, where the ratio of 0 to 1 lets you work out what $\theta$ is. 
+All we can do with one measurement is if we detect photon, i.e. 1.
+So then we know something: that is definitely not polarised in $\theta'$ direction, because then it definitely wouldn't have come through.
+To determine $\theta$, we need to make many measurements, or many copies, of $|\psi\rangle$ - this need gives rise to the concept of ensembles, where the ratio of 0 to 1 lets you work out what $\theta$ is.
 
 We can now try another experiment:
 \begin{figure}[H]
@@ -1618,13 +1636,13 @@ We can now try another experiment:
 \begin{align}
     |\psi\rangle &= |1_{\pi/4},0_{3\pi/4}\rangle
 \end{align}
-So we have one photon, polarised at 45 degrees. 
+So we have one photon, polarised at 45 degrees.
 The probability of detecting one photon is then
 \begin{align}
     P_1 &= |\langle1_x,0_x|1_{\pi/4},0_{3\pi/4}\rangle|^2 = \frac12,~ (\cos\frac{\pi}{4} = \sin\frac{\pi}{4} = \frac{1}{\sqrt{2}})
 \end{align}
 Now let's compare with a random mixture of two states, so half the time we have $|1_x,0_y\rangle$, and half the time we have $|0_x,1_y\rangle$.
-Again however, we get $P_1=\frac12$. 
+Again however, we get $P_1=\frac12$.
 How do we tell the difference between the two cases?
 
 If we set the polariser to $\theta_p = \frac{\pi}{4}$, $|1_{\pi/4},0_{3\pi/4}\rangle \implies P_1 = 1$, but the fifty-fifty mixture still yields $P_1=1$.
@@ -1640,8 +1658,8 @@ where $\{j\}$ is a complete orthonormal basis.
         &= \langle\psi|\hat{P}_j|\psi\rangle,~ \hat{P}_j = |j\rangle\langle j| \\
     \hat{P}_j|\psi\rangle &= |j\rangle\langle j|\psi\rangle = c_j|j\rangle
 \end{align}
-So this projection operator, $\hat{P}_j$, is projecting the state $|\psi\rangle$ onto $|j\rangle$ - however this is not normalised as it is. 
-So we need as set of these so the normalisation sums to one. 
+So this projection operator, $\hat{P}_j$, is projecting the state $|\psi\rangle$ onto $|j\rangle$ - however this is not normalised as it is.
+So we need as set of these so the normalisation sums to one.
 \begin{align}
     P_x &= |\langle1_x0_y|\psi\rangle|^2 \\
     |\psi\rangle &= \frac{1}{\sqrt{2}}\left\{|1_x0_y\rangle+|0_x1_y\rangle\right\} = |1_{\pi/4},0_{3\pi/4}\rangle \\
@@ -1661,18 +1679,18 @@ So for measurements there will be at least two outcomes (if only one, then there
 \end{align}
 So we have out complete set of projective measurements. \emph{Other types of measurements are possible but these are beyond the current scope.}
 
-\chapter{}
+\chapter{Density Matrices and Quantum States}
 \section{Learning Outcomes}
-Density matrices, pure states, mixed states, and entangled states. 
-To be familiar with the concepts of pure states, mixed states, and the density matrix. 
-To apply them to entangled states and product states, and use the partial trace. 
+Density matrices, pure states, mixed states, and entangled states.
+To be familiar with the concepts of pure states, mixed states, and the density matrix.
+To apply them to entangled states and product states, and use the partial trace.
 After studying this section you will be able to:
 \begin{itemize}
     \item Explain and state the definitions of pure states, mixed states, and the density matrix.
-    \item Perform calculations using the density operator and the trace (e.g. trace of the density operator, expectation values) for pure states and mixed states. 
-    \item Explain and state the definitions of entangled states and product states for bi-partite systems in a pure state. 
-    \item To be familiar with the definition and properties of the partial trace and its application to the joint density matrix. 
-    \item To be familiar with and apply the partial trace over a sub-system of a bipartite density matrix, and understand how the outcome differs for product states and entangled states. 
+    \item Perform calculations using the density operator and the trace (e.g. trace of the density operator, expectation values) for pure states and mixed states.
+    \item Explain and state the definitions of entangled states and product states for bi-partite systems in a pure state.
+    \item To be familiar with the definition and properties of the partial trace and its application to the joint density matrix.
+    \item To be familiar with and apply the partial trace over a sub-system of a bipartite density matrix, and understand how the outcome differs for product states and entangled states.
 \end{itemize}
 
 \section{The Density Matrix}
@@ -1699,13 +1717,13 @@ So we can form a density matrix for a pure state, $\hat{\rho}$ - it is the proje
     \end{align}
     This is known as the van-Neumann equation.
 
-    So let's go back to the example of source giving horizontal or vertical polarisations, but we don't know which one we were getting. 
+    So let's go back to the example of source giving horizontal or vertical polarisations, but we don't know which one we were getting.
     We can write this in terms of a density matrix,
     \begin{align}
         \hrho_{H/V} &= \frac12|H\rangle\langle H| + \frac12|V\rangle\langle V| = \frac12 \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
     \end{align}
-    The difference here is there is no off-diagonal terms, so there is no coherences in this ensemble, i.e. a mixed state. 
-    Above, we just had the projector of one state $|L\rangle$, but now we have the sum of two projectors. 
+    The difference here is there is no off-diagonal terms, so there is no coherences in this ensemble, i.e. a mixed state.
+    Above, we just had the projector of one state $|L\rangle$, but now we have the sum of two projectors.
     So the coherences will depend on whether we have a mixed or pure state.
 \end{example}
 
@@ -1714,7 +1732,7 @@ More generally, we can have
     \hrho &= \sum_j p_j|\psi_j\rangle\langle\psi_j|.
 \end{align}
 This will work for any (not necessarily orthogonal) set of states $|\psi_j\rangle$.
-In general, this decomposition is not unique, unless you know it is from a particular set. 
+In general, this decomposition is not unique, unless you know it is from a particular set.
 
 \begin{example}[Pure or Mixed?]
     \begin{align}
@@ -1722,13 +1740,13 @@ In general, this decomposition is not unique, unless you know it is from a parti
               &= \frac12\cdot\frac12\begin{pmatrix}1 & i \\ -i & 1\end{pmatrix} + \frac12\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \\
               &= \frac14 \begin{pmatrix} 3 & i \\ -i & 1\end{pmatrix}
     \end{align}
-    There is an easy way to test if this state is pure or mixed. 
+    There is an easy way to test if this state is pure or mixed.
     We square $\hrho$, or $\hrho^\dagger\hrho$, but $\hrho$ is Hermitian, so it is just $\hrho^2$.
     For a pure state, $\hrho_L$,
     \begin{align}
-        \hrho_L &= \frac12\begin{pmatrix} 1 & i \\ -i & 1\end{pmatrix} & \hrho_L^2 &= \frac14\begin{pmatrix} 2 & 2i & -2i & 2\end{pmatrix} = \frac12\begin{pmatrix}1 & i \\ -i & 1 \end{pmatrix} = \hrho_L 
+        \hrho_L &= \frac12\begin{pmatrix} 1 & i \\ -i & 1\end{pmatrix} & \hrho_L^2 &= \frac14\begin{pmatrix} 2 & 2i & -2i & 2\end{pmatrix} = \frac12\begin{pmatrix}1 & i \\ -i & 1 \end{pmatrix} = \hrho_L
     \end{align}
-    So we want $\hrho = \hrho^2$ for a pure state. 
+    So we want $\hrho = \hrho^2$ for a pure state.
     Let's check for the state above:
     \begin{align}
         \rho &= \frac14\begin{pmatrix}3 & i \\ -i & 1\end{pmatrix} & \hrho^2 &= \frac{1}{16}\begin{pmatrix}4 & 4i \\ -4i & 2\end{pmatrix} = \frac14\begin{pmatrix}1 & i & -i & 2\end{pmatrix} \neq \hrho
@@ -1739,8 +1757,8 @@ It is very easy to see why this is the case for a pure state generally, as
 \begin{align}
     \hrho &= |\psi\rangle\langle\psi| & \hrho^2 &= |\psi\rangle\underbrace{\langle\psi|\psi\rangle}_{1}\langle\psi| = \hrho
 \end{align}
-If the diagonal elements of $\hrho$ describe the likelihoods of being in whichever state, then we have to look at the trace - the sum of the diagonal entries. 
-When performing in terms of an operator, 
+If the diagonal elements of $\hrho$ describe the likelihoods of being in whichever state, then we have to look at the trace - the sum of the diagonal entries.
+When performing in terms of an operator,
 \begin{align}
     \text{Tr}[\hat{A}] &= \sum_j \langle j|\hat{A}|j\rangle
 \end{align}
@@ -1751,13 +1769,13 @@ We can find the traces of a multiplication of operators too:
 \begin{align}
     \text{Tr}[\hrho\cdot\hat{P}_n] &= \langle n|\hrho|n\rangle,~ \hat{P}_n = |n\rangle\langle n|
 \end{align}
-So the second operator will "wrap" itself around the first essentially. 
+So the second operator will "wrap" itself around the first essentially.
 
 What about the expectation value of $\hat{A}$ on $\hrho$?
 \begin{align}
     \text{Tr}[\hrho\cdot\hat{A}] &= \langle\hat{A}\rangle_{\hrho}
 \end{align}
-For a pure state, we can see this is true easily from $\langle\psi|\hat{A}|\psi\rangle$ and $\hrho = |\psi\rangle\langle\psi|$, and by linearity, it can also be proven for mixed states. 
+For a pure state, we can see this is true easily from $\langle\psi|\hat{A}|\psi\rangle$ and $\hrho = |\psi\rangle\langle\psi|$, and by linearity, it can also be proven for mixed states.
 
 \section{Useful Properties of Trace}
 \begin{itemize}
@@ -1783,7 +1801,7 @@ Entangled states are quantum correlation, where these are more correlated than i
         \draw (0.75,1.25) node[anchor=south east] {Charlie} -- (3.25,-1.25);
     \end{tikzpicture}
 \end{figure}
-Charlie has 0 and 1 and makes the states. 
+Charlie has 0 and 1 and makes the states.
 So we will input $|+\rangle$ states, where
 \begin{align}
     |+\rangle &= \frac{1}{\sqrt 2}|H+V\rangle,
@@ -1795,12 +1813,12 @@ with a polariser of $\frac{\pi}{4}$.
                            &= \frac12\left\{-|H_2H_3\rangle+i|H_3V_3\rangle + i|V_2H_2\rangle + |V_2V_3\rangle\right\} \\
                            &= \frac12\left\{|V_2V_3\rangle-|H_2H_3\rangle+i(|H_3V_3\rangle+|H_2V_2\rangle)\right\}
 \end{align}
-We will discard the imaginary term in what is called post selection and renormalise, by considering when both outputs get one photon, but we don't know which. The imaginary term describes when either state gets both photons so we ignore it. 
+We will discard the imaginary term in what is called post selection and renormalise, by considering when both outputs get one photon, but we don't know which. The imaginary term describes when either state gets both photons so we ignore it.
 \begin{align}
     |\psi_{AB}\rangle &= \frac{1}{\sqrt2}\left(|V_2V_3-H_2H_3\rangle\right)
 \end{align}
 What happens if we measure if it has horizontal or vertical polarised photons?
-We send into another beamsplitter and see where it comes out. 
+We send into another beamsplitter and see where it comes out.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -1825,44 +1843,26 @@ Note the projector is not normalised.
 We are going to measure then ignore the outcome.
 \begin{align}
     \hrho_A &= \text{Tr}_B[\hrho_{AB}] = \frac12\left(|H_2\rangle\langle H_2| + |V_2\rangle\langle V_2|\right) \\
-            &= \frac12\begin{pmatrix} 1 & 0 \\ 0 & 1\end{pmatrix} 
-\end{align} 
+            &= \frac12\begin{pmatrix} 1 & 0 \\ 0 & 1\end{pmatrix}
+\end{align}
 So for either Alice or Bob it looks like what they're getting is a stream of photons which are randomly either horizontally or vertically polarised but there are no coherences here.
 This is one of the signatures of entanglement - \emph{you start with a pure state, you trace out one of the parties, and the other one will see something mixed.}
 
-Now let's see what happens when they do the measurements. 
+Now let's see what happens when they do the measurements.
 So Charlie is sending a stream of photons like this, and Alice and Bob can see the following:
 \begin{table}[H]
     \centering
     \begin{tabular}{c|cccccccccc}
         Alice & 0 & 0 & H & 2 & V & H & 2 & 2 & V & V \\
         \hline
-        Bob & 2 & 2 & H & 0 & V & H & 0 & 0 & V & V 
+        Bob & 2 & 2 & H & 0 & V & H & 0 & 0 & V & V
     \end{tabular}
 \end{table}
-So we get a whole stream of different outcomes, but the key thing is is that whenever they get a single photon each, they will get the same outcomes for these photons and know what each gets. 
+So we get a whole stream of different outcomes, but the key thing is is that whenever they get a single photon each, they will get the same outcomes for these photons and know what each gets.
 What makes this Quantum is that you can do this in any pair of bases and you will always get this level of correlation, regardless of the polarising angle of the beamsplitter (as long as it is a shared angle) and this will not work on classical states.
 
-This example is the first half of how you do quantum key distribution for quantum cryptography - the other half is how to stop somebody intercepting the photons and cheating on you. 
+This example is the first half of how you do quantum key distribution for quantum cryptography - the other half is how to stop somebody intercepting the photons and cheating on you.
 
-\subfile{qtc.tex}
+% \subfile{qtc.tex}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
