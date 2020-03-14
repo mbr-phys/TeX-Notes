@@ -14,15 +14,36 @@
 \newcommand\hd{\hat{\unl{d}}}
 \newcommand\hrho{\hat{\rho}}
 
-\title{General Relativity \vspace{-20pt}}
-\author{Richard Bower}
-\date{\vspace{-15pt}Epiphany Term 2020}
+%\title{General Relativity \vspace{-20pt}}
+%\author{Richard Bower}
+%\date{\vspace{-15pt}Epiphany Term 2020}
 \rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2020}}\\[2.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries General Relativity}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Richard Bower
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+    \includegraphics[width=0.7\textwidth]{newt.png}\\[1cm]
+    \vfill
+\end{titlepage}
 \tableofcontents
+
 \chapter{}
 Just intro stuff
 
@@ -35,7 +56,7 @@ Just intro stuff
 \end{itemize}
 
 \section{Intro to Tensor Notation}
-Consider the cartesian definition for $\vr$:
+Consider the Cartesian definition for $\vr$:
 \begin{align}
     \vr = x\vec{i} + y\vec{j} + \vec{z}.
 \end{align}
@@ -45,7 +66,7 @@ We can write this in a different form as
     \vr = x^1\ve_1 + x^2\ve_2 + x^3\ve_3.
 \end{align}
 Note: $x^2 \neq x*x$.
-The 2 is an index, not a power. 
+The 2 is an index, not a power.
 If we want to square something, we will write $(x^1)^2 = x^1x^1$.
 We can rewrite the above again as
 \begin{align}
@@ -55,7 +76,7 @@ We can then simplify this further using the \textbf{Einstein summation conventio
 \begin{align}
     \vr = x^i\ve_i,
 \end{align}
-i.e. whenever there is a repeated index, we sum over them. 
+i.e. whenever there is a repeated index, we sum over them.
 Different letters will imply different things:
 \begin{itemize}
     \item Roman letters $i,j,\dots$ - summing over 3D space
@@ -65,16 +86,16 @@ Different letters will imply different things:
 \end{itemize}
 
 \section{Coordinate Transformation}
-You may be used to 
+You may be used to
 \begin{align}
     x' = \gamma\left(x-\frac{vct}{c}\right),
 \end{align}
-where the extra $c$ factor to make time space-like. 
+where the extra $c$ factor to make time space-like.
 This notation can get confusing so instead we use:
 \begin{align}
     x^{\bar{1}} = \gamma\left(x^1-\frac{v}{c}x^0\right),
 \end{align}
-where the 'bar' indicates new coordinate system. 
+where the 'bar' indicates new coordinate system.
 
 For a minute vector difference between points P and Q $d\vr$ in two coordinate systems, we can define $\ve_a$:
 \begin{align}
@@ -83,7 +104,7 @@ For a minute vector difference between points P and Q $d\vr$ in two coordinate s
     \frac{\p\vr}{\p x^a} &= \ve_a & \frac{\p\vr}{\p x^{\bar{b}}} &= \ve_{\bar{b}}
 \end{align}
 But what is the relationship between these two coordinate systems?
-Start with $x^{\bar{b}}=x^{\bar{b}}(x^a)$, and consider a general function 
+Start with $x^{\bar{b}}=x^{\bar{b}}(x^a)$, and consider a general function
 \begin{align}
     f &= f(x^1,x^2,x^3) \\
     \Delta f &= \frac{\p f}{\p x^1}\Delta x' + \frac{\p f}{\p x^2}\Delta x^2 + \frac{\p f}{\p x^2}\Delta x^3 = \frac{\p f}{\p x^a}\Delta x^a
@@ -97,10 +118,10 @@ How do we get a small change in $x^{\bar{b}}$?
 Notice how we can simply just switch round the indices - \textbf{these are all dummy variables and as long as the index notation is consistent, it is completely arbitrary which letter is used,} i.e. the letters themselves mean nothing.
 
 \section{Tensors}
-Any quantity which transforms as 
+Any quantity which transforms as
 \begin{align}
     A^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}A^a
-\end{align} 
+\end{align}
 is a Rank (1,0) or order 1 contravariant tensor.
 What about $\ve_a$?
 \begin{align}
@@ -109,7 +130,7 @@ What about $\ve_a$?
 \end{align}
 So now we have reversed the position of the indices in Eq (2.15).
 
-How do we define scalars? 
+How do we define scalars?
 \begin{align}
     \del\phi &= \frac{\p\phi}{\p x^i}\ve_i \\
     \frac{\p\phi}{\p x^{\bar{j}}} &= \frac{\p x^i}{\p x^{\bar{j}}}\frac{\p\phi}{\p x^i}
@@ -128,7 +149,7 @@ Consider
     T^{ab} &= A^aB^b, \\
     T^{\bar{c}\bar{d}} &= A^{\bar{c}}B^{\bar{d}} = \left(\frac{\p x^{\bar{c}}}{\p x^a}A^a\right)\left(\frac{\p x^{\bar{d}}}{\p x^b}B^b\right) = \frac{\p x^{\bar{c}}}{\p x^a}\frac{\p x^{\bar{d}}}{\p x^b}A^a B^b = \frac{\p x^{\bar{c}}}{\p x^a}\frac{\p x^{\bar{d}}}{\p x^b}T^{ab}.
 \end{align}
-This is the definition of a second order contravariant tensor. 
+This is the definition of a second order contravariant tensor.
 
 \section{Tensor Equations}
 We can write a basic tensor equation,
@@ -144,7 +165,7 @@ So if a tensor equation is true, it is true in all coordinate systems.
 
 \section{The metric tensor}
 What is the metric? \emph{The metric is a measure of space.}
-We define the metric tensor, 
+We define the metric tensor,
 \begin{align}
     g_{ab} &= \ve_a\cdot\ve_b = g_{ba},
 \end{align}
@@ -159,10 +180,10 @@ Is it a tensor?
     g_{\bar{a}\bar{b}} &= (\ve_{\bar{a}}\cdot\ve_{\bar{b}}) = \left(\frac{\p x^c}{\p x^{\bar{a}}}\ve_c\right)\cdot\left(\frac{\p x^{d}}{\p x^{\bar{b}}}\ve_d\right) \\
                        &= \frac{\p x^c}{\p x^{\bar{a}}}\frac{\p x^d}{\p x^{\bar{b}}}(\ve_c\cdot\ve_d) = \frac{\p x^c}{\p x^{\bar{a}}}\frac{\p x^d}{\p x^{\bar{b}}}g_{cd},
 \end{align}
-so it transforms as a tensor; a second order covariant tensor. 
+so it transforms as a tensor; a second order covariant tensor.
 
 \section{Kronecker Delta}
-We can write an arbitrary vector as 
+We can write an arbitrary vector as
 \begin{align}
     \vec{A} = A^a\ve_a = A^{\bar{b}}\ve_{\bar{b}} &= \left(\frac{\p x^{\bar{b}}}{\p x^a}A^a\right)\left(\frac{\p x^{d}}{\p x^{\bar{b}}}\ve_d\right) \\
                                                   &= \left(\frac{\p x^{\bar{b}}}{\p x^a}\frac{\p x^{d}}{\p x^{\bar{b}}}\right)A^a\ve_d = \left(\frac{\p x^{d}}{\p x^a}\right)A^a\ve_d \\
@@ -174,7 +195,7 @@ We can write an arbitrary vector as
 \chapter{}
 
 \chapter{}
-Asbolute Derivative:
+Absolute Derivative:
 \begin{align}
     \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}
 \end{align}
@@ -195,27 +216,27 @@ Other stuff:
     \tensor{\Gamma}{^f_{ac}} &= \frac12 g^{fb}\left(\frac{\p g_{bc}}{\p x^a} - \frac{\p g_{ca}}{\p x^b} + \frac{\p g_{ab}}{\p x^c}\right) \\
                              &= \frac12 g^{fb}\left(\p_a g_{bc} - \p_b g_{ca} + \p_c g_{ab}\right)
 \end{align}
-We multiplied lefthandside of (6.7) by $\tensor{\delta}{^f_d}$.
+We multiplied left-hand-side of (6.7) by $\tensor{\delta}{^f_d}$.
 
 \begin{example}[2D flat space]
     $x^A = \{x,y\}$:
     \begin{align}
         g_{AB} &= \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \text{diag}(1,1) \\
-        \tensor{\Gamma}{^A_{BC}} &= 0 
+        \tensor{\Gamma}{^A_{BC}} &= 0
     \end{align}
     So we don't have to deal with these in Cartesian coordinates. What about polar coordinates? $x^A = \{r,\theta\}$:
     \begin{align}
         ds^2 &= dr^2 + r^2\,d\theta^2 \\
         g_{AB} &= \text{diag}(1,r^2) \\
-        \tensor{\Gamma}{^A_{BC}} \neq 0 
+        \tensor{\Gamma}{^A_{BC}} \neq 0
     \end{align}
-    So we can still get non-zero Christoffel symbols even for flat space, but it is still "boring" really. 
+    So we can still get non-zero Christoffel symbols even for flat space, but it is still "boring" really.
 \end{example}
 
-Let's consider something more interesting, i.e. curved. 
+Let's consider something more interesting, i.e. curved.
 For 3D space, we have
 \begin{align}
-    ds^2 &= dr^2 + r^2\,d\theta^2 + r^2\sin^2\theta\,d\phi^2 
+    ds^2 &= dr^2 + r^2\,d\theta^2 + r^2\sin^2\theta\,d\phi^2
 \end{align}
 But we want to use just the surface of a sphere, so fixed $r=a$:
 \begin{align}
@@ -251,8 +272,8 @@ The velocity is a tensor,
 \begin{align}
     \vec{v} &= v^\alpha\ve_{\alpha} = \frac{\p x^\alpha}{\p\tau}\ve_\alpha
 \end{align}
-If there's no force, then there's no change in the velocity vector doesn't change, but its components might change. 
-No force means the absolute derivative of the components: 
+If there's no force, then there's no change in the velocity vector doesn't change, but its components might change.
+No force means the absolute derivative of the components:
 \begin{align}
     \frac{Dv^\alpha}{d\tau} &= 0
 \end{align}
@@ -270,7 +291,7 @@ For $\theta$:
 We get a big tick and a gold star!
 For $\phi$:
 \begin{align}
-    \frac{d^2\phi}{ds^2} + \tensor{\Gamma}{^\phi_{BC}}\frac{dx^B}{ds}\frac{dx^C}{ds} = 0 + \tensor{\Gamma}{^\phi_{\theta\phi}}\frac{d\theta}{ds}\frac{d\phi}{ds} + \tensor{\Gamma}{^\phi_{\phi\theta}}\frac{d\phi}{ds}\frac{d\theta}{ds} = 0 
+    \frac{d^2\phi}{ds^2} + \tensor{\Gamma}{^\phi_{BC}}\frac{dx^B}{ds}\frac{dx^C}{ds} = 0 + \tensor{\Gamma}{^\phi_{\theta\phi}}\frac{d\theta}{ds}\frac{d\phi}{ds} + \tensor{\Gamma}{^\phi_{\phi\theta}}\frac{d\phi}{ds}\frac{d\theta}{ds} = 0
 \end{align}
 So it's a geodesic path! Yayyyyyy!
 
@@ -280,7 +301,7 @@ So it's a geodesic path! Yayyyyyy!
 \chapter{}
 Last lecture:
 \begin{itemize}
-    \item Euler-Lagrange equations 
+    \item Euler-Lagrange equations
     \item 'easier' way to find $\tensor{\Gamma}{^a_{bc}}$
     \item how to find Geodesic paths
 \end{itemize}
@@ -310,7 +331,7 @@ The absolute derivative obeys normal rules for derivatives.
         \end{align}
 \end{itemize}
 What is the absolute derivative of a scalar, $\phi$?
-$\phi$ does not depend on the coordinates as tensors do, so it would just be the normal derivative, i.e. 
+$\phi$ does not depend on the coordinates as tensors do, so it would just be the normal derivative, i.e.
 \begin{align}
     \frac{D\phi}{ds} = \frac{d\phi}{ds}.
 \end{align}
@@ -328,7 +349,7 @@ We can then `cancel' $\lambda^a$ through unity, as the remaining equation must a
     \frac{d\mu_a}{ds} &= \tensor{\Gamma}{_{ac}^b}\mu_b\frac{dx^c}{ds} + \frac{D\mu_a}{ds}, \\
     \frac{D\mu_a}{ds} &= \frac{d\mu_a}{ds} - \tensor{\Gamma}{_{ac}^b}\mu_b\frac{dx^c}{ds}.
 \end{align}
-This is the absolute derivative of a convariant tensor. 
+This is the absolute derivative of a contravariant tensor.
 
 What is the absolute derivative of a rank (1,1) tensor $\tensor{\tau}{^a_b}=\lambda^a\mu_b$?
 \begin{align}
@@ -360,7 +381,7 @@ We can also consider the metric:
                              &= \tensor{\Gamma}{_{ac}^d}g_{db} + \tensor{\Gamma}{_{bc}^d}g_{ad}, \\
     g_{ab;c} &= \frac{\p g_{ab}}{\p x^c} - \tensor{\Gamma}{_{ac}^d}g_{db} - \tensor{\Gamma}{_{bc}^d}g_{ad} = 0,
 \end{align}
-where we used the previous definitions of the covariant derivative to find this definition. 
+where we used the previous definitions of the covariant derivative to find this definition.
 Why is this important?
 The metric allows us to switch coordinate systems as
 \begin{align}
@@ -384,7 +405,7 @@ The Riemann curvature tensor tells us \emph{how much the direction of a vector c
 \begin{align}
     \tensor{\left(\tensor{\lambda}{^a_{;b}}\right)}{_{;c}} &= \frac{\p\tensor{\lambda}{^a_{;b}}}{\p x^c} + \tensor{\Gamma}{^a}{_{ec}}\tensor{\lambda}{^e_{;b}} - \tensor{\Gamma}{_{bc}^f}\tensor{\lambda}{_{;f}^a} \\
                                                          &= \frac{\p}{\p x^c}\left(\frac{\p\lambda^a}{\p x^b} + \tensor{\Gamma}{^a_{bd}}\lambda^d\right) + \cdots \\
-    \tensor{\lambda}{^a_{;b;c}} &= \frac{\p^2\lambda^a}{\p x^c \p x^b} + \tensor{\Gamma}{^d_{bd}}\frac{\p\lambda^d}{\p x^c} + \lambda^d\frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c} + \tensor{\Gamma}{^a_{ec}}\tensor{\lambda}{^a_{;b}}-\tensor{\Gamma}{_{bc}^f}\tensor{\lambda}{^a_{;f}} 
+    \tensor{\lambda}{^a_{;b;c}} &= \frac{\p^2\lambda^a}{\p x^c \p x^b} + \tensor{\Gamma}{^d_{bd}}\frac{\p\lambda^d}{\p x^c} + \lambda^d\frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c} + \tensor{\Gamma}{^a_{ec}}\tensor{\lambda}{^a_{;b}}-\tensor{\Gamma}{_{bc}^f}\tensor{\lambda}{^a_{;f}}
 \end{align}
 In flat space, the Christoffel symbols go to zero, so we can sway $;b$ and $;c$ indices, but \textbf{not in curved space.}
 \begin{align}
@@ -403,7 +424,7 @@ Consider:
                     &= \tensor{R}{^a_{dbc}}\lambda^a\cdot\text{ area of loop}
 \end{align}
 In flat space, any two lines have a separation that increases linearly with distance $s$, e.g. $\p_s^2=0$.
-But in curved space, our two lines can converge or diverge as they travel from initial parallel conditions. 
+But in curved space, our two lines can converge or diverge as they travel from initial parallel conditions.
 Consider two lines $x^a(s)$ and $\tilde{x}^a(s)$ with a separation $\zeta^a=\tilde{x}^a - x^a$.
 We can write our geodesic equation for this as
 \begin{align}
@@ -419,11 +440,11 @@ We can write our geodesic equation for this as
 In this lecture:
 \begin{itemize}
     \item Geodesic convergence.
-    \item Symmetry of the Riemann tensor, 
+    \item Symmetry of the Riemann tensor,
         \begin{align}
             \tensor{R}{^a_{dbc}} &= \tensor{\Gamma}{^a_{bc}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \p_b\tensor{\Gamma}{^a_{cd}}-\p_c\tensor{\Gamma}{^a_{bd}}.
         \end{align}
-    \item We will look towards Einstein's equations by combining our knowledge of movement in curved space with gravity. 
+    \item We will look towards Einstein's equations by combining our knowledge of movement in curved space with gravity.
     \item We will do this through the stress-energy tensor, $T^{\mu\nu}$. (Not as simple as it could be, R has four indices, this has two, but we'll get to that.)
     \item This will lead towards to conservation laws in GR.
 \end{itemize}
@@ -433,7 +454,7 @@ At the end of last lecture, we considered divergent lines with a spatially-depen
     \ddot{\tilde{x}}^a + \tensor{\tilde{\Gamma}}{^a_{bc}}\dot{x}^b\dot{x}^c &= 0 \\
     \ddot{\zeta} + \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{\zeta}^c + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c + \frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d}\zeta^d\dot{x}^b\dot{x}^c &= 0.
 \end{align}
-We want to find the Tensor equation from this! 
+We want to find the Tensor equation from this!
 \begin{align}
     \frac{D^2\zeta^a}{ds^2} &= \ddot{\zeta}^a + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c + \frac{d}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right) + \tensor{\Gamma}{^a_{ef}}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right)\dot{x}^f.\\
     \frac{d}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right) &= \tensor{\Gamma}{^a_{be}}\zeta^b\ddot{x}^e + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c + \zeta^b\dot{x}^c\left(\frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d}\dot{x}^d\right).
@@ -453,9 +474,9 @@ From this definition, we can quickly infer the symmetry relation
 \end{align}
 
 \section{Symmetries of the Riemann tensor}
-In 4D space-time, the Riemann tensor contains $4\times4\times4\times4 = 256$ numbers. 
+In 4D space-time, the Riemann tensor contains $4\times4\times4\times4 = 256$ numbers.
 This isn't very fun unless you are a computer, says Richard.
-However, using the symmetry of the Riemann tensor, there are only 20 indepedent elements, which can be a lot easier. 
+However, using the symmetry of the Riemann tensor, there are only 20 independent elements, which can be a lot easier.
 How do we demonstrate this though?
 We can use mathematical tricks for tensors, whereby if we prove something in one coordinate system, it must be true in all coordinate systems.
 
@@ -465,7 +486,7 @@ We know, therefore, that we can write the metric at this point as
 \begin{align}
     g_{\alpha\beta} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix},
 \end{align}
-which is known as the \textbf{Minkowski metric} for flat space. 
+which is known as the \textbf{Minkowski metric} for flat space.
 This is familiar from special relativity, where it represents the usual Minkowski product,
 \begin{align}
     ds^2 &= c^2\,d\tau^2 = c\,dt^2 - dx^2 - dy^2 - dz^2.
@@ -473,8 +494,8 @@ This is familiar from special relativity, where it represents the usual Minkowsk
 So the Christoffel symbol at this local point is
 \begin{align}
     \tensor{\Gamma}{^\alpha_{\beta\gamma}} &= 0,
-\end{align} 
-where we have only chosen a point to set this locally to zero. 
+\end{align}
+where we have only chosen a point to set this locally to zero.
 However, the derivatives will not be zero, as if we move away from this local point, space will become curved again:
 \begin{align}
     \frac{\p\tensor{\Gamma}{^\alpha_{\beta\gamma}}}{\p x^\delta} &= 0.
@@ -483,13 +504,13 @@ Now this will allow us to simplify the Riemann tensor from its definition in Eq.
 \begin{align}
     \tensor{R}{^a_{dbc}} &= \p_b\tensor{\Gamma}{^a_{cd}} - \p_c\tensor{\Gamma}{^a_{bd}}.
 \end{align}
-What about the symmmetry relations of this simplified Riemann tensor?
+What about the symmetry relations of this simplified Riemann tensor?
 \begin{align}
     \tensor{R}{^a_{cdb}} &= \p_d\tensor{\Gamma}{^a_{bc}} - \p_b\tensor{\Gamma}{^a_{dc}}, \\
-    \tensor{R}{^a_{bcd}} &= \p_c\tensor{\Gamma}{^a_{db}} - \p_d\tensor{\Gamma}{^a_{cb}}. 
+    \tensor{R}{^a_{bcd}} &= \p_c\tensor{\Gamma}{^a_{db}} - \p_d\tensor{\Gamma}{^a_{cb}}.
 \end{align}
 What about the sum of these three tensors?
-Due to the symmetry of the Christoffel symbols' lower indicies, we can see that there will be lots of cancellations in this sum, leading to
+Due to the symmetry of the Christoffel symbols' lower indices, we can see that there will be lots of cancellations in this sum, leading to
 \begin{align}
     \tensor{R}{^a_{dbc}} + \tensor{R}{^a_{cdb}} + \tensor{R}{^a_{bcd}} &= 0,
 \end{align}
@@ -510,17 +531,17 @@ From these relations, we see that repeated indices can lead to zero, such as
 This allows us to neglect many of the 256 numbers as they will be zero, reducing the total of free elements of the Riemann tensor to 20.
 
 \section{How can we relate this to gravity?}
-Let's consider Eq. (10.4) for low speeds, i.e. non-relativistic. 
+Let's consider Eq. (10.4) for low speeds, i.e. non-relativistic.
 \begin{align}
     \zeta^\alpha = \begin{pmatrix} 0, & 0, & y, & 0 \end{pmatrix},
 \end{align}
-i.e. we have a simple separation in the y-direction between the two geodesic paths. 
+i.e. we have a simple separation in the y-direction between the two geodesic paths.
 We would then get something like
 \begin{align}
     \frac{D^y}{ds^2} &= -\tensor{R}{^2_{020}}yc^2,
 \end{align}
-where we only consider the indices relating to $y$ and time. 
-This should look somewhat familiar. 
+where we only consider the indices relating to $y$ and time.
+This should look somewhat familiar.
 What would we have written for this in Newtonian physics, if we have these two objects both moving towards a large mass $M$ with a separation $y$ and a distance from the massive object $r$?
 \begin{align}
     \frac{d^2y}{dt^2} &= -\frac{GM}{r^2}\cdot\frac{y}{r}.
@@ -533,9 +554,9 @@ Using $ds=c\,dt$:
     c^2\frac{d^2y}{ds^2} &= -\frac{GM}{r^3}y,\\
     -\frac{GM}{r^3} &= -\tensor{R}{^2_{020}}.
 \end{align}
-So we now have an equivalence of curved space and Newtonian gravitational force. 
+So we now have an equivalence of curved space and Newtonian gravitational force.
 We can see that the Newtonian expression in Eq. (10.27) is the energy density of space, if mass and energy can be equivalent.
-This is what lead Einstein to his famous equations. 
+This is what lead Einstein to his famous equations.
 
 \section{What is energy?}
 Energy is special relativity was defined in
@@ -543,7 +564,7 @@ Energy is special relativity was defined in
     E &= \gamma m_0c^2,
 \end{align}
 where we can now relate the mass and energy of objects.
-We also have a number density, $n_0$, for the number of particles ``in a box" or in the universe or whatever you're considering. 
+We also have a number density, $n_0$, for the number of particles ``in a box" or in the universe or whatever you're considering.
 Recall from special relativity the four-velocity of a system:
 \begin{align}
     u^\alpha &= \frac{dx^\alpha}{dt} = \gamma\begin{pmatrix} c, & -\frac{dx^i}{dt}\end{pmatrix}.
@@ -580,7 +601,7 @@ In the rest frame, these two velocities will each be $c$, so the $T^{00}$ term w
 \end{itemize}
 
 \section{The Schwarzchild Metric}
-Defined as 
+Defined as
 \begin{align}
     ds^2 &= c^2d\tau^2 = c^2\left(1-\frac{2m}{r}\right)dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 - r^2d\phi^2.
 \end{align}
@@ -604,7 +625,7 @@ We then get from the metric
     \tau_{orb} &\neq \tau_{hov}.
 \end{align}
 Consider the example where $r=r=6m$.
-We will get 
+We will get
 \begin{align}
     \tau_{orb} &= \left(\frac12\right)^{1/2}t_{orb}, & \tau_{hov} &= \left(\frac23\right)^{1/2}t_{orb}, & \frac{\tau_{orb}}{\tau_{hov}} &= \frac{\sqrt{3}}{2} = 0.86.
 \end{align}
@@ -629,8 +650,8 @@ We need to find constant, so we use the condition $\dot{r}=0$ at $r\gg2m$:
     \dot{r}^2 &- c^2 + c^2\left(1-\frac{2m}{r}\right) = 0, \\
     \dot{r}^2 &= \frac{2mc^2}{r} \implies \dot{r}^2 = -c\sqrt{\frac{2m}{r}},
 \end{align}
-where we have chosen the negative solution for when we are approaching the black hole. 
-This looks pretty Newtonian, but remember that $\dot{r}=\frac{dr}{d\tau}$, where $\tau$ is the proper time. 
+where we have chosen the negative solution for when we are approaching the black hole.
+This looks pretty Newtonian, but remember that $\dot{r}=\frac{dr}{d\tau}$, where $\tau$ is the proper time.
 So this would be the speed measured by the falling observer.
 
 How long does it take to reach $r=0$?
@@ -640,20 +661,20 @@ We can work out the proper time as observed by the person falling into the black
 \end{align}
 We have a perfectly finite $\tau$ for $r_2=0$, e.g. $r_1=10m$, $r_2=0$ results in $\tau=14.9\frac{m}{c}$.
 
-If we consider the perspective of the person a long distance away, then 
+If we consider the perspective of the person a long distance away, then
 \begin{align}
     \frac{dr}{dt} &= \frac{dr}{d\tau}\frac{d\tau}{dt} = -c\sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right).
 \end{align}
 At $r=2m,\frac{dr}{dt}\to0$.
-From a distance, we will observe them fall in to the black hole, but slow down and ``stop" at the event horizon; the person falling into the black hole will feel themselves falling in faster and faster. 
-We have a gravitational redshift, 
+From a distance, we will observe them fall in to the black hole, but slow down and ``stop" at the event horizon; the person falling into the black hole will feel themselves falling in faster and faster.
+We have a gravitational redshift,
 \begin{align}
     \frac{\lambda_R}{\lambda_E} &= \sqrt{\frac{1-\frac{2m}{r_2}}{1-\frac{2m}{r_E}}},
 \end{align}
 so the wavelength received $\lambda_R\to\infty$.
 It isn't quite that we see it come to rest, but rather its signal slowly fades out and gets weaker and weaker until we don't observe anything.
 
-Now let's look at dropping off at some general radius. 
+Now let's look at dropping off at some general radius.
 Drop the satellite at $r=r_0,\dot{r}=0$ at $r=0$.
 \begin{align}
     E & \sqrt{1-\frac{2m}{r_0}},\\
@@ -667,15 +688,15 @@ We can also consider what happens for the hovering observer:
     dR_h &= \sqrt{1-\frac{2m}{r}}\,dr,\quad  d\tau_h = \sqrt{1-\frac{2m}{r}}\,dr, \\
     \frac{dR_h}{d\tau_h} &= \frac{dR_h}{dr}\frac{dr}{dt}\frac{dt}{d\tau_h} = \left(1-\frac{2m}{r}\right)^{-1}\frac{dr}{dt} = -c\sqrt{\frac{\frac{2m}{r}-\frac{2m}{r_0}}{1-\frac{2m}{r_0}}}.
 \end{align}
-If we hover at $r_0=2m,r=2m$, then $\frac{dR_h}{d\tau_h}=c$. 
-This is quite strange. 
+If we hover at $r_0=2m,r=2m$, then $\frac{dR_h}{d\tau_h}=c$.
+This is quite strange.
 Let's check:
 \begin{align}
     \frac{d^2R_h}{d\tau_h^2} &= \frac{d}{d\tau_h}\left(\frac{dR_h}{d\tau_h}\right) = -\frac{mc^2}{r^2}\frac{\sqrt{1-\frac{2m}{r}}}{\left(1-\frac{2m}{r_0}\right)}.
 \end{align}
-If $r\to\infty\implies$ Newtonian physics is back. 
+If $r\to\infty\implies$ Newtonian physics is back.
 If $r_0\to2m$, then $\frac{d^2R_h}{d\tau_h}\to\infty$.
-However, hovering at $r=2m$ requires an infinitely powerful rocket - you can't hover at $r\leq2m$, i.e. 
+However, hovering at $r=2m$ requires an infinitely powerful rocket - you can't hover at $r\leq2m$, i.e.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.7]{gg.jpg}
@@ -683,7 +704,7 @@ However, hovering at $r=2m$ requires an infinitely powerful rocket - you can't h
 
 \chapter{}
 Falling into a black hole!
-We have better ways of describing space-time. 
+We have better ways of describing space-time.
 For radial paths, we have the metric and the E-L equations:
 \begin{align}
     c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 \\
@@ -699,8 +720,8 @@ We will define a new time coordinate and it can rewritten as
     c^2d\tau^2 &= \left(1-\frac{2m}{r}\right)\left[c\,dT - \sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right)\,dr\right]^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2, \\
     c^2d\tau^2 &= \left(1-\frac{2m}{r}\right)c^2dT^2 - 2\sqrt{\frac{2m}{r}}c\,dT\,dr - dr^2.
 \end{align}
-We now have a rewritten metric in terms of a time coordinate of someone falling into a black hole. 
-$\tau$ is the proper time on the radial path, $T$ is the proper time of the falling observer. 
+We now have a rewritten metric in terms of a time coordinate of someone falling into a black hole.
+$\tau$ is the proper time on the radial path, $T$ is the proper time of the falling observer.
 So we can now solve in the falling observer's perspective rather than the orbiting observer.
 
 What do we need to consider causally around the centre of the Black Hole?
@@ -728,10 +749,10 @@ For photons, we have the null geodesic:
     c\frac{dt}{dr} &= \pm \left(1-\frac{2m}{r}\right)^{-1}
 \end{align}
 This breaks down as we approach the Schwarzchild radius.
-We need to think of a new coordinate system to describe the universe. 
+We need to think of a new coordinate system to describe the universe.
 
 \section{Eddington-Finkelstein Coordinates}
-If we define 
+If we define
 \begin{align}
     dr_{*} &= \left(1-\frac{2m}{r}\right)^{-1}\,dr \implies \frac{dt}{dr_{*}} = \pm c
 \end{align}
@@ -741,7 +762,7 @@ If we integrate this,
     r_{*} &= r + 2m\log\bigg|\frac{r}{2m}-1\bigg|, \\
     ct &= \pm r_{*} + v.
 \end{align}
-So we have a choice of two equations for defining our time variable, but we must choose one. 
+So we have a choice of two equations for defining our time variable, but we must choose one.
 They chose the inward-going light rays for
 \begin{align}
     v &= r_{*} + ct, \\
@@ -752,11 +773,11 @@ Again, we can substitute this in to the metric, and find a new form:
 \begin{align}
     d\tau^2 &= \left(1-\frac{2m}{r}\right)\,dv^2 - 2\,dv\,dr.
 \end{align}
-When $v$ is constant and we set $d\tau=0$ we have the path taken by a photon. 
+When $v$ is constant and we set $d\tau=0$ we have the path taken by a photon.
 We can solve for the photon paths:
 \begin{enumerate}
-    \item Inwards propagating, so $dv = 0$ 
-    \item 
+    \item Inwards propagating, so $dv = 0$
+    \item
         \begin{align}
             \frac{dv}{dr} &= \frac{2}{\left(1-\frac{2m}{r}\right)}
         \end{align}
@@ -795,7 +816,7 @@ Transform variables again for
         \draw (1,0.6) -- (1.2,0.8) -- (0.8,2.2) -- (1,2.4) -- cycle;
     \end{tikzpicture}
 \end{figure}
-At large $r$, it always travels at 45 degrees. 
+At large $r$, it always travels at 45 degrees.
 The cones of influence are tipping over as the outward ray moves less and less, until we reach $r=2m$ and the outward propagating ray becomes purely time-like and cannot propagate outwards.
 Once we're inside this radius, both light rays are then tipping over and both move towards the centre of the black hole as our term in Eq. (17.22) goes negative for both.
 The zones of influence are aimed inwards to the Black Hole.
@@ -826,15 +847,15 @@ This follows from defining contra- variant and covariant tensors respectively:
 \begin{align}
     A^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}A^a, & A_{\bar{b}} &= \frac{\p x^a}{\p x^{\bar{b}}}A_a.
 \end{align}
-We can convert between these two forms using 
+We can convert between these two forms using
 \begin{align}
     \lambda_b &= g_{ab}\lambda^a,
 \end{align}
 where we need to remember we are using the Einstein Summation Convention over repeated indices.
 
 \section{Geodesic paths and curved space}
-When you move a tensor around in curved space, you get changes due to how the coordinate space changes. 
-To accomodate for this, we introduce the Total Derivative:
+When you move a tensor around in curved space, you get changes due to how the coordinate space changes.
+To accommodate for this, we introduce the Total Derivative:
 \begin{align}
     \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds} = \tensor{\lambda}{^a_{;c}}\frac{dx^c}{ds}, \\
     \tensor{\lambda}{^a_{;c}} &= \frac{\p\lambda^a}{\p x^c} + \tensor{\Gamma}{^a_{bc}}\lambda^b, \\
@@ -844,23 +865,23 @@ We then introduce the concept of \emph{parallel transport}, which led us to geod
 \begin{align}
     \ddot{x}^a + \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{x}^c = 0.
 \end{align}
-For working in equations of motion, we turn to the Euler-Lagrange equations. 
+For working in equations of motion, we turn to the Euler-Lagrange equations.
 So we express our Lagrangian and then write the E-L equation:
 \begin{align}
     \La &= \frac12 g_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta, & \frac{d}{d\tau}\left(\frac{\p\La}{\p\dot{x}^a}\right) - \frac{\p\La}{\p x^\alpha} &= 0.
 \end{align}
-The definition of geodesic paths and Euler-Lagrange equation are equivalent, although generally we will find the E-L equation easier to work with. 
+The definition of geodesic paths and Euler-Lagrange equation are equivalent, although generally we will find the E-L equation easier to work with.
 This is all well and good, but then we realised that the Riemann curvature tensor $\tensor{R}{^a_{dbc}}$ was like the `second derivative' and can tell us a lot about space.
-But we can't equate this with our other tensors yet. 
+But we can't equate this with our other tensors yet.
 
-\section{Eintein's Equations}
-We want to describe how mass and the shape of space are related. 
+\section{Einstein's Equations}
+We want to describe how mass and the shape of space are related.
 This is derived in the \textbf{Stress-Energy Tensor}:
 \begin{align}
     T^{\mu\nu} &= \left(\rho_0+\frac{p}{c^2}\right)u^\mu u^\nu - Pg^{\mu\nu},
 \end{align}
-so the `00' element describes energy, and the other elements describe momentum. 
-In the last term above, we subtract by pressure to get the right form. 
+so the `00' element describes energy, and the other elements describe momentum.
+In the last term above, we subtract by pressure to get the right form.
 All of physics then can be written as
 \begin{align}
     \tensor{T}{^{\mu\nu}_{;\mu}} &= 0.
@@ -877,15 +898,15 @@ Einstein then used all this to define his `guess' as a way of writing down a rel
 \begin{align}
     \left(R^{\mu\nu}-\frac12 g^{\mu\nu}\mathcal{R}\right) &= \kappa T^{\mu\nu}.
 \end{align}
-Turns out this wasn't quite right - there is also a small \emph{cosmological constant} that needs to be added, which is famous for being Einstein's big blunder. 
-The metric is then useful to be redefined once we have reached this point, so we now introduce the Schwarzschild Metric, defining $m=\frac{GM}{c^2}$:
+Turns out this wasn't quite right - there is also a small \emph{cosmological constant} that needs to be added, which is famous for being Einstein's big blunder.
+The metric is then useful to be redefined once we have reached this point, so we now introduce the Schwarzchild Metric, defining $m=\frac{GM}{c^2}$:
 \begin{align}
     c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2 - r^2d\theta^2 - r^2\sin^2\theta\,d\phi^2.
 \end{align}
 The rest of the lecture series was pretty much focused on how we solve this metric in different regimes.
 \begin{itemize}
     \item Particles in weak gravity - here, we seemed to recover essentially Newtonian physics, with slight corrections. This resolved the perihelion of Mercury and was the first big success of GR.
-    \item Photons in weak gravity - leading us to gravitational lensing and photons' movement. 
+    \item Photons in weak gravity - leading us to gravitational lensing and photons' movement.
     \item Orbits in strong gravity - the metric terms are no longer small as in weak gravity, more complex to solve.
     \item Radial paths in strong gravity.
     \item Alternative ways of writing the metric - looking at causality and where the metric should fail and how we fix that (i.e. inside $r=2m$).
@@ -898,19 +919,3 @@ The rest of the lecture series was pretty much focused on how we solve this metr
 
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
