@@ -334,18 +334,24 @@ Taking time derivatives again:
 \end{align}
 For $a(0)=1,b(0)=0$, $a=\cos\left(\frac{\Omega t}{2}\right)$.
 Getting probabilities:
-\begin{align}
-    P_{|0\rangle} &= |a|^2 = \cos^2\left(\frac{\Omega t}{2}\right) = \frac12(1+\cos\Omega t), \\
-    P_{|1\rangle} &= |b|^2 = \sin^2\left(\frac{\Omega t}{2}\right) = \frac12(1-\cos\Omega t),
-\end{align}
 \begin{figure}[H]
+\begin{multicols}{2}
     \centering
     \begin{tikzpicture}
         \draw[-Latex] (0,0) -- (6,0) node[anchor=north] {t};
         \draw[-Latex] (0,0) -- (0,2.8) node[anchor=east] {P};
         \draw[purple] (0,2.5) node[anchor=east,black] {1} cos (1,1.25) sin (2,0) node[anchor=north,black] {$\frac{\pi}{\Omega}$} cos (3,1.25) sin (4,2.5) cos (5,1.25) sin (6,0) node[anchor=south west] {$P_{|0\rangle}$};
-        \draw[cyan] (0,0) node[anchor=east,black] {0} cos (1,1.25) sin (2,2.5) cos (3,1.25) sin (4,0) node[anchor=north,black] {$\frac{2\pi}{\Omega}$} cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
+        \draw[teal] (0,0) node[anchor=east,black] {0} cos (1,1.25) sin (2,2.5) cos (3,1.25) sin (4,0) node[anchor=north,black] {$\frac{2\pi}{\Omega}$} cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
     \end{tikzpicture}
+    \columnbreak
+    \vfill
+    \begin{align}
+        P_{|0\rangle} &= |a|^2 = \cos^2\left(\frac{\Omega t}{2}\right) = \frac12(1+\cos\Omega t), \\
+        P_{|1\rangle} &= |b|^2 = \sin^2\left(\frac{\Omega t}{2}\right) = \frac12(1-\cos\Omega t),
+    \end{align}
+    \vfill
+\end{multicols}
+\vspace{-20pt}
 \end{figure}
 $\theta=\frac{\Omega t}{2}$ is the rotation angle.
 The effect of the resonant EM field is to drive the qubit from $|0\rangle\to|1\rangle$ and back at $\Omega$ frequency.
@@ -407,7 +413,7 @@ The Rabi frequency is proportional to the field amplitude, i.e. the square root 
         \draw[-Latex] (0,0) -- (6,0) node[anchor=north] {t};
         \draw[-Latex] (0,0) -- (0,2.8) node[anchor=east] {P};
         \draw[purple] (0,2.5) node[anchor=east,black] {1} cos (1,1.25) sin (2,0) node[anchor=north,black] {$\frac{\pi}{\Omega}$} cos (3,1.25) sin (4,2.5) cos (5,1.25) sin (6,0) node[anchor=south west] {$P_{|0\rangle}$};
-        \draw[cyan] (0,0) node[anchor=east,black] {0} cos (1,1.25) sin (2,2.5) cos (3,1.25) sin (4,0) node[anchor=north,black] {$\frac{2\pi}{\Omega}$} cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
+        \draw[teal] (0,0) node[anchor=east,black] {0} cos (1,1.25) sin (2,2.5) cos (3,1.25) sin (4,0) node[anchor=north,black] {$\frac{2\pi}{\Omega}$} cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
         \draw[dashed] (1,0) node[anchor=north] {$\frac{\pi}{2\Omega}$} -- (1,1.25);
     \end{tikzpicture}
 \end{figure}
@@ -591,7 +597,7 @@ For $\phi=\Delta t$,
         \draw[-Latex] (-2,0) -- (6,0) node[anchor=north] {$\Delta$};
         \draw[-Latex] (2,0) -- (2,2.8) node[anchor=south] {P};
         \draw[purple] (-2,0) cos (-1,1.25) sin (0,2.5) cos (1,1.25) sin (2,0) node[anchor=north,black] {$\Delta=0$} cos (3,1.25) sin (4,2.5) cos (5,1.25) sin (6,0) node[anchor=south west] {$P_{|0\rangle}$};
-        \draw[cyan] (-2,2.5) cos (-1,1.25) sin (0,0) cos (1,1.25) sin (2,2.5) node[anchor=north east,black] {1} cos (3,1.25) sin (4,0) cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
+        \draw[teal] (-2,2.5) cos (-1,1.25) sin (0,0) cos (1,1.25) sin (2,2.5) node[anchor=north east,black] {1} cos (3,1.25) sin (4,0) cos (5,1.25) sin (6,2.5) node[anchor=west] {$P_{|1\rangle}$};
     \end{tikzpicture}
 \end{figure}
 
@@ -679,19 +685,15 @@ The trace Tr is the sum of diagonal elements.
     For two qubits, the operator reads
     \begin{align}
         \hat{P} &= \frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1\end{pmatrix} \otimes \begin{pmatrix} 1 & 0 \\ 0 & 1\end{pmatrix} \\
-                &= \frac12\begin{pmatrix} 1 & 1 \\ 1 & 1\end{pmatrix} \otimes \begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix} \\
-                &= \frac12 \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1\end{pmatrix}.
+                &= \frac12\begin{pmatrix} 1 & 1 \\ 1 & 1\end{pmatrix} \otimes \begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix} = \frac12 \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1\end{pmatrix}.
     \end{align}
     Now we define the density matrix as
     \begin{align}
-        \hat{\rho} &= |\Phi^+\rangle\langle\Phi^+| \\
-                   &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 0 \\ 0 \\ 1\end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 0 & 0 & 1\end{pmatrix} \\
-                   &= \frac12 \begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1 \end{pmatrix}.
+        \hat{\rho} &= |\Phi^+\rangle\langle\Phi^+| = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 0 \\ 0 \\ 1\end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 0 & 0 & 1\end{pmatrix} = \frac12 \begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1 \end{pmatrix}.
     \end{align}
     The product of these is then
     \begin{align}
-        \hat{\rho}\hat{P} &= \frac12\begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 &0&0 & 0 \\ 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1\end{pmatrix}\frac12 \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1\end{pmatrix} \\
-                          &= \frac14\begin{pmatrix} 1&1&1&1\\0&0&0&0\\0&0&0&0\\1&1&1&1\end{pmatrix}\\
+        \hat{\rho}\hat{P} &= \frac12\begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 &0&0 & 0 \\ 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1\end{pmatrix}\frac12 \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1\end{pmatrix} = \frac14\begin{pmatrix} 1&1&1&1\\0&0&0&0\\0&0&0&0\\1&1&1&1\end{pmatrix}\\
         P_{A+} &= \text{Tr}(\hat{\rho}\hat{P}) = \frac12,
     \end{align}
     i.e. the probability that A is in state $|+\rangle$ is $\frac12$.
@@ -702,14 +704,11 @@ The trace Tr is the sum of diagonal elements.
     A and B now have a correlation between them in the quantum system, so we use the projection operators to find the probability that both A and B are in $|+\rangle$.
     The projection operator reads
     \begin{align}
-        \hat{P} &= |+\rangle\langle+| \otimes |+\rangle\langle+| \\
-                &= \frac12\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix} \otimes \frac12\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix} \\
-                &= \frac14\begin{pmatrix} 1&1&1&1\\1&1&1&1\\1&1&1&1\\1&1&1&1\end{pmatrix}.
+        \hat{P} &= |+\rangle\langle+| \otimes |+\rangle\langle+| = \frac12\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix} \otimes \frac12\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix} = \frac14\begin{pmatrix} 1&1&1&1\\1&1&1&1\\1&1&1&1\\1&1&1&1\end{pmatrix}.
     \end{align}
     Our product reads
     \begin{align}
-        \hat{\rho}\hat{P} &= \frac12 \begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 &0&0 & 0 \\ 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1\end{pmatrix} \frac14\begin{pmatrix} 1&1&1&1\\1&1&1&1\\1&1&1&1\\1&1&1&1\end{pmatrix}\\
-                          &= \frac14\begin{pmatrix} 1&1&1&1\\0&0&0&0\\0&0&0&0\\1&1&1&1\end{pmatrix}.\\
+        \hat{\rho}\hat{P} &= \frac12 \begin{pmatrix} 1 & 0 & 0 & 1 \\ 0 &0&0 & 0 \\ 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 1\end{pmatrix} \frac14\begin{pmatrix} 1&1&1&1\\1&1&1&1\\1&1&1&1\\1&1&1&1\end{pmatrix} = \frac14\begin{pmatrix} 1&1&1&1\\0&0&0&0\\0&0&0&0\\1&1&1&1\end{pmatrix}.\\
         \text{Tr}(\hat{\rho}\hat{P}) &= \frac12,
     \end{align}
     i.e. the probability that both are in state $|+\rangle$ is $\frac12$.
@@ -829,8 +828,7 @@ So CNOT is an entangling operator.
     Let's work through this again in matrix form.
     \begin{align}
         |CT\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1\end{pmatrix}\otimes\begin{pmatrix}1\\0\end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1\\0\\1\\0\end{pmatrix}. \\
-        \text{CNOT}|CT\rangle &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\1\\0\end{pmatrix}\\
-                              &= \frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle\end{Bmatrix} \\
+        \text{CNOT}|CT\rangle &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}\frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\1\\0\end{pmatrix}= \frac{1}{\sqrt{2}}\begin{pmatrix}1\\0\\0\\1\end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle\end{Bmatrix} \\
                               &= \frac{1}{\sqrt{2}}\left(|00\rangle+|11\rangle\right) = |\Phi^+\rangle.
     \end{align}
     We get the same result as before.
@@ -1068,12 +1066,10 @@ Typically, $w_{0,min}\approx \lambda$.
     These may contain all the \emph{wave} information, but not necessarily all the \emph{quantum} information.
     If a state decoheres completely, i.e. coherence decay to zero:
     \begin{align}
-        \rho_{dec} &= \begin{pmatrix} |a|^2 & 0 \\ 0 & |b|^2\end{pmatrix}\\
-                   &= |a|^2|0\rangle\langle0| + b^2|1\rangle\langle1|,
+        \rho_{dec} &= \begin{pmatrix} |a|^2 & 0 \\ 0 & |b|^2\end{pmatrix} = |a|^2|0\rangle\langle0| + b^2|1\rangle\langle1|,
     \end{align}
     so we still have a superposition, but no phase information.
-    This is called a \textbf{mixed state.}
-
+    This is called a \textbf{mixed state.}\\
     For the read-out process, we go back to earlier on in the question now.
     We define a general density matrix as
     \begin{align}
@@ -1083,28 +1079,28 @@ Typically, $w_{0,min}\approx \lambda$.
     \begin{align}
         \rho'= \hat{H}\rho\hat{H}^\dagger &= \frac12\begin{pmatrix} 1+u & w+iv \\ w-iv & 1-u\end{pmatrix}.
     \end{align}
-    The probability to be in $|0\rangle$ is then
-    \begin{align}
-        P_{|0\rangle} &= \frac12(1+u),
-    \end{align}
-    where we can now read out the real part of coherence.
-    The Hadamard is used to measure the coherence of the qubit, by projecting the real part of the coherence $u$ from the off-diagonals to the diagonals.
-
+    The probability to be in $|0\rangle$ is then $P_{|0\rangle} = \frac12(1+u),$ where we can now read out the real part of coherence.
+    The Hadamard is used to measure the coherence of the qubit, by projecting the real part of the coherence $u$ from the off-diagonals to the diagonals.\\
     Now let's jump down to part f of the question because Charles says so.
     We transform $u\to ue^{-it/T_2}$, where $T_2$ is some time constant representing how the coherence decays.
     The probability will be modified by this, showing a decaying and oscillating amplitude:
-    \begin{align}
-        P_{|0\rangle} &= \frac12(1+ue^{-t/T_2}),\quad u=\cos(\Delta t) \\
-                      &= \frac12(1+\cos(\Delta t)e^{-t/T_2}).
-    \end{align}
     \begin{figure}[H]
+        \begin{multicols}{2}
         \centering
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=0.8]
             \draw[-Latex] (-2,0) -- (6,0) node[anchor=north] {$\Delta$};
             \draw[-Latex] (2,0) -- (2,2.8) node[anchor=south] {$P_{|0\rangle}$};
             \draw[purple] (-2,0) cos (-1,1.25) sin (0,2.5) cos (1,1.25) sin (2,0) cos (3,1.25) sin (4,2.5) cos (5,1.25) sin (6,0);
-            \draw[cyan,dashed] (-2,2.5) cos (-1,1.25) sin (0,0) cos (1,1.25) sin (2,2.5) node[anchor=north east,black] {1} cos (3,1.25) sin (4,0) cos (5,1.25) sin (6,2.5);
+            \draw[teal,dashed] (-2,2.5) cos (-1,1.25) sin (0,0) cos (1,1.25) sin (2,2.5) node[anchor=north east,black] {1} cos (3,1.25) sin (4,0) cos (5,1.25) sin (6,2.5);
         \end{tikzpicture}
+        \columnbreak
+        \vfill
+        \begin{align}
+            P_{|0\rangle} &= \frac12(1+ue^{-t/T_2}),\quad u=\cos(\Delta t) \\
+                          &= \frac12(1+\cos(\Delta t)e^{-t/T_2}).
+        \end{align}
+        \vfill
+        \end{multicols}
     \end{figure}
     These are the Ramsey fringes for $t\ll T_2$.
     Pure states are good because we have no decoherence, so quantum computing will work.
@@ -1118,13 +1114,37 @@ We used a laser to trap an atom qubit in its beam, with
     U_0 &= -\frac{\hbar\Omega}{4|\Delta|}, & \Omega &= \Gamma\sqrt{\frac{I}{2I_s}}.
 \end{align}
 The trap depth is proportional to the laser intensity (and power):
-\begin{align}
-    I &= I_0\frac{w_0^2}{w^2}e^{-2(x^2+y^2)/w_0^2}.
-\end{align}
-\emph{doodle}
+\begin{figure}[H]
+    \begin{multicols}{2}
+        \flushright
+        \begin{tikzpicture}
+            \draw[-Latex] (-2,0) -- (2,0) node[anchor=north] {$z$};
+            \draw[-Latex] (0,-1) -- (0,0.5) node[anchor=east] {$U$};
+            \draw (-2,-0.1) cos (-1,-0.4) sin (0,-0.9) cos (1,-0.4) sin (2,-0.1);
+            \draw[red,dashed] (-1.2,0.5) sin (0,-0.8) cos (1.2,0.5);
+            \draw[red] (-0.5,-1) cos (-0.25,-0.75) sin (0,-0.5) cos (0.25,-0.75) sin (0.5,-1);
+        \end{tikzpicture}
+        \columnbreak
+        \begin{align}
+            I &= I_0\frac{w_0^2}{w^2}e^{-2(x^2+y^2)/w_0^2}.
+        \end{align}
+    \end{multicols}
+    \vspace{-30pt}
+\end{figure}
 The trap depth forms a harmonic potential, $\frac12 m\om_zz^2$.
 This means we want to cool the atom to its Harmonic Oscillator ground state.
-\emph{doodle}
+\begin{figure}[H]
+    \centering
+    \vspace{-20pt}
+    \begin{tikzpicture}
+        \draw[-Latex] (-2,0) -- (2,0) node[anchor=north] {$x$};
+        \draw[-Latex] (0,-1) -- (0,0.5) node[anchor=east] {$U$};
+        \draw (-2,-0.1) -- (-1,-0.1) cos (-0.5,-0.4) sin (0,-0.9) cos (0.5,-0.4) sin (1,-0.1) -- (2,-0.1);
+        \draw[red,dashed] (-0.8,0.5) sin (0,-0.8) cos (0.8,0.5);
+        \draw[red] (-0.3,-1) cos (-0.15,-0.75) sin (0,-0.5) cos (0.15,-0.75) sin (0.3,-1);
+    \end{tikzpicture}
+    \vspace{-20pt}
+\end{figure}
 This is the minimum size of the atomic wave packet.
 We then send in our laser beam with an electric field,
 \begin{align}
@@ -1138,6 +1158,7 @@ if the field propagates in the $x$-direction (switch out $x$ for $y$ or $z$ depe
 This error is a source of decoherence, so we need to try and minimise it.
 However, the scaling is very bad, on the order of needing $10^4$ more laser power to decrease $\Delta x$ by a factor of 10.
 \begin{figure}[H]
+    \begin{multicols}{2}
     \centering
     \begin{tikzpicture}
         \draw (0,0) node[anchor=east] {$|g\rangle$} -- (1.5,0);
@@ -1147,12 +1168,16 @@ However, the scaling is very bad, on the order of needing $10^4$ more laser powe
         \draw[-Latex,red,thick] (1.2,0) -- (1.2,1.3) node[anchor=east,midway] {$\hbar\om$};
         \draw[snake it,-Latex,red] (1.4,1.6) -- (1.6,0.8);
     \end{tikzpicture}
+    \columnbreak
+    \vspace*{\fill}
+    \begin{align}
+        \Delta &= \om-\om_0 < 0, \\
+        |\Delta| &\gg \Omega.
+    \end{align}
+    \vspace*{\fill}
+    \end{multicols}
+    \vspace{-40pt}
 \end{figure}
-\vspace{-20pt}
-\begin{align}
-    \Delta &= \om-\om_0 < 0, \\
-    |\Delta| &\gg \Omega.
-\end{align}
 We need $|\Delta|$ large to avoid the decay of our excited state $|e\rangle$.
 Calculating the probability that qubit scatters a photon, we have
 \begin{itemize}
@@ -1168,8 +1193,8 @@ From Workshop 1,
 Where the RHS is Torque$\times$Bloch vector.
 We now have
 \begin{align}
-    \dot{u} &= -\frac{u}{T_2} - \Delta v, \\
-    \dot{v} &= \Delta u - \frac{v}{T_2} - \Omega w, \\
+    \dot{u} &= -\frac{u}{T_2} - \Delta v, &
+    \dot{v} &= \Delta u - \frac{v}{T_2} - \Omega w, &
     \dot{w} &= \Omega v - \frac{1}{T_1}(w-1).
 \end{align}
 $T_2$ is the decay of coherence; $T_1$ is the decay of population.
@@ -1191,8 +1216,8 @@ If spontaneous emission is the only decoherence/decay mechanism, then
 where $\tau$ is the lifetime of the excited state.
 We can then substitute these into the optical Bloch equations defined last lecture, yielding
 \begin{align}
-    \dot{u} &= -\frac{\Gamma}{2}u - \Delta v, \\
-    \dot{v} &= \Delta u - \frac{\Gamma}{2}v - \Omega w, \\
+    \dot{u} &= -\frac{\Gamma}{2}u - \Delta v, &
+    \dot{v} &= \Delta u - \frac{\Gamma}{2}v - \Omega w, &
     \dot{w} &= \Omega v - \Gamma(w-1).
 \end{align}
 From here, we solve for the steady state, $\dot u = \dot v = \dot w = 0.$
@@ -1300,7 +1325,17 @@ The properties of this force will then follow the previous discussions on the be
 
 How will we use this force for cooling?
 Use 2 counter-propagating lasers, both red detuned.
-\emph{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-{Latex[length=3mm,width=3.2mm]},snake it] (4,1) node[anchor=south east] {laser 1} node[anchor=north east] {$F_+$} -- (6,1) node[anchor=south,midway] {$\hbar k$};
+        \draw (8,1) circle (30pt);
+        \draw (7.3,0.4) node[anchor=east,xshift=-5pt] {$|g\rangle$} -- (8.7,0.4);
+        \draw (7.3,1.6) node[anchor=east,xshift=-5pt] {$|e\rangle$} -- (8.7,1.6);
+        \draw[-Latex] (9,1) -- (10,1) node[anchor=south,midway] {$v_{atom}$};
+        \draw[-{Latex[length=3mm,width=3.2mm]},snake it] (13,1) node[anchor=south west] {laser 2} node[anchor=north west] {$F_-$} -- (11,1) node[anchor=south,midway] {$\hbar k$};
+    \end{tikzpicture}
+\end{figure}
 The force on the atom is then the sum of the force from laser 1 and laser 2:
 \begin{align}
     F &= F_+ + F_-.
@@ -1572,16 +1607,16 @@ Going via our excited state to get from $|0\rangle\to|1\rangle$:
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \draw (0,0.5) -- (1.5,0.5) node[anchor=west] {$|0\rangle$};
+        \draw (0,0.75) -- (1.5,0.75) node[anchor=west] {$|0\rangle$};
         \draw (2,1.5) -- (3.5,1.5) node[anchor=west] {$|1\rangle$};
         \draw (2,2.5) -- (3.5,2.5);
         \draw (2,3) -- (3.5,3);
         \draw[-Latex] (2.75,1.5) -- (2.75,2.5) node[anchor=west,midway] {\shortstack{Laser 2 \\ freq $\Omega_2$}};
-        \draw[-Latex] (2.75,2.5) -- (0.75,0.5) node[anchor=east,midway,xshift=-5pt] {\shortstack{Laser 1 \\ freq $\Omega_1$}};
-        \draw[snake it,-Latex] (2,3) -- (1.3,2) node[anchor=east,midway] {$\Gamma$};
+        \draw[-{Latex[width=1.8mm]}] (2.75,2.5) -- (0.75,0.75) node[anchor=east,midway,xshift=-7pt] {\shortstack{Laser 1 \\ freq $\Omega_1$}};
+        \draw[snake it,-{Latex[width=3mm,length=2.5mm]}] (2,3) -- (1.1,2.3) node[anchor=south east,midway] {$\Gamma$};
+        \draw[rounded corners,-{Latex[width=2mm]},teal] (2.65,1.5) -- (2.5,2.1) -- (1.3,0.9);
     \end{tikzpicture}
 \end{figure}
-\emph{finish doodle}
 $|e\rangle$ can decay by spontaneous emission but we don't want this as we instead want to do the calculation.
 Any emission of a photon will destroy it.
 
@@ -1632,7 +1667,6 @@ Let's look at the DiVincenzo criteria for alkali-atom QC!
     \item Read-out
         \begin{enumerate}
             \item Fluorescence on $|g\rangle\to|e\rangle$ transition \ding{51}
-                \textit{doodle}
         \end{enumerate}
     \item Low decoherence
         \begin{enumerate}
@@ -1687,8 +1721,8 @@ where $n^*$ is the reduced principal quantum number offset from $n$ by $\delta$.
         \draw[-Latex] (2.75,0) -- (2.75,1.5) node[anchor=west,midway] {atom 2};
         \draw[-Latex] (1.5,-0.2) -- (2,-0.2) node[anchor=north,midway] {$R_{12}$};
     \end{tikzpicture}
+    \vspace{-20pt}
 \end{figure}
-\textit{finish doodle}
 Exciting two atoms into states $|r\rangle$ allows them to strongly via dipole-dipole interactions (DDI).
 To calculate the DDI, we need to consider couplings to other Rydberg states, e.g. $|r'\rangle$.
 \begin{figure}[H]
@@ -1705,6 +1739,7 @@ To calculate the DDI, we need to consider couplings to other Rydberg states, e.g
         \draw[Latex-Latex] (1,1.5) -- (1,2);
         \draw[Latex-Latex] (3,1.5) -- (3,2);
     \end{tikzpicture}
+    \vspace{-20pt}
 \end{figure}
 The DDI mixes some of $|r'\rangle$ into the state $|r\rangle$ which gives rise to the Van Der Waals energy shift.
 This can be written as a matrix
@@ -1722,7 +1757,15 @@ Consider the sub-bases $|rr\rangle,|r'r'\rangle$:
 \end{align}
 This should be familiar from previous examples.
 This is analogous to the light shift $\frac{\Omega^2}{4\Delta}$.
-\textit{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$0$} -- (2,0) node[anchor=north,midway] {$|g,1\rangle$} -- (3,-0.5) -- (5,-0.5);
+        \draw (0,1.5) node[anchor=east] {$2\hbar\om_{rr'}$} -- (2,1.5) node[anchor=south,midway] {$|e,0\rangle$} -- (3,2) -- (5,2);
+        \draw[dashed] (3,0) -- (5,0);
+        \draw[Latex-Latex] (4.7,-0.5) -- (4.7,0) node[anchor=west,midway] {$U_0 = -\frac{\hbar\Omega^2}{4|\Delta|}$};
+    \end{tikzpicture}
+\end{figure}
 This is the Van Der Waals Interaction.
 \begin{align}
     V &\propto \frac{1}{R_{12}^3},\quad V_{vdW} \propto \frac{1}{R_{12}^6} \\
@@ -1735,21 +1778,54 @@ So van der Waals has $n^{11}$ scaling!
 Tunability is strength of interactions.
 
 \chapter{Rydberg Blockade and Entanglement}
-\textit{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-{Latex[length=3mm,width=2.5mm]}] (0,0) -- (5,0) node[anchor=north] {R};
+        \draw[dashed] (-0.5,4) -- (5,4);
+        \draw (-0.5,4.7) -- (5,4.7);
+        \draw (-0.25,0.5) -- (0.25,0.5);
+        \draw (2.75,0.5) -- (3.25,0.5);
+        \draw[-{Latex[length=3mm,width=2.5mm]}] (-1.2,3) -- (-1.2,6);
+        \draw (0,2.5) -- (0,3) .. controls (0.1,3.6) and (0.9,3.4) .. (1,4);
+        \draw (1,4) .. controls (0.9,4.6) and (0.1,4.4) .. (0,5) -- (0,5.5);
+        \fill (0.1,4) circle (3pt);
+        \draw (0,0.25) -- (0,-0.25) node[anchor=north] {$0$};
+        \draw (3,0.25) -- (3,-0.25) node[anchor=north] {$R_{12}$};
+        \draw[white] (-0.5,0.5) node[anchor=east,black] {$|g\rangle$} -- (-0.5,4) node[anchor=east,black] {$|r\rangle$};
+        \draw[Latex-Latex] (1.5,4) -- (1.5,4.7) node[anchor=west,midway] {$\Omega$};
+        \draw (1.5,6) .. controls (2.5,4) .. (5,4);
+        \fill (3,0.5) circle (3pt);
+        \draw[-{Latex[length=2.5mm,width=2mm]}] (3,0.5) -- (3,4);
+    \end{tikzpicture}
+    \vspace{-20pt}
+\end{figure}
 Excitation linewidth $|g\rangle\to|r\rangle$ for $\Omega\gg\Gamma$ is of order $\Omega$.
 If $V_{vdW}>\Omega$ (linewidth), the excitation is blocked.
-This is called \textbf{Rydberg Blockade.}\\
+This is called \textbf{Rydberg Blockade.}
 This occurs at distance $R_{12}$, where
 \begin{align}
-    V_{vdW} &= \frac{C_6}{R_{12}^6} = \Omega \\
+    V_{vdW} &= \frac{C_6}{R_{12}^6} = \Omega, &
     R_{12} &= \left(\frac{C_6}{\Omega}\right)^{1/6} = R_b,
 \end{align}
 where $R_b$ is the blockade radius, $R_b\approx10\mu$m which is relatively large!
-\emph{doodle}
-We cannot excite the second Rydberg atom within this sphere.
-
+We cannot excite the second Rydberg atom within this sphere.\\
 Now we consider starting with both atoms in the ground state, and drive the $|g\rangle\to|r\rangle$ transition on resonance.
-\emph{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$|g\rangle$} -- (1.5,0);
+        \draw (2,0) -- (3.5,0) node[anchor=west] {$|g\rangle$};
+        \draw (0,1.5) node[anchor=east] {$|r\rangle$} -- (1.5,1.5);
+        \draw (2,1.5) -- (3.5,1.5) node[anchor=west] {$|r\rangle$};
+        \draw[-Latex] (0.75,0) -- (0.75,1.5);
+        \draw[-Latex] (2.75,0) -- (2.75,1.5);
+        \draw[Latex-Latex] (0.75,-0.2) -- (2.75,-0.2) node[anchor=north,midway] {$R_{12}$};
+        \fill (0.75,0) circle (3pt);
+        \fill (2.75,0) circle (3pt);
+    \end{tikzpicture}
+    \vspace{-20pt}
+\end{figure}
 We have two two-level systems, giving a four state basis: $|gg\rangle,|gr\rangle,|rg\rangle,|rr\rangle$.
 Recall with one atom and $\Delta=0$, our interaction Hamiltonian was given as
 \begin{align}
@@ -1757,10 +1833,8 @@ Recall with one atom and $\Delta=0$, our interaction Hamiltonian was given as
 \end{align}
 Now for two atoms, our interaction Hamiltonian reads
 \begin{align}
-    \Ham &= \Ham_{int}\otimes\sigma_0 + \sigma_0\otimes\Ham_{int} \\
-         &= \begin{pmatrix}0 & \Omega \\ \Omega & 0\end{pmatrix}\otimes\begin{pmatrix}1&0\\0&1\end{pmatrix} + \begin{pmatrix}1&0\\0&1\end{pmatrix} \otimes\begin{pmatrix}0&\Omega\\\Omega&0\end{pmatrix} \\
-         &= \begin{pmatrix} 0&0&\Omega&0\\0&0&0&\Omega\\\Omega&0&0&0\\0&\Omega&0&0\end{pmatrix} + \begin{pmatrix} 0&\Omega&0&0\\\Omega&0&0&0\\0&0&0&\Omega\\0&0&\Omega&0\end{pmatrix} \\
-         &= \begin{pmatrix} 0&\Omega&\Omega&0\\\Omega&0&0&\Omega\\\Omega&0&0&\Omega\\0&\Omega&\Omega&0\end{pmatrix} + \begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&V_{vdW}\end{pmatrix} \\
+    \Ham &= \Ham_{int}\otimes\sigma_0 + \sigma_0\otimes\Ham_{int} = \begin{pmatrix}0 & \Omega \\ \Omega & 0\end{pmatrix}\otimes\begin{pmatrix}1&0\\0&1\end{pmatrix} + \begin{pmatrix}1&0\\0&1\end{pmatrix} \otimes\begin{pmatrix}0&\Omega\\\Omega&0\end{pmatrix} \\
+         &= \begin{pmatrix} 0&0&\Omega&0\\0&0&0&\Omega\\\Omega&0&0&0\\0&\Omega&0&0\end{pmatrix} + \begin{pmatrix} 0&\Omega&0&0\\\Omega&0&0&0\\0&0&0&\Omega\\0&0&\Omega&0\end{pmatrix} = \begin{pmatrix} 0&\Omega&\Omega&0\\\Omega&0&0&\Omega\\\Omega&0&0&\Omega\\0&\Omega&\Omega&0\end{pmatrix} + \begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&V_{vdW}\end{pmatrix} \\
     \Ham_{|g\rangle\to|r\rangle} &= \frac{\hbar}{2}\begin{pmatrix} 0&\Omega&\Omega&0\\\Omega&0&0&\Omega\\\Omega&0&0&\Omega\\0&\Omega&\Omega&2V_{vdW}\end{pmatrix}
 \end{align}
 This is valid for $R_{12}<R_b,V_{vdW}\gg\Omega$ ($\frac{\hbar}{2}$ should be throughout it, but he missed it out and I'm lazy).
@@ -1768,22 +1842,48 @@ The $|rr\rangle$ state is completely decoupled by the vdW shift, so we can negle
 \begin{align}
     \Ham_{|g\rangle\to|r\rangle} &= \frac{\hbar}{2}\begin{pmatrix} 0&\Omega&\Omega\\\Omega&0&0\\\Omega&0&0\end{pmatrix}.
 \end{align}
-We have the eigenvectors,
-\begin{align*}
-    |gg\rangle, \quad \frac{1}{\sqrt{2}}\left(|gr\rangle+|rg\rangle\right),\quad \frac{1}{\sqrt{2}}\left(|gr\rangle-|rg\rangle\right).
-\end{align*}
+We have the eigenvectors: $|gg\rangle, \frac{1}{\sqrt{2}}\left(|gr\rangle+|rg\rangle\right), \frac{1}{\sqrt{2}}\left(|gr\rangle-|rg\rangle\right)$.
 If we then rewrite the interaction in the basis of these states, we get
 \begin{align}
     \Ham &= \frac{\hbar}{2}\begin{pmatrix} 0 & \sqrt{2}\Omega & 0 \\\sqrt{2}\Omega & 0 & 0 \\ 0 & 0 & 0\end{pmatrix},
 \end{align}
 where we can now see that $|gg\rangle$ couples to $\frac{1}{\sqrt{2}}(|gr\rangle+|rg\rangle)$ with Rabi frequency $\sqrt{2}\Omega$, but it does not couple to $\frac{1}{\sqrt{2}}(|gr\rangle-|rg\rangle)$ at all.
-\emph{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (2,0) node[anchor=east] {$|gg\rangle$} -- (3,0);
+        \draw (0,2) node[anchor=east] {$\frac{1}{\sqrt{2}}(|gr\rangle-|rg\rangle)$} -- (1,2);
+        \draw (4,2) -- (5,2) node[anchor=west] {$\frac{1}{\sqrt{2}}(|gr\rangle+|rg\rangle)$};
+        \draw (2,4) node[anchor=east] {$|rr\rangle$} -- (3,4);
+        \draw[dashed] (2,4.3) -- (3,4.3);
+        \draw[dashed] (2,4.15) -- (3,4.15);
+        \draw[-{Latex[length=2.5mm,width=2mm]},dashed] (2.5,0) -- (0.5,2) node[midway] {\LARGE\ding{56}};
+        \draw[-{Latex[length=2.5mm,width=2mm]},dashed] (4.5,2) -- (2.5,4) node[midway] {\LARGE\ding{56}};
+        \draw[-{Latex[length=2.5mm,width=2mm]}] (2.5,0) -- (4.5,2) node[anchor=north west,midway] {$\sqrt{2}\Omega$};
+    \end{tikzpicture}
+    \vspace{-15pt}
+\end{figure}
 The effect of the Rydberg blockade is that we excite an entangled Bell state where only one atom is in the Rydberg state but we do not know (and cannot know) which one.
 
 \chapter{Rydberg Interactions}
 \section{Review of last week}
-We have two atoms:
-\emph{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east,xshift=-15pt] {$|g\rangle$,} node[anchor=east] {\shortstack{$|1\rangle$ \\ $|0\rangle$}} -- (1.5,0);
+        \draw (2,0) -- (3.5,0);
+        \draw (0,1.5) node[anchor=east] {$|ns\rangle,\,|r\rangle$} -- (1.5,1.5);
+        \draw (0,2) node[anchor=east] {$|np\rangle,\,|r'\rangle$} -- (1.5,2);
+        \draw (2,1.5) -- (3.5,1.5);
+        \draw (2,2) -- (3.5,2);
+        \draw[-Latex] (0.75,0) -- (0.75,1.5);
+        \draw[-Latex] (2.75,0) -- (2.75,1.5);
+        \draw[Latex-Latex] (0.75,-0.2) -- (2.75,-0.2) node[anchor=north,midway] {$R_{12}$};
+        \fill (0.75,0) circle (3pt);
+        \fill (2.75,0) circle (3pt);
+    \end{tikzpicture}
+    \vspace{-20pt}
+\end{figure}
 We have both our qubit states $|0\rangle,|1\rangle$ contained as part of hyperfine splitting in a initial state $|g\rangle$.
 In order to create entanglement, we excite them to the highly-excited Rydberg state, $|r\rangle,n>50$.
 In $|r\rangle$, atoms interact strongly via dipole-dipole interactions (DDI) that couple to other states, e.g. $|r'\rangle$.
@@ -1794,13 +1894,28 @@ Instead, we excited either or of
     \frac{1}{\sqrt{2}}\left(|gr\rangle+|rg\rangle\right),\quad \frac{1}{\sqrt{2}}\left(|0r\rangle+|r0\rangle\right).
 \end{align*}
 This will oscillate between $|00\rangle$ and $\frac{1}{\sqrt{2}}\left(|0r\rangle+|r0\rangle\right)$ with frequency $\sqrt{2}\Omega$.
-Alternatively:
-\emph{doodle}
-We excite $|r,r'\rangle$, and we find that this couples only to $|r',r\rangle$ and our excitation energy oscillates back and forth with a frequency
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$|g\rangle$} -- (1.5,0);
+        \draw (2,0) -- (3.5,0);
+        \draw[dashed] (0,1.5) -- (1.5,1.5);
+        \draw (0,2) node[anchor=east] {$|r\rangle$} -- (1.5,2);
+        \draw (2,1.5) -- (3.5,1.5) node[anchor=west] {$|r'\rangle$};
+        \draw[dashed] (2,2) -- (3.5,2);
+        \draw[-Latex] (0.75,0) -- (0.75,1.9);
+        \draw[-Latex] (2.75,0) -- (2.75,1.4);
+        \draw[Latex-Latex] (0.75,-0.2) -- (2.75,-0.2) node[anchor=north,midway] {$R_{12}$};
+        \fill (2.75,1.5) circle (3pt);
+        \fill (0.75,2) circle (3pt);
+    \end{tikzpicture}
+    \vspace{-20pt}
+\end{figure}
+Alternatively, we excite $|r,r'\rangle$, and we find that this couples only to $|r',r\rangle$ and our excitation energy oscillates back and forth with a frequency
 \begin{align}
     V &= \frac{D^2/\hbar^2}{4\pi\e_0 R_{12}^2}.
 \end{align}
-This is called a flip flop interaction. Apparently.
+This is called a flip flop interaction. 
 For example, if we excite one atom into the s series and the other into the corresponding p series, the coupled state can oscillate as one falls to p from s and the other rises to s from p then vice versa again.
 
 \section{The Start Of The Lecture, Time Stamped 15:35}
@@ -1825,7 +1940,24 @@ Then, we define \textbf{Fidelity} as
 To measure the components of the density matrix, we need to do perform a rotation on the state before measurement, allowing us access to off-diagonal elements.
 This is known as \textbf{Quantum State Tomography.}
 What we want to do is perturb one part of the superposition, thereby adding a phase.
-\emph{doodle}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) node[anchor=east] {$|0\rangle$} -- (1.5,0);
+        \draw (0,-0.5) -- (1.5,-0.5);
+        \draw (2,0) -- (3.5,0);
+        \draw (0,1.5) node[anchor=east] {$|r\rangle$} -- (1.5,1.5);
+        \draw (2,1.5) -- (3.5,1.5);
+        \draw[dashed] (2.75,1.5) circle (4pt);
+        \draw[dashed] (0.75,1.5) circle (4pt);
+        \draw[dashed] (2.75,0) circle (4pt);
+        \draw[dashed] (0.75,0) circle (4pt);
+        \draw[-Latex] (-0.1,0) -- (-0.1,-0.5);
+        \draw[dashed] (0.85,0.1) -- (2.65,1.4);
+        \draw[dashed] (0.85,1.4) -- (2.65,0.1);
+    \end{tikzpicture}
+    \vspace{-20pt}
+\end{figure}
 We want to shine on $|0\rangle\to|e\rangle$ transition on atom 1, $|1\rangle$, such that $|0\rangle$ on atom 1 accumulates a phase $e^{-i\phi}$ and state
 \begin{align}
     |W'\rangle &= \frac{1}{\sqrt{2}}\left(e^{-i\phi}|0r\rangle + |r0\rangle\right).
@@ -1833,43 +1965,149 @@ We want to shine on $|0\rangle\to|e\rangle$ transition on atom 1, $|1\rangle$, s
 Apply $\pi$ pulse on $|W\rangle\to|0\rangle$ transition.
 This is given by the matrix
 \begin{align}
-    \hat{R} &= \begin{pmatrix} 0 & \frac{i}{\sqrt{2}} & \frac{i}{\sqrt{2}} & 0 \\ \frac{i}{\sqrt{2}} & \frac12 & -\frac12 & 0 \\ \frac{i}{\sqrt{2}} & -\frac12 & \frac12 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} = \begin{Bmatrix} |00\rangle \\ |0r\rangle \\ |r0\rangle \\ |rr\rangle \end{Bmatrix} \\
-    \hat{r}_{W'}\hat{R}^\dagger &= \frac12 \begin{pmatrix} 0 & 0 & 0 & 0 \\ -\frac{1}{\sqrt{2}}\left(1+e^{-i\phi}\right) & \frac12(1-e^{-i\phi}) & -\frac12(1-e^{-i\phi}) & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+    \hat{R} &= \begin{pmatrix} 0 & \frac{i}{\sqrt{2}} & \frac{i}{\sqrt{2}} & 0 \\ \frac{i}{\sqrt{2}} & \frac12 & -\frac12 & 0 \\ \frac{i}{\sqrt{2}} & -\frac12 & \frac12 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |0r\rangle \\ |r0\rangle \\ |rr\rangle \end{Bmatrix} \\
+    \hat{\rho}_{W'}\hat{R}^\dagger &= \frac12 \begin{pmatrix} 0 & 0 & 0 & 0 \\ -\frac{i}{\sqrt{2}}\left(1+e^{-i\phi}\right) & \frac12(1-e^{-i\phi}) & -\frac12(1-e^{-i\phi}) & 0 \\ -\frac{i}{\sqrt{2}}\left(e^{i\phi}+1\right) & \frac12(e^{i\phi}-1) & -\frac12(e^{i\phi}-1) & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \\
+    \hat{\rho}' = \hat{R}\hat{\rho}\hat{R}^\dagger &= \frac12 \begin{pmatrix}1 + \frac12(2+e^{i\phi}+e^{-i\phi}) & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot \end{pmatrix}
 \end{align}
-\emph{doodle - Write extra line from notes.}
-$P_{00}$, the probability to be in $|00\rangle$ is
-\begin{align}
-    P_{|00\rangle} &= \frac12(1+\cos\phi).
-\end{align}
-\emph{doodle THE SAME PLOT YET AGAIN}
+We only write the first term of this matrix as it is the only one that affects us. 
+$P_{00}$, the probability to be in $|00\rangle$ is $P_{|00\rangle} = \frac12(1+\cos\phi)$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        \draw[-Latex] (-2,0) node[anchor=east] {0} -- (6,0) node[anchor=north] {$\phi$};
+        \draw[-Latex] (-2,0) -- (-2,3.2) node[anchor=north east,xshift=-5pt] {$P_{|0\rangle}$};
+        \draw[teal] (-2,2.5) node[anchor=east,black] {1} cos (-1,1.25) sin (0,0) cos (1,1.25) sin (2,2.5) cos (3,1.25) sin (4,0) cos (5,1.25) sin (6,2.5);
+        \draw (-0.5,-0.5) rectangle (-0.1,-0.1) node[xshift=-4.5pt,yshift=-4pt] {\ding{72}};
+        \draw (0.1,-0.5) rectangle (0.5,-0.1) node[xshift=-4.5pt,yshift=-4pt] {\ding{72}};
+        \draw (1.5,3.2) rectangle (1.9,3.6);
+        \draw (2.1,3.2) rectangle (2.5,3.6);
+        \draw (-2.5,3.2) rectangle (-2.1,3.6);
+        \draw (-1.9,3.2) rectangle (-1.5,3.6);
+    \end{tikzpicture}
+    \vspace{-20pt}
+\end{figure}
 Application of light to one changes the observation on the other - this only applies within the blockade sphere, $R<R_b$.
 
 \chapter{Rydberg CNOT Gates}
-\emph{lots of doodles}
+\section{Last Lecture}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (2,2) circle (30pt) node[xshift=-30pt,yshift=30pt] {A};
+        \draw[thick] (1.4,1.3) node[anchor=east,xshift=-12pt] {$|0\rangle$} -- (2.6,1.3);
+        \draw[thick] (1.4,1.8) node[anchor=east,xshift=-12pt] {$|1\rangle$} -- (2.6,1.8);
+        \draw[thick] (1.4,2.7) node[anchor=east,xshift=-12pt] {$|e\rangle$} -- (2.6,2.7);
+        \draw[-Latex,ultra thick] (2,1.4) -- (2,2.7);
+        \draw[snake it,-Latex,red] (2,3.8) -- (2,2.8);
+        \shade[inner color=black,outer color=lightgray] (2,1.3) circle (4pt);
+        \shade[inner color=white,outer color=pink] (2,1.8) circle (4pt);
+
+        \draw (5.5,2) circle (30pt) node[xshift=-30pt,yshift=30pt] {B};
+        \draw[thick] (4.9,1.3) node[anchor=east,xshift=-12pt] {$|0\rangle$} -- (6.1,1.3);
+        \draw[thick] (4.9,1.8) node[anchor=east,xshift=-12pt] {$|1\rangle$} -- (6.1,1.8);
+        \draw[thick] (4.9,2.7) node[anchor=east,xshift=-12pt] {$|e\rangle$} -- (6.1,2.7);
+        \draw[-Latex,ultra thick] (5.5,1.4) -- (5.5,2.7);
+        \shade[inner color=black,outer color=lightgray] (5.5,1.8) circle (4pt);
+        \shade[inner color=white,outer color=pink] (5.5,1.3) circle (4pt);
+    \end{tikzpicture}
+\end{figure}
+\begin{itemize}
+    \item[\textbf{Step 1:}] First we create the entangled state, by exciting both atoms from states $|0\rangle$ to some superposition, which is our Bell State,
+        \begin{align*}
+            |00\rangle &\to \frac{1}{\sqrt{2}}(|01\rangle+|10\rangle).
+        \end{align*}
+        However, if we read out $|0\rangle$ and $|1\rangle$, we don't know if it's some classical correlation or a quantum correlation. 
+    \item[\textbf{Step 2:}] We introduce some phase between these two terms, 
+        \begin{align*}
+            \frac{1}{\sqrt{2}}(e^{-i\phi}|01\rangle+|10\rangle),
+        \end{align*}
+        and then we can measure something as a function of the phase. 
+        If this function oscillates, then we know we have this quantum coherence in the system as we would never see this wave-like behaviour in a classical system. 
+        These phases are preserved and are measured. 
+        We apply another laser beam to atom A, e.g. another tweezer beam. 
+        This (being a detuned laser) will shift the energy level as the tweezer did, introducing an energy shift which allows us to accumulate a phase over a certain amount of time. 
+    \item[\textbf{Step 3:}] Finally, we want to reverse step 1 and project this back down into $|00\rangle$, using another $\pi$ pulse.
+        With the existence of this phase, we see an oscillation between $|0\rangle$ and $|1\rangle$.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=0.8]
+            \draw[-Latex] (-2,0) node[anchor=east] {0} -- (6,0) node[anchor=north] {$\phi$};
+            \draw[-Latex] (-2,0) -- (-2,3.2) node[anchor=north east,xshift=-5pt] {$P_{|00\rangle}$};
+            \draw[teal] (-2,2.5) node[anchor=east,black] {1} cos (-1,1.25) sin (0,0) cos (1,1.25) sin (2,2.5) cos (3,1.25) sin (4,0) cos (5,1.25) sin (6,2.5);
+            \draw[dashed] (2,0) -- (2,2.5) node[anchor=south] {Qubit B is in 0};
+        \end{tikzpicture}
+        \vspace{-20pt}
+    \end{figure}
+    We could also plot a similar graph for the probability of being in $P_{|10\rangle}$ or $P_{|01\rangle}$ which would instead start at 0 and peak at $\approx0.5$. 
+    If we add all these probabilities, they must sum to 1. \\
+    If we had not acted on A, then we would not get any probability for B of being in $|0\rangle$, but doing so has created this entanglement.
+\end{itemize}
+
+%\begin{align}
+%    \text{CNOT} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle \end{Bmatrix}.
+%\end{align}
+\section{Rydberg Gates}
 We want to realise a CNOT gate using Rydberg blockade.
-\begin{align}
-    \text{CNOT} &= \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \approx \begin{Bmatrix} |00\rangle \\ |01\rangle \\ |10\rangle \\ |11\rangle \end{Bmatrix}.
-\end{align}
-We start is $|10\rangle$ (last column), and
-\begin{align}
-    \text{CNOT}|10\rangle &= |11\rangle.
-\end{align}
-\textit{doodle}
-\begin{align}
-    \text{CZ} &= \begin{pmatrix} 1 &0&0&) \\ 0&1&0&0 \\ 0&0&1&0 \\ 0&0&0&-1\end{pmatrix}.
-\end{align}
-This is what we call a Conditional Ramsey Interferometer.
-\textit{doodle}
+We start in $|10\rangle$ (last column), and CNOT$|10\rangle = |11\rangle$.
+\begin{figure}[H]
+    \begin{multicols}{2}
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (3,0);
+        \draw (0,1.5) -- (3,1.5);
+        \fill (1.5,1.5) circle (3pt);
+        \draw (1.5,0) circle (8pt);
+        \draw (1.5,1.5) -- (1.5,-0.3);
+        \draw[white] (3.3,0.7) -- (3.3,0.8) node[anchor=west,midway,black] {$\equiv$};
+        \draw (4.5,1.5) -- (7.5,1.5);
+        \draw (4,-0.25) rectangle (4.5,0.25) node[xshift=-7pt,yshift=-7pt] {H};
+        \draw (4.5,0) -- (5.74,0); 
+        \draw (5.75,-0.25) rectangle (6.25,0.25) node[xshift=-7pt,yshift=-7pt] {Z};
+        \draw (6.25,0) -- (7.5,0);
+        \draw (7.5,-0.25) rectangle (8,0.25) node[xshift=-7pt,yshift=-7pt] {H};
+        \draw (3.75,0) -- (4,0);
+        \draw (8,0) -- (8.25,0);
+        \draw (6,1.5) -- (6,0.25); 
+        \fill (6,1.5) circle (3pt);
+    \end{tikzpicture}
+    \columnbreak
+    \begin{align}
+        \text{CZ} &= \begin{pmatrix} 1 &0&0&0 \\ 0&1&0&0 \\ 0&0&1&0 \\ 0&0&0&-1\end{pmatrix}.
+    \end{align}
+    \end{multicols}
+    \vspace{-30pt}
+\end{figure}
+This is what we call a Conditional Ramsey Interferometer, where it is conditional on $|C\rangle$ being in state $|1\rangle$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        %Nodes
+        \node[squarenode] (maintopic) {H};
+        \node[squarenode] (uppercircle) [above right=2em and 7em of maintopic] {-1};
+        \node (lowercircle) [below right=2em and 7em of maintopic] {};
+        \node[squarenode] (output) [right=15em of maintopic] {H};
+        \node (start) [left=1em of maintopic] {$|T\rangle$};
+        \node (end) [right=1em of output] {};
+        \node (ups) [above right=0.9em and 3.1em of maintopic] {};
+        \node (ds) [below right=0.7em and 3.4em of maintopic] {};
+        \node (upe) [above left=0.9em and 3em of output] {};
+        \node (de) [below left=0.7em and 3.4em of output] {};
+
+        %Lines
+        \draw (start.east) -- (maintopic.west);
+        \draw (output.east) -- (end.west);
+        \draw (maintopic.east) cos (ups) sin (uppercircle.west);
+        \draw (maintopic.east) cos (ds) sin (lowercircle);
+        \draw (uppercircle.east) cos (upe) sin (output.west);
+        \draw (lowercircle) cos (de) sin (output.west);
+    \end{tikzpicture}
+\end{figure}
 \begin{enumerate}
     \item $\frac{\pi}{2}$ pulse (or Hadamard) on $|0\rangle\to|1\rangle$ on target.
-        \begin{align}
-            \hat{H} &= \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1\end{pmatrix}.
-        \end{align}
         We want to write this in the $|CT\rangle$ basis.
         $\hat{H}$ acts on $|T\rangle$ only:
         \begin{align}
-            \hat{H}_{|CT\rangle} &= \hat{\sigma}_0\otimes\hat{H} = \begin{pmatrix}1&0\\0&1\end{pmatrix} \otimes \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \\
-                                 &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 & 0 & 0 \\ 1 & -1 & 0 & 0 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & -1\end{pmatrix}.
+            \hat{H}_{|CT\rangle} &= \hat{\sigma}_0\otimes\hat{H} = \begin{pmatrix}1&0\\0&1\end{pmatrix} \otimes \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 & 0 & 0 \\ 1 & -1 & 0 & 0 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 1 & -1\end{pmatrix}.
         \end{align}
         This is also for 5.
     \item $\pi$ pulse $|0\rangle\to|1\rangle$ on control.
@@ -1887,10 +2125,9 @@ This is what we call a Conditional Ramsey Interferometer.
 \end{enumerate}
 Let's start putting this all together then:
 \begin{align}
-    U_2U_3U_4 &= \begin{pmatrix} -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1\end{pmatrix} \begin{pmatrix} -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \\
-              &= -CZ = -\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix} \\
-    \hat{H}U_2U_3U_4\hat{H} &= -\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} \\
-                            &= -\text{CNOT}.
+    U_2U_3U_4 &= \begin{pmatrix} -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1\end{pmatrix} \begin{pmatrix} -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}\\
+              &= \begin{pmatrix} -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} = -\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix} = -CZ \\
+    \hat{H}U_2U_3U_4\hat{H} &= -\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} = -\text{CNOT}.
 \end{align}
 Another $2\pi$ pulse on either $|C\rangle$ or $|T\rangle$ could give CNOT.
 

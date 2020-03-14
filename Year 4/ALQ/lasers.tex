@@ -25,23 +25,6 @@
 
 % \input Starburst.fd
 % \newcommand*\initfamily{\usefont{U}{Starburst}{xl}{n}}
-
-%\setlength{\epigraphwidth}{\textwidth}
-%\titleformat{\part}[display]
-%{\normalfont\huge\filcenter\bfseries\thispagestyle{epigraph}}
-%{\partname\ \thepart}
-%{20pt}
-%{\Huge}
-%\titlespacing*{\part}{0pt}{0pt}{40pt}
-%\makeatletter
-%\def\@partimage{}
-%\newcommand{\partimage}[2][]{\gdef\@partimage{\includegraphics[#1]{{#2}}}}
-%\newcommand{\printparttitle}[1]{\parttitlefon #1\vfil\@partimage\vfil\gdef  \@partimage{}}
-%\makeatother
-
-% \title{Atoms, Lasers, and Qubits \vspace{-20pt}}
-% \author{Dr Weatheril and Prof Adams}
-% \date{\vspace{-15pt}Michaelmas Term 2019 - Epiphany Term 2020}
 \rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
@@ -952,6 +935,7 @@ This is usually an excellent approximation.
         \ln\left(\frac{I_L}{I_0}\right) + \frac{I_L-I_0}{I_s(\om)} &= g_0(\om)L
     \end{align}
     \textbf{Two limiting cases:}
+    \begin{multicols}{2}
     \begin{enumerate}
         \item $I/I_s(\om) \ll 1 \implies$ exponential growth,
             \begin{align}
@@ -962,6 +946,7 @@ This is usually an excellent approximation.
                 I_L &= I_0  + g_0(\om)I_s(\om)L
             \end{align}
     \end{enumerate}
+    \columnbreak
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
@@ -972,6 +957,7 @@ This is usually an excellent approximation.
             \draw[dashed] (0,0.3) -- (2,0.3);
         \end{tikzpicture}
     \end{figure}
+    \end{multicols}
 \end{example}
 
 \chapter{Multimode lasing and output power}
@@ -1190,7 +1176,10 @@ This is most solid state lasers and dye lasers, e.g. Nd:YAG.
 $\sigma(\om)$ and $L_m$ are fixed (or practically so), so for us to maximise our gain, we have to maximise $N^*$ through pumping.
 
 \section{Three-Level Traditional Solid State Lasers}
+To study the steady state small signal population inversion, we ignore the effects of the laser field on the populations.
+The rate equations are:
 \begin{figure}[H]
+\begin{multicols}{2}
     \centering
     \begin{tikzpicture}
         \draw (0,0) -- (3,0) node[anchor=west] {1};
@@ -1202,14 +1191,14 @@ $\sigma(\om)$ and $L_m$ are fixed (or practically so), so for us to maximise our
         \draw[-Latex] (0.8,2) -- (0.8,0) node[anchor=west,midway] {$\Gamma_{31}$};
         \draw[-Latex] (1.7,1.3) -- (1.7,0) node[anchor=west,midway] {$\Gamma_{21}$};
     \end{tikzpicture}
-\end{figure}
-To study the steady state small signal population inversion, we ignore the effects of the laser field on the populations.
-The rate equations are:
+\columnbreak
 \begin{align}
     \frac{dN_3}{dt} &= S_{13}N_1 - (\Gamma_{31}+\Gamma_{32})N_3 \\
     \frac{dN_2}{dt} &= \Gamma_{32}N_3 - \Gamma_{21}N_2 \\
     \frac{dN_1}{dt} &= -S_{13}N_1 + \Gamma_{31}N_3 + \Gamma_{21}N_2
 \end{align}
+\end{multicols}
+\end{figure}
 
 \chapter{Population Inversion in Four-level lasers}
 \begin{figure}[H]
@@ -1335,7 +1324,7 @@ Both down transitions are optical (radiative), so $S_{02}$ cannot be optical due
     \frac{N_2}{N_1} &= \frac{S_{02}\Gamma_{10}}{(S_{01}+S_{02})\Gamma_{21}} > \frac{g_2}{g_1} \\
     \frac{S_{02}}{S_{01}} &> \left(\frac{g_1\Gamma_{10}}{g_2\Gamma_{21}}-1\right)^{-1}
 \end{align}
-
+\vspace{-25pt}
 \begin{example}[Argon ion laser]
     \begin{wrapfigure}{l}{0.25\textwidth}
         \centering
@@ -1586,7 +1575,6 @@ Gaussian beam ($\text{TEM}_{00}$):
 \begin{align}
     U &= U_0e^{i(kz-\om t)}\frac{e^{ikr^2/2q}}{q}
 \end{align}
-%\textit{take some notes from the powerpoint slides}
 
 \section{Propagation of Gaussian beams}
 \begin{align}
@@ -1670,6 +1658,7 @@ This can often be represented graphically:
     \end{tikzpicture}
 \end{figure}
 \begin{enumerate}
+    \begin{multicols}{2}
     \item Symmetric concentric:
         \begin{figure}[H]
             \centering
@@ -1682,6 +1671,7 @@ This can often be represented graphically:
                 \draw[-Latex] (2,0.9) -- (4.05,0.1) node[anchor=north,midway] {$R_2$};
             \end{tikzpicture}
         \end{figure}
+        \columnbreak
     \item Symmetric confocal:
         \begin{figure}[H]
             \centering
@@ -1694,6 +1684,7 @@ This can often be represented graphically:
                 \draw[-Latex] (-0.2,0.9) -- (4.05,0.1) node[anchor=north,midway,xshift=20pt] {$R_2$};
             \end{tikzpicture}
         \end{figure}
+    \end{multicols}
         \begin{itemize}
             \item The difference between concentric and confocal is where the radius of curvature begins - at the centre, or at each end.
         \end{itemize}
@@ -2135,7 +2126,6 @@ We will consider two types of pulsed operation:
 \end{enumerate}
 
 \section{Mode Locking}
-%\textit{get some notes from the slides}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
