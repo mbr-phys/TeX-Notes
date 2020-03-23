@@ -44,8 +44,126 @@
 \end{titlepage}
 \tableofcontents
 
-\chapter{}
-Just intro stuff
+\chapter{Introduction to GR: The Easy Way}
+\section{Special Relativity}
+Observers see space and time differently, but the \emph{spacetime interval} is the same for all observers. 
+It is a \emph{conserved quantity} and in 3D+time, it is
+\begin{align}
+    ds^2 &= c^2dt^2 - dx^2 - dy^2 - dz^2.
+\end{align}
+However, special relativity only works in an inertial frame - it doesn't handle acceleration. 
+You will need to revise special relativity and be comfortable using it. 
+
+\section{The Principle of Equivalence}
+What is the difference between an accelerated frame without a gravitational field and a stationary frame within a gravitational field? \textbf{Nothing!}
+This explains why inertial and gravitational masses are the same. 
+\begin{itemize}
+    \item \textbf{Inertial mass, $m_i$,} gives the constant of proportionality between force and acceleration, 
+        \begin{align}
+            F=m_ia.
+        \end{align}
+    \item \textbf{Gravitational mass, $m_g$,} determines how the object is affected by the force of gravity, 
+        \begin{align}
+            F \frac{GMm_g}{r^2} = m_gg.
+        \end{align}
+\end{itemize}
+So when an object falls under a gravitational field, we have $a = \frac{m_g}{m_i}g$ and the only way for objects to fall the same way in a gravitational field is if $\frac{m_g}{m_i}=$const.
+In electromagnetism, a particle with charge $q$ and inertial mass $m_i$ in a field $\mathcal{E}$ experiences a force $F=q\mathcal{E}$, and acceleration $m_ia$, so $a=\frac{q}{m_i}\mathcal{E}$ and different particles have different values of $\frac{m_g}{m_i}$.
+Gravity needs to be the same as being accelerated, i.e. the \textbf{Principle of Equivalence.}
+This means \textbf{Acceleration = Gravity} and we should no longer consider gravity a force.
+
+\section{Acceleration}
+Circular motion is a nice way to get an accelerated frame since the speed is constant. 
+Consider a roundabout:
+\begin{itemize}
+    \item If stationary, a person measuring the circumference and radius with a ruler gets a ratio of $\frac{c}{r}=2\pi$.
+    \item If spinning, if the rule is small enough then it lies along the direction of motion, its length is then shortened and more rules are needed to get round the circumference. Along the radius, the ruler is unaffected as it is perpendicular to the motion, so now $\frac{c}{r}>2\pi$.
+\end{itemize}
+This is not possible in flat space, but it can be in curved space. 
+\begin{itemize}
+    \item Zero curvature $\implies C=2\pi r$.
+    \item Positive curvature (surface falls away from us) $\implies C<2\pi r$.
+    \item Negative curvature (curves away in one direction and together in the other) $\implies C>2\pi r$. In this curvature, the angles of a triangle sum to $<180^\circ$.
+\end{itemize}
+We must use curved space for accelerating frames!
+
+\section{Curved Space}
+On a flat surface, we get a straight line path but on a \emph{curved surface}, we trace out a curved path when we walk in a straight line from our perspective - we may move closer together as if there was an attractive force. 
+\textbf{Gravity = acceleration $\implies$ gravity = curvature} - there is no force. 
+The `walking normally' paths are constant velocity frames, i.e. inertial frames but in geometric language they are \emph{geodesic paths} - shortest distance between two paths. 
+Natural paths (no forces = inertial frame) are `straight lines', geodesics of a curved surface.
+Locally, \emph{geodesics} appear straight but over more extended regions of spacetime then geodesics originally receding from each other begin to approach at a rate governed by the curvature of spacetime. 
+Warping of spacetime comes from matter/energy: \textbf{Space tells matter how to move, matter tells space how to curve.}
+In summary, \textbf{Gravity = Acceleration (EP); Acceleration = Curvature (SR); Gravity = Curvature (GR).}
+
+\section{Implications for Matter}
+Mass curves spacetime so energy curves spacetime as $E=mc^2$.
+Mass and energy are equivalent - any form of energy adds to the curvature of spacetime which is gravity.
+Kinetic energy adds to the response of the particle to gravity, i.e. adds to its mass, so when kinetic energy is a substantial fraction of the rest mass, then additional acceleration will increase the response to gravity of the particles, i.e. increase its mass, which stops the velocity increasing above $c$.
+
+\section{Implications on Light}
+Curved space affects everything, even \emph{massless particles} such as light. 
+This is not obvious in \emph{Newtonian gravity} as here gravity affects things with mass through
+\begin{align}
+    F = \frac{GMm}{r^2},\text{ but } a = \frac{F}{m}=\frac{GM}{r^2},
+\end{align}
+so we could argue that in Newtonian gravity, light has no mass so it is not affected, or that gravitational acceleration is independent of mass so it affects everything. 
+Light speed is constant so we would think it is unaffected by gravity. 
+In general relativity, light is clearly affected as it travels across curved spacetime so its path will be curved. 
+This was seen in first experimental tests of general relativity with light from distant stars which has a project line of sight which lies close to the sun. 
+These paths are curved - there are different apparent positions 6 months later when the star is over the other side from the sun (Eddington \emph{solar eclipse}).
+The measured deviation of this agrees with general relativity!
+
+We can use this deflected light to determine the mass of a galaxy - this can be direct evidence for \textbf{Dark Matter.}
+If we understand the distortion, we can \emph{reconstruct the galaxy} behind a lens and investigate it. 
+The object will also be much brighter than without the lens. 
+
+\section{Implications for Matter and Light}
+We need gravity to affect light, otherwise we could produce an infinite energy machine - \emph{Pounds-Rebka -Synder experiment.}
+Particle dropped from $h$ has energy of rest mass plus $mgh$ at the bottom and converting this to a photon and sending it back up the tower.
+If gravity doesn't affect light, it arrives at the top with $h\nu=m_0c^2+m_0gh$, then converting all energy to mass, we get a particle of mass $m_1c^2 = m_0c^2+m_0gh,m_1>m_0$.
+We could do this an infinite amount of times and yield infinite energy!
+If gravity can affect light, however, then the photon loses the same amount of energy on the way up as the particle gains on the way down - this is \emph{gravitational redshift} which is measurable and general relativity correctly predicts this. 
+
+\section{Gravity Waves}
+Space takes a finite time to respond to changes in the distribution of mass and energy. 
+In general relativity, gravity does not instantaneously affect everything around it. 
+If we have an oscillating distribution of mass, this leads to something like an electromagnetic wave travelling out from the source - a ripple in the structure of spacetime. 
+Spacetime is rather stuff, and you need a huge mass to generate a significant deflection. 
+We have now detected these waves thanks to LIGO!
+
+\section{Implications: Black Holes}
+What happens if gravity is really strong? 
+So strong that even a photon can't escape?
+We have an \textbf{event horizon} at which point nothing can escape and a singularity is at the centre of this. 
+
+\section{The Way Ahead}
+\begin{enumerate}
+    \item Understand how to describe curvature, using tensors and \emph{metrics.}
+    \item Figure out how mass/energy curves spacetime, using \emph{Einstein's equations.}
+    \item How to describe `straight line' \emph{geodesic paths}, using \emph{Lagrangian mechanics.}
+\end{enumerate}
+
+\section{Mathematical Toolkit}
+We will need complicated maths for this. 
+Also a way to characterise the curvature, or shape, of a surface - this will in the \emph{metric.}
+The distance between points tells us the shape of the surface, e.g. the \emph{metric for special relativity:}
+\begin{align}
+    ds^2 &= c^2dt^2-dx^2-dy^2-dz^2 = \begin{pmatrix} c\,dt & dx & dy & dz \end{pmatrix}\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix}\begin{pmatrix} c\,dt \\ dx \\ dy \\ dz\end{pmatrix},
+\end{align}
+or this can be written as a direct sum:
+\begin{align}
+    ds^2 &= \sum_{\alpha=0}^3 \sum_{\beta=0}^3 dx(\alpha)\eta(\alpha,\beta)dx(\beta),
+\end{align}
+where $dx(0)=c\,dt,\; dx(1)=dx,\; dx(2)=dy,\; dx(3)=dz$, and $\eta(\alpha,\beta)=\text{diag}(1,-1,-1,-1)$.
+We also use the \textbf{Einstein summation convention}: wherever an expression contains one index as a superscript and the same index as a subscript, then the summation is implied. 
+So for the above, we just write
+\begin{align}
+    ds^2 &= \eta_{\alpha\beta}dx^\alpha dx^\beta.
+\end{align}
+Simpler but also $\eta_{\alpha\beta}$ contains a lot of new mathematics. 
+Next is Tensors, a way of describing physical quantities independent of the coordinate system used to locate them in spacetime.
+
 
 \chapter{Introduction to Tensors}
 \begin{itemize}
@@ -82,7 +200,7 @@ Different letters will imply different things:
     \item Roman letters $i,j,\dots$ - summing over 3D space
     \item Roman letters $a,b,c,\dots$ - summing over ND space
     \item Roman letters $A,B,\dots$ - summing over 2D space
-    \item Greek letters $\alpha,\beta,\mu,\nu,\dots$ - summing over 4D space-time $\{x^0,x^1,x^2,x^3\}$, starting from 0 as time is different slightly, so $\{ct,x^i\}$
+    \item Greek letters $\alpha,\beta,\mu,\nu,\dots$ - summing over 4D spacetime $\{x^0,x^1,x^2,x^3\}$, starting from 0 as time is different slightly, so $\{ct,x^i\}$
 \end{itemize}
 
 \section{Coordinate Transformation}
@@ -474,7 +592,7 @@ From this definition, we can quickly infer the symmetry relation
 \end{align}
 
 \section{Symmetries of the Riemann tensor}
-In 4D space-time, the Riemann tensor contains $4\times4\times4\times4 = 256$ numbers.
+In 4D spacetime, the Riemann tensor contains $4\times4\times4\times4 = 256$ numbers.
 This isn't very fun unless you are a computer, says Richard.
 However, using the symmetry of the Riemann tensor, there are only 20 independent elements, which can be a lot easier.
 How do we demonstrate this though?
@@ -704,7 +822,7 @@ However, hovering at $r=2m$ requires an infinitely powerful rocket - you can't h
 
 \chapter{}
 Falling into a black hole!
-We have better ways of describing space-time.
+We have better ways of describing spacetime.
 For radial paths, we have the metric and the E-L equations:
 \begin{align}
     c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 \\
@@ -756,7 +874,7 @@ If we define
 \begin{align}
     dr_{*} &= \left(1-\frac{2m}{r}\right)^{-1}\,dr \implies \frac{dt}{dr_{*}} = \pm c
 \end{align}
-photons will not allows propagate at 45 degrees in space-time diagrams, to the expense of our radial coordinate.
+photons will not allows propagate at 45 degrees in spacetime diagrams, to the expense of our radial coordinate.
 If we integrate this,
 \begin{align}
     r_{*} &= r + 2m\log\bigg|\frac{r}{2m}-1\bigg|, \\
