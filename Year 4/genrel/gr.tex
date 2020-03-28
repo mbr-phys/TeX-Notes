@@ -172,29 +172,25 @@ Next is Tensors, a way of describing physical quantities independent of the coor
     \item Contravariant tensors
     \item Covariant tensors
 \end{itemize}
+We need \textbf{tensors} and compact notation to do physics in curved spacetime.
 
-\section{Intro to Tensor Notation}
-Consider the Cartesian definition for $\vr$:
+\section{Notation}
+
+Consider the standard vectors in \emph{Cartesian coordinates} and the definition for $\vr$:
 \begin{align}
-    \vr = x\vec{i} + y\vec{j} + \vec{z}.
+    \vr = x\vec{i} + y\vec{j} + z\vec{k}.
 \end{align}
 We have the basis vector $\{\vec{i},\vec{j},\vec{k}\}$ and coordinate values $\{x,y,z\}$.
-We can write this in a different form as
-\begin{align}
-    \vr = x^1\ve_1 + x^2\ve_2 + x^3\ve_3.
-\end{align}
+Instead, we can write axes as labelled by indices, i.e. $\{x,y,z\}=\{x^1,x^2,x^3\}$.
 Note: $x^2 \neq x*x$.
 The 2 is an index, not a power.
 If we want to square something, we will write $(x^1)^2 = x^1x^1$.
-We can rewrite the above again as
+The \emph{basis vectors} are now $\ve_1,\ve_2,\ve_3$.
+We use the shorthand notation that $\{x^i\}$ means all of the set $\{x^1,x^2,x^3\}$.
+We can then simplify this further using the \textbf{Einstein summation convention}: wherever an expression contains one index as a superscript and the same index as a subscript, then the summation is implied, so
 \begin{align}
-    \vr = \sum_{i=1}^3 x^i\ve_i.
+    \vr = x^1\ve_1+x^2\ve_2+x^3\ve_3 = \sum_{i=1}^3 x^i\ve_i = x^i\ve_i.
 \end{align}
-We can then simplify this further using the \textbf{Einstein summation convention}:
-\begin{align}
-    \vr = x^i\ve_i,
-\end{align}
-i.e. whenever there is a repeated index, we sum over them.
 Different letters will imply different things:
 \begin{itemize}
     \item Roman letters $i,j,\dots$ - summing over 3D space
@@ -204,217 +200,718 @@ Different letters will imply different things:
 \end{itemize}
 
 \section{Coordinate Transformation}
-You may be used to
+We might want to do various coordinate transformations. 
+Up till now, we have often see this denoted as the primed coordinate frame, using \textbf{Lorentz transformations} such as
 \begin{align}
     x' = \gamma\left(x-\frac{vct}{c}\right),
 \end{align}
 where the extra $c$ factor to make time space-like.
-This notation can get confusing so instead we use:
+Since the prime is similar to a 1, we now use a \emph{bar on the index} to denote a \emph{transformation to a different frame}, so we have
 \begin{align}
-    x^{\bar{1}} = \gamma\left(x^1-\frac{v}{c}x^0\right),
+    x^{\bar{1}} = \gamma\left(x^1-\frac{vx^0}{c}\right),
 \end{align}
-where the 'bar' indicates new coordinate system.
-
-For a minute vector difference between points P and Q $d\vr$ in two coordinate systems, we can define $\ve_a$:
+where the 'bar' indicates new coordinate system.\\
+Now thinking about more general spaces with arbitrary curvature. 
+Define a point P in some space, and another point a little further called Q; these points have nothing to do with the coordinate system, they exist irrespective of labels. 
+Assume they are defined on coordinates $x^a$ with basis vectors $\ve_a$:
 \begin{align}
-    \vr(P) &= \ve_ax^a & \vr(P) &= \ve_{\bar{b}}x^{\bar{b}} \\
-    d\vr &= dx^a\ve_a  \\
-    \frac{\p\vr}{\p x^a} &= \ve_a & \frac{\p\vr}{\p x^{\bar{b}}} &= \ve_{\bar{b}}
+    \vr(P) &= x^a(P)\ve_a, & \vr(Q) &= x^a(Q)\ve_a, 
 \end{align}
-But what is the relationship between these two coordinate systems?
-Start with $x^{\bar{b}}=x^{\bar{b}}(x^a)$, and consider a general function
+and the displacement vector which points from P to Q is
 \begin{align}
-    f &= f(x^1,x^2,x^3) \\
-    \Delta f &= \frac{\p f}{\p x^1}\Delta x' + \frac{\p f}{\p x^2}\Delta x^2 + \frac{\p f}{\p x^2}\Delta x^3 = \frac{\p f}{\p x^a}\Delta x^a
+    d\vr &= \left[x^a(Q)-x^a(P)\right]\ve_a = dx^a\ve_a.
 \end{align}
-How do we get a small change in $x^{\bar{b}}$?
+Tensor representations in different coordinate systems depend only on the relative orientations and scales on the coordinate axes at that point and not the absolute values of coordinates - $d\vr$ will be the same in all coordinate systems, though its components will be different depending on our choice of coordinates. 
+An arbitrary position vector
 \begin{align}
-    \Delta x^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^{a}}\Delta x^{a} \\
-    dx^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}dx^a \\
-    dx^{\bar{a}} &= \frac{\p x^{\bar{a}}}{\p x^b}dx^b
+    \vr = x^1\ve_1+x^2\ve_2+\dots = x^a\ve_a
+\end{align}
+has components $x^a$ along whatever basis vectors $\ve_a = \frac{\p\vr}{\p x^a}$ we are using.
+We could use this definition to work our what a basis vector is. 
+Note: they don't have to be orthogonal or unit vectors - or constant, they could be functions of time.
+Transforming to a different coordinate system $x^{\bar{b}}$, the vector is the same vector so
+\begin{align}
+    \vr=x^a\ve_a=x^{\bar{b}}\ve_{\bar{b}}.
+\end{align}
+We again get basis vectors from partial derivatives, $\ve_{\bar{b}}=\frac{\p\vr}{\p x^{\bar{b}}}$, and we can transform between these, writing the \emph{new coordinates} as a function of the \emph{old ones}:
+\begin{align}
+    x^{\bar{1}}=x^{\bar{1}}(x^1,x^2,\dots,x^N),\quad x^{\bar{2}}=x^{\bar{2}}(x^1,x^2,\dots,x^N),\dots\implies x^{\bar{b}}=x^{\bar{b}}(x^a).
+\end{align}
+If this was about a function $f = f(x^1,x^2,\dots,x^N)$, then we would instantly know how to do a total differential in terms of the partials, i.e.
+\begin{align}
+    \Delta f &= \frac{\p f}{\p x^1}\Delta x' + \frac{\p f}{\p x^2}\Delta x^2 + \frac{\p f}{\p x^2}\Delta x^3 = \frac{\p f}{\p x^a}\Delta x^a.
+\end{align}
+We can then write our coordinate transformations as (the N equations):
+\begin{align}
+    \Delta x^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^{a}}\Delta x^{a},
+\end{align}
+where there are $N^2$ separate $\frac{\p x^{\bar{b}}}{\p x^a}$.
+In the limit of infinitesimals, we have
+\begin{align}
+    dx^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}dx^a, &
+    dx^{\bar{a}} &= \frac{\p x^{\bar{a}}}{\p x^b}dx^b.
 \end{align}
 Notice how we can simply just switch round the indices - \textbf{these are all dummy variables and as long as the index notation is consistent, it is completely arbitrary which letter is used,} i.e. the letters themselves mean nothing.
 
-\section{Tensors}
-Any quantity which transforms as
+\section{Contravariant Tensors of 1st Order (4-vectors)}
+Entities which transform like the coordinate differences are called \emph{contravariant tensors of first order,} or Rank (1,0) tensors. 
+They are defined by their transformation properties.
+If $\vec{A}=A^a\ve_a$ has components which transform as 
 \begin{align}
-    A^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}A^a
+    A^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}A^a,
 \end{align}
-is a Rank (1,0) or order 1 contravariant tensor.
+then it is a \emph{contravariant tensor.}
+Things like 4-velocity, -momentum, -force, etc all transform like this. 
+For $A^{ab}$, this is an order 2, Rank (2,0) tensor.
 What about $\ve_a$?
+The position vector is
 \begin{align}
-    \vr &= x^a\ve_a = x^{\bar{b}}\ve_{\bar{b}} \\
+    \vr &= x^a\ve_a = x^{\bar{b}}\ve_{\bar{b}}.
+\end{align}
+The old basis vectors are $\ve_a=\frac{\p\vr}{\p x^a}$; new ones are again the tangents to the coordinate curves so:
+\begin{align}
     \ve_{\bar{b}} &= \frac{\p\vr}{\p x^{\bar{b}}} = \frac{\p\vr}{\p x^a} \frac{\p x^a}{\p x^{\bar{B}}} = \frac{\p x^a}{\p x^{\bar{b}}}\ve_a
 \end{align}
-So now we have reversed the position of the indices in Eq (2.15).
-
-How do we define scalars?
+This is the opposite to $dx^{\bar{a}}$.
+Think - superscript cancels subscript on the top and bringing up the $\bar{b}$ superscript then cancels the LHS $\to$ check equations visually this way. 
+Our basis vectors don't transform like the coordinate differences, i.e. like \emph{contravariant tensors} with the bar above on the numerator - they are the other way around!
+\begin{example}[Basis Vectors for Spherical Polar Coordinates]
+We know how to do coordinate transforms; we can transform to spherical polars form Cartesian as we know.:
 \begin{align}
-    \del\phi &= \frac{\p\phi}{\p x^i}\ve_i \\
-    \frac{\p\phi}{\p x^{\bar{j}}} &= \frac{\p x^i}{\p x^{\bar{j}}}\frac{\p\phi}{\p x^i}
+    x &= r\sin\theta\cos\phi, & y &= r\sin\theta\sin\phi, ,& z &= \cos\theta,
 \end{align}
-In general, we have
+with $x^i=\{x,y,z\}$ and $\ve_i=\{\hat{i},\hat{j},\hat{k}\}$.
+This is showing the old coordinates written as functions of the new $x^{\bar{j}}=\{r,\theta,\phi\}$.
+The new basis vectors along the new coordinate directions are
 \begin{align}
-    A_{\bar{j}} &= \frac{\p x^i}{\p x^{\bar{j}}}A_i,
+    \ve_j &= \frac{\p x^i}{\p x^{\bar{j}}}\ve_i.
 \end{align}
-which we call a Rank (0,1) or order 1 covariant tensor.
-
-\chapter{}
-
-\section{Higher order tensors}
-Consider
+For the radial coordinate, $r=x^{\bar{1}}$,
 \begin{align}
-    T^{ab} &= A^aB^b, \\
+    \begin{split}
+        \ve_{\bar{1}} = \ve_r &= \frac{\p x^i}{\p r}\ve_i = \frac{\p x}{\p r}\hat{i} + \frac{\p y}{\p r}\hat{j} + \frac{\p z}{\p r}\hat{k} \\
+                              &= \sin\theta\cos\phi\hat{i} + \sin\theta\sin\phi\hat{j} + \cos\theta\hat{k}.
+    \end{split}
+\end{align}
+We can work our the other basis vectors in the same way:
+\begin{align}
+    \ve_{\bar{2}} &= \ve_{\theta} = \frac{\p x^i}{\p\theta}\ve_i = r\cos\theta\cos\phi\hat{i}+r\cos\theta\sin\phi\hat{j}+r\sin\theta\hat{k} \\
+    \ve_{\bar{3}} &= \ve_{\phi} = \frac{\p x^i}{\p\phi}\ve_i = -r\sin\theta\sin\phi\hat{i}+r\sin\theta\cos\phi\hat{j}.
+\end{align} 
+\end{example}
+
+\section{Covariant Tensors of First Order}
+Scalar fields are just numbers at a given point - whatever coordinates you give the point makes no change. 
+Its gradient \unl{will} change depending on the coordinate system. 
+Its gradient is
+\begin{align}
+    \del\phi(x') &= \frac{\p\phi}{\p x^i}\ve_i.
+\end{align}
+Transforming the frame, we have
+\begin{align}
+    \frac{\p\phi}{\p x^{\bar{j}}} &= \frac{\p\phi}{\p x^i}\frac{\p x^i}{\p x^{\bar{j}}},
+\end{align}
+so the gradient isn't a contravariant tensor. 
+Gradients have components which transform the other way to contravariant transforms - like basis vectors.
+Things that transform like this are \emph{covariant vectors}, also called Rank (0,1) tensors, or \emph{covariant tensors of the first order}.
+We denote by a lower index on components and the transformation laws for the components are
+\begin{align}
+    A_{\bar{b}} &= \frac{\p x^a}{\p x^{\bar{b}}}A_a.
+\end{align}
+
+\section{Tensors Summary}
+\begin{multicols}{2}
+\begin{itemize}
+    \item \textbf{Contravariant} (coordinates):
+        \begin{align}
+            A^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}A^a.
+        \end{align}
+    \item \textbf{Covariant} (basis vectors):
+        \begin{align}
+            A_{\bar{b}} &= \frac{\p x^a}{\p x^{\bar{b}}}A_a.
+        \end{align}
+\end{itemize}
+\end{multicols}
+The aim of all this is to write equations such that they can be used regardless of the coordinate system.
+
+\section{Higher-Order Tensors}
+What is $T^{ab}=A^aB^b$?
+\begin{align}
     T^{\bar{c}\bar{d}} &= A^{\bar{c}}B^{\bar{d}} = \left(\frac{\p x^{\bar{c}}}{\p x^a}A^a\right)\left(\frac{\p x^{\bar{d}}}{\p x^b}B^b\right) = \frac{\p x^{\bar{c}}}{\p x^a}\frac{\p x^{\bar{d}}}{\p x^b}A^a B^b = \frac{\p x^{\bar{c}}}{\p x^a}\frac{\p x^{\bar{d}}}{\p x^b}T^{ab}.
 \end{align}
-This is the definition of a second order contravariant tensor.
+We have summed over both `a' and `b' indices.
+Therefore, second-order tensors transform with two transformations; this is a second-ord contravariant, or Rank (2,0), tensor. 
+Getting higher-order tensors from lower-order ones in this way is called an \emph{outer product.}
+We can also do this for covariant tensors, or even a \emph{mixed tensor}, e.g. $\tensor{T}{^a_b}$, as long as they transform this way, it's a vector. 
 
-\section{Tensor Equations}
-We can write a basic tensor equation,
+\section{Tensor Algebra}
+We can relate tensors in equations, e.g.
 \begin{align}
     T^a = k(A^a+B^a),
 \end{align}
-and wonder how this would look in a transformed coordinate system?
+How would this look in a transformed coordinate system?
 \begin{align}
-    T^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}T^a = k\left(\frac{\p x^{\bar{b}}}{\p x^a}A^a + \frac{\p x^{\bar{b}}}{\p x^a}B^a\right) \\
-                &= k(A^{\bar{b}}+B^{\bar{b}}).
+    \begin{split}
+        T^{\bar{b}} &= k(A^{\bar{b}}+B^{\bar{b}}) = k\left(\frac{\p x^{\bar{b}}}{\p x^a}A^a + \frac{\p x^{\bar{b}}}{\p x^a}B^a\right) \\
+                    &= \frac{\p x^{\bar{b}}}{\p x^a}T^a.
+    \end{split}
 \end{align}
-So if a tensor equation is true, it is true in all coordinate systems.
+So tensors are linear (we can add them, multiply by constants, and it leaves their nature unchanged - still tensors of the same order).
+This has significance - different equations due to coordinate transformations will work if the initial expression does. 
 
-\section{The metric tensor}
-What is the metric? \emph{The metric is a measure of space.}
-We define the metric tensor,
-\begin{align}
-    g_{ab} &= \ve_a\cdot\ve_b = g_{ba},
-\end{align}
-so it is symmetric.
-We can use this when calculating spacetime distances:
-\begin{align}
-    ds^2 &= \vec{dr}\cdot\vec{dr} = \left(dx^a\ve_a\right)\cdot\left(dx^b\ve_b\right) \\
-         &= (\ve_a\cdot\ve_b)dx^a\,dx^b = g_{ab}dx^a\,dx^b.
-\end{align}
-Is it a tensor?
-\begin{align}
-    g_{\bar{a}\bar{b}} &= (\ve_{\bar{a}}\cdot\ve_{\bar{b}}) = \left(\frac{\p x^c}{\p x^{\bar{a}}}\ve_c\right)\cdot\left(\frac{\p x^{d}}{\p x^{\bar{b}}}\ve_d\right) \\
-                       &= \frac{\p x^c}{\p x^{\bar{a}}}\frac{\p x^d}{\p x^{\bar{b}}}(\ve_c\cdot\ve_d) = \frac{\p x^c}{\p x^{\bar{a}}}\frac{\p x^d}{\p x^{\bar{b}}}g_{cd},
-\end{align}
-so it transforms as a tensor; a second order covariant tensor.
+\chapter{Tensors Continued}
+We saw before that we have tensor relations which have different numbers but still hold true. 
 
-\section{Kronecker Delta}
-We can write an arbitrary vector as
+\section{The Metric Tensor}
+We need a way of characterising the structure of space-time.
+We measure the distance between two nearby points and examine how this changes as we move across space. 
 \begin{align}
-    \vec{A} = A^a\ve_a = A^{\bar{b}}\ve_{\bar{b}} &= \left(\frac{\p x^{\bar{b}}}{\p x^a}A^a\right)\left(\frac{\p x^{d}}{\p x^{\bar{b}}}\ve_d\right) \\
-                                                  &= \left(\frac{\p x^{\bar{b}}}{\p x^a}\frac{\p x^{d}}{\p x^{\bar{b}}}\right)A^a\ve_d = \left(\frac{\p x^{d}}{\p x^a}\right)A^a\ve_d \\
-                                                  &= \tensor{\delta}{_a^d}A^a\ve_d = A^d\ve_d = A^a\ve_a
+    d\vr = dx^a\ve_a
 \end{align}
-
-\chapter{}
-
-\chapter{}
-
-\chapter{}
-Absolute Derivative:
+tells us the distance between the two points. 
+We can get the length of this vector via the dot product:
 \begin{align}
-    \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}
+    \begin{split}
+        ds^2 &= \vec{dr}\cdot\vec{dr} = \left(dx^a\ve_a\right)\cdot\left(dx^b\ve_b\right) \\
+             &= (\ve_a\cdot\ve_b)dx^a\,dx^b = g_{ab}dx^a\,dx^b,
+    \end{split}
 \end{align}
-Covariant Derivative:
+where we define the metric tensor as $g_{ab} = \ve_a\cdot\ve_b = g_{ba}$, which we can see is symmetric.
+This will be used frequently in solving metric equations.
+The metric tensor's transformation under coordinate change can be seen as we derived the basis vector transformations:
 \begin{align}
-    \tensor{\lambda}{^a_{;c}} &= \frac{\p\lambda^a}{\p x^c}+\tensor{\Gamma}{^a_{bc}}\lambda^b
+    \begin{split}
+        g_{\bar{a}\bar{b}} &= (\ve_{\bar{a}}\cdot\ve_{\bar{b}}) = \left(\frac{\p x^c}{\p x^{\bar{a}}}\ve_c\right)\cdot\left(\frac{\p x^{d}}{\p x^{\bar{b}}}\ve_d\right) \\
+                           &= \frac{\p x^c}{\p x^{\bar{a}}}\frac{\p x^d}{\p x^{\bar{b}}}(\ve_c\cdot\ve_d) = \frac{\p x^c}{\p x^{\bar{a}}}\frac{\p x^d}{\p x^{\bar{b}}}g_{cd},
+    \end{split}
 \end{align}
-Christoffel Symbols:
+This proves that it is a second-order covariant tensor, or Rank (0,2) tensor.
+If we have a curved spacetime (or a perverse coordinate system), $g_{ab}$ will be a function of position, and will vary from place to place.
+\begin{example}[3D Euclidean Space]
+The position vector between two points close together in flat 3D space is
 \begin{align}
-    \tensor{\Gamma}{^c_{ab}}\ve_c &= \frac{\p\ve_a}{\p x^b},\quad \tensor{\Gamma}{^c_{ab}} = \tensor{\Gamma}{^c_{ba}}
+    d\vr = dx\,\hat{i} + dy\,\hat{j} + dz\,\hat{k} = x^i\ve_i.
 \end{align}
-Other stuff:
+What is the metric in this space?
+We have
 \begin{align}
-    \frac{\p g_{ab}}{\p x^c} &= \tensor{\Gamma}{^d_{ac}}g_{bd} + \tensor{\Gamma}{^d_{bc}}g_{ad}\\
-    \frac{\p g_{bc}}{\p x^a} &= \tensor{\Gamma}{^d_{ba}}g_{cd} + \tensor{\Gamma}{^d_{ca}}g_{bd}\\
-    \frac{\p g_{ca}}{\p x^b} &= \tensor{\Gamma}{^d_{cd}}g_{ad} + \tensor{\Gamma}{^d_{ab}}g_{cd}\\
-    2\tensor{\Gamma}{^d_{ac}}g_{bd} &= \frac{\p g_{ab}}{\p x^c} + \frac{\p g_{bc}}{\p x^a} - \frac{\p g_{ca}}{\p x^b} \\
-    \tensor{\Gamma}{^f_{ac}} &= \frac12 g^{fb}\left(\frac{\p g_{bc}}{\p x^a} - \frac{\p g_{ca}}{\p x^b} + \frac{\p g_{ab}}{\p x^c}\right) \\
-                             &= \frac12 g^{fb}\left(\p_a g_{bc} - \p_b g_{ca} + \p_c g_{ab}\right)
+    g_{11} &= g_{xx} = \ve_x\cdot\ve_x = \hat{i}\cdot\hat{i}=1,\\
+    g_{22} &= g_{yy} = \ve_y\cdot\ve_y = \hat{j}\cdot\hat{j}=1,\\
+    g_{33} &= g_{zz} = \ve_z\cdot\ve_z = \hat{k}\cdot\hat{k}=1.
 \end{align}
-We multiplied left-hand-side of (6.7) by $\tensor{\delta}{^f_d}$.
-
-\begin{example}[2D flat space]
-    $x^A = \{x,y\}$:
-    \begin{align}
-        g_{AB} &= \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \text{diag}(1,1) \\
-        \tensor{\Gamma}{^A_{BC}} &= 0
-    \end{align}
-    So we don't have to deal with these in Cartesian coordinates. What about polar coordinates? $x^A = \{r,\theta\}$:
-    \begin{align}
-        ds^2 &= dr^2 + r^2\,d\theta^2 \\
-        g_{AB} &= \text{diag}(1,r^2) \\
-        \tensor{\Gamma}{^A_{BC}} \neq 0
-    \end{align}
-    So we can still get non-zero Christoffel symbols even for flat space, but it is still "boring" really.
+All the cross terms are zero as the basis is orthogonal, i.e. $g_{12}=\hat{i}\cdot\hat{j}=0\implies g_{ij}=\delta_{ij}$.
+We can write the metric in matrix form as
+\begin{align}
+    g_{ij} &= \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}.
+\end{align}
+It's not necessarily immediately apparent from the components of the metric tensor which ones will allow coordinate transformations to get us to the unit matrix. 
+Derivatives of the metric can help.
 \end{example}
 
-Let's consider something more interesting, i.e. curved.
-For 3D space, we have
+\section{Kronecker Delta amd Invariance of Tensor Equations}
+We saw that basis vectors transform as 
+\begin{align}
+    \ve_{\bar{b}} &= \frac{\p x^a}{\p x^{\bar{b}}}\ve_a.
+\end{align}
+This means that any quantity $\vec{A} = A^a\ve_a$ in another frame:
+\begin{align}
+    \begin{split}
+        A^{\bar{b}}\ve_{\bar{b}} &= \left(\frac{\p x^{\bar{b}}}{\p x^a}A^a\right)\left(\frac{\p x^{d}}{\p x^{\bar{b}}}\ve_d\right) \\
+                                 &= \left(\frac{\p x^{\bar{b}}}{\p x^a}\frac{\p x^{d}}{\p x^{\bar{b}}}\right)A^a\ve_d = \left(\frac{\p x^{d}}{\p x^a}\right)A^a\ve_d \\
+                                 &= \tensor{\delta}{^d_a}A^a\ve_d = A^d\ve_d = A^a\ve_a
+    \end{split}
+\end{align}
+Note that indices become the same and the letter chosen is of no significance. 
+So, if we have something that transforms as the coordinate differences, then this means its tensor equation looks the same in any frame. 
+From this, we'll be able to write down physics equations that are independent of the coordinate system.
+
+\chapter{Tensor Transformations}
+\section{Basis Vectors for Covariant Components}
+Covariant componenets ome from $\del\phi$ but this in Cartesian coordinates is just
+\begin{align}
+    \del\phi &= \frac{\p\phi}{\p x}\hat{i} + \frac{\p\phi}{\p y}\hat{j} + \frac{\p\phi}{\p z}\hat{k} = A_i\ve^i, \text{ where } A^i = \frac{\p\phi}{\p x^i}
+\end{align}
+are the components, and since we know that these are covariant, the basis vectors must have the high index. 
+When $\hat{i},\hat{j},\hat{k}$ are orthogonal, $\ve_i=\ve^i$, but when they are not orthogonal (as in general relativity's curved space), $\ve_i\neq\ve^i$.
+Let's see what happens if we go to a new coordinate frame $x^{\bar{j}}$:
+\begin{align}
+    \del\phi &= \frac{\p\phi}{\p x^i}\ve^i = \frac{\p\phi}{\p x^{\bar{j}}}\left(\frac{\p x^{\bar{j}}}{\p x^i}\ve^i\right) = \frac{\p\phi}{\p x^{\bar{j}}}\del x^{\bar{j}} = \frac{\p\phi}{\p x^{\bar{j}}}\ve^{\bar{j}},
+\end{align}
+which tells us the \emph{contravariant basis} transforms as
+\begin{align}
+    e^{\bar{j}} &= \del x^{\bar{j}} = \frac{\p x^{\bar{j}}}{\p x^i}\ve^i.
+\end{align}
+Remember the \emph{covariant basis} was
+\begin{align}
+    \ve_i &= \frac{\p\vr}{\p x^i}.
+\end{align}
+Now $\vec{a}=A_a\ve^a$ will transform to another frame as
+\begin{align}
+    A_{\bar{b}}\ve^{\bar{b}} &= \frac{\p x^a}{\p x^{\bar{b}}}A_a\frac{\p x^{\bar{b}}}{\p x^c}\ve^c = \frac{\p x^a}{\p x^c}A_a\ve^c = \tensor{\delta}{_c^a}A_a\ve^c = A_a\ve^a.
+\end{align}
+Note that the two sets of basis vectors themselves look identical if we have an \emph{orthonormal set of coordinates}, but they are not identical if the coordinates are not orthogonal. 
+\begin{itemize}
+    \item In Cartesian Coordinates
+        \begin{align}
+            \vr &= x\hat{i}+y\hat{j}+z\hat{k}
+        \end{align}
+        Covariant basis vectors are
+        \begin{align}
+            \ve_1 = \ve_x = \frac{\p\vr}{\p x} = \hat{i}.
+        \end{align}
+        Contravariant basis vectors are
+        \begin{align}
+            \ve^1 = \ve^x &= \del x = \frac{\p x}{\p x}\hat{i} + \frac{\p x}{\p y}\hat{j} + \frac{\p x}{\p z}\hat{k} = \hat{i}.
+        \end{align}
+        This is a special example as written above.
+    \item In 3D Spherical polars
+        \begin{align}
+            r &= x^2 + y^2 + z^2,\\
+            \begin{split}
+            \ve^r &= \del r = \frac{\p r}{\p x}\hat{i}+\frac{\p r}{\p y}\hat{j}+\frac{\p r}{\p z}\hat{k} = \frac{x}{r}\hat{i}+\frac{y}{r}\hat{j}+\frac{z}{r}\hat{k},\\
+                  &= \sin\theta\cos\phi\hat{i}+\sin\theta\sin\phi\hat{j}+\cos\theta\hat{k}.
+            \end{split}
+        \end{align}
+\end{itemize}
+
+\section{Height-Distance Coordinates}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (3pt) node[anchor=north] {Airport};
+        \draw (0,0) -- (4,0);
+        \draw[Latex-Latex] (4,0) -- (4,2.5) node[anchor=west,midway] {h};
+        \draw[Latex-Latex] (0,0) -- (3,2.5) node[anchor=south east,midway] {r};
+        \fill[lightgray] (3,2.5) rectangle (5,3.25) node[black,anchor=south east] {Aeroplane};
+    \end{tikzpicture}
+\end{figure}
+This is not an orthogonal system:
+\begin{align}
+    \vr = (r^2-h^2)^2\hat{i} + h\hat{j}.
+\end{align}
+Work out the basis vectors in this coordinate system, i.e. what are $\ve_i$?
+\begin{align}
+    \ve_r &= \frac{\p\vr}{\p r} = \frac12 2r(r^2-h^2)^{-1/2}\hat{i} = \left(1-\frac{h^2}{r^2}\right)^{-1/2}\hat{i},\\
+    \ve_h &= \frac{\p\vr}{\p h} =-\frac12 2h(r^2-h^2)^{-1/2}\hat{i} + \hat{j} = \frac{-h}{r}\left(1-\frac{h^2}{r^2}\right)^{-1/2}\hat{i}+\hat{j}.
+\end{align}
+What are the contravariant basis vectors, $\ve_i=\del x^i$?
+We have $r^2=x^2+y^2,\,2r\frac{\p r}{\p x}=2x,\, h=y$, and then
+\begin{align}
+    \begin{split}
+        \ve^r &= \del r = \frac{\p r}{\p x}\hat{i} + \frac{\p r}{\p y}\hat{j} = \frac{x}{r}\hat{i} + \frac{y}{r}\hat{j} \\
+              &= \frac{\sqrt{r^2-h^2}}{r}\hat{i}+\frac{h}{r}\hat{j}=\left(1-\frac{h^2}{r^2}\right)^{-1/2}\hat{i}+\frac{h}{r}\hat{j},
+    \end{split}\\
+        \ve^h &= \del h = \frac{\p h}{\p x}\hat{i} + \frac{\p h}{\p y}\hat{j} = \hat{j}.
+\end{align}
+
+\section{Covariant and Contravariant: The Metric}
+We can write vectors in either the old basis in the tangent space or the new basis in the cotangent space, i.e. $\vec{\mu}=\mu^a\ve_a=\mu_a\ve^a$.
+If the basis vectors are the same, i.e. orthonormal bases, then the contravariant and covariant components are identical, but in general this is not the case. 
+Take another vector, $\vec{\lambda}=\lambda^a\ve_a=\lambda_b\ve^b$.
+The dot product of these is
+\begin{align}
+    \begin{split}
+        \vec{\lambda}\cdot\vec{\mu} &= (\lambda^a\ve_a)\cdot(\mu^b\ve_b) = \lambda^a\mu^b(\ve_a\cdot\ve_b) = \lambda^a\mu^bg_{ab} \\
+                                    &= |\vec{\lambda}||\vec{\mu}|\cos\chi
+    \end{split}
+\end{align}
+Here, we use the covariant form of the metric to express the dot product of the vectors with contravariant components.
+We could also express this with the covariant components, using the contravariant metric:
+\begin{align}
+    \vec{\lambda}\cdot\vec{\mu} &= (\lambda_a\ve^a)\cdot(\mu_b\ve^b) = \lambda_a\mu_b(\ve^a\cdot\ve^b) = \lambda_a\mu_bg^{ab}.
+\end{align}
+What about one with covariant and one with contravariant components?
+\begin{align}
+    \vec{\lambda}\cdot\vec{\mu} &= (\lambda^a\ve_a)\cdot(\mu_b\ve^b) = \lambda^a\mu_b(\ve_a\cdot\ve^b)
+\end{align}
+What is this dot product?
+Let's do it in 3D:
+\begin{align}
+    \begin{split}
+        \ve_i\cdot\ve^j &= \left(\frac{\p x^i}{\p x^i}\hat{i} + \frac{\p x^2}{\p x^i}\hat{j} + \frac{\p x^3}{\p x^i}\hat{k}\right)\cdot\left(\frac{\p x^j}{\p x^1}\hat{i}+\frac{\p x^j}{\p x^2}\hat{j}+\frac{\p x^j}{\p x^3}\hat{k}\right) \\
+                        &= \frac{\p x^1}{\p x^i}\frac{\p x^j}{\p x^1} + \frac{\p x^2}{\p x^i}\frac{\p x^j}{\p x^2} + \frac{\p x^3}{\p x^i}\frac{\p x^j}{\p x^3} = \frac{\p x^j}{\p x^i} = \tensor{\delta}{_i^j}.
+    \end{split}
+\end{align}
+Now because of the summation convention, $\tensor{\delta}{_i^i}=\tensor{\delta}{_1^1}+\tensor{\delta}{_2^2}+\tensor{\delta}{_3^3}=3$, so we have
+\begin{align}
+    (\lambda^a\ve_a)\cdot(\mu_b\ve^b) &= \lambda^a\mu_b(\ve_a\cdot\ve^b) = \lambda^a\mu_b\tensor{\delta}{^b_a} = \lambda^a\mu_a,
+\end{align}
+where we have contracted $\mu_b\tensor{\delta}{^b_a}$ and are now left with the repeated index to be summed over.
+By symmetry of the dot product and metric, then
+\begin{align}
+    \lambda^a\mu_a &= \lambda_a\mu^a = g_{ab}\lambda^a\mu^b = g^{ab}\lambda_a\mu_b.
+\end{align}
+This gives us an easy way of swapping between contravariant and covariant components - we use the \emph{metric}:
+\begin{align}
+    g_{ab}\lambda^a\mu^b &= \lambda_a\mu^a, & g^{ab}\lambda_a\mu_b &= \lambda^b\mu_b, \\
+    \lambda^a &= g^{ab}\lambda_b, & \lambda_a &= g_{ab}\lambda^b.
+\end{align}
+Tensors derived from other tensors by raising or lowering the indices via the metric are called \emph{associated tensors.}
+We also get another useful metric relation in that 
+\begin{align}
+    \lambda_a &= g_{ab}\lambda^b = g_{ab}g^{bc}\lambda_c \implies g_{ab}g^{bc} = \tensor{\delta}{_a^c}.
+\end{align}
+
+\chapter{Derivatives in Curved Space}
+We want to write normal differential equations in curved space. 
+We will need:
+\begin{itemize}
+    \item \textbf{Parallel Transport} - derivatives in curved space are \unl{not} the same as in flat space.
+    \item \textbf{Absolute Derivative} - in flat space this is the same as the normal derivative, but this is \unl{not} the case in curved space.
+    \item \textbf{Covariant Derivative} - doesn't depend on the path.
+\end{itemize}
+
+\section{The Metric and Curvature of Spacetime}
+Assume we deal with a space which is \emph{continuous} and \emph{differentiable}, i.e. \textbf{differentiable manifold}; also assume it has a metric. 
+If the metric is positive definite (inner products are positive), then this is called a \textbf{Riemannian manifold}; if not, \textbf{pseudo-Riemannian.}
+In General Relativity, there is no `force-at-a-distance' gravity anf the paths of freely-falling objects curve only because they are following the shortest path in curved spacetime (which is curved because of mass).
+Any paths which follow the local curvature of spacetime (free-fall) are inertial frames, and we know how to do physics in inertial frames so we need to find what these paths are. 
+
+\section{Parallel Transport}
+In flat space, we can take a vector from a point and it keeps its direction - this is called \textbf{parallel transport.}
+This is important as when we do differentials, we are comparing a vector at some point with a vector at some other point. 
+In curved space, the direction the vector points at the end of the path depends on the \emph{path} as well as the start and end points. 
+Consider a vector $\vec{\lambda}=\lambda^a(s)\ve_a$ defined along some curve given by coordinates $x^a(s)$, where $s$ is some point on the path. 
+If we define the derivative in the `obvious' way:
+\begin{align}
+    \frac{d\lambda^a}{ds} &= \lim_{\delta s\to0} \left[\frac{\lambda^a(s+\delta s)-\lambda^a(s)}{\delta s}\right].
+\end{align}
+This does not transform, therefore it is \textbf{NOT} a tensor.
+We need a tensor version to be able to use our tensor algebra. 
+We want derivatives of coordinate values and how they are in the new coordinate frame:
+\begin{align}
+    \begin{split}
+        \frac{d\lambda^{\bar{a}}}{ds} &= \frac{d}{ds}\left(\frac{\p x^{\bar{a}}}{\p x^b}\lambda^b\right) = \frac{\p x^{\bar{a}}}{\p x^b}\frac{d\lambda^b}{ds} + \lambda^b\frac{d}{ds}\left(\frac{\p x^{\bar{a}}}{\p x^b}\right),\quad \frac{d}{ds} = \frac{\p}{\p x^c}\frac{dx^c}{ds}, \\
+                                      &= \underbrace{\frac{\p a^{\bar{a}}}{\p x^b}\frac{d\lambda^b}{ds}}_{\text{tensor-like}} + \lambda^b\underbrace{\left(\frac{\p^2x^{\bar{a}}}{\p x^b\p x^c}\right)}_{\text{\shortstack{change in\\ coord transforms}}}\frac{dx^c}{ds}.
+    \end{split}
+\end{align}
+In general, the coordinate transforms such that $\frac{\p x^{\bar{a}}}{\p x^b}$ evaluated as $s+\delta s$ is not the same as $\frac{\p x^{\bar{a}}}{\p x^b}$ at $s$ as they depend on position. 
+For differentiation to give a vector (tensor), we must take component differences at the same point.
+In flat space, we slide one of the vectors to the other by moving one of the vectors parallel to itself, i.e. \emph{parallel transport.}
+We mean that when we move the vector to its new position, it doesn't change, so
+\begin{align}
+    \frac{d\lambda}{ds}=0.
+\end{align}
+What does this parallel transport look like for a tensor?
+\begin{align}
+    \frac{\lambda}{ds} = 0 = \frac{d}{ds}(\lambda^a\ve_a) = \frac{d\lambda^a}{ds}\ve_a+\lambda^a\frac{d\ve_a}{ds} = \frac{d\lambda^a}{ds}\ve_a + \lambda^a\frac{\p\ve_a}{\p x^b}\frac{dx^b}{ds}.
+\end{align}
+We need to understand $\frac{\p\ve_a}{\p x^b}$ but since this is the derivative of a vector then it is itself a vector so we can write it as a linear combination of basis vectors:
+\begin{align}
+    \frac{\p\ve_a}{\p x^b} &= \tensor{\Gamma}{_{ab}^c}\ve_c,
+\end{align}
+where $\tensor{\Gamma}{_{ab}^c}$ are the \textbf{Christoffel Symbols,} or \emph{connection coefficients.}
+We have written them in tensor notation, but they do \unl{not} transform as tensors in general. 
+You can't work out the Christoffel symbols in one coordinate system and transform them into another - you have to start from the basis vectors each time. 
+Christoffel symbols are a property of the spacetime in which vectors are embedded. 
+\begin{align}
+    \begin{split}
+        \frac{d\lambda}{ds} = 0 &= \frac{d\lambda^a}{ds}\ve_a + \lambda^a\tensor{\Gamma}{_{ab}^c}\ve_c\frac{dx^b}{ds} \\
+                                &= \frac{d\lambda^a}{ds}\ve_a + \lambda^b\tensor{\Gamma}{_{bc}^a}\frac{dx^c}{ds}\ve_a,
+    \end{split}
+\end{align}
+where we relabelled indices $a\to b,\,b\to c,\,c\to a$ for the second line. 
+Now we have $\ve_a$ on both terms so this is all the same vector component and we can see that, for parallel transport, we have
+\begin{align}
+    \frac{d\lambda^a}{ds}+\lambda^b\tensor{\Gamma}{_{bc}^a}\frac{dx^c}{ds}=0.
+\end{align}
+So if we parallelly-transport a vector $\lambda$ at $s$ to $s+\delta s$, we have
+\begin{align}
+    \frac{\delta\lambda^a}{\delta s} + \lambda^b\tensor{\Gamma}{_{bc}^a}\frac{\delta x^c}{\delta s} = 0 \implies \delta\lambda^a &= -\lambda^b\tensor{\Gamma}{_{bc}^a}\frac{\delta x^c}{\delta s}\delta s \\
+    \implies \delta\lambda^a &= -\lambda^b\tensor{\Gamma}{_{bc}^a}\delta x^c = \delta\tensor{\lambda}{_{\parallel}^a}.
+\end{align}
+So the parallelly-transported vector has components
+\begin{align}
+    \lambda_{\parallel}^a(s+\delta s) = \lambda^a(s) - \lambda^b\tensor{\Gamma}{_{bc}^a}\delta x^c,
+\end{align}
+and we can compare this with the vector $\vec{\lambda}(s+\delta s)$ to define the \textbf{absolute derivative.}
+
+\section{Absolute Derivative}
+The point is that $\vec{\lambda}(s+\delta s)$ contains two differences with respect to $\vec{\lambda}(s)$:
+\begin{itemize}
+    \item Firstly, real physical differences - e.g. acceleration, deceleration, etc if the contravariant tensor is telling us about velocity.
+    \item There can also be changes between these two vectors just because the \emph{space is curved.}
+\end{itemize}
+We want to remove these `space changes' which are what the parallelly-transported vector tells us about, so that we can see the real physical changes.
+We define the absolute derivative:
+\begin{align}
+    \begin{split}
+    \frac{D\lambda^a}{ds} &= \lim_{\delta s\to0}\left[\frac{\lambda^a(s+\delta s)-\lambda_{\parallel}^a(s+\delta s)}{\delta s}\right] \\
+                          &= \frac{\left(\lambda^a(s)+\frac{d\lambda^a}{ds}\delta s\right) - \left(\lambda^a(s)+\delta\lambda_{\parallel}^a\right)}{\delta s} \\
+                          &= \frac{\left(\lambda^a(s)+\frac{d\lambda^a}{ds}\delta s\right) - \left(\lambda^a(s)-\lambda^b\tensor{\Gamma}{_{bc}^a}\frac{dx^c}{ds}\delta x^c\right)}{\delta s}
+    \end{split}\\
+    \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds}+\lambda^b\tensor{\Gamma}{_{bc}^a}\frac{dx^c}{ds}.
+\end{align}
+Although $\frac{d\lambda^a}{ds}$ is not a tensor and $\tensor{\Gamma}{_{bc}^a}$ is not either, the two non-tensor bits cancel each other out such that $\frac{D\lambda^a}{ds}$ \unl{does} transform as a tensor. 
+So to define the physical, or \textbf{absolute derivative}, we use parallel transport to take out the space changes. 
+We are left with a value which is \emph{independent of coordinate system} but does depend on the path taken, i.e. \textbf{path dependent.}
+
+\section{Covariant Derivative}
+We can do this in terms of coordinates as opposed to a single parameter, and remove the path dependence. 
+Writing the absolute derivative with a partial in the first term:
+\begin{align}
+    \frac{D\lambda^a}{ds} &= \frac{\p\lambda^a}{\p x^c}\frac{dx^c}{ds} + \lambda^b\tensor{\Gamma}{_{bc}^a}\frac{dx^c}{ds} = \left(\frac{\p\lambda^a}{\p x^c} + \tensor{\Gamma}{^a_{bc}}\lambda^b\right)\frac{dx^c}{ds} = \tensor{\lambda}{^a_{;c}}\frac{dx^c}{ds}
+\end{align}
+So the components of the \textbf{covariant derivative} are
+\begin{align}
+    \tensor{\lambda}{^a_{;c}} &\equiv \del_c\lambda^a = \frac{\p\lambda^a}{\p x^c}+\tensor{\Gamma}{^a_{bc}}\lambda^b
+\end{align}
+You can check this notation; note this is a derivative. 
+This is closely related to the absolute derivative, which is a Rank (0,1) tensor, so this is a Rank (1,1) tensor. 
+
+\section{The Christoffel Symbols}
+What are these $\tensor{\Gamma}{^a_{bc}}$?
+They come from the derivatives of the tangent basis vectors, but these are defined $\ve_a=\frac{\p\vr}{\p x^a}$, so
+\begin{align}
+    \tensor{\Gamma}{_{ab}^c}\ve_c &= \frac{\p\ve_a}{\p x^b} = \frac{\p^2\vr}{\p x^a\p x^b} = \frac{\p^2\vr}{\p x^b\p x^a} = \frac{\p\ve_b}{\p x^a} = \tensor{\Gamma}{_{ba}^c}\ve_c.
+\end{align}
+They are symmetric, (changing the order of integration assumes that the second partial derivatives are continuous) so we only need half as many Christoffel symbols as initially thought since $\tensor{\Gamma}{_{ab}^c}=\tensor{\Gamma}{_{ba}^c}$.\\
+We can also look at how the metric changes as a function of the coordinates:
+\begin{align}
+    \begin{split}
+        \frac{\p}{\p x^c}(g_{ab}) &= \frac{\p}{\p x}(\ve_a\cdot\ve_b) + \frac{\p\ve_a}{\p x^c}\cdot\ve_b + \ve_a\cdot\frac{\p\ve_b}{\p x^c} \\
+                                  &= (\tensor{\Gamma}{_{ac}^d}\ve_d)\cdot\ve_b+\ve_a\cdot(\tensor{\Gamma}{_{bc}^d}\ve_d),
+    \end{split}\\
+    \frac{\p}{\p x^c}(g_{ab}) &= \tensor{\Gamma}{_{ac}^d}g_{db} + \tensor{\Gamma}{_{bc}^d}g_{ad},\\
+    \frac{\p}{\p x^a}(g_{bc}) &= \tensor{\Gamma}{_{ba}^d}g_{dc} + \tensor{\Gamma}{_{ca}^d}g_{bd},\\
+    \frac{\p}{\p x^b}(g_{ca}) &= \tensor{\Gamma}{_{cb}^d}g_{da} + \tensor{\Gamma}{_{ab}^d}g_{cd},
+\end{align}
+If we add the first two and subtract the third, we get an expression for the Christoffel symbols in terms of the derivatives of the metric:
+\begin{align}
+    \frac{\p g_{ab}}{\p x^c} + \frac{\p g_{bc}}{\p x^a} - \frac{\p g_{ca}}{\p x^b} = 2\tensor{\Gamma}{_{ca}^d}g_{db}.
+\end{align}
+Multiplying by $\frac12 g^{fb}$ and remembering that $g^{fb}g_{db} = \tensor{\delta}{^f_d}$, we get
+\begin{align}
+    \tensor{\Gamma}{_{ca}^f} = \frac12g^{fb}\left(\frac{\p g_{bc}}{\p x^a} - \frac{\p g_{ca}}{\p x^b} + \frac{\p g_{ab}}{\p x^c}\right).
+\end{align}
+Using the notation $\frac{\p}{\p x^c}\equiv\p_c$ and the symmetry $\tensor{\Gamma}{_{ca}^f}=\tensor{\Gamma}{_{ac}^f}$ yields
+\begin{align}
+    \tensor{\Gamma}{_{ac}^f} = \frac12g^{fb}\left(\p_ag_{bc}-\p_bg_{ca}+\p_cg_{ab}\right).
+\end{align}
+So if we have a metric (and time), we can calculate these, since we can calculate derivatives of the metric. 
+
+\textbf{Notation:}
+\begin{itemize}
+    \item \textbf{Partial Derivative:} $\frac{\p A^a}{\p x^c} = \p_cA^a = \tensor{A}{^a_{;c}}$
+    \item \textbf{Covariant Derivative:} $\del_cA^a=\tensor{A}{^a_{;c}}$
+    \item \textbf{Absolute Derivative:} $\del_{\bar{u}}A^a = \frac{DA^a}{ds}$
+    \item \textbf{Christoffel Symbols:} $\tensor{\Gamma}{_{bc}^a}$ or $\{\frac{a}{bc}\}$ or $\{a,bc\}$
+\end{itemize}
+
+\chapter{Calculating Christoffel Symbols}
+\begin{example}[2D flat space]
+The metric for flat space in Cartesian coordinates $x^A = \{x,y\}$, $g_{AB} = \text{diag}(1,1) = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ doesn't depend on position so the partial derivatives of the metric are zero, i.e. $\tensor{\Gamma}{^A_{BC}} = 0$.
+This is not true if we use \emph{polars}:
+\begin{align}
+    ds^2 &= dr^2 + r^2\,d\theta^2 \\
+    g_{AB} &= \text{diag}(1,r^2) \\
+    \tensor{\Gamma}{^A_{BC}} &\neq 0
+\end{align}
+So the Christoffel symbols tell us about the curvature, but also about the coordinate system we have chosen, i.e. non-zero in flat 2D from changing coordinate system. 
+\end{example}
+
+\begin{example}[Surface of a Sphere]
+In 3D space, we have
 \begin{align}
     ds^2 &= dr^2 + r^2\,d\theta^2 + r^2\sin^2\theta\,d\phi^2
 \end{align}
-But we want to use just the surface of a sphere, so fixed $r=a$:
+and we can limit this at a fixed radius $r=a$ so $dr=0$ for 2D, so
 \begin{align}
     ds^2 &= a^2\,d\theta^2 + a^2\sin^2\theta\,d\phi^2 = g_{AB}dx^A\,dx^B \\
     g_{AB} &= \text{diag}(a^2,a^2\sin^2\theta)
 \end{align}
-We have $g_{AB}$, but we want $g^{AB}$. Recall
+The Christoffel symbols are defined as
+\begin{align}
+    \tensor{\Gamma}{_{AC}^F} &= \frac12g^{FB}\left(\p_Ag_{BC}-\p_Bg_{CA}+\p_Cg_{AB}\right),
+\end{align}
+so we also need the \emph{covariant metric components} $g^{AB}$ from
 \begin{align}
     g^{AB}g_{BC} &= \tensor{\delta}{^A_C}.
 \end{align}
-So we have a set of 4 simultaneous equations:
+In general, this leads to a set of simultaneous equations to solve:
 \begin{align}
-    g^{A1}g_{1C} + g^{A2}g_{2C} &= \tensor{\delta}{^A_C}.
+    g^{AB}g_{BC} = g^{A1}g_{1C} + g^{A2}g_{2C} = \tensor{\delta}{^A_C}.
 \end{align}
-For diagonal $g_{AB}$ \textbf{ONLY}:
+For diagonal \textbf{only}, we don't have to do a matrix inverse to solve these as all cross-terms are zero, so we get
 \begin{align}
-    g^{AB}g_{BA} &= g^{AA}g_{AA} = 1 \implies g^{AA} = \frac{1}{g_{AA}} \\
+    g^{AB}g_{BA} &= g^{AA}g_{AA} = 1 \implies g^{AA} = \frac{1}{g_{AA}}.
+\end{align}
+If the covariant form of the metric is diagonal, then so is the \emph{contravariant metric}.
+So we have
+\begin{align}
     g^{AB} &= \text{diag}\left(\frac{1}{a^2},\frac{1}{a^2\sin^2\theta}\right)
 \end{align}
-So now we want to calculate
+So in our 2D space, we have
 \begin{align}
-    \tensor{\Gamma}{^\theta_{\theta\theta}} &= \frac12 g^{\theta B} \left(\p_\theta g_{B\theta} - \p_B g_{\theta\theta} + \p_{\theta} g_{\theta B}\right), \quad g^{\theta B} = 0, B\neq\theta \\
-                                            &= \frac12 \frac{1}{a^2}\left(\p_{\theta} g_{\theta\theta} - \p_\theta g_{\theta\theta} + \p_\theta g_{\theta\theta}\right) =  0 \\
-    \tensor{\Gamma}{^\theta_{\phi\theta}} = \tensor{\Gamma}{^\theta_{\theta\phi}} &= \frac12 g^{\theta B}\left(\p_\theta g_{B\phi} - \p_B g_{\phi\theta} + \p_\phi g_{\theta B}\right) \\
-                                          &= \frac12 g^{\theta\theta}\left(\p_\theta g_{\theta\phi} - \p_\theta g_{\phi\theta} + \p_\phi g_{\theta\theta}\right) = 0 \\
-    \tensor{\Gamma}{^\theta_{\phi\phi}} &= -\sin\theta\cos\theta \\
-    \tensor{\Gamma}{^\phi_{\theta\phi}} &= \cot\theta
+    \tensor{\Gamma}{^\theta_{\theta\theta}} &= \frac12 g^{\theta B} \left(\p_\theta g_{B\theta} - \p_B g_{\theta\theta} + \p_{\theta} g_{\theta B}\right), \quad g^{\theta B} = 0, B\neq\theta,
 \end{align}
-The rest of the Christoffel symbols for this example are 0 (there are $2^3=8$ in total?).
+and as $g^{\theta B}=0$ except for when $B=\theta$, this then collapses to
+\begin{align}
+    \tensor{\Gamma}{^\theta_{\theta\theta}} &= \frac12 g^{\theta\theta}\left(\p_\theta\cancel{g_{\theta\theta}}-\p_\theta\cancel{g_{\theta\theta}}+\p_\theta\cancel{g_{\theta\theta}}\right) = \frac12\cdot \frac{1}{a^2} \cdot 0 = 0.
+\end{align}
+The bracket terms are all zero as $g_{\theta\theta}=a^2$ is not proportional to $\theta$ and so the partial with repsect to $\theta$ is zero.
+\begin{align}
+    \tensor{\Gamma}{^\theta_{\phi\theta}} = \tensor{\Gamma}{^\theta_{\theta\phi}} &= \frac12 g^{\theta B}\left(\p_\theta g_{B\phi} - \p_B g_{\phi\theta} + \p_\phi g_{\theta B}\right),
+\end{align}
+where again $g^{\theta B}$ is only non-zero for $B=\theta$ since the metric is diagonal, so:
+\begin{align}
+    \tensor{\Gamma}{^\theta_{\phi\theta}} = \tensor{\Gamma}{^\theta_{\theta\phi}} &= \frac12 g^{\theta\theta}\left(\p_\theta \cancel{g_{\theta\phi}} - \p_\theta \cancel{g_{\phi\theta}} + \p_\phi \cancel{g_{\theta\theta}}\right) = \frac12\cdot\frac{1}{a^2}\cdot0 = 0, \\
+    \tensor{\Gamma}{^\theta_{\phi\phi}} &= -\sin\theta\cos\theta, \\
+    \tensor{\Gamma}{^\phi_{\theta\phi}} &= \cot\theta.
+\end{align}
+The rest of the Christoffel symbols for this example are 0 (there are $2^3=8$ in total).
+\end{example}
 
 \section{Geodesic Equations}
-The velocity is a tensor,
+We have everything we need to get \textbf{geodesic paths} (inertial frames).
+In maths, they define geodesics as the shortest distance between two points. 
+In physics, these are inertial frames and in an inertial frame the velocity doesn't change. 
+There are \emph{no forces to produce an acceleration.}
+We define velocity as a tensor as
 \begin{align}
-    \vec{v} &= v^\alpha\ve_{\alpha} = \frac{\p x^\alpha}{\p\tau}\ve_\alpha
+    \vec{v} &= v^\alpha\ve_{\alpha} = \frac{\p x^\alpha}{\p\tau}\ve_\alpha.
 \end{align}
-If there's no force, then there's no change in the velocity vector doesn't change, but its components might change.
-No force means the absolute derivative of the components:
+If there is no change in this, then its derivative is zero, but we also saw that there can be swings in a vector which arise from curved space. 
+We say its the \emph{absolute derivative} which is zero:
 \begin{align}
     \frac{Dv^\alpha}{d\tau} &= 0
 \end{align}
-By an affine parameter, we mean a linear function of path length $u=A+Bs$, such as the proper time $\tau$.
+By an affine parameter, we mean a linear function of path length $u=A+Bs$, such as the proper time $\tau$, so the components change like
 \begin{align}
-    \frac{dv^\alpha}{d\tau} + \tensor{\Gamma}{^\alpha_{\beta\gamma}}v^\beta\frac{dx^\gamma}{d\tau} &= 0 \\
-    \frac{d^2x^\alpha}{d\tau^2} + \tensor{\Gamma}{^\alpha_{\beta\gamma}}\frac{dx^\beta}{d\tau}\frac{dx^\gamma}{d\tau} &= 0 \\
-    \ddot{x}^\alpha + \tensor{\Gamma}{^\alpha_{\beta\gamma}}\dot{x}^\beta\dot{x}^\gamma &= 0
+    \frac{dv^\alpha}{d\tau} + \tensor{\Gamma}{^\alpha_{\beta\gamma}}v^\beta\frac{dx^\gamma}{d\tau} &= 0, \\
+    \frac{d^2x^\alpha}{d\tau^2} + \tensor{\Gamma}{^\alpha_{\beta\gamma}}\frac{dx^\beta}{d\tau}\frac{dx^\gamma}{d\tau} &= 0,
 \end{align}
-Let's guess and make a solution for the sphere, $s=a\theta$, so we are just going around the circumference of the sphere at constant $\phi$.
-For $\theta$:
+and we can use the notation where a dot means derivative with respect to time to write this as
 \begin{align}
-    \frac{d^2\theta}{ds^2} + \tensor{\Gamma}{^\theta_{BC}}\frac{dx^B}{ds}\frac{dx^c}{ds} = 0 + \tensor{\Gamma}{^\theta_{\phi\phi}}\frac{d\phi}{ds}\frac{d\phi}{ds} = 0
+    \ddot{x}^\alpha + \tensor{\Gamma}{^\alpha_{\beta\gamma}}\dot{x}^\beta\dot{x}^\gamma &= 0.
 \end{align}
-We get a big tick and a gold star!
-For $\phi$:
+This works for any parameter linearly-related to path length $s$, i.e. for $u=A+Bs$ or $\tau=\frac{1}{c}s$, our \emph{affine parameters.}
+This is the \emph{affinely-parameterised geodesic equation} in an N-dimensional manifold.
+Although this is a second-order differential equation, we cannot just integrate due to the summations.
+\begin{example}[Geodesics in Flat Space]
+In flat space, all $\tensor{\Gamma}{^i_{jk}}=0$ so the geodesic equations become $\ddot{x}^a = 0$, where dot denotes derivatives with respect to path length $s$.
+We integrate to get $\dot{x}^a=A$ and $x^a=As+B$, so geodesics in flat space have constant velocity and direction - \emph{Newtonian inertial frames.}
+\end{example}
+\begin{example}[Geodesics on a Sphere - Paths in $\theta$]
+In general, it is too difficult to do geodesics in full generality - often, we just choose a path and see if its a geodesic. 
+A natural choice is a path defined by only one of the parameters, called a \emph{parameter curve.}
+We know that for a sphere the only non-zero Christoffel symbols are
 \begin{align}
-    \frac{d^2\phi}{ds^2} + \tensor{\Gamma}{^\phi_{BC}}\frac{dx^B}{ds}\frac{dx^C}{ds} = 0 + \tensor{\Gamma}{^\phi_{\theta\phi}}\frac{d\theta}{ds}\frac{d\phi}{ds} + \tensor{\Gamma}{^\phi_{\phi\theta}}\frac{d\phi}{ds}\frac{d\theta}{ds} = 0
+    \tensor{\Gamma}{^\theta_{\phi\phi}} &= -\sin\theta\cos\theta, & \tensor{\Gamma}{^\phi_{\theta\phi}} &= \tensor{\Gamma}{^\phi_{\phi\theta}} = \cot\theta.
+\end{align}
+Geodesic paths satisfy the equation
+\begin{align}
+    \frac{d^2x^A}{ds^2} + \tensor{\Gamma}{^A_{BC}}\frac{dx^B}{ds}\frac{dx^c}{ds} = 0.
+\end{align}
+Suppose the path $s$ is just a change in $\theta$, then $s=a\theta$, so there is no dependence on $\phi$, i.e. $x^2=\phi=$ constant$\implies\frac{d\phi}{ds}=0$, while for $\theta$ we have 
+\begin{align}
+    \theta &= \frac{s}{a},\quad \frac{d\theta}{ds} = \frac{1}{a},\quad \frac{d^2\theta}{ds^2} = 0,\\
+    \frac{d^2\theta}{ds^2} &+ \tensor{\Gamma}{^\theta_{BC}}\frac{dx^B}{ds}\frac{dx^c}{ds} = \frac{d^\theta}{ds^2} + \tensor{\Gamma}{^\theta_{\phi\phi}}\frac{d\phi}{ds}\frac{d\phi}{ds} = 0.
+\end{align}
+This satisfies the geodesic equation in $\theta$, so we get a big tick and a gold star!
+We should check that this also holds in $\phi$:
+\begin{align}
+    \frac{d^2\phi}{ds^2} + \tensor{\Gamma}{^\phi_{BC}}\frac{dx^B}{ds}\frac{dx^C}{ds} = \frac{d^2\phi}{ds^2} + \tensor{\Gamma}{^\phi_{\theta\phi}}\frac{d\theta}{ds}\frac{d\phi}{ds} + \tensor{\Gamma}{^\phi_{\phi\theta}}\frac{d\phi}{ds}\frac{d\theta}{ds} = 0
 \end{align}
 So it's a geodesic path! Yayyyyyy!
+\end{example}
+\begin{example}[Geodesics on a Sphere - Paths in $\phi$]
+Suppose the path $s$ is just a change in $\phi$, then $s=a\phi$ so there is no dependence on $\theta$, i.e. 
+\begin{align}
+    x^\theta &= \theta_0, & \frac{d\theta}{ds} &= 0, & \frac{d^2\theta}{ds^2} &= 0,\\
+    \phi &= \frac{s}{a}, & \frac{d\phi}{ds} &= \frac1a, & \frac{d^2\phi}{ds^2} &= 0.
+\end{align}
+The LHS of the geodesic equation in $\phi$ is then
+\begin{align}
+    \frac{d^\phi}{ds^2} + \tensor{\Gamma}{^\phi_{BC}}\frac{dx^B}{ds}\frac{dx^C}{ds} = 0 + \tensor{\Gamma}{^\phi_{\theta\phi}}\frac{d\theta}{ds}\frac{d\phi}{ds} + \tensor{\Gamma}{^\phi_{\phi\theta}}\frac{d\phi}{ds}\frac{d\theta}{ds} = 0,
+\end{align}
+and the LHS of the geodesic equatoin in $\theta$ is 
+\begin{align}
+    \frac{d^2\theta}{ds^2} + \tensor{\Gamma}{^\theta_{BC}}\frac{dx^B}{ds}\frac{dx^C}{ds}=\frac{d^2\theta}{ds^2}+\tensor{\Gamma}{^\theta_{\phi\phi}}\frac{d\phi}{ds}\frac{d\phi}{ds} = 0 - \sin\theta_0\cos\theta_0\frac1a.
+\end{align}
+This is only equal to zero (i.e. only a geodesic) for the special case of $\sin\theta_0\cos\theta_0=0\to\theta_0=0,\frac{\pi}{2},\pi$.
+$0,\pi$ are the N and S poles respectively where a path in $\phi$ is just a point. 
+The only geodesics which involve any distance is the equator. 
+\end{example}
 
+\chapter{Easier Christoffel Symbols and Geodesics Paths}
+\section{Euler-Lagrange Equations}
+An easier way to find Christoffel symbols and geodesic paths is to use the \emph{Euler-Lagrange equations.}
+We could have solved for the \emph{geodesics} by saying that these are the paths which give the shortest distance between two points, i.e. we are looking for the external path which has
+\begin{align}
+    \delta\left[\int ds\right] = 0.
+\end{align}
+The shortest path is a minimum. 
+This is often what we do in \emph{classical mechanics} where we look for the minimum energy path by getting the \emph{Lagrangian} $L=T-V$, as the sum of the kinetic $T$ and potential $V$ energies, and then finding the minimum energy path by integrating this over time, i.e.
+\begin{align}
+    \delta\left[\int \La\,dt\right] = 0.
+\end{align}
+For \emph{freely-moving particles} (i.e. those on geodesics), there are no potential energy terms as $V=0$, so we are only looking at the kinetic energy:
+\begin{align}
+    \delta\left[\int \La\,dt\right] = \delta\left[\int T\,dt\right] = 0.
+\end{align}
+In terms of per unit mass,
+\begin{align}
+    T &= \frac12\left[\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2\right],
+\end{align}
+or in terms of the \emph{metric} (in Euclidean 3D non-relativistic flat space),
+\begin{align}
+    T &= \frac12g_{ij}\frac{dx^i}{dt}\frac{dx^j}{dt} = \frac12g_{ij}\dot{x}^i\dot{x}^j = \frac12\left(\frac{ds}{dt}\right)^2.
+\end{align}
+So the \emph{minimum energy condition} (Hamilton's principle in classical mechanics) gives
+\begin{align}
+    \delta\left[\int T\,dt\right] &= \delta\left[\int \left(\frac{ds}{dt}\right)^2\,dt\right] = 0,
+\end{align} 
+i.e. this is basically the same as the minimum path requirement which defines our geodesic path which is 
+\begin{align}
+    \delta\left[\int \left(\frac{ds}{dt}\right)\,dt\right] = 0.
+\end{align}
+We know that in classical mechanics the solution with the minimum energy satisfies the \emph{Euler-Lagrange equations,} i.e.
+\begin{align}
+    \dt\left(\frac{\p\La}{\p\dot{x}^i}\right) - \frac{\p\La}{\p x^i} &= 0, & \La &= \frac12g_{ij}\dot{x}^i\dot{x}^j.
+\end{align}
+There are some technical problems using this in 4D spacetime, where the metric is indefinite (it can be positive, negative, or zero); if you do it, then it comes out to be the same except we now take our derivative with respect to some \emph{affine parameter}, linearly related to the \emph{invariant path length, s} rather than to t.
+So the dots then stand for the derivative with respect to the affine parameter, e.g. \emph{geodesic paths} are now
+\begin{align}
+    \ddot{x}^\alpha + \tensor{\Gamma}{^\alpha_{\beta\gamma}}\dot{x}^\beta\dot{x}^\gamma &= 0.
+\end{align}
+Classically, we used $\dt$, now in relativity we use $\frac{d}{ds}$ (which is pretty much equivalent to $c\dt$) and/or $\frac{d}{d\tau}$.
+We could use any affine parameter, but we will use $\tau=\frac{s}{c}$ here. 
+So we now have the \emph{Euler-Lagrange equation} as
+\begin{align}
+    \frac{d}{ds}\left(\frac{\p\La}{\p\dot{x}^b}\right) - \frac{\p\La}{\p x^b} &= 0, & \La &= \frac12g_{ab}\dot{x}^a\dot{x}^b.
+\end{align}
+From these, we can return an equation similar to the geodesic equation from which we can get the Christoffel symbols. 
 
-\chapter{}
+\section{Equivalence of the Geodesic and Euler-Lagrange Equations}
+We frequently change the letters as we want here, so \textbf{be careful.}
+We write the \emph{geodesic equation} as
+\begin{align}
+    \ddot{x}^f + \tensor{\Gamma}{^f_{ac}}\dot{x}^a\dot{x}^c &= 0.
+\end{align}
+This will be helpful for later. 
+The Christoffel symbols are defined as usual as
+\begin{align}
+    \tensor{\Gamma}{^f_{ac}} &= \frac12g^{fb}\left(\p_ag_{bc}-\p_bg_{ca}+\p_cg_{av}\right). 
+\end{align}
+Using the Euler-Lagrange equation and the Lagrangian as
+\begin{align}
+    \frac{d}{ds}\left(\frac{\p\La}{\p\dot{x}^c}\right) - \frac{\p\La}{\p x^c} &= 0, & \La &= \frac12g_{ac}\dot{x}^a\dot{x}^c,
+\end{align}
+noting notation and that $g_{ab}$ is a metric which only depends on position, i.e. $x^c$, and not velocity, i.e. $\dot{x}^c$.
+Doing the substitution, we get
+\begin{align}
+    \frac{\p\La}{\p\dot{x}^b} &= \frac{\p}{\p\dot{x}^b}\left(\frac12g_{ab}\dot{x}^a\dot{x}^c\right) = \frac12\dot{x}^a\dot{x}^c\frac{\p g_{ac}}{\p\dot{x}^b} + \frac12g_{ac}\overbrace{\frac{\p\dot{x}^a}{\p\dot{x}^b}}^{\delta^a_b}\dot{x}^a + \frac12g_{ac}\dot{x}^a\overbrace{\frac{\p\dot{x}^c}{\p\dot{x}^b}}^{\delta^c_b},
+\end{align}
+and as mentioned above $\frac{\p}{\p\dot{x}^b}g_{ac}=0$, so
+\begin{align}
+    0 + \frac12g_{ac}\dot{x}^c\tensor{\delta}{^a_b}+\frac12g_{ac}\dot{x}^a\tensor{\delta}{^c_b} &= \frac12g_{ab}\dot{x}^a+\frac12g_{bc}\dot{x}^c,
+\end{align} 
+and changing $c\to a$ and $g_{ab}=g_{ba}$, and then $a\to e$, 
+\begin{align}
+    \frac12g_{ab}\dot{x}^a+\frac12g_{ab}\dot{x}^a &= g_{be}\dot{x}^e.
+\end{align}
+
 
 \chapter{}
 Last lecture:
