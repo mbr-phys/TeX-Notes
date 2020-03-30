@@ -911,150 +911,402 @@ and changing $c\to a$ and $g_{ab}=g_{ba}$, and then $a\to e$,
 \begin{align}
     \frac12g_{ab}\dot{x}^a+\frac12g_{ab}\dot{x}^a &= g_{be}\dot{x}^e.
 \end{align}
+Into the Euler-Lagrange equation:
+\begin{align}
+    \frac{d(a^2\dot{\theta})}{ds} - a^2\dot{\phi}^2\sin\theta\cos\theta &= 0, \\
+    \cancel{a^2}\ddot{\theta} - \cancel{a^2}\dot{\phi}^2\sin\theta\cos\theta &= 0,
+\end{align}
+which we compare with the equivalent geodesic equation,
+\begin{equation}
+    \ddot{\theta} + \tensor{\Gamma}{^\theta_{BC}}\dot{x}^B\dot{x}^C = 0,
+\end{equation}
+and expanding the double sum:
+\begin{align}
+    \ddot{\theta} + \tensor{\Gamma}{^\theta_{\theta\theta}}\dot{\theta}\dot{\theta} + \tensor{\Gamma}{^\theta_{\phi\theta}}\dot{\phi}\dot{\theta} + \tensor{\Gamma}{^\theta_{\theta\phi}}\dot{\theta}\dot{\phi} + \tensor{\Gamma}{^\theta_{\phi\phi}}\dot{\phi}\dot{\phi} = 0.
+\end{align}
+Equating coefficients and see that $\tensor{\Gamma}{^\theta_{\theta\theta}}=\tensor{\Gamma}{^\theta_{\phi\theta}}=\tensor{\Gamma}{^\theta_{\theta\phi}}=0$, but $\tensor{\Gamma}{^\theta_{\phi\phi}}=-\sin\theta\cos\theta$ as we have $\dot{\phi}^2$.
+For $\phi$, we then have
+\begin{align}
+    \frac{\p\La}{\p\dot{\phi}} = a^2\sin^2\theta\dot{\phi},\qquad \frac{\p\La}{\p\phi} &= 0,\qquad \frac{d}{ds}(a^2\sin^2\theta\dot{\phi})-0 = 0, \\
+    \frac{d}{ds}\left(\frac{\p\La}{\p\dot{\phi}}\right) - \frac{\p\La}{\p\phi} &= 0,\\
+    \begin{split}
+        \frac{\p}{\p\theta}(\sin^2\theta)\frac{d\theta}{ds}\dot{\phi} + \sin^2\ddot{\phi} &= 0, \\
+        2\cos\theta\sin\theta\dot{\theta}\dot{\phi} + \sin^2\theta\ddot{\phi} &= 0,\\
+        2\cos\theta\dot{\theta}\dot{\phi} + \sin\theta\ddot{\phi} &= 0, \\
+        \ddot{\phi} + 2\left(\frac{\cos\theta}{\sin\theta}\right)\dot{\theta}\dot{\phi} &= 0,
+    \end{split}\\
+    \ddot{\phi} + 2\cot\theta\dot{\theta}\dot{\phi} &= 0.
+\end{align}
+Compare this with the geodesic equation in $\phi$:
+\begin{align}
+    \ddot{\phi} + \tensor{\Gamma}{^\phi_{\theta\theta}}\dot{\theta}\dot{\theta} + 2\tensor{\Gamma}{^\phi_{\theta\phi}}\dot{\theta}\dot{\phi} + \tensor{\Gamma}{^\phi_{\phi\phi}}\dot{\phi}\dot{\phi} &= 0.
+\end{align}
+Then, equating the coefficients, we get $\tensor{\Gamma}{^\phi_{\phi\phi}} = \tensor{\Gamma}{^\phi_{\theta\theta}} = 0$, but $2\tensor{\Gamma}{^\phi_{\theta\phi}} = 2\cot\theta$, so we can conclude with
+\begin{align}
+    \tensor{\Gamma}{^\phi_{\theta\phi}} &= \cot\theta.
+\end{align}
+Christoffel symbols tell you about the coordinate system and the curvature of space, i.e. whether space is curved or not. 
 
-
-\chapter{}
-Last lecture:
-\begin{itemize}
-    \item Euler-Lagrange equations
-    \item 'easier' way to find $\tensor{\Gamma}{^a_{bc}}$
-    \item how to find Geodesic paths
-\end{itemize}
-
-This lecture:
-\begin{itemize}
-    \item more tensor derivatives
-\end{itemize}
-Recall absolute derivative again:
-        \begin{align}
-            \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}.
-        \end{align}
-The first term above is the total change, and then the second is to ``subtract off the change due to the coordinate system".
-So for parallel transport, this means there is no physical change, i.e.
+\chapter{More Tensor Derivatives}
+The absolute derivative of a \emph{contravariant tensor} over some path,
+\begin{align}
+    \frac{D\lambda^a}{ds} &=\frac{d\lambda^a}{ds} +\tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds},
+\end{align}
+gives a tensor field of the same type.
+The first term takes into account both physical (real) changes in $\lambda^a$ and the way the curvature of the space can swimg the vector; the second term takes out the swinging of the vector from the curvature of space alone.
+If there is no physical change, then the vector is simply \emph{parallelly-transported} and
 \begin{align}
     \frac{D\lambda^a}{ds} = 0.
 \end{align}
-The absolute derivative obeys normal rules for derivatives.
-\begin{itemize}
-    \item Linear operator -
+The \emph{absolute derivative} obeys all the normal rules for derivatives so we have:
+\begin{enumerate}
+    \item The derivative is a \emph{linear operation}:
         \begin{align}
             \frac{D}{ds}\left(\lambda^a+ k\mu^a\right) = \frac{D\lambda^a}{ds} + k\frac{D\mu^a}{ds}.
         \end{align}
-    \item The (Leibniz) chain rule -
+    \item The Leibniz chain rule:
         \begin{align}
             \frac{D}{ds}\left(\lambda^a\mu^b\right) = \mu^b\frac{D\lambda^a}{ds} + \lambda^a\frac{D\mu^b}{ds}.
         \end{align}
-\end{itemize}
-What is the absolute derivative of a scalar, $\phi$?
-$\phi$ does not depend on the coordinates as tensors do, so it would just be the normal derivative, i.e.
+\end{enumerate}
+
+\section{The Absolute Derivative of a Scalar}
+$\phi$, a scalar, the number of which varies according to where it is in space, but it \emph{does not depend on the coordinate system} (as tensors do), so we have
 \begin{align}
     \frac{D\phi}{ds} = \frac{d\phi}{ds}.
 \end{align}
+This is the \textbf{Scalar Absolute Derivative} and is like a normal derivative.
+
+\section{The Absolute Derivative of Covariant Tensors}
 We have defined the absolute derivative of a contravariant tensor, but now what about a covariant tensor $\mu_a$?
-We can write a scalar as $\phi=\lambda^a\mu_a$, so we can write
+We can write a scalar as $\phi=\lambda^a\mu_a$, for which we have the above, $\frac{D\phi}{ds} = \frac{d\phi}{ds}$, then
 \begin{align}
-    \frac{D\phi}{ds} &= \frac{D}{ds}(\lambda^a\mu_a) = \mu_a\frac{D\lambda^a}{ds}+\lambda^a\frac{D\mu_a}{ds}, \\
-    \frac{d\phi}{ds} &= \mu_a\left(\frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}\right) + \lambda^a\frac{D\mu_a}{ds}, \\
-    \lambda^a\frac{d\mu_a}{ds} &= \mu_a\tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds} + \lambda^a\frac{D\mu_a}{ds}, \\
-                               &= \mu_b\tensor{\Gamma}{^b_{ac}}\lambda^a\frac{dx^c}{ds} + \lambda^a\frac{D\mu_a}{ds},
+    \frac{D\phi}{ds} &= \frac{D}{ds}(\lambda^a\mu_a) = \mu_a\frac{D\lambda^a}{ds}+\lambda^a\frac{D\mu_a}{ds}, 
 \end{align}
-where $\lambda^a$ is any tensor, so if this is true, it must be true for any $\lambda^a$.
+and we have the absolute derivative of $\lambda^a$:
+\begin{align}
+    \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds},
+    \implies \frac{d\phi}{ds} = \mu_a\left(\frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}\right) + \lambda^a\frac{D\mu_a}{ds},
+\end{align}
+and then using the chain rule for $\frac{d\phi}{ds}$:
+\begin{align}
+    \frac{d\phi}{ds} &= \frac{d}{ds}(\lambda^a\mu_a) = \mu_a\frac{d\lambda^a}{ds}+\lambda^a\frac{d\mu_a}{ds}, \\
+    \lambda^a\frac{d\mu_a}{ds} + \cancel{\mu_a\frac{d\lambda^a}{ds}} &= \cancel{\mu_a\frac{d\lambda^a}{ds}} + \mu_a\lambda^b\tensor{\Gamma}{^a_{bc}}\frac{dx^c}{ds} + \lambda^a\frac{D\mu_a}{ds},\\
+    \begin{split}
+        \lambda^a\frac{d\mu_a}{ds} &= \mu_a\tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds} + \lambda^a\frac{D\mu_a}{ds}, \\
+                                   &= \mu_b\tensor{\Gamma}{^b_{ac}}\lambda^a\frac{dx^c}{ds} + \lambda^a\frac{D\mu_a}{ds}.
+    \end{split}
+\end{align}
+We now have an expression with $\lambda^a$ in all terms and as it is a tensor, this must be true for any $\lambda^a$ if the other parts are true. 
 We can then `cancel' $\lambda^a$ through unity, as the remaining equation must also be true:
 \begin{align}
-    \frac{d\mu_a}{ds} &= \tensor{\Gamma}{_{ac}^b}\mu_b\frac{dx^c}{ds} + \frac{D\mu_a}{ds}, \\
-    \frac{D\mu_a}{ds} &= \frac{d\mu_a}{ds} - \tensor{\Gamma}{_{ac}^b}\mu_b\frac{dx^c}{ds}.
+    \frac{d\mu_a}{ds} &= \tensor{\Gamma}{^b_{ac}}\mu_b\frac{dx^c}{ds} + \frac{D\mu_a}{ds}.
 \end{align}
-This is the absolute derivative of a contravariant tensor.
-
-What is the absolute derivative of a rank (1,1) tensor $\tensor{\tau}{^a_b}=\lambda^a\mu_b$?
+So rearranging gives us the \textbf{Absolute Derivative of Covariant Tensors}:
 \begin{align}
-    \frac{D\tensor{\tau}{^a_b}}{ds} = \frac{D(\lambda^a\mu_b}{ds} &= \mu_b\frac{D\lambda^a}{ds} + \lambda^a\frac{D\mu_b}{ds}, \\
-                                                                  &= \mu_b\left[\frac{d\lambda^a}{ds}+\tensor{\Gamma}{^a_{dc}}\lambda^d\frac{dx^c}{ds}\right] + \lambda^a\left[\frac{d\mu_b}{ds}-\tensor{\Gamma}{_{bc}^d}\mu_d\frac{dx^c}{ds}\right],\\
-    \frac{D\tensor{\tau}{^a_b}}{ds} &= \frac{d}{ds}(\lambda^a\mu_b) + \tensor{\Gamma}{^a_{dc}}\tensor{\tau}{^d_b}\frac{dx^c}{ds} - \tensor{\Gamma}{_{bc}^d}\tensor{\tau}{_d^a}\frac{dx^c}{ds}.
+    \frac{D\mu_a}{ds} &= \frac{d\mu_a}{ds} - \tensor{\Gamma}{^b_{ac}}\mu_b\frac{dx^c}{ds}.
 \end{align}
-This is the absolute derivative for a rank (1,1) tensor.
 
+\section{The Absolute Derivative of Higher-Order Tensors}
+What is the absolute derivative of a rank (1,1) tensor, e.g. $\tensor{\tau}{^a_b}=\lambda^a\mu_b$?
+\begin{align}
+    \begin{split}
+        \frac{D\tensor{\tau}{^a_b}}{ds} &= \frac{D(\lambda^a\mu_b)}{ds} = \mu_b\frac{D\lambda^a}{ds} + \lambda^a\frac{D\mu_b}{ds}, \\
+                                        &= \mu_b\left[\frac{d\lambda^a}{ds}+\tensor{\Gamma}{^a_{dc}}\lambda^d\frac{dx^c}{ds}\right] + \lambda^a\left[\frac{d\mu_b}{ds}-\tensor{\Gamma}{^d_{bc}}\mu_d\frac{dx^c}{ds}\right],\\
+                                        &= \frac{d}{ds}(\lambda^a\mu_b) + \mu_b\tensor{\Gamma}{^a_{dc}}\lambda^a\frac{dx^c}{ds} - \lambda^a\tensor{\Gamma}{^d_{bc}}\mu_d\frac{dx^c}{ds},\\
+                                        &= \frac{d}{ds}(\tensor{\tau}{^a_b}) + \tensor{\Gamma}{^a_{dc}}\tensor{\tau}{^d_b}\frac{dx^c}{ds} - \tensor{\Gamma}{^d_{bc}}\tensor{\tau}{_d^a}\frac{dx^c}{ds}.
+    \end{split}
+\end{align}
+We could also do this to, for example, $\tensor{R}{^a_{bcd}}$ (Riemann's curvature tensor) which we will use later.
+
+\section{Covariant Derivative}
 What about the covariant derivative?
-It is defined as:
+It is defined as
 \begin{align}
-    \tensor{\lambda}{^a_{;c}} &= \frac{\p\lambda^a}{\p x^c} + \tensor{\Gamma}{^a_{bc}}\lambda^b \\
-    \frac{D\lambda^a}{ds} &= \tensor{\lambda}{^a_{;c}}\frac{dx^c}{ds} \\
-                          &= \frac{\p\lambda^a}{\p x^c}\frac{dx^c}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds} = \frac{d\lambda^a}{ds} + \dots.
+    \tensor{\lambda}{^a_{;c}} &= \frac{\p\lambda^a}{\p x^c} + \tensor{\Gamma}{^a_{bc}}\lambda^b.
 \end{align}
-All the rules still apply, so we can write out the covariant derivative for a scalar, a covariant, and a higher order tensor:
+This is like the partial derivative in curved spacetime. 
+It is related to the absolute derivative as
 \begin{align}
-    \phi_{;c} &= \frac{\p\phi}{\p x^c}, \\
-    \mu_{a;c} &= \frac{\p\mu+a}{\p x^c}-\tensor{\Gamma}{_{ac}^b}\mu_b, \\
-    \lambda_{ab;c} &= \frac{\p\lambda_{ab}}{\p x^c} - \tensor{\Gamma}{_{ac}^d}\lambda_{db}-\tensor{\Gamma}{_{bc}^d}\lambda_{ad}.
+    \begin{split}
+        \frac{D\lambda^a}{ds} &= \tensor{\lambda}{^a_{;c}}\frac{dx^c}{ds} = \frac{\p\lambda^a}{\p x^c}\frac{dx^c}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}\\
+                              &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds}.
+    \end{split},
 \end{align}
-We can also consider the metric:
+so we've brought ourselves back to the absolute derivative. 
+The rules as before carry over again, so we can now write out the covariant derivative for a second-order contravariant tensor:
 \begin{align}
-    g_{ab;c} &= ? \\
-    \frac{\p g_{ab}}{\p x^c} &= \frac{\p}{\p x^c} (\ve_a\cdot\ve_b), \\
-                             &= \frac{\p\ve_a}{\p x^c}\cdot\ve_b + \ve_a\cdot\frac{\p\ve_b}{\p x^c},\\
-                             &= \left(\tensor{\Gamma}{_{ac}^d}\ve_d\right)\cdot\ve_b + \ve_a\cdot\left(\tensor{\Gamma}{_{bc}^d}\ve_d\right), \\
-                             &= \tensor{\Gamma}{_{ac}^d}g_{db} + \tensor{\Gamma}{_{bc}^d}g_{ad}, \\
-    g_{ab;c} &= \frac{\p g_{ab}}{\p x^c} - \tensor{\Gamma}{_{ac}^d}g_{db} - \tensor{\Gamma}{_{bc}^d}g_{ad} = 0,
+    \begin{split}
+        \tensor{\tau}{^{ab}_{;c}} &= (\lambda^a\mu^b)_{;c} = \tensor{\lambda}{^a_{;c}}\mu^b + \lambda^a\tensor{\mu}{^b_{;c}} \\
+                                  &= \frac{\p\lambda^a}{\p x^c}\mu^b + \tensor{\Gamma}{^a_{dc}}\lambda^d\mu^b + \lambda^a\frac{\p\mu^b}{\p x^c} + \lambda^a\tensor{\Gamma}{^b_{dc}}\mu^d \\
+                                  &= \p_c\tau^{ab} + \tensor{\Gamma}{^a_{dc}}\tau^{db} + \tensor{\Gamma}{^d_{ac}}\tau^{ad}
+    \end{split}
 \end{align}
-where we used the previous definitions of the covariant derivative to find this definition.
+For the covariant derivative of a scalar, we have
+\begin{align}
+    \phi_{;c} &= \frac{\p\phi}{\p x^c} = \p_c\phi,
+\end{align}
+which is the same as the partial derivative of the scalar. 
+Let $\phi=\lambda^a\mu_a$, and we can find the \emph{covariant derivative of a covariant tensor}:
+\begin{align}
+    \begin{split}
+        \phi_{;c} = \p_c\phi &= (\lambda^a\mu_a)_{;c} = (\tensor{\lambda}{^a_{;c}})\mu_a + \lambda^a(\mu_{a;c}), \\
+        \frac{\p\phi}{\p x^c} &= \cancel{\left(\frac{\p\lambda^a}{\p x^c}\right)}\mu_a + \lambda^a\left(\frac{\p\mu_a}{\p x^c}\right) = \left(\cancel{\frac{\p\lambda^a}{\p x^c}} + \tensor{\Gamma}{^a_{dc}}\lambda^d\right)\mu_a + \lambda^a\mu_{a;c} 
+    \end{split}\\
+    \lambda^a\frac{\p\mu_a}{\p x^c} &= \tensor{\Gamma}{^a_{dc}}\lambda^d\mu_a + \lambda^a\mu_{a;c}
+\end{align}
+and relabelling indices to get all $\lambda$ compenents to $\lambda^a$,
+\begin{align}
+    \lambda^a\frac{\p\mu_a}{\p x^c} &= \tensor{\Gamma}{^b_{ac}}\lambda^a\mu_b +\lambda^a\mu_{a;c},\\
+    \mu_{a;c} &= \frac{\p\mu_a}{\p x^c}-\tensor{\Gamma}{^b_{ac}}\mu_b,
+\end{align}
+and so we have our \textbf{Covariant Derivative of a Covariant Tensor.}
+We can do higher-order covariant derivatives similarly, yielding
+\begin{align}
+    \lambda_{ab;c} &= \frac{\p\lambda_{ab}}{\p x^c} - \tensor{\Gamma}{^d_{ac}}\lambda_{db}-\tensor{\Gamma}{^d_{bc}}\lambda_{ad}.
+\end{align}
+Covariant differentiation forms a tensor field of one higher covariant order than the original tensor field.
+
+\section{Covariant Derivative of the Metric}
+In getting the Christoffel symbols in terms of the metric, we had
+\begin{align}
+    \begin{split}
+    \frac{\p g_{ab}}{\p x^c} &= \frac{\p}{\p x^c} (\ve_a\cdot\ve_b) = \frac{\p\ve_a}{\p x^c}\cdot\ve_b + \ve_a\cdot\frac{\p\ve_b}{\p x^c},\\
+                             &= \left(\tensor{\Gamma}{^d_{ac}}\ve_d\right)\cdot\ve_b + \ve_a\cdot\left(\tensor{\Gamma}{^d_{bc}}\ve_d\right) = \tensor{\Gamma}{^d_{ac}}g_{db} + \tensor{\Gamma}{^d_{bc}}g_{ad},
+    \end{split}\\
+    \frac{\p g_{ab}}{\p x^c} &- \tensor{\Gamma}{^d_{ac}}g_{db} - \tensor{\Gamma}{^d_{bc}}g_{ad} = 0,
+\end{align}
+Comparing this to the definition of the covariant of a second-order covariant tensor, this is
+\begin{align}
+    g_{ab;c} = 0,
+\end{align}
+and we can similarly get
+\begin{align}
+    \tensor{g}{^{ab}_{;c}} = 0.
+\end{align}
+This means that index lowering can be swapped in and out of covariant differentiation. 
 Why is this important?
 The metric allows us to switch coordinate systems as
 \begin{align}
-    R_a &= g_{ab}R^b.
+    R_a &= g_{ab}R^b,\qquad R_{a;c} = (g_{ab}R^b)_{;c},\\
+    R_{a;c} &= \cancel{g_{ab;c}R^b} + g_{ab}\tensor{R}{^b_{;c}} = g_{ab}\tensor{R}{^b_{;c}}.
 \end{align}
-Now suppose we want to find the covariant derivative:
+Likewise, $\tensor{g}{^{ab}_{;c}} = 0$, so index raising can also be swapped in and out of covariant differentiation. 
+\begin{example}[Surface of a Sphere]
+The metric on a surface of a sphere is
 \begin{align}
-    R_{a;c} &= \cancel{g_{ab;c}R^b} + g_{ab}\tensor{R}{^b_{;c}} \\
-            &= g_{ab}\tensor{R}{^b_{;c}}.
+    ds^2 &= a^2d\theta^2 + a^2\sin^2\theta\,d\phi^2.
 \end{align}
+This is diagonal, so all $\tensor{\Gamma}{^A_{BC}} = 0$ except
+\begin{align}
+    \tensor{\Gamma}{^\theta_{\phi\phi}} &= -\sin\theta\cos\theta, & \tensor{\Gamma}{^\phi_{\phi\theta}} &= \tensor{\Gamma}{^\phi_{\theta\phi}} = \frac{\cos\theta}{\sin\theta} = \cot\theta.
+\end{align}
+Let's check:
+\begin{align}
+    g_{AB;C} &= \frac{\p g_{AB}}{\p x^c} - \tensor{\Gamma}{^D_{AB}}g_{DB} - \tensor{\Gamma}{^D_{BC}}g_{AD}.
+\end{align}
+$g_{AB}$ is diagonal so when $A\neq B$, we have zeros, and we only need to consider two cases:
+\begin{enumerate}
+    \item   
+        \begin{align}
+            g_{\theta\theta;C} &= \cancel{\frac{\p}{\p x^C}(a^2)} - \tensor{\Gamma}{^D_{\theta C}}g_{D\theta} - \tensor{\Gamma}{^D_{\theta C}}g_{\theta D},
+        \end{align}
+        where $a^2$ is a constant so the first term is zero; the second and third terms are also equivalent.
+        \begin{align}
+            g_{\theta\theta;C} &= -2\tensor{\Gamma}{^\theta_{\theta C}}g_{\theta\theta} = -2\tensor{\Gamma}{^\theta_{\theta C}}(a^2),
+        \end{align}
+        but looking at our non-zero Christoffel symbols, there is no non-zero $\tensor{\Gamma}{^\theta_{\theta C}}$, so
+        \begin{align}
+            g_{\theta\theta;C} = 0.
+        \end{align}
+    \item
+        \begin{align}
+            \begin{split}
+                g_{\phi\phi;C} &= \frac{\p}{\p x^c}(a^2\sin^2\theta) - \tensor{\Gamma}{^D_{\phi C}}g_{D\phi} - \tensor{\Gamma}{^D_{\phi C}}g_{D\phi}, \\
+                               &= \frac{\p}{\p x^c}(a^2\sin^2\theta) - 2\tensor{\Gamma}{^\phi_{\phi C}}g_{\phi\phi}.
+            \end{split}
+        \end{align}
+        For non-zero $\tensor{\Gamma}{^\phi_{\phi C}}$, we need $C=\theta$, such that $\tensor{\Gamma}{^\phi_{\phi\theta}} = \cot\theta$, so then we have
+        \begin{align}
+            g_{\phi\phi;C} &= \frac{\p}{\p\theta}(a^2\sin^2\theta) - 2\tensor{\Gamma}{^\phi_{\phi\theta}}g_{\phi\phi} = 2a^2\cos\theta\sin\theta - 2a^2\sin\theta\cos\theta = 0.
+        \end{align}
+\end{enumerate}
+\end{example}
 
-\chapter{}
+\chapter{Describing the Curvature of Space}
 \section{The Riemann Curvature Tensor}
-\begin{itemize}
-    \item how do we know if space is curved?
-    \item second derivatives of the metric
-    \item `space-sing' around a loop
-    \item convergence of geodesic paths
-\end{itemize}
+We still need a way to describe curvature.
+The metric tensor $g_{ab}$ and the Christoffel symbols $\tensor{\Gamma}{^a_{bc}}$ both contain the important information about the space curvature, but also the unimportant information about what coordinates we are working in. 
+What happens if we take the \emph{covariant derivative} twice?
+Let's start from the normal covariant derivative:
+\begin{align}
+    \tensor{\lambda}{^a_{;b}} &= \frac{\p\lambda^a}{\p x^b} + \tensor{\Gamma}{^a_{bc}}\lambda^c, \\
+    \tensor{\lambda}{^a_{;b;c}} &= \frac{\p\tensor{\lambda}{^a_{;b}}}{\p x^c} + \tensor{\Gamma}{^a}{_{ec}}\tensor{\lambda}{^e_{;b}} - \tensor{\Gamma}{^f_{bc}}\tensor{\lambda}{^a_{;f}}.
+\end{align}
+Remember we are differentiating a mixed tensor. 
+Expanding this out, focusing on the first term:
+\begin{align}
+    \begin{split}
+        \tensor{\lambda}{^a_{;b;c}} &= \frac{\p}{\p x^c}\left(\frac{\p\lambda^a}{\p x^b} + \tensor{\Gamma}{^a_{bd}}\lambda^d\right) + \tensor{\Gamma}{^a_{ec}}\tensor{\lambda}{^e_{;b}} - \tensor{\Gamma}{^f_{bc}}\tensor{\lambda}{^a_{;f}} \\
+                                    &= \frac{\p^2\lambda^a}{\p x^c \p x^b} + \tensor{\Gamma}{^d_{bd}}\frac{\p\lambda^d}{\p x^c} + \lambda^d\frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c} + \tensor{\Gamma}{^a_{ec}}\tensor{\lambda}{^a_{;b}}-\tensor{\Gamma}{_{bc}^f}\tensor{\lambda}{^a_{;f}}.
+    \end{split}
+\end{align}
+What will be of interest for this is the way that this depends on the order of differentiation. 
+In flat space, the Christoffel symbols go to zero, so we can swap $;b$ and $;c$ indices, 
+\begin{align}
+    \tensor{\lambda}{^a_{;b;c}} &= \frac{\p^2\lambda^a}{\p x^b\p x^c} = \frac{\p^2\lambda^a}{\p x^c\p x^b} = \tensor{\lambda}{^a_{;c;b}},
+\end{align}
+i.e. the order doesn't matter. 
+\textbf{This is only true for flat space.}
+In curved spaces, this is not necessarily true. 
+If we now do $\tensor{\lambda}{^a_{;c;b}}$,
+\begin{align}
+    \tensor{\lambda}{^a_{;c;b}} &= \frac{\p^2\lambda^a}{\p x^b\p x^c} + \tensor{\Gamma}{^a_{cd}}\frac{\p\lambda^d}{\p x^b} + \lambda^d\frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} + \tensor{\Gamma}{^a_{eb}}\tensor{\lambda}{^e_{;c}} - \tensor{\Gamma}{^f_{cb}}\tensor{\lambda}{^a_{;f}},
+\end{align}
+and compute $\tensor{\lambda}{^a_{;c;b}}-\tensor{\lambda}{^a_{;b;c}}$.
+The first term cancels as it is on both sides, along with the $\tensor{\Gamma}{^f_{bc}}$ and $\tensor{\Gamma}{^f_{cb}}$ terms due to symmetry, so
+\begin{align}
+    \tensor{\lambda}{^a_{;c;b}}-\tensor{\lambda}{^a_{;b;c}} &= \left(\tensor{\Gamma}{^a_{cd}}\frac{\p\lambda^d}{\p x^b} - \tensor{\Gamma}{^a_{bd}}\frac{\p\lambda^d}{\p x^c}\right) + \lambda^d\left(\frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} - \frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c}\right) + \left(\tensor{\Gamma}{^a_{eb}}\tensor{\lambda}{^e_{;c}}-\tensor{\Gamma}{^a_{ec}}\tensor{\Gamma}{^e_{;b}}\right).
+\end{align}
+Collecting the terms with similar $\tensor{\Gamma}{^a_{bd}}$. 
+The trick is to notice that $\tensor{\lambda}{^d_{;c}}-\frac{\p\lambda^d}{\p x^c} = \tensor{\Gamma}{^d_{ce}}\lambda^e$, so then
+\begin{align}
+    \tensor{\lambda}{^a_{;c;b}} - \tensor{\lambda}{^a_{;b;c}} &= \tensor{\Gamma}{^a_{dc}}\left(\frac{\p\lambda^d}{\p x^b}-\tensor{\lambda}{^d_{;b}}\right) + \tensor{\Gamma}{^a_{bd}}\left(\tensor{\lambda}{^d_{;c}}-\frac{\p\lambda^d}{\p x^c}\right) + \lambda^d\left(\frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} - \frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c}\right).
+\end{align}
+We also changed $\tensor{\Gamma}{^a_{ec}}\tensor{\lambda}{^e_{;b}} = \tensor{\Gamma}{^a_{dc}}\tensor{\lambda}{^d_{;c}} = \tensor{\Gamma}{^a_{cd}}\tensor{\lambda}{^a_{;c}}$ due to letters and also for $\tensor{\Gamma}{^a_{bd}}\tensor{\lambda}{^e_{;c}} = \tensor{\Gamma}{^a_{bd}}\tensor{\lambda}{^d_{;c}}$, so then
+\begin{align}
+    \tensor{\lambda}{^a_{;c;b}} - \tensor{\lambda}{^a_{;b;c}} &= \tensor{\Gamma}{^a_{bd}}\tensor{\Gamma}{^d_{ce}}\lambda^e - \tensor{\Gamma}{^a_{cd}}\tensor{\Gamma}{^d_{be}}\lambda^e + \lambda^d\left(\frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} - \frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c}\right).
+\end{align}
+Relabelling $d\leftrightarrow e$ to get $\lambda^d$ on all terms, we get
+\begin{align}
+    \left(\tensor{\Gamma}{^a_{be}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} - \frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c}\right)\lambda^d = \tensor{R}{^a_{dbc}}\lambda^d.
+\end{align}
+These are all sums and can work out as a function of where you are in space as we can calculate Christoffel symbols. 
+We have arrived at the Riemann curvature tensor, defined as
+\begin{align}
+    \tensor{R}{^a_{dbc}} &= \tensor{\Gamma}{^a_{be}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \p_b\tensor{\Gamma}{^a_{cd}} - \p_c\tensor{\Gamma}{^a_{bd}}.
+\end{align}
 The Riemann curvature tensor tells us \emph{how much the direction of a vector changes as it goes round a loop}, or the \emph{tidal forces of gravity}.
-\begin{align}
-    \tensor{\left(\tensor{\lambda}{^a_{;b}}\right)}{_{;c}} &= \frac{\p\tensor{\lambda}{^a_{;b}}}{\p x^c} + \tensor{\Gamma}{^a}{_{ec}}\tensor{\lambda}{^e_{;b}} - \tensor{\Gamma}{_{bc}^f}\tensor{\lambda}{_{;f}^a} \\
-                                                         &= \frac{\p}{\p x^c}\left(\frac{\p\lambda^a}{\p x^b} + \tensor{\Gamma}{^a_{bd}}\lambda^d\right) + \cdots \\
-    \tensor{\lambda}{^a_{;b;c}} &= \frac{\p^2\lambda^a}{\p x^c \p x^b} + \tensor{\Gamma}{^d_{bd}}\frac{\p\lambda^d}{\p x^c} + \lambda^d\frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c} + \tensor{\Gamma}{^a_{ec}}\tensor{\lambda}{^a_{;b}}-\tensor{\Gamma}{_{bc}^f}\tensor{\lambda}{^a_{;f}}
-\end{align}
-In flat space, the Christoffel symbols go to zero, so we can sway $;b$ and $;c$ indices, but \textbf{not in curved space.}
-\begin{align}
-    \tensor{\lambda}{^a_{;c;b}} &= \frac{\p^2\lambda^a}{\p x^b\p x^c} + \tensor{\Gamma}{^a_{cd}}\frac{\p\lambda^d}{\p x^b} + \lambda^d\frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} + \tensor{\Gamma}{^a_{eb}}\tensor{\lambda}{^e_{;c}} - \tensor{\Gamma}{_{cb}^f}\tensor{\lambda}{^a_{;f}} \\
-    \tensor{\lambda}{^a_{;c;b}}-\tensor{\lambda}{^a_{;b;c}} &= \left(\tensor{\Gamma}{^a_{cd}}\frac{\p\lambda^d}{\p x^b} - \tensor{\Gamma}{^a_{bd}}\frac{\p\lambda^d}{\p x^c}\right) + \lambda^d\left(\frac{\p\tensor{\Gamma}{_{cd}^a}}{\p x^b} - \frac{\p\tensor{\Gamma}{_{bd}^a}}{\p x^c}\right) + \left(\tensor{\Gamma}{^a_{eb}}\tensor{\lambda}{^e_{;c}}-\tensor{\Gamma}{^a_{ec}}\tensor{\Gamma}{^e_{;b}}\right) \\
-                                                            &= \tensor{\Gamma}{^a_{cd}}\left(\frac{\p\lambda^a}{\p x^b}-\tensor{\lambda}{^d_{;b}}\right) + \tensor{\Gamma}{^a_{bd}}\left(\tensor{\lambda}{^d_{;c}}-\frac{\p\lambda^d}{\p x^c}\right) + \lambda^d\left(\frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} - \frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c}\right) \\
-                                                            &= \left(\tensor{\Gamma}{^a_{be}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^b} - \frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c}\right)\lambda^d = \tensor{R}{^a_{dbc}}\lambda^d
-\end{align}
-We have arrived at the Riemann curvature tensor.
-Consider:
-\textit{doodle diagram}
-\begin{align}
-    \lambda^a(B^1) &= \lambda^a(A) + \tensor{\lambda}{^a_{;b}}\delta x^b + \tensor{\lambda}{^a_{;c}}\delta y^c + \tensor{\lambda}{^a_{;b;c}}\delta x^b\delta y^c \\
-    \lambda^a(B^2) &= \lambda^a(A) + \tensor{\lambda}{^a_{;c}}\delta y^c + \tensor{\lambda}{^a_{;b}}\delta x^b + \tensor{\lambda}{^a_{;c;b}}\delta y^c\delta x^b \\
-    \Delta\lambda^a &= \lambda^a(B^2)-\lambda^a(B^1) = \left(\tensor{\lambda}{^a_{;c;b}}-\tensor{\lambda}{^a_{;b;c}}\right)\delta x^b\delta y^c \\
-                    &= \tensor{R}{^a_{dbc}}\lambda^a\cdot\text{ area of loop}
-\end{align}
-In flat space, any two lines have a separation that increases linearly with distance $s$, e.g. $\p_s^2=0$.
-But in curved space, our two lines can converge or diverge as they travel from initial parallel conditions.
-Consider two lines $x^a(s)$ and $\tilde{x}^a(s)$ with a separation $\zeta^a=\tilde{x}^a - x^a$.
-We can write our geodesic equation for this as
-\begin{align}
-    \frac{d^2x^a}{ds^2} &+ \tensor{\Gamma}{^a_{bc}}\frac{dx^b}{ds} \frac{dx^c}{ds} = 0 \\
-    \frac{d^2\tilde{x}^a}{ds^2} &+ \tensor{\tilde{\Gamma}}{^a_{bc}}\frac{d\tilde{x}^b}{ds}\frac{d\tilde{x}^c}{ds} = 0 \\
-    \ddot{\zeta}^a &+ \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{\zeta}^c + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c + \frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d} \zeta^d\dot{x}^b\dot{x}^c = 0  \\
-    \frac{D^2\zeta^a}{ds^2} &= \frac{D}{ds}\left(\dot{\zeta}^a + \tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right) \\
-                            &= \ddot{\zeta}^a + \tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c + \frac{d}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right)+\tensor{\Gamma}{^a_{ef}}\left(\tensor{\Gamma}{^e_{bc}}\zeta^b\dot{x}^c\right)\dot{x}^f
-\end{align}
+If we have symmetries, then this gets simpler. 
+As it is a tensor, we can transform to other coordinate systems. 
 
-\chapter{}
-\emph{Things are about to get a little more physics!} - Richard Bower. \\
-In this lecture:
+\newpage
+\section{Geodesic Convergence}
+\begin{wrapfigure}{l}{0.35\textwidth}
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (3pt) node[anchor=east] {A};
+        \fill (2,0) circle (3pt) node[anchor=west] {B};
+        \fill[white] (-1,0) circle (3pt) node[black] {X};
+        \draw[-Latex,violet!70!white] (-1,-0.3) arc (-170:170:53pt);
+        \draw (0,0) -- (1,1) node[anchor=south east,midway] {$\delta x$} node[anchor=north,yshift=-5pt] {1};
+        \draw (1,1) -- (2,0) node[anchor=south west,midway] {$\delta y$};
+        \draw[magenta] (0,0) -- (1,-1) node[anchor=north east,midway] {$\delta y$} node[anchor=south,black,yshift=5pt] {2};
+        \draw[magenta] (1,-1) -- (2,0) node[anchor=north west,midway] {$\delta x$};
+    \end{tikzpicture}
+\end{wrapfigure}
+If we take two different paths from $A\to B$ in two moves, each to make a loop starting with tensor $\lambda^a$, what is its value at $B$ after travelling the path?
+If we denote which path we are considering by $^i$, $i\in\{1,2\}$, then let's start by considering path 1:
+\begin{align}
+    \lambda^a(B^1) &= \lambda^a(A) + \tensor{\lambda}{^a_{;b}}\delta x^b + \tensor{\lambda}{^a_{;c}}\delta y^c + \tensor{\lambda}{^a_{;b;c}}\delta x^b\delta y^c.
+\end{align}
+Now if we do path 2:
+\begin{align}
+    \lambda^a(B^2) &= \lambda^a(A) + \tensor{\lambda}{^a_{;c}}\delta y^c + \tensor{\lambda}{^a_{;b}}\delta x^b + \tensor{\lambda}{^a_{;c;b}}\delta y^c\delta x^b.
+\end{align}
+For paths 1 and 2, we could get the same answer in flat space as
+\begin{align}
+    \tensor{\lambda}{^a_{;b;c}}\delta x^b\delta y^c = \tensor{\lambda}{^a_{;c;b}}\delta y^c\delta^b,
+\end{align}
+but this is not the case in curved space:
+\begin{align}
+    \begin{split}
+        \Delta\lambda^a = \lambda^a(B^2)-\lambda^a(B^1) &= \left(\tensor{\lambda}{^a_{;c;b}}-\tensor{\lambda}{^a_{;b;c}}\right)\delta x^b\delta y^c \\
+                                                        &= \tensor{R}{^a_{dbc}}\lambda^a\cdot\text{ area of loop}
+    \end{split}
+\end{align}
+So $\tensor{R}{^a_{dbc}}$ tells us how much a vector swings as we go around a loop. 
+The key thing about curvature is that neighbouring geodesics get further apart (or closer together) at a rate depending on the local curvature.
+In flat space under no forces, the geodesics are straight lines. 
+The distance between two geodesics then increases/decreases linearly as a function of the path length along the geodesic, i.e. \emph{if they start parallel, they stay parallel.}
+In curved space, the geodesics do not separate linearly, i.e. the second derivative will not be zero, and this gives us a way to quantify the curvature of spacetime. 
+From starting parallel, paths could:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (3pt);
+        \fill (0,1) circle (3pt);
+        \draw (0,0) cos (2,1);
+        \draw (0,1) cos (2,0);
+
+        \fill (4,0) circle (3pt);
+        \fill (4,1) circle (3pt);
+        \draw (4,0) cos (6,-0.5);
+        \draw (4,1) cos (6,1.5);
+    \end{tikzpicture}
+\end{figure}
+Consider two geodesics $\gamma$ and $\gamma^a$ with coordinates $x^a(s)$ and $\tilde{x}^a(s)$, and a separation $\zeta^a=\tilde{x}^a - x^a$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (3pt) node[anchor=east] {$\tilde{x}^a(s)$};
+        \fill (0,1) circle (3pt) node[anchor=east] {$x^a(s)$};
+        \draw (0,0) -- (2,0);
+        \draw (0,1) -- (2,1);
+        \draw[decorate,decoration={brace,amplitude=10pt,mirror}] (2,-0.1) -- (2,1.1) node[anchor=west,midway,xshift=10pt] {separation $= \zeta^a(u) = \tilde{x}^a(u) - x^a(u)$};
+    \end{tikzpicture}
+\end{figure}
+These are geodesics, so we can use the \emph{geodesic equation:}
+\begin{align}
+    \frac{d^2x^a}{ds^2} &+ \tensor{\Gamma}{^a_{bc}}\frac{dx^b}{ds} \frac{dx^c}{ds} = 0, & \frac{d^2\tilde{x}^a}{ds^2} &+ \tensor{\tilde{\Gamma}}{^a_{bc}}\frac{d\tilde{x}^b}{ds}\frac{d\tilde{x}^c}{ds} = 0.
+\end{align}
+We also have $\tilde{x}^a=\zeta^a + x^a$ and $\tilde{x}^c = \zeta^c x^c$, yielding
+\begin{align}
+    \tensor{\tilde{\Gamma}}{^d_{bc}} &= \tensor{\Gamma}{^a_{bc}}+\frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d}(\tilde{x}^d-x^d) = \tensor{\Gamma}{^a_{bc}} + \frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d}\zeta^d,
+\end{align}
+using our separation definition. 
+Subtracting the geodesics gives
+\begin{align}
+    \frac{d^2\tilde{x}^a}{ds^2} + \tensor{\tilde{\Gamma}}{^a_{bc}}\frac{d\tilde{x}^b}{ds}\frac{d\tilde{x}^c}{ds} - \frac{d^2x^a}{ds^2} - \tensor{\Gamma}{^a_{bc}}\frac{dx^b}{ds}\frac{dx^c}{ds} &= 0, \\
+    \frac{d^2(x^a+\zeta^a)}{ds^2} + \left(\tensor{\Gamma}{^a_{bc}} + \frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d}\zeta^d\right)\frac{d(x^b+\zeta^b)}{ds}\frac{d(x^c+\zeta^c)}{ds} - \frac{d^2x^a}{ds^2} - \tensor{\Gamma}{^a_{bc}}\frac{dx^b}{ds}\frac{dx^c}{ds} &= 0,
+\end{align}
+and letting the dot denote the derivative with respect to the path length, and keep only the first order terms, i.e. ignore anything with $\dot{\zeta}\dot{\zeta}$, yields
+\begin{align}
+    \ddot{\zeta}^a &+ \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{\zeta}^c + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c + \frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d} \zeta^d\dot{x}^b\dot{x}^c = 0.
+\end{align}
+We have this term $\ddot{\zeta}^a$, but we are looking for a tensor equation, and we would get something with this term that transformed as a tensor if we had $\frac{D^2\zeta}{ds^2}$ instead:
+\begin{align}
+    \begin{split}
+        \frac{D^2\zeta^a}{ds^2} &= \frac{D}{ds}\left(\dot{\zeta}^a + \tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right) = \frac{D}{ds}\dot{\zeta}^a + \frac{D}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right) \\
+                                &= \ddot{\zeta}^a + \tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c + \frac{d}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right)+\tensor{\Gamma}{^a_{ef}}\left(\tensor{\Gamma}{^e_{bc}}\zeta^b\dot{x}^c\right)\dot{x}^f.
+    \end{split}
+\end{align}
+Let's substitute our expression involving $\frac{d^2\zeta^a}{ds^2}$ (which is not a tensor) into our expression for $\frac{D^2\zeta^a}{ds^2}$ (which is a tensor).
+Looking at the term $\frac{d}{ds}(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c)$:
+\begin{align}
+    \frac{d}{ds}\left(\tensor{\Gamma}{^a_{bc}}\zeta^b\dot{x}^c\right) &= \tensor{\Gamma}{^a_{be}}\zeta^b\ddot{x}^e + \zeta^b\dot{x}^c\left(\frac{\p\tensor{\Gamma}{^a_{bc}}}{\p x^d}\dot{x}^d\right) + \tensor{\Gamma}{^a_{bc}}\dot{\zeta}^b\dot{x}^c.
+\end{align}
+The first of these can be rewritten because te path is a geodesic, so
+\begin{align}
+    \ddot{x}^e &= -\tensor{\Gamma}{^e_{cd}}\dot{x}^c\dot{x}^d.
+\end{align}
+The third term (with $\dot{\zeta}^b$) is just the same as the $\dot{\zeta}^c$ terms in our expression for $\ddot{\zeta}^a$.
+If we work through the algebra, combining Eqs (9.19) and (9.20) and do lots of relabelling, we get
+\begin{align}
+    \frac{D^2\zeta^a}{ds^2} + \left(\tensor{\Gamma}{^a_{be}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \frac{\p\tensor{\Gamma}{^a_{cd}}}{\p x^d} - \frac{\p\tensor{\Gamma}{^a_{bd}}}{\p x^c}\right)\zeta^b\dot{x}^c\dot{x}^d &= 0.
+\end{align}
+So here we have something which should equal zero if the space is flat, and not zero if the space is curved, but this is just the \emph{Riemann curvature tensor!}
+\begin{align}
+    \frac{D^2\zeta^a}{ds^2} &+ \tensor{R}{^a_{dbc}}\zeta^b\dot{x}^c\dot{x}^d = 0, \\
+    \tensor{R}{^a_{dbc}} &= \left(\tensor{\Gamma}{^a_{be}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \p_b\tensor{\Gamma}{^a_{cd}} - \p_c\tensor{\Gamma}{^a_{bd}}\right).
+\end{align}
+This tensor equation does not care about coordinate systems. 
+Flat space has all components of $\tensor{R}{^a_{bcd}}=0$ irrespective of whether you are working in spherical polar coordinates or Cartesian coordinates, and if all components are zero then $\frac{D^2\zeta^a}{ds^2}=0,\zeta^a=Au+B$, so geodesics in flat space separate linearly (or remain parallel if $A=0$).
+Geodesics in curved space do not. 
+
+\chapter{Symmetries of the Riemann Tensor and Implications}
+\emph{Things are about to get a little more physics!} - Richard Bower. 
 \begin{itemize}
-    \item Geodesic convergence.
     \item Symmetry of the Riemann tensor,
         \begin{align}
             \tensor{R}{^a_{dbc}} &= \tensor{\Gamma}{^a_{bc}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \p_b\tensor{\Gamma}{^a_{cd}}-\p_c\tensor{\Gamma}{^a_{bd}}.
@@ -1087,15 +1339,17 @@ From this definition, we can quickly infer the symmetry relation
 \begin{align}
     \tensor{R}{^a_{dcb}} &= -\tensor{R}{^a_{dbc}}.
 \end{align}
-
-\section{Symmetries of the Riemann tensor}
+We can write the Riemann tensor out in full, but it is very big and tedious. 
 In 4D spacetime, the Riemann tensor contains $4\times4\times4\times4 = 256$ numbers.
 This isn't very fun unless you are a computer, says Richard.
-However, using the symmetry of the Riemann tensor, there are only 20 independent elements, which can be a lot easier.
+However, the \emph{symmetry properties} of the Riemann tensor mean that it only has 20 algebraically-independent components. 
 How do we demonstrate this though?
 We can use mathematical tricks for tensors, whereby if we prove something in one coordinate system, it must be true in all coordinate systems.
 
-\subsection{Local Geodesic Coordinates}
+\section{Local Geodesic Coordinates}
+We can always define locally-geodesic coordinates: those in which the metric tensor is given by $\eta_{\alpha\beta}$ and the Christoffel symbols are zero, but their derivatives are \unl{not.}
+We cannot transform gravity away in a global sense. 
+In what follows, we are looking the components of the curvature tensor in the \emph{local geodesic frame.}
 Local geodesic coordinates describe a flat space at a local point in curved space.
 We know, therefore, that we can write the metric at this point as
 \begin{align}
@@ -1113,7 +1367,7 @@ So the Christoffel symbol at this local point is
 where we have only chosen a point to set this locally to zero.
 However, the derivatives will not be zero, as if we move away from this local point, space will become curved again:
 \begin{align}
-    \frac{\p\tensor{\Gamma}{^\alpha_{\beta\gamma}}}{\p x^\delta} &= 0.
+    \frac{\p\tensor{\Gamma}{^\alpha_{\beta\gamma}}}{\p x^\delta} &\neq 0.
 \end{align}
 Now this will allow us to simplify the Riemann tensor from its definition in Eq. (10.9), where it can now be written as
 \begin{align}
@@ -1130,22 +1384,57 @@ Due to the symmetry of the Christoffel symbols' lower indices, we can see that t
     \tensor{R}{^a_{dbc}} + \tensor{R}{^a_{cdb}} + \tensor{R}{^a_{bcd}} &= 0,
 \end{align}
 which is known as the cyclic relation of the Riemann tensor.
+This is a \emph{tensor equation} so even though we derive it in the local frame, it must be true in all frames. 
 The Riemann tensor can also be written in its covariant form:
 \begin{align}
-    \tensor{R}{_{abcd}} &= g_{ae}\tensor{R}{^e_{bcd}}.
+    \tensor{R}{_{abcd}} &= g_{ae}\tensor{R}{^e_{bcd}} = g_{ac}\left[\p_c\tensor{\Gamma}{^e_{db}} - \p_d\tensor{\Gamma}{^e_{cb}}\right].
 \end{align}
-In its covariant form, we can also go through similar steps to above to prove other symmetry relations, including:
+As we can take $g_{ae}$ inside the partial derivatives, the covariant derivative reduces to the partial derivative, giving
+\begin{align}
+    R_{abcd} &= \p_c\Gamma_{adb}-\p_d\Gamma_{acd}.
+\end{align}
+These Christoffel symbols can be written in terms of the derivatives of the metric where we had:
+\begin{align}
+    \Gamma_{abc} &= g_{af}\tensor{\Gamma}{^f_{bc}} = \frac12 g_{af}g^{fe}\left(\p_bg_{ec} - \p_eg_{cb} + \p_cg_{be}\right),\\
+    \begin{split}
+        R_{abcd} &= \frac12\p_c\left[\p_dg_{ab} + \p_bg_{da} - \p_ag_{db}\right] - \frac12\p_d\left[\p_cg_{ab} + \p_bg_{ca} - \p_ag_{cb}\right] \\
+                 &= \frac12\left(\p_a\p_dg_{bc} - \p_b\p_dg_{ac} + \p_b\p_cg_{ad} - \p_a\p_cg_{bd}\right),
+    \end{split}
+\end{align}
+where we use the fact that $g_{ab}=g_{ba} \implies \p_d\p_dg_{ab} = \p_c\p_dg_{ab}$.
+From these symmetry relations, we see that:
 \begin{align}
     R_{abcd} &= -R_{bacd}, & R_{abcd} &= -R_{abdc}, & R_{abcd} &= R_{cdab}.
 \end{align}
-From these relations, we see that repeated indices can lead to zero, such as
+These are tensor equations, so must be true in all frames. 
+This shows us that there are a lot of $R_{abcd}=0$, as if we have a repeated index in the first two places, and the only way that a number can be equal to its own negative if it is equal and similarly for a repeated index on the last two places, i.e.
 \begin{align}
-    R_{aacd} = -R_{aacd} &\implies R_{aacd} = 0, \\
-    R_{abcc} = -R_{abcc} &\implies R_{abcc} = 0.
+    \begin{split}
+        R_{aacd} = -R_{aacd} &\implies R_{aacd} = 0, \\
+        R_{abcc} = -R_{abcc} &\implies R_{abcc} = 0.
+    \end{split}
 \end{align}
 This allows us to neglect many of the 256 numbers as they will be zero, reducing the total of free elements of the Riemann tensor to 20.
 
-\section{How can we relate this to gravity?}
+\section{Towards Einstein's Equations}
+The curvature of space is related to tidal force, i.e. to the $\frac{M}{R^3}$ which is the density of mass. 
+We want some tensor equation (valid in any frame) such that curvature is equivalent to gravity, so an equation (tensor) linking the Riemann curvature tensor and mass density.
+Einstein said that mass and energy are equivalent, so all forms of energy (not just mass) should gravitate.
+In Newtonian gravity, two particles are initially at rest at the same radial distance $x$ with a separation $y$ ($y\ll x$) from a star of mass $M$.
+They are accelerated radially by the gravitational force, $\propto \frac{GM}{r^2}$.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (3pt);
+        \fill (0,1.5) circle (3pt);
+        \fill (4,0.75) circle (3pt);
+        \draw (4,0.75) circle (40pt) node[xshift=10pt] {M};
+        \draw[Latex-Latex] (0,0) -- (0,1.5) node[anchor=east,midway] {y};
+        \draw[Latex-Latex] (0,0.75) -- (4,0.75) node[anchor=south,midway,xshift=-10pt] {r};
+        \draw[Latex-Latex] (0,0) -- (4,0.75);
+        \draw[Latex-Latex] (0,1.5) -- (4,0.75);
+    \end{tikzpicture}
+\end{figure}
 Let's consider Eq. (10.4) for low speeds, i.e. non-relativistic.
 \begin{align}
     \zeta^\alpha = \begin{pmatrix} 0, & 0, & y, & 0 \end{pmatrix},
@@ -1153,34 +1442,56 @@ Let's consider Eq. (10.4) for low speeds, i.e. non-relativistic.
 i.e. we have a simple separation in the y-direction between the two geodesic paths.
 We would then get something like
 \begin{align}
-    \frac{D^y}{ds^2} &= -\tensor{R}{^2_{020}}yc^2,
+    \frac{D^2y}{ds^2} &= -\tensor{R}{^2_{020}}yc^2,
 \end{align}
 where we only consider the indices relating to $y$ and time.
 This should look somewhat familiar.
-What would we have written for this in Newtonian physics, if we have these two objects both moving towards a large mass $M$ with a separation $y$ and a distance from the massive object $r$?
+What would we have written for this in Newtonian physics?
+Since they are in free-fall, they are travelling on geodesics and these are getting closer together as the particles fall towards the star. 
+Resolving the radial force on one of the stars into a force along the same direction as the other radial force, and one perpendicular to it, then there is a force towards the other particle of
 \begin{align}
-    \frac{d^2y}{dt^2} &= -\frac{GM}{r^2}\cdot\frac{y}{r}.
+    \frac{d^2y}{dt^2} &= -\frac{GM}{r^2}\cdot\frac{y}{r},
 \end{align}
+and the distance apart is $\approx y$.
+This shows an acceleration term between the two particles. 
 Important note: the massive object is the Sun or a molecular cloud or something, according to Richard.
-\textbf{A black hole wouldn't be happy, you wouldn't be able to tell.}
-
-Using $ds=c\,dt$:
+\textbf{A black hole wouldn't be happy, you wouldn't be able to tell.}\\
+Converting to \emph{path length} and using $ds=c\,dt$:
 \begin{align}
-    c^2\frac{d^2y}{ds^2} &= -\frac{GM}{r^3}y,\\
+    \frac{d^2y}{ds^2}\left(\frac{ds}{dt}\right)^2 = c^2\frac{d^2y}{ds^2} &= -\frac{GM}{r^3}y.
+\end{align}
+Compare this with the curvature tensor:
+\begin{align}
+    \frac{D^2\zeta^a}{ds^2} &= -\tensor{R}{^a_{cbd}}\zeta^b\dot{x}^c\dot{x}^d.
+\end{align}
+The biggest term again is for $c=d=0$, so
+\begin{align}
+    \frac{D^2\zeta^a}{ds^2} &= -\tensor{R}{^a_{0b0}}\zeta^bc^2.
+\end{align}
+$\zeta^a$ is the separation as in Eq. (10.25), as both particles have the same $t,x,$ and $z$ then there is only separation in $y$ so this becomes Eq. (10.26) and then we can show the equivalence of curved space and Newtonian force as
+\begin{align}
     -\frac{GM}{r^3} &= -\tensor{R}{^2_{020}}.
 \end{align}
-So we now have an equivalence of curved space and Newtonian gravitational force.
-We can see that the Newtonian expression in Eq. (10.27) is the energy density of space, if mass and energy can be equivalent.
+We see that the tidal forces which we would associate with gravity can be made simply from curved space. 
+We can see that this Newtonian expression is the \textbf{Energy Density of Space}, if mass and energy can be equivalent.
 This is what lead Einstein to his famous equations.
+The curvature tensor in some sense tells us about \emph{tidal forces} - how gravity changes force point to point. 
+In flat space, all
+\begin{align}
+    \tensor{R}{^a_{cbd}} = 0 \implies \frac{D^2\zeta^a}{ds^2} = 0,
+\end{align}
+and geodesics separate as $\zeta^a=Au+B$, i.e. in flat space, geodesics either maintain a constant separation (parallel lines) or separate/approach linearly. 
+With no gravity, things continue in straight lines at constant velocity. 
 
-\section{What is energy?}
-Energy is special relativity was defined in
+\section{The Stress-Energy Tensor}
+In \emph{special relativity}, if you accelerate a particle, giving it more and more energy, then as you approach $c$ then the mass increases rather than the velocity. 
+This is arbitrary unless all forms of energy gravitate as then as we add energy, we increase the inertial (e.g. gravitational) mass. 
+In special relativity, we generally dealth with individual particles, where
 \begin{align}
     E &= \gamma m_0c^2,
 \end{align}
-where we can now relate the mass and energy of objects.
-We also have a number density, $n_0$, for the number of particles ``in a box" or in the universe or whatever you're considering.
-Recall from special relativity the four-velocity of a system:
+was the particle energy, relating the mass and energy of objects.
+Recall again from special relativity the four-velocity of a system:
 \begin{align}
     u^\alpha &= \frac{dx^\alpha}{dt} = \gamma\begin{pmatrix} c, & -\frac{dx^i}{dt}\end{pmatrix}.
 \end{align}
@@ -1188,20 +1499,358 @@ There is also the four-momentum of the system:
 \begin{align}
     p^\alpha &= m_0u^\alpha = \gamma m_0\begin{pmatrix} c, & -\frac{dx^i}{dt} \end{pmatrix}.
 \end{align}
-The number per unit volume is $\gamma n_0$.
-We also have a flux through the surface,
+A stationary particle has $p^\mu = m_0(c,0,0,0)$, and while moving has
 \begin{align}
-    N^\rho &= n_0u^\rho.
+    p^\alpha = \gamma m_0\begin{pmatrix} c, & \frac{dx^1}{dt}, & \frac{dx^2}{dt}, & \frac{dx^3}{dt} \end{pmatrix}.
 \end{align}
-Using all this, we can write down an expression for the energy-momentum density:
+We  want to generalise these to look at density, but density is a frame-dependent quantity, which is a problem. 
+The total number of particles in a given volume must be invariant, but the volume changes by length contraction along the direction of motion, so if we have a number density, $n_0$, in the rest frame for the number of particles ``in a box" or in the universe or whatever you're considering, then $n_0\gamma$ is the number density as measured in a moving frame. 
+If we are now moving, there is a flux of particles across the surfaces, i.e. we take two separate concepts (density and flux) and make them into a single 4-vector, the number-flux 4-vector:
+\begin{align}
+    N^\mu &= n_0u^\mu.
+\end{align}
+This is a 4-vector as it transforms in the right way for a contravariant tensor.
+In the rest frame, $N^\mu = n_0\frac{dx^\mu}{d\tau}$; in a moving frame, then
+\begin{align}
+    N^{\nu'} &= n\frac{dx^{\nu'}}{d\tau} = n_0\frac{dx^{\nu'}}{dx^\mu}\frac{dx^\mu}{d\tau} = \frac{dx^{\nu'}}{dx^\mu}N^\mu.
+\end{align}
+Alernatively, since we know $u^\mu$ is a 4-vector and so since $N^\mu$ is related to it only by invariant quantities (not frame density) then this must also be a 4-vector. 
+
+Now we want \emph{energy density.}
+In the rest frame, if particles have no velocity relative to each other, then the energy density is just $m_0c^2n_0 = \rho_0c^2$, where $\rho_0$ is the mass density in the rest frame.
+If we go to another frame, we have to transform the energy and the density, so it tramsforms by two factors of $\gamma$, so this needs to be a second-order contravariant tensor. 
+So now we introduce the \textbf{Stress-Energy Tensor} as an expression for the energy-momentum density:
 \begin{align}
     T^{\mu\nu} &= N^\mu p^\nu = n_0u^\mu m_0u^\nu = \rho_0 u^\mu u^\nu.
 \end{align}
-In the rest frame, these two velocities will each be $c$, so the $T^{00}$ term will get us back to Eq. (10.28) as $\rho_0 c^2$.
+In the rest frame, this would have only one component, $T^{00}=n_0cm_00=\rho_0c^2$, as we had before in the rest frame.
+
+\chapter{Conservation Laws and Einstein's Equations}
+The results for the stress-energy tensor from the last lecture only works if we are dealing with \emph{dust}, i.e. something where the particles have no internal motions, and no stresses or heat conduction or anything complicated.
+However in general a gas \unl{has} internal motion - particles are moving with respect to each other so there is no rest frame as such for each particle, only a rest frame for the gas as a whole. 
+In the rest frame, 
+\begin{align}
+    u = (c,0,0,0) \implies T^{00} = \rho_0c^2.
+\end{align}
+We get relevant fluxes setting one 0 to non-zero (where $i\in\{1,2,3\}$ for spatial direction):
+\begin{itemize}
+    \item $T^{0i} =$ energy flux through a surface $i$;
+    \item $T^{ii} =$ momentum in a particular direction $i$;
+    \item $T^{ii} =$ momentum flux through a surface $i$.
+\end{itemize}
+We can define a more general $T^{\mu\nu}$ by considering what happens for a \emph{perfect fluid} - a gas with both rest mass and internal motions. 
+We have to take into account \emph{pressure}, not just energy.
+From special relativity, we know that the energy of this in the rest frame is
+\begin{align}
+    3p = 3n_0k_BT,
+\end{align}
+so the total energy density in the rest frame is $\rho_0c^2 + 3n_0k_BT$, so
+\begin{align}
+    T^{\mu\nu} = \begin{pmatrix} \rho_0c^2 & 0 & 0 & 0 \\ 0 & -p & 0 & 0 \\ 0 & 0 & -p & 0 \\ 0 & 0 & 0 & -p \end{pmatrix},
+\end{align}
+where $\rho_0c^2$ is the rest mass energy of the gas and $-p$ are the contributions from the pressures of the gas on the walls.
+In general, we can then write
+\begin{align}
+    T^{\mu\nu} = \left(\rho_0+\frac{p}{c^2}\right)u^\mu u^\nu - pg^{\mu\nu}.
+\end{align}
+In flat space, our metric for this is the \emph{Minkowski metric tensor}:
+\begin{align}
+    \begin{split}
+        g^{\mu\nu} &= \text{diag}(1,-1,-1,-1), \\
+        ds^2 &= g^{\alpha\beta}dx^\alpha dx^\beta = c^2dt^2 - dx^2 - dy^2 - dz^2.
+    \end{split}
+\end{align}
+We see the result is a tensor as it is made out of things that are either \emph{invariant} (scalars) or \emph{tensors.}
+In the rest frame, it has components
+\begin{align}
+    T^{00} &= \left(\rho_0+\frac{p}{c^2}\right)c^2-p = \rho_0c^2, & T^{ii} &= -p\times(-1) = p,
+\end{align}
+so it has the right form in the rest frame. 
+Since we have the metric, we can use this in general relativity. 
+It is a \emph{symmetric tensor}, $T^{\mu\nu}=T^{\nu\mu}$, as $g^{\mu\nu}$ is symmetric and $u^\mu u^\nu = u^\nu u^mu$.
+The pressure contributes to the energy density, and energy density curves space through increasing $T^{\mu\nu}$.
+So for the interior of a star, as the fuel runs out then the star contracts and gravity gets stronger. 
+We require a larger pressure to hold the star up, but this pressure adds to the total energy density, so increases gravity, so more pressure is needed...etc; pressure outweights force from gas. 
+This process will of course eventually lead to the formation of \textbf{Black Holes.}
+
+\section{Conservation Laws}
+The stress-energy tensor for a perfect fluid in special relativity which we defined above is a very compact way to count up all the contributions to the energy density and it is a tensor so it works in all (inertial) frames. 
+It can be made more general as $T^{\mu\nu}$ is defined as the flow of momentum associated with $x^\mu$ across the $x^\nu$ surface. 
+$T^{ij}\; (i\neq j)$ is the \emph{shear stress} so these are zero for a perfect fluid.
+Pressure forces are perpendicular to the surface (no shear stresses).
+It also embodies information - energy is conserved. 
+
+Considering the rate of change of energy in a volume:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (3,0) node[anchor=north,midway] {$l$} -- (3,3) -- (0,3) -- cycle;
+        \draw (3,0) -- (4,0.5) -- (4,3.5) -- (1,3.5) -- (0,3);
+        \draw (4,3.5) -- (3,3);
+        \draw[-{Latex[length=3mm,width=2.5mm]}] (-0.7,-0.1) -- (1.5,1.5);
+        \draw[-{Latex[length=3mm,width=2.5mm]}] (4,3.3) -- (4.8,3.9);
+    \end{tikzpicture}
+    \vspace{-40pt}
+\end{figure}
+\begin{align}
+    \text{Rate of change } &= \text{ Energy flux in } - \text{ Energy flux out},\\
+    \begin{split}
+        l^3\frac{\p T^{00}(x)}{\p t} &\approx l^2cT^{01}(x) - l^2cT^{01}(x+l) = l^2c\left(T^{01}(x) - T^{01}(x+l)\right) \\
+                                     &= -l^2c\left(\frac{\p T^{01}}{\p x}\right)l = -l^3c\frac{\p T^{01}}{\p x}.
+    \end{split}
+\end{align}
+This is in 1D so we need similar contributions from the other two pairs of faces so we have:
+\begin{align}
+    l^3c\frac{\p T^{00}(x)}{c\p t} &= -l^3c\frac{\p T^{01}}{\p x} - l^3c\frac{\p T^{02}}{\p y} - l^3c\frac{\p T^{03}}{\p z} = -l^3c\frac{\p T^{0i}}{\p x^i}, \\
+    \frac{\p T^{00}}{c\p t} &= -\frac{\p T^{0i}}{\p x^i} \implies \frac{\p T^{00}}{c\p t} + \frac{\p T^{0i}}{\p x^i} = 0.
+\end{align}
+Remebering that $ct$ is just the 0th component, we can see that a total summation will make this look very simple:
+\begin{align}
+    \frac{\p T^{0\alpha}}{\p x^\alpha} &= 0.
+\end{align}
+In other words, $\p_\alpha T^{i\alpha} = 0$, which contains conservation of momentum so both momentum and energy are embodied in $\p_\alpha T^{\alpha\beta} = 0$.
+We can also write this using the covariant derivative:
+\begin{align}
+    \tensor{T}{^{0\alpha}_{;d}} &= 0, & \tensor{T}{^{i\alpha}_{;d}} &= 0, & \tensor{T}{^{\alpha\beta}_{;d}} &= 0.
+\end{align}
+Then, remembering the symmetry of the tensor:
+\begin{align}
+    T^{\alpha\beta} &= T^{\beta\alpha}, & \tensor{T}{^{\alpha\beta}_{;\alpha}} &= 0.
+\end{align}
+Any physical law which can be expressed in tensor notation in special relativity has exactly the same form in a locally-inertial frame of a curved spacetime, i.e. general relativity. 
+Locally-inertial frames are equivalent to saying we choose to look at a small piece of spacetime, where we can approximate any curved space to a locally-flat space. 
+In this choice of coordinates, all the \emph{Christoffel symbols} are zero so standard differentiation and covariant differentiation are the same. 
+Outside of this, curvature becomes apparent. 
+To make tensor equations work in any general frame, we need to swap standard differentiation with covariant differentiation, e.g.
+\begin{align}
+    \tensor{T}{^{\alpha\beta}_{;\alpha}} &= 0.
+\end{align}
+
+\section{Einstein's Equations}
+We want a tensor equation which has \emph{curvature-energy density.}
+The stress-energy tensor is second-order, and has a covariant derivative of zero as this embodies the conservation laws for energy and momentum. 
+So we are looking for a way to denote curvature which is also a second-order symmetric tensor with covariant derivative of zero. 
+The \emph{Riemann curvature tensor} completely embodies all the information about the curvature of space, and is a \emph{fourth-order tensor.}
+Connecting:
+\begin{align}
+    T^{\alpha\beta} \iff \tensor{R}{^\alpha_{\beta\gamma\delta}},
+\end{align}
+where we have 2 indices, then 4.
+There is no way that a second-order tensor can be equal to a fourth-order one. 
+We need to \emph{contract} the Riemann curvature tensor, preferably without losing any information about the spatial curvature. 
+We know from index symmetries that
+\begin{align}
+    R_{abcd} &= -R_{bacd}, & R_{abcd} &= -R_{abdc}, & R_{abcd} &= R_{cdab},
+\end{align}
+so we can get fewer independent components.
+We introduce the \textbf{Ricci tensor} to solve this issue. 
+To contract $\tensor{R}{^a_{bcd}}$, we could sum over one of the covariant indices with the contravariant one. 
+Which covariant index? 
+In principle, $\tensor{R}{^a_{acd}}\neq\tensor{R}{^a_{bad}}\neq\tensor{R}{^a_{bca}}$.
+If we contract over the first index, i.e. $\tensor{R}{^a_{acd}}$, then we can see that
+\begin{align}
+    \tensor{R}{^a_{acd}} &= g^{ae}R_{eacd} = -g^{ae}R_{aecd} = -g^{ea}R_{aecd} = -\tensor{R}{^e_{ecd}} = -\tensor{R}{^a_{acd}}.
+\end{align}
+The only way this can be true in general is if $\tensor{R}{^a_{acd}}=0$, so this is not a useful index to contract over. 
+We can contract over index 3 or 4.
+Since 
+\begin{align}
+    R_{abcd} &= -R_{abdc}, & \tensor{R}{^a_{bad}} &= \tensor{R}{^a_{bda}} = R_{bc},
+\end{align}
+where $R_{bc}$ is the \textbf{Ricci tensor.}
+We can multiply by the metric twice to change indices, i.e. contravariant. 
+The Ricci tensor is a second-order tensor about the source of gravity (energy density).
+Let's try
+\begin{align}
+    R^{\mu\nu} &= \kappa T^{\mu\nu}
+\end{align}
+as the equation we are after.
+The \emph{Ricci tensor} is also \emph{symmetric}, i.e. $R_{bc} = R_{cb}$.
+Using local geodesic coordinates, all Christoffel symbols equal zero locally, but derivatives are non-zero.
+This makes the covariant derivative easier:
+\begin{align}
+    \tensor{R}{^a_{bcd}} &= \p_c\tensor{\Gamma}{^a_{db}} - \p_d\tensor{\Gamma}{^a_{cb}}, \\
+    \begin{split}
+        \tensor{R}{^a_{bcd;e}} &= \p_e\left(\p_c\tensor{\Gamma}{^a_{db}} - \p_d\tensor{\Gamma}{^a_{cb}}\right) \\
+                               &= \p_e\p_c\tensor{\Gamma}{^a_{db}} - \p_e\p_d\tensor{\Gamma}{^a_{cb}},
+    \end{split}
+\end{align}
+Then, cycling around indices:
+\begin{align}
+    \tensor{R}{^a_{bde;c}} &= \p_c\p_d\tensor{\Gamma}{^a_{be}} - \p_c\p_e\tensor{\Gamma}{^a_{bd}},\\
+    \tensor{R}{^a_{bec;d}} &= \p_d\p_e\tensor{\Gamma}{^a_{bc}} - \p_d\p_c\tensor{\Gamma}{^a_{be}},
+\end{align}
+where the components here all cancel due to symmetries. 
+This then results in
+\begin{align}
+    \tensor{R}{^a_{bcd;e}} + \tensor{R}{^a_{bde;c}} + \tensor{R}{^a_{bec;d}} = 0.
+\end{align}
+Again, this is a tensor equation, so it holds in all frames, not just the locally-inertial frame. 
+We can use the \emph{Bianchi identity} to get this for the Ricci tensor:
+\begin{align}
+    \tensor{R}{^a_{bca;e}} + \tensor{R}{^a_{bae;c}} + \tensor{R}{^a_{bec;a}} &= 0,\\
+    \tensor{R}{_{bc;e}} - \tensor{R}{_{be;c}} + \tensor{R}{^a_{bec;a}} &= 0.
+\end{align}
+Note that the last term of this will not simplify.
+We can then raise the index $b$ by multiplying by the metric, $g^{fb}$:
+\begin{align}
+    g^{fb}\tensor{R}{_{bc;e}} - g^{fb}\tensor{R}{_{be;c}} + g^{fb}\tensor{R}{^a_{bec;a}} &= 0 \implies \tensor{R}{^f_{c;e}} - \tensor{R}{^f_{e;c}} + \tensor{R}{^{af}_{ec;a}} = 0.
+\end{align}
+We also have the curvature index $R=R^a_a$, known as the \textbf{Riemann curvature scalar}, by contracting $e\to f$:
+\begin{align}
+    \tensor{R}{^f_{c;f}} - \tensor{R}{^f_{f;c}} + \tensor{R}{^{af}_{fc;a}} &= 0 \implies
+    \tensor{R}{^f_{c;f}} - \tensor{R}{_{;c}} + \tensor{R}{^{af}_{fc;a}} = 0.
+\end{align}
+Switching indices in the last term top and bottom so there is no minus sign added yields:
+\begin{align}
+    \tensor{R}{^f_{c;f}} - \tensor{R}{_{;c}} + \tensor{R}{^{fa}_{cf;a}} &= 0 \implies 
+    \tensor{R}{^f_{c;f}} - \tensor{R}{_{;c}} + \tensor{R}{^{a}_{c;a}} = 0,\\
+    2\tensor{R}{^a_{c;a}} - \tensor{R}{_{;c}} &= 0 \implies
+    \left(\tensor{R}{^a_c} - \frac12R\tensor{\delta}{^a_c}\right)_{;a} = 0.
+\end{align}
+Multiplying by $g^{bc}$ to raise the index on the bottom and replacing $c$ by $a$:
+\begin{align}
+    \left(R^{ab} - \frac12g^{ab}R\tensor{\delta}{^a_c}\right)_{;a} &= 0,\\
+    \left(R^{ab} - \frac12g^{ab}R\right)_{;a} &= 0.
+\end{align}
+So the covariant derivative of the Ricci tensor is \unl{not} zero, but the combination of the Ricci tensor and curvature scalar is, i.e. $T^{\alpha\beta}=R^{\alpha\beta}$ is \textbf{wrong.}\\
+The combination above does have zero divergence, and is just a function of curvature, so
+\begin{align}
+    T^{\alpha\beta} &= R^{\alpha\beta} - \frac12g^{\alpha\beta}R.
+\end{align}
+This describes how energy, pressure, and momentum contribute to the curvature of the universe.
 
 \chapter{}
+There can be a scalar relationship for the stress-energy equation described last lecture, i.e.
+\begin{align}
+    \kappa T^{\alpha\beta} &= R^{\alpha\beta} - \frac12 g^{\alpha\beta}R,
+\end{align}
+and there could also be an \emph{integration constant,} i.e.
+\begin{align}
+    \kappa T^{\alpha\beta} &= R^{\alpha\beta} - \frac12g^{\alpha\beta}R + g^{\alpha\beta}\Lambda,
+\end{align}
+where $\Lambda$ is the \emph{cosmological constant.}
+Einstein added this because he wanted a static universe. 
+This leads us to the \textbf{Einstein equation,}
+\begin{align}
+    R^{\mu\nu} - \frac12g^{\mu\nu}R &= \kappa T^{\mu\nu} + g^{\mu\nu}\Lambda,
+\end{align}
+which finally allows us to equate curvature to gravity. 
+For black holes, which will be our primary focus from now, the cosmological constant is not important, so we will set $\Lambda=0$, i.e. strong gravity dominates.
 
-\chapter{}
+\section{Recasting Einstein's Field Equation}
+Neglecting the cosmological constant, starting with Eq (12.1) and multiplying by $g_{\gamma\alpha}$,yields
+\begin{align}
+    g_{\gamma\alpha}R^{\alpha\beta} - \frac12g_{\gamma\alpha}g^{\alpha\beta}R &= \kappa g_{\gamma\alpha}T^{\alpha\beta}, \\
+    \tensor{R}{^\beta_\gamma} - \frac12\tensor{\delta}{^\beta_\gamma}R &= \kappa\tensor{T}{^\beta_\gamma}.
+\end{align}
+Then, if we contract these sums by setting $\beta=\gamma$, and recall $\tensor{\delta}{^\beta_\beta}=4$, we find
+\begin{align}
+    \tensor{R}{^\beta_\beta} - \frac12\tensor{\delta}{^\beta_\beta}R &= \kappa\tensor{T}{^\beta_\beta}, \\
+    R - 2R &= \kappa T \implies R = -\kappa T.
+\end{align}
+If we then substitute this definition into our equation, we arrive at an alternative form:
+\begin{align}
+    \begin{split}
+        R^{\alpha\beta} &= \kappa T^{\alpha\beta} + \frac12g^{\alpha\beta}(-\kappa T) \\
+        R^{\alpha\beta} &= \kappa\left(T^{\alpha\beta} - \frac12g^{\alpha\beta}T\right),
+    \end{split}
+\end{align}
+which we can compare with 
+\begin{align}
+    \kappa T^{\alpha\beta} &= \left(R^{\alpha\beta} - \frac12g^{\alpha\beta}R\right).
+\end{align}
+Since $\alpha,\beta=\{0,1,2,3\}$, $A^{\alpha\beta}$ has 16 elements.
+Thus, in our tensor equation, we have 16 second-order PDEs.
+\begin{note}[Contracting Tensors]
+Suppose we have
+\begin{align}
+    \tensor{R}{^a_b} &= \tensor{\kappa}{^a_b},
+\end{align}
+then we are equating two tensors, and we are saying that provided the top index is the same for R and for $\kappa$, and the bottom for R and for $\kappa$, then the expression holds. 
+So if we set $b$ equal to any index, the expression must still hold, so if $b\to a$, the expression holds true, i.e. 
+\begin{align}
+    \tensor{R}{^a_b} &\neq \tensor{R}{^a_a}, & \tensor{R}{^a_a} &= \tensor{\kappa}{^a_a}.
+\end{align}
+This is a subtle difference but this is why it is okay to ``contract'' provided you have a tensor equation. 
+\end{note}
+We might interpret $T$ as a set of zero-point of the energy density. 
+The form, 
+\begin{align}
+    \kappa T^{\mu\nu} &= R^{\mu\nu} - \frac12g^{\mu\nu}R,
+\end{align}
+is very difficult to solve. 
+However, in the form
+\begin{align}
+    R^{\mu\nu} &= \kappa\left(T^{\mu\nu} - \frac12g^{\mu\nu}T\right),
+\end{align}
+it is possible to solve using the \textbf{Schwarzschild metric.}
+
+\section{The Schwarzschild Metric}
+From above, we define
+\begin{align}
+    G^{\mu\nu} &= \kappa T^{\mu\nu}, & G^{\mu\nu} &= R^{\mu\nu} - \frac12g^{\mu\nu}R.
+\end{align}
+Fortunately, the symmetry properties mean that there are `only' 10 independent equations...
+
+\subsection{Solving the Einstein Equations for a Simple Case}
+The simplest case is a static, curved spacetime round a spherically-symmetric mass while the rest of spacetime is empty. 
+Choose a point located about a point mass, $M$, then consider the metric. 
+We are used to 
+\begin{align}
+    \begin{split}
+        ds^2 &= c^2dt^2 - dx^2 - dy^2 - dz^2 \\
+             &= c^2dt^2 - dr^2 - r^2d\theta^2 - r^2\sin^2\theta\,d\phi^2.
+    \end{split}
+\end{align}
+Shwarzschild said to maintain spherical symmetry, we need the latter two terms of this, so do not touch these!
+Let's guess the form of the metric to be
+\begin{align}
+    ds^2 &= c^2d\tau^2 = A(r)c^2dt^2 - B(r)\,dr^2 - r^2d\theta^2 - r^2\sin^2\theta\,d\phi^2,
+\end{align}
+so the $g^{\mu\nu}$ are not functions of time, so the field is static and spherically-symmetric, as sruface with $r,t$ constant have
+\begin{align}
+    ds^2 &= r^2\left(d\theta^2+\sin^2\theta\,d\phi^2\right).
+\end{align}
+In principle, because we know the metric, we can calculate the Christoffel symbols, and thus calculate $R$.
+From forming the Lagrangian and writing the Euler-Lagrange equations, then by comparison with the geodesic equations to get the Christoffel symbols in terms of the unknown functions $A$ and $B$ and their radial derivatives, 
+\begin{align}
+    \frac{dA}{dr} &= A', & \frac{dB}{dr} &= B'.
+\end{align}
+We can use these to form the Ricci tensor components as this is just defined from the Christoffel symbols and their derivatives. 
+For \textbf{empty spacetime,} 
+\begin{align}
+    R^{\mu\nu} = 0.
+\end{align}
+In our problem, this means everywhere except for the point at the very centre. 
+Just because the Ricci tensor is zero does not mean that the Riemann curvature tensor components are zero. 
+Setting $R^{\mu\nu}=0$ means that the equations are slightly easier to solve when recast into the alternative form:
+\begin{align}
+    R^{\alpha\beta} &= \kappa\left(T^{\alpha\beta}-\frac12g^{\alpha\beta}T\right).
+\end{align}
+Empty space means that all the right-hand-side is zero, and so we simply solve for $R^{\alpha\beta}=0$:
+\begin{align}
+    A &= \left(1 + \frac{k}{r}\right), & B &= \frac{1}{A(r)}.
+\end{align}
+Consider the \emph{weak field limit} and so get the constant
+\begin{align}
+    k &= -\frac{2GM}{c^2} = -2m \implies A = 1 - \frac{2m}{r}.
+\end{align}
+We can now rewrite the metric:
+\begin{align}
+    \begin{split}
+        ds^2 = c^2d\tau^2 &= \left(1-\frac{2GM}{c^2r}\right)c^2dt^2 - \left(1-\frac{2GM}{c^2r}\right)^{-1}\,dr^2 - r^2d\theta^2 - r^2\sin^2\theta\,d\phi^2 \\
+                          &= \left(1-\frac{2m}{r}\right)c^2dt^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2- r^2d\theta^2 - r^2\sin^2\theta\,d\phi^2.
+    \end{split}
+\end{align}
+In this form, we do not have to worry about $\kappa$, but we can use the weak field approximation to connect it to Newtonian gravity to get $\kappa=-\frac{8\pi G}{c^4}$. 
+Thus, our Einstein equation is now
+\begin{align}
+    R^{\mu\nu} - \frac12g^{\mu\nu}R &= -\frac{8\pi G}{c^4}T^{\mu\nu}.
+\end{align}
+The \emph{Schwarzschild metric} is how gravity curves spacetime, if the Einstein equations are correct (they are not derivable from first principles - they are merely the simplest way we can write that gravity is equal to curvature).
+We need to see if this works, i.e. we need to use this metric to figure out what this spacetime curvature (equal to gravity) predicts for paths of partticle and photons which we can then measure to test the theory. 
+
 
 \chapter{}
 
