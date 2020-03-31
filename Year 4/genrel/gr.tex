@@ -1720,7 +1720,7 @@ The combination above does have zero divergence, and is just a function of curva
 \end{align}
 This describes how energy, pressure, and momentum contribute to the curvature of the universe.
 
-\chapter{}
+\chapter{The Schwarzschild Metric and Gravitational Redshift}
 There can be a scalar relationship for the stress-energy equation described last lecture, i.e.
 \begin{align}
     \kappa T^{\alpha\beta} &= R^{\alpha\beta} - \frac12 g^{\alpha\beta}R,
@@ -1850,6 +1850,119 @@ Thus, our Einstein equation is now
 \end{align}
 The \emph{Schwarzschild metric} is how gravity curves spacetime, if the Einstein equations are correct (they are not derivable from first principles - they are merely the simplest way we can write that gravity is equal to curvature).
 We need to see if this works, i.e. we need to use this metric to figure out what this spacetime curvature (equal to gravity) predicts for paths of partticle and photons which we can then measure to test the theory. 
+
+\section{The Meaning of the Schwarzschild Metric}
+\begin{itemize}
+    \item In Eq (12.23) above, the $dt,\,dr,\,d\theta,\,d\phi$ are coordinates, not proper time or proper distance.
+    \item When $m=0$, then the metric reduces back to the Minkowski metric in spherical coordinates, i.e. $ds^2=c^2d\tau^2=c^2dt^2-dr^2-r^2d\theta^2-r^2\sin^2\theta,d\phi^2$.
+        We also recover this similarly for $r\to\infty$, i.e. when we are from the mass $M$ and would expect to return to flat space.
+    \item Proper time is the time as measured by a clock which travels along with a particle - it is obviously invariant as \textbf{it is a property of the particle, not the frame.}
+        Travelling with a particle means that there is no relative spatial motion so $d\tau =dt$, i.e. proper time is coordinate time as measured by clocks which are stationary in the reference frame.
+    \item However, when $m\neq0$, we see
+        \begin{align}
+            d\tau^2 &= \left(1-\frac{2m}{r}\right)\,dt^2.
+        \end{align}
+        Clocks still record proper time intervals along their world lines, and this clock is fixed, so we have that coordinate time is not equal to proper time, $d\tau<dt$.
+    \item Proper distance is the distance of an object measured at the same time, so $dt=0$.
+        Generally, we suppress the negative sign in the metric and get proper distance as the spatial part of the metric, so $dr^2+r^2d\theta^2+r^2\sin^2\theta\,d\phi^2$.
+        For fixed $\theta$ and $\phi$, $ds^2=dr^2$ for $m=0$.
+        When we turn up $m$, then the distances go strange:
+        \begin{align}
+            dR^2 = \left(1-\frac{2m}{r}\right)^{-1}dr^2.
+        \end{align}
+        The proper distance $ds$ is no longer $dr$, but instead we have
+        \begin{align}
+            dR &= \left(1-\frac{2m}{r}\right)^{-1/2}dr > dr.
+        \end{align}
+        The way to do this is to curve space and can be visualised in an embedding diagram.
+    \item Asymptotically, both $r$ and $t$ go to proper distance and proper time. 
+\end{itemize}
+There is another feature of the metric which is apparent:
+\begin{align}
+    ds^2 = c^2d\tau^2 &= \left(1-\frac{2m}{r}\right)c^2dt^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2- r^2d\theta^2 - r^2\sin^2\theta\,d\phi^2,
+\end{align}
+where we can see something strange happens at $r=2m$.
+The radial coordinate coefficient goes to $\infty$, while that for coordinate time goes to $0$.
+Something worse happens for $r<2m$, as the coefficients change sign.
+To understand this, let's see what happens to a stationary observer, held at a fixed position by rockets, i.e. gravity vs rockets such that $dr=0$.
+Time runs very slowly when you're in a gravitational field. 
+The metric becomes 
+\begin{align}
+    ds^2 = c^2d\tau^2 = \left(1-\frac{2m}{r}\right)\,c^2dt^2 < 0,
+\end{align}
+but the spacetime interval is then imaginary - there are no real paths. 
+The only real paths for $r<2m$ must involve the spatial part of the metric changing fast enough to offset the negative term which comes from the coordinate time. 
+Therefore, there is no such thing as a stationary observer for $r<2m$.
+Moving forward in time requires that you also move to small radii! E
+Everything goes down the hole, i.e. this is the event horizon.
+If you have a large mass, we have something like:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (3pt) node[anchor=east,xshift=-5pt] {BH};
+        \draw[white] (1,0) node[black] {x} node[black,anchor=south,yshift=5pt] {$d\tau$} -- (2,0) node[black] {$<$} -- (3,0) node[black] {x} node[anchor=south,black,yshift=5pt] {$d\tau$} -- (4,0) node[black] {$<$} -- (5,0) node[black] {x} node[anchor=south,black,yshift=5pt] {$d\tau$} -- (6,0) node[black] {$<$} -- (7,0) node[black] {x} node[anchor=south,black,xshift=23pt,yshift=5pt] {$dt$ ($r\to\infty$)};
+    \end{tikzpicture}
+\end{figure}
+In special relativity, we are used to coordinates changing according to $\gamma$, i.e. how fast you are moving. 
+In general relativity, we are also saying that coordinates change according to position, i.e. in the Schwarzschild metric, how far you are from the Black Hole.
+
+\section{Gravitational Redshift}
+Gravitational Redshift is the loss in photon energy as it climbs out of a gravitational well. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (3pt) node[anchor=south,xshift=8pt,yshift=5pt] {$r_E = r_{\text{emitter}}$};
+        \draw[snake it,-{Latex[length=2.5mm,width=2.5mm]},blue] (0,0) -- (1.6,0);
+        \draw[snake it,-{Latex[length=2.5mm,width=2.5mm]}] (1.6,0) -- (3,0);
+        \draw[snake it,-{Latex[length=2.5mm,width=2.5mm]},red] (3,0) -- (4.6,0);
+        \fill (4.7,0) circle (3pt) node[anchor=south,xshift=8pt,yshift=5pt] {$r_R = r_{\text{receiver}}$};
+    \end{tikzpicture}
+\end{figure}
+We can instantly do gravitational redshift for stationary observers as these have proper time intervals which are given by 
+\begin{align}
+    d\tau &= \left(1-\frac{2m}{r}\right)^{1/2}dt.
+\end{align}
+Light emitted at $r_E$ and received at $r_R$, then the time intervals each observer experiences are
+\begin{align}
+    d\tau_E &= \left(1-\frac{2m}{r_E}\right)^{1/2}dt_E, & d\tau_R &= \left(1-\frac{2m}{r}\right)^{1/2}dt_R,
+\end{align}
+i.e. for the same $dr$, we see different $d\tau$.
+How are the coordinate time intervals related?
+We send a light beam along a radial null geodesic, beam emitted at $r_E$ and received at $r_R$. 
+Then the path is
+\begin{align}
+    0 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2,\; (+0+0),
+\end{align}
+so it travels at coordinate speed
+\begin{align}
+    c\,dt\left(1-\frac{2m}{r}\right)^{1/2} &= \left(1-\frac{2m}{r}\right)^{-1/2}dr, \\
+    \frac{dr}{dt} &= \pm c\left(1-\frac{2m}{r}\right),
+\end{align}
+so the coordinate time taken (using positive speed if we are going outwards) is
+\begin{align}
+    \int \frac{1}{1-\frac{2m}{r}}\,dr &= \pm c\int dt \implies t_R-t_E = \frac{1}{c}\int_{r_E}^{r_R} \left(1-\frac{2m}{r}\right)^{-1}dr.
+\end{align}
+We could evaluate this, but the important part is that this only depends on space. 
+If we send another signal a bit later from the same fixed position emitter to the same fixed position receiver then this coordinate time difference will be the same, i.e.
+\begin{align}
+    r_{R_1}-t_{E_1} = t_{R_2}-t_{E_2} = \Delta t.
+\end{align}
+The clock at the point of emission records proper time, not coordinate time. 
+It is fixed in space, so the time it measures between the two signals is
+\begin{align}
+    \Delta\tau_E &= \left(1-\frac{2m}{r_E}\right)^{1/2}\Delta t_E = \left(1-\frac{2m}{r_E}\right)^{1/2}\Delta t,
+\end{align}
+but so is the clock at the receiver, so
+\begin{align}
+    \Delta\tau_R &= \left(1-\frac{2m}{r_R}\right)^{1/2}\Delta t_R = \left(1-\frac{2m}{r_R}\right)^{1/2}\Delta t, \\
+    \frac{\Delta\tau_E}{\Delta\tau_R} &=\left(\frac{1-\frac{2m}{r_E}}{1-\frac{2m}{r_R}}\right)^{1/2}.
+\end{align}
+Suppose the emitter were pulsating, then it has frequency, $\nu\propto\frac{1}{t}$:
+\begin{align}
+    \frac{\Delta\tau_E}{\Delta\tau_R} &= \frac{\nu_R}{\nu_E} = \left(\frac{1-\frac{2m}{r_E}}{1-\frac{2m}{r_R}}\right)^{1/2} \implies \nu_R = \left(\frac{1-\frac{2m}{r_E}}{1-\frac{2m}{r_R}}\right)^{1/2}\nu_E.
+\end{align}
+If $r_E<r_R$, then the photon crawls uphill so it loses energy, so $\nu_R<\nu_E$.
+
 
 
 \chapter{}
