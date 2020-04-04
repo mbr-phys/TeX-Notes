@@ -1963,220 +1963,716 @@ Suppose the emitter were pulsating, then it has frequency, $\nu\propto\frac{1}{t
 \end{align}
 If $r_E<r_R$, then the photon crawls uphill so it loses energy, so $\nu_R<\nu_E$.
 
+This effect can be measured in a lab with a large tower such as the \emph{Pounds-Rebka-Snyder experiment.}
+If light is unaffected by gravity, then we can create an infinite-energy machine where a particle dropped from a tower has rest mass plus $mgh$ at the bottom, then converting mass to energy in a photon and send it back up the tower then convert back to mass, so $m_2>m_1$!
+Gravitational redshift means that the photon loses the same amount of energy on the way up as the particle gained on the way down. 
+This redshift can be measured, as a tiny effect in the case of the tower, or in astronomy by looking at absorption lines from the surface of a white dwarf for a much bigger effect.
 
+\chapter{Geodesic Paths in the Schwarzschild Metric}
+To find \emph{geodesic paths} (i.e. inertial frames), then the first thing to do is write down the metric and tailor it; we use the Euler-Lagrange equations. 
+We want general paths that change in both $\phi$ and $r$ but they are in a plane ($\theta$ is constant), so without loss of generality as the metric is spherically symmetric, we can take this plane to be $\theta=\frac{\pi}{2}$.
+So the metric is then
+\begin{align}
+    ds^2 = c^2d\tau^2 = \left(1-\frac{2m}{r}\right)\,c^2dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 - r^2d\phi^2.
+\end{align}
+Remember the important notation from last time that $m=\frac{GM}{c^2}$.
+The geodesic paths must satisfy the Euler-Lagrange equation where the Lagrangian is
+\begin{align}
+    \La &= \frac12g_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta = \frac12\left[\left(1-\frac{2m}{r}\right)\,c^2\dot{t}^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2 - r^2\dot{\phi^2}\right],
+\end{align}
+and the Euler-Lagrange equations are
+\begin{align}
+    \frac{d}{d\tau}\left(\frac{\p\La}{\p\dot{x}^\alpha}\right) - \frac{\p\La}{\p x^\alpha} = 0,
+\end{align}
+where the dot denotes the derivative with tespect to proper time (an affine parameter).
 
-\chapter{}
+\section{Cyclic Coordinates}
+The easy equations will be those where a coordinate does not appear, e.g. $t$ and $\phi$ as then the Euler-Lagrange equations only have one term:
+\begin{align}
+    \frac{d}{d\tau}\left(\frac{\p\La}{\p\dot{x}^\alpha}\right) = 0 \implies \frac{\p\La}{\p\dot{x}^\alpha} = \text{ constant}.
+\end{align}
+These are called \emph{cyclic coordinates,} and they tell us about the conserved quantities along geodesic paths. 
+Let's choose to do time coordinate $x^0=ct$:
+\begin{align}
+    \frac{\p\La}{\p\dot{x}^0} = \frac{\p\La}{c\p\dot{t}} = \left(1-\frac{2m}{r}\right)c\dot{t} = \left(1-\frac{2m}{r}\right)\frac{p^0}{\Delta} = \text{ constant},
+\end{align}
+where $\Delta$ is the particle mass, so $\frac{p^0}{\Delta}$ is the energy per unit mass. 
+We consider the limit $r\to\infty$ as if we do this limit and find its value anywhere, we know its value everywhere. 
+The RHS becomes:
+\begin{align}
+    \frac{p^0_\infty}{\Delta} &= \frac{E_\infty}{c\Delta},\\
+    \left(1-\frac{2m}{r}\right)\,\dot{x}^0 &= \left(1-\frac{2m}{r}\right)\,x\dot{t} = \frac{E_\infty}{c\Delta},
+    \left(1-\frac{2m}{r}\right)\,c^2\dot{t} &= \frac{E_{\infty}}{\Delta} = E,
+\end{align}
+where $E$ is the energy per unit mass a infinity.
+The other cyclic coordinate (i.e. the one that doesn't appear in the metric) is $\phi$, so the equations have become
+\begin{align}
+    \frac{\p\La}{\p\dot{\phi}} = \text{ constant } = -r^2\dot{\phi}.
+\end{align}
+This is \emph{covariant angular momentum per unit mass,}
+\begin{align}
+    \frac{p_\phi}{\Delta} &= g_{\phi\phi}\frac{p^\phi}{\Delta} = -r^2\dot{\phi}.
+\end{align}
+More intuitively, this is (modulo minus sign) like angular momentum:
+\begin{align}
+    \Delta r^2\om = \Delta r^2\dot{\phi}.
+\end{align}
+Thus, angular momentum per unit mass, $L_2=r^2\dot{\phi}$.
+Physically, this all means conservation of angular momentum. 
 
-\chapter{}
+\section{Particle Orbits}
+We have relations for $\dot{\phi}$ and $\dot{t}$ - we need $\dot{r}$ as since there are 3 coordinates, we need 3 equations.
+All we need is some way to relate $\dot{r}$ to the known $\dot{\phi},\dot{t},$ and we can get such a relation more easily through the metric, which for particles is
+\begin{align}
+    c^2 &= c^2\left(1-\frac{2m}{r}\right)\,\dot{t}^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2 - r^2\dot{\phi}^2, \\
+    \frac{c^2}{\dot{\phi}^2} &= c^2\left(1-\frac{2m}{r}\right)\,\frac{\dot{t}^2}{\dot{\phi}^2} - \left(1-\frac{2m}{r}\right)^{-1}\left(\frac{dr}{d\phi}\right)^2 - r^2,
+\end{align}
+and then using $\left(1-\frac{2m}{r}\right)c^2\dot{t}=E$ and $L_2=r^2\dot{\phi}$, we get
+\begin{align}
+    \frac{c^2r^4}{L_2^2} &= \frac{c^2r^4E^2}{c^4\left(1-\frac{2m}{r}\right)L_2^2} - \left(1-\frac{2m}{r}\right)^{-1}\left(\frac{dr}{d\phi}\right)^2 - r^2, \\
+    \left(\frac{dr}{d\phi}\right)^2 &= \frac{\left(\frac{E^2}{c^4}-1\right)c^2r^4}{L_2^2} + \frac{2mc^2r^2}{L_2^2} - r^2 + 2mr.
+\end{align}
+Let's compare this to Newtonian dynamics.
+The total energy (KE + PE) per unit mass is 
+\begin{align}
+    \tilde{E} &= \frac12v^2-\frac{GM}{r},
+\end{align}
+and in spherical polars, $v^2=\dot{r}^2+r^2\dot{\phi}^2$, so 
+\begin{align}
+    \tilde{E} &= \frac12\left(\dot{r}^2+r^2\dot{\phi}^2\right)-\frac{GM}{r},
+\end{align}
+then again with $r^2\dot{\phi} = L_2$ constant angular momentum and $\frac{GM}{c^2} = m$, we have
+\begin{align}
+    2\tilde{E} &= \left(\dot{r}^2+r^2\dot{\phi}^2\right) - \frac{2mc^2}{r},\\
+    \frac{2\tilde{E}}{\dot{\phi}^2} &= \left(\frac{dr}{d\phi}\right)^2 + r^2 - \frac{2mc^2}{r\dot{\phi}^2},\\
+    \frac{2\tilde{E}r^4}{L_2^2} &= \left(\frac{dr}{d\phi}\right)^2 + r^2 - \frac{2mc^2r^3}{L_2^2},\\
+    \left(\frac{dr}{d\phi}\right)^2 &= \frac{2\tilde{E}r^4}{L_2^2} + \frac{2mc^2r^3}{L_2^2} - r^2.
+\end{align}
+This is almost the same as we had previously, as long as energy means something slightly different $2\tilde{E} = \left(\frac{E^2}{c^4}-1\right)c^2$, but we would kind of expect this different as Newtonian energy does not include rest mass and is not relativistic.
+The only difference is the $2mr$ term in the general relativity equation (Eq 13.14), which is not present in the Newtonian expression. 
+So orbits in general relativity should be a little different - this is a test of general relativity, i.e. of Einstein's equations which are the simplest way of equating gravity and curvature. 
 
-\chapter{}
+\section{Precession of the Perihelion of Mercury}
+To solve these equations, write $u=\frac1r$ and consider the extremes of $u$:
+\begin{align}
+    \left(\frac{du}{d\phi}\right)^2 + u^2 &= \frac{2\tilde{E}}{L_2^2} + \frac{2mu}{L_2^2} + 2mu^3.
+\end{align}
+The Newtonian orbit analogue is
+\begin{align}
+    \left(\frac{du}{d\phi}\right)^2 + u^2 &= \frac{2\tilde{E}}{L_2^2} + \frac{2mu}{L_2^2},
+\end{align}
+where $\tilde{E}$ is a constant related to the energy of the orbit and $L_2^2$ is angular momentum per unit mass. 
+We can simplify this using a constant,
+\begin{align}
+    K = \frac{\tilde{E}}{L_2^2}.
+\end{align}
+When $\frac{du}{d\phi}=0$, we are at perihelion and aphelion, so the Newtonian expression goes to
+\begin{align}
+    u^2 &= 2K + \frac{2mu}{L_2^2} \implies u = K \pm \sqrt{\frac{m^2c^4}{L_2^4}+K},
+\end{align}
+so we can see this is elliptical, with mean $u=\frac{mc^2}{L_2^2}$.
+Suppose the orbit is not very elliptical, then setting
+\begin{align}
+    y = u - \frac{mc^2}{L_2^2}
+\end{align}
+means we are looking for \emph{small} deviations about the mean distance.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw (0.4,0) ellipse (50pt and 20pt);
+        \draw[dashed] (0,0) circle (20pt);
+        \fill (0,0) circle (3pt);
+        \draw[Latex-Latex] (0.7,0) -- (2.1,0) node[anchor=north,midway] {y};
+    \end{tikzpicture}
+\end{figure}
+Substitute $u$ for $u = y+\frac{mc^2}{L_2^2}$, and $\frac{du}{d\phi} = \frac{dy}{d\phi}$ so
+\begin{align}
+    \left(\frac{dy}{d\phi}\right)^2 + y^2 + \frac{2mc^2y}{L_2^2} + \frac{m^2c^4}{L_2^4} &= K + \frac{2mc^2y}{L_2^2} + \frac{2m^2c^4}{L_2^4}, \\
+    \left(\frac{dy}{d\phi}\right)^2 + y^2 &= K + \frac{m^2c^4}{L_2^4}. 
+\end{align}
+Trying a solution of the form $y=A\cos\phi$ (we can choose to orientate the coordinates such that the particle starts from $\phi=0$):
+\begin{align}
+    \frac{dy}{d\phi} &= -A\sin\phi, & \left(\frac{dy}{d\phi}\right)^2 &= A^2\sin^2\phi = A^2-y^2.
+\end{align}
+We could solve for $A$ in terms of $K$ and $\frac{mc^2}{L_2}$ if we wanted to.
+These small deviations from circularity make the orbit an ellipse. 
+They are periodic in $2\pi$, and so the orbit comes back to the same $r$ after $2\pi$. 
+The orbit is \emph{closed}, and the orientation of the ellipse does not change with time. 
+Doing the same with the extra general relativity term in $u^3$ yields
+\begin{align}
+    \begin{split}
+        \left(\frac{dy}{d\phi}\right)^2 + y^2 &= K + \frac{m^2c^4}{L_2^4} + 2m\left(y+\frac{mc^2}{L_2^2}\right)^3 \\
+                                              &= K + \frac{m^2c^4}{L_2^4} + 2m\left(y^3+\frac{3mc^2}{L_2^2}y^2 + \frac{3m^2c^4}{L_2^4}y + \frac{m^3c^6}{L_2^6}\right).
+    \end{split}
+\end{align}
+We can neglect the terms in $y^3$ as these are \unl{small} deviations. 
+Also, the term in $y$ averages out to zero over the course of an orbit, so we can ignore that one as well. 
+This leaves us with
+\begin{align}
+    \left(\frac{dy}{d\phi}\right)^2 + \left(1-\frac{6m^2c^2}{L_2^2}\right)\,y^2 &= K + \frac{m^2c^4}{L_2^4} + \frac{2m^4c^6}{L_2^6}.
+\end{align}
+Trying a solution of $y=A\cos\phi$ fails because of the extra factor of $\frac{6m^2c^2}{L_2^2}$ on the LHS, but we can try $y = A\cos\left((1+\e)\phi\right)$, which has
+\begin{align}
+    \frac{dy}{d\phi} &= -A(1+\e)\sin\left((1+\e)\phi\right), \\
+    \begin{split}
+        \left(\frac{dy}{d\phi}\right)^2 &= A^2(1+\e)^2\sin^2\left((1+\e)\phi\right) = A^2(1+\e)^2\left(1-\cos^2\left((1+\e)\phi\right)\right) \\
+                                        &= A^2(1+\e)^2-(1+\e)^2y^2 = A^2(1+\e)^2 - (1+\e)^2y^2.
+    \end{split}
+\end{align}
+This will work as we now have a multiplier for $y^2$ as well as a constant term. 
+Equating coefficients for $y^2$ gives
+\begin{align}
+    -(1+\e)^2 + \left(1-\frac{6m^2c^2}{L_2^2}\right) = 0 \implies (1+\e)^2 = \left(1-\frac{6m^2c^2}{L_2^2}\right)^{1/2},
+\end{align}
+or if we assume $\e$ is small, we get
+\begin{align}
+    \e &= -\frac{3m^2c^2}{L_2^2}.
+\end{align}
+So we come back to the same $r$, \unl{not} when $\phi=2\pi$, \unl{but} when
+\begin{align}
+    \phi &= 2\pi\left(1+\frac{3m^2c^2}{L_2^2}\right).
+\end{align}
+Then the change in $\phi$ in one orbit is
+\begin{align}
+    \Delta\phi &= \phi-2\pi = \frac{6\pi m^2c^2}{L_2^2}.
+\end{align}
+\textbf{Orbits in general relativity are not quite closed.}
+An elliptical orbit will have the closest point precess around, so we need this constant
+\begin{align}
+    L_2 &= r^2\dot{\phi} = \frac{r^22\pi}{P},
+\end{align}
+where $P$ is the period. 
+In Newtonian physics, this is
+\begin{align}
+    P^2 &= \frac{(2\pi)^2r^3}{GM} = \left(\frac{2\pi}{c}\right)^2\frac{r^3}{m},
+\end{align}
+which leads us to
+\begin{align}
+    L_2^2 &= \frac{r^4mc^2}{r^3} = mc^2r, & \Delta\phi &= \frac{6\pi m^2c^2}{mc^2r} = \frac{6\pi m}{r}.
+\end{align}
+For Mercury, which is in the strongest gravitational field, i.e. where this effect will be largest, then $r\approx5.2\times10^{10}\,$m which leads to $\Delta\phi=5\times10^{-7}\,$rad/orbit. 
+This is tiny, but it is also \textbf{cumulative.}
+One orbit's precession is difficult to measure, but after 100 years, i.e. 415 orbits, then the point of closest approach, \emph{the perihelion}, has shifted by $0.01189\,$rad, or $43$ arcseconds. 
+This is measurable, and was a well-known problem in the 19$^{\text{th}}$ century that Newtonian mechanics could not account for, but general relativity solved this problem!
+
+\chapter{Lightbending - The Weak Field Limit}
+In Newtonian gravity, photons do not have mass, so they do not feel gravity. 
+In general relativity, since photons follow geodesic paths, they can be deflected by mass concentrations, or even orbit them. 
+This provides a powerful method and gives us a way of `seeing' dark matter, and `discover' natural telescopes. 
+
+We find orbits of light rays in the same way as particles. 
+The Euler-Lagrange equations are almost unchanged. 
+In the cyclic coordinates, 
+\begin{align}
+    \left(1-\frac{2m}{r}\right)\dot{t} &= \frac{E}{c^2}, & r^2\dot{\phi} &= L_2. 
+\end{align}
+The only difference is that photons travel on \textbf{Null Geodesics} so proper time is zero, and we use a dot to denote the derivative with respect to some affine parameter (linearly related to the path length).
+Using the metric,
+\begin{align}
+    c^2\left(1-\frac{2m}{r}\right)\dot{t}^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2 - r^2\dot{\phi}^2 = 0, 
+\end{align}
+and substituting in from the Euler-Lagrange equations for $\dot{t},\dot{\phi}$, we find
+\begin{align}
+    \frac{r^4c^2E^2}{\left(1-\frac{2m}{r}\right)c^4L_2^2} - \left(1-\frac{2m}{r}\right)^{-1}\left(\frac{dr}{d\phi}\right)^2 - r^2 &= 0,\\
+    \left(\frac{dr}{d\phi}\right)^2 + r^2\left(1-\frac{2m}{r}\right) - \frac{E^2r^4}{c^2L_2^2} &= 0,\\
+    \frac{1}{u^4}\left(\frac{du}{d\phi}\right)^2 + \frac{1}{u^2}\left(1-2mu\right) - \frac{E^2}{c^2L_2^2u^4} &= 0, \\
+    \left(\frac{du}{d\phi}\right)^2 + u^2 = \frac{E^2}{c^2L_2^2} + 2mu^3 = \frac{E^2}{c^2L_2^2} &+ \frac{2GMu^3}{c^2}.
+\end{align}
+Again, we have a $u^3$ term which can be thought of as a general relativity correction. 
+Without it, we have 
+\begin{align}
+    \left(\frac{du}{d\phi}\right)^2 + u^2 &= F = \frac{E^2}{c^2L_2^2},
+\end{align}
+which has a particular solution of $u=u_0\sin\phi$, where $u_0$ is the value of $u$ at closest approach (the perihelion). 
+Let's put this in terms of $r$ and $r\sin\phi=\frac{1}{u_0}=r_0$.
+This is just a straight line, and this is what Newtonian gravity predicts about light, if light is not affect by gravity. \\
+Doing the \emph{weak field approximation} again:
+\begin{align}
+    \left(\frac{du}{d\phi}\right)^2 + u^2 &= F + \e u^3,
+\end{align}
+at closest approach then $u=u_0$ and $\frac{du}{d\phi}=0$, so
+\begin{align}
+    u_0^2 &= F + \e u_0^3,
+\end{align}
+which we can substitute for $F$ in the general equatoin:
+\begin{align}
+    \left(\frac{du}{d\phi}\right)^2 + u^2 &= u_0^2\left(1-\e u_0\right) + \e u^3.
+\end{align}
+This should have a solution which is just a small perturbation of the flat spacetime solution - maybe $u=u_0\sin\phi+\e f(\phi)$, where $f$ is some function of $\phi$ to be determined. 
+Using this, and ignoring anything with higher powers of $\e$, we get
+\begin{align}
+    2\cos\phi\frac{df}{d\phi} + 2f\sin\phi &= u_0^2(\sin^3\phi-1).
+\end{align}
+This is just a first-order differential equation of $f$, so we will get the solution to be
+\begin{align}
+    f &= \frac12u_0^2\left(1+\cos^2\phi-\sin\phi\right) + A\cos\phi,
+\end{align}
+where $A$ is a constant of integration so it can be found from the boundary conditions. 
+At $r=\infty$, $\phi=0,f=0$ so $A=-u_0^2$.
+So our full solution for the weak field effect of gravity on the path of a light beam is
+\begin{align}
+    u = u_0\left(1-\frac12\e u_0\right)\sin\phi + \frac12\e u_0^2\left(1-\cos\phi\right)^2.
+\end{align}
+We no longer expect a straight line as the photon goes from $\phi=0\to\pi$.
+As $r\to\infty$, i.e. $u\to0$, $\phi\to\pi+\alpha$, where $\alpha\ll1$, so
+\begin{align}
+    \cos(\pi+\alpha) &= \cos\pi\cos\alpha - \sin\pi\sin\alpha \approx -1, \\
+    \sin(\pi+\alpha) &= \sin\pi\cos\alpha + \cos\pi\sin\alpha = -\sin\alpha \approx -\alpha, \\
+    0 &= -\left(1-\frac12\e u_0\right)\alpha + 2\e u_0 \approx -\alpha+2\e u_0, \\
+    \alpha &\approx 2\e u_0 = \frac{4GM}{r_0c^2}. 
+\end{align}
+Take $r_0$ as equal to the Sun's radius and look at a star in the line of sight just away from the limb of the Sun and then the prediction for the deflection of its position is $1.75$ arcseconds. 
+This was the first test of general relativity, measuring positions of stars close to the Sun as seen during a solar eclipse and comparing these to their positions as seen when the sun was nowehre near the line of sight. 
+Incidentally, if Newtonian gravity \unl{does} affect light, with the mass-independent acceleration term of $\frac{GM}{r^2}$, then the prediction for lightbending is exactly half of the general relativity one. 
+Observations come out on the general relativity prediction and we can rule out either of the Newtonian predictions. 
+
+\section{Gravitational Lensing}
+Mass concentration affects the paths of light. 
+As light passes through a curved region of space, the light bends. 
+To the observer on earth, the light source appears at a different place on the sky. 
+If the curvature of space is strong enough, the observer may see the same object in two different places on the sky. 
+If the source and the lens are \emph{perfectly aligned}, then the object appears as a \emph{ring around the lens.}
+
+Measuring the size of the ring (and the distance to the lens and the source) tells you how much mass is inside the ring. 
+It is a direct measure of the mass, not one based on how much light the object emits, so you can detect the presence of invisible dark matter. 
+If the source fluctuates in brightness, and most quasars do, these changes will appear in the images at different times. 
+You can immediately measure how long it has taken light to travel the different paths, and thus the difference in path length. 
+This is key to working out how big the universe is, i.e. the value of the Hubble constant. 
+
+The source of light may be hugely magnified by the lens. 
+This is a natural `telescope' that astronomers can exploit to measure the properties of very faint galaxies in unimaginable detail, or even to detect the first stars in the universe. 
+Even small mass concentrations induce distortions in the shapes of background galaxies. 
+These distortions can be measured by averaging over many galaxies in order to construct a 3D map of the distribution of mass in the universe. \\
+This is the basis of the upcoming \emph{Euclid satellite project.}
+Euclid will be able to `see' all the matter in the universe, so it will make a fundamental test of the CDM cosmological model. 
+
+\chapter{Orbits in Strong Field General Relativity}
+What do we predict in the presence of strong fields where the weak field approximation does not apply?
+Using again
+\begin{align}
+    ds^2 = c^2d\tau^2 = c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 - r^2\left(d\theta^2+\sin^2\theta\,d\phi^2\right),
+\end{align}
+where $m=\frac{GM}{c^2}$.
+If we set $r_s=\frac{2GM}{c^2}$, we get some strange things. 
+Nothing happens to the Riemann curvature tensor or curvature scalar at this point, so physically $r=r_s$ is not a singularity, the only physical singularly is at $r=0$, but something odd happens regardless. 
+
+We did weak field geodesics where $\frac{dr}{d\phi}$ varied. 
+Now we want to do circular orbits so $\frac{dr}{d\phi}=0$, and we want another equation to use. 
+One approach is to use the Lagrangian,
+\begin{align}
+    \La &= \frac12\left(\left(1-\frac{2m}{r}\right)c^2\dot{t}^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r} -r^2\dot{\phi}^2\right),
+\end{align}
+from which we can set up the Euler-Lagrange equations:
+\begin{align}
+    \frac{d}{d\tau}\left(\frac{\p\La}{\p\dot{x}^a}\right) - \frac{\p\La}{\p x^a} &= 0 \implies \dot{t} = \left(1-\frac{2m}{r}\right)^{-1}\frac{E}{c^2},\quad \dot{\phi} = -\frac{L_2}{r^2},\\
+    \frac{\p\La}{\p\dot{r}} &= -\left(1-\frac{2m}{r}\right)^{-1}\dot{r}, \\
+    \frac{d}{d\tau}\left(\frac{\p\La}{\p\dot{r}}\right) &= +\left(1-\frac{2m}{r}\right)^{-2}\frac{m}{r^2}\dot{r}^2 - \left(1-\frac{2m}{r}\right)\ddot{r}, \\
+    \frac{\p\La}{\p r} &= \frac{m}{r^2}c^2\dot{t}^2 + \left(1-\frac{2m}{r}\right)^{-2}\frac{m}{r^2}\dot{r}^2 - r\dot{\phi}^2, \\
+    \frac{d}{d\tau}\left(\frac{\p\La}{\p\dot{r}}\right)-\frac{\p\La}{\p r} &= \left(1-\frac{2m}{r}\right)^{-1}\ddot{r} - \frac{m}{r^2}c^2\dot{t}^2 + r\dot{\phi}^2 = 0. 
+\end{align}
+Circular orbits have $\ddot{r}=\dot{r}=0$, so
+\begin{align}
+    \frac{mc^2}{r^2}\dot{t}^2 - r\dot{\phi}^2 &= 0 \implies mc^2\dot{t}^2 = r^2\dot{\phi}^2, \\
+    \frac{\dot{\phi}}{\dot{t}} = \frac{d\phi}{dt} &= \left(\frac{mc^2}{r^3}\right)^{1/2} = \left(\frac{GM}{r^3}\right)^{1/2}. 
+\end{align}
+So the change in coordinate time for one complete revolution is 
+\begin{align}
+    \Delta t &= 2\pi\left(\frac{r^3}{GM}\right)^{1/2},
+\end{align}
+which is the same as the Newtonian expression. 
+If the observer is at some radius $r_1$, then we know from the redshift that the coordinate time intervals will be the same so the proper time interval is
+\begin{align}
+    d\tau_1 &= \left(1-\frac{2m}{r_1}\right)^{1/2}dt,\\
+    \Delta\tau_1 &= \left(1-\frac{2m}{r}\right)^{1/2}\Delta t,
+\end{align}
+and as $r_1\to\infty$, we see that $\Delta\tau_1=\Delta t$. 
+So the observed orbital period is the same as that in Newtonian gravity. 
+But what does the orbitting particle think its orbital period is?
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (6pt) node[anchor=north,yshift=-5pt] {M};
+        \fill (1.75,0) circle (3pt) node[anchor=west,xshift=5pt] {spaceship};
+        \draw (0,0) -- (1.75,0) node[anchor=north,midway] {r};
+        \draw[-Latex] (0.9,-1.52) arc (-60:60:50pt);
+        \draw[dashed] (0.9,-1.52) arc (300:60:50pt);
+    \end{tikzpicture}
+\end{figure}
+We need to get an expression relating its proper time to its coordinate time: $\dot{t}=\frac{dt}{d\tau}$. 
+Before, we had an expression for $\dot{t}$ from the $t$ Euler-Lagrange equation:
+\begin{align}
+    \dot{t} &= \left(1-\frac{2m}{r}\right)k \implies \dot{t}^2 = \frac{k^2r^2}{(r-2m)^2},
+\end{align}
+but this involves the unkown integration constant $k$ which we have seen before depends on the geodesic path we are on (previously it was written as $k=\frac{E}{c^2}$, it's just some constant).
+We have two additional relations between $\dot{\phi}$ and $\dot{t}$: one from the orbit, 
+\begin{align}
+    mc^2\dot{t}^2 &= \frac{mc^2k^2}{\left(1-\frac{2m}{r}\right)^2} = r^3\dot{\phi}^2, & \dot{\phi} &= \frac{mc^2k^2}{r^3\left(1-\frac{2m}{r}\right)^2} = \left(\frac{d\phi}{d\tau}\right)^2;
+\end{align}
+and from the metric:
+\begin{align}
+        c^2 &= c^2\left(1-\frac{2m}{r}\right)\dot{t}^2 - r^2\dot{\phi}^2 = \left(1-\frac{2m}{r}\right)^{-1}k^2c^2-r^2\left(\frac{mc^2}{r^3}\right)\left(\frac{k}{1-\frac{2m}{r}}\right)^2,\\
+    \left(1-\frac{2m}{r}\right)^2c^2 &= k^2c^2\left(1-\frac{2m}{r}-\frac{m}{r}\right) \implies k^2 = \frac{\left(1-\frac{2m}{r}\right)^2}{\left(1-\frac{3m}{r}\right)}. 
+\end{align}
+Since we need real numbers, i.e. $k^2>0$, then orbits are impossible for $r<3m$. 
+Previously orbits were going funny at $r=2m$, but now at $r=3m$, well before anything really odd happens at the metric. 
+This property that stable orbits are not possible below $r=3m$ shows a big difference between Newtonian gravity and general relativity. 
+In Newtonian gravity, there was always a stable orbit that could be found around a point mass; general relativity is not like this, since gravity is not the same as in the Newtonian description. 
+Within $r=3m$, gravity is so strong that stable orbits cannot exist and the material spirals in. 
+We can figure out what the orbiting particle measures its orbital period to be, $\Delta\tau=\frac{\Delta t}{\dot{t}}$, so we can get the orbital period as measured by the orbiting observer:
+\begin{align}
+    \Delta\tau &= \frac{\Delta t}{\dot{t}} = 2\pi\left(\frac{r^3}{mc^2}\right)^{1/2}\left(\frac{k}{1-\frac{2m}{r}}\right)^{-1} = 2\pi\left(\frac{r^3}{mc^2}\right)^{1/2}\left(1-\frac{3m}{r}\right)^{1/2}.
+\end{align}
+Note that $\Delta\tau\to0$ as $r\to3m$, again showing we cannot have orbits at $r<3m$.
+
+\section{The Stability of Circular Orbits}
+This is a conservative limit to the last orbiting particles. 
+A stability analysis should small departures from a circular orbit go horribly wrong. 
+The limit for stable orbits is at $r=6m$. 
+Starting from the metric,
+\begin{align}
+    ds^2 &= c^2d\tau^2 = \left(1-\frac{2m}{r}\right)\,c^2dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 - r^2d\phi^2,
+\end{align}
+and substitute in the cyclic coordinates $\left(1-\frac{2m}{r}\right)\dot{t} = \frac{E}{c^2}$ and $r^2\dot{\phi}=L_2$ and solve for $\dot{r}$.
+This gives the familiar
+\begin{align}
+    \dot{r}^2 &= \frac{E^2}{c^2} - V^2(r),
+\end{align}
+where $V^2(r)$ is a potential barrier defined as
+\begin{align}
+    V^2(r) &= c^2\left(1+\frac{L_2^2}{c^2r^2}\right)\left(1-\frac{2m}{r}\right) = \underbrace{c^2 - \frac{2m}{r}}_{\text{potential energy}} + \underbrace{\frac{L_2^2}{r^2} - \frac{2mL_2^2}{r^3}}_{\text{centrifugal barrier}}.
+\end{align}
+If we substitute for $m=\frac{GM}{c^2}$, we get
+\begin{align}
+    V^2(r) &= c^2-\frac{2GM}{c^2r}+\frac{L_2^2}{r^2}-\frac{2GML_2^2}{c^2r^3},
+\end{align}
+which looks even more like a potential energy with a centrifugal barrier. 
+For an orbit to be stable, we need to choose $r$ and $L_2$ such that the potential is at a minimum. 
+We can easily compute the turning points of $V$:
+\begin{align}
+    \frac{dV}{dr} &= 0, & r &= \frac{L_2^2}{2mc^2} \pm \frac{L_2^2}{2mc^2}\sqrt{1-\frac{12m^2c^2}{L_2^2}}.
+\end{align}
+If $L_2$ is large, we can find a radius where the potential is a minimum, but, for $L_2=\sqrt{12}mc$, the two turning points merge together. 
+This is neither a maximum nor a minimum - it is a point of inflection. 
+Putting $L_2$ back into the equation, we then get
+\begin{align}
+    r &= \frac{12m^2c^2}{2mc^2} = 6m.
+\end{align}
+At small radii, circular orbits are not stable. 
+Any small wobble grows and grows until the particle falls into the black hole. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (6pt) node[anchor=north,yshift=-5pt] {M};
+        \draw[dashed] (0,0) circle (20pt) node[anchor=south,yshift=17pt] {$r=2m$};
+        \draw[dashed] (0,0) circle (40pt) node[anchor=south,yshift=37pt] {$r=3m$};
+        \draw[dashed] (0,0) circle (80pt) node[anchor=south,yshift=67pt] {$r=6m$};
+        \draw (0,0) circle (89pt);
+        \draw (0,0) circle (83pt);
+        \draw (0,0) circle (86pt);
+        \draw (-0.7,2.6) -- (-3,3) node[anchor=east] {last stable orbit};
+        \draw (-0.7,2.6) -- (-3,2) node[anchor=east] {\shortstack{inner edge to \\ accretion disc}};
+        \draw (-0.7,1.55) -- (-3.2,0.8) node[anchor=east] {last orbit};
+    \end{tikzpicture}
+\end{figure}
+
+\section{Photon Orbits}
+We can do the same for photons.
+Substitute for $\dot{t}$ and $\dot{\phi}$ in the metric to get the new value for k:
+\begin{align}
+    \left(1-\frac{2m}{r}\right)\frac{k^2}{\left(1-\frac{2m}{r}\right)^2} - \frac{r^2mc^2k^2}{r\left(r-2m\right)^2} &= 0 \implies k^2(r-3m) = 0, 
+\end{align}
+so we can only have photon orbits ($k\neq0$) at $r=3m$, as implied by the particle orbits above where $\Delta\tau\to0$ (i.e. null geodesic) as $r\to3m$.
+At $r=3m$, we expect a shell of trapped photons, continuously orbiting around the black hole. 
+This is the `photon sphere' of the black hole. 
+The photon orbitd are not stable, and the photons will wobble and fall in the black hole before too long. 
+Photons therefore do not accummulate here. 
+
+\newpage
+\section{Journey Into a Black Hole}
+The simplest black hole is a \emph{Schwarzschild black hole}, which is a black hole with mass, but no electric charge or spin. 
+The outermost layer is dust and gas in the accretion disc - not all the way to the event horizon because there is the innermost stable orbit - $3r_s$ for non-spinning. 
+Light can orbit at $1.5r_s$ radii - photons in complete circle; this is the `photon sphere' which is unstable. 
+Light needs to orbit at $2.6r_s$ to get the ray to avoid the center, so our image is $2.6\times$ the event horizon size. 
+We can see an individual accretion disc due to warping of spacetime.
+We also have \emph{relativistic beaming} or \emph{Doppler beaming} of material moving towards us in the accretion disc which makes it appear brighter, i.e. one side looks brighter than the other!
 
 \chapter{Time and Black Holes}
-\begin{itemize}
-    \item Last lecture - orbits around black holes
-    \item This lecture - time depends on \unl{where you are} and \unl{how you move}; falling into a black hole
-\end{itemize}
+The way observers experience time depends on how observers move relative to each other, as well as \emph{how far they are} from the black hole.
 
-\section{The Schwarzchild Metric}
-Defined as
+\section{Time Depends on Where You Are and How You Move}
+Previously, we found that the \emph{coordinate time for one orbit} is
+\begin{align}
+    t_{orb} &= 2\pi\left(\frac{r^3}{mc^2}\right)^{1/2},
+\end{align}
+which is the same as Newtonian gravity except this is coordinate time, not proper time. 
+This is the orbital period measured by a stationary observer a long way from the black hole. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \fill (0,0) circle (6pt) node[anchor=north,yshift=-5pt] {M};
+        \fill (1.75,0) circle (3pt) node[anchor=west,xshift=5pt] {satellite, $S_0$};
+        \fill (2.5,-1) circle (3pt) node[anchor=west,xshift=5pt] {\shortstack{rocket, $S_1$ \\ $d\phi,dr = 0$}};
+        \fill (8,0) circle (3pt) node[anchor=south,yshift=5pt,xshift=28pt] {space station};
+        \draw[-Latex] (0.9,-1.52) arc (-60:60:50pt);
+        \draw[dashed] (0.9,-1.52) arc (300:60:50pt);
+    \end{tikzpicture}
+\end{figure}
+An observer experiences the proper time, $\tau$, whereas $t$ is the time coordinate.
 \begin{align}
     ds^2 &= c^2d\tau^2 = c^2\left(1-\frac{2m}{r}\right)dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 - r^2d\phi^2.
 \end{align}
-An observer experiences the proper time, $\tau$, whereas $t$ is the time coordinate.
-\textit{doodle}
-For the coordinate time seen from the distant observer,
-\begin{align}
-    t_{orb} &= 2\pi\left(\frac{r^3}{mc^2}\right)^{1/2}.
-\end{align}
 What does $S_0$ measure?
+The proper time measured by someone going round on this orbit is
 \begin{align}
-    d\tau_0 &= \left(1-\frac{3m}{r}\right)^{1/2}dt,\\
-    \tau_{orb} &= \left(1-\frac{3m}{r}\right)^{1/2}t_{orb}
+    d\tau_0 &= \left(1-\frac{3m}{r}\right)^{1/2}dt, & \tau_{orb} &= \left(1-\frac{3m}{r}\right)^{1/2}t_{orb},
 \end{align}
 which tells us that there are no orbits possible with $r<3m$.
-For the rocket $S_1$, we arrange such that $d\phi=0,dr=0$, i.e. the rocket is being held stationary.
-We then get from the metric
+This is different also to the proper time as experience by someone hovering at radius $r_1$ - held there by firing rockets. 
+They are not on a geodesic path, and we need to go back to the metric - it's simply the metric with no spatial parts as all the $dr,d\theta,d\phi=0$, i.e/
 \begin{align}
     c^2d\tau_1^2 &= c^2\left(1-\frac{2m}{r_1}\right)dt^2, \\
-    \tau_{hov} &= \left(1-\frac{2m}{r_1}\right)^{1/2}t_{orb},\\
-    \tau_{orb} &\neq \tau_{hov}.
+    \tau_{hov} &= \left(1-\frac{2m}{r_1}\right)^{1/2}t_{orb}.
 \end{align}
-Consider the example where $r=r=6m$.
+Note that $\tau_{orb}\neq\tau_{hov}$, even if they are the same radius!
+Those observers are moving relative to one another and we should be expecting some sort of dilation effect.
+Consider the example where $r=r_1=6m$.
 We will get
 \begin{align}
     \tau_{orb} &= \left(\frac12\right)^{1/2}t_{orb}, & \tau_{hov} &= \left(\frac23\right)^{1/2}t_{orb}, & \frac{\tau_{orb}}{\tau_{hov}} &= \frac{\sqrt{3}}{2} = 0.86.
 \end{align}
-So $S_1$ perceives themselves as older than $S_0$.
+The astronauts in the hovering probe see a \unl{longer} elapsed time - they are older than their companions who orbited. 
+Just using special relativity would not produce this result. \\
+\textbf{The time you measure for an orbit depends both on where are in the gravitational field, and how you are moving.}
 
-\section{Radial Geodesics}
-Similar to before, but simpler form:
+\section{Crossing the Event Horizon: Radial Geodesics}
+What happens if we measure the time experienced as an observer falls into a black hole on a radial free-fall geodesic?
+A \emph{radial geodesic} has $d\theta=d\phi=0$, so:
 \begin{align}
-    c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2. \\
+    c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2,
+\end{align}
+and using our previous result that 
+\begin{align}
     \left(1-\frac{2m}{r}\right)\dot{t} &= E,
 \end{align}
 where we have solved the Euler-Lagrange equation in $t$, and $\dot{t}$ is $\frac{dt}{d\tau}$, and $E$ is a constant.
 Dividing by $d\tau^2$, we rewrite as
 \begin{align}
-    c^2 &= c^2\left(1-\frac{2m}{r}\right)\dot{t}^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2, \\
-    c^2 &= c^2\left(1-\frac{2m}{r}\right)^{-1}E^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2, \\
+    \begin{split}
+        c^2 &= c^2\left(1-\frac{2m}{r}\right)\dot{t}^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2\\
+            &= c^2\left(1-\frac{2m}{r}\right)^{-1}E^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2,
+    \end{split}\\
     \dot{r}^2 &- c^2E^2 + c^2\left(1-\frac{2m}{r}\right) = 0.
 \end{align}
-We need to find constant, so we use the condition $\dot{r}=0$ at $r\gg2m$:
+So the velocity depends on $E$, i.e. depends on whether it starts from rest and drops towards the hole, or whether it is flung with some velocity towards the hole. 
+For a particle dropped at rest from $r\gg2m$, $\dot{r}=0$, then $dt\approx d\tau$ so
 \begin{align}
-    -c^2E^2 &+ c^2 = 0, \quad E = 1, \\
+    E^2 &= \left(1-\frac{2m}{r}\right) \approx 1, \\
     \dot{r}^2 &- c^2 + c^2\left(1-\frac{2m}{r}\right) = 0, \\
-    \dot{r}^2 &= \frac{2mc^2}{r} \implies \dot{r}^2 = -c\sqrt{\frac{2m}{r}},
+    \dot{r}^2 &= \frac{2mc^2}{r} \implies \dot{r} = -c\sqrt{\frac{2m}{r}}.
 \end{align}
-where we have chosen the negative solution for when we are approaching the black hole.
-This looks pretty Newtonian, but remember that $\dot{r}=\frac{dr}{d\tau}$, where $\tau$ is the proper time.
-So this would be the speed measured by the falling observer.
-
-How long does it take to reach $r=0$?
+We have taken the square root, so we can have either sign for $\dot{r}$, but since particles fall down then it makes most sense to take the negative solution. 
+This looks like the Newtonian expression, but here we are taking the derivative with respect to the proper time $\tau$, \unl{not} the coordinate time $t$ - this would be the speed measured by the falling observer.\\
+How long would it take to fall in the gravitational field, i.e. to reach $r_2=0$?
 We can work out the proper time as observed by the person falling into the black hole, as
 \begin{align}
     \tau &= \int_{r_1}^{r_2} \frac{d\tau}{dr}dr = \int_{r_1}^{r_2} \frac{1}{\dot{r}}dr = \frac{1}{c\sqrt{2m}}\int_{r_2}^{r_1} r^{1/2}\,dr = \frac{2}{3c\sqrt{2m}}\left(r_1^{3/2} - r_2^{3/2}\right).
 \end{align}
-We have a perfectly finite $\tau$ for $r_2=0$, e.g. $r_1=10m$, $r_2=0$ results in $\tau=14.9\frac{m}{c}$.
+We have a perfectly finite $\tau$ for $r_2=0$ (no singularity anywhere!), e.g. $r_1=10m$, $r_2=2m$ results in $\tau=13.6\frac{m}{c}$ (time as measured by a clock on this wordline) to fall into the horizon.
+It is smoothly varying across $r=2m$ and we could have done this with $r_1=10m$, $r_2=0$, resulting in $\tau=14.9\frac{m}{c}$.
+So it doesn't take long to fall down to the singularity. 
 
-If we consider the perspective of the person a long distance away, then
+\section{The Nature of the Event Horizon}
+The Euler-Lagrange equation relates proper time and coordinate time for the particle starting from rest at infinity so $\frac{dt}{d\tau}=\left(1-\frac{2m}{r}\right)^{-1}$, and the coordinate speed is
 \begin{align}
-    \frac{dr}{dt} &= \frac{dr}{d\tau}\frac{d\tau}{dt} = -c\sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right).
+    \frac{dr}{dt} &= \frac{dr}{d\tau}\frac{d\tau}{dt} = -c\sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right),
 \end{align}
-At $r=2m,\frac{dr}{dt}\to0$.
+and at $r=2m,\frac{dr}{dt}\to0$.
+So the coordinate time interval goes infinite as $r\to2m$. 
+It takes an infinite amount of coordinate time to fall to $r=2m$. 
 From a distance, we will observe them fall in to the black hole, but slow down and ``stop" at the event horizon; the person falling into the black hole will feel themselves falling in faster and faster.
 We have a gravitational redshift,
 \begin{align}
-    \frac{\lambda_R}{\lambda_E} &= \sqrt{\frac{1-\frac{2m}{r_2}}{1-\frac{2m}{r_E}}},
+    \frac{\lambda_R}{\lambda_E} &= \left(\frac{1-\frac{2m}{r_2}}{1-\frac{2m}{r_E}}\right)^{1/2},
 \end{align}
-so the wavelength received $\lambda_R\to\infty$.
-It isn't quite that we see it come to rest, but rather its signal slowly fades out and gets weaker and weaker until we don't observe anything.
+so as $r\to2m$, the wavelength received $\lambda_R\to\infty$, i.e. it becomes severely redshifted due to gravitational effects.
+It isn't quite that we see it come to rest, but rather its signal slowly fades out and gets weaker and weaker as it reaches the event horizon.
+The velocity measured by different observers goes as
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (4,0) node[anchor=north] {$x=\frac{r}{m}$};
+        \draw[-Latex] (0,0) -- (0,3) node[anchor=east] {$\frac{v}{c}$};
+        \draw (0.2,3) node[anchor=west,xshift=15pt,yshift=-10pt] {$\frac{dr}{d\tau}$} .. controls (1.5,1.2) and (3,1.1) .. (4,1.05);
+        \draw (1,0) node[anchor=west,xshift=5pt,yshift=15pt] {$\frac{dr}{dt}$} .. controls (1.2,1) .. (4,0.95);
+    \end{tikzpicture}
+\end{figure}
 
-Now let's look at dropping off at some general radius.
-Drop the satellite at $r=r_0,\dot{r}=0$ at $r=0$.
+\section{Acceleration at the Event Horizon}
+What is happening at $r=2m$?
+We can get insight by looking at the acceleration. 
+Consider dropping a satellite at $r=r_0$ from rest $\dot{r}=0$. 
+We substitute these back in the metric to find the new value of $E$ for this case:
 \begin{align}
-    E & \sqrt{1-\frac{2m}{r_0}},\\
-    \dot{r}^2 &= c^2\left[\left(1-\frac{2m}{r_0}\right)-\left(1-\frac{2m}{r}\right)\right] \\
-              &= c^2\left(\frac{2m}{r} - \frac{2m}{r_0}\right), \\
-    \dot{t} &= \left(1-\frac{2m}{r}\right)^{-1}\sqrt{1-\frac{2m}{r_0}},\\
-    \frac{dr}{dt} = \frac{\dot{r}}{\dot{t}} &= c\sqrt{\frac{2m}{r}-\frac{2m}{r_0}}\frac{\left(1-\frac{2m}{r}\right)}{\sqrt{1-\frac{2m}{r_0}}}.
+    c^2 &= \left(1-\frac{2m}{r}\right)\,c^2\dot{t}^2 - \left(1-\frac{2m}{r}\right)^{-1}\dot{r}^2 = \frac{\left(1-\frac{2m}{r_0}\right)c^2E^2}{\left(1-\frac{2m}{r_0}\right)^2},\\
+    E &= \sqrt{1-\frac{2m}{r_0}}.
 \end{align}
-We can also consider what happens for the hovering observer:
+Putting this back in the metric to find the coordinate speed:
 \begin{align}
-    dR_h &= \sqrt{1-\frac{2m}{r}}\,dr,\quad  d\tau_h = \sqrt{1-\frac{2m}{r}}\,dr, \\
-    \frac{dR_h}{d\tau_h} &= \frac{dR_h}{dr}\frac{dr}{dt}\frac{dt}{d\tau_h} = \left(1-\frac{2m}{r}\right)^{-1}\frac{dr}{dt} = -c\sqrt{\frac{\frac{2m}{r}-\frac{2m}{r_0}}{1-\frac{2m}{r_0}}}.
+    c^2\frac{\left(1-\frac{2m}{r}\right)}{\left(1-\frac{2m}{r_0}\right)} &= \left(1-\frac{2m}{r}\right)c^2 - \left(1-\frac{2m}{r}\right)^{-1}\left(\frac{dr}{dt}\right)^2, \\
+    \dot{r}^2 &= c^2\left(\frac{2m}{r} - \frac{2m}{r_0}\right),\qquad  \dot{t} = \left(1-\frac{2m}{r}\right)^{-1}\sqrt{1-\frac{2m}{r_0}},\\
+    \left(\frac{dr}{dt}\right)^2 &= c^2\left(1-\frac{2m}{r}\right)^2\left(1-\frac{1-\frac{2m}{r}}{1-\frac{2m}{r_0}}\right) = c^2\left(1-\frac{2m}{r}\right)^1\frac{\frac{2m}{r}-\frac{2m}{r_0}}{1-\frac{2m}{r_0}},\\
+    \frac{dr}{dt} = \frac{\dot{r}}{\dot{t}} &= c\left(\frac{2m}{r}-\frac{2m}{r_0}\right)^{1/2}\frac{\left(1-\frac{2m}{r}\right)}{\left(1-\frac{2m}{r_0}\right)} = -c\left(1-\frac{2m}{r}\right)\left(\frac{\frac{2m}{r}-\frac{2m}{r_0}}{1-\frac{2m}{r_0}}\right)^{1/2}.
 \end{align}
-If we hover at $r_0=2m,r=2m$, then $\frac{dR_h}{d\tau_h}=c$.
+We can relate the proper distance $dR_h$ and proper time $d\tau_s$ to coordinate time intervals by the metric 
+\begin{align}
+    dR_h &=\left(1-\frac{2m}{r}\right)^{1/2}\,dr,& d\tau_h &= \left(1-\frac{2m}{r}\right)^{1/2}\,dr,
+\end{align}
+so this observer measure a proper velocity,
+\begin{align}
+    \begin{split}
+        \frac{dR_h}{d\tau_h} &= \frac{dR_h}{dr}\frac{dr}{dt}\frac{dt}{d\tau_s} = \left(1-\frac{2m}{r}\right)^{-1/2}\frac{dr}{dt}\left(1-\frac{2m}{r}\right)^{-1/2} = \left(1-\frac{2m}{r}\right)^{-1}\frac{dr}{dt} \\
+                             &= -c\left(1-\frac{2m}{r}\right)\left(\frac{\frac{2m}{r}-\frac{2m}{r_0}}{1-\frac{2m}{r_0}}\right)^{1/2}\left(1-\frac{2m}{r}\right)^{-1} \\
+                             &= -c\left(\frac{\frac{2m}{r}-\frac{2m}{r_0}}{1-\frac{2m}{r_0}}\right)^{1/2}.
+    \end{split}
+\end{align}
+If the observer is at $r=2m$, they see the particle falling at the speed of light, irrespective of the $r_0$ from which is was dropped. 
 This is quite strange.
-Let's check:
+This hovering observer can also measure the proper acceleration as
 \begin{align}
-    \frac{d^2R_h}{d\tau_h^2} &= \frac{d}{d\tau_h}\left(\frac{dR_h}{d\tau_h}\right) = -\frac{mc^2}{r^2}\frac{\sqrt{1-\frac{2m}{r}}}{\left(1-\frac{2m}{r_0}\right)}.
+    \frac{d^2R_h}{d\tau_h^2} &= \frac{d}{d\tau_h}\left(\frac{dR_h}{d\tau_h}\right) = -\frac{mc^2}{r^2}\frac{\left(1-\frac{2m}{r}\right)}{\left(1-\frac{2m}{r_0}\right)}.
 \end{align}
-If $r\to\infty\implies$ Newtonian physics is back.
+Evaluating at $r=r_0$, we get
+\begin{align}
+    \frac{d^2R_h}{d\tau_h^2}\bigg|_{r=r_0} &=\frac{-mc^2}{r_0^2\left(1-\frac{2m}{r_0}\right)^{1/2}}.
+\end{align}
+If $r\to\infty$ then the acceleration is equal to $\frac{GM}{r_0^2}$, so Newtonian physics is back.
 If $r_0\to2m$, then $\frac{d^2R_h}{d\tau_h}\to\infty$.
-However, hovering at $r=2m$ requires an infinitely powerful rocket - you can't hover at $r\leq2m$, i.e.
+There are infinite accelerations measured by a hovering observer, which shows that at $r\leq2m$ you cannot hover anymore. 
+To keep the coordinates the same, you would need an infinitely-powerful rocket!
+Even if you sent a photon, this would fall into the black hole, just more slowly. \\
+In summary, if you ever find yourself in this situation, 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.7]{gg.jpg}
 \end{figure}
 
-\chapter{}
-Falling into a black hole!
-We have better ways of describing spacetime.
-For radial paths, we have the metric and the E-L equations:
-\begin{align}
-    c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}dr^2 \\
-    \dot{t} &= \left(1-\frac{2m}{r}\right)^{-1},\quad \dot{r} = \sqrt{\frac{2m}{r}}
-\end{align}
-$\dot{t}$ is dropped as $\to\infty$.
-We will define a new time coordinate and it can rewritten as
+\chapter{Falling into a Black Hole}
+\section{The Event Horizon: A Summary}
+At $r=2m$, there is infinite acceleration, so there is no such thing as fixed anything. 
+Not just a coordinate singularity, but it is supported by an observer at infinity watching an infalling particle - they see it initially accelerate towards the hole but as it gets closer then it slows down and appears to stop at the horizon. 
+This is not a true a singularity - for an infalling particle it takes a finite time to get to $r=0$ rather than running into any real barrier at $r=2m$.
+
+\section{Eddington-Finkelstein Coordinates}
+While our original choice of $(t,r,\theta,\phi)$ for the coordinates was great for telling us about things from the point of view of a distant observer, they are not much use when we get close to the black hole. 
+We define a new time coordinate $dT$ where $dT$ is the proper time of, e.g., a radially-infalling particle which can be measured by alternate observers. 
+In comparison, $d\tau$ is the proper time on a radial path. 
+This means we can solve problems considering the infalling observer instead of the external observer in the space station which had issues previously.
+This new time coordinate can be written as
 \begin{align}
     c\,dT &= cd\tau = c\left(1-\frac{2m}{r}\right)\,dt, \\
     c\,dT &= c\,dt - \frac{2mc}{r}\,dt,\\
-    dt &= \frac{\dot{t}}{\dot{r}} = \left(\frac{-1}{1-\frac{2m}{r}}\right)\sqrt{\frac{2m}{r}}\frac{1}{c}dr, \\
-    c\,dT &= c,dt + \sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right)^{-1}\,dr, \\
-    c^2d\tau^2 &= \left(1-\frac{2m}{r}\right)\left[c\,dT - \sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right)\,dr\right]^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2, \\
-    c^2d\tau^2 &= \left(1-\frac{2m}{r}\right)c^2dT^2 - 2\sqrt{\frac{2m}{r}}c\,dT\,dr - dr^2.
+    dt &= \frac{\dot{t}}{\dot{r}} = \left(\frac{-1}{1-\frac{2m}{r}}\right)\left(\frac{2m}{r}\right)^{-1/2}\frac{1}{c}dr, \\
+    c\,dT &= c\,dt + \left(\frac{2m}{r}\right)^{1/2}\left(1-\frac{2m}{r}\right)^{-1}dr.
 \end{align}
-We now have a rewritten metric in terms of a time coordinate of someone falling into a black hole.
-$\tau$ is the proper time on the radial path, $T$ is the proper time of the falling observer.
-So we can now solve in the falling observer's perspective rather than the orbiting observer.
-
-What do we need to consider causally around the centre of the Black Hole?
+From this, we can get our new metric:
+\begin{align}
+    \begin{split}
+        c^2d\tau^2 &= \left(1-\frac{2m}{r}\right)\left[c\,dT - \sqrt{\frac{2m}{r}}\left(1-\frac{2m}{r}\right)\,dr\right]^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2, \\
+                   &= \left(1-\frac{2m}{r}\right)c^2dT^2 - 2\left(\frac{2m}{r}\right)^{1/2}\,c\,dT\,dr - dr^2.
+    \end{split}
+\end{align}
+This is now the metric in the time of the infalling observer so we can write these from different observation points. 
+We want to consider causality around the center of a black hole. 
+Any free-falling observer is in an inertial frame - we can draw a flat bit of spacetime which is tangent to the spacetime curvature at that point, and since time is orthogonal to space then we can use this to define the $t$ axis. 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \draw[-Latex] (0,0) -- (4,0) node[anchor=north] {r};
+        \draw[-Latex] (0,0) -- (4.5,0) node[anchor=north] {r};
         \draw[-Latex] (0,0) -- (0,3) node[anchor=east] {$ct$};
         \draw[dashed] (0,1.5) -- (4,1.5);
+        \draw[dashed] (1,3) -- (1,0) node[anchor=north] {$2m$};
+        \fill (2,1.5) circle (3pt);
+        \draw (1.8,0.8) -- (2.2,0.8) -- (1.8,2.2) -- (2.2,2.2) -- cycle;
         \fill (3,1.5) circle (3pt);
         \draw (2.7,0.8) -- (3.3,0.8) -- (2.7,2.2) -- (3.3,2.2) -- cycle;
-%        \fill (3,1.5) circle (3pt);
-%        \draw (2.6,0.8) -- (3.4,0.8) -- (2.6,2.2) -- (3.4,2.2) -- cycle;
-%        \fill (2.5,1.5) circle (3pt);
-%        \draw (2.6,0.8) -- (3.4,0.8) -- (2.6,2.2) -- (3.4,2.2) -- cycle;
-%        \fill (3,1.5) circle (3pt);
-%        \draw (2.6,0.8) -- (3.4,0.8) -- (2.6,2.2) -- (3.4,2.2) -- cycle;
+        \fill (4,1.5) circle (3pt);
+        \draw (3.6,0.8) -- (4.4,0.8) -- (3.6,2.2) -- (4.4,2.2) -- cycle;
     \end{tikzpicture}
 \end{figure}
-\emph{finish doodle}
-For photons, we have the null geodesic:
+Lightcones make a $45^\circ$ angle. 
+We can make a graph of lightcones considering photons released/arrived /leaving from various points from the black hole. 
+The \emph{cone of influence} is related to causality - it can affect things within the cone but not beyond. \\
+What are the angles that photons propagate at?
+We need to consider the metric and solve for \emph{null geodesics:}
 \begin{align}
-    0 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2 \\
-    c^2dt^2 &= \left(1-\frac{2m}{r}\right)^{-2}dr^2 \\
-    c\frac{dt}{dr} &= \pm \left(1-\frac{2m}{r}\right)^{-1}
+    0 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2, \\
+    c^2dt^2 &= \left(1-\frac{2m}{r}\right)^{-2}dr^2 \implies c\frac{dt}{dr} = \pm \left(1-\frac{2m}{r}\right)^{-1}.
 \end{align}
-This breaks down as we approach the Schwarzchild radius.
-We need to think of a new coordinate system to describe the universe.
+The zones of influence of photons get closer and closer until they become stuck at $r=2m$, and what happens after does not get spread out into the universe. 
 
-\section{Eddington-Finkelstein Coordinates}
-If we define
+We now want to map the causality of the universe, and to do so, we need to introduce \textbf{Eddington- Finkelstein coordinates.}
+We can explore what happens by doing a coordinate transformation so that we get rid of the coordinate singularity at the horizon. 
+For light, 
 \begin{align}
-    dr_{*} &= \left(1-\frac{2m}{r}\right)^{-1}\,dr \implies \frac{dt}{dr_{*}} = \pm c
+    dr_{*} &= \left(1-\frac{2m}{r}\right)^{-1}\,dr \implies \frac{dt}{dr_{*}} = \pm c.
 \end{align}
-photons will not allows propagate at 45 degrees in spacetime diagrams, to the expense of our radial coordinate.
-If we integrate this,
+Then radial null paths have constant $ct=\pm r_* + v$, where $v$ is a constant for light, and the positive sign is for outgoing light. 
+If we integrate the radial bit, we get
 \begin{align}
-    r_{*} &= r + 2m\log\bigg|\frac{r}{2m}-1\bigg|, \\
-    ct &= \pm r_{*} + v.
+    r_{*} &= r + 2m\log\bigg|\frac{r}{2m}-1\bigg|.
 \end{align}
-So we have a choice of two equations for defining our time variable, but we must choose one.
-They chose the inward-going light rays for
+We can change the variable $ct=-r_* + v$, choosing ingoing rays and $v=r_*+ct$, and differentiate:
 \begin{align}
-    v &= r_{*} + ct, \\
-    \frac{dv}{dr} &= \frac{dr_{*}}{dr} + c\frac{dt}{dr}, \\
-    dv &= \left(1-\frac{2m}{r}\right)^{-1}dr + cdt.
+    \frac{dv}{dr} &= \frac{dr_{*}}{dr} + c\frac{dt}{dr} \implies dv = \left(1-\frac{2m}{r}\right)^{-1}dr + c\,dt.
 \end{align}
 Again, we can substitute this in to the metric, and find a new form:
 \begin{align}
+    c^2dt^2 &= dv^2 - \frac{2\,dv\,dr}{\left(1-\frac{2m}{r}\right)} + \frac{dr^2}{\left(1-\frac{2m}{r}\right)^2}, \\
+    c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)\left[dv^2-\frac{2\,dv\,dr}{\left(1-\frac{2m}{r}\right)} + \frac{dr^2}{\left(1-\frac{2m}{r}\right)}\right] - \frac{dr^2}{\left(1-\frac{2m}{r}\right)},\\
     d\tau^2 &= \left(1-\frac{2m}{r}\right)\,dv^2 - 2\,dv\,dr.
 \end{align}
 When $v$ is constant and we set $d\tau=0$ we have the path taken by a photon.
 We can solve for the photon paths:
 \begin{enumerate}
-    \item Inwards propagating, so $dv = 0$
-    \item
+    \item Inwards propagating, so $dv = 0$, i.e. $v$ is constant
+    \item From solving quadratically:
         \begin{align}
-            \frac{dv}{dr} &= \frac{2}{\left(1-\frac{2m}{r}\right)}
+            \frac{dv}{dr} &= \frac{2}{\left(1-\frac{2m}{r}\right)}.
         \end{align}
+        In this case, this changes sign at $r=2m$. 
+        These are outgoing light paths, and they go to smaller radii for $r<2m$, so even outgoing light rays go inwards. 
 \end{enumerate}
-Plotting this, for
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \draw[-Latex] (0,0) -- (4,0) node[anchor=north] {r};
-        \draw[-Latex] (0,0) -- (0,3) node[anchor=east] {$v$};
+        \draw[-Latex] (-0.5,0) -- (4.5,0) node[anchor=north] {r};
+        \draw[-Latex] (-0.5,0) -- (-0.5,3) node[anchor=east] {$v$};
+        \draw[dashed] (1,3) -- (1,0) node[anchor=north] {$2m$};
+        \fill (2.2,1.5) circle (3pt);
+        \draw[Latex-Latex] (1.3,1.5) -- (2.2,1.5) node[anchor=north,midway] {1} -- (2.5,2.5) node[anchor=west,midway] {2};
+        \fill (3.8,1.5) circle (3pt);
+        \draw[Latex-Latex] (2.9,1.5) -- (3.8,1.5) node[anchor=north,midway] {1} -- (4.6,2.1) node[anchor=west,midway,xshift=-3pt,yshift=-3pt] {2};
+        \fill (0.6,1.5) circle (3pt);
+        \draw[Latex-Latex] (-0.3,1.5) -- (0.6,1.5) node[anchor=north,midway] {1} -- (-0.1,2.1) node[anchor=west,midway,xshift=-2pt,yshift=3pt] {2};
     \end{tikzpicture}
 \end{figure}
-\emph{finish doodle}
-Light ray which is always horizontal - would want both at 45 degrees.
-Light cone tips over at $r=2m$.
-Transform variables again for
-\begin{align}
-    ct_{*} &= v-r \\
-    \frac{cdt_{*}}{dr} &= -1 \\
-    \frac{cdt_{*}}{dt} &= \frac{\left(1+\frac{2m}{r}\right)}{\left(1-\frac{2m}{r}\right)}
-\end{align}
-\emph{another doodle}
+There is a light ray which is always horizontal, we would want both at $45^\circ$.
+The lightcone tips over within $r=2m$.
+We can consider transformation of variables: $ct_* = v-r$.
+Now our photon paths are something like:
+\begin{enumerate}
+    \item Ingoing, now always at $45^\circ$:
+        \begin{align}
+            c\frac{dt_*}{dr} = -1.
+        \end{align}
+    \item Again, changing sign at $r=2m$ such that outgoing rays go inwards:
+        \begin{align}
+            c\frac{dt_*}{dr} = \frac{\left(1+\frac{2m}{r}\right)}{\left(1-\frac{2m}{r}\right)}.
+        \end{align}
+\end{enumerate}
+
+\section{Penrose Diagrams}
+We can now locate ourselves in space and the normal time-distance coordinates we use in nearly flat spacetime and can go further. 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -2186,76 +2682,121 @@ Transform variables again for
         \draw (3.2,0.8) -- (3.8,0.8) -- (3.2,2.2) -- (3.8,2.2) -- cycle;
         \fill (2.5,1.5) circle (3pt);
         \draw (2.3,0.7) -- (2.8,0.8) -- (2.2,2.2) -- (2.7,2.3) -- cycle;
-        \fill (1.5,1.5) circle (3pt);
-        \draw (1.4,0.6) -- (1.8,0.8) -- (1.2,2.2) -- (1.6,2.4) -- cycle;
+        \fill (1.75,1.5) circle (3pt);
+        \draw (1.65,0.6) -- (2.05,0.8) -- (1.45,2.2) -- (1.85,2.4) -- cycle;
         \draw[dashed] (1,0) node[anchor=north] {$2m$} -- (1,2.7);
         \fill (1,1.5) circle (3pt);
         \draw (1,0.6) -- (1.2,0.8) -- (0.8,2.2) -- (1,2.4) -- cycle;
+        \fill (0,1.5) circle (3pt);
+        \draw (0.3,0.8) -- (0.4,1.0) -- (-0.4,2.0) -- (-0.3,2.2) -- cycle;
     \end{tikzpicture}
 \end{figure}
-At large $r$, it always travels at 45 degrees.
-The cones of influence are tipping over as the outward ray moves less and less, until we reach $r=2m$ and the outward propagating ray becomes purely time-like and cannot propagate outwards.
-Once we're inside this radius, both light rays are then tipping over and both move towards the centre of the black hole as our term in Eq. (17.22) goes negative for both.
-The zones of influence are aimed inwards to the Black Hole.
+The \emph{Eddington-Finkelstein} coordinates keep the black hole horizon at a fixed radius but modify the time coordinate. 
+The inward-travelling ray always travels at $45^\circ$ to the axis, and the outward-travelling ray tilts over as we approach the black hole. 
+It tips over the cone of influence! 
+At $r=2m$, the outwards ray never leaves the black hole - it is trapped. 
+Inside $r=2m$, both light rays tip over towards the center of the black hole. 
+\textbf{The zone of influence is towards the center of the black hole.}
 
-\chapter{}
+We would like a coordinate system in which both light rays always propagate at $45^\circ$ from a point. 
+We could arrange this by using a similar trick to define a coordinate system in which the outgoing ray travels at $45^\circ$ and the inward one tilts over. 
+A combination of these two coordinates will do the trick. 
+The penalty of this is that the black hole horizon is no longer at a fixed place in the spatial coordinates.
+These are \textbf{Kruskal coordinates.}
+
+Taking this further, we can remap the singularity to a line so that the curved region in the Kruskal coordinates looks neater. 
+This is the \textbf{Penrose diagram.}
+It allows us to focus on the physics of our black hole and the flow of information through spacetime without getting distracted by geometrics. 
+They allows us to ask meaningful questions about the future and past of particles, even those that start off within the horizon. 
+
+\chapter{Overview and Extra}
 \section{Initial Overview}
 \begin{itemize}
     \item We had the \textbf{Principle of Equivalence} - all bodies feel the same gravity
-    \item Mass $\implies$ curved space $\implies$ curved paths \emph{Yoda meme here}
+    \item Mass $\implies$ curved space $\implies$ curved paths %Yoda meme here
     \item In Special Relativity, we had
         \begin{align}
             \begin{split}
-                c^2d\tau^2 &= c^2dt^2 - dx^2 - dy^2 - dz^2 \\
-                           &= \eta_{\alpha\beta}dx^\alpha dx^\beta,
+                c^2d\tau^2 &= c^2dt^2 - dx^2 - dy^2 - dz^2 = \eta_{\alpha\beta}dx^\alpha dx^\beta,
             \end{split}
         \end{align}
         where we can express this using the Minkowski metric $\eta_{\alpha\beta}$.
     \item Einstein realised we can express this in a more general metric in General Relativity:
         \begin{align}
-            c^2d\tau^2 &= g_{\alpha\beta}dx^\alpha dx^\beta,\quad g_{\alpha_\beta} = (\ve_{\alpha}\cdot\ve_{\beta}).
+            c^2d\tau^2 &= g_{\alpha\beta}dx^\alpha dx^\beta,\quad g_{\alpha_\beta},
         \end{align}
-    \item $\frac{\p\lambda^\beta}{\p x^\alpha} \implies \tensor{\lambda}{^\beta_{j\alpha}}$.
+        where $g_{\alpha\beta}=\ve_\alpha\cdot\ve_\beta$ is the metric which encodes the structure of spacetime.
 \end{itemize}
 
 \section{Tensor Maths Toolkit}
-We now need to figure out ways to represent everything in tensors.
-This follows from defining contra- variant and covariant tensors respectively:
+The geometry of a surface is defined by the metric with 
+\begin{align}
+    ds^2 = g_{ab}dx^adx^b,
+\end{align}
+where \textbf{$ds$ is the length of the path between two points.}
+Often, we write this in terms of the \emph{proper time} between two events, i.e. $ds=c\,d\tau$.
+We now need to figure out ways to represent everything in tensors - values representing the physical quantity change as we cahnge our coordinate system.
+This follows from defining \textbf{Contravariant and Covariant Tensors} respectively:
 \begin{align}
     A^{\bar{b}} &= \frac{\p x^{\bar{b}}}{\p x^a}A^a, & A_{\bar{b}} &= \frac{\p x^a}{\p x^{\bar{b}}}A_a.
 \end{align}
-We can convert between these two forms using
+We can generalise this to higher-order tensors when needed. 
+If something is true in the unbarred system, then we have that it is also true in the barred system.
+\textbf{Tensor equations are true regardless of the coordinate system in which we express them.}
+We can convert between these contravariant and covariant tensors using
 \begin{align}
     \lambda_b &= g_{ab}\lambda^a,
 \end{align}
-where we need to remember we are using the Einstein Summation Convention over repeated indices.
+where we need to remember we are using the \textbf{Einstein Summation Convention over repeated indices.}
 
-\section{Geodesic paths and curved space}
+\section{Geodesic Paths and Curved Space}
+We need to separate out changes in vectors that occur as they move across a surface.
 When you move a tensor around in curved space, you get changes due to how the coordinate space changes.
-To accommodate for this, we introduce the Total Derivative:
+To accommodate for this, we introduce the \textbf{Total Derivative:}
 \begin{align}
-    \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds} = \tensor{\lambda}{^a_{;c}}\frac{dx^c}{ds}, \\
-    \tensor{\lambda}{^a_{;c}} &= \frac{\p\lambda^a}{\p x^c} + \tensor{\Gamma}{^a_{bc}}\lambda^b, \\
-    \tensor{\Gamma}{^f_{bc}} &= \frac12 g^{bf}\left(\p_a g_{bc} - \p_b g_{ca} + \p_c g_{ab}\right).
+    \frac{D\lambda^a}{ds} &= \frac{d\lambda^a}{ds} + \tensor{\Gamma}{^a_{bc}}\lambda^b\frac{dx^c}{ds} = \tensor{\lambda}{^a_{;c}}\frac{dx^c}{ds},
 \end{align}
-We then introduce the concept of \emph{parallel transport}, which led us to geodesic paths:
+where we also have introduced the \textbf{Covariant Derivative:}
 \begin{align}
-    \ddot{x}^a + \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{x}^c = 0.
+    \tensor{\lambda}{^a_{;c}} &= \frac{\p\lambda^a}{\p x^c} + \tensor{\Gamma}{^a_{bc}}\lambda^b,
 \end{align}
-For working in equations of motion, we turn to the Euler-Lagrange equations.
-So we express our Lagrangian and then write the E-L equation:
+which is equivalent to the partial derivative but in curved spacetime. 
+This derivative relies on the \textbf{Christoffel Symbols:}
+\begin{align}
+    \tensor{\Gamma}{^f_{ac}} &= \frac12 g^{fb}\left(\p_a g_{bc} - \p_b g_{ca} + \p_c g_{ab}\right).
+\end{align}
+For freely moving objects, the velocity has zero absolute derivative. 
+We then introduce the concept of \textbf{parallel transport}, which led us to \textbf{geodesic paths:}
+\begin{align}
+    \ddot{x}^a + \tensor{\Gamma}{^a_{bc}}\dot{x}^b\dot{x}^c = 0,
+\end{align}
+where the dot is a derivative with respect to an \textbf{affine parameter}, something linearly related to the path length, e.g. proper time. 
+These equations define the paths taken by freely-moving (inertial) particles in curved spacetime. 
+We could solve this directly using the Christoffel symbols (e.g. for the surface of a sphere), or (to do this more easily) for working in equations of motion, we turn to the \textbf{Euler-Lagrange equations.}
+So we express our \textbf{Lagrangian} and then write the \textbf{Euler-Lagrange equation:}
 \begin{align}
     \La &= \frac12 g_{\alpha\beta}\dot{x}^\alpha\dot{x}^\beta, & \frac{d}{d\tau}\left(\frac{\p\La}{\p\dot{x}^a}\right) - \frac{\p\La}{\p x^\alpha} &= 0.
 \end{align}
-The definition of geodesic paths and Euler-Lagrange equation are equivalent, although generally we will find the E-L equation easier to work with.
-This is all well and good, but then we realised that the Riemann curvature tensor $\tensor{R}{^a_{dbc}}$ was like the `second derivative' and can tell us a lot about space.
-But we can't equate this with our other tensors yet.
+Effectively, this says that the path taken is the shortest distance (or proper time) between two points which is \textbf{equivalent to integrating the geodesic equation,} so the definitions of geodesic paths and the Euler-Lagrange equation are equivalent, although generally we will find the Euler-Lagrange equation easier to work with.
+\textbf{Either gives the equation of motion of a particle in 3D curved space.}
+To determine whether space is actually curved, we need to compute the second derivative of the metric. 
+This introduces the \textbf{Riemann Curvature Tensor} 
+\begin{align}
+    \tensor{R}{^a_{dbc}} &= \tensor{\Gamma}{^a_{be}}\tensor{\Gamma}{^e_{cd}} - \tensor{\Gamma}{^a_{ce}}\tensor{\Gamma}{^e_{bd}} + \p_b\tensor{\Gamma}{^a_{cd}}-\p_c\tensor{\Gamma}{^a_{bd}}.
+\end{align}
+This tells us whether two geodesics that start parallel will cross or diverge. 
+It has a lot of symmetries and many zero entries. 
+You cannot just set this equal to the \textbf{Stress-Energy Tensor} $T^{\mu\nu}$, as the Riemann tensor is fourth order, not second order. 
+However, if we sum over the first and last indices, we arrive at the \textbf{Ricci Curvature Tensor:}
+\begin{align}
+    R_{ab} &= \tensor{R}{^c_{abc}}.
+\end{align}
 
 \section{Einstein's Equations}
 We want to describe how mass and the shape of space are related.
-This is derived in the \textbf{Stress-Energy Tensor}:
+The \textbf{Stress-Energy Tensor} tells us about the energy in a volume of spacetime; for which for an ideal gas, this is:
 \begin{align}
-    T^{\mu\nu} &= \left(\rho_0+\frac{p}{c^2}\right)u^\mu u^\nu - Pg^{\mu\nu},
+    T^{\mu\nu} &= \left(\rho_0+\frac{p}{c^2}\right)u^\mu u^\nu - pg^{\mu\nu},
 \end{align}
 so the `00' element describes energy, and the other elements describe momentum.
 In the last term above, we subtract by pressure to get the right form.
@@ -2263,33 +2804,73 @@ All of physics then can be written as
 \begin{align}
     \tensor{T}{^{\mu\nu}_{;\mu}} &= 0.
 \end{align}
-To help equate different quantities, we introduce the Ricci tensor, which is a \emph{compressed} form of the Riemann tensor:
+To help equate different quantities, we introduce the \textbf{Ricci Tensor}, which is a \textbf{compressed} form of the Riemann tensor:
 \begin{align}
     R_{\mu\nu} &= \tensor{R}{^\alpha_{\mu\nu\alpha}}.
 \end{align}
 We can then compress the Ricci tensor by performing its trace, yielding the \textbf{Curvature Scalar}:
 \begin{align}
-    \mathcal{R} &= \tensor{R}{^\alpha_\alpha}.
+    R &= \tensor{R}{^\alpha_\alpha}.
 \end{align}
 Einstein then used all this to define his `guess' as a way of writing down a relation between the curvature of space and the stress-energy:
 \begin{align}
-    \left(R^{\mu\nu}-\frac12 g^{\mu\nu}\mathcal{R}\right) &= \kappa T^{\mu\nu}.
+    R^{\mu\nu}-\frac12 g^{\mu\nu}R &= \kappa T^{\mu\nu},
 \end{align}
-Turns out this wasn't quite right - there is also a small \emph{cosmological constant} that needs to be added, which is famous for being Einstein's big blunder.
-The metric is then useful to be redefined once we have reached this point, so we now introduce the Schwarzchild Metric, defining $m=\frac{GM}{c^2}$:
+where $\kappa$ is a constant related to the Newtonian gravitational constant $G$. 
+In fact, 
 \begin{align}
-    c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2 - r^2d\theta^2 - r^2\sin^2\theta\,d\phi^2.
+    \kappa &= -\frac{8\pi G}{c^4}.
 \end{align}
+So we have that \textbf{curvature of space is equal to the energy density of space.}
+Turns out this wasn't quite right - there is also a small \textbf{Cosmological Constant} that needs to be added, which is famous for being Einstein's big blunder.
+\begin{align}
+    R^{\mu\nu}-\frac12 g^{\mu\nu}R + g^{\mu\nu}\Lambda &= \kappa T^{\mu\nu},
+\end{align}
+
+\section{The Schwarzschild Metric}
+Einstein's equation is a complicated set of second-order differential equations. 
+The metric is then useful to be redefined once we have reached this point, so we now introduce the \textbf{Schwarzschild Metric} as the simplest non-trivial solution, defining $m=\frac{GM}{c^2}$:
+\begin{align}
+    ds^2 = c^2d\tau^2 &= c^2\left(1-\frac{2m}{r}\right)\,dt^2 - \left(1-\frac{2m}{r}\right)^{-1}\,dr^2 - r^2d\theta^2 - r^2\sin^2\theta\,d\phi^2.
+\end{align}
+It describes spherically-symmetric space around a point mass $M$, where $m$ is in units of length, and the coordinates $(t,r,\theta,\phi)$ describe how things appear to a distanct observer.
 The rest of the lecture series was pretty much focused on how we solve this metric in different regimes.
 \begin{itemize}
-    \item Particles in weak gravity - here, we seemed to recover essentially Newtonian physics, with slight corrections. This resolved the perihelion of Mercury and was the first big success of GR.
-    \item Photons in weak gravity - leading us to gravitational lensing and photons' movement.
-    \item Orbits in strong gravity - the metric terms are no longer small as in weak gravity, more complex to solve.
+    \item Particles in weak gravity - here, we could recover Newtonian physics to first order, with slight corrections at second order and beyond. 
+        This resolved the troubles with the perihelion of Mercury and was the first big success of general relativity.
+    \item Photons in weak gravity - predicted that mass concentrations would act as telescopes. 
+        Remember that photons are similar to particles but \textbf{the metric equation is zero} - they travel on \textbf{Null Geodesics} and `experience' zero proper time. 
+    \item Orbits in strong gravity close to a black hole - the metric terms are no longer small as in weak gravity, more complex to solve.
+        We discoverd the \textbf{photon sphere} at $r=3m$.
     \item Radial paths in strong gravity.
     \item Alternative ways of writing the metric - looking at causality and where the metric should fail and how we fix that (i.e. inside $r=2m$).
 \end{itemize}
 
-
+\section{Extras}
+\begin{itemize}
+    \item Material around a black hole is heated by viscosity as it spirals down to the last stable orbit - this is the accretion disk. 
+    \item Magnetic fields are would up in the spacetime around a spinning black hole, generating a jet. 
+    \item If space is almost, but not quite, empty, then we would expect the metric to be a small deviation from the flat Minkowski metric:
+        \begin{align}
+            g_{\mu\nu} &= \eta_{\mu\nu} + h_{\mu\nu},\quad h_{\mu\nu}\ll1.
+        \end{align}
+        Computing the Ricci curvature tensor then, 
+        \begin{align}
+            R_{\mu\nu} &= \tensor{R}{^\eta_{\mu\nu\eta}} = 0,
+        \end{align}
+        so the Schwarzschild metric is a solution to the Einstein equation in empty space, but the curvature is not zero!
+        The Riemann curvature scalar is
+        \begin{align}
+            R_{\mu\nu\sigma\rho}R^{\mu\nu\sigma\rho} \propto r^{-6}.
+        \end{align}
+        This is a true curvature singularity, and at $r=0$ as expected. 
+        The other singularity is at $r=2m$, and is just a ``coordinate singularity", i.e. it only appears due to the choice of coordinate system. 
+        We can `subtract' out the curvature represented by the Ricci tensor to leave us with a new trace-free tensor, the \textbf{Weyl tensor:}
+        \begin{align}
+            C_{abcd} &= R_{abcd} + \frac12\left(g_{ac}R_{db}-g_{bc}R_{da}-g_{ad}R_{cb}+g_{bd}R_{ca}\right) + \frac16\left(g_{ac}g_{bd}-g_{ad}g_{cb}\right)R. 
+        \end{align}
+        The \textbf{Weyl Tensor Curvature} tells objects how to move in the presence of distant masses - it is using this curvature that we predict and describe gravitational waves. 
+\end{itemize}
 
 
 
