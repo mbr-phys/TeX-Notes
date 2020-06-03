@@ -313,12 +313,10 @@ So we want to know:
 
 \chapter{Symmetries in QFT}
 \section{Symmetries: An Introduction}
+\vspace{-10pt}
 Recall: The Fundamental representation of SU(N) has $T^a_{N\times N}$ acting on $\phi=\begin{pmatrix}x_1\\ n_N\end{pmatrix} \in \C$.
 The conjugate to the fundamental representation takes $\phi^\dagger$ instead.
-
-In the adjoint representation, $(T^a)_{bc} = -if^{bca}$, a running from 1 to the number of generators, which is $N^2-1$ for SU(N).
-
-Symmetries:\\
+In the adjoint representation, $(T^a)_{bc} = -if^{bca}$, a running from 1 to the number of generators, which is $N^2-1$ for SU(N).\\
 Let $\phi(x)$ be a field.
 Its Lagrangian is
 \begin{align}
@@ -328,7 +326,6 @@ for a simply-interacting real scalar field, $\phi(x)\in\R$.
 The kinetic term is quadratic (bilinear) in the field, the interaction term is of a higher order.
 The kinetic terms yield propagators, here being $\frac{i}{p^2-m^2}$.
 The interaction terms yield vertices in the Feynman diagrams.
-
 For a complex field,
 \begin{align}
     \La &= (\p_\mu\phi^\dagger)(\p^\mu\phi) - m^2\phi^\dagger\phi - \frac{\lambda}{4!}(\phi^\dagger\phi)^2
@@ -338,8 +335,7 @@ For a general field, the action is
     S = \int \La[\phi]\;d^4x
 \end{align}
 A transform of the fields which leaves the action invariant is called a symmetry.
-Additionally, a quantum theory must also leave the vacuum invariant.
-
+Additionally, a quantum theory must also leave the vacuum invariant.\\
 Symmetries can be discrete, e.g. $\phi(x)\to-\phi(x)$, or continuous, e.g. $\phi(x)\to e^{-i\alpha(x)}\phi(x),\alpha\in\R$.
 The Lagrangian of a real scalar field is invariant under $\phi\to\phi(x)$, so the action is also invariant.
 Thus $\phi\to-\phi$ is a symmetry of this theory; for the complex scalar Lagrangian, $\phi\to e^{i\alpha}\phi$ is a symmetry.
@@ -351,7 +347,6 @@ For U(1), $\phi\to e^{-i\alpha}\phi$, which gives us the conserved electric char
 \begin{align}
     Q = \int j^\nu(x)\;d^3x,~ \frac{dQ}{dt} = 0
 \end{align}
-
 Noether's theorem does not necessarily hold for local symmetries.
 These are gauge symmetries.
 We consider a local U(1) transform, $\phi\to e^{-i\alpha(x)}\phi$, with the Dirac Lagrangian for free Dirac fermions,

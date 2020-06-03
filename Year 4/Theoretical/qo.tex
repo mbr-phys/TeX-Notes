@@ -183,7 +183,7 @@ For adjoint operators:
 \begin{align}
     (\hat{A}+\hat{B})^\dagger &= \hat{A}^\dagger + \hat{B}^\dagger \\
     (\hat{A}\hat{B})^\dagger &= \hat{B}^\dagger\hat{A}^\dagger \\
-    (c\hat{A})^\dagger &+ c^*\hat{A}^\dagger \\
+    (c\hat{A})^\dagger &= c^*\hat{A}^\dagger \\
     (\hat{A}^\dagger)^\dagger &= \hat{A}
 \end{align}
 More on the number states:
@@ -237,7 +237,7 @@ To be familiar with the route to quantisation of the electromagnetic field, in p
 \section{Quantising the EM field}
 Consider an EM scalar potential, $\phi=0$ (no free charges), and a vector potential, $\unl{A}$.
 \begin{align}
-    \E(\vr,t) &= \frac{\p}{\p t}\unl{A} & \B(\vr,t) &= \del\times\unl{A}(\vr,t) \\
+    \E(\vr,t) &= \frac{\p}{\p t}\unl{A},\quad \B(\vr,t) = \del\times\unl{A}(\vr,t) \\
     \grad\left[\grad\cdot\unl{A}\right] &- \del^2\unl{A} + \frac{1}{c^2}\frac{\p^2}{\p t^2}\unl{A} = 0
 \end{align}
 Coulomb gauge, $\del\cdot\unl{A} = 0$.
@@ -251,11 +251,10 @@ Polarisation vectors, $\ve_{k1},\ve_{k2}$ - orthonormal vectors perpendicular to
     \unl{A} &= \sum_{\unl{k},s} A_{\unl{k},s}\ve_{\unl{k},s}\exp\left\{i(\unl{k}\cdot\vr-\om_kt)\right\} + A_{\unl{k},s}^*\ve_{\unl{k},s}\exp\left\{-i(\unl{k}\cdot\vr-\om_kt)\right\}
 \end{align}
 The labels of the modes are $\unl{k},s$, $s\in1,2$.
-They gives us the: direction; wavelength, $\frac{2\pi}{|\unl{k}|}$; and polarisation, $s$.\\
+They gives us the: direction; wavelength, $\frac{2\pi}{|\unl{k}|}$; and polarisation, $s$.
 To quantise this classically:
 \begin{align}
-    H &= \frac12\e_0 \int \left(\E\cdot\E + c^2\B\cdot\B\right)\,dV \\
-      &= 2\e_0 V \sum_{\unl{k},s} \om_k^2 A_{\unl{k},s}A_{\unl{k},s}^* \\
+    H &= \frac12\e_0 \int \left(\E\cdot\E + c^2\B\cdot\B\right)\,dV = 2\e_0 V \sum_{\unl{k},s} \om_k^2 A_{\unl{k},s}A_{\unl{k},s}^* \\
     A_{\unl{k},s} &= \frac{1}{2\om_k\sqrt{\e_0V}} \left\{\om_kq_{\unl{k},s} + ip_{\unl{k},s}\right\} \\
     A_{\unl{k},s}^* &= \frac{1}{2\om_k\sqrt{\e_0V}} \left\{\om_kq_{\unl{k},s} - ip_{\unl{k},s}\right\}
 \end{align}
@@ -267,9 +266,9 @@ Harmonic oscillator $m=1$, $x\leftrightarrow p$.
 To transfer this from classical to quantum, you simply convert everything to its operator form.
 For a single mode:
 \begin{align}
-    \hh_{\unl{k},s} &= \left(\hag_{\unl{k},s}\ha_{\unl{k},s} + \frac12\right)\hbar\om_k \\
-    [\ha_{\unl{k},s},\hag_{\unl{k},s}] &= 1 \\
-    \hag_{\unl{k},s}\ha_{\unl{k},s} &= \hn_{\unl{k},s}
+    \hh_{\unl{k},s} &= \left(\hag_{\unl{k},s}\ha_{\unl{k},s} + \frac12\right)\hbar\om_k, &
+    [\ha_{\unl{k},s},\hag_{\unl{k},s}] &= 1, &
+    \hag_{\unl{k},s}\ha_{\unl{k},s} &= \hn_{\unl{k},s}.
 \end{align}
 Now we have eigenstates, $|n\rangle_{\unl{k},s}$.
 Note: modes are not always equal to photons, but you can have photons spread over several modes. \\
@@ -412,8 +411,8 @@ We did this because right eigenstates of $\hag$ do not exist.
 However, $\hag$ does form eigenstates with left states.
 \begin{align}
     |\alpha\rangle &= \sum_{n=0}^\infty c_n|n\rangle \\
-    \ha|\alpha\rangle = \sum_{n=1}^\infty c_n\sqrt{n}|n-1\rangle &= \alpha\sum_{n=0}^\infty c_n|n\rangle \\
-    = \sum_{n=0}^\infty c_{n+1}\sqrt{n+1}|n\rangle &= \alpha\sum_{n=0}^\infty c_n|n\rangle \\
+    \ha|\alpha\rangle &= \sum_{n=1}^\infty c_n\sqrt{n}|n-1\rangle = \alpha\sum_{n=0}^\infty c_n|n\rangle \\
+                      &= \sum_{n=0}^\infty c_{n+1}\sqrt{n+1}|n\rangle = \alpha\sum_{n=0}^\infty c_n|n\rangle \\
     c_{n+1} &= \frac{\alpha}{\sqrt{n+1}}c_n
 \end{align}
 Use the fact that the states are normalised to find $c_0$:
@@ -503,11 +502,8 @@ So two states will depend on how much they differ from one another, they form an
 \end{align}
 Now back to thinking about the harmonic oscillator, using $\hp,\hq$.
 \begin{align}
-    \hat{X}_1 &= \frac12\left(\ha+\hag\right),\, \hq \\
-    \hat{X}_2 &= \frac{1}{2i}\left(\ha-\hag\right),\, \hp \\
-    [\hat{X}_1,\hat{X}_2] &= \frac{i}{2} \\
-    \langle\xo\rangle_\alpha &= \langle\alpha|\xo|\alpha\rangle = \frac12 \left\{\langle\alpha|\ha|\alpha\rangle + \langle\alpha|\hag|\alpha\rangle\right\} \\
-                             &= \frac12 \left\{\alpha+\alpha^*\right\} = \text{Re}(\alpha) \\
+    \hat{X}_1 &= \frac12\left(\ha+\hag\right)\to \hq,\quad \hat{X}_2 = \frac{1}{2i}\left(\ha-\hag\right)\to \hp,\quad [\hat{X}_1,\hat{X}_2] = \frac{i}{2} \\
+    \langle\xo\rangle_\alpha &= \langle\alpha|\xo|\alpha\rangle = \frac12 \left\{\langle\alpha|\ha|\alpha\rangle + \langle\alpha|\hag|\alpha\rangle\right\} = \frac12 \left\{\alpha+\alpha^*\right\} = \text{Re}(\alpha) \\
     \langle\xt\rangle_\alpha &= \frac{1}{2i}\left\{\alpha-\alpha^*\right\} = \text{Im}(\alpha) \\
     \langle(\Delta\xo)^2\rangle &= \langle(\Delta\xt)^2\rangle = \frac14
 \end{align}
@@ -621,8 +617,7 @@ From this, we can write our Hamiltonian in the parametric approximation:
 \end{align}
 Then in the interaction picture,
 \begin{align}
-    \hh_{int} &= i\hbar\left(\eta^*\ha^2e^{i(\om_p - 2\om)t} - h.c.\right) \\
-              &= i\hbar\left(\eta^*\ha^2 - \eta(\hag)^2\right),~ \om_p = 2\om \\
+    \hh_{int} &= i\hbar\left(\eta^*\ha^2e^{i(\om_p - 2\om)t} - h.c.\right) = i\hbar\left(\eta^*\ha^2 - \eta(\hag)^2\right),~ \om_p = 2\om \\
     U &= \exp\left(-\frac{i}{\hbar}\hh_{int}\right) = \exp\left(\eta^*\ha^2 - \eta(\hag)^2 \right)
 \end{align}
 
@@ -759,11 +754,9 @@ So what assumptions did we use?
 \end{multicols}
 We can then form two basis states:
 \begin{align}
-    |\psi_1,n\rangle &\equiv |e\rangle|n\rangle = |i\rangle & |\psi_2,n\rangle &\equiv |g\rangle|n+1\rangle = |f\rangle
+    |\psi_1,n\rangle &\equiv |e\rangle|n\rangle = |i\rangle,\quad |\psi_2,n\rangle \equiv |g\rangle|n+1\rangle = |f\rangle \\
+    \hh(n) &= \hbar\begin{pmatrix} n\om+\frac12\om_0 & \lambda\sqrt{n+1} \\ \lambda\sqrt{n+1} & (n+1)\om-\frac12\om_0\end{pmatrix}
 \end{align}
-\begin{equation}
-    \hh(n) = \hbar\begin{pmatrix} n\om+\frac12\om_0 & \lambda\sqrt{n+1} \\ \lambda\sqrt{n+1} & (n+1)\om-\frac12\om_0\end{pmatrix}
-\end{equation}
 Matrix elements obtained from $\langle i|\hh(n)|i\rangle$, etc.
 
 \chapter{Rotating Wave Approximation}
@@ -801,15 +794,31 @@ We can write general descriptions for our ground and excited states:
     \om(t) &= \sum_{n=0}^\infty |c_n|^2\cos\left(\Om(n)t\right),\; c_n = \frac{\alpha^n}{\sqrt{n!}}e^{-|\alpha|^2/2}
 \end{align}
 For a single number state, $P_i$ oscillates between ground and excited in a classical sinusoidal appearance, but when we consider a coherent state with average $\langle n\rangle$, it drops down into being a superposition of being ground and excited, then after a while excites into partial oscillations again, and continues this interesting pattern.
-\textit{input graphs}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[-Latex] (0,0) -- (0,3.4) node[anchor=east] {$P_i(t)$};
+        \draw[-Latex] (0,0) -- (4.5,0) node[anchor=north] {$\lambda t$};
+        \draw[teal] (0,3) node[anchor=east,black] {1} cos (0.4,1.5) sin (0.8,0) cos (1.2,1.5) sin (1.6,3) cos (2,1.5) sin (2.4,0) cos (2.8,1.5) sin (3.2,3) node[anchor=west,black] {$n=5$} cos (3.6,1.5) sin (4,0);
+        \draw (1,0.05) -- (1,-0.05) node[anchor=north] {1};
+        \draw (2.5,0.05) -- (2.5,-0.05) node[anchor=north] {2};
+        \draw (3.9,0.05) -- (3.9,-0.05) node[anchor=north] {3};
 
+        \draw[-Latex] (6,0) -- (6,3.4) node[anchor=east] {$P_i(t)$};
+        \draw[-Latex] (6,0) -- (10.5,0) node[anchor=north] {$\lambda t$};
+        \draw[purple] (6,3) node[anchor=east,black] {1} cos (6.1,1.6) sin (6.2,0.3) cos (6.3,1.4) sin (6.4,1.8) cos (6.5,1.55) sin (6.6,1.3) cos (6.75,1.45) sin (7,1.5) -- (7.5,1.5) cos (7.55,1.4) sin (7.6,1.3) cos (7.65,1.5) sin (7.7,1.7) cos (7.75,1.5) sin (7.8,1.25) cos (7.85,1.5) sin (7.9,1.75) cos (7.95,1.5) sin (8,1.2) cos (8.05,1.5) sin (8.1,1.9) cos (8.15,1.5) sin (8.2,1) cos (8.25,1.5) sin (8.3,2.1) cos (8.35,1.5) sin (8.4,0.9) cos (8.45,1.5) sin (8.5,2.2) cos (8.55,1.5) sin (8.6,0.8) cos (8.65,1.5) sin (8.7,2.1) cos (8.75,1.5) sin (8.8,0.9) cos (8.85,1.5) sin (8.9,2) cos (8.95,1.5) sin (9,1.1) cos (9.05,1.5) sin (9.1,1.8) cos (9.15,1.5) sin (9.2,1.3) cos (9.25,1.4) sin (9.3,1.5) cos (9.4,1.4) sin (9.45,1.3) cos (9.5,1.5) sin (9.6,1.8) cos (9.7,1.5) sin (9.8,1.2) cos (9.9,1.5) sin (10,1.8) cos (10.1,1.6) node[anchor=south west,black] {$\langle n\rangle=5$} sin (10.2,1.4);
+        \draw (6.8,0.05) -- (6.8,-0.05) node[anchor=north] {5};
+        \draw (7.6,0.05) -- (7.6,-0.05) node[anchor=north] {10};
+        \draw (8.4,0.05) -- (8.4,-0.05) node[anchor=north] {15};
+        \draw (9.2,0.05) -- (9.2,-0.05) node[anchor=north] {20};
+        \draw (10,0.05) -- (10,-0.05) node[anchor=north] {25};
+    \end{tikzpicture}
+\end{figure}
 Now, we want to analyse the Jaynes-Cummings Hamiltonian through the calculation of the matrix elements instead, so we will start with our same two pairs of states, this time with $\Delta\neq0$.
 \begin{align}
-    |i\rangle &= |e\rangle|n\rangle & |f\rangle &= |g\rangle|n+1\rangle
+    |i\rangle &= |e\rangle|n\rangle,\quad |f\rangle = |g\rangle|n+1\rangle \\
+    \hh(n) &= \hbar\begin{pmatrix}n\om+\frac12\om_0 & \lambda\sqrt{n+1} \\ \lambda\sqrt{n+1} & (n+1)\om-\frac12\om_0 \end{pmatrix}
 \end{align}
-\begin{equation}
-    \hh(n) = \hbar\begin{pmatrix}n\om+\frac12\om_0 & \lambda\sqrt{n+1} \\ \lambda\sqrt{n+1} & (n+1)\om-\frac12\om_0 \end{pmatrix}
-\end{equation}
 This has eigenenergies with the Rabi frequency, which is the same as before if $\Delta=0$.
 \begin{align}
     E_{\pm} &= \hbar\left\{\left(n+\frac12\right)\om \pm \frac12\Om_n(\Delta)\right\} \\
@@ -828,6 +837,7 @@ The eigenstates above are known as \emph{dressed states} of the atom, so when th
 This looks like the energies of the eigenstates being changed by the application of the field.
 The original eigenstates we considered, $|e\rangle|n\rangle$ and $|g\rangle|n+1\rangle$, are called \emph{bare states.}
 These bare states do not have the same energy, unless $\Delta=0$.
+\begin{multicols}{2}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -847,15 +857,20 @@ These bare states do not have the same energy, unless $\Delta=0$.
         \draw[white] (4.75,3.25) -- (4.75,2) node[black,midway] {$\hbar\Om_n(\Delta)$};
     \end{tikzpicture}
 \end{figure}
+\columnbreak
 So if we define $\Delta=\om_0-\om$, we can see that now $\Delta$ is the energy splitting between the states $|e\rangle|n\rangle$ and $|g\rangle|n+1\rangle$, but this is for $\lambda=0$ and we can see the dependence on $\lambda$ on these energy states through the Rabi frequency.
 It is then clear that this energy splitting $\Delta$, will increase for the eigenenergies, $|n,-\rangle$ and $n,+\rangle$.
 This is known as a \emph{Stark Shift}, since it is interacting through the E-field of light.
-Specifically, it is known as the AC or dynamic Stark shift, as the source of the electric field is not static, but dynamic.\\
+Specifically, it is known as the AC or dynamic Stark shift, as the source of the electric field is not static, but dynamic.
+\end{multicols}
+\vspace{-20pt}
 So as $\Delta\to0$, we are on resonance, and the bare states are degenerate, but the dressed states are still split.
+\vspace{-10pt}
 \begin{align}
     \arctan&\left(\frac{2\lambda\sqrt{n+1}}{\Delta\to0}\right) \to \frac{\pi}{2} & \cos\left(\frac12\Phi_n\right) &= \sin\left(\frac12\Phi_n\right) \to \frac{1}{\sqrt{2}} \\
     |n,+\rangle &= \frac{1}{\sqrt{2}}\left(|e\rangle|n\rangle+|g\rangle|n+1\rangle\right) & |n,-\rangle &= \frac{1}{\sqrt{2}}\left(-|e\rangle|n\rangle+|g\rangle|n+1\rangle\right)
 \end{align}
+\begin{multicols}{2}
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -881,6 +896,7 @@ So as $\Delta\to0$, we are on resonance, and the bare states are degenerate, but
 The phenomenon shown above is known as vacuum Rabi splitting, where we get anharmonic energy levels due to coupling as $\lambda\neq0$.
 This is the underlying physics that allows us to engineer quantum technology by compressing waves down several orders of magnitude.
 This all begins as the light and atom when allowed to interact begin to behave as a composite system.
+\end{multicols}
 
 \chapter{Photodetection and Correlation Functions}
 \section{Photodetection}
@@ -1009,7 +1025,7 @@ Here, $\ve$ is the polarisation vector.
 We want to split the electric field into two parts for absorption and emission:
 \begin{align}
     \Eh_+(\vr,t) &\equiv i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\ha_{\unl{k},s}(t)e^{i\vec{k}\cdot\vr} \\
-    \Eh_-(\vr,t) &\equiv -i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\hag_{\unl{k},s}(t)e^{-i\vec{k}\cdot\vr} \\
+    \Eh_-(\vr,t) &\equiv -i\sum_{\unl{k},s}\left(\frac{\hbar\om_k}{2\e_0V}\right)^{1/2}\ve_{\unl{k},s}\hag_{\unl{k},s}(t)e^{-i\vec{k}\cdot\vr} 
 \end{align}
 These have been defined such that $\Eh_- \equiv \Eh_+^\dagger$ and vice versa; these operators have taken on the properties of the creation and annihilation operators.
 We only want to use $\Eh_+$ as this deals with absorption, which is what we're interested in.
@@ -1055,7 +1071,7 @@ An early example is Young's slits experiment:
 \end{figure}
 We need
 \begin{align}
-    \Delta s &\leq \frac{c}{\Delta\om} \\
+    \Delta s &\leq \frac{c}{\Delta\om}, &
     \Delta t &= \frac{\Delta s}{c} = \frac{1}{\Delta\om}
 \end{align}
 $\frac{c}{\Delta\om}$ is the coherence length, and $\Delta t$ is the coherence time.
@@ -1172,17 +1188,16 @@ Now let's apply $\hag_1$, which means adding a photon to port 1.
 \begin{align}
     |0_01_1\rangle &\to \frac{1}{\sqrt{2}}\left\{i\hag_2+\hag_3\right\}|0_20_3\rangle \\
                    &= \frac{1}{\sqrt{2}}\left\{i|1_20_3\rangle + |0_21_3\rangle\right\} \\
-    \langle\hn_2\rangle &= \langle\hn_3\rangle = \frac12,\; \langle\hn_2\hn_3\rangle &= 0
+    \langle\hn_2\rangle &= \langle\hn_3\rangle = \frac12,\; \langle\hn_2\hn_3\rangle = 0
 \end{align}
 So this method reproduces the same results as before.
 Note that we cannot write Eq (10.16) as a product state, i.e. $|1_20_3\rangle \neq |1_2\rangle|0_3\rangle$.
-Instead, this is known as an entangled state.
-
+Instead, this is known as an entangled state.\\
 Now, what happens if we put one photon into each input at once?
 We now have four equally likely possibilities:
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[H]{0.4\textwidth}
+    \begin{subfigure}[H]{0.24\textwidth}
         \centering
         \begin{tikzpicture}
             \draw[-Latex,thick,cyan] (0,0) -- (1,0);
@@ -1197,7 +1212,7 @@ We now have four equally likely possibilities:
         \end{tikzpicture}
         \caption{}
     \end{subfigure}
-    \begin{subfigure}[H]{0.4\textwidth}
+    \begin{subfigure}[H]{0.24\textwidth}
         \centering
         \begin{tikzpicture}
             \draw[-Latex,thick,cyan] (0,0) -- (1,0);
@@ -1210,9 +1225,8 @@ We now have four equally likely possibilities:
             \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
         \end{tikzpicture}
         \caption{}
-    \end{subfigure}\\
-    \vspace{10pt}
-    \begin{subfigure}[H]{0.4\textwidth}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.24\textwidth}
         \centering
         \begin{tikzpicture}
             \draw[-Latex,thick,cyan] (0,0) -- (1,0);
@@ -1226,7 +1240,7 @@ We now have four equally likely possibilities:
         \end{tikzpicture}
         \caption{}
     \end{subfigure}
-    \begin{subfigure}[H]{0.4\textwidth}
+    \begin{subfigure}[H]{0.24\textwidth}
         \centering
         \begin{tikzpicture}
             \draw[-Latex,thick,cyan] (0,0) -- (1,0);
@@ -1262,6 +1276,7 @@ We now have four equally likely possibilities:
 
         \filldraw[fill=lightgray,draw=black] (0.9,1.4) -- (2.9,-1.6) -- (3.1,-1.4) -- (1.1,1.6) -- cycle;
     \end{tikzpicture}
+    \vspace{-40pt}
 \end{figure}
 \begin{align}
     |0\rangle_0|\alpha_1\rangle_1 \to |\alpha_2\rangle_2|\alpha_3\rangle_3
@@ -1800,6 +1815,7 @@ Entangled states are quantum correlation, where these are more correlated than i
         \draw[dashed] (0.75,-1.25) rectangle (3.25,1.25);
         \draw (0.75,1.25) node[anchor=south east] {Charlie} -- (3.25,-1.25);
     \end{tikzpicture}
+    \vspace{-20pt}
 \end{figure}
 Charlie has 0 and 1 and makes the states.
 So we will input $|+\rangle$ states, where

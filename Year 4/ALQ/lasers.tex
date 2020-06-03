@@ -341,7 +341,7 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
                 \draw[->] (5,0) -- (9,0) node[anchor=west] {$\om$};
                 \draw (7,-0.1) node[anchor=north] {$\om_{12}$} -- (7,0.1);
                 \draw (5.1,0.1) cos (6.7,1.7) sin (7,2) cos (7.3,1.7) sin (8.9,0.1);
-                \draw[<->] (6.3,1) -- (7.7,1) node[anchor=south west] {FWHH $= \Gamma_H$};
+                \draw[<->] (6.3,1) -- (7.7,1) node[anchor=south west] {FWHM $= \Gamma_H$};
             \end{tikzpicture}
         \end{figure}
     \item Define the normalised lineshape function:
@@ -479,7 +479,7 @@ Every atom/molecule exhibits this type of broadening to varying magnitudes.\\
                 \draw[dashed] (9,0) -- (9,1.8);
 
                 \draw[<->] (2.5,1.4) -- (9.5,1.4);
-                \draw[-Latex] (10,1.4) node[anchor=west] {FWHH $= \Delta\om_I$} -- (9.6,1.4);
+                \draw[-Latex] (10,1.4) node[anchor=west] {FWHM $= \Delta\om_I$} -- (9.6,1.4);
                 \draw[-Latex] (9.5,2.3) node[anchor=south west] {Atom moving towards} -- (9.1,1.9);
                 \draw[-Latex] (2.4,2.4) node[anchor=south east] {Atom moving away} -- (2.9,1.9);
                 \draw[-Latex] (6,4.4) node[anchor=west] {Stationary atom} -- (6,4.1);
@@ -773,19 +773,16 @@ Trace intensity around the cavity:
 \begin{align}
     I_0 \implies I_0R_1(1-a)R_2(1-a)e^{-2\alpha L_c}
 \end{align}
-\begin{multicols}{2}
 \begin{itemize}
     \item Pass through the cavity twice, so $(1-a)$ twice.
     \item $e^{-2\alpha L_c}$ is the distributed loss over length, $2L_c$.
 \end{itemize}
-\end{multicols}
 \begin{equation}
     I_0 \implies I_0R_1R_2(1-a)^2e^{-2\alpha L_c}
 \end{equation}
 Express as round trip loss,
 \begin{align}
-    I_0 &\implies I_0e^{-\delta_c} \\
-    \delta_c &= \ln\left(\frac{1}{R_1R_2(1-a)^2}\right)+2\alpha L_c \\
+    I_0 &\implies I_0e^{-\delta_c},\quad \delta_c = \ln\left(\frac{1}{R_1R_2(1-a)^2}\right)+2\alpha L_c \\
     \frac{I_0-I_0e^{-\delta_c}}{I_0} &= 1 - e^{-\delta_c} \approx 1-(1-\delta_c) = \delta_c
 \end{align}
 This is the \unl{Fractional Round Trip Loss.}
@@ -794,8 +791,7 @@ This is the \unl{Fractional Round Trip Loss.}
 The lifetime of a photon in a cavity is a useful concept.
 Define cavity lifetime, $\tau_c$.
 \begin{align}
-    I(t) &= I_0e^{-t/\tau_c} \\
-         &= I_0e^{-N\delta_c} = I_0e^{-t\delta_c/T_{RT}} \\
+    I(t) &= I_0e^{-t/\tau_c} = I_0e^{-N\delta_c} = I_0e^{-t\delta_c/T_{RT}} \\
     \tau_c &= \frac{2L_c}{c\delta_c} = \frac{T_{RT}}{\delta_c}
 \end{align}
 $T_{RT}$ is called the Round Trip Time.
@@ -806,6 +802,7 @@ Cavity has a quality factor,
 So we can then think of cavities as having a linewidth, $\Delta\om_c = \frac{1}{\tau_c}$.
 
 \section{Threshold Condition}
+\vspace{-20pt}
 \begin{align}
     \text{Round Trip Gain}\times\text{Round Trip Loss} = 1
 \end{align}
@@ -819,6 +816,7 @@ Substitute for gain and loss:
     g_{th}(\om_{12}) &= \frac{\delta_c}{2L_m}
 \end{align}
 
+\chapter{The Laser Oscillator: Oscillation and Gain Saturation}
 \begin{example}[Helium Neon Laser]
     \begin{itemize}
         \item Gain cell length $= L_m = L_c = 50\,cm$.
@@ -836,7 +834,6 @@ Substitute for gain and loss:
     \end{itemize}
 \end{example}
 
-\chapter{The Laser Oscillator: Oscillation and Gain Saturation}
 \section{Gain Saturation}
 \begin{figure}[H]
     \centering
@@ -865,9 +862,9 @@ Population inversion density,
     N_0^* &= N_2 - \frac{g_2}{g_1}N_1 \\
         &= S_2\tau_2\left(1-\frac{g_2}{g_1}A_{21}\tau_1\right) - \frac{g_2}{g_1}S_1\tau_1
 \end{align}
-'0' denotes small signal coefficient (in the absence of field).
-\begin{multicols}{2}
+`0' denotes small signal coefficient (in the absence of field).
 \begin{figure}[H]
+\begin{multicols}{2}
     \centering
     \begin{tikzpicture}
         \draw (0,0) node[anchor=east] {$S_1$} -- (3,0) node[anchor=west] {1};
@@ -878,25 +875,25 @@ Population inversion density,
         \draw[-Latex] (2.7,1.5) -- (3.5,1) node[anchor=west] {$\frac{N_2}{\tau_2}$};
         \draw[-Latex] (2.7,0) -- (3.5,-0.5) node[anchor=west] {$\frac{N_1}{\tau_1}$};
     \end{tikzpicture}
-\end{figure}
+\columnbreak
 \begin{align}
     (1)&~~ \frac{g_2}{g_1}N_1\sigma(\om)\frac{I}{\hbar\om}\\
     (2)&~~ N_2\sigma(\om)\frac{I}{\hbar\om} \\
     (3)&~~ N_2A_{21}
 \end{align}
 \end{multicols}
+\end{figure}
 We have assumed $L(\om) < \Gamma_{21}$.
 \begin{align}
-    \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} - N^*\sigma(\om)\frac{I}{\hbar\om} \\
-    \frac{dN_1}{dt} &= S_1 - \frac{N_1}{\tau_1} + N^*\sigma(\om)\frac{I}{\hbar\om} + A_{21}N_2 \\
-    N_2 &= S_2\tau_2 - N^*\left(\frac{\sigma I}{\hbar\om}\right)\tau_2 \\
-    N_1 &= S_1\tau_1 + N^*\left(\frac{\sigma I}{\hbar\om}\right)\tau_1 + A_{21}\tau_1N_2 \\
+    \frac{dN_2}{dt} &= S_2 - \frac{N_2}{\tau_2} - N^*\sigma(\om)\frac{I}{\hbar\om},\quad  N_2 = S_2\tau_2 - N^*\left(\frac{\sigma I}{\hbar\om}\right)\tau_2 \\
+    \frac{dN_1}{dt} &= S_1 - \frac{N_1}{\tau_1} + N^*\sigma(\om)\frac{I}{\hbar\om} + A_{21}N_2,\quad N_1 = S_1\tau_1 + N^*\left(\frac{\sigma I}{\hbar\om}\right)\tau_1 + A_{21}\tau_1N_2 \\
     N^* &= \frac{S_2\tau_2\left(1-\frac{g_2}{g_1}A_{21}\tau_1\right) - \frac{g_2}{g_1}S_1\tau_1}{1+\left(\frac{\sigma I}{\hbar\om}\right)\left[\tau_2+\frac{g_2}{g_1}\left(1-A_{21}\tau_2\right)\tau_1\right]}
 \end{align}
 Numerator is $N_0^*$:
 \begin{align}
     N^* &= \frac{N_0^*}{1 + \frac{I}{I_s}}
 \end{align}
+\begin{multicols}{2}
 We can now define Saturation Intensity:
 \begin{align}
     I_s(\om) &= \frac{\hbar\om}{\sigma(\om)}\frac{1}{\tau_2+\frac{g_2}{g_1}\tau_1(1-A_{21}\tau_2)}
@@ -905,6 +902,7 @@ Gain is saturated too, since
 \begin{align}
     g(\om) &= \sigma(\om)N^* = \frac{g_0(\om)}{1 + \frac{I}{I_s(\om)}}
 \end{align}
+\end{multicols}
 \textbf{Comments:}
 \begin{itemize}
     \item At $I = I_s(\om) \to g(\om) = \frac{g_0(\om)}{2}$.
@@ -1379,28 +1377,27 @@ Consider two identical semi-reflecting parallel mirrors:
     \end{tikzpicture}
 \end{figure}
 $t$ and $r$ are the amplitude transmission and reflection coefficients respectively.
-\subsection{Path different between successive rays}
+\subsection{Path difference between successive rays}
+\vspace{-20pt}
 \begin{align}
     P.D. &= AB + BD = AB + BC = AC \\
          &= 2d\cos\theta \\
     \delta &= 2kd\cos\theta = \frac{4\pi d}{\lambda}\cos\theta
 \end{align}
 \subsection{Transmitted amplitude}
+\vspace{-20pt}
 \begin{align}
     E_T &= E_0t^2\left(1+r^2e^{i\delta} + r^4e^{2i\delta} + r^6e^{3i\delta}+\dots\right) \text{ - Geometric Progression}\\
-        &= \sum_0^\infty r^{2n}e^{in\delta} = \frac{1}{1-r^2e^{i\delta}} \\
-        &= \frac{E_0T}{1-Re^{i\delta}},\; T = |t|^2,\; R = |r|^2
+        &= \sum_0^\infty r^{2n}e^{in\delta} = \frac{1}{1-r^2e^{i\delta}} = \frac{E_0T}{1-Re^{i\delta}},\; T = |t|^2,\; R = |r|^2
 \end{align}
 \subsection{Transmitted Intensity}
+\vspace{-20pt}
 \begin{align}
     I_T &= |E_T|^2 = \frac{I_0T^2}{|1-Re^{i\delta}|^2}
 \end{align}
 One can easily show that
 \begin{align}
-    |1-Re^{i\delta}|^2 &= (1-R)^2\left[1+\frac{4R}{(1-R)^2}\sin^2\left(\frac{\delta}{2}\right)\right]
-\end{align}
-Hence, we have
-\begin{align}
+    |1-Re^{i\delta}|^2 &= (1-R)^2\left[1+\frac{4R}{(1-R)^2}\sin^2\left(\frac{\delta}{2}\right)\right] \\
     \frac{I_T}{I_0} &= \frac{T^2}{(1-R)^2}\frac{1}{1+\frac{4R}{(1-R)^2}\sin^2\frac{\delta}{2}} = \frac{T^2}{(1-R)^2}\frac{1}{1+\frac{4F^2}{\pi^2}\sin^2\frac{\delta}{2}}
 \end{align}
 Where we can define \textbf{Finesse:}
