@@ -30,28 +30,26 @@
 %    a -- [scalar,edge label=$h^0$] b,
 %    i3 -- [opacity=0] b -- [opacity=0] f3,
 %};
-%\feynmandiagram [large,horizontal=a to b] {
-%    i1 -- [fermion,edge label=$q$] a -- [fermion,edge label=$\bar{q}$] i2,
-%    a -- [boson,edge label={$W^{\pm},Z$}] b,
-%    f1 -- [boson,edge label'={$W^{\pm},Z$}] b -- [scalar,edge label'=$h^0$] f2,
+\feynmandiagram [large,horizontal=a to b] {
+    a -- [boson,edge label=${W^+(k,\lambda)}$] b -- [anti fermion,edge label=$e^+(p)$] i2,
+    b -- [fermion,edge label'=$\nu_e(q)$] i1 -- [opacity=0] i2,
+};
+%\feynmandiagram [large,horizontal=a to b,baseline=(a)] {
+%    a -- [scalar,edge label=$h^0$] b -- [fermion,edge label'=$t$] c -- [fermion,edge label'=$t$] d -- [fermion,edge label'=$t$] b,
+%    c -- [photon,edge label=$\gamma$] f1 -- [opacity=0] f2 -- [photon,edge label=$\gamma$] d,
+%}; 
+%$+$
+%\feynmandiagram [large,horizontal=a to b,baseline=(a)] {
+%    a -- [scalar,edge label=$h^0$] b -- [boson,edge label'=$W^\pm$] c -- [boson,edge label'=$W^\pm$] d -- [boson,edge label'=$W^\pm$] b,
+%    c -- [photon,edge label=$\gamma$] f1 -- [opacity=0] f2 -- [photon,edge label=$\gamma$] d,
+%}; 
+%\feynmandiagram [large,layered layout,horizontal=a to b] {
+%    a -- [scalar,edge label=$h^0$] b -- [boson,edge label=$W^-$] f1,
+%    b -- [boson,edge label=\(W^{+}\)] c,
+%    c -- [fermion,edge label=${e,\mu}$] f2,
+%    c -- [anti fermion,edge label=$\nu_{e,\mu}$] f3,
 %};
-\feynmandiagram [large,horizontal=a to b,baseline=(a)] {
-    a -- [scalar,edge label=$h^0$] b -- [fermion,edge label'=$t$] c -- [fermion,edge label'=$t$] d -- [fermion,edge label'=$t$] b,
-    c -- [photon,edge label=$\gamma$] f1 -- [opacity=0] f2 -- [photon,edge label=$\gamma$] d,
-}; 
-$+$
-\feynmandiagram [large,horizontal=a to b,baseline=(a)] {
-    a -- [scalar,edge label=$h^0$] b -- [boson,edge label'=$W^\pm$] c -- [boson,edge label'=$W^\pm$] d -- [boson,edge label'=$W^\pm$] b,
-    c -- [photon,edge label=$\gamma$] f1 -- [opacity=0] f2 -- [photon,edge label=$\gamma$] d,
-}; 
 \end{document}
-%\feynmandiagram [small,layered layout,baseline=(c.base),horizontal=a to b] {
-%    i1 [label=$p_1$] -- a -- b -- f1 [label=$p_3$],
-%    i2 -- [opacity=0] c -- [opacity=0] d -- [opacity=0] f2,
-%    i3 [label=$p_2$] -- e -- f -- f3 [label=$p_4$],
-%    { [same layer] a -- [opacity=0] c -- [opacity=0] e },
-%    { [same layer] b -- [opacity=0] f },
-%};
 %        +
 %        \feynmandiagram [small,horizontal=b to c,baseline=(c.base)] {
 %            i3 -- i5 [dot] -- b [dot] -- i4 [dot] -- i6,

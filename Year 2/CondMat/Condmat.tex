@@ -1,0 +1,1070 @@
+\documentclass[a4paper,11pt,normalem]{article}
+\usepackage{../../../LaTeX-Templates/Notes}
+
+\titlecontents{section}
+    [0pt]
+    {}
+    {Lecture \thecontentslabel\quad}
+    {}
+    {\dotfill\contentspage}
+    \titleformat{\section}{\fontsize{12}{15}\normalfont}{\underline{\textbf{Lecture \thesection}}}{1em}{}
+
+\rhead{}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+{\centering
+{\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2018}}\\[1.5cm]
+{\LARGE\bfseries Foundations of Physics 2B}\\[0.5cm]
+\HRule \\[0.3cm]
+{\huge\bfseries Condensed Matter Physics}\\[0.1cm]
+\HRule \\[1cm]}
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+    \begin{flushleft} \large
+        \emph{Author:} \\ Matthew Rossetter
+    \end{flushleft}
+\end{minipage}~
+\begin{minipage}{0.4\textwidth}
+    \begin{flushright} \large
+        \emph{Lecturer:} \\ Prof. Douglas Halliday
+    \end{flushright}
+\end{minipage}
+\end{center}
+\section{}
+\subsection{Describing Crystals}
+
+\begin{itemize}
+    \item regular periodic array of atoms - highly defined
+    \item x-rays discovered in 1912
+        \begin{itemize}
+            \item diffraction of x-rays key to studying crystals
+        \end{itemize}
+    \item crystals classified by certain physical properties
+    \item a perfect crystal is assumed to be a regular array of repeating points
+        \begin{itemize}
+            \item we can construct a set of theoretical points in 3D (defined by vectors), called a lattice
+        \end{itemize}
+    \item lattice described by unit vectors \(\vec{a}_1,\vec{a}_2,\vec{a}_3\), called the lattice constants
+    \item lattice given physical reality by placing atoms at lattic points
+        \begin{itemize}
+            \item these atoms are called a basis - there can be more than one atom in a basis, e.g. NaCl
+        \end{itemize}
+    \item use the relationship, where: \(\vec{r},\vec{r}'\) are points on the lattice; \(a_i\) are unit vectors; and \(n_i\) are scalar multiples -
+        \begin{align*}
+            \vec{r}' = \vec{r} + n_1\vec{a}_1 + n_2\vec{a}_2 + n_3\vec{a}_3
+        \end{align*}
+    \item it is called a primitive lattice if this equation cannot be reduced
+    \item think of lattices as 3D constructs for filling space
+    \item crystals have a high degree of symmetry
+\end{itemize}
+
+\subsection{Symmetry Operators}
+
+\begin{enumerate}
+    \item translation
+    \item rotation
+    \item reflection
+    \item inversion
+    \item combinations of above
+\end{enumerate}
+
+\begin{itemize}
+    \item a lattice should remain invariant under specific symmetry operations
+    \item point operators in 2D lead to 2D lattices, of which you can get different types -
+        \begin{enumerate}
+            \item square
+            \item hexagonal
+            \item rectangular
+            \item centred rectangular
+            \item oblique parallelogram
+        \end{enumerate}
+        \begin{itemize}
+            \item cannot get a five-fold symmetry shape
+        \end{itemize}
+\end{itemize}
+
+\subsection{Three-Dimensional Lattices}
+
+\begin{itemize}
+    \item there are seven basic crystal systems
+        \begin{enumerate}
+            \item triclinic
+            \item monoclinic
+            \item orthohombic
+            \item tetragonal
+            \item rhombohedral (trigonal)
+            \item hexagonal
+            \item cubic
+        \end{enumerate}
+    \item use parameters to define these -
+        \begin{itemize}
+            \item p - primitive
+            \item i - interstitial
+            \item f - face-centred
+            \item c - base-centred
+        \end{itemize}
+    \item by varying the parameters for each basic type (see table in lecture summary), get 14 Bravais lattices in 3D
+        \begin{itemize}
+            \item these are the basic building blocks of all crystals
+        \end{itemize}
+\end{itemize}
+
+\subsection{Miller Indices}
+
+\begin{itemize}
+    \item \textbf{key concept for categorising crystals}
+    \item describe a particular crystallographic plane or orthogonal direction in crystal
+    \item effectively describes crystals as families of parallel planes
+    \item method for determining the index:
+        \begin{enumerate}
+            \item find the intercepts of plane on crystal axes - the three lattice constants
+            \item take the reciprocal of these constants
+            \item reduce to 3 integers with the same ratio
+            \item this gives the index of the plane, using the notation \((hkl)\), or \((\nu_1 \nu_2 \nu_3)\) in Kittel
+            \item if one of the indices is negative, put a bar above the magnitude
+        \end{enumerate}
+    \item separation between planes:
+        \begin{align*}
+            d = \frac{1}{\sqrt{\frac{h^2}{a_1^2} + \frac{k^2}{a_2^2} + \frac{l^2}{a_3^2}}}
+        \end{align*}
+    \item For a cubic, this reduces to
+        \begin{align*}
+            d_{hkl} = \frac{a}{\sqrt{N}}
+        \end{align*}
+\end{itemize}
+
+\section{}
+\subsection{X-Ray Diffraction}
+
+\begin{itemize}
+    \item crystal is defined by a set of parallel planes separated by distance \(d\)
+    \item waves incident on crystals will be diffracted - developed by Bragg and lead to the law of x-ray diffraction
+    \item for each wave will experience specular reflection - small reduction in intensity
+    \item path length difference \(A \to B \to C = 2d\sin\theta\)
+    \item if path length is equal to an integer multiple of the wavelength of wave, get constructive interference
+    \item Bragg Law:
+        \begin{align*}
+            2d\sin\theta = n\lambda
+        \end{align*}
+    \item typically, \(\lambda \approx 0.15\,nm\) for x-rays
+    \item it is observed that each plane of atoms reflects \(10^{-3} - 10^{-5}\) of the intensity
+    \item bragg law is a consequence of periodic structure of crystals
+    \item fourier analysis is used
+\end{itemize}
+
+\subsection{Electron Density}
+
+\begin{itemize}
+    \item crystal lattice is defined by translation vector,
+        \begin{align*}
+            \underline{T} = n_1\vec{a}_1 + n_2\vec{a}_2 + n_3\vec{a}_3
+        \end{align*}
+    \item crystal is invariant under \(\underline{T}\) translation
+    \item many physical properties related to electron density, \(n(\vec{r})\)
+    \item crystal symmetry \(\implies n(\vec{r}) = n(\vec{r} + \underline{T})\), local electron environment is also invariant under \(\underline{T}\)
+    \item consider electron density in one dimension:
+        \begin{align*}
+            n(x) = n_0 + \sum_p \left[c_p\cos\left(\frac{2\pi xp}{a}\right) + s_p\sin\left(\frac{2\pi xp}{a}\right)\right]
+        \end{align*}
+    \item \(p \in \mathbb{N}\); \(a =\) the lattice constant; and \(x =\) distance
+    \item crystal symmetry also \(\implies n(x) = n(x + a)\)
+\end{itemize}
+
+\subsection{Reciprocal Lattice Points}
+
+\begin{itemize}
+    \item arguments of \(\sin\) and \(\cos\) are called reciprocal lattice points
+        \begin{itemize}
+            \item there is a factor of \(\frac{2\pi}{a}\) - requires functions to have correct periodicity
+            \item units - \(\cos,\sin\) are dimensionless; \(\frac{2\pi p}{a}\) is the basis of summation
+            \item only certain values are allowed by the relationship above
+                \begin{align*}
+                  n(x) = \sum_p n_p e^{\frac{i2\pi px}{a}}
+                \end{align*}
+        \end{itemize}
+    \item allowed points in \(\sin()\) and \(\cos()\) are equivalent to families of planes described by Miller indices \((hkl)\)
+    \item in 3D:
+        \begin{align*}
+            n(\vec{r}) = \sum_G n_G e^{\vec{G}\cdot\vec{r}}, ~ G = \text{reciprocal lattice vectors}
+        \end{align*}
+    \item \(G\) is defined as the family of reciprocal lattice points in 3D - each describing a family of crystal planes
+    \item \(b_1,b_2,b_3\) are the reciprocal lattice unit vectors, units of frequency
+        \begin{align*}
+            b_1 = 2\pi\frac{\vec{a}_2 \times \vec{a}_3}{\vec{a}_1\cdot(\vec{a}_2 \times \vec{a}_3)} ~;~ b_2 = 2\pi\frac{\vec{a}_3 \times \vec{a}_1}{\vec{a}_1\cdot(\vec{a}_2 \times \vec{a}_3)} ~;~ b_3 = 2\pi\frac{\vec{a}_1 \times \vec{a}_2}{\vec{a}_1\cdot(\vec{a}_2 \times \vec{a}_3)}
+        \end{align*}
+    \item \(a_i\) are unit vectors of crystal
+    \item \(a_i \cdot b_j = 2\pi\delta_{ij}\) - delta function
+        \begin{align*}
+            \underline{G} &= \nu_1\vec{b}_1 + \nu_2\vec{b}_2 + \nu_3\vec{b}_3 \\
+            n(\vec{r} + \underline{T}) &= \sum_G n_G e^{i\underline{G}\cdot\vec{r}}\underbrace{e^{i\underline{G}\cdot\underline{T}}}_{2\pi \times p}
+        \end{align*}
+\end{itemize}
+
+\section{}
+\subsection{X-Ray Diffraction}
+
+\begin{itemize}
+    \item incident electromagnetic wave on crystal - \(\exp[9(\vec{k}\cdot \vec{r})]\)
+        \begin{itemize}
+            \item \(\vec{k}\) is the wavevector of the x-ray
+        \end{itemize}
+    \item elastic process - conservation of energy
+    \item assume interaction between electric field of wave and elctrons in atom
+    \item electron density - \(n(\vec{r})\)
+    \item scattered wave is described by
+        \begin{align*}
+            F &= \int n(\vec{r})\exp\left[i((\vec{k}-\vec{k}')\cdot\vec{r})\right]\,dV \\
+              &= \int n(\vec{r})\exp\left[i(\vec{\Delta k}\cdot \vec{r})\right]\,dV
+        \end{align*}
+    \item \(\vec{\Delta k} = \vec{k} - \vec{k}'\)
+    \item elastic scattering - \(|\vec{k}| = |\vec{k}'|\)
+    \item \(\vec{\Delta k}\) - scattering vector
+        \begin{itemize}
+            \item for Bragg condition - \(\vec{\Delta k} = \vec{G}\)
+        \end{itemize}
+        \begin{align*}
+            F = \sum_G \int n_G \exp\left[i(\vec{G} - \vec{\Delta k})\cdot\vec{r}\right]
+        \end{align*}
+    \item alternative formulation of Bragg condition -
+        \begin{align*}
+            \vec{k} + \vec{G} &= \vec{k}' \\
+            \implies (\vec{k} + \vec{G})^2 &= |\vec{k}|^2 \\
+            2\vec{k}\cdot\vec{G} + |\vec{G}|^2 &= 0 \\
+            \implies 2\vec{k}\cdot\vec{G} &= |\vec{G}|^2
+        \end{align*}
+    \item n.b. \(\vec{\Delta k}\) has equivalent positive and negative values
+\end{itemize}
+
+\subsection{Brillouin Zones}
+
+\begin{itemize}
+    \item analogy to unit cells in reciprocal space
+    \item first brillouin zone is wigner-seitz primitive cell in reciprocal lattice
+        \begin{itemize}
+            \item used to describe a wide range of physical properties
+        \end{itemize}
+    \item construct brillouin zone:
+        \begin{enumerate}
+            \item select origin in reciprocal space
+            \item draw reciprocal lattice vector to all nearest neighbours
+            \item perpendicular bisectors enclose first brillouin zone
+        \end{enumerate}
+\end{itemize}
+
+\paragraph{Examples of Reciprocal Lattices}
+
+\begin{itemize}
+    \item simple cubic lattice:
+        \begin{align*}
+            \vec{a}_1 &= a\hat{x} & \vec{a}_2 &= a\hat{y}, & \vec{a}_3 &= a\hat{z} \\
+            \vec{b}_{1} &= \frac{2\pi}{a} \hat{x} & \vec{b}_2 &= \frac{2\pi}{a}\hat{y} & \vec{b}_3 &= \hat{z}
+        \end{align*}
+    \item reciprocal lattice is a simple cube with lattice constant \(\frac{2\pi}{a}\)
+    \item body centred cubic lattice:
+        \begin{align*}
+            \vec{a}_1 &= \frac{1}{2}a(-\hat{x} + \hat{y} + \hat{z}) & \vec{a}_2 &= \frac{1}{2}a(\hat{x}-\hat{y}+\hat{z}) & \vec{a}_3 &= \frac{1}{2}a(\hat{x}+\hat{y}-\hat{z}) \\
+            \vec{b}_1 &= \frac{2\pi}{a}(\hat{y} + \hat{z}) & \vec{b}_2 &= \frac{2\pi}{a}(\hat{x}+\hat{z}) & \vec{b}_3 &= \frac{2\pi}{a}(\hat{x}+\hat{y})
+        \end{align*}
+    \item these are primitive lattice vectors of fcc (face centre cubic) lattice
+    \item similarly, reciprocal of fcc lattice is bcc lattice
+\end{itemize}
+
+\subsection{Structure Factor}
+
+\begin{itemize}
+    \item structure factor describes intensity of Bragg peaks
+        \begin{itemize}
+            \item arises because Bragg law considers parallel planes but can also get interference within unit cell
+        \end{itemize}
+    \item integral over unit cell describes total scattered intensity
+        \begin{align*}
+            F_G &= N \int_{cell} n(\vec{r}) \exp\left[-i\vec{G}\cdot\vec{r}\right] = NS_G
+        \end{align*}
+    \item \(N\) is the total number of cells; \(S_G\) is the structure factor for a single cell
+    \item define origin at \(\vec{r} = 0\)
+    \item consider \(n(\vec{r})\) as sum over all unique atoms in unit cell
+        \begin{align*}
+            n(\vec{r}) &= \sum_{j=1}^S n_j(\vec{r}-\vec{r}_j) \\
+            S_G &= \sum_j \exp\left[-i\vec{G}\cdot\vec{r}\right] \int n_j(\vec{\rho}) \exp\left[-i\vec{G}\cdot\vec{\rho}\right] \\
+            &= \sum_j f_j \exp\left[-i\vec{G}\cdot\vec{r}_j\right] \\
+            S_G(\nu_1\nu_2\nu_3) &= \sum_j f_j \exp\left[-i2\pi (\nu_1x_j + \nu_2y_j +  \nu_3z_j)\right]
+        \end{align*}
+    \item \(\vec{\rho} = \vec{r} - \vec{r_j}, \vec{r}_j\) is position of unique atom in unit cell; \(f_j\) is atom form factor scattering of one atom
+    \item \(\nu_1\nu_2\nu_3 = hkl\) describing Bragg peak; \((x_j,y_j,z_j)\) is position coordinates within unit cell
+    \item for bcc lattice - have two unique atoms at coordinates \((000),(\frac{1}{2},\frac{1}{2},\frac{1}{2})\)
+    \item evaluate \(S_G \implies S=0\) when \(\nu_1 + \nu_2+\nu_3 =\) odd integer; \(S=2f\) when \(\nu_1+\nu_2+\nu_3 =\) even integer
+    \item fcc lattice - 4 atoms \((0,0,0),(0,\frac{1}{2},\frac{1}{2}),(\frac{1}{2},0,\frac{1}{2}),(\frac{1}{2},\frac{1}{2},0)\)
+        \begin{itemize}
+            \item \(S = 0\) when integers mixed
+            \item \(S=4f\) when integers all odd or all even
+        \end{itemize}
+\end{itemize}
+
+\section{}
+\subsection{Crystal Bonding}
+
+\begin{itemize}
+    \item bonding is a stable equilibrium between attractive and repulsive force
+    \item repulsive arises from electrons being fermions
+        \begin{itemize}
+            \item no two fermions occupy the same quantum state
+            \item as electrons from adjacent atoms overlap, increases energy to satisfy Pauli exclusion principle
+        \end{itemize}
+    \item different types of bonds have different attractive forces:
+\end{itemize}
+
+\begin{enumerate}
+    \item Van Der Waals bonding exists in almost all solid system - very weak force, usually only observed at low temperatures in noble gases
+        \begin{itemize}
+            \item attraction is between electric dipoles
+                \begin{enumerate}
+                    \item permanent
+                    \item permanent-induced
+                    \item two induced dipoles
+                \end{enumerate}
+            \item spherically symmetrical atom - when brought closer to another atom, electron distribution adjusts because of Coulomb potential
+            \item can consider movement of charge as electric dipole:
+                \begin{itemize}
+                    \item amount of charge, \(q\), moving distance, \(L, \to\) dipole moment \(= p = qL\)
+                    \item electric dipole consists of charge \(+q\) and \(-q\) separated by \(L\)
+                    \item at arbitrary point, electric potential
+                        \begin{align*}
+                            V = \frac{Q}{4\pi \epsilon_0}\left(\frac{1}{r_b} - \frac{1}{r_a}\right)
+                        \end{align*}
+                    \item it can be shown that
+                        \begin{align*}
+                            V(r) = \frac{\vec{p}\cdot\hat{r_1}}{4\pi \epsilon_0 r^2}
+                        \end{align*}
+                    \item where \(\vec{p}\) is the electric dipole vector, and \(\hat{r}_1\) is the unit vector along \(\vec{r}\)
+                    \item show potential energy and force are
+                        \begin{align*}
+                            U(r) &= \frac{A}{r^6} \\
+                            F(r) &= -\frac{dU}{dr} = \frac{A}{r^7}
+                        \end{align*}
+                \end{itemize}
+            \item modelling Pauli repulsion - very complex
+                \begin{itemize}
+                    \item approximate using empirical function
+                    \item experimental data on solid gases shows that the function is of the form \(\frac{B}{r^{12}}\) fits data
+                        \begin{align*}
+                            U(r) = 4\epsilon\left[-\left(\frac{\sigma}{r}\right)^6 + \left(\frac{\sigma}{r}\right)^{12}\right]
+                        \end{align*}
+                    \item this is the Lennard Jones \(6-12\) potential - models interatomic potential in Van Der Waals solids
+                        \begin{itemize}
+                            \item \(4\epsilon\sigma^6 \equiv A\)
+                            \item \(4\epsilon\sigma^{12} \equiv B\)
+                        \end{itemize}
+                \end{itemize}
+        \end{itemize}
+    \item other examples of bonding
+        \begin{enumerate}
+            \item ionic bonding - crystals made of postive and negative energy
+                \begin{itemize}
+                    \item many salts are under this (NaCl, LiF, MgCl)
+                    \item overall energy of ionic crystal - ionisation energy, electron affinity
+                    \item energy - electrostatic attraction
+                        \begin{align*}
+                            U(r) = -\frac{e^2}{4\pi\epsilon_0 r}
+                        \end{align*}
+                    \item this considers only nearest neighbours
+                    \item in ionic crystals, energy must also consider other ions - not just nearest neighbours
+                    \item interaction of all ions described by \(\underline{\text{modelling constant}}\)
+                        \begin{itemize}
+                            \item face centred cube crystal has modelling constant of \(1.7475\)
+                        \end{itemize}
+                \end{itemize}
+          \item covalent crystals - sharing of electrons, generally occurs in systems of similar atoms (e.g. silicon semiconductor, diatomic gases)
+              \begin{itemize}
+                  \item covalent bonding can only be described using QM
+                  \item two electrons, spin \(= \frac{1}{2}\)
+                      \begin{itemize}
+                          \item \(\uparrow \downarrow \to S = 0\) - spin antisymmetric
+                          \item \(\uparrow \uparrow \to S = 1\) - spin symmetric
+                          \item when spin is antisymmetric, position (wavefunction) is symmetric or vice versa
+                          \item large electron density between atoms - forms a bond
+                      \end{itemize}
+              \end{itemize}
+        \end{enumerate}
+\end{enumerate}
+
+\section{}
+
+\begin{itemize}
+    \item consider crystals as system of vibrating atoms
+    \item family of excitations in solids, elastic waves - phonons
+    \item range of phenomena suggests atoms vibrate
+    \item describe crystal as series of parallel planes denoted by \(s,s\pm1,s\pm2,\cdots\)
+    \item describe position of plane using coordinate \(u_s,u_{s\pm1},\cdots\),\(u_s\) is the displacement from the equilibrium
+    \item longitudinal and transverse waves exist
+    \item physics to describe motion?
+        \begin{itemize}
+            \item Hooke's law - elestic wave, restoring force, linear function of \(u_S\)
+        \end{itemize}
+    \item energy of oscillating system:
+        \begin{align*}
+            E = \frac{1}{2}kA^2
+        \end{align*}
+    \item spring constant - \(\omega = \sqrt{\frac{k}{m}}\)
+    \item elastic energy is a quadratic function of displacement from mean position
+    \item need to know the force exerted on individual planes
+    \item \emph{assume only nearest neighbour interactions apply}
+    \item forces acring on plane s:
+        \begin{align*}
+            F_s = c(u_{s+1}-u_s) + c(u_{s-1}-u_s)
+        \end{align*}
+    \item c is a force constant for the nearest neighbour
+        \begin{align*}
+            M\frac{d^2u_s}{dt^2} = c(u_{s+1}+u_{s-1}-2u_s)
+        \end{align*}
+    \item Assume SHM:
+        \begin{align*}
+            \frac{d^2u_s}{dt^2} = -\omega^2u_s
+        \end{align*}
+    \item Equation relates motion of planes:
+        \begin{align*}
+            -M\omega^2 u_s = c(u_{s+1}+u_{s-1}-2u_s)
+        \end{align*}
+    \item by substitution, the general form of equation is:
+        \begin{align*}
+            u_{s\pm1} = U\exp\left[i(s\pm1)ka\right] = U\exp\left(iska\right)\exp\left(\pm ika\right)
+        \end{align*}
+    \item \(U\) is the maximum amplitude, \(k\) is the wavevector of the elastic wave, and \(a\) is the spacing of adjacent planes
+        \begin{align*}
+            -\omega^2Mu\exp\left(iska\right) &= CU\left\{\exp\left[i(s+1)ka\right]+\exp\left[i(s-1)ka\right]-2\exp\left[iska\right]\right\} \\
+            \omega^2M &= -C\left[\exp(ika) + \exp(-ika)-2\right] \\
+            \omega(k)^2 &= \left(\frac{2c}{M}\right)(1 - \cos(ka)) \\
+            \omega(k)^2 &= \frac{4c}{M}\sin^2\left(\frac{1}{2}ka\right) \\
+            \implies \omega(k) &= \sqrt{\frac{4c}{M}}\left|\sin\left(\frac{1}{2}ka\right)\right|
+        \end{align*}
+    \item angular frequency depends on the wavevector - phenomena is known as dispersion
+    \item waves of certain wavelength or wavevector travel at different velocities
+\end{itemize}
+
+\subsection{Group Velocity}
+
+\begin{itemize}
+    \item consider displacement of planes as a packet of elastic energy propagating through a crystal (phonons)
+        \begin{align*}
+            v_g = \frac{\partial \omega}{\partial k}
+        \end{align*}
+    \item velocity is related to the gradient of \(\omega(k)\) dispersion curve
+        \begin{align*}
+            v_g = \sqrt{\frac{Ca^2}{M}}\cos\left(\frac{1}{2}ka\right)
+        \end{align*}
+    \item low wavevector waves have higher velocity, waves at boundary of brillouin zone have zero velocity
+\end{itemize}
+
+\subsection{Long Wavelength Limit}
+
+\begin{itemize}
+    \item applies to waves \(k \approx 0\), defined by \(ka \ll 1\)
+    \item this corresponds to sound waves in crystal
+    \item when \(ka \ll 1 \to \cos(ka) = 1 -\frac{1}{2}(ka)^2\)
+    \item dispersion relation (long wavelength):
+        \begin{align*}
+            \omega^2 &= \left(\frac{c}{M}\right)k^2a^2 \\
+            \omega &= \sqrt{\frac{c}{M}}ka
+        \end{align*}
+    \item \(\omega \propto k\) at long wavelengths
+\end{itemize}
+
+\section{}
+
+\begin{itemize}
+    \item consider two atom basis in phonon model - e.g. salts (NaCl), semiconductors (GaAs), etc
+    \item use same equation of motion with \(M_1\) and \(M_2\) masses and \(U_{s,s\pm1\cdots},V_{s,s\pm1\cdots}\)
+        \begin{align*}
+            M_1\frac{d^2U_s}{dt^2} = c(V_s + V_{s-1} - 2U_s) ~;~ M_2\frac{d^2 V_s}{dt^2} = c(U_{s+1} + U_s - 2V_s)
+        \end{align*}
+    \item solutions is SHM - travelling wave, different amplitudes on adjacent planes \(u_s,v_s\)
+    \item we define \(a\) as the distance between identical planes (\(M_1\) or \(M_2\))
+        \begin{align*}
+            U_s = U\exp(isKa)\exp(-i\omega t) ~;~ V_s = V\exp(isKa)\exp(-i\omega t)
+        \end{align*}
+    \item substitute travelling wave into equation of motion
+        \begin{align*}
+            -\omega^2 M_1U &= cv[1+\exp(-iKa)] - 2cu \\
+            -\omega^2 M_2V &= cu[1+\exp(iKa)] - 2cv
+        \end{align*}
+    \item only solution obtained from determinant of matrix equation
+        \begin{align*}
+            \begin{vmatrix} 2c - M_1\omega^2 & -c[1+\exp(iKa)] \\ -c[1+\exp(iKa)] & 2c - M_2\omega^2 \end{vmatrix} &= 0 \\
+            M_1M_2\omega^4 -2c(M_1+M_2)\omega^2 + 2c^2(1-\cos(Ka)) &= 0 \\
+            \frac{c(M_1+M_2)}{M_!M_2} \pm \frac{C(M_1+M_2)}{M_1M_2}\sqrt{1 - 2\frac{M_1M_2(1-\cos(Ka)}{(M_1+M_2)^2}} &= \omega^2
+        \end{align*}
+    \item solution gives two branches in phonon dispersion relation
+    \item consider two limits to illustrate general behaviour
+        \begin{enumerate}
+            \item when \(Ka \ll 1\) - long wavelength limit
+            \item \(K = \pm\frac{\pi}{a}\) - boundary of first brillouin zone
+        \end{enumerate}
+    \item for small \(Ka\) (long wavelength limit), \(\cos(Ka) \approx 1 - \frac{1}{2}K^2a^2\)
+    \item two solutions of dispersion:
+        \begin{align*}
+            \omega^2 &\approx 2c\left(\frac{1}{M_1} + \frac{1}{M_2}\right) \\
+            \omega^2 &\approx \frac{\frac{1}{2}c}{M_1M_2}K^2a^2
+        \end{align*}
+        \begin{enumerate}
+            \item \(\omega\) is independent of \(K\) in the optical branch
+                \begin{itemize}
+                    \item two atoms out of phase
+                \end{itemize}
+            \item \(\omega \propto K\) in the acoustic branch
+                \begin{itemize}
+                    \item two atoms move in phase
+                \end{itemize}
+        \end{enumerate}
+\end{itemize}
+
+\subsection{Thermal Properties of Crystals}
+
+\begin{itemize}
+    \item phonon heat capacity:
+        \begin{align*}
+            C_V = \left(\frac{dU}{dT}\right)_V
+        \end{align*}
+    \item \(C_V\) used because no work done to change volume
+    \item \(U\) is the total internal energy of the vibrating lattice
+        \begin{align*}
+            U_{tot} = \sum_k \sum_p U_{kp} = \sum_k\sum_p \langle n_{kp} \rangle \hbar \omega_{kp}
+        \end{align*}
+    \item where \(k\) is the wavevector, and \(p\) is the polarisation, and \(\langle n_{kp} \rangle\)
+    \item \(\langle n_{kp} \rangle\) described by Planck distribution function:
+        \begin{align*}
+            n = \frac{1}{\exp\left(\frac{\hbar\omega}{k_BT}\right) - 1}
+        \end{align*}
+    \item number of vibrational nodes is called the density of states - number of vibrations per unit energy
+        \begin{align*}
+            D(\omega) = \frac{dN}{d\omega} = \left(\frac{vK^2}{2\pi^2}\right)\left(\frac{dK}{d\omega}\right)
+        \end{align*}
+    \item number of phonon nodes in a given frequency or energy range
+\end{itemize}
+
+\subsection{Debye Model}
+
+\begin{itemize}
+    \item assumption is that velocity of sound is constant
+    \item Debye model dispersion relation: \(\omega = vK\)
+    \item density of states goes to
+        \begin{align*}
+            D(\omega) = \frac{V\omega^2}{2\pi^2v^3} ~;~ D(\omega) \propto \omega^2
+        \end{align*}
+    \item maximum frequency range is Debye frequency:
+        \begin{align*}
+            \omega_D^3 = 6\pi^2v^3 \frac{N}{V}
+        \end{align*}
+    \item corresponds to Debye wavevector:
+        \begin{align*}
+            K_D = \frac{\omega_D}{v} = \left(6\pi^2\frac{N}{V}\right)^{1/3}
+        \end{align*}
+\end{itemize}
+
+\subsection{Einstein Model}
+
+\begin{itemize}
+    \item assumes all phonons have the same frequency or energy
+        \begin{align*}
+            U = N\langle n\rangle\hbar\omega = \frac{N\hbar\omega}{\exp\left(\frac{\hbar\omega}{kT}\right) - 1}
+        \end{align*}
+    \item \(N\) is the total number of oscillators
+\end{itemize}
+
+\section{}
+
+\subsection{Electrical Properties of Crystals from Classical Physics}
+
+\begin{itemize}
+    \item assumptions:
+        \begin{enumerate}
+            \item outer valence electrons are detached - free to move through the crystal
+            \item electric field due to other electrons and nucleus cancel out
+        \end{enumerate}
+    \item drude model - applied kinetic theory of gases to electrons
+\end{itemize}
+
+\begin{enumerate}
+    \item specific heat capacity of electrons
+        \begin{itemize}
+            \item Mean kinetic energy \(E = \frac{3}{2}k_BT\)
+            \item specific heat capacity per electron: \(C_V = \frac{dE}{dt} = \frac{3}{2}k_B\)
+        \end{itemize}
+    \item electrical conductivity
+        \begin{itemize}
+            \item begin with Ohm's Law, \(V = IR\)
+            \item rewrite in dimensionless form, \(E = \rho J\)
+            \item \(J = \sigma E\)
+            \item drude model assumes electrons collide with something
+            \item describe using a mean time between collision events \(\tau\)
+            \item equations of motion \(\underline{v} = \underline{v}_0 - \frac{|e|t\underline{E}}{m_e}\)
+            \item electron velocity \(v_0\) is random - no overall contribution
+                \begin{itemize}
+                    \item considers only drift velocity in response to \(\underline{E}\)
+                    \item electron drift velocity is average of \(-\frac{|e|t\underline{E}}{m_e}\)
+                 \end{itemize}
+                \begin{align*}
+                    \bar{\underline{v}} &= -\frac{|e|\bar{t}\underline{E}}{m_e},~ \bar{t} = \tau \\
+                    \underline{J} &= -n|e|\underline{v} = \frac{n|e|^2\tau}{m_e}\underline{E} \\
+                    \implies \sigma &= \frac{n|e|^2\tau}{m_e}
+                \end{align*}
+            \item this is the drude electrical conductivity formula
+        \end{itemize}
+    \item thermal conductivity of electrons
+        \begin{itemize}
+            \item temp gradient \(\frac{dT}{dz}\)
+            \item assume electron is in thermal equilibrium at point of collision
+            \item consider thermal energy carried by the electron
+            \item thermal average is \(v_z^2 = \frac{k_BT}{m_e}\)
+        \end{itemize}
+        \begin{align*}
+            Q &= -nv_z c_V v_z\tau \frac{dT}{dx} \\
+              &= -\kappa \frac{dT}{dz} \\
+            \kappa &= \frac{3}{2}n\frac{k_B^2T}{m_e}\tau
+       \end{align*}
+\end{enumerate}
+
+\begin{itemize}
+    \item comparison with ratio of thermal to electrical conductivity
+\end{itemize}
+\begin{align*}
+    \frac{\kappa}{\sigma} = \frac{3}{2}\left(\frac{k}{e}\right)^2T
+\end{align*}
+
+\section{}
+\subsection{Free Electron Model}
+
+Assumptions:
+\begin{enumerate}
+    \item outer valence electrons detach - free to move around crystal
+    \item effects of ions and electrons cancel - electrons move in region of no potential
+\end{enumerate}
+\begin{itemize}
+    \item free electron model treats metal as empty box (zero potential) of dimensions (\(L_x,L_y,L_z\))
+        \begin{itemize}
+            \item inside the box, zero potential
+            \item outside the box, infinite potential
+        \end{itemize}
+\end{itemize}
+
+\paragraph{Periodic Boundary Conditions}
+
+\begin{itemize}
+    \item boundary used in this model - consequence of periodicity of crystals
+        \begin{align*}
+            \psi(\vec{r}) = \psi(\vec{r}+\vec{L}), \vec{L} = (L_x,L_y,L_z)
+        \end{align*}
+    \item wavefunction is assumed to be periodic with dimensions of sample space, \(\vec{L}\)
+    \item this removes any limitation on the value of \(\vec{r}\)
+        \begin{align*}
+            \psi(x,y,z) = \psi(x+L_x,y,z) + \psi(x,y+L_y,z) + \psi(x,y,z+L_z)
+        \end{align*}
+\end{itemize}
+
+\paragraph{Free Electron Wavefunction}
+
+\begin{itemize}
+    \item potential inside box is zero, so time-independent schrodinger is
+        \begin{align*}
+            -\frac{\hbar^2}{2m_e}\nabla^2\psi(\vec{r}) &+ V(\vec{r})\psi(\vec{r}) = E\psi(\vec{r})\\
+            \psi(x,y,z) &= A\exp\left[i(k_xx + k_yy + k_zz)\right], k_i = \frac{2\pi(l/m)}{L_i}\\
+            E &= \frac{\hbar^2}{2m_e}\left(k_x^2 + k_y^2 + k_z^2\right)
+        \end{align*}
+    \item electron energy eigenstates are stationary (independent of time)
+    \item amplitude \(A\) is constant, uncertainty in position coordinate, all energy states overlap
+\end{itemize}
+
+\paragraph{k-space}
+
+\begin{itemize}
+    \item reciprocal space
+    \item can describe electrons using k-coordinate
+    \item each electron has coordinate (\(k_x,k_y,k_z\)) in k-space, separated by \(\frac{2\pi}{l}\) in each dimension
+    \item allowed points form mesh in k-space - each within a volume \(\left(\frac{2\pi}{L}\right)^3\)
+        \begin{itemize}
+            \item ``exclusion zone''
+            \item no other allowed k-states within the volume
+        \end{itemize}
+    \item each k-state has 2 electron spin degeneracy - Pauli exclusion principle
+    \item allowing for spin, we have
+        \begin{align*}
+            2\div\left(\frac{2\pi}{L}\right)^3 = \frac{L^3}{4\pi^3}
+        \end{align*}
+\end{itemize}
+
+\paragraph{Fermi Energy and Surface}
+
+\begin{itemize}
+    \item maximum energy of system
+    \item define fermi energy as highest occupied energy level when system is in ground state (0 Kelvin)
+        \begin{align*}
+            E = \frac{\hbar^2k^2}{2m_e}
+        \end{align*}
+    \item surface of constant energy is constant, \(k^2\)
+    \item fermi surface is a sphere of radius \(k_F\)
+    \item \(\frac{L^3}{4\pi^3}\) electron states per unit volume, so volume of sphere is \(V = \frac{4}{3}\pi k_F^3\)
+    \item total number of electrons:
+        \begin{align*}
+            N &= \left(\frac{4}{3}\pi k_F\right)^3\left(\frac{L^3}{4\pi^3}\right) \\
+            k_F &= \left(\frac{3N\pi^2}{L^3}\right)^{1/3} = (3\pi^2n)^{1/3}, n = \text{ electron density}\\
+            E_F &= \frac{\hbar^2}{2m_e}k_F^2 = \frac{\hbar^2}{2m_e}(3\pi^2n)^{2/3}\\
+        \end{align*}
+\end{itemize}
+
+\paragraph{Density of States}
+
+\begin{itemize}
+    \item number of electron energy states oer unit energy range
+    \item consider volume of k-space between \(k\) and \(k+\delta k\):
+        \begin{itemize}
+            \item volume is surface area \(\times \delta k = 4\pi k^2\delta^2\)
+        \end{itemize}
+    \item number of states between \(k\) and \(k+\delta k \to\)
+        \begin{align*}
+            n(k)\delta k - \frac{L^3}{4\pi^3}4\pi k^2 \delta k
+        \end{align*}
+    \item express energy:
+        \begin{align*}
+            n(E)\delta E = \frac{L^3}{\pi^2}k^2\delta k \implies n(E) = \sqrt{2}\frac{L^3}{\pi^2}\frac{n_e^{3/2}}{k^3}\sqrt{E}
+        \end{align*}
+\end{itemize}
+
+\section{}
+\subsection{Fermi-Dirac Distribution}
+
+\begin{itemize}
+    \item fermi energy is energy of highest occupied state at 0 Kelvin (overall ground state)
+    \item fermi function describes occupatoin of energy levels
+    \item at 0 Kelvin, states above \(E_F\) are empty \(f=0\), states below \(E_F\) are occupied \(f=1\)
+    \item define an occupation number:
+        \begin{align*}
+            f(E) = \begin{cases} 1 & 0 < E \leq E_F \\ 0 & E > E_F \end{cases}
+        \end{align*}
+    \item can be considered a continuous distribution function
+        \begin{align*}
+            N = \int_0^{E_F} n(E)dE = \int_0^infty f(E)n(E)dE
+        \end{align*}
+    \item consider how function varies with temperature - energy range covering transition from \(f=1\) to \(f=0\) is broadened out at finite temperatures
+    \item this is described by the Fermi-Dirac distribution function - derived by consdiering 3 constraints:
+        \begin{enumerate}
+            \item Conservation of Energy
+            \item Conservation of Particle Number
+            \item Subject to Pauli Exclusion principle
+        \end{enumerate}
+        \begin{align*}
+            f(E) = \frac{1}{1 + \exp\left[\frac{(E-E_F)}{k_BT}\right]}
+        \end{align*}
+    \item this is a normalised statistical distribution function
+    \item describes the probability of energy state \(E\) being occupied by an electron
+\end{itemize}
+
+\paragraph{Behaviour of Fermi-Dirac Function}
+
+\begin{itemize}
+    \item at low temperatures, \(k_BT \ll E_F\)
+\end{itemize}
+\begin{enumerate}
+    \item when \(E < E_F \to \frac{E - E_F}{k_BT} \to\) large and negative
+    \item when \(E > E_F \to \frac{E - E_F}{K_BT} \to\) large and positive, \(f(E) \approx 0\)
+    \item when \(E \approx E_F\), transition from \(f(E) = 1 \to f(E) = 0\) occurs over narrow neergy range around \(E_F\) - width is about \(k_BT\) on each side of \(E_F\)
+\end{enumerate}
+\begin{itemize}
+    \item in systems with low densities of electrons, \(f(E) \ll 1\)
+        \begin{itemize}
+            \item approximation, when \(E_F \ll k_BT\):
+                \begin{align*}
+                    f(E) \approx \exp\left[-\left(\frac{E - E_F}{k_BT}\right)\right] \approx \exp\left(-\frac{E}{k_BT}\right)
+                \end{align*}
+            \item this behaves like the classical system, very low \(E_F\)
+        \end{itemize}
+\end{itemize}
+
+\paragraph{Free Electron Heat Capacity}
+
+\begin{itemize}
+    \item can determine the electronic specific heat capacity using free electron model
+    \item what happens when temperature is increased?
+    \item only small proportions of electrons will increase their energy - those that are within \(k_BT\) of \(E_F\)
+    \item we require am empty electron state for the excited electron to move to
+    \item electrons within region \(k_BT\) of \(E_F\) will absorb thermal energy
+    \item assume number of electrons with energy close to \(E_F\) is given by \(n(E_F)k_BT\)
+    \item extra energy acquired by electron is \(k_BT\)
+        \begin{align*}
+            U(T) - U(0) = n(E_F)(k_BT)^2 - \text{ only for electrons}
+        \end{align*}
+    \item \(n(E_F)\) is the density of states at Fermi energy
+        \begin{align*}
+            C_V = \frac{dU}{dT} \approx 2n(E_F)k_B^2T
+        \end{align*}
+    \item note that this assumes \(n(E_F)\) is constant over energy range
+        \begin{align*}
+            n &= \frac{(E_F2m_e)^{3/2}}{3\pi^2\hbar^3} \\
+            N &= n(E_F)E_FV \\
+            n(E_F) = \frac{3}{2}\frac{N}{E_F} \\
+            C_V \approx \frac{3}{2}k_BT\left(\frac{2k_BT}{E_F}\right)
+        \end{align*}
+    \item specific heat capacity is modified from classical value by bracketed factor
+    \item electronic specific heat capacity is proportional to temperature
+\end{itemize}
+
+\section{}
+
+\subsection{Magnetic Properties of Free Electrons}
+
+\begin{itemize}
+    \item Free electron model can predict magnetic properties
+    \item how does metal respond when placed in magnetic field?
+\end{itemize}
+
+\paragraph{Magnetic Susceptibility of Metals}
+
+\begin{itemize}
+    \item metals develop an induced magnetic moment in magnetic fields
+    \item interactions between B-feild and electron spin
+    \item it is known all materials show a weak paramagnetism which is independent of temperature
+        \begin{itemize}
+            \item this is parallel to apllied field
+        \end{itemize}
+    \item use free electron model to demonstrate this observed effect
+    \item electrons have a magnetic moment due to spin:
+        \begin{align*}
+            \mu_B = \frac{e\hbar}{2m_e} = 9.27\times10^{-24}\,J\,T^{-1}
+        \end{align*}
+    \item energy of electron will change in field by \(\pm \mu_B\) depending on spin
+    \item assume equal numbers of \(\pm\) spin for electons
+        \begin{itemize}
+            \item parallel
+            \item anti-parallel
+        \end{itemize}
+    \item when B field applied:
+        \begin{itemize}
+            \item half of electrons increase energy by:
+                \begin{align*}
+                    + \frac{e\hbar}{2m_e}B \text{ - antiparallel}
+                \end{align*}
+            \item half of electrons reduce energy by:
+                \begin{align*}
+                    - \frac{e\hbar}{2m_e}B \text{ - parallel}
+                \end{align*}
+        \end{itemize}
+    \item total energy of system can be reduced if some electrons reverse spins
+    \item a proportion of electrons with antiparallel spins can reverse spins to reduce overall energy
+    \item how many electrons reverse spin?
+        \begin{itemize}
+            \item need to have the same Fermi energy for spin up and spin down electrons
+        \end{itemize}
+    \item density of states function evaluated at \(E_F\) multiplied by change in energy gives number of electrons
+    \item number of electrons within \(\mu_BB\) of the original Fermi energy: \(ne = \frac{1}{2}n(E_F)\mu_BB\)
+    \item difference in population: \(n(E_F)\mu_BB\) - number of electrons with spin up increased by this amount
+    \item net magnetic moment: \(n(E_F)\mu_B^2B\) - produces net magnetic moment per unit volume
+        \begin{align*}
+            M = \frac{\mu_B^2Bn(E_F)}{V}
+        \end{align*}
+    \item paramagnetic susceptibility, a measure of how easy it is to magnetise system:
+        \begin{align*}
+            \chi &= \frac{\partial M}{\partial H}, H = \frac{M}{\mu_0}
+            \chi &= \mu_0\mu_B^2\frac{n(E_F)}{V}
+        \end{align*}
+    \item this is called the Pauli Paramagnetism - it is independent of temperature
+    \item at finite temperatures, temperature dependence of Fermi distribution will lead to a small temp dependence
+\end{itemize}
+
+\subsection{Hall Effect}
+
+\begin{itemize}
+    \item observed in 1879
+    \item consider current density, \(j\), flowing along bar in \(x\) direction:
+    \item apply perpendicular magnetic field, \(B\)
+    \item electrons experience Lorentz force - \(F = e(v\times B + E)\)
+    \item electrons are pushed to one side of metal bar by this force
+    \item electric field will compensate for motion due to Lorentz force - \(eE_y = -F \implies E_y = -v\times B\)
+    \item current density, \(j = nev\)
+        \begin{align*}
+            E_y = -\frac{1}{ne}j\times B, \frac{1}{ne} = R_H
+        \end{align*}
+    \item \(R_H\) is the Hall coefficient
+    \item the sign of the Hall coefficient shows the charge on the carriers
+        \begin{itemize}
+            \item some metals, however, have positive Hall coefficient
+        \end{itemize}
+\end{itemize}
+
+\section{}
+\subsection{Nearly Free Electron Model}
+
+\begin{itemize}
+    \item free electron model - ignored some interactions:
+        \begin{enumerate}
+            \item electron-atoms - free electron approximation
+            \item electron-electron - independent electron approximation
+        \end{enumerate}
+    \item nearly free electron model includes electron-atom interactions
+    \item failures of free electron model:
+        \begin{itemize}
+            \item temperature dependence of conductivity
+            \item some metals have a positive Hall coefficient
+        \end{itemize}
+    \item interaction between electrons and crystal lattices?
+        \begin{itemize}
+            \item lattice \(\underline{R} = n_1\underline{a}_1 + n_2\underline{a}_2 + n_3\underline{a}_3\), where \(\underline{a}_1,\underline{a}_2,\underline{a}_3\) are lattice vectors
+        \end{itemize}
+\end{itemize}
+
+\subsection{Bloch Theorem}
+
+\begin{itemize}
+    \item this is a consequence of periodic properties of crystals
+        \begin{itemize}
+            \item provides insights into behaviour of electrons in periodic potnetial Bloch states
+            \item describes electrons moving in periodic potential
+        \end{itemize}
+    \item consider a 10 crystal (line of atoms). \(\psi(x)\) is solution satisfying time-independent Schrodinger equation
+        \begin{itemize}
+            \item Schrodinger equation has periodic potential \(V(x)\) representing atoms
+            \item energy eigenvalues, \(\sigma\)
+        \end{itemize}
+    \item schrodinger equation evaluated at \((x+R)\) must give same solution as as \((x)\)
+        \begin{itemize}
+            \item local electronic environment at \(x\) and \(x+R\) are identical
+            \item have second solution \(\phi(x)\) which also satisfies the Schrodinger equation with energy \(E\)
+            \item Assume \(\psi\) and \(\phi\) are unique solutions, can write \(\phi(x) = \psi(x+R)\)
+            \item \(R\) is lattice vector \(=na\)
+            \item \(\psi(x+R) = c(R)\psi(x)\) where \(c(R)\) is a constant equal to \(1\)
+        \end{itemize}
+    \item using series of lattice translations, \(c(R_1+R_2) = c(R_1)c(R_2)\)
+        \begin{itemize}
+            \item therefore \(c(nR) = [c(R)]^n,~ n \in \mathbb{N}\)
+        \end{itemize}
+    \item wavefunction must satisfy boundary conditions (periodic over M lattice translation where \(Ma = l\), the length of 10 crystals)
+    \item bloch theorem brings together two requirements to satisfy both periodic bonding conditions and lattice translation by \(n_1a_1\) where \(n_1\) is an integer
+    \item from this we have \(\psi(x+Ma) = \psi(x) \implies [c(a)]^M = 1\)
+        \begin{itemize}
+            \item a functions that satisfies replacement for \(c(a) = \exp[ika]\), where \(ka = \frac{2\pi l}{M}\) (\(l \in \mathbb{Z}\))
+        \end{itemize}
+    \item for any lattice translation, \(\underline{R} = m\underline{a}\) (\(m \in \mathbb{Z},\underline{a}\) is lattice constant)
+        \begin{itemize}
+            \item \(c(R) = [c(a)]^M \equiv \exp[iMka] = \exp[ikR], R = \frac{2\pi l}{L}\) - \(l \in \mathbb{Z}\), \(L\) is the total dimensino of sample
+        \end{itemize}
+    \item these statments set oit bloch's theorem - they explain the difference between free electron and nearly free electron models
+    \item free electron model \(\psi(x) = C\exp[ikx]\) - plane wave with constant energy \(E\), \(k\) is the electron wavevector
+    \item nearly free electron model \(\psi(x+R) = C\exp[ik(x+R)] = C\exp[ikR]\psi(x) = Cu_k(R)\psi(x),~ u_k(R)\) is the bloch function
+    \item the bloch theorem tellls us that nearly free electron wavefunctions (weak periodic potential) are composed of two parts:
+        \begin{enumerate}
+            \item plane wave free electron behaviour, \(C\exp[ikx]\)
+            \item modulated in intensity by bloch function, \(u_k(R)\), has periodicity of lattice
+        \end{enumerate}
+        \begin{itemize}
+            \item fundamental nature of \(\psi\) is still free electron behaviour, but with a modification
+        \end{itemize}
+\end{itemize}
+
+\paragraph{Consequences of Bloch Theorem}
+
+\begin{itemize}
+    \item adding multiples of \(\frac{2\pi}{a}\) to bloch wavevectors does not alter solution \(\psi\)
+        \begin{itemize}
+            \item only \(k\) values in \(\frac{2\pi}{a}\) range are physically distinct
+            \item all other values can be mapped into unique range
+        \end{itemize}
+    \item convention is to define this as \(-\frac{\pi}{a} \to \frac{\pi}{a}\)
+        \begin{itemize}
+            \item this corresponds to the first brillouin zone
+        \end{itemize}
+\end{itemize}
+
+\paragraph{Energy Band Diagrams}
+
+\begin{itemize}
+    \item shows electron behaviour in terms of energy and wavevector - free electron model \(E = \frac{\hbar^2k^2}{2m_e}\)
+    \item branches of \(E(k)\) curve are moved into first brillouin zone
+\end{itemize}
+
+\section{}
+
+\subsection{Nearly Free Electron Energy Bands}
+
+\begin{itemize}
+    \item physical origin of energy gaps and energy bands:
+        \begin{enumerate}
+            \item bragg reflection - electronw aves can scatter from planes of atoms. Weak periodic potentiation Schrodinger equation. Gives corresponding values for energy gaps at \(k = \frac{n\pi}{a}\)
+            \item interference at certain wavelengths, get interference between electron waves and atoms
+        \end{enumerate}
+\end{itemize}
+
+\paragraph{Energy Bands}
+
+\begin{itemize}
+    \item describe relationship between eenrgy and wavevector
+    \item electrons of different `\(k\)' propagate at different velocities - dispersion
+    \item travelling wave group velocity: $v_g = \frac{d\omega}{dk}$
+    \item For electron: $v_g = \frac{1}{\hbar}\frac{dE(k)}{dk}$
+    \item velocity of Block electrons (know \(E = \frac{\hbar^2k^2}{2m_e}\)). This gives:
+        \begin{align*}
+            v_g = \frac{1}{\hbar}\frac{d}{dk}\left(\frac{\hbar^2k^2}{2m_e}\right) = \frac{\hbar k}{m_e} = \frac{p}{m} = vk
+        \end{align*}
+    \item \emph{\(\hbar k\) is the crystal momentum}
+    \item crystal momentum is the momentum an electron has as a result of interacting with periodic potential
+    \item exhibits different physical parameters
+\end{itemize}
+
+\paragraph{Current Carried by Energy Bands}
+
+\begin{itemize}
+    \item we know that the current density is \(j = ne\langle v\rangle\), where \(n \equiv\) electron density, \(\langle v\rangle \equiv\) average velocity
+        \begin{align*}
+            \langle v\rangle = \frac{1}{\hbar}\int_{k=-\frac{\pi}{a}}^{k=\frac{\pi}{a}} \frac{dE}{dk}dk\,\frac{a}{2\pi}
+        \end{align*}
+    \item consider \(k = \frac{\pi}{a}\) nd \(k = -\frac{\pi}{a}\), these are physically equivalent states (from Block theorem)
+        \begin{itemize}
+            \item tells us that \(E\left(\frac{\pi}{a}\right) = 0 = E\left(-\frac{\pi}{a}\right)\)
+        \end{itemize}
+        \begin{align*}
+            \langle v\rangle = \frac{a}{2\pi\hbar}\left[E\left(\frac{\pi}{a}\right) - E\left(-\frac{\pi}{a}\right)\right] = 0
+        \end{align*}
+    \item above implies average velocity of fulled energy band is zero, as is current density
+    \item completely filled energy band carries no electrical current (insulators)
+    \item current carried by partially filled bands (metals or semiconductors)
+\end{itemize}
+
+\subsection{Equation of Motion for Bloch Electrons}
+
+\begin{itemize}
+    \item consider force \(F\) applied to electron - \(Fv_g =\) rate of work being done
+        \begin{align*}
+            Fv_g &= \frac{dE}{dt} = \frac{dE}{dk}  \times \frac{dk}{dt} \\
+            v_g &= \frac{1}{\hbar}\frac{dE}{dk} \implies F = \hbar\frac{dk}{dt}
+        \end{align*}
+    \item can predict how electron will respond in electric field
+\end{itemize}
+
+\subsection{Effective Mass}
+
+\begin{itemize}
+    \item electrons in bloch states move as though the mass of electron is different form free electron masses
+    \item consider \(E(k)\) relationship near band edge at \(k = k_0\) where \(\frac{dE}{dk} = 0\) (i.e. zero group velocity)
+    \item general form given by \(E = E(k_0) + \frac{1}{2}A(k - k_0)^2\)
+    \item group velocity: \(v_g(k) = \frac{A(k-k_0)}{\hbar}\) - compare with free electrons, where we have \(v_{free} = \frac{p}{m_e} = \frac{\hbar k}{m_e}\)
+    \item electrons behave as though they have an effective mass of \(m_{eff} = \frac{\hbar^2}{A_{}}\)
+    \item from taylor's theorem, we can show that \(A = \frac{d^2E}{dk^2}\Big|_{k=k_0}\)
+        \begin{align*}
+            m_{eff} = \hbar^2\left[\frac{d^2E}{dk^2}\right]^{-1}_{k=k_0}
+        \end{align*}
+    \item second derivative is curvature - when \(E \propto k^2\) then \(m_{eff_{}}\) is constant
+    \item some regions of \(m_{eff_{}}\) are positive, some regions are negative
+    \item negative mass \(\implies\) electrons slow down in electric field, force is in opposite direction
+\end{itemize}
+
+\subsection{Electrons and Holes}
+
+\begin{itemize}
+    \item an energy band which is nearly filled has some vacant energy states near top of energy band
+    \item consider vacant states of holes - charge of \(+e\), equivalent to negative effective mass
+    \item hole wavevector \(k_h = -k_e\), energy \(E(k_h) = - E(k_e), v_h = v_e\)
+\end{itemize}
+
+\begin{enumerate}
+    \item if energy band is full there is no current
+    \item if energy band is partially full then electrons with $m_{eff}$ describe electrical response
+    \item if energy band is almsot completely filled, then holes with negative \(m_{eff_{}}\), positive charge
+\end{enumerate}
+
+\end{document}

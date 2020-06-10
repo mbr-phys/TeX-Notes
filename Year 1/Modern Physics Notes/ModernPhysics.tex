@@ -8,9 +8,27 @@
 \rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2017}}\\[2.5cm]
+    {\LARGE\bfseries Foundations of Physics 1}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Modern Physics}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
-\tableofcontents
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Stewart Clark
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+\end{titlepage}
 
 \chapter{Relativity}
 \section{Classical Relativity}
@@ -86,7 +104,7 @@ We are observers on Earth (inertial frame of reference).
 A spaceship travels past the Earth at speed, u.
 We have two inertial frames: Earth, O, \& spaceship, O'.
 $O \xrightarrow{u} O'$.
-On the spaceship, someone does the following: 
+On the spaceship, someone does the following:
 A light source fires a pulse of light across the spaceship, it hits a mirror on the other side of the spaceship and returns to the source.
 \begin{figure}[H]
     \centering
@@ -108,14 +126,14 @@ Define $\gamma$:
 \begin{align}
     \gamma &= \frac{1}{\sqrt{1 - \tfrac{u^{2}}{c^{2}}}},\quad \Delta t = \gamma\Delta t'
 \end{align}
-Look at $\gamma$ as a function of $\beta = \frac{u^{2}}{c^{2}}$: 
+Look at $\gamma$ as a function of $\beta = \frac{u^{2}}{c^{2}}$:
 \begin{figure}[H]
     \centering
     \includegraphics{Gammafn.jpg}
 \end{figure}
 This implies $\Delta t > \Delta t'$.
 Clocks moving at some speed with respect to us appear to be going slower.
-Let $u = 300\text{ms}^{-1}$. 
+Let $u = 300\text{ms}^{-1}$.
 Then:
 \begin{equation}
     \gamma(300) = \frac{1}{\sqrt{1 - (\tfrac{300}{3\times10^{8}})^{2}}} \approx 1\times10^{-12}
@@ -126,14 +144,14 @@ Let's let an event be observed by O at (x, y, z, t) \& by O' at (x', y', z', t')
 When we say something is simultaneous, we mean we observe it at the same time.
 So if $t = t'$, then they agree it is simultaneous.
 Also note in above derivation we had two events: light leaving source and light returning.
-In O', let the events be at: 
+In O', let the events be at:
 ($x_{1}'$, $y_{1}'$, $z_{1}'$, $t_{1}'$) \& ($x_{2}'$, $y_{2}'$, $z_{2}'$, $t_{2}'$).
 Defined $\Delta t' = t_{2}' - t_{1}'$.
 But we had $x_{1}' = x_{2}'$ etc.
 
 \textbf{Example:}\\
 Cosmic rays from space interact with atoms in atmosphere to create muons at speed $v = 0.99c$, with a lifetime of $1.56\times10^{-5}s$.
-In the muon's reference frame, how long does it exist? 
+In the muon's reference frame, how long does it exist?
 $\Delta t'$ -- lifetime in muon's reference frame;
 $\Delta t$ -- time in our frame.
 \begin{align}
@@ -145,7 +163,7 @@ $\Delta t$ -- time in our frame.
 \section{Length}
 Spaceship, O' $\rightarrow$ u.
 Earth, O.
-A -- pulse of light emitted from source in the direction of travel and travels a distance l'. 
+A -- pulse of light emitted from source in the direction of travel and travels a distance l'.
 B -- reflects off mirror and travels back along same path.
 $2l'$ travelled in time $\Delta t' \therefore 2l' = c\Delta t'$:
 \begin{align}
@@ -175,7 +193,7 @@ $t'$ \& $l'$ -- defined within stationary reference frame.
 $l'$ is the longest distance and $t'$ is the shortest time.
 
 \section{Lorentz Transforms}
-So for only specific cases: 
+So for only specific cases:
 In O, let a point, P, in space-time be (x, y, z, t).
 Let O', be a frame moving at speed u with respect to O along their common x-x' axis.
 The Point P in O' is seen at (x', y', z', t').
@@ -221,7 +239,7 @@ Define:
 \end{itemize}
 Observer at entrance says both events are simultaneous.
 2nd observer on rear of train sees things differently.
-If event A happens at $t = t' = 0$, when does observer on train see event B? 
+If event A happens at $t = t' = 0$, when does observer on train see event B?
 How long is the train?
 Firstly, get gamma:
 \begin{align}
@@ -260,7 +278,7 @@ Take time derivative of position to get velocity:
 
 \textbf{Example:}\\
 Two cars travelling towards each other at 0.6c according to an observer at the side of the road.
-How fast does one car see the other approaching? 
+How fast does one car see the other approaching?
 Observer by road -- O \& Car -- O'.
 $u = 0.6c$ \& $v_{x} = -0.6c$.
 \begin{align}
@@ -283,7 +301,7 @@ How long does one ship measure the other to be?
 \end{align}
 
 \section{Relativistic Momentum}
-Classically, $\underline{p} = m\underline{v}$ is considered: 
+Classically, $\underline{p} = m\underline{v}$ is considered:
 Consider snooker balls colliding:
 \begin{itemize}
     \item \textbf{Ball A}
@@ -439,10 +457,10 @@ Consider $2\times2$ upper left matrix:
 \begin{equation}
     \begin{pmatrix} \gamma & -\frac{u\gamma}{c} \\ -\frac{u\gamma}{c} & \gamma \end{pmatrix}
 \end{equation}
-Now look at its eigenvalues and plot them against $\frac{u}{c}$: 
+Now look at its eigenvalues and plot them against $\frac{u}{c}$:
 \begin{itemize}
-    \item One value starts at one and tends to infinity as $\frac{u}{c}$ approaches one -- this is time dilation 
-    \item The other also starts at one but tends to zero as $\frac{u}{c}$ approaches one -- this is length contraction 
+    \item One value starts at one and tends to infinity as $\frac{u}{c}$ approaches one -- this is time dilation
+    \item The other also starts at one but tends to zero as $\frac{u}{c}$ approaches one -- this is length contraction
 \end{itemize}
 Let u be some reasonable speed, then our $2\times2$ transform does this:
 \begin{figure}[H]
@@ -492,7 +510,7 @@ This is a problem: it does not obey the wave nature of light.
     \includegraphics[scale=0.7]{Photoelec.png}
 \end{figure}
 This $f_{0}$ is independent of intensity -- intensity just increases the number of electrons emitted, but not their energy.
-Let's put a voltage across the system: 
+Let's put a voltage across the system:
 \begin{figure}[H]
     \centering
     \includegraphics{currentvsvoltage.jpg}
@@ -576,7 +594,7 @@ Let's fire electrons through some slits (often thought of as particles):
         \includegraphics[width=\textwidth]{ActualDouble.png}
     \end{subfigure}
 \end{figure}
-What happens if we decrease the intensity of incoming particles to only one at a time? 
+What happens if we decrease the intensity of incoming particles to only one at a time?
 Then if we measure to find location of the particle, it appears on the screen following the wave-like pattern where it indicates the probability of finding the particle at a particular position.
 
 \section{Heisenberg's Uncertainty Principle}
@@ -630,7 +648,7 @@ This is the prediction for a pion.
         \hline
         Radiation & (waves) f, $\lambda$ & (particles) $p = \frac{h}{\lambda}$, $E = hf$\\
         \hline
-    \end{tabular} 
+    \end{tabular}
 \end{table}
 The wave-particle duality model was mainly due to deBroglie.
 He suggested the symmetry between particles and waves and that they were interchangeable.
@@ -651,7 +669,7 @@ Similar to that of classical waves:
 \textbf{Example:}\\
 Electrons with a KE of 54\,eV (non-relativistic) produces the first peak in a diffraction pattern at $\theta = 50\degree$.
 \begin{enumerate}
-    \item Get wavelength: $\lambda = \frac{h}{p} = \cdots = 0.167$nm 
+    \item Get wavelength: $\lambda = \frac{h}{p} = \cdots = 0.167$nm
     \item If the interatomic spacing is $d = 0.215$mm, check result:
         \begin{align}
             m\lambda = d\sin{\theta} = \cdots = 0.165\text{nm}
@@ -661,7 +679,7 @@ Electrons with a KE of 54\,eV (non-relativistic) produces the first peak in a di
 What is the deBroglie wavelength of a particle with KE of 1\,eV, 1\,keV, 1\,MeV, 1\,GeV?
 \begin{enumerate}
     \item[(i)] 1\,eV $\rightarrow 1.23$nm
-    \item[(ii)] 1\,keV $\rightarrow 0.039$nm [non-relativistic] 
+    \item[(ii)] 1\,keV $\rightarrow 0.039$nm [non-relativistic]
     \item[(iii)] 1\,MeV $\rightarrow E = KE + m_{0}c^{2}$, also $E^{2} = (pc)^{2} + (m_{0}c^{2})^{2}$
         \begin{align}
             p^{2} + \frac{(KE + m_{0}c^{2})^{2}}{c^{2}} - \frac{(m_{0}c{2})^{2}}{c^{2}} \implies \lambda = \frac{h}{p} = 0.87\text{pm}
@@ -669,7 +687,7 @@ What is the deBroglie wavelength of a particle with KE of 1\,eV, 1\,keV, 1\,MeV,
 \end{enumerate}
 
 \section{Particles Behaving Like Waves}
-What is the physics that governs the equation of a wave? 
+What is the physics that governs the equation of a wave?
 We want to know about the wave equation to solve to get the wave function.
 This function is usually given the symbol, $\Psi$.
 Similar to waves, the intensity of this is $|\Psi(x,\:t)|^{2}$.
@@ -760,12 +778,12 @@ If we now assume that light is given off by the emission of a particle (photon),
 Every body emits and absorbs electromagnetic radiation.
 A black body absorbs all frequencies of wavelength and emits all too.
 Intensity of each frequency seems to depend on the temperature.
-Some experimentally observed quantities had been obtained around the 1900s: 
+Some experimentally observed quantities had been obtained around the 1900s:
 \begin{itemize}
-    \item[(i)] Spectral emittance, $I(\lambda)$ 
+    \item[(i)] Spectral emittance, $I(\lambda)$
         \begin{figure}[H]
             \centering
-            \includegraphics{SpectralEmit.jpg} 
+            \includegraphics{SpectralEmit.jpg}
         \end{figure}
     \item[(ii)] Empirical laws -- Wien's Displacement Law:
         \begin{equation}
@@ -819,7 +837,7 @@ This resolves for \textbf{Planck's Radiation Law}:
     I(\lambda) &= \frac{2\pi c}{\lambda^{4}} \frac{hf}{e^{\tfrac{hf}{kT}} - 1} = \frac{2\pi c^{2}}{\lambda^{5}} \frac{h}{e^{\tfrac{hc}{\lambda kT}} - 1}
 \end{align}
 \textbf{It is important to be able to comfortably integrate and differentiate this.}
-On the discovery of the photoelectric effect, Planck realised his mathematical trick was in fact describing the physics: 
+On the discovery of the photoelectric effect, Planck realised his mathematical trick was in fact describing the physics:
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{Planck.png}
@@ -916,7 +934,7 @@ For now, we concentrate on understanding the time-independent SE.
 \section{Infinite Square Well}
 \textbf{Example:}
 Consider a long molecule and it contains an electron which is free to move along the length of the molecule, but does not have enough energy to escape from the molecule.
-Where is the electron and what is its energy? 
+Where is the electron and what is its energy?
 Use SE:
 \begin{equation}
      -\frac{\hbar^{2}}{2m}\frac{d^{2} \Psi(x)}{d x^{2}} + U(x)\Psi(x) = E\Psi(x)
@@ -1141,7 +1159,7 @@ This is a reasonable model for a transistor.
 \textbf{Example:} Sinusoidal motion has $\omega = \sqrt{\frac{k}{m}}$, amplitude A.
 \begin{figure}[H]
     \centering
-    \includegraphics{Pote.jpg} 
+    \includegraphics{Pote.jpg}
 \end{figure}
 If particle has energy E, at extremes, E is described by PE.
 \begin{align}
@@ -1397,7 +1415,7 @@ Basic properties:
     \item A nuclear species is a nucleide.
     \item An isotope contains a given number of protons but neutrons vary.
     \item An isotone has the same number of neutrons but protons vary.
-    \item An isobar has the same mass number but neutrons and protons vary. 
+    \item An isobar has the same mass number but neutrons and protons vary.
 \end{itemize}
 We have a number of positive protons in the nucleus that repel via the Coulomb force.
 Why doesn't the nucleus blow apart?

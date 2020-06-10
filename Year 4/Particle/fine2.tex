@@ -12,65 +12,63 @@
 %]
 
 \begin{document}
-\begin{tikzpicture}
-    \begin{feynman}
-        \vertex (a1) {$\mu$};
-        \vertex at ($(a1)+(1cm,-1cm)$) (a2);
-        \vertex at ($(a2)+(2cm,-2cm)$) (a3);
-        \vertex at ($(a3)+(2cm,-0.4cm)$) (a4) {$e$};
-
-        \vertex[above=2cm of a3] (c1);
-        \vertex at ($(c1)+(1.4cm,0.8cm)$) (c2) {$\gamma$};
-
-        \diagram* {
-            (a1) -- [fermion] (a2) -- [fermion] (a3) -- [fermion] (a4);
-            (a2) -- [boson,quarter left] (c1) -- [boson,quarter left] (a3);
-            (c1) -- [boson,quarter left,looseness=0.4] (c2); 
-        };
-    \end{feynman}
-\end{tikzpicture}
-
-\end{document}
-
-%DEEP INELASTIC SCATTERING
 %\begin{tikzpicture}
 %    \begin{feynman}
-%        \vertex (a1);
-%        \vertex[above=-0.1cm of a1,blob] (a2) {};
-%        \vertex[above=0.5cm of a1] (a3);
-%        \vertex[left=1.5cm of a2] (a4);
-%        \vertex[above=0.5cm of a4] (a5);
+%        \vertex (a1) {$\mu$};
+%        \vertex at ($(a1)+(1cm,-1cm)$) (a2);
+%        \vertex at ($(a2)+(2cm,-2cm)$) (a3);
+%        \vertex at ($(a3)+(2cm,-0.4cm)$) (a4) {$e$};
 %
-%        \vertex[below=3cm of a1] (b1);
-%        \vertex[below=-0.1cm of b1,blob] (b2) {};
-%        \vertex[below=0.5cm of b1] (b3);
-%        \vertex[left=1.5cm of b2] (b4);
-%        \vertex[below=0.5cm of b4] (b5);
-%
-%        \vertex at ($(a1)+(1.5cm,-0.75cm)$) (c1);
-%        \vertex at ($(c1)+(1cm,-0.25cm)$) (c2);
-%        \vertex[above=0.25cm of c2] (c3);
-%
-%        \vertex[below=1.5cm of c1] (d1);
-%        \vertex at ($(d1)+(1cm,0.25cm)$) (d2);
-%        \vertex[below=0.25cm of d2] (d3);
-%
-%        \vertex at ($(c3)+(0.25cm,1.5cm)$) (e1) {$u,k_\mu'$};
-%        \vertex at ($(d3)+(0.25cm,-1.5cm)$) (e2) {$u,p_\mu'$};
+%        \vertex[above=2cm of a3] (c1);
+%        \vertex at ($(c1)+(1.4cm,0.8cm)$) (c2) {$\gamma$};
 %
 %        \diagram* {
-%            (a1) -- (a4) -- [plain,edge label={$P,k_\mu$}] (a5) -- (a3),
-%            (a3) -- [fermion] (c3),
-%            (a2) -- [fermion] (c2),
-%            (a1) -- [fermion,edge label'={$u,x_2k_\mu$}] (c1) -- [gluon] (d1),
-%            (b3) -- (b5) -- [plain,edge label={$P,p_\mu$}] (b4) -- (b1),
-%            (b1) -- [fermion,edge label={$u,x_1p_\mu$}] (d1),
-%            (b2) -- [fermion] (d2),
-%            (b3) -- [fermion] (d3),
-%            (e1) -- (c1),
-%            (e2) -- (d1),
+%            (a1) -- [fermion] (a2) -- [fermion] (a3) -- [fermion] (a4);
+%            (a2) -- [boson,quarter left] (c1) -- [boson,quarter left] (a3);
+%            (c1) -- [boson,quarter left,looseness=0.4] (c2); 
 %        };
 %    \end{feynman}
 %\end{tikzpicture}
 
 
+%DEEP INELASTIC SCATTERING
+\begin{tikzpicture}
+    \begin{feynman}
+        \vertex (a1);
+        \vertex[above=-0.1cm of a1,blob] (a2) {};
+        \vertex[above=0.5cm of a1] (a3);
+        \vertex[left=1.5cm of a2] (a4);
+        \vertex[above=0.5cm of a4] (a5);
+
+        \vertex[below=3cm of a1] (b1);
+        \vertex[below=-0.1cm of b1,blob] (b2) {};
+        \vertex[below=0.5cm of b1] (b3);
+        \vertex[left=1.5cm of b2] (b4);
+        \vertex[below=0.5cm of b4] (b5);
+
+        \vertex at ($(a1)+(1.5cm,-0.75cm)$) (c1);
+        \vertex at ($(c1)+(1cm,0.5cm)$) (c2);
+        \vertex[above=0.25cm of c2] (c3);
+
+        \vertex[below=0.75cm of c1] (d1);
+        \vertex at ($(d1)+(1cm,-1.25cm)$) (d2);
+        \vertex[below=0.25cm of d2] (d3);
+
+        \vertex[right=2cm of d1] (e1);
+
+        \diagram* {
+            (a1) -- (a4) -- [plain,edge label={$P$}] (a5) -- (a3),
+            (a3) -- [fermion] (c3),
+            (a2) -- [fermion] (c2),
+            (a1) -- [fermion,edge label'={$d$}] (d1),
+            (b3) -- (b5) -- [plain,edge label={$\bar P$}] (b4) -- (b1),
+            (b1) -- [fermion,edge label={$\bar u$}] (d1),
+            (b2) -- [fermion] (d2),
+            (b3) -- [fermion] (d3),
+            (d1) -- [boson,edge label=$W^-$] (e1);
+        };
+    \end{feynman}
+\end{tikzpicture}
+
+
+\end{document}

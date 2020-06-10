@@ -1,0 +1,677 @@
+\documentclass[a4paper,11pt,normalem]{article}
+\usepackage{../../../LaTeX-Templates/Notes}
+
+\titlecontents{section}
+    [0pt]
+    {}
+    {Lecture \thecontentslabel\quad}
+    {}
+    {\dotfill\contentspage}
+    \titleformat{\section}{\fontsize{12}{15}\normalfont}{\underline{\textbf{Lecture \thesection}}}{1em}{}
+
+\rhead{}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+{\centering
+{\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Michaelmas 2017}}\\[1.5cm]
+{\LARGE\bfseries Stars and Galaxies}\\[0.5cm]
+\HRule \\[0.3cm]
+{\huge\bfseries Observational Techniques}\\[0.1cm]
+\HRule \\[1cm]}
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+    \begin{flushleft} \large
+        \emph{Author:} \\ Matthew Rossetter
+    \end{flushleft}
+\end{minipage}~
+\begin{minipage}{0.4\textwidth}
+    \begin{flushright} \large
+        \emph{Lecturer:} \\ Prof. Mark Swinbank
+    \end{flushright}
+\end{minipage}
+\end{center}
+
+\section{}
+\begin{itemize}
+    \item \emph{other stuff in notebook}
+    \item Parts of atmosphere are opaque due to water vapour, \(O_3\), etc
+    \item Correcting for atmospheric absorption:
+        \begin{itemize}
+            \item\textbf{GET IMAGES FROM SLIDES}
+        \end{itemize}
+\end{itemize}
+
+\begin{align*}
+    X &= 1 ~\text{airmass} \\
+    X &= \sec(z) ~\text{airmasses} \\
+    -\int_{I_C}^{I_O} \frac{dI}{I} &= \int_{0}^{X}k\,dX \\
+    \ln{\frac{I_{obs}}{I_{corr}}} &= kX + c \\
+    \frac{I_{obs}}{I_{corr}} &= e^{-kX} \\
+    m_{obs} - m_{corr} &= -2.5\log{\frac{I_{obs}}{I_{corr}}} \\
+    m_{obs} - m_{corr} &= -2.5\log{e^{-kX}} \\
+                       &= 2.5kX\log{e} \\
+    m_{corr} &= m_{obs} - A_\lambda(z = 0) \sec{z}
+\end{align*}
+
+\begin{itemize}
+    \item Atmospheric refraction
+        \begin{itemize}
+            \item \textbf{MATHS AND PICS IN SLIDES}
+            \item plane parallel atmosphere
+            \item apply laws of refraction
+            \item basic trig stuff
+            \item always in small angle approx range
+                \begin{equation*}
+                    r = (n - 1)\tan{(z_0)}
+                \end{equation*}
+        \end{itemize}
+    \item Refractive index also has wavelength dep
+    \item atmos ref turns into an atmos dispersion
+    \item disperses more for smaller wavelength
+        \begin{itemize}
+            \item 3 or 4 arcsecs
+            \item a lot
+        \end{itemize}
+    \item Every object appears as a spectrum as colors separate
+    \item atmos emission
+        \begin{itemize}
+            \item fluorescent emission
+                \begin{itemize}
+                    \item air glow
+                \end{itemize}
+            \item emits thermal radiation for TE
+            \item Most emission is from OH molecules in upper atmos
+                \begin{itemize}
+                    \item vibrational and rotational movement
+                \end{itemize}
+        \end{itemize}
+    \item want to try and stay away from regions with lots of this emission
+    \item Other sources of emission:
+        \begin{itemize}
+            \item light pollution
+                \begin{itemize}
+                    \item from ground
+                    \item from satellites and aircraft
+                \end{itemize}
+            \item zodiacal light
+                \begin{itemize}
+                    \item light scattered from interplanetery dust
+                    \item in plane of the Solar System
+                \end{itemize}
+            \item scattered light
+                \begin{itemize}
+                    \item e.g. from the moon
+                    \item telescope scheduling to dark, grat, and bright time
+                \end{itemize}
+        \end{itemize}
+    \item more diffcult observations at longer wavelengths
+        \begin{itemize}
+            \item more background issues
+        \end{itemize}
+    \item dust causes lots of interference
+        \begin{itemize}
+            \item at longer wavelengths, interaction between dust and photons is smaller
+            \item interaction cross-section
+        \end{itemize}
+    \item easier to see through dust a lot easier and see other galaxies etc at longer wavelengths
+    \item Atmospheric turbulence
+        \begin{itemize}
+            \item \emph{twinkle twinkle little star}
+            \item Stars twinkle due to light getting bounced around in atmos
+        \end{itemize}
+    \item Angular resolution of telescope limited by Fraunhofer Diffraction
+        \begin{itemize}
+            \item \emph{see last year}
+            \item Airy disk
+            \item assume stars as point sources
+            \item large telescope \(\implies\) small airy disk
+            \item small telescope \(\implies\) large airy disk
+            \item how close before two stars are seen as one?
+        \end{itemize}
+    \item Characterise resolution with Rayleigh criterion
+        \begin{itemize}
+            \item at some point the principle maximum of one star overlays with the principle minimum of the second
+                \begin{itemize}
+                    \item \emph{diffraction limit}
+                \end{itemize}
+            \item \(\theta_{dl} = 1.22\frac{\lambda}{D}\)
+                \begin{itemize}
+                    \item integrate round a cylinder using Bessel fns to get this
+                    \item covered sort of later on in other module
+                \end{itemize}
+        \end{itemize}
+    \item Atmos is constantly moving
+        \begin{itemize}
+            \item changing size, density, and temperature causes different path lengths ever dt for stars
+            \item sum up over lots of dt for observing
+                \begin{itemize}
+                    \item causes blurring though
+                \end{itemize}
+            \item no longer airy disk, severely blurry
+        \end{itemize}
+    \item for atmos turbulence, the seeing is defined as minimum angle between two stars that can just be resolved
+        \begin{itemize}
+            \item typically in arcsec
+            \item 50x worse than the diffraction limit
+        \end{itemize}
+    \item Detectors
+        \begin{itemize}
+            \item Charged Coupled Device
+            \item little silicon micro-circuits
+            \item little ray of capacitors
+            \item discrete energy bands
+                \begin{itemize}
+                    \item conduction band and valence band
+                    \item difference of \(\approx 1.1\)eV
+                \end{itemize}
+            \item upper cut-off wavelengths governed by band gap voltage difference
+            \item lower wavelengths cut-off by absorption of photons into the silion
+            \item excellent Quantum efficiency
+                \begin{itemize}
+                    \item \(> 90\)\%
+                \end{itemize}
+            \item high dynamic range
+            \item excellent linearity
+            \item excellent stability
+            \item still not enough pixels
+        \end{itemize}
+\end{itemize}
+
+\section{}
+\paragraph{Back to CCDs:}
+\begin{itemize}
+    \item Well Depth
+        \begin{itemize}
+            \item how many electrons can be stored in the upper state, usually 100s of thousands
+        \end{itemize}
+    \item use binary for how many levels for the signal
+        \begin{itemize}
+            \item i.e.~8 bit \(= 2^8 = 256\) levels
+        \end{itemize}
+    \item System Gain
+        \begin{itemize}
+            \item how many photo-electrons are required for digital output of 1
+            \item small gain means reduced saturation signal
+        \end{itemize}
+\end{itemize}
+
+\paragraph{Photometry}
+\begin{itemize}
+    \item Process of obtaining quatative (numerical) values of the birghtness of celestial objects
+    \item CCD gives output prop to number of photons incident on each pixel
+    \item Photometry takes raw data and corrects for noise from other sources
+    \item Noise is just any interference for the image
+    \item SNR (signal to noise ratio) defined as ratio of useful to non-useful data
+    \item Poisson stats
+        \begin{itemize}
+            \item arrival of photons governed by this
+            \item studied for how cameras observe sky stuff
+            \item see stats last year
+            \item Hughes and Hase and labs stuff
+        \end{itemize}
+        \begin{equation*}
+            P(n,N) = \frac{\exp(-N)N^n}{n!}
+        \end{equation*}
+    \item High means approximates Gaussian stats
+    \item mean is N
+        \begin{itemize}
+            \item also Variance
+            \item std dev is \(\sqrt{N}\)
+        \end{itemize}
+    \item Telescope experiments can take eight hours or so
+        \begin{itemize}
+            \item so use Poisson errors for easy error in counts
+        \end{itemize}
+    \item Small error associated with read out
+\end{itemize}
+
+\paragraph{Basic Data Reduction to Correct for Background in
+CCD}
+\begin{itemize}
+    \item Bias
+        \begin{itemize}
+            \item a zero second readout whihc results in a constant offset
+            \item allows for understanding of the ``noise'' quantity
+        \end{itemize}
+    \item Dark
+        \begin{itemize}
+            \item CCD band stuff
+            \item CCD will be in TE so will promote thermal photons
+            \item thermal photons can hit detector and skew results
+            \item this will increase in time
+        \end{itemize}
+    \item Flat Field
+        \begin{itemize}
+            \item variations in sensitivity
+            \item varied energy ever so slightly across CCD
+            \item quantum efficiency
+            \item slight changes across the CCD in efficiency causes a non-uniform field across CCD
+        \end{itemize}
+    \item Also have sky background counts
+        \begin{itemize}
+            \item these are often the most significant contributor
+        \end{itemize}
+\end{itemize}
+\begin{align*}
+    \text{Final Frame} &= \frac{\text{Object Frame} - (\text{dark+bias})}{\text{Flat Field} - \text{(dark+bias)}} \\
+                       &= \frac{\text{Object Frame} - (\text{dark+bias})}{\text{Flat Field} - \text{(dark+bias)}} - \frac{\text{Sky Frame} - (\text{dark+bias})}{\text{Flat Field} - (\text{dark+bias})} \\
+                       &= \frac{\text{Object Frame} - \text{Sky Frame}}{\text{Flat Field} - \text{(dark+bias)}}
+\end{align*}
+
+\paragraph{Noise Sources}
+\begin{itemize}
+    \item Basic sources of noise are:
+        \begin{enumerate}
+            \item Readout noise, \(\sigma_{rd}\) electrons (Gaussian)
+            \item Photon noise on the signl from the object (Poisson)
+                \begin{itemize}
+                    \item \(= \sqrt{f_{abj}t}\)
+                \end{itemize}
+            \item Photon noise on the signal from the sky background (Poisson)
+                \begin{itemize}
+                    \item \(= \sqrt{f_{bg}t}\)
+                \end{itemize}
+            \item Photon noise on the dark current (Poisson)
+                \begin{itemize}
+                    \item \(\sqrt{dt}\)
+                \end{itemize}
+        \end{enumerate}
+    \item Uncorrelated noise sources can be added in quadrature
+        \begin{itemize}
+            \item \(\sigma_{\text{total}} = \sqrt{\sigma_{1}^{2} + \sigma_{2}^{2}}\)
+        \end{itemize}
+    \item Signal/Noise
+        \begin{align*}
+            SNR = \frac{S}{\sqrt{S + D + B + \sigma_{rd}^2}}
+        \end{align*}
+    \item S - signal
+    \item B - background
+    \item D - dark
+    \item \(\sigma_{rd}\) - read error
+    \item Prev equation assumes all the terms are in photo-electrons
+    \item Will need to be accounted for if in ADU
+    \item counts in number of photons
+    \item gain can be set to more than 1
+        \begin{itemize}
+            \item confuses simple SNR eqn and changes what you plug in
+        \end{itemize}
+\end{itemize}
+
+\paragraph{SNR Approximations}
+\begin{itemize}
+    \item Common approximations:
+        \begin{enumerate}
+            \item Photon noise limited on the object
+                \begin{itemize}
+                    \item signal dominates so can ignore other terms for SNR
+                \end{itemize}
+            \item Sky Limited
+                \begin{itemize}
+                    \item sky background dominates, only count background
+                \end{itemize}
+            \item Read Noise Limited
+                \begin{itemize}
+                    \item read background dominates, only count read term
+                \end{itemize}
+        \end{enumerate}
+\end{itemize}
+
+\section{}
+\subsection{Spectroscopy}
+\begin{itemize}
+    \item Most useful tool in astro
+    \item measurement of intensity of a light source
+        \begin{itemize}
+            \item function of wavelength
+        \end{itemize}
+    \item Different specta:
+        \begin{enumerate}
+            \item light from source straight to detector
+                \begin{itemize}
+                    \item continous spectrum
+                \end{itemize}
+            \item light from source travels through a cloud of gas straight to detector
+                \begin{itemize}
+                    \item continuous spectrum with dark lines
+                \end{itemize}
+            \item light from source travels into cloud and scatters through it to detector
+                \begin{itemize}
+                    \item bright line spectrum on black background
+                \end{itemize}
+        \end{enumerate}
+    \item Types of spectrograph
+        \begin{enumerate}
+            \item Refraction (prisms)
+            \item Diffraction gratings
+            \item Interference (Fabry-Perot interferometer)
+        \end{enumerate}
+        \begin{itemize}
+            \item focus on diffraction grating
+        \end{itemize}
+    \item Diffraction grating
+        \begin{enumerate}
+            \item Slit
+                \begin{itemize}
+                    \item need this to focus light from source of interest and block everything else
+                \end{itemize}
+            \item Collimating lens
+                \begin{itemize}
+                    \item make sure light lands parallel to diffraction grating
+                \end{itemize}
+            \item Diffraction grating
+            \item Camera
+        \end{enumerate}
+    \item Condition for constructive interference:
+        \begin{align*}
+            n\lambda &= d\sin\theta \\
+            \frac{d\theta}{d\lambda} &= \frac{n}{d\cos\theta}
+        \end{align*}
+    \item \(\frac{d\theta}{d\lambda}\) is known as angular dispersion (rad/nm)
+        \begin{itemize}
+            \item higher dispersions from higher spectral orders and smaller line spacings
+            \item more convenient for Reciprocal Linear dispersion (\(\frac{d\lambda}{dx}\))
+            \item measuring wavelength per unit x at detector (nm/mm)
+            \item multiply \(\frac{d\theta}{d\lambda}\) by plate scale \(\frac{d\theta}{dx} = \frac{1}{f_{cam}}\)
+        \end{itemize}
+\end{itemize}
+\begin{align*}
+    \frac{d\lambda}{dx} = \frac{d\lambda}{d\theta}\frac{d\theta}{dx} = \frac{d}{f_{cam}n}\cos\theta
+\end{align*}
+
+\paragraph{Grating Equation}
+\begin{itemize}
+    \item For angles of incidence to grating
+    \item For diffraction grating or reflection
+\end{itemize}
+
+\begin{align*}
+    n\lambda &= d(\sin\alpha + \sin\beta) \\
+    n\lambda\rho &= \sin\alpha + \sin\beta ~;~ \rho = \frac{1}{d}
+\end{align*}
+
+\paragraph{Resolving Power}
+\begin{itemize}
+    \item Recall angle for blurred star
+        \begin{align*}
+            \theta = 1.22\frac{\lambda}{D}
+        \end{align*}
+    \item Resolving power of a spectrograph is wavelength over band pass:
+        \begin{itemize}
+            \item \(\lambda\) is the wavelength
+            \item \(\Delta\lambda\) is the minimum discernible difference in \(\lambda\)
+        \end{itemize}
+        \begin{align*}
+            R &= \frac{\lambda}{\Delta\lambda} = nN \\
+            R &= \frac{n\rho\lambda W}{\chi D_{T}}
+        \end{align*}
+    \item Where
+        \begin{itemize}
+            \item n is diffraction order\#
+            \item N is number of lines
+            \item \(\rho\) is the ruling density (lines/mm)
+            \item \(\lambda\) is the wavelength
+            \item W is the grating size
+            \item \(\chi\) is the angular size of the image of a star on slit
+            \item \(D_{T}\) is the telescope size
+        \end{itemize}
+    \item Don't want too narrow a slit
+        \begin{itemize}
+            \item optimise width of slit for photons from star
+            \item spectral resolution gets blurred
+        \end{itemize}
+    \item Second equation above is for a practical spectrograph
+        \begin{itemize}
+            \item At most wavelengths, this value of R is much less than that given by \(nN\)
+        \end{itemize}
+\end{itemize}
+
+\paragraph{CDs, DVDs, and Blu-Rays}
+
+\begin{itemize}
+    \item basically diffractions gratings
+    \item DVDs store more info than CDs based on diffraction types
+    \item Blu-Rays need UV light to make sense
+\end{itemize}
+
+\section{}
+\subsection{Measuring Stars}
+
+\begin{itemize}
+    \item Black body radiation
+        \begin{align*}
+            E(\lambda, T) = \frac{2hc^2}{\lambda^5} \frac{1}{e^{\tfrac{hc}{\lambda kT}} - 1}
+        \end{align*}
+    \item Characteristic temperature is where \(\frac{dE}{d\lambda} = 0\), bump at top of curve
+    \item Colours of stars depends on plot, nearest colour to peak is visible colour
+        \begin{align*}
+            L = 4\pi R^2 \sigma T^4
+        \end{align*}
+    \item Calc distance to star?
+        \begin{itemize}
+            \item use parallax
+            \item define 1 parsec as distance corresponding to parallax of \(\theta = 1"\)
+            \item 1 psc \(= 206265 AU\)
+        \end{itemize}
+\end{itemize}
+
+\subsection{Interferometry}
+\begin{itemize}
+    \item Combines light from two telescopes
+        \begin{itemize}
+            \item makes it possible to measure stars
+            \item interfere the light and measure phase difference
+            \item diffraction limit: \(1.22\frac{\lambda}{D}\)
+        \end{itemize}
+    \item As star tracks across sky, path length changes
+        \begin{itemize}
+            \item phase will shift in and out of phase with movement
+            \item more complicated for two light sources
+            \item get a more complex fringe pattern
+                \begin{itemize}
+                    \item modulated by \(\frac{\lambda}{D}\) for each telescope
+                \end{itemize}
+        \end{itemize}
+    \item Moving telescopes apart changes fringe pattern
+        \begin{itemize}
+            \item at some point apart, the fringe pattern will disappear and will resolve the star
+            \item can then use maths to find \(\theta\) and find the radius using that and the distance away
+            \item VLT uses more than two telescopes
+        \end{itemize}
+    \item Aperture synthesis
+        \begin{itemize}
+            \item a trick we need for observations
+            \item path length will not change between two telescopes, if they come over parallel
+            \item Will have a `y' pattern of telescope arrays so that path length will always be changing no matter what way it is passing over the sky
+        \end{itemize}
+\end{itemize}
+
+\section{}
+\begin{itemize}
+    \item Zero-point mag gives one count
+    \item \textbf{See example sheet from Lecture 6 for some good notes}
+\end{itemize}
+
+\subsection{Multi-Wavelength Techniques}
+\begin{itemize}
+    \item Missing a huge fraction of images outside visual
+        \begin{itemize}
+            \item how do we see the rest of it?
+        \end{itemize}
+    \item X-ray radiations
+        \begin{itemize}
+            \item electrons wizzing around
+            \item Accelerated to high energies in plasma state
+            \item effecitvely in about a million K
+            \item protons will make electrons change path, and emit energy
+            \item accretion disks generate some of this
+        \end{itemize}
+    \item Difficulties
+        \begin{itemize}
+            \item X-rays have too high energies
+            \item mirrors absorb it and don't work
+            \item very shallow angle mirrors focus instead
+            \item Grazing incidence
+        \end{itemize}
+    \item UV radiation
+        \begin{itemize}
+            \item temperatures of around \(50 \, kK\)
+            \item massive stars
+            \item clumpy as all around clumps of new big stars forming in groups
+        \end{itemize}
+    \item Difficulties
+        \begin{itemize}
+            \item CCDs have lower QE for these lower energies
+            \item hard to move energy level difference in CCDs to measure UV accurately
+            \item swamped by other photons
+            \item use a blocking filter to try and filter visual photons away and just get UV
+        \end{itemize}
+    \item Infra-red radiation
+        \begin{itemize}
+            \item begin to suffer from sky background here
+            \item to do it accurately, you need to be in space
+            \item see a `fuzz' tracing spiral arms on galaxies
+                \begin{itemize}
+                    \item hot dust in the interstellar medium being heated by stars
+                    \item emission from cooler stars
+                    \item globular clusters of old stars
+                \end{itemize}
+        \end{itemize}
+    \item Sub-millimeter radiation
+        \begin{itemize}
+            \item looking at \(T = 3 \to 10 \, K\)
+            \item challenging to detect such low energies
+            \item very sensitive thermometers
+            \item liquid helium at a few micro-Kelvin
+            \item changes resistance and allows current to flow for a second
+        \end{itemize}
+    \item Why
+        \begin{itemize}
+            \item Pillars of Creation
+            \item lots of dusty regions
+                \begin{itemize}
+                    \item actively forming stars in the dust clouds
+                    \item carbonaceous material - graphite, diamonds etc
+                    \item silicates
+                    \item ices
+                \end{itemize}
+            \item optical photons increases dust temperature slightly, still around 10 K though
+                \begin{itemize}
+                    \item emits 100 micron wavelength photons to lose temperature
+                \end{itemize}
+            \item looking at Pillars in sub-millimeter shows clouds glowing now
+            \item can observe nebulae very differently in sub-millimeter
+        \end{itemize}
+    \item Radio radiation
+        \begin{itemize}
+            \item 3 components
+                \begin{itemize}
+                    \item local thunderstorms
+                    \item distant thunderstorms - radio waves bounce round atmosphere
+                    \item constant hiss with period of 23 hours 56 minutes and 4.1 seconds
+                    \item sidereal day
+                \end{itemize}
+            \item This hiss is the galactic emission
+            \item surface of telescopes need to be `smooth'
+            \item smoothness isn't as necessary for radios
+                \begin{itemize}
+                    \item easy to build big telescopes for radio without this concern
+                \end{itemize}
+            \item very difficult to get a high resolution radio telescope
+        \end{itemize}
+\end{itemize}
+
+\section{}
+\subsection{Radios Ctd}
+
+\begin{itemize}
+    \item Biggest telescope is FAST
+        \begin{itemize}
+            \item 500m diameter
+        \end{itemize}
+    \item Why observe in radio?
+        \begin{itemize}
+            \item 21cm
+                \begin{itemize}
+                    \item Neutral H emission
+                \end{itemize}
+            \item electron can have parallel or anti-parallel spin
+                \begin{itemize}
+                    \item two sub ground states
+                \end{itemize}
+            \item anti-parallel is lower energy than parallel so will eventually flip to this one
+                \begin{itemize}
+                    \item very small energy difference
+                    \item hyper-fine energy splitting
+                    \item this takes a few millions years though
+                \end{itemize}
+            \item lots of H in galaxies
+                \begin{itemize}
+                    \item probability adds up to observe this
+                    \item pointing radio telescopes sees this
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+\subsection{Telescope Tech}
+
+\begin{itemize}
+    \item `Twinkling star'
+        \begin{itemize}
+            \item caused by atmosphere moving around and bumping image around
+            \item break it up into sub-images
+                \begin{itemize}
+                    \item speckles
+                \end{itemize}
+            \item whole image will also move around
+        \end{itemize}
+    \item Fried parameter
+        \begin{itemize}
+            \item \(r_0 \approx 10\,cm\)
+            \item size of turbulent cells
+            \item coherence time
+                \begin{itemize}
+                    \item \(t_0 = \frac{r_0}{v}\)
+                    \item v is wind speed
+                    \item this means that a star will only be stable for about \(10\, ms\)
+                \end{itemize}
+        \end{itemize}
+    \item Correcting this
+        \begin{itemize}
+            \item light comes in normally
+            \item hits third mirror that can change angle with actuators
+            \item then hits a beam splitter
+                \begin{itemize}
+                    \item 50\% to computer analyser
+                    \item 50\% to somewhere else
+                \end{itemize}
+            \item computer constantly measures image and changes actuators to correct image for turbulence
+                \begin{itemize}
+                    \item uses fast Fourier transforms to get back to real image
+                    \item happens every millisecond or so
+                \end{itemize}
+            \item this requires bright star though
+            \item shine lasers up to \(15\,km\) into atmosphere to focus
+                \begin{itemize}
+                    \item this creates a fake star for corrections - `natural guide star'
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+\subsection{Exoplanets}
+
+\begin{itemize}
+    \item How do we observe planets against photon noise of stars?
+        \begin{itemize}
+            \item observe stellar spectrum and planet spectrum for comparison
+            \item heavier molecules are more difficult to observe as they're lower down
+                \begin{itemize}
+                    \item refraction issues
+                \end{itemize}
+            \item detecting \(O_3\) would be a key trigger for life
+                \begin{itemize}
+                    \item not able to do it yet
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+\end{document}

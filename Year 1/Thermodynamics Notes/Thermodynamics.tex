@@ -8,9 +8,27 @@
 \rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Michaelmas 2016}}\\[2.5cm]
+    {\LARGE\bfseries Foundations of Physics 1}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Thermodynamics}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
-\tableofcontents
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Del Atkinson
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+\end{titlepage}
 
 \chapter{}
 See Young \& Freedman Chapters 17--20 \\
@@ -38,7 +56,7 @@ Two systems are in \textbf{TE} with each other when they have the same temperatu
 
 \section{Zeroth Law}
 ``\textit{For two systems that are each in \textbf{TE} with a third system independently, the two are in \textbf{TE} with each other}".
-This will aid with calculations later on. 
+This will aid with calculations later on.
 Use 273.15 as converter for $\textbf{K}\leftrightarrow ^{\circ}C$:
 \begin{equation}
     \dfrac{T_{2}}{T_{1}} = \dfrac{p_{2}}{p_{1}}
@@ -48,8 +66,8 @@ At 0 K, system energy is minimum.
 \chapter{}
 \section{Recap}
 \begin{itemize}
-    \item \textbf{TE} is same temperature in different systems 
-    \item Zeroth Law of Thermodynamics 
+    \item \textbf{TE} is same temperature in different systems
+    \item Zeroth Law of Thermodynamics
     \item Thermometers converge at -273.15{$^\circ$}C, 0 K
 \end{itemize}
 
@@ -95,7 +113,7 @@ The amount of heat energy required to change the phase of 1 kg of material depen
 
 \section{Phases of matter}
 \begin{description}[align=right,labelwidth=4cm]
-    \item[Solid] High pressure, low temperature 
+    \item[Solid] High pressure, low temperature
     \item[Liquid] High pressure, high temperature
     \item[Vapour/gas] Low pressure, high temperature
 \end{description}
@@ -104,7 +122,7 @@ The amount of heat energy required to change the phase of 1 kg of material depen
     \includegraphics{MatterPhases.jpg}
 \end{figure}
 \begin{itemize}
-    \item At the phase boundaries, both states of matter can exist in phase equilibrium. 
+    \item At the phase boundaries, both states of matter can exist in phase equilibrium.
     \item All three phases co-exist at the triple point.
     \item Beyond the critical point, you cannot define between liquid and gas.
     \item Dotted green line is for water.
@@ -194,7 +212,7 @@ Expansion of water is approximately linear to temperature macroscopically.
     \centering
     \includegraphics[scale=0.4]{water.png}
 \end{figure}
-Water contracts as it cools down to 4{$^\circ$}C, then expands. 
+Water contracts as it cools down to 4{$^\circ$}C, then expands.
 This explains why ponds freeze from the top which was critical for evolution.
 
 \section{Thermally-Induced Stress}
@@ -220,7 +238,7 @@ Three mechanisms of heat transfer:
 	\item conduction -- vibration through materials
 	\item radiation -- electromagnetic radiation; no medium
 \end{itemize}
-Conduction: 
+Conduction:
 \begin{itemize}
     \item Heat flows from hot to cold.
     \item Energy dQ is transferred in time dt.
@@ -234,9 +252,9 @@ The general form for H, for non-uniform dT, is given by:
 where the negative sign indicates heat flows in direction of decreasing temperature.
 Engineers use thermal resistance, $R = L/k \text{, in units of } K~m^{2}~W^{-1}$
 
-Convection: 
+Convection:
 \begin{itemize}
-    \item Convey heat energy from one location to another by movemnet of fluid (gas or liquid) with higher temperature. 
+    \item Convey heat energy from one location to another by movemnet of fluid (gas or liquid) with higher temperature.
     \item Two types:
         \begin{itemize}
         	\item Natural Convection e.g. hot air rising
@@ -245,7 +263,7 @@ Convection:
     \item This is from complex fluid dynamics processes and so, there are no simple models.
 \end{itemize}
 
-Radiation: 
+Radiation:
 \begin{itemize}
     \item Through the electromagnetic spectrum so does not require a medium -- can go through vacuums.
     \item Radiation depends on body temperature -- hotter bodies emit shorter wavelengths of radiation.
@@ -325,17 +343,17 @@ If there is constant mass or n, then nR is constant:
 \begin{equation}
 	\Big(p+\frac{an^{2}}{V^{2}}\Big)(V-nb) = nRT
 \end{equation}
-This accounts for particle volume and interactions. 
+This accounts for particle volume and interactions.
 b $\approx$ volume of one mole of the gas;
 a $\approx$ quantifies forces attracting molecules, reducing pressure.
 
 \section{pV diagrams}
-These are important for thermodynamic processes. 
+These are important for thermodynamic processes.
 \begin{figure}[H]
     \centering
-    \includegraphics{pV.png} 
+    \includegraphics{pV.png}
 \end{figure}
-Each line on a pV diagram indicates a fixed temperature -- higher temperatures are further from the axes. 
+Each line on a pV diagram indicates a fixed temperature -- higher temperatures are further from the axes.
 These lines of fixed temperature are called isotherms.
 For ideal gas, isotherms represent constant pV.
 Peak of dotted line shows critical temperature, above which there is no liquid-vapour phase transition.
@@ -350,7 +368,7 @@ Forces are electrical in origin -- attractional/repulsive \& $\propto \frac{1}{r
 
 \section{Force \& Potential Energy}
 Molecules are not point charges -- they contain $+$ve \& $-$ve parts.
-Attractive interactions increase at distance up to $r_{0}$ then become repulsive. 
+Attractive interactions increase at distance up to $r_{0}$ then become repulsive.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.9]{PotWell.jpg}
@@ -422,7 +440,7 @@ Overall, velocities must cancel out:
 \begin{align}
     \bar{v}_{x}^{2} &= \bar{v}_{y}^{2} = \bar{v}_{z}^{2} & \bar{v}_{x}^{2} &= \frac{1}{3}\bar{v}^{2} \\
     pV &= \frac{1}{3}Nm\bar{v}^{2} & \implies pV &= \frac{2}{3}N(\frac{1}{2}m\bar{v}^{2}) \\
-    pV &= \frac{2}{3}NE_{k} \text{, for translational }E_{k} & 
+    pV &= \frac{2}{3}NE_{k} \text{, for translational }E_{k} &
 \end{align}
 Total translational kinetic energy labelled $K_{tr}$
 \begin{align}
@@ -445,7 +463,7 @@ RMS Speed stands for ``Root Mean Square" speed:
 RMS speed is greater than average speed; RMS speed is greater for molecules with smaller masses.
 
 \section{Collisions}
-Consider N spherical molecules of radius, r, with volume, V. 
+Consider N spherical molecules of radius, r, with volume, V.
 Molecules sweep out cylinder of radius 2r as they go -- inside this cylinder, collisions will occur.
 In an interval dt, molecules travel v{\,}dt.
 For dN molecules with cylinder:
@@ -488,7 +506,7 @@ Equipartition theory -- energy on average is shared equally across all available
 For a simple atomic gas -- there are 3 axes of translational motion $\therefore$ 3 DoFs.
 Raising energy raises temperature.
 
-How much heat is needed? 
+How much heat is needed?
 \textit{dQ $\rightarrow$ dT relates to change in kinetic energy, $dK_{tr}$}
 Define $C_{V}$ to be molar heat capacity at constant volume:
 \begin{align}
@@ -507,8 +525,8 @@ For other molecules -- heat is distributed over all DoFs.
 Energy, on average, is spread equally between different types of motion.
 Each molecule carries averge energy of $\frac{1}{2}k_{B}T$ per DoF.
 \begin{itemize}
-    \item Monatomic -- 3 DoFs from each translational dimension $\therefore \frac{3}{2}nRT \rightarrow C_{V} = \frac{3}{2}R$ 
-    \item Diatomic -- 5 DoFs from 3 translational and 2 rotational $\therefore \frac{5}{2}nRT \rightarrow C_{V} = \frac{5}{2}R$ 
+    \item Monatomic -- 3 DoFs from each translational dimension $\therefore \frac{3}{2}nRT \rightarrow C_{V} = \frac{3}{2}R$
+    \item Diatomic -- 5 DoFs from 3 translational and 2 rotational $\therefore \frac{5}{2}nRT \rightarrow C_{V} = \frac{5}{2}R$
 \end{itemize}
 There are quantised energy levels in vibrational DoFs.
 \begin{figure}[H]
@@ -584,7 +602,7 @@ Piston pushes molecules, transfers energy as piston moves in: higher kinetic ene
 However, pressure depends on volume and temperature.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{pV.jpg} 
+    \includegraphics[scale=0.8]{pV.jpg}
 \end{figure}
 Work is the area under the curve:
 \begin{align}
@@ -605,7 +623,7 @@ Work is path-dependent: different routes from initial to final volumes and press
 Internal energy, U -- sum of all $E_{k}$ and $E_{p}$ in a system (not gravitational potential though).
 \begin{align}
     {\Delta}U &= U_{2} - U_{1} \\
-    + Q, &\uparrow U \rightarrow {\Delta}U = Q 
+    + Q, &\uparrow U \rightarrow {\Delta}U = Q
 \end{align}
 Work done uses internal energy: $W = -{\Delta}U$.
 The first law of thermodynamics is stated as:
@@ -630,8 +648,8 @@ Cyclic process -- a system that returns to intial state: $U_{2} = U_{1}$ \& $Q =
 \chapter{}
 \section{Recap}
 \begin{itemize}
-    \item For ideal gases: $E_{T} = K_{tr} = \frac{3}{2}RT$ (per mole?) 
-    \item For real gases: $E_{T} = K_{tr} + E_{P} = \frac{3}{2}RT - \frac{a}{V}$ (per mole?) 
+    \item For ideal gases: $E_{T} = K_{tr} = \frac{3}{2}RT$ (per mole?)
+    \item For real gases: $E_{T} = K_{tr} + E_{P} = \frac{3}{2}RT - \frac{a}{V}$ (per mole?)
     \item Free expansion causes decrease in temperature -- reason for extra term in real gases
 \end{itemize}
 
@@ -825,7 +843,7 @@ For ab and cd:
 e.g. for air: $\gamma = 1.4, ~ r = 8 \implies e \approx 0.56$.
 \emph{r} cannot be increased too mch as the temperature of adiabatic compression rises too high \& the air/fuel mixture ignites early -- 'knocking'.
 
-In reality, the Otto cycle neglects many other sources of energy loss e.g. friction, turbulence, incomplete combustion etc. 
+In reality, the Otto cycle neglects many other sources of energy loss e.g. friction, turbulence, incomplete combustion etc.
 This leads to further inefficiences so in example above, $e \approx 0.35$ in reality.
 
  \section{The Diesel Cycle}
@@ -844,7 +862,7 @@ Differences to the Otto Cycle:
 \section{Fridges}
 \begin{figure}
     \centering
-    \includegraphics[scale=0.7]{Fridge.jpg} 
+    \includegraphics[scale=0.7]{Fridge.jpg}
 \end{figure}
 Fridges can be considered a heat engine in reverse.
 Requires net input of work to drive extraction of heat from cold to hot.
@@ -911,7 +929,7 @@ Certain processes are allowed by the First Law (energy conservation) but not by 
 The Second Law is a separate law of nature; it is not derived from the First Law.
 
 \begin{itemize}
-    \item First Law: Energy cannot be created or destroyed 
+    \item First Law: Energy cannot be created or destroyed
     \item Second Law: The availability of useful energy is limited
 \end{itemize}
 

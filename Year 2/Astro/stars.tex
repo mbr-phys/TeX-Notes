@@ -7,16 +7,34 @@
     {Lecture \thecontentslabel\quad}
     {}
     {\dotfill\contentspage}
-\titleformat{\section}{\fontsize{12}{15}\normalfont}{\textbf{Lecture \thesection}}{1em}{}
+    \titleformat{\section}{\fontsize{12}{15}\normalfont}{\underline{\textbf{Lecture \thesection}}}{1em}{}
 
 \title{Stars}
 \author{Prof. David Alexander}
 \date{Michaelmas 2017 - Epiphany 2018}
-\rhead{\hyperlink{page.1}{Contents}}
+\rhead{}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
 \begin{document}
-\maketitle
-\tableofcontents
+{\centering
+{\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries\shortstack{Michaelmas 2017\\ - Epiphany 2018}}}\\[1.5cm]
+{\LARGE\bfseries Stars and Galaxies}\\[0.5cm]
+\HRule \\[0.3cm]
+{\huge\bfseries Stars}\\[0.1cm]
+\HRule \\[1cm]}
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+    \begin{flushleft} \large
+        \emph{Author:} \\ Matthew Rossetter
+    \end{flushleft}
+\end{minipage}~
+\begin{minipage}{0.4\textwidth}
+    \begin{flushright} \large
+        \emph{Lecturer:} \\ Prof. David Alexander
+    \end{flushright}
+\end{minipage}
+\end{center}
+
 \section{}
 \emph{see DUO for slides}
 Black body emission curve:
@@ -83,7 +101,7 @@ Black body emission curve:
     \item \(\chi\) is the ionisation energy
 \end{itemize}
 \begin{align}
-    \frac{N_{i + 1}}{N_i} &= \frac{2Z_{i + 1}}{n_e Z_i} \Big(\frac{2\pi m_e kT}{h^2}\Big)^{\frac{3}{2}}e^{-\frac{\chi}{kT}} 
+    \frac{N_{i + 1}}{N_i} &= \frac{2Z_{i + 1}}{n_e Z_i} \Big(\frac{2\pi m_e kT}{h^2}\Big)^{\frac{3}{2}}e^{-\frac{\chi}{kT}}
     E &> -13.6\Big(\frac{1}{\infty^2} - \frac{1}{n_{low}^2} \Big)\, eV \\
     n &= 1 \to \infty \implies E > 13.6\,eV \\
     n &= 2 \to \infty \implies E > 3.4\,eV

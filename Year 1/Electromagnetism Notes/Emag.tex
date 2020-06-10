@@ -8,16 +8,33 @@
 \rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2017}}\\[2.5cm]
+    {\LARGE\bfseries Foundations of Physics 1}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Electromagnetism}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
-\thispagestyle{fancy}
-
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturers:} \\ Prof. Ian Terry \\  Prof. Marek Szablewski
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+\end{titlepage}
 \tableofcontents
 
 \part{Electrostatics}
 \chapter{}
 \section{Electrostatics}
-A class of phenomena which is recognised by: 
+A class of phenomena which is recognised by:
 \begin{itemize}
     \item The presence of electrical charges, either stationary or moving;
     \item Interactions between these charges
@@ -115,7 +132,7 @@ Superposition of electric field at a point of space means field addition is poss
 Force on test charge, $q_{0}$, due to q:
 \begin{align}
     \vec{F} &= k\frac{q_{0}q}{|\mathbf{r}|^{2}} \mathbf{\hat{r}}, \\
-    \because \vec{F} &= \vec{E}q_{0} \implies \vec{E} = k\frac{q}{r^{2}}\hat{r}, \\ 
+    \because \vec{F} &= \vec{E}q_{0} \implies \vec{E} = k\frac{q}{r^{2}}\hat{r}, \\
     \therefore \vec{E} &= \frac{q}{4\pi\epsilon_{0}r^{2}}\hat{r}.
 \end{align}
 Electric field of a point charge is radial as it is always perpendicular to a spherical shell, with radius r, centered on the charge.
@@ -126,25 +143,25 @@ Electric field of a point charge is radial as it is always perpendicular to a sp
 It is convenient to represent electric field in space using electric field lines. The bigger the separation, the snaller the magnitude of the electric field.
 
 \section{Charge Distributions}
-Need a convenient method of determining electric fields due to an arrangement or distribution of many charges on an object. 
+Need a convenient method of determining electric fields due to an arrangement or distribution of many charges on an object.
 Key concept in this approach is the charge density, positive or negative.
 
 \subsection{Linear Charge Distribution}
-A charge, q, is evenly spread over a line of length, L. 
+A charge, q, is evenly spread over a line of length, L.
 Linear charge density with units of $C\,m^{-1}$:
 \begin{equation}
     \lambda = \frac{q}{L}
 \end{equation}
 
 \subsection{Surface Charge Distribution}
-Charge, Q, spread evenly over an area, A. 
+Charge, Q, spread evenly over an area, A.
 Surface Charge Density with units of $C\,m^{-2}$:
 \begin{equation}
     \sigma = \frac{Q}{A}
 \end{equation}
 
 \subsection{Volume Charge Distribution}
-Charge, Q, spread evenly over a volume, V. 
+Charge, Q, spread evenly over a volume, V.
 Volume Charge Density with units of $C\,m^{-3}$:
 \begin{equation}
     \rho = \frac{Q}{V}
@@ -163,7 +180,7 @@ A small length, dl, holds a charge, $dq = \lambda\,dl,~dl = a\,d\theta$:
     \includegraphics[scale=0.4]{D1.png}
 \end{figure}
 What is E at a point, P, at a distance, x, from the centre?
-Put a test charge ar point P. 
+Put a test charge ar point P.
 Determine the force due to dq on $q_{0}$.
 \begin{align}
     d\vec{F}_{P} &= \frac{kq_{0}dq}{r^{2}} \hat{r} = \frac{kq_{0}\lambda dl}{r^{2}} \hat{r} = \frac{kq_{0}\lambda a d\theta}{r^{2}} \hat{r} \\
@@ -187,7 +204,7 @@ Determine the force due to dq on $q_{0}$.
     \includegraphics[scale=0.4]{R1.png}
 \end{figure}
 Look at circular sheet, radius a, with a charge, Q, evenly spread over it.
-Surface Charge Density, 
+Surface Charge Density,
 \begin{equation}
     \sigma = \dfrac{Q}{\pi a^{2}}
 \end{equation}
@@ -217,7 +234,7 @@ This leads to two parallel plates, oppositely charged, each with $|\sigma|$, can
 Outside plates, the fields cancel; Inside plates, the fields add.
 
 \textbf{Example:}\\
-A proton of velocity $\bar{v} = 10^{3} \: m \, s^{-1} \; \hat{i}$ moves through a uniform electric field between parallel plates of $\vec{E} = -1 \times 10^{3} \; N \, C^{-1} \; \hat{k}$. 
+A proton of velocity $\bar{v} = 10^{3} \: m \, s^{-1} \; \hat{i}$ moves through a uniform electric field between parallel plates of $\vec{E} = -1 \times 10^{3} \; N \, C^{-1} \; \hat{k}$.
 How far is the proton deflected in $t = 1 \mu s$? -- mass of proton $= 1.62 \times 10^{-27} kg$.
 Force, $\vec{F}_{p} = \vec{E}e$; $\vec{E}$ is uniform so force and acceleration are constant.
 \begin{equation}
@@ -229,9 +246,9 @@ Using Newton \RN{2}:
 \end{equation}
 
 \section{Electric Flux}
-Uniform field, $\vec{E}$, from a charged sheet. 
+Uniform field, $\vec{E}$, from a charged sheet.
 Place a flat surface of area A parallel to charged sheet.
-Electric flux, $\Phi_{E} = |\vec{E}|A$, proportional to number of field lines intercepting the sheet. 
+Electric flux, $\Phi_{E} = |\vec{E}|A$, proportional to number of field lines intercepting the sheet.
 If the flat surface is $\parallel$ to $\vec{E}$, $\Phi_{E} = 0$.
 
 \chapter{}
@@ -244,15 +261,15 @@ Vector Area, $\vec{A}$, perpendicular to flat surface:
     \vec{A} = A\hat{n},
 \end{equation}
 where $\hat{n}$ is a unit vector perpendicular to surface.
-For a curved or non-uniform electric field, we use smaller vector areas, $d\vec{A}_{i}$: 
+For a curved or non-uniform electric field, we use smaller vector areas, $d\vec{A}_{i}$:
 \begin{itemize}
-    \item Locally -- $\Phi_{E_{i}} = \vec{E} \cdot d\vec{A}_{i}$ 
-    \item Total -- $\Phi_{E} = \sum_{i} \vec{E} \cdot d\vec{A}$ 
-    \item As $d\vec{A} \to \infty$, $\Phi_{E} = \int \vec{E} \cdot d\vec{A}$ 
+    \item Locally -- $\Phi_{E_{i}} = \vec{E} \cdot d\vec{A}_{i}$
+    \item Total -- $\Phi_{E} = \sum_{i} \vec{E} \cdot d\vec{A}$
+    \item As $d\vec{A} \to \infty$, $\Phi_{E} = \int \vec{E} \cdot d\vec{A}$
 \end{itemize}
 This leads to Gauss' Law.
 
-Total flux through closed surface is proportional to total charge inside closed surface. 
+Total flux through closed surface is proportional to total charge inside closed surface.
 Closed surface around charge is called Gaussian Surface (GS).
 E.g. point charge, q: Choose GS to be spherical shell of radius r centered on the charge.
 \begin{equation}
@@ -273,8 +290,8 @@ Now each unit vector of area, $\vec{n}$, is $\parallel$ to $\vec{r}$ (electric f
 where Q is the charge enclosed by the Gaussian Surface.
 
 \textbf{Example:}\\
-Uniformly charged (infinite) hollow cylinder of radius, $R$. 
-$\vec{E}$ is perpendicular to the surface. 
+Uniformly charged (infinite) hollow cylinder of radius, $R$.
+$\vec{E}$ is perpendicular to the surface.
 Choose a GS which is cylindrical with radius, $r$, and length, $l$.
 For $r > R$:
 \begin{align}
@@ -297,7 +314,7 @@ Volume charge density:
 \begin{equation}
     \rho = \frac{q}{V} = \frac{3q}{4\pi r^{3}}
 \end{equation}
-Choose a GS which is a spherical shell with radius, r. 
+Choose a GS which is a spherical shell with radius, r.
 Use Gauss' Law.
 For $r > R$:
 \begin{equation}
@@ -324,10 +341,10 @@ As above, $\hat{n} \parallel \hat{r}$ so:
 \end{align}
 
 \section{Charges on Conductors}
-Excess charge on conductor resides on the surface. 
+Excess charge on conductor resides on the surface.
 The interior of the conductor has $\vec{E} = 0$ as electrons arrange themselves to shield the interior, regardless of whether it is hollow or solid.
-Place charge, q, in center of hollow cavity. 
-Charge rearranges to maintain $\vec{E} = 0$, electrons move from or to the outer surface to produce shielding. 
+Place charge, q, in center of hollow cavity.
+Charge rearranges to maintain $\vec{E} = 0$, electrons move from or to the outer surface to produce shielding.
 Use Gauss' Law; Choose spherical GS.
 $r > R_{s}$:
 \begin{align}
@@ -359,7 +376,7 @@ Total work done when moving $q_{0}$ from $r_{a}$ to $r_{b}$:
     W_{a \to b} = \int_{a}^{b} \vec{F} \cdot d\vec{l} = q_{0} \int_{a}^{b} \vec{E} \cdot d\vec{l} \\
     W_{a \to b} = k q_{0} q \int_{a}^{b} \frac{1}{r^{2}} \; dr = k q_{0} q \Big[\frac{1}{r_{a}} - \frac{1}{r_{b}} \Big]
 \end{gather}
-Note: The electric force is a conservative force -- work done can be described by a change in potential energy. 
+Note: The electric force is a conservative force -- work done can be described by a change in potential energy.
 For an electric force acting on a charge, $W_{a \to b} = U_{a} - U_{b}$.
 \begin{equation}
     U = k \frac{q_{0} q}{r}, ~~
@@ -403,7 +420,7 @@ For a continuous charge distribution over a body, divide charge into elements, d
 Use this result to compute V without knowledge of $\vec{E}$.
 
 \textbf{Example:}\\
-Uniformly charged ring with charge, Q, and radius, a. 
+Uniformly charged ring with charge, Q, and radius, a.
 Linear charge density of $\lambda = \frac{Q}{2\pi a}$.
 \begin{align}
     dq &= \lambda dl = \lambda a d\theta \\
@@ -435,7 +452,7 @@ Back to 1D ring:
 \end{align}
 
 \section{Equipotentials}
-Consider the example of a uniformly charged hollow sphere of radius R. 
+Consider the example of a uniformly charged hollow sphere of radius R.
 For $r > R$:
 \begin{align}
     \vec{E} &= \frac{kQ}{r^{2}} \hat{r} \\
@@ -454,7 +471,7 @@ For $r < R$:
 
 \chapter{}
 \textbf{Example:}\\
-Electron starts at rest at the surface of a uniformly charged spherical shell of potential, $V = -1.0\,V$. 
+Electron starts at rest at the surface of a uniformly charged spherical shell of potential, $V = -1.0\,V$.
 What is the maximum velocity attained by the electron?
 Maximum velocity is at $r = \infty$ and $V_{b} = 0$.
 \begin{align}
@@ -463,7 +480,7 @@ Maximum velocity is at $r = \infty$ and $V_{b} = 0$.
 \end{align}
 
 \section{Capacitance}
-A body with charge, Q, has a potential, V, with respect to $V(r = \infty) = 0$. 
+A body with charge, Q, has a potential, V, with respect to $V(r = \infty) = 0$.
 Alternative view: The body has a capacity to hold a charge, Q, when at potential, V. Quantify this capacity as capacitance:
 \begin{equation}
     C = \frac{Q}{V}
@@ -480,13 +497,13 @@ e.g. spherical Van de Graaf dome:
     Q &= VC \approx 3.7 \times 10^{-10} \; F
 \end{align}
 A device which stores charge and energy is a \emph{Capacitor}.
-e.g. Parallel plate capacitor: 
+e.g. Parallel plate capacitor:
 Area of plate, A
 \begin{align}
     V_{a} - V_{b} &= |\vec{E}|d \\
     \vec{E} &= \frac{V_{a} - V_{b}}{d}
 \end{align}
-Recall that the uniform electric field has the form, $|\vec{E}| = \frac{\sigma}{\epsilon_{0}}$. 
+Recall that the uniform electric field has the form, $|\vec{E}| = \frac{\sigma}{\epsilon_{0}}$.
 This was for infinite plates, but the expressions is good when $A >> d$.
 \begin{align}
     \sigma &= \frac{Q}{A} \implies V_{a} - V_{b} = \frac{\sigma d}{\epsilon_{0}} = \frac{Q d}{A \epsilon_{0}} \\
@@ -531,8 +548,8 @@ Insulator is put into gap of a parallel plate capacitor, capacitance $C_{0}$
     \centering
     \includegraphics[scale=0.4]{Diploes.png}
 \end{figure}
-Insulator is polarised by the electric field. 
-This is a relatively weak effect and the induced charge densities at the surfaces, $\sigma_{i}$ (bound charges) is much smaller than (free) charge densities on the parallel plates, $\pm \sigma$. 
+Insulator is polarised by the electric field.
+This is a relatively weak effect and the induced charge densities at the surfaces, $\sigma_{i}$ (bound charges) is much smaller than (free) charge densities on the parallel plates, $\pm \sigma$.
 Induced charges produce an electric field which opposes the applied field.
 Use Gauss' Law to determine the new total electric field, choose cubic GS:
 \begin{align}
@@ -570,7 +587,7 @@ Using Gauss' Law, it can be shown that the capacitor can be replaced with three 
     C_{1} &= \frac{\epsilon_{0}\tfrac{A}{2}}{\tfrac{d}{2}}, ~~~ C_{2} = \frac{\epsilon_{0}K\tfrac{A}{2}}{\tfrac{d}{2}}, ~~~ C_{3} = \frac{\epsilon_{0}\tfrac{A}{2}}{d} \\
     \frac{1}{C_{LHS}} &= \frac{1}{C_{1}} + \frac{1}{C_{2}} = \frac{d}{\epsilon_{0}} \Big[1 + \frac{1}{K}\Big] \\
     C_{LHS} &= \frac{\epsilon_{0}KA}{d(K + 1)} \\
-    C_{E} &= C_{LHS} + C_{3} = \frac{\epsilon_{0}A}{2d} + \frac{\epsilon_{0}KA}{d(K + 1)} \\ 
+    C_{E} &= C_{LHS} + C_{3} = \frac{\epsilon_{0}A}{2d} + \frac{\epsilon_{0}KA}{d(K + 1)} \\
           &= \frac{\epsilon_{0}A}{d}\Big[\frac{3K + 1}{2(K + 1)}\Big] \\
     \frac{C_{E}}{C_{0}} &= \frac{3K + 1}{2(K + 1)}
 \end{align}
@@ -598,15 +615,15 @@ Define potential energy density, u = PE per unit volume.
 This holds true for any electric field configuration.
 
 \section{Electrostatics}
-The flow of movement of charge. 
-A p.d. acts to do work on a charge, moving it from a lower potential to a higher potential. 
+The flow of movement of charge.
+A p.d. acts to do work on a charge, moving it from a lower potential to a higher potential.
 Flow of charge is represented by the electric current, I.
 \begin{equation}
     I = \frac{dQ}{dt} := \text{net charge moving through an area per unit time}
 \end{equation}
 Unit -- Amperes/Amps (A) $= C\,s^{-1}$.
-Conventional current flows in a direction where there is a flow of positive charge. 
-Charge is 'resisted' by the conductor (wire), otherwise I tends to $\infty$, and the property of conductors which resists charge flow is the resistance, R. 
+Conventional current flows in a direction where there is a flow of positive charge.
+Charge is 'resisted' by the conductor (wire), otherwise I tends to $\infty$, and the property of conductors which resists charge flow is the resistance, R.
 Ohm's Law:
 \begin{equation}
     V = V_{a} - V_{b} = IR
@@ -615,14 +632,14 @@ Unit -- Ohm ($\Omega$) $= V\,A^{-1}$.
 \begin{equation}
     R = \frac{\rho l}{A}
 \end{equation}
-$\rho$ - Resistivity := property of material; limited bby charge scattering due to atomic vibrations and defects in material. 
+$\rho$ - Resistivity := property of material; limited bby charge scattering due to atomic vibrations and defects in material.
 Conductivity := $\frac{1}{\rho}$.
 
 \chapter{}
 \section{Electromotive Force (EMF)}
 Unit, Volt, V.
-EMF is the property of a battery or other device which 'pumps' charge from low to high potential in a closed circuit. 
-Work done on a charge, q, by EMF is $q\varepsilon$. 
+EMF is the property of a battery or other device which 'pumps' charge from low to high potential in a closed circuit.
+Work done on a charge, q, by EMF is $q\varepsilon$.
 Ideal EMF source provides a constant p.d. regardless of current.
 
 \section{Electric Power}
@@ -677,7 +694,7 @@ $p_{1}$ and $p_{2}$ are the magnetic pole strengths.
 An electric charge has an electric field and also a magnetic field when \emph{in motion}.
 Magnetic field is a relativistic by-product of Electromagnetism.
 Electric charge is relativistically invariant; magnetic field is associated with relative motion of the charge to observer -- $v = 0 \implies B = 0$.
-In bar magnets, motion is in the electrons of the atoms, which are in constant motion. 
+In bar magnets, motion is in the electrons of the atoms, which are in constant motion.
 There are two motions:
 \begin{enumerate}
     \item electron spin

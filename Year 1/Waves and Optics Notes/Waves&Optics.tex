@@ -8,9 +8,27 @@
 \rhead{\hyperlink{page.1}{Contents}}
 
 \begin{document}
-\maketitle
-\thispagestyle{fancy}
-\tableofcontents
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2017}}\\[2.5cm]
+    {\LARGE\bfseries Foundations of Physics 1}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Waves and Optics}\\[0.4cm]
+    \HRule \\[1.5cm]
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Ruth Gregory
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+\end{titlepage}
 
 \chapter{Waves and Optics}
 \section{Mechanical Waves}
@@ -24,7 +42,7 @@ Typically, the medium oscillates in a particular fashion:
 \section{Harmonic Waves}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.3]{Sine.jpg} 
+    \includegraphics[scale=0.3]{Sine.jpg}
 \end{figure}
 Point A shows the driver that generates the wave: each wave undergoes Simple Harmonic Motion.
 Wavelength -- $\lambda$; Frequency -- f; Angular frequency -- $\omega = 2{\pi}f$; Amplitude -- A; Period -- $T = 1 \frac{\lambda}{s} = \frac{1}{f} = \frac{2\pi}{\omega}$; Velocity -- $v = \frac{\lambda}{T} = {\lambda}f$.
@@ -63,7 +81,7 @@ Since $\frac{\delta y}{\delta(x,\,t)}$ changes sign for left- \& right-moving wa
 From this, the maths for a wire under a tension, F, can be derived:
 \begin{figure}
     \centering
-    \includegraphics{Tension.jpg} 
+    \includegraphics{Tension.jpg}
 \end{figure}
 Resolve forces on the left- and right-hand sides:
 \begin{align}
@@ -146,7 +164,7 @@ Fixed at a boundary means $y(0,\,t) = 0 = A\cos{(\omega t)} + B\cos{(-\omega t)}
 Therefore left-moving is inverted relative to right-moving wave.
 
 Free boundaries returns same amplitude -- consider a string attached to a pole by an unfixed ring.
-The ring moves up and down with the wave. 
+The ring moves up and down with the wave.
 Wire is always horizontal at transition: $\frac{\delta y(0,\,t)}{\delta x} = y'(0,\,t) = 0$
 \begin{align}
     y'(0,\,t) &= [-Ak\sin{(kx - \omega t)} - Bk\sin{(kx + \omega t)}]_{x = 0} \\
@@ -237,9 +255,9 @@ $I_{0} = 10^{-12} W\:m^{-2} ~\therefore~ 0 \rightarrow 120dB$ is hearing range.
 \section{Standing Waves and Normal Nodes}
 Sound Waves in pipes reflect from ends and interfere to form standing waves.
 Nodes \& anti-nodes:
-\begin{itemize} 
+\begin{itemize}
     \item node -- no air motion/maximum pressure variation
-    \item anti-node -- maximal air motion/no pressure variation 
+    \item anti-node -- maximal air motion/no pressure variation
 \end{itemize}
 There is a node at the end of a closed pipe and an anti-node at the end of an open pipe.
 2 open ends: anti-node at either end with a node in the middle; $\lambda = 2L$.
@@ -249,7 +267,7 @@ Odd harmonics in 1 open, 1 closed (harmonics giving using fundamental frequency 
 \section{Sound Phenomena}
 Sound waves interfere via principe of superposition.
 Phase and frequency are both important.
-For 2 waves of same amplitude and frequency, they can be: 
+For 2 waves of same amplitude and frequency, they can be:
 \begin{itemize}
     \item `in-phase' for constructive interference
     \item `out-of-phase' for destructive interference
@@ -319,13 +337,13 @@ Doppler flow meter -- high frequency sound emitted towards body, reflected back 
 Light is an electromagnetic wave -- oscillations between electric and magnetic components.
 \begin{itemize}
     \item Light as a wave: satisfies the wave equation, has interference and diffraction
-    \item Light as a particle: multiple of finite energy, $E = hf$ 
+    \item Light as a particle: multiple of finite energy, $E = hf$
 \end{itemize}
-Wave Equation: 
+Wave Equation:
 \begin{align}
     \frac{\delta^{2}}{\delta t^{2}}\underline{E} &= c^{2}\underline{\nabla}^{2}\underline{E};& \frac{\delta^{2}}{\delta t^{2}}B &= c^{2}\underline{\nabla}^{2}\underline{B}
 \end{align}
-This can be derived from a gauge potential: 
+This can be derived from a gauge potential:
 \begin{align}
     \underline{E} &= \underline{\nabla}\phi + \frac{d\underline{A}}{dt};& \underline{B} &= \underline{\nabla}\times\underline{A}
 \end{align}
@@ -341,7 +359,7 @@ Light slows down in a medium, encoded in the refractive index:
 When light hits interface between two media, some reflects, some doesn't.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{Incidence.jpg} 
+    \includegraphics[scale=0.8]{Incidence.jpg}
 \end{figure}
 Incident, refracted, and reflected rays are all in same plane.
 $\theta_{r} = \theta_{i}$ for reflection.
@@ -394,7 +412,7 @@ Light in glass is totally internally reflected for $\theta > 0.23\pi,~\sin{\thet
 \section{Dispersion}
 Speed of light in a vacuum is independent of wavelength, but refractive index has variation with wavelength -- this gives dispersion.
 Usually n decreases as $\lambda$ increases.
-This gives prism rainbow effect: 
+This gives prism rainbow effect:
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{PF.jpg}
@@ -413,7 +431,7 @@ In the electromagnetic spectrum, use \underline{E} to define polarisation:
 \end{equation}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{Polarisation.jpg} 
+    \includegraphics[scale=0.8]{Polarisation.jpg}
 \end{figure}
 An ideal polariser would select precisely one polarised component and blocks light perpendicular to this axis.
 For 2 polarisers at an angle: $\underline{E} = E\cos{\phi}\underline{e}_{1} + E\sin{\phi}\underline{e}_{2}$.
@@ -466,7 +484,7 @@ Lateral magnification: $m > 0$ if image is upright, $m = \frac{y'}{y}$.
 \section{Spherical Mirror}
 \begin{figure}[H]
     \centering
-    \includegraphics{Mirrors.jpg} 
+    \includegraphics{Mirrors.jpg}
 \end{figure}
 C -- centre of curvature; R -- radius of curvature; $\overrightarrow{VC}$ -- principal axis of rotation (mirror is rotationally symmetric around $\overrightarrow{VC}$).
 Rays parallel to (and close to) VC all reflect through a single point F, the focal point or focus.
@@ -493,13 +511,13 @@ Similar triangles so $m = \frac{y'}{y} = -\frac{s'}{s}$.
 \section{Graphical Method}
 \begin{figure}[H]
     \centering
-    \includegraphics{Reflect2.jpg} 
+    \includegraphics{Reflect2.jpg}
 \end{figure}
 Ray parallel to axis reflects throgh focal point ($\frac{R}{2}$); Ray through focal point reflects parallel to axis; Ray through C reflects back on itself; Ray through V reflects symmetrically about axis.
 
 \section{Refraction At A Spherical Surface}
 Images formed by refraction are our common perception of a lens.
-As before, study a spherical interface: 
+As before, study a spherical interface:
 \begin{figure}[H]
     \centering
     \includegraphics{Refrac4.jpg}
@@ -543,7 +561,7 @@ Relation between focal length of lens and radius of curvature and refractive ind
     \frac{n_{a}}{s_{1}} + \frac{n_{b}}{s_{1}'} &= \frac{n_{b} - n_{a}}{R_{1}}\\
     \frac{n_{b}}{s_{2}} + \frac{n_{c}}{s_{2}'} &= \frac{n_{c} - n_{b}}{R_{2}}
 \end{align}
-Know f is related to Object and Image distances, s \& s'. 
+Know f is related to Object and Image distances, s \& s'.
 Object ray first refracts through surface.
 The image (virtual) is object for the second refractive surface: s\textsubscript{1} = s; s\textsubscript{1}' = -s\textsubscript{2} $\therefore$ s\textsubscript{2}' = s'.
 \begin{figure}[H]
@@ -556,7 +574,7 @@ The image (virtual) is object for the second refractive surface: s\textsubscript
     \frac{1}{f} &= n\Big(\frac{1}{R_{1}} - \frac{1}{R_{2}}\Big) - \Big(\frac{1}{R_{1}} - \frac{1}{R_{2}}\Big) \\
     \frac{1}{f} &= (n - 1)\Big(\frac{1}{R_{1}} - \frac{1}{R_{2}}\Big)
 \end{align}
-Examples of lenses: \underline{Camera} -- 
+Examples of lenses: \underline{Camera} --
 Camera consists of a lens, shutter, receptor, \& aperture control.
 Intensity of light on film is proportional to area viewed by camera.
 Aperture controls area $\propto D^{2}$.
@@ -579,7 +597,7 @@ Consider monochromatic coherent light:
 \begin{align}
     \underline{E}_{i}\cos{(\underline{k}_{i}\cdot\underline{x} - \omega t)}~~\{i \in \mathbb{N}\};\; k\text{ -- possibly different},\; \omega\text{ -- the same }\forall ~i.
 \end{align}
-Consider two sources of monochromatic light with the same amplitude: 
+Consider two sources of monochromatic light with the same amplitude:
 \begin{figure}[H]
     \centering
     \includegraphics{Construc.jpg}
@@ -593,8 +611,8 @@ Lines of constructive interference are antinodal lines; lines of destructive int
 \section{Young's Slits}
 \begin{figure}[H]
     \centering
-    \includegraphics{Young1.jpg} 
-    \includegraphics{Young2.jpg} 
+    \includegraphics{Young1.jpg}
+    \includegraphics{Young2.jpg}
 \end{figure}
 $R << d \therefore \theta$ is small.
 Extra distance for first ray gives phase difference $= d\sin{\theta} \approx d\theta$.
@@ -614,7 +632,7 @@ How to add out-of-phase \& differing amplitude? (still monochromatic)
 \begin{equation}
     E_{1}\cos{(\omega t)} + E_{2}\cos{(\omega t + \phi)}
 \end{equation}
-There are two different methods that can be used: 
+There are two different methods that can be used:
 \begin{enumerate}
     \item Algebra
         \begin{align}
@@ -683,13 +701,13 @@ For Young's Slits:
 \section{Interference In Thin Films}
 \begin{figure}[H]
     \centering
-    \includegraphics{Film.jpg} 
+    \includegraphics{Film.jpg}
 \end{figure}
 Light reflected from both interfaces has a phase difference giving interference.
 Inteference depends on $\lambda$, so see different colours at different angles.
 
 \section{Phase \& Reflection}
-When light hits a surface, typically some is reflected and some is refracted. 
+When light hits a surface, typically some is reflected and some is refracted.
 The amount reflected depends on the angle of incidence, refractive indices, and polarisations.
 For nearly normal incidence, $E_{r} = \frac{n_{a} - n_{b}}{n_{a} + n_{b}}E_{i}$.
 Although E is typically positive, keeping this as $n_{a} - n_{b}$ tells us about phase shift.
@@ -705,10 +723,10 @@ Analogous to reflected and transmitted mechanical waves:
     R &= \frac{k_{1} - k_{2}}{k_{1} + k_{2}}I
 \end{align}
 $n_{a} < n_{b}$ -- phase shift of $\pi$ in reflected light.
-If neither/both reflected waves have a phase shift, then the path difference gives the phase shift. 
+If neither/both reflected waves have a phase shift, then the path difference gives the phase shift.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{Thickness.jpg} 
+    \includegraphics[scale=0.8]{Thickness.jpg}
 \end{figure}
 Otherwise:
 \begin{align}
@@ -721,7 +739,7 @@ Otherwise:
 Exploits interference effects by splitting monochromatic light, sending on different paths, then recombing and looking for phases shifts.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{Michelson.jpg} 
+    \includegraphics[scale=0.8]{Michelson.jpg}
 \end{figure}
 Compensator plate ensures both light paths travel through same amount of glass.
 In essence, same set-up as LIGO.
@@ -735,7 +753,7 @@ Far-field is Fraunhofer.
 \section{Fraunhofer Diffraction}
 \begin{figure}[H]
     \centering
-    \includegraphics{Fraunhofer.jpg} 
+    \includegraphics{Fraunhofer.jpg}
 \end{figure}
 Path difference: $r_{2} - r_{1}$
 \begin{equation}
@@ -743,10 +761,10 @@ Path difference: $r_{2} - r_{1}$
 \end{equation}
 Destructive interference if $\frac{a}{2}\sin{\theta} = n\frac{\lambda}{2}$.
 Expect dark fringes around a central bright band.
-Break slit into 4: 
+Break slit into 4:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1.6]{Diffrac1.jpg} 
+    \includegraphics[scale=1.6]{Diffrac1.jpg}
 \end{figure}
 Path difference of $\frac{a}{4}\sin{\theta}$ between successive rays.
 Destructive at $\frac{a}{4}\sin{\theta} = \frac{\lambda}{2}$.
@@ -806,7 +824,7 @@ Total phase is always $\beta = ka\sin{\theta}$.
 Total amplitude, $A_{T} = \frac{2A}{\beta}\sin{\Big(\frac{\beta}{2}\Big)}$.
 
 \section{Diffraction and Interference}
-Young's slits with finite width: 
+Young's slits with finite width:
 For 2 slits we found that
 \begin{align}
     E &= 2E_{0}\cos{\Big(\frac{kd}{2}\sin{\theta}\Big)} \\
@@ -828,7 +846,7 @@ Any shape aperture forms a diffraction pattern.
 A circular aperture is common and forms an "Airy Disk".
 \begin{figure}[H]
     \centering
-    \includegraphics{Airy.jpg} 
+    \includegraphics{Airy.jpg}
 \end{figure}
 For cylindrical or spherical wavefronts, we replace sin/cos by Bessel functions:
 \begin{equation}
@@ -850,7 +868,7 @@ Look at $N = 4$.
     \includegraphics[scale=0.8]{Grating.jpg}
 \end{figure}
 Path difference is $d\sin{\theta}$.
-If $d\sin{\theta} = n\lambda$, set constructive interference from all 4 sources: 
+If $d\sin{\theta} = n\lambda$, set constructive interference from all 4 sources:
 Let $\phi = kd\sin{\theta}$ -- phase shift for adjacent sources.
 $r_{0}$ -- distance of source to screen; $E_{0}$ -- amplitude of one source.
 Overall amplitude:
