@@ -1,0 +1,3361 @@
+\documentclass[a4paper,11pt,normalem]{article}
+\usepackage{../../../LaTeX-Templates/Notes}
+
+\rhead{}
+\titlecontents{section}
+    [0pt]
+    {}
+    {Lecture \thecontentslabel\quad}
+    {}
+    {\dotfill\contentspage}
+    \titleformat{\section}{\fontsize{12}{15}\normalfont}{\underline{\textbf{Lecture \thesection}}}{1em}{}
+
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+{\centering
+{\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Michaelmas 2017}}\\[1.5cm]
+{\LARGE\bfseries Theoretical Physics 2}\\[0.5cm]
+\HRule \\[0.3cm]
+{\huge\bfseries Classical Mechanics}\\[0.1cm]
+\HRule \\[1cm]}
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+    \begin{flushleft} \large
+        \emph{Author:} \\ Matthew Rossetter
+    \end{flushleft}
+\end{minipage}~
+\begin{minipage}{0.4\textwidth}
+    \begin{flushright} \large
+        \emph{Lecturer:} \\ Prof. Vincent Eke
+    \end{flushright}
+\end{minipage}
+\end{center}
+
+\section{}\label{lecture-1}
+\begin{itemize}
+\item DoF
+\item Constraints
+\end{itemize}
+
+\section{}\label{lecture-2}
+
+\begin{itemize}
+\item Differential Formulation of Lagrangian Mechanics
+\end{itemize}
+
+\subsection{Generalised Coordinates}\label{generalised-coordinates}
+
+\begin{itemize}
+\item Page 6
+\item Only need as many coordinates \(q_k\) as there are DoFs (\(N = 3M - j\))
+\item Generalised velocities are \(\frac{d q_k}{dt}\)
+\item Regard \(q_k\) and \(\dot{q}_k\) as independent variables
+  \begin{itemize}
+  \item
+    \(\frac{\partial q_k}{\partial \dot{q}_k} = \frac{\partial \dot{q}_k}{\partial q_k} = 0\)
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Lagrangian}\label{lagrangian}
+
+\begin{itemize}
+\item
+  Page 7
+\item
+  Assume:
+  \begin{enumerate}
+  \item
+    Holonomic constraints
+  \item
+    Constraining forces do no work
+  \item
+    Applied forces are conservative, such that a scalar potential energy
+    function exists
+    \begin{itemize}
+    \item
+      Potential function may change with time
+    \end{itemize}
+  \end{enumerate}
+\item
+  Generalised Coordinates don't necessarily have to be in metres - Force
+  is not in Newtons, it is \(\frac{\partial W}{\partial q_k}\)
+\end{itemize}
+
+\section{}
+
+\begin{itemize}
+\item
+  Ignorable coords
+  \begin{itemize}
+  \item
+    if it doesn't appear in the Lagrangian, it can be ignored
+  \item
+    Canonically conjugate momentum to the coord
+    \begin{itemize}
+    \item
+      \(p_k = \frac{\partial L}{\partial \dot{q}_k}\)
+    \end{itemize}
+  \item
+    simplifies eqn of motion
+  \item
+    example:
+    \begin{itemize}
+    \item
+      \(L = \frac{1}{2}m\dot{x}^2 \implies p = \frac{\partial L}{\partial \dot{q}_k} = m\dot{x}~\)
+      is constant
+    \end{itemize}
+  \end{itemize}
+\item
+  E.g. Ladder sliding down a wall
+  \begin{itemize}
+  \item
+    A ladder of length 2a and uniform mass/length = \(\lambda\) leans
+    against a wall. It is initially stationary before sliding down the
+    wall without friction. Find \(\ddot{\theta}\) where \(\theta\) is
+    the ladder's angle to the horizontal, while it remains in contact
+    with the wall.
+  \item
+    We need to define the Lagrangian in terms of the one generalised
+    coord, \(\theta\)
+  \item
+    Define s as the distance along the ladder from the end in contact
+    with the floor. Then \(dm(s) = \lambda\,ds\). Also, we can write
+    \(\underline{r}(s) = -2a\cos{\theta} + s\cos{\theta} = [(s - 2a)\cos{\theta}, \sin{\theta}]\)
+  \item
+    Differentiating wrt time:
+    \(\underline{\dot{r}}(s) = [-(s-2a)\dot{\theta}\sin{\theta},s\dot{\theta}\cos{\theta}]\)
+  \item
+    \(\therefore \underline{\dot{r}}^{2}(s) = \dot{\theta}^2 [s^2 + (4a^2 - 4as)\sin^{2}{\theta}]\)
+  \item
+    Combining this into T gives:
+  \end{itemize}
+\end{itemize}
+
+\[
+    T = \int_{0}^{2a} \frac{1}{2}\underline{\dot{r}}^{2}(s)\,dm(s)
+\] \[
+    T = \int_{0}^{2a} \frac{\lambda \dot{\theta}^2}{2}[s^2 + (4a^2 - 4as)\sin^{2}{\theta}] \, ds
+\] \[
+    T = \frac{\lambda \dot{\theta}^2}{2} [\frac{s^3}{3} + \sin^{2}{\theta} (4a^{2}s - 2as^2)]_{0}^{2a_{}}
+\] \[
+    T = \frac{4\lambda\dot{\theta}^{2}a_{1}^{3}}{3}
+\] \[
+    V = (\lambda 2a)g(a\sin{\theta}) \implies
+\] \[
+    L =  \frac{4\lambda\dot{\theta}^{2}a^{3}}{3} - \lambda 2a^{2}g\sin{\theta} = 2\lambda a^{2}(\frac{2a\dot{\theta}^2}{3} - g\sin{\theta})
+\] E-L: \[
+    \frac{d}{dt}(\frac{\partial L}{\partial \dot{\theta}}) - \frac{\partial L}{\partial \theta} = 0
+\] \[
+    \frac{d}{dt} (\frac{4a\dot{\theta}}{3}) + g\cos\theta = 0
+\] \[
+    \therefore \ddot{\theta} = -\frac{3g}{4a}\cos\theta
+\]
+
+\subsection{An example of an integral principle: Fermat's Principle}\label{an-example-of-an-integral-principle-fermats-principle}
+
+\begin{itemize}
+\item
+  \emph{A light ray takes the quickest available path between two
+  points}
+\item
+  Consider a boundary between two materials
+  \begin{itemize}
+  \item
+    Refractive indices of n1 and n2
+  \item
+    Going from A in n1 to B in n2
+  \item
+    Travelling x1 in A and x2 in B
+  \item
+    Distance l between A and B in y dirn
+  \item
+    travels distance y in A, so \(l - y\) in B
+  \item
+    paths of s1 and s2 in A and B
+  \item
+    \(\theta_1\) and \(\theta_2\) are angles from sn to xn
+  \end{itemize}
+\end{itemize}
+
+\[
+    T = \int_{A}^{B} dt = \int_{A}^{B} \underline{ds} \] \[
+    T = \frac{1}{c} \int_{A}^{B} n\,ds \] \[
+    cT = n_1 s_1 + n_2 s_2 \] \[
+    s_1 = \sqrt{x_{1}^{2} + y^2} \] \[
+    s_2 = \sqrt{x_{2}^{2} + (l - y)^2} \] \[
+    cT = n_{1}\sqrt{x_{1}^{2} + y^2} + n_{2}\sqrt{x_{2}^{2} + (l - y)^2} \]
+\[
+    \frac{dT}{dy} = 0 \implies \] \[
+    \frac{n_1 y}{\sqrt{x_{1}^{2} + y^2}} - \frac{n_2 (l - y)}{\sqrt{x_{2}^{2} + (l - y)^2}} = 0 \]
+\[
+    n_{1}\sin\theta_1 - n_{2}\sin\theta_2 = 0 ~~~\text{i.e. Snell's Law}
+\]
+
+\subsection{Variational Calculus}\label{variational-calculus}
+
+\begin{itemize}
+\item
+  \(I[y] = \int_{x_1}^{x_2} f(y,y',x)\,dx\)
+  \begin{itemize}
+  \item
+    I is a functional
+  \item
+    for a whole path
+  \item
+    solution will be in form of E-L
+  \end{itemize}
+\item
+  For any perturbation we make to the path, the value of the functional
+  will not change
+  \begin{itemize}
+  \item
+    like how looking for dy/dx = 0
+  \item
+    essentially same but extra dimension
+  \end{itemize}
+\item
+  \(\epsilon\) is small number, constant, and independent of x
+  \begin{itemize}
+  \item
+    how far away from x
+  \end{itemize}
+\item
+  \(\eta\) tells us above or below x
+  \begin{itemize}
+  \item
+    \(\eta(x_1) = \eta(x_2) = 0\)
+  \end{itemize}
+\item
+  \((\frac{dI}{d\epsilon})_{\epsilon = 0_{}}\)
+\item
+  For \(\frac{\partial f}{\partial x} = 0\):
+\end{itemize}
+\[
+    \frac{df}{dx} = \frac{\partial f}{\partial x} + \frac{\partial f}{\partial y}\frac{dy}{dx} + \frac{\partial f}{\partial y'}\frac{dy'}{dx} \]
+\[
+    \frac{d}{dx}(f - y'\frac{\partial f}{\partial y'}) = 0
+\]
+
+\begin{itemize}
+\item
+  \textbf{Alternate form of E-L which can be useful}
+\end{itemize}
+
+\section{}\label{lecture-4}
+\subsection{Hamilton's Principle}\label{hamiltons-principle}
+
+\[
+    S[\underline{q}(t)] = \int_{t_1}^{t_2} L(\underline{q}(t), \dot{q}(t), t)\,dt \]
+\[
+    \frac{\delta L}{\delta q} \equiv \frac{\partial L}{\partial q} - \frac{d}{dt}(\frac{\partial L}{\partial \dot{q}})
+\]
+
+\subsection{Brachistochrome}\label{brachistochrome}
+
+\begin{itemize}
+\item
+  What is the quickest route for mass m to fall under gravity from A to
+  B?
+  \begin{itemize}
+  \item
+    assuming no friction
+  \end{itemize}
+\item
+  Conservation of energy to start with for speed:
+\end{itemize}
+
+\[
+    \frac{1}{2}mv^2 + mgy = 0 \] \[
+    \implies v = \sqrt{-2gy} \] \[
+\]
+
+\begin{itemize}
+\item
+  Total time taken:
+\end{itemize}
+
+\[
+    t = \int_{A}^{B} \frac{ds}{v} ~;~ (ds)^2 = (dx)^2 + (dy)^2 \] \[
+    ds = \sqrt{1 + (\frac{dy}{dx})^2} \cdot dx \] \[
+    \implies t = \int_{x_{A}}^{x_{B}} \frac{\sqrt{1 + y'^{2}} \cdot dx}{\sqrt{-2gy}}
+\]
+
+\begin{itemize}
+\item
+  Calculus of Variations problem
+  \begin{itemize}
+  \item
+    \(f = \sqrt{\frac{1 + y'^2}{-2gy}}\)
+  \item
+    no explicit dependence on x
+    \begin{itemize}
+    \item
+      from eq. 9 on notes, we get
+      \(f - y'\frac{\partial f}{\partial y'} = c\)
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\[
+    \sqrt{\frac{1 + y'^2}{-2gy}} - \frac{y' \cdot y'}{\sqrt{-2gy(1 + y'^2)}} = c \]
+\[
+    \frac{1}{\sqrt{-2gy(1 + y'^2)}} = c \] \[
+    y(1 + y'^2) = A \] \[
+    \frac{dy}{dx} = \sqrt{\frac{A - y}{y}} \] \[
+    \int \sqrt{\frac{y}{A - y}} \cdot dy = \int dx = x
+\]
+
+\begin{itemize}
+\item
+  Try substitution:
+  \begin{itemize}
+  \item
+    \(y = \frac{A}{2}(1 - \cos\theta) = A\sin^{2}(\frac{\theta}{2})\)
+  \item
+    from \(1 - \cos\theta = 2\sin^{2}(\frac{\theta}{2})\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    dy = A\sin\frac{\theta}{2}\cos\frac{\theta}{2} \] \[
+    x = \int \sqrt{\frac{A\sin^{2}\frac{\theta}{2}}{A\cos^{2}\frac{\theta}{2}}} \cdot A\sin\frac{\theta}{2}\cos\frac{\theta}{2}\,d\theta \]
+\[
+    x = A\int \frac{1}{2}(1 - \cos\theta)\,d\theta = \frac{A}{2}(\theta - \sin\theta) + B \]
+\[
+    x_A = y_A = 0 ~;~ \theta = 0 ~;~ \theta = 0 \therefore \] \[
+    x = \frac{A}{2}(\theta - \sin\theta) \] \[
+    y = \frac{A}{2}(1 - \cos\theta)
+\]
+
+\begin{itemize}
+\item
+  x and y final solns give a cycloid
+\item
+  see on DUO for python code for showing particle motion
+\end{itemize}
+
+\subsection{Lagrange Multiplier}\label{lagrange-multiplier}
+
+\begin{itemize}
+\item
+  If you have a constraint, and want to eliminate number of variables to
+  solve, use Lagrange Multipliers
+\item
+  Consider a pendulum of length, l
+  \begin{itemize}
+  \item
+    The natural coordinate to choose is \(\theta\)
+  \item
+    If you want to use x and y then,
+  \end{itemize}
+\end{itemize}
+
+\[
+    \delta S = \int \Bigg[\frac{\delta L}{\delta x}\cdot \delta x + \frac{\delta L}{\delta y}\cdot \delta y \Bigg]dt
+\]
+
+\begin{itemize}
+\item
+  Hamilton's principle says \(\delta S = 0\) but non-independence of x
+  and y means can't say each variational deriv is zero
+\item
+  Use \(\lambda\) as an arbitrary Lagrange multiplier
+\end{itemize}
+
+\[
+    \delta S = \int \Bigg[\Big(\frac{\delta L}{\delta x} - \lambda\frac{\partial G}{\partial x} \Big)\delta x + \Big(\frac{\delta L}{\delta y} - \lambda\frac{\partial G}{\partial y} \Big)\delta y \Bigg]dt \]
+\[
+    \delta(F - \lambda G) = 0
+\]
+
+\subsection{Linear Oscillators}\label{linear-oscillators}
+
+\begin{itemize}
+\item
+  Mech system is at equilibrium at rest
+\item
+  This occurs at points in space where all forces, \(F_k\) vanish
+\item
+  For conservative systems, this is when the potential energy is
+  stationary
+  \begin{itemize}
+  \item
+    its first derivs wrt to \(q_k\) vanish
+  \end{itemize}
+\item
+  Near Static Equilibrium
+  \begin{itemize}
+  \item
+    define equilibrium psn and velocity as zero
+  \item
+    \(\frac{\delta V}{\delta q} = 0\) at equilibrium point
+  \item
+    expand out and only go up to quadratic terms as near equilibrium
+  \item
+    Sub into E-L eqn:
+  \end{itemize}
+\end{itemize}
+
+\[
+    L = \frac{m}{2}\Big(\dot{q}^2 + \frac{D}{F}q^2 \Big)
+\]
+
+\begin{itemize}
+\item
+  Normal EoM for particle
+\item
+  SHO:
+  \begin{itemize}
+  \item
+    equilibrium psn is minimum of pot energy
+  \item
+    close to equilibrium, we have SHM
+  \item
+    \(\omega = \sqrt{-\frac{D}{F}}\)
+  \item
+    if \(\frac{D}{F} > 0\), it is unstable
+  \item
+    \(\ddot{q} + \omega^2 q = 0\) is linear, homogeneous diff eqn
+  \end{itemize}
+\end{itemize}
+
+\[
+    q(t) = q(0)\cos(\omega t) + \frac{\dot{q}(0)}{\omega}\sin(\omega t)
+\]
+
+\begin{itemize}
+\item
+  Damping force
+  \begin{itemize}
+  \item
+    frictional force to suppress motion
+  \item
+    opposes motion and vanishes when motion ceases
+  \item
+    \(F_d = -\gamma\dot{q} = -(\frac{m\omega}{Q})\dot{q}\)
+  \item
+    Q is dimensionless quality factor
+  \item
+    higher quality system leads to small Q and motion lasts longer
+  \end{itemize}
+\end{itemize}
+
+\subsection{Damped Oscillators}\label{damped-oscillators}
+
+\begin{itemize}
+\item
+  For Damped SHO, E-L:
+\end{itemize}
+
+\[
+    \frac{d}{dt}\Big(\frac{\partial L}{\partial \dot{q}}\Big) - \frac{\partial L}{\partial q} = F_d \]
+\[
+    \ddot{q} + \frac{\omega}{Q}\dot{q} + \omega^2 q = 0 \] \[
+    q = e^{\lambda t} \implies \lambda^2 + \frac{\omega}{Q}\lambda + \omega^2 = 0 \]
+\[
+    \lambda = -\frac{\omega}{2Q} \pm \sqrt{(\frac{\omega}{2Q})^2 - \omega^2} \]
+\[
+    \lambda = -\frac{\omega}{2Q} + \underbrace{\frac{\omega}{2Q}\sqrt{1 - 4Q^2}}_{\omega '}
+\]
+
+\begin{itemize}
+\item
+  The sqrt becomes positive, zero, or negative depending on Q
+\item
+  Overdamped: \(Q < \frac{1}{2} \implies \sqrt{} \in \mathbb{R}\)
+
+  \begin{itemize}
+
+  \item
+    Increasing Q but keeping it under \(\frac{1}{2}\) makes it tend to
+    equilibrium faster
+  \end{itemize}
+\end{itemize}
+
+\[
+    q(t) = e^{-\frac{\omega t}{2Q}}(A\cosh(\omega 't) + B\sinh(\omega 't)) \]
+\[
+    \dot{q}(t) = e^{-\frac{\omega t}{2Q}}(A\omega '\cosh(\omega 't) + B\omega '\sinh(\omega 't))\cdot -\frac{\omega}{2Q}q \]
+\[
+    \dot{q}(0) = B\omega ' - \frac{\omega}{2Q}q(0) \] \[
+    B = \frac{1}{\omega '}(\dot{q}(0) + \frac{\omega}{2Q}q(0)) \] \[
+    q(0) = A
+\]
+
+\section{}\label{lecture-5}
+
+\subsection{Damped Oscillators Ctd}\label{damped-oscillators-ctd}
+\begin{itemize}
+\item
+  Critically Damped: \(Q = \frac{1}{2} \implies\) 2 equal roots for
+  \(\lambda = -\frac{omega}{2Q}\)
+  \begin{itemize}
+  \item
+    Fastest return to equilibrium without overshooting
+  \end{itemize}
+\end{itemize}
+
+\[
+    q(t) = e^{-\frac{\omega t}{2Q}}(\underbrace{A}_{q(0)} + \underbrace{B}_{\dot{q}(0) + \frac{\omega}{2Q}q(0)}t) \]
+\[
+\]
+
+\begin{itemize}
+\item
+  Underdamped:
+  \(Q > \frac{1}{2} \implies \lambda = -\frac{\omega}{2Q} \pm i\omega ' ~;~ \omega = \frac{\omega}{2Q}\sqrt{4Q^2 - 1}\)
+  \begin{itemize}
+  \item
+    Solution is like overdamped case but with cosh replaced by cos and
+    sinh replaced by sin
+  \item
+    Sin/cos oscillation with exponential decay envelope
+  \item
+    Larger quality factor, Q, implies slower decay, and more
+    oscillations
+  \end{itemize}
+\end{itemize}
+
+\subsection{Driven Oscillators}\label{driven-oscillators}
+
+\subsubsection{Oscillators Driven by an External Force}\label{oscillators-driven-by-an-external-force}
+
+\begin{itemize}
+\item
+  Consider an undamped oscillator, driven by time dep external force,
+  F(t)
+\item
+  Driving force is not part of the system
+  \begin{itemize}
+  \item
+    do not consider force back on driver by system
+  \end{itemize}
+\end{itemize}
+
+\[
+    L = \underbrace{\frac{m\dot{q}^2}{2}}_{T} - \underbrace{\Bigg[\frac{m\omega^{2}q^2}{2} - F(t)q \Bigg]}_{V}
+\] \[
+    \ddot{q} + \omega^2 q = \frac{F(t)}{m}
+\]
+
+\begin{itemize}
+\item
+  Yield a second order linear, inhomogeneous differential eqn
+\item
+  Split into infinite number of impulsive forces and sum up
+  displacements caused by each
+\item
+  Method is analogous to Poisson's eqn in electrostatics
+  \begin{itemize}
+  \item
+    \(\nabla^{2}\Phi(x) = -\frac{\rho(r)}{\epsilon}\)
+  \end{itemize}
+\end{itemize}
+
+\subsection{Dirac delta-fn}\label{dirac-delta-fn}
+
+\begin{itemize}
+\item
+  Zero-width limit of a function/distribution of t, sharply peaked at
+  \(t = t'\)
+\item
+  If t has dimension of time, \(\delta\) has dimension of inverse time,
+  i.e. frequency
+\end{itemize}
+
+\[
+    f(t') = \int_{-\infty}^{\infty} \delta(t - t')f(t)\,dt
+\]
+
+\begin{itemize}
+\item
+  Use this to find impulsive force at time t' as
+  \(F(t) = K\delta(t - t')\)
+\end{itemize}
+
+\subsection{Response of oscillator to an indep impulsive force}\label{response-of-oscillator-to-an-indep-impulsive-force}
+
+\[
+    \int_{t' - \epsilon}^{t + \epsilon} (\ddot{q} + \omega^{2}q)dt \] \[
+    \implies \dot{q}(t' + \epsilon) - \dot{q}(t' - \epsilon) + \underbrace{\omega^{2} \int_{t' - \epsilon}^{t + \epsilon} q(t)dt}_{\to 0 \text{ as } \epsilon \to 0, \text{ unless } q(t') \to \infty} = \frac{K}{m}
+\]
+
+\begin{itemize}
+\item
+  Instantaneous change in velocity of \(\frac{K}{m}\) from this force
+  but no change in psn as no change in time
+\end{itemize}
+
+\paragraph{Evolution of SHO}\label{evolution-of-sho}
+
+\begin{enumerate}
+\item
+  \(t < t'\) - normal SHO motion
+\item
+  \(t = t'\) - Instantaneous jump in velocity as above
+\item
+  \(t > t'\) - no more driving force, back to SHO
+\end{enumerate}
+
+\[
+    q(t) = q(t')\cos(\omega[t - t']) + \frac{\dot{q}(t') + \tfrac{K}{m}}{\omega}\sin(\omega[t - t'])
+\]
+
+\subsection{Green's Function}\label{greens-function}
+
+\begin{itemize}
+\item
+  Solution to differential equation:
+\end{itemize}
+
+\[
+    \ddot{G}(t - t') + \omega^{2}G(t - t') = \delta(t - t') \] \[
+    G(t - t') = \frac{1}{\omega}\sin(\omega[t - t']),~ t \geq t'
+\]
+
+\begin{itemize}
+\item
+  Using defn of \(\delta\)-fn, the eqn of motion for driven oscillator
+  can be written as
+\end{itemize}
+
+\[
+    \ddot{q} + \omega^{2}q = \frac{1}{m}\int_{-\infty}^{\infty} dt'\,F(t')\delta(t - t')
+\]
+
+\begin{itemize}
+\item
+  Just splitting up driving force into infinite number of impulsive
+  forces
+\item
+  eliminate \(\delta\)-fn by using Green's fn
+\end{itemize}
+
+\[
+    \ddot{q} + \omega^{2}q = \frac{1}{m}\int_{-\infty}^{\infty} dt'\,F(t')[\ddot{G}(t - t') + \omega^{2}G(t - t')] \]
+\[
+    q(t) = \frac{1}{m\omega} \int_{-\infty}^{t} F(t')G(t - t')dt' = \frac{1}{m\omega} \int_{-\infty}^{t} F(t')\sin(\omega[t - t'])dt'
+\]
+
+\begin{example}
+\begin{itemize}
+\item
+  Consider driving force of the form
+  \begin{itemize}
+  \item
+    \(F(t) = F_{0}\sin(\omega_{0}t)\) for \(t > 0\)
+  \item
+    \(F(t) = 0\) for \(t \leq 0\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    q(t) = \frac{F_0}{m\omega}\int_{0}^{t} dt' \sin(\omega_{0}t')\sin(\omega(t - t'))
+\]
+
+\begin{itemize}
+\item
+  Use \(\sin A \sin B = \frac{1}{2} [\cos(A - B) - \cos(A + B)]\)
+\end{itemize}
+
+\[
+    q(t) = \frac{F_0}{m\omega}\int_{0}^{t} \frac{1}{2}\Big[\cos[t'(\omega_{0} + \omega) - \omega t] - \cos[t'(\omega_{0} - \omega) + \omega t] \Big]dt
+\]
+
+\begin{itemize}
+\item
+  For \(\omega_{0} \neq \omega\), one observes oscillating behaviour
+  with
+\end{itemize}
+
+\[
+    q(t) = \frac{F_0}{m\omega}\Big[\frac{\sin(\omega_{0}t) + \sin(\omega t)}{2(\omega_{0} + \omega)} - \frac{\sin(\omega_{0}t) - \sin(\omega t)}{2(\omega_{0} - \omega)} \Big]
+\]
+
+\begin{itemize}
+\item
+  In resonance, (when \(\omega_{0} = \omega\)), q(t) grows without limit
+\end{itemize}
+
+\[
+    q(t) = \frac{F_0}{m\omega}\Big[\underbrace{\frac{\sin(\omega t)}{2\omega}}_{\text{oscillates}} - \underbrace{\frac{t\cos(\omega t)}{2}}_{\text{grows}} \Big]
+\]
+
+\begin{itemize}
+\item
+  If we consider an underdamped SHO subject to the same driving force as
+  above, then EoM can be solved to give
+\end{itemize}
+
+\[
+    q(t) = q_{s}(t) + q_{t}(t)
+\]
+
+\begin{itemize}
+\item
+  Solution is split into the steady-state solution, \(q_{s}\), and the
+  transient solution, \(q_{t}\).
+  \begin{itemize}
+  \item
+    In this case, the Green's function for the damped oscillator is
+  \end{itemize}
+\end{itemize}
+
+\[
+    G(t - t') = \frac{e^{-\hat{\omega}(t - t')}}{\omega'}\sin[\omega'(t - t')], ~~ t \geq t' \]
+\[
+    w' = \hat{\omega}\sqrt{4Q^2 - 1} ~;~ \hat{\omega} = \frac{\omega}{2Q}
+\]
+\end{example}
+
+\section{}\label{lecture-6}
+
+\subsection{Recap}\label{recap}
+
+\begin{itemize}
+\item
+  Green's function
+  \begin{itemize}
+  \item
+    response of an oscillator to an impulsive force
+  \end{itemize}
+\item
+  Split force up into lots of tiny impulsive forces
+\end{itemize}
+
+\[
+    q(t) = \frac{1}{m\omega} \int_{-\infty}^{t} F(t')G(t - t')dt'
+\]
+
+\subsection{Underdamped Driven Oscillator Ctd}\label{underdamped-driven-oscillator-ctd}
+
+\begin{itemize}
+\item
+  Displacement at time, t:
+\end{itemize}
+
+\[
+    q(t) = \frac{1}{m} \int_{-\infty}^{t} F_0 \sin(\omega_{0}t')\frac{e^{-\hat{\omega}(t - t')}}{\omega'}\sin[\omega'(t - t')]dt'
+\]
+
+\begin{itemize}
+\item
+  To solve this, just write sins as
+  \(\sin x = \frac{1}{2i}(e^{ix} - e^{-ix})\) and integrate
+\item
+  The steady-state soln is:
+\end{itemize}
+
+\[
+    q_{s}(t) = \frac{F_0}{2m\omega'} \Bigg\{\Big[\frac{\hat{\omega}}{\hat{\omega}^2 + (\omega_{0} + \omega')^2} - \frac{\hat{\omega}}{\hat{\omega}^2 + (\omega_{0} - \omega')^2} \Big]\cos(\omega_{0}t)
+\]
+
+\[
+    + \Big[\frac{\omega_{0} + \omega'}{\hat{\omega}^2 + (\omega_{0} +   \omega')^2} - \frac{\omega_{0} - \omega'}{\hat{\omega}^2 + (\omega_{0} - \omega')^2} \Big]\sin(\omega_{0}t) \Bigg\}
+\]
+
+\begin{itemize}
+\item
+  The transient state is:
+\end{itemize}
+
+\[
+    q_{t}(t) = \frac{F_0 e^{-\hat{\omega}t}}{2m\omega'} \Bigg\{ \Big[\frac{\omega_{0} + \omega'}{\hat{\omega}^2 + (\omega_{0} + \omega')^2} + \frac{\omega_{0} + \omega'}{\hat{\omega}^2 - (\omega_{0} - \omega')^2} \Big]\sin(\omega't)
+\] \[
+    - \Big[\frac{\hat{\omega}}{\hat{\omega}^2 + (\omega_{0} + \omega')^2} - \frac{\hat{\omega}}{\hat{\omega}^2 + (\omega_{0} - \omega')^2} \Big]\cos(\omega't) \Bigg\} \]
+\[
+    q(t) = q_{s}(t) + q_{t}(t)
+\]
+
+\begin{itemize}
+\item
+  The transient soln oscillates with the intrinsic oscillator frequency,
+  \(\omega'\), but dies away with time
+\item
+  The steady-state soln oscillates with driving frequency, and remains
+  at large t
+\item
+  After the transient has died away, the dynamical behaviour is like
+  that of SHO, but at the driving frequency
+\item
+  Note that there is no singularity at resonance
+
+  \begin{itemize}
+  \item
+    The effect of resonance has been softened by the presence of damping
+  \end{itemize}
+\end{itemize}
+
+\subsection{Coupled Small Oscillations}\label{coupled-small-oscillations}
+
+\begin{itemize}
+\item
+  look at page 20 of notes
+\item
+  Consider system with two pendulums of length, l, connected half way
+  down with a spring
+\item
+  Use \(\theta\)s as generalised coords
+\item
+  Use Taylor expansion of cos up to deg 2 to get potential expression
+\end{itemize}
+
+\[
+    T = \frac{ml^2}{2}(\dot{\theta}_{1}^{2} + \dot{\theta}_{2}^{2}) \]
+\[
+    V = \frac{mgl}{2}(\theta_{1}^2 + \theta_{2}^2) \] \[
+    V_{coupling} = \frac{k}{2}\Big(\frac{l}{2}\Big)^2 (\theta_2 - \theta_1)^2 \]
+\[
+    L = \frac{ml^2}{2}(\dot{\theta}_{1}^{2} + \dot{\theta}_{2}^{2}) - \frac{1}{2}\Bigg(mgl(\theta_{1}^2 + \theta_{2}^2) + k\Big(\frac{l}{2}\Big)^2 (\theta_2 - \theta_1)^2 \Bigg)
+\]
+
+\begin{itemize}
+\item
+  \(\theta_1 \theta_2\) makes things awkward, so transform to centre of
+  mass, \(\theta_c = \frac{\theta_1 + \theta_2}{2}\) and relative,
+  \(\theta_r = \theta_2 - \theta_1\)
+\item
+  Also define \(\omega_0 = \sqrt{\frac{g}{l}}\) and constant,
+  \(\eta = \frac{kl}{4mg}\)
+\end{itemize}
+
+\[
+    L = ml^2 \Bigg[(\dot{\theta}_{c}^2 - \omega_{0}^2\theta_{c}^2) + \frac{1}{4}(\dot{\theta}_{r}^2 - \omega_{0}^2 \Big(1 + 2\eta)\theta_{r}^2\Big) \Bigg] \]
+\[
+    \ddot{\theta}_{c} + \omega_{c}^2 \theta_{c} = 0 \] \[
+    \ddot{\theta}_{r} + \omega_{0}^2 (1 + 2\eta)\theta_r = 0
+\]
+
+\begin{itemize}
+\item
+  \(\eta\) is essentially the relative strengths of the spring force to
+  gravity
+\item
+  Total motion is linear combination of two EoMs above
+\end{itemize}
+
+\subsection{General Method}\label{general-method}
+
+\begin{itemize}
+\item
+  N coupled oscillators gives N generalised coords, yielding N
+  homogeneous eqns
+\item
+  If undergoing SHM, \emph{normal coordinates}
+\end{itemize}
+
+\begin{enumerate}
+\item
+  Find equilibrium config, values of generalised coords where
+  generalised forces are 0
+\item
+  Taylor expand Lagrangian to second order in generalised coords, around
+  values for the generalised coords given by equilibrium config
+\item
+  For N DoF, the Taylor expansion must in principal be in 2N variables
+  \begin{itemize}
+  \item
+    In practice, fewer variables may be adequate
+  \end{itemize}
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Use Matrices
+  \begin{itemize}
+  \item
+    page 21
+  \item
+    generalised coordinates are column vectors
+  \end{itemize}
+\end{itemize}
+
+\[
+    L = \underbrace{\underline{\dot{q}}^T \hat{\tau} \underline{\dot{q}}}_{T} - \underbrace{\underline{q}^T \hat{\upsilon}\underline{q}}_V + c
+\]
+
+\begin{itemize}
+\item
+  Elements of these matrices:
+\end{itemize}
+
+\[
+    \tau_{jk} = \frac{1}{2} \frac{\partial^2 T}{\partial \dot{q}_j \partial \dot{q}_k}\Bigg|_{\dot{q}_{j},\dot{q}_k = 0} ~;~ \upsilon_{jk} = \frac{1}{2} \frac{\partial^2 V}{\partial \dot{q}_j \partial \dot{q}_k}\Bigg|_{q_{j},q_k = 0}
+\]
+
+\section{}\label{lecture-7}
+
+\subsection{Recap from Last time}\label{recap-from-last-time}
+
+\[
+    T = \underline{\dot{x}} \hat{\tau} \underline{\dot{x}}
+\] \[
+    V = \underline{x}^T \hat{\upsilon} \underline{x}
+\] \[
+    L = T - V = \frac{1}{2}m(\dot{x}_{1}^2 + \dot{x}_{2}^2) - \frac{1}{2}k(x_{1}^2 + x_{2}^2 - 2x_{1}x_{2})
+\]
+
+\begin{itemize}
+\item
+  E-L: (\(x_1\))
+\end{itemize}
+
+\[
+    m\ddot{x}_{1} - k(x_{1} - x_2) = 0
+\]
+
+\begin{itemize}
+\item
+  E-L: (\(x_2\))
+\end{itemize}
+
+\[
+    m\ddot{x}_2 + k(x_2 - x_1) = 0
+\]
+
+\begin{itemize}
+\item
+  Other coordinates in each E-L is the coupling
+\item
+  Equivalent to
+\end{itemize}
+
+\[
+    \begin{pmatrix} m & 0 \\ 0 & m \end{pmatrix}
+    \begin{pmatrix}\ddot{x}_1 \\ \ddot{x}_2 \end{pmatrix} +
+    \begin{pmatrix} k & -k \\ -k & k \end{pmatrix}
+    \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \underline{0}
+\] \[
+    2(\hat{\tau}\underline{\ddot{x}} + \hat{\upsilon}\underline{x})
+\]
+
+\begin{itemize}
+\item
+  Equation for coupled oscillators:
+\end{itemize}
+
+\[
+    \hat{\tau}\underline{\ddot{q}} + \hat{\upsilon}\underline{q} = 0
+\]
+
+\subsection{Normal Modes}\label{normal-modes}
+
+\begin{itemize}
+\item
+  Usual thing to do is guess a solution
+  \begin{itemize}
+  \item
+    try \(\underline{q} = \underline{b}e^{i\omega t}\)
+  \end{itemize}
+\item
+  This yields
+\end{itemize}
+
+\[
+    (\hat{\upsilon} - \omega^{2}\hat{\tau})\underline{b}
+\]
+
+\begin{itemize}
+\item
+  Eigenvalue problem
+  \begin{itemize}
+  \item
+    det must be zero
+  \item
+    \(\hat{\tau}\) must be a multiple of the identity matrix
+  \end{itemize}
+\item
+  In the pendulum example,
+  \(T = \frac{mgl}{2\omega_{0}^2}(\dot{\theta}_{1}^2 + \dot{\theta}_{2}^2)\)
+\end{itemize}
+
+\[
+    \tau_{ij} = \frac{1}{2} \frac{\partial^2 T}{\partial \dot{\theta}_{i} \partial \dot{\theta}_{j}}
+\] \[
+    \tau_{11} = \frac{1}{2} \frac{\partial^2 T}{\partial \dot{\theta}_{1}^{2}} = \frac{mgl}{2\omega_{0}^2} ~;~ \tau_{12} = \frac{1}{2}\frac{\partial^2 T}{\partial \dot{\theta}_{1} \partial \dot{\theta}_{2}} = 0 = \tau_{21}
+\] \[
+    \tau_{22} = \tau_{11}
+\] \[
+    \hat{\tau} = \frac{mgl}{2\omega_{0}^2}\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+\] \[
+    \omega^2 \hat{\tau} = \frac{mgl}{2}\begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} ~;~ \lambda = \Big(\frac{\omega}{\omega_{0}} \Big)^2
+\]
+
+\begin{itemize}
+\item
+  page 21
+\item
+  find eigenvalues from det of matrix above
+\item
+  Gives
+\end{itemize}
+
+\[
+    \frac{b_{(j)2}}{b_{(j)1}} = \frac{1 + \eta - \lambda_{j}}{\eta}
+\]
+
+\subsection{Normal Coordinates}\label{normal-coordinates}
+
+\[
+    r_j = \sum_{k = 1}^{N} b_{(j)k}q_{k}
+\]
+
+\begin{itemize}
+\item
+  Note that for coupled pendulum example
+  \(r_1 \propto (\theta_1 + \theta_2)\) and
+  \(r_2 \propto (\theta_2 - \theta_1)\)
+\item
+  Any general motion is a superposition of the normal modes
+
+  \begin{itemize}
+
+  \item
+    similar to eigenfunctions in Quantum
+  \end{itemize}
+\end{itemize}
+
+\subsection{Mode Orthogonality}\label{mode-orthogonality}
+
+\[
+    \underline{b}_{i}^{T} \hat{\tau} \underline{b}_j = 0 ~;~ i \neq j
+\]
+
+\begin{enumerate}
+\item
+  If \(\omega_{i}\)s are all different, then \(b_i\)s are unique
+\item
+  If some \(\omega_i\)s are the same then there is a choice of \(b_i\)s
+  but can always find orthogonal ones
+\end{enumerate}
+
+\begin{example}[Free Vibrations of a linear triatomic molecule]
+
+\begin{itemize}
+\item
+  Central atom of mass, M and outer atoms have masses, m
+  \begin{itemize}
+  \item
+    constrained to move on an axis
+  \item
+    connected together via springs of constant, k and natural length, l
+  \item
+    point masses
+  \item
+    Consider \(x_1, x_2, x_3\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    T = \frac{m}{2}(\dot{x}_{1}^2 + \dot{x}_{3}^2) + \frac{M}{2}\dot{x}_{2}^2
+\] \[
+    \hat{\tau} = \frac{1}{2}\begin{pmatrix}m & 0 & 0 \\ 0 & M & 0 \\ 0 & 0 & m \end{pmatrix} \]
+\[
+    V = \frac{k}{2}\Big[(x_2 - x_1 - l)^2 + (x_3 - x_2 - l)^2 \Big] \]
+\[
+    \hat{\upsilon} = \frac{1}{2} \frac{\partial^2 V}{\partial x_i \partial x_j} = \frac{k}{2} \begin{pmatrix} 1 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1 \end{pmatrix} \]
+\[
+    \hat{\tau}\underline{\ddot{q}} + \hat{\upsilon}\underline{q} = \underline{0}
+\]
+
+\begin{itemize}
+\item
+  Trial solution: \(\underline{q} = \underline{b}e^{i\omega t}\)
+\end{itemize}
+
+\[
+    (\hat{\upsilon} - \omega^2 \hat{\tau})\underline{b} = 0 \] \[
+    \begin{pmatrix} k - \omega^2 m & -k & 0 \\ -k & 2k - \omega^2 M & -k \\ 0 & -k & k - \omega^2 m \end{pmatrix} \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix} = 0
+\]
+
+\begin{itemize}
+\item
+  The normal modes will oscillate with frequencies satisfying
+\end{itemize}
+
+\[
+    \begin{vmatrix} k - \omega^2 m & -k & 0 \\ -k & 2k - \omega^2 M & -k \\ 0 & -k & k - \omega^2 m \end{vmatrix} = 0
+\]
+
+\begin{itemize}
+\item
+  Do some algebra and you get
+\end{itemize}
+
+\[
+    \omega^2 (k - \omega^2 m)[k(M + 2m) - \omega^2 Mm] = 0
+\]
+
+\begin{itemize}
+\item
+  Therefore, the normal modes oscillate with frequencies
+  \begin{itemize}
+  \item
+    \(\omega_{(1)} = 0\)
+  \item
+    \(\omega_{(2)} = \sqrt{\frac{k}{m}}\)
+  \item
+    \(\omega_{(3)} = \sqrt{\frac{k}{m}\big(1 + \frac{2m}{M}\big)}\)
+  \end{itemize}
+\item
+  The corresponding, unnormalised mode vectors are found by substituting
+  these eigenvalues into the matrix above
+\item
+  Doing this, you find that they are:
+\end{itemize}
+
+\[
+    b_{(1)} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} ~;~ b_{(2)} = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix} ~;~ b_{(3)} = \begin{pmatrix} 1 \\ -\frac{2m}{M} \\ 1 \end{pmatrix}
+\]
+
+\begin{itemize}
+\item
+  Three different states:
+  \begin{enumerate}
+  \item
+    Just a translation
+    \begin{itemize}
+    \item
+      could have constrained the centre of mass to remain at origin and
+      solve in 2 DoFs
+    \end{itemize}
+  \item
+    The two outer atoms are oscillating in anti-phase with big M static
+  \item
+    The m atoms are in phase with one another, and anti-phase with M
+    atom, which has a relative amplitude of \(\frac{2m}{M}\) so as to
+    keep the centre of mass fixed
+  \end{enumerate}
+\end{itemize}
+\end{example}
+
+\section{}\label{lecture-8}
+
+\subsection{Central Forces}\label{central-forces}
+
+\subsubsection{Two Interacting Bodies}\label{two-interacting-bodies}
+
+\begin{itemize}
+\item
+  Consider two point masses with positions \(\underline{r}_1\) and
+  \(\underline{r}_2\)
+\item
+  Connected via central force between them
+  \begin{itemize}
+  \item
+    Interaction potential
+  \item
+    Potential depends on distance between bodies in straight line
+  \item
+    \(V_12 = V_{12}(\underline{r}_1,\underline{r}_2) = V_{12}(|\underline{r}_1 - \underline{r}_2|) = V(r)\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    L = \frac{1}{2}(m_1 \dot{\underline{r}}_{1}^2 + m_2 \dot{\underline{r}}_{2}^2) - \underbrace{V_1(\underline{r}_1) - V_2(\underline{r}_2)}_{\text{external potentials}} - \underbrace{V_{12}(|\underline{r}_1 - \underline{r}_2|)}_{\text{interaction potential}}
+\]
+
+\begin{itemize}
+\item
+  Consider an infinitesimal translation \(\epsilon\underline{a}\) and
+  Taylor expand Lagrangian to first order in \(\epsilon\)
+  \begin{itemize}
+  \item
+    page 25 for the maths
+  \item
+    canonically conjugate momentum is first expression of E-L equation
+    \begin{itemize}
+    \item
+      in this case, the linear momentum
+    \end{itemize}
+  \item
+    this comes from the translational invariance of the Lagrangian
+  \end{itemize}
+\end{itemize}
+
+\subsection{Ignorable CoM}\label{ignorable-com}
+
+\begin{itemize}
+\item
+  Conservation of total momentum implies that CoM
+  (\(\underline{R} = \frac{m_1 \underline{r}_1 + m_2 \underline{r}_2}{(m_1 + m_2)}\))
+  moves like a free particle
+  \begin{itemize}
+  \item
+    rewrite Lagrangian in terms of \(\underline{R}\) and the relative
+    coordinate, \(\underline{r} = \underline{r}_1 - \underline{r}_2\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    L = \frac{1}{2}M\dot{\underline{R}}^2 + \frac{1}{2}\mu \underline{\dot{r}}^2 - V_{12}(r) \]
+\[
+    \mu = \frac{m_1 m_2}{m_1 + m_2} \] \[
+    M = m_1 + m_2
+\]
+
+\begin{itemize}
+\item
+  Check that
+\end{itemize}
+
+\[
+    \frac{1}{2}M\dot{\underline{R}}^2 + \frac{1}{2}\mu \underline{\dot{r}}^2 = \frac{1}{2}(m_1 \dot{\underline{r}}_{1}^2 + m_2 \dot{\underline{r}}_{2}^2) \]
+\[
+    LHS = \frac{1}{2} \Bigg[(m_1 + m_2)\Big(\frac{m_1 \underline{\dot{r}}_1 + m_2 \underline{\dot{r}}_2}{m_1 + m_2}\Big)^2 + \frac{m_1 m_2}{m_1 + m_2}(\underline{\dot{r}}_1 = \underline{\dot{r}}_2)^2 \Bigg] \]
+\[
+    LHS = \frac{1}{2(m_1 + m_2)} \Bigg[m_{1}^2 \underline{\dot{r}}_{1}^2 + m_{2}^2 \underline{\dot{r}}_{2}^2 + 2m_1 m_2 \underline{\dot{r}}_1 \underline{\dot{r}}_2 + m_1 m_2 (\underline{\dot{r}}_{1}^2 + \underline{\dot{r}}_{2}^2 - 2\underline{\dot{r}}_1 \underline{\dot{r}}_2) \Bigg] \]
+\[
+    LHS = \frac{1}{2(m_1 + m_2)} \Bigg[m_1 \underline{\dot{r}}_{1}^2 (m_1 + m_2) + m_2 \underline{\dot{r}}_{2}^2 (m_1 + m_2) \Bigg] \]
+\[
+    LHS = \frac{1}{2}(m_1 \dot{\underline{r}}_{1}^2 + m_2 \dot{\underline{r}}_{2}^2) = RHS
+\]
+
+\subsection{Rotational Invariance}\label{rotational-invariance}
+
+\begin{itemize}
+\item
+  Transform to the centre of mass frame and remove first expression from
+  Lagrangian
+  \begin{itemize}
+  \item
+    potential on depends on distance so we get rotational invariance
+  \end{itemize}
+\end{itemize}
+
+\[
+    \underline{\dot{r}}^2 = \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \] \[
+    \underline{\dot{r}}^2 = \dot{r}^2 + r^2\dot{\theta}^2 + (r\sin\theta)^2\dot{\phi}^2
+\] \[
+    L = \frac{1}{2}\mu \underline{\dot{r}}^2 - V_{12}(r) \] \[
+    L = \frac{1}{2}\mu [\dot{r}^2 + r^2 \dot{\theta}^2 + r^2 \dot{\phi}^2\sin^2\theta] - V_{12}(r)
+\]
+
+\begin{itemize}
+\item
+  \(\phi\) is ignorable, as it does not appear in L, therefore:
+\end{itemize}
+
+\[
+    p_{\phi} \equiv \frac{\partial L}{\partial \dot{\phi}} = \mu r^2\dot{\phi}\sin^2\theta = \text{constant} \equiv \underbrace{J_z}_{\text{z component of } \underline{J} = \underline{r} \times \mu\dot{\underline{r}}}
+\]
+
+\begin{itemize}
+\item
+  Can choose coordinate system such that total angular momentum,
+  \(\underline{J}\), lies along the z-axis
+  \begin{itemize}
+  \item
+    Therefore, \(\underline{J}\) is always constant
+  \end{itemize}
+\end{itemize}
+
+\[
+    \underline{J} = \underline{r} \times \mu\underline{\dot{r}} ~;~ \underline{r} = \begin{pmatrix} r\cos\phi\sin\theta \\ r\sin\phi\sin\theta \\ r\cos\theta \end{pmatrix} \]
+\[
+    \underline{\dot{r}} = \begin{pmatrix} \dot{r}\cos\phi\sin\theta - r\dot{\phi}\sin\phi\sin\theta + r\dot{\theta}\cos\phi\cos\theta \\ \dot{r}\sin\phi\sin\theta + r\dot{\phi}\cos\phi\sin\theta + r\dot{\theta}\sin\phi\cos{\theta} \\ \dot{r}\cos\theta - r\dot{\theta}\sin\theta \end{pmatrix} \]
+\[
+    \underline{J} = \mu \begin{vmatrix} \underline{i} & \underline{j} & \underline{k} \\ r_i & r_j & r_k \\ \dot{r}_i & \dot{r}_j & \dot{r}_k \end{vmatrix} = \mu \begin{pmatrix} r_j \dot{r}_k - r_k\dot{r}_j \\ r_k\dot{r}_i - r_i\dot{r}_k \\ r_i\dot{r}_j - r_j\dot{r}_i \end{pmatrix}
+\]
+
+\begin{itemize}
+\item
+  Plug in \(\underline{\dot{r}}\):
+\end{itemize}
+
+\[
+    J_z = \mu r\sin\theta [r\dot{\phi}\sin\theta] = \mu r^2 \dot{\phi} \sin^2\theta
+\]
+
+\begin{itemize}
+\item
+  \(\underline{J} = \underline{r} \times \mu\underline{\dot{r}}\), so
+  \(\underline{p}\) and \(\underline{r}\) must be perpendicular to
+  \(\underline{J}\)
+\item
+  Hence, these must be in a plane perpendicular to \(\underline{J}\),
+  and remain in that plain as \(\underline{J}\) is constant
+\item
+  Choose \(\underline{J}\) to lie along z direction, so that angle of
+  elevation,
+\end{itemize}
+
+\[
+    \theta = \frac{\pi}{2} \] \[
+    \dot{\theta} = 0 \] \[
+    J = |\underline{J}| = J_z = \mu r^2 \dot{\phi}
+\]
+
+\section{}\label{lecture-9}
+
+\subsection{Kepler's Second Law}\label{keplers-second-law}
+
+\[
+    \frac{dA}{dt} = \frac{1}{2}r^2 \dot{\phi} = \frac{J}{2\mu}
+\]
+
+\begin{itemize}
+\item
+  J is conserved, so the rate at which area is swept out is constant
+\item
+  Kepler's second law comes from this
+  \begin{itemize}
+  \item
+    nothing to do much with gravity specifically
+  \end{itemize}
+\end{itemize}
+
+\subsection{Equivalent 1D Problem}\label{equivalent-1d-problem}
+
+\begin{itemize}
+\item
+  In this case, remove \(\theta\) and \(\phi\) from Lagrangian
+\end{itemize}
+
+\[
+    E = T + V = \frac{1}{2}\mu[\dot{r}^2 + r^2\dot{\theta}^2 + r^2\dot{\phi}^2\sin^2\theta] + V_{12}(r) \]
+\[
+    \dot{\theta} = 0 ~;~ \theta = \frac{\pi}{2} ~;~ \dot{\phi} = \frac{J}{\mu r^2} \]
+\[
+    E = \frac{1}{2}\mu \dot{r}^2 + \underbrace{\frac{J^2}{2\mu r^2} + V_{12}(r)}_{V_{eff}(r)}
+\]
+
+\begin{itemize}
+\item
+  Effective potential combines interaction potential with angular
+  momentum barrier
+\item
+  total energy E is the same as that corresponding to an effective
+  Lagrangian
+  \begin{itemize}
+  \item \(L_{eff} = \frac{1}{2}\mu \dot{r}^2 - V_{eff}\) yields:
+  \end{itemize}
+\end{itemize}
+
+\[
+    \mu \ddot{r} = \frac{J^2}{\mu r^3} - \frac{\partial V_{12}}{\partial r}
+\]
+
+\begin{example}[Central Forces]
+\begin{itemize}
+\item
+  Find the orbit shape for the following potential:
+\end{itemize}
+
+\[
+    V(r) = \begin{cases} -V_0 & r \leq R \\ 0 & r > R \end{cases} \implies V_{eff}(r) = \begin{cases} \frac{J^2}{2\mu r^2} - V_0 & r \leq R \\ \frac{J}{2\mu r^2} & r > R \end{cases}
+\]
+
+\begin{itemize}
+\item
+  If \(\frac{J^2}{2\mu R^2} - V_0 < E < \frac{J^2}{2\mu R^2}\), then we
+  have a bound orbit
+  \begin{itemize}
+  \item
+    \(r_t\) there for E
+  \item
+    \(r_t \leq r \leq R\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    r_{t}^2 = \frac{J^2}{2\mu (E + V_0)}
+\]
+
+\begin{itemize}
+\item
+  Set the azimuthal angle, \(\phi = 0\), and \(r = r_t\) at \(t = 0\),
+  and find the shape of the orbit:
+\end{itemize}
+
+\[
+    E = \frac{1}{2}\mu\dot{r}^2 + \frac{J^2}{2\mu r^2} - V_0,~ r \leq R ~~ (1)
+\]
+
+\begin{itemize}
+\item
+  Define \(\mu = \frac{1}{r}\), then
+  \(\frac{dr}{dt} = -\frac{1}{u^2}\frac{du}{dt}\)
+\end{itemize}
+
+\[
+    \dot{\phi} = \frac{d\phi}{dt} = \frac{J}{\mu r^2} = \frac{Ju^2}{\mu} \]
+\[
+    \frac{dr}{dt} = -\frac{1}{u^2}\frac{Ju^2}{\mu}\frac{du}{d\phi} \] \[
+    \to (1): \implies \] \[
+    E + V_0 - \frac{J^2 u^2}{2\mu} = \frac{\mu}{2}\frac{J^2}{\mu^2}\Big(\frac{du}{d\phi}\Big)^2 \]
+\[
+    \frac{du}{d\phi} = \pm \sqrt{\underbrace{\frac{2\mu}{J^2}(E + V_0)}_{\frac{1}{r_{t}^2} = u_{t}^2} - u^2} \]
+\[
+    \int_{U_0}^{U} -\frac{du}{\sqrt{u_{t}^2 - u^2}} = \int_{\phi_0}^{\phi} d\phi = \phi
+\]
+
+\begin{itemize}
+\item
+  Use substitution:
+  \(u = u_t \cos\alpha, du = -u_t\sin\alpha \,d\alpha\)
+\end{itemize}
+
+\[
+    \phi = \alpha + \alpha_0, ~~ t = 0 \implies \alpha_0 = \cos^{-1}\Big(\frac{u_t}{u_t}\Big) = 0 \]
+\[
+    \phi = +\cos^{-1}\Big(\frac{r_t}{r}\Big)
+\]
+
+\begin{itemize}
+\item
+  Sign is set by sign of angular momentum, J
+\end{itemize}
+
+\[
+    \cos\phi = \frac{r_t}{r} \implies r = r_t\sec\phi,~ \phi < \Phi,~ R = r_t \sec\Phi
+\]
+\end{example}
+
+\subsection{Gravitational Attraction}\label{gravitational-attraction}
+
+\begin{itemize}
+\item
+  For gravity, we have the differential to be solved as:
+\end{itemize}
+
+\[
+    \mu \ddot{r} = \frac{J^2}{\mu r^3} - \frac{k}{r^2},~ k = Gm_{1}m_{2}
+\]
+
+\begin{itemize}
+\item
+  solving this to determine orbits of bodies
+\end{itemize}
+
+\subsection{\texorpdfstring{The \(u = \frac{1}{r}\) transformation}{The u = \textbackslash{}frac\{1\}\{r\} transformation}}\label{the-u-frac1r-transformation}
+
+\begin{itemize}
+\item
+  See last example for this transformation or page 28
+\end{itemize}
+
+\[
+    \frac{d^2 u}{d\phi^2} + u = \frac{\mu k}{J^2} \] \[
+    \implies \frac{1}{r} \equiv u = \frac{\mu k}{J^2} + B\cos\phi
+\]
+
+\subsection{Elliptical Orbits}\label{elliptical-orbits}
+
+\begin{itemize}
+\item
+  Define \(p \equiv \frac{J^2}{\mu k}\) and
+  \(\epsilon \equiv pB \implies\)
+\end{itemize}
+
+\[
+    E = \frac{\mu k^2}{2J^2}(\epsilon^2 - 1) = \frac{k}{2p}(\epsilon^2 - 1)
+\]
+
+\begin{itemize}
+\item
+  For \(0 \leq \epsilon < 1\), bound elliptical orbit
+\item
+  page 29
+\item
+  \(\epsilon\) is the eccentricity of the elliptical orbit:
+  \begin{itemize}
+  \item
+    \(\epsilon = 0 \implies\) circular orbit
+  \item
+    \(\epsilon = 1 \implies\) parabolic trajectory
+  \item
+    \(\epsilon > 1 \implies\) hyberbola
+  \end{itemize}
+\item
+  elliptical orbits come from defining the \(\frac{1}{r^2}\) potential
+\end{itemize}
+
+\subsection{Third Law}\label{third-law}
+
+\[
+    T = 2\pi \sqrt{\frac{1}{G(m_1 + m_2)}a^{3/2}} \implies T^2 \propto a^2
+\]
+
+\begin{itemize}
+\item
+  Same proportionality constant for all planets
+  \begin{itemize}
+  \item
+    This is approximately true as the mass of the sun largely cancels
+    out the mass of the planet
+  \end{itemize}
+\end{itemize}
+
+\textbf{See page 29 and 30 for Bertrand's Theorem and Quadrature}
+
+\begin{example}[Kepler's Equation]
+
+\begin{itemize}
+\item
+  Given a set of observations of positions of a solar system body, how
+  would one infer the orbit of that body?
+\item
+  From the equation for an ellipse in the notes (Eq. 22), we can use the
+  identity \(\cos^2\psi +\sin^2\psi = 1\) to introduce the
+  parameterisation:
+\end{itemize}
+
+\[
+    x + \frac{\epsilon p}{1 - \epsilon^2} = a\cos\psi \implies x = a(\cos\psi - \epsilon) \]
+\[
+    y = b\sin\psi \implies y = a\sqrt{1 - \epsilon^2}\sin\psi
+\]
+
+\begin{itemize}
+\item
+  It follows that:
+\end{itemize}
+
+\[
+    r = \sqrt{x^2 + y^2} = a(1 - \epsilon\cos\psi)
+\]
+\end{example}
+
+\section{}\label{lecture-10}
+
+\subsection{Kepler's Equation Continued}\label{keplers-equation-continued}
+
+\begin{itemize}
+\item
+  Relationship of the eccentric anomaly, \(\psi\), to the true anomaly,
+  \(\phi\), for an effective particle placed a distance r and azimuthal
+  angle \(\phi\) from the centre of mass
+  \begin{itemize}
+  \item
+    The elliptical orbit, with semi-major axis a, has been placed inside
+    an imaginary circle of radius a
+  \end{itemize}
+\item
+  We can solve the effective 1D problem by quadrature
+  \begin{itemize}
+  \item
+    Eq 17 in notes, page 27, implies:
+  \end{itemize}
+\end{itemize}
+
+\[
+    \int dt' = \sqrt{\frac{\mu}{2}} \int \frac{dr'}{\sqrt{E + \tfrac{k}{r'} - \tfrac{J^2}{2\mu r'^2}}}
+\]
+
+\begin{itemize}
+\item
+  For elliptical orbits, \(E = -\frac{k}{2a}\)
+  \begin{itemize}
+  \item
+    Also use \(\frac{J^2}{\mu k} \equiv p\)
+  \item
+    \(p = a(1 - \epsilon^2)\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    \int dt' = \sqrt{\frac{\mu}{2k}} \int \frac{r'\,dr'}{\sqrt{-\tfrac{r'^2}{2a} + r' - \tfrac{a}{2}(1 - \epsilon^2)}}
+\]
+
+\begin{itemize}
+\item
+  Finally, use \(r = a(1 - \epsilon\cos\psi)\)
+  \begin{itemize}
+  \item
+    \(dr = a\epsilon\sin\psi\,d\psi\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    \int dt' = \sqrt{\frac{\mu}{2k}} \int \frac{a^2\epsilon\sin\psi'(1 - \epsilon\cos\psi')\,d\psi'}{-\tfrac{a}{2}(1 - \epsilon\cos\psi')^2 + a(1 - \epsilon\cos\psi') - \tfrac{a}{2}(1 - \epsilon^2)} \]
+\[
+    \int dt' = \sqrt{\frac{\mu}{2k}} \int \frac{a^2\epsilon\sin\psi' (1 - \epsilon\cos\psi')\,d\psi'}{\sqrt{\tfrac{a}{2}}(\epsilon\sin\psi')} \]
+\[
+    \int dt' = \sqrt{\frac{\mu a^3}{k}} \int (1 - \epsilon\cos\psi')\,d\psi'
+\]
+
+\begin{itemize}
+\item
+  This integral measures the time elapsed between initial and final
+  value of this eccentric anomaly, \(\psi'\)
+  \begin{itemize}
+  \item
+    Customary to choose \(t' = 0\) for when \(\psi' = \phi' = 0\)
+    \begin{itemize}
+    \item
+      when the orbiting body is at its perihelion
+    \item
+      i.e. closest to the sun
+    \end{itemize}
+  \end{itemize}
+\item
+  Hence, if \(t(\psi)\) is the time elapsed from perihelion to when the
+  eccentric anomaly takes the values \(\psi\), then we have Kepler's
+  equation
+\end{itemize}
+
+\[
+    t(\psi) = \sqrt{\frac{\mu a^3}{k}} (\psi - \epsilon\sin\psi)
+\]
+
+\begin{itemize}
+\item
+  If we measure elapsed times and radii since perihelion, then Kepler's
+  equation and the definition of an ellipse
+  (\(r = a(1 - \epsilon\cos\psi)\)) can be solved to give the semi-major
+  axis, a, and the eccentricity, \(\epsilon\)
+\end{itemize}
+
+\subsection{Hamiltonian Mechanics}\label{hamiltonian-mechanics}
+
+\begin{example}[Swinging Atwood Machine]
+
+\begin{itemize}
+\item
+  Atwood machine with slight difference
+  \begin{itemize}
+  \item
+    One mass moves like a normal pulley, other like a pendulum
+  \item
+    \(DoFs = 2\)
+  \end{itemize}
+\end{itemize}
+\end{example}
+
+\subsection{Noether's Theorem and Invariance of L}
+
+\emph{``If the Lagrangian is invariant under a continuous symmetry
+transformation, then there are conserved quantities associated with that
+symmetry, one for each parameter of the transformation. These can be
+found by differentiating each coordinate wrt to the parameters of the
+transformation in the immediate neighbourhood of the identity
+transformation, multiplying by the conjugate momentum, and summing over
+the degrees of theorem.''}
+
+\begin{itemize}
+\item
+  page 31 for maths
+\item
+  point mass moving in free space
+\end{itemize}
+
+\[
+    L = \frac{1}{2}m\dot{q}^2 \] \[
+    Q = q + s \] \[
+    \frac{dQ}{ds}\Bigg|_{s_{} = 0} = 1 \implies I(q) = m\dot{q}
+\]
+
+\begin{itemize}
+\item
+  Consider phase space approach of 6D instead of just normal space
+  \begin{itemize}
+  \item
+    normal dimensions plus the canonically conjugate momenta
+  \end{itemize}
+\end{itemize}
+
+\subsection{Legendre Transformations}\label{legendre-transformations}
+
+\begin{itemize}
+\item
+  \(A(x,y)\), intro third variable z
+  \begin{itemize}
+  \item
+    \(B(x,y,z) \equiv yz - A(x,y)\)
+  \item
+    use chain rule
+  \item
+    page 32
+  \item
+    y can be written in terms of x and z
+  \item
+    \(B = B(x,y(x,z),z) = B(x,z) = yz - A(x,y)\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    \frac{\partial B}{\partial z}\Bigg|_x = y_{} ~;~ \frac{\partial B}{\partial x}\Bigg|_z = -\frac{\partial A}{\partial x}\Bigg|_{y}
+\]
+
+\begin{itemize}
+\item
+  Similar to thermodynamics:
+  \begin{itemize}
+  \item
+    Enthalpy, X, such that
+  \item
+    Use for isentropic and isobaric processes
+  \end{itemize}
+\end{itemize}
+
+\[
+    dX = T\,dS + V\,dP
+\]
+
+\begin{itemize}
+\item
+  However for isothermal and isobaric processes, better to use the Gibbs
+  energy:
+\end{itemize}
+
+\[
+    \underbrace{G = X - TS}_{\text{Legendre transformation}} \to dG = S\,dT + V\,dp
+\]
+
+\subsection{The Hamiltonian}\label{the-hamiltonian}
+
+\[
+    H(q, p) \equiv p\dot{q} - L(q,\dot{q}) ~;~ p \equiv \frac{\partial L}{\partial \dot{q}}\Bigg|_{constant\, q_{}} \]
+\[
+    \frac{\partial H}{\partial p}\Bigg|_{q} = \dot{q} ~;~ \frac{\partial H}{\partial q}\Bigg|_{p} = -\frac{\partial L}{\partial q}\Bigg|_{\dot{q}} = -\frac{d}{dt}\frac{\partial L}{\partial \dot{q}}\Bigg|_{q} = -\dot{p}
+\]
+
+\section{}\label{lecture-11}
+
+\subsection{Hamilton's Principle Continued}\label{hamiltons-principle-continued}
+
+\begin{itemize}
+\item
+  \(S = \int L\,dt \implies \delta S = S[q + \delta q]\)
+  \begin{itemize}
+  \item
+    \(S[q] = \int \delta L\,dt\)
+  \end{itemize}
+\item
+  page 33 for maths from the following:
+\end{itemize}
+
+\[
+    \delta L = \dot{q}\delta p + p\delta\dot{q} - \underbrace{\Big(\frac{\partial H}{\partial q}\delta q + \frac{\partial H}{\partial q}\delta p\Big)}_{\delta H}
+\]
+
+\begin{itemize}
+\item
+  \(\int \delta L\,dt = 0\)
+\item
+  independent infinitesimal variations in \(\delta q, \delta p\) from
+  physical space in coordinate-momentum space (phase space) do not
+  change the action, S
+\end{itemize}
+
+\subsection{Hamilton's Equations of Motion}\label{hamiltons-equations-of-motion}
+
+\begin{itemize}
+\item
+  For N DoF, Hamiltonian is defined using the Legendre transformation:
+\end{itemize}
+
+\[
+    H \equiv \Bigg(\sum_{k = 1}^{N} p_{k}\dot{q}_k \Bigg) - L
+\]
+
+\begin{itemize}
+\item
+  L may now be explicitly time-dependent
+\item
+  Include a time differential to give
+\end{itemize}
+
+\[
+    dH = \sum_{k = 1}^{N} \Big(\dot{q}_k dp_k - \dot{p}_kdq_k\Big) - \frac{\partial L}{\partial t}dt
+\]
+
+\begin{itemize}
+\item
+  page 33 for more
+\end{itemize}
+
+\[
+    \frac{\partial H}{\partial t} = -\frac{\partial L}{\partial t} \] \[
+    \dot{q}_k = \frac{\partial H}{\partial p_k} ~;~ \dot{q}_k = -\frac{\partial H}{\partial q_k} ~;~ \frac{\partial H}{\partial t} = -\frac{\partial L}{\partial t}
+\]
+
+\subsection{Examples in Hamiltonians}\label{examples-in-hamiltonians}
+
+\begin{example}[1]
+
+\begin{itemize}
+\item
+  particle of mass, m, moving vertically in a uniform gravitational
+  field
+\end{itemize}
+
+\[
+    T = \frac{1}{2}m\dot{z}^2 ~;~ V = mgz \] \[
+    L = T - V = \frac{1}{2}m\dot{z}^2 - mgz
+\]
+
+\begin{itemize}
+\item
+  The canonically conjugate momentum to coordinate z,
+\end{itemize}
+
+\[
+    p_z = \frac{\partial L}{\partial \dot{z}} = m\dot{z}
+\]
+
+\begin{itemize}
+\item
+  Legendre transformation of \(L(z,\dot{z})\) to give \(H(z, p_z)\):
+\end{itemize}
+
+\[
+    H(z, p_z) = p_z\dot{z} - L(z,\dot{z}) \] \[
+    H(z, p_z) = p_z \cdot \frac{p_z}{m} - \frac{m}{2} \Big(\frac{p_z}{m}\Big)^2 + mgz \]
+\[
+    H(z, p_z) =  \frac{p_{z}^2}{2m} + mgz = T + V = E_T s
+\]
+
+\begin{itemize}
+\item
+  EoM:
+\end{itemize}
+
+\[
+    \dot{z} = \frac{\partial H}{\partial p_z} = \frac{p_z}{m} ~;~ \dot{p}_z = -\frac{\partial H}{\partial z} = -mg
+\]
+
+\begin{itemize}
+\item
+  Integrate \(\dot{p}_z\) first to find \(p_z\) as a function of time
+  and then integrate \(\dot{z}\) using this to find z as a function of
+  time
+\end{itemize}
+\end{example}
+
+\begin{example}[2]
+
+\begin{itemize}
+\item
+  particle of mass m moves in gravitational field, along the spiral of
+  the form, \(z = k\theta\) and \(r = cst\), where k is a constant and z
+  is the vertical direction
+\item
+  Find the Hamiltonian, \(H(z, p)\), and the equation of motion
+\item
+  Show in the limit \(r \to 0\), that \(\ddot{z} \to -g\)
+\end{itemize}
+
+\[
+    T = \frac{1}{2}m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2) ~;~ x = r\cos\theta,~ y = r\sin\theta,~ z = k\theta \]
+\[
+    \dot{x} = -r\dot{\theta}\sin\theta ~;~ \dot{y} = r\dot{\theta}\cos\theta ~;~ \dot{z} = k\dot{\theta} \]
+\[
+    T = \frac{1}{2}m (r^2\dot{\theta}^2 + \dot{z}^2) = \frac{1}{2}m\dot{z}^2 \Big(1 + \frac{r^2}{k^2}\Big) ~;~ V = mgz \]
+\[
+    L = \frac{1}{2}m\dot{z}^2 \Big(1 + \frac{r^2}{k^2}\Big) - mgz
+\]
+
+\begin{itemize}
+\item
+  Canonically conjugate momentum to z:
+\end{itemize}
+
+\[
+    p = \frac{\partial L}{\partial \dot{z}} = m\dot{z}\Big(1 + \frac{r^2}{k^2}\Big) \implies \dot{z} = \frac{p}{m\big(1 + \tfrac{r^2}{k^2}\big)} \]
+\[
+    H = p\dot{z} - L = \frac{p^2}{m\big(1 + \tfrac{r^2}{k^2}\big)} - \frac{p^2}{2m\big(1 + \tfrac{r^2}{k^2}\big)} + mgz \]
+\[
+    H(z, p) = \frac{p^2}{2m\big(1 + \tfrac{r^2}{k^2}\big)} + mgz = T + V = E_T
+\]
+
+\begin{itemize}
+\item
+  EoM:
+\end{itemize}
+
+\[
+    \dot{z} = \frac{\partial H}{\partial p} = \frac{p}{m\big(1 + \tfrac{r^2}{k^2}\big)} ~;~ \dot{p} = -\frac{\partial H}{\partial z} = -mg
+\]
+
+\begin{itemize}
+\item
+  Integrating:
+\end{itemize}
+
+\[
+    p(t) = p(0) - mgt
+\]
+
+\begin{itemize}
+\item
+  Put this into the other equation:
+\end{itemize}
+
+\[
+    z = \int_{0}^{t} \frac{p(0) - mgt'}{m\big(1 + \tfrac{r^2}{k^2}\big)} dt' = z(0) + \frac{p(0)t}{m\big(1 + \tfrac{r^2}{k^2}\big)} - \frac{gt^2}{2\big(1 + \tfrac{r^2}{k^2}\big)}
+\]
+
+\begin{itemize}
+\item
+  Find expression for \(\ddot{z}\):
+\end{itemize}
+
+\[
+    \ddot{z} = \frac{\dot{p}}{m\big(1 + \tfrac{r^2}{k^2}\big)} = \frac{-g}{\big(1 + \tfrac{r^2}{k^2}\big)}
+\]
+
+\begin{itemize}
+\item
+  As \(r \to 0\), \(\ddot{z} \to -g\) as denominator tends to 1
+\end{itemize}
+\end{example}
+
+\begin{example}[3]
+\begin{itemize}
+\item
+  Stretched Spring attached to a uniformly moving cart
+\item
+  passes \(x = 0\) at \(t = 0\)
+\item
+  cart moving at speed, \(v_0\)
+\item
+  unstretched length of the spring is negligible
+\end{itemize}
+
+\[
+    L(x, \dot{x}, t) = T - V = \frac{m\dot{x}^2}{2} - \frac{k}{2}(x - v_0t)^2 \]
+\[
+    E-L \implies m\ddot{x} = -k(x - v_0t),~[x' = x - v_0t] \] \[
+    \ddot{x}' = \ddot{x} ~;~ m\ddot{x}' = -kx'
+\]
+
+\begin{itemize}
+\item
+  SHM in the cart's frame of reference
+\end{itemize}
+
+\[
+    p_x = \frac{\partial L}{\partial \dot{x}} = m\dot{x} \] \[
+    H(x, p_x) = p_x\dot{x} - \frac{m\dot{x}^2}{2} + \frac{k}{2}(x - v_0t)^2 = \frac{p_{x}^2}{2m} + \frac{k}{2}(x - v_0t)^2 = T + V = E_T
+\]
+
+\begin{itemize}
+\item
+  H explicitly depends on t, therefore it is not conserved
+\item
+  To keep the cart moving uniformly despite the oscillating mass, energy
+  flows in and out of the system
+\item
+  However, in terms of \(x' = x - v_0t\), \(\dot{x}' = \dot{x} = v_0\):
+\end{itemize}
+
+\[
+    L(x', \dot{x}') = \frac{m\dot{x}'^2}{2} + m\dot{x}'v_0 + \frac{mv_{0}^2}{2} - \frac{kx'^2}{2} \]
+\[
+    p_{x'} = \frac{\partial L}{\partial \dot{x}'} = m\dot{x}' + mv_0 \]
+\[
+    H'(x', p_{x'}) = p_{x'}\dot{x}' - L(x', \dot{x}') \] \[
+    H'(x', p_{x'}) = m\dot{x}'^2 + m\dot{x}'v_0 - \frac{m\dot{x}'^2}{2} - m\dot{x}'v_0 - \frac{mv_{0}^2}{2} + \frac{kx'^2}{2} \]
+\[
+    H'(x', p_{x'}) = \frac{m\dot{x}'^2}{2} + \frac{kx'^2}{2} - \frac{mv_{0}^2}{2} \]
+\[
+    H'(x', p_{x'}) = \frac{(p_{x'} - mv_0)^2}{2m} + \frac{kx'^2}{2} - \frac{mv_{0}^2}{2} \neq E_T
+\]
+
+\begin{itemize}
+\item
+  \(H'(x', p_{x'})\) has no explicit time dependence so it is conserved
+  but it is no longer the total energy
+\end{itemize}
+\end{example}
+
+\section{}\label{lecture-12}
+
+\subsection{Hamilton's Principle}\label{hamiltons-principle-1}
+
+\begin{itemize}
+\item
+  \textbf{A mechanical system follows the path which minimises action,
+  where action is \(\int L\,dt\)}
+\end{itemize}
+
+\subsection{Canonical Transformations}\label{canonical-transformations}
+
+\begin{itemize}
+\item
+  A transformation is by definition \emph{canonical}, if it preserves
+  the structure of Hamilton's equations for all dynamical systems
+\item
+  In phase space, can consider new coords Q and momenta P as functions
+  of the original coords and momenta:
+\end{itemize}
+
+\[
+    Q = Q(q, p, t) ~;~ P = P(q, p, t)
+\]
+
+\begin{itemize}
+\item
+  Will need to define a new Hamiltonian, \(H'\) for new Q and P
+\item
+  page 34 for Lagrangian equivalency
+\end{itemize}
+
+\subsection{The Generating Function}\label{the-generating-function}
+
+\begin{itemize}
+\item
+  \(F(q, Q, t)\)
+\item
+  \(\frac{dF}{dt} = \frac{\partial F}{\partial q}\dot{q} + \frac{\partial F}{\partial Q}\dot{Q} + \frac{\partial F}{\partial t}\)
+\item
+  see page 35
+\end{itemize}
+
+\[
+    \frac{\partial L}{\partial \dot{q}} - \frac{\partial F}{\partial q} \implies p = \frac{\partial F}{\partial q} \]
+\[
+    \frac{\partial L'}{\partial \dot{Q}} = -\frac{\partial F}{\partial Q} \implies P = -\frac{\partial F}{\partial Q}
+\]
+
+\subsection{Transformed Hamiltonian}\label{tranformed-hamiltonian}
+
+\[
+    H'(Q, P, t) = H(q, p, t) + \frac{\partial F(q, Q, t)}{\partial t}
+\]
+
+\begin{example}
+\begin{itemize}
+\item
+  SHO
+\item
+  For a mass m moving horizontally on a frictionless surface, attached
+  to a spring of spring constant k, the Lagrangian can be written as:
+\end{itemize}
+
+\[
+    L = \frac{1}{2}m\dot{q}^2 - \frac{1}{2}kq^2 = \frac{m}{2}(\dot{q}^2 - \omega^2 q^2),~ \omega^2 = \frac{k}{m}
+\]
+
+\begin{itemize}
+\item
+  The canonically conjugate momentum to coordinate q is
+\end{itemize}
+
+\[
+    p = \frac{\partial L}{\partial \dot{q}} = m\dot{q}
+\]
+
+\begin{itemize}
+\item
+  Therefore, the Hamiltonian is:
+\end{itemize}
+
+\[
+    \begin{aligned}
+    H &= p\dot{q} - L = \frac{p^2}{m} - \frac{p^2}{2m} + \frac{m\omega^2 q^2}{2} \\
+    &= \frac{1}{2}\Big(\frac{p^2}{m} + m\omega^2 q^2\Big)
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Now consider the Generating Function:
+\end{itemize}
+
+\[
+    F(q, Q) = \frac{1}{2}m\omega q^2 \cot(2\pi Q)
+\]
+
+\begin{itemize}
+\item
+  This yields:
+\end{itemize}
+
+\[
+    P = -\frac{\partial F}{\partial Q} = \frac{m\pi\omega q^2}{\sin^2(2\pi Q)} \]
+\[
+    p = \frac{\partial F}{\partial q} = m\omega q\cot(2\pi Q)
+\]
+
+\begin{itemize}
+\item
+  Eliminating q gives
+\end{itemize}
+
+\[
+    p(P, Q) = \sqrt{\frac{m\omega P}{\pi}}\cos(2\pi Q)
+\]
+
+\begin{itemize}
+\item
+  This can then be used to give
+\end{itemize}
+
+\[
+    q(P, Q) = \sqrt{\frac{P}{m\omega\pi}} \sin(2\pi Q)
+\]
+
+\begin{itemize}
+\item
+  Substituting these back into Hamiltonian:
+\end{itemize}
+
+\[
+    H(q, p) = \frac{1}{2}\Big[\frac{\omega P}{\pi}\cos^2(2\pi Q) + \frac{\omega P}{\pi} \sin^2(2\pi Q)\Big] = \frac{\omega P}{2\pi} \]
+\[
+    \frac{\partial F}{\partial t} = 0 \implies H'(Q, P) = H(q, p) = \frac{\omega P}{2\pi}
+\]
+
+\begin{itemize}
+\item
+  Q is an ignorable coordinate (\(\frac{\partial H}{\partial Q} = 0\))
+  and hence P is a constant of the motion
+\item
+  Hamilton's equations give:
+\end{itemize}
+
+\[
+    \dot{Q} = \frac{\partial H'}{\partial P} = \frac{\omega}{2\pi} \implies Q(t) = \frac{\omega t}{2\pi}
+\]
+
+\begin{itemize}
+\item
+  Transforming back to (q, p) yields the familiar solution:
+\end{itemize}
+
+\[
+    q = \sqrt{\frac{P}{\pi m \omega}}\sin(\omega t) \] \[
+    p = \sqrt{\frac{m\omega P}{\pi}}\cos(\omega t) \] \[
+    \sqrt{P} \propto \text{amplitude of oscillation} \] \[
+    P \propto \text{energy of oscillator} \] \[
+    Q \propto \text{phase of oscillator}
+\]
+\end{example}
+
+\subsection{Forms of Generating Functions}\label{forms-of-generating-functions}
+\begin{itemize}
+\item
+  forms are shown on page 36
+\end{itemize}
+
+\subsection{Poisson Brackets}\label{poisson-brackets}
+
+\begin{itemize}
+\item
+  page 36 again
+\item
+  For N DoFs, Poisson bracket is defined as:
+\end{itemize}
+
+\[
+    \{ F, G \} \equiv \sum_{k = 1}^{N} \Bigg(\frac{\partial F}{\partial q_k}\frac{\partial G}{\partial p_k} - \frac{\partial F}{\partial p_k}\frac{\partial G}{\partial q_k}\Bigg)
+\]
+
+\begin{itemize}
+\item
+  Can rewrite Hamilton's equations of motion:
+\end{itemize}
+
+\[
+    \dot{q} = \{q, H\} ~;~ \dot{p} = \{p, H\} \] \[
+    F(q, p, t) \to \dot{F} = \{F, H\} + \frac{\partial F}{\partial t}
+\]
+
+\section{}\label{lecture-13}
+
+\subsection{Rotating Reference Frames}\label{rotating-reference-frames}
+
+\subsubsection{Accelerating Reference Frames}\label{accelerating-reference-frames}
+
+\begin{itemize}
+\item
+  page 38
+\item
+  changing from an inertial frame of reference, \(S\), to a linearly
+  accelerating one, \(B\):
+\end{itemize}
+
+\[
+    m\underline{\ddot{r}}_B = m(\underline{\ddot{r}}_S - \underline{\ddot{R}}) = \underbrace{\underline{F}}_{\text{true force}} - \underbrace{m\underline{\ddot{R}}}_{\text{fictitious force}}
+\]
+
+\subsubsection{Rotated Reference Frames in 2D}\label{rotated-reference-frames-in-2d}
+
+\begin{enumerate}
+\item
+  In frame \(S\), position vector has positive x and y components A new
+  fixed reference frame, \(B\), is defined wrt an original reference
+  frame by an anticlockwise rotation through angle \(\theta\)
+\item
+  In frame \(B\), \(\underline{r}\) has a positive x component and a
+  negative y component
+\item
+  An observer who changes their observation frame from \(S\) to \(B\)
+  finds that \(\underline{r}\) appears to have rotated clockwise through
+  an angle \(\theta\), from \(\underline{r}_S\) to \(\underline{r}_B\)
+\end{enumerate}
+
+\begin{itemize}
+\item
+  2D rotation matrix:
+\end{itemize}
+
+\[
+    R = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix} \]
+\[
+    R_=\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix} ~;~ R_=\begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} -\sin\theta \\ \cos\theta \end{pmatrix} \]
+\[
+    R^{-1} = \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{pmatrix}
+\]
+
+\subsection{Rotations in 3D}\label{rotations-in-3d}
+
+\begin{itemize}
+\item
+  rotational operations in 3D \textbf{do not commute}
+\item
+  page 39 has derivation leading to the rotation formula:
+\end{itemize}
+
+\[
+    \underline{r}_B = \underline{r}_S \cos\theta + (\underline{n} \cdot \underline{r}_S)\underline{n}[1 - \cos\theta] + (\underline{r}_S \times \underline{n})\sin\theta
+\]
+
+\subsubsection{Infinitesimal Rotations}\label{infinitesimal-rotations}
+
+\begin{itemize}
+\item
+  page 40
+\item
+  fixed in frame \(S\)
+\item
+  take the small angle limit for \(d\theta\), and rotation formula
+  becomes:
+\end{itemize}
+
+\[
+    \underline{r} + d\underline{r} = \underline{r} + (\underline{r} \times \underline{n})d\theta
+\]
+
+\begin{itemize}
+\item
+  velocity in \(B\) relative to \(S\)
+\end{itemize}
+
+\[
+    \Big[\frac{dr}{dt}\Big]_{in\,B_{}} = -\Big(\underline{n}\frac{d\theta}{dt}\Big) \times \underline{r} = -\underbrace{\underline{\omega}}_{\text{angular velocity}} \times \underline{r}
+\]
+
+\begin{example}[Pseudo-vectors]
+
+\begin{itemize}
+\item
+  Consider vectors in a particular coordinate system:
+  \begin{itemize}
+  \item
+    \(\underline{r}_1 = (x_1, y_1, z_1)\)
+  \item
+    \(\underline{r}_2 = (x_2, y_2, z_2)\)
+  \item
+    \(\underline{u} = \underline{r}_1 \times \underline{r}_2\)
+  \end{itemize}
+\item
+  If the coordinate system is reflected such that \(x'\) is in the
+  direction of \(-x\) and similarly with the other coordinates, then in
+  this reflected coordinate system, vector \(\underline{r}_1\) will have
+  components:
+  \begin{itemize}
+  \item
+    \(\underline{r}_{1}' = (-x_1, -y_1, -z_1)\)
+  \end{itemize}
+\item
+  However,
+  \(\underline{u}' = \underline{r}_{1}' \times \underline{r}_{2}'\), has
+  components that are the same as \(\underline{u}\)
+  \begin{itemize}
+  \item
+    it has not changed under reflection
+  \end{itemize}
+\item
+  \(\underline{u}\) is a pseudo-vector
+  \begin{itemize}
+  \item
+    it behaves like a vector under rotation but is invariant under
+    reflection
+  \end{itemize}
+\end{itemize}
+\end{example}
+
+\subsection{Velocity and Acceleration}\label{velocity-and-acceleration}
+
+\begin{itemize}
+\item
+  must account for time-dependence in frame \(S\):
+\end{itemize}
+
+\[
+    \underbrace{\Big[\frac{d\underline{r}}{dt}\Big]_{in\,B_{}}}_{\text{velocity in B}} = \underbrace{\Big[\frac{d\underline{r}}{dt}\Big]_{in\,S_{}}}_{\text{velocity in S}} - \underbrace{\underline{\omega} \times \underline{r}}_{\text{motion due to motion of B relative to S}}
+\]
+
+\begin{itemize}
+\item
+  Use \(\Big[\frac{d}{dt}\Big]_{in\,B_{}}\) as operator
+\end{itemize}
+
+\[
+    \Big[\frac{d}{dt}\Big]_{in\,B_{}} = \Bigg(\Big[\frac{d}{dt}\Big]_{in\,S_{}} - \underline{\omega} \times \Bigg)
+\]
+
+\begin{itemize}
+\item
+  Use this to find the acceleration:
+\end{itemize}
+
+\[
+    \Big[\frac{d\underline{v}_B}{dt}\Big]_{in\,B_{}} = \underline{a}_S - 2\underline{\omega} \times \underline{v}_B - \underline{\omega} \times (\underline{\omega} \times \underline{r}) - \underline{\dot{\omega}} \times \underline{r}
+\]
+
+\subsection{Inertial Forces in a Rotating Frame}\label{inertial-forces-in-a-rotating-frame}
+
+\[
+    m\underline{\ddot{r}} = \underline{F} - \underbrace{2m\underline{\omega} \times \underline{\dot{r}}}_{\text{coriolis force}} - \underbrace{m\underline{\omega} \times (\underline{\omega} \times \underline{r})}_{\text{centrifugal force}} - \underbrace{m\underline{\dot{\omega}} \times \underline{r}}_{\text{Euler force}}
+\]
+
+\paragraph{Tying back into Central Forces}
+
+\begin{itemize}
+\item
+  Comparing to Central Forces:
+\end{itemize}
+
+\[
+    E = \underbrace{\overbrace{\frac{1}{2}m\dot{r}^2}^{T_{eff}} + \frac{1}{2}mr^2 \dot{\phi}^2}_{T} + \underbrace{V_{int}(r)}_{V}
+\]
+
+\begin{itemize}
+\item
+  Angular momentum barrier, \(\frac{1}{2}mr^2\dot{\phi}^2\) is
+\end{itemize}
+
+\[
+    -\nabla (\frac{1}{2}mr^2 \dot{\phi}^2) = -m\dot{\phi}^2r
+\]
+
+\begin{itemize}
+\item
+  This is just the centrifugal force
+\item
+  Can consider the effective 1D problem as having been set in a
+  rotating, non-inertial frame
+\end{itemize}
+
+\section{}\label{lecture-14}
+
+\begin{example}[Homework]
+
+\begin{itemize}
+\item
+  Sketch
+\end{itemize}
+
+\[
+    V_{eff}(r) = \frac{J^2}{2mr^2} - \frac{k}{r}e^{-\frac{r}{a}}
+\]
+
+\begin{itemize}
+\item
+  Sketch parts independently then add together
+  \begin{itemize}
+  \item
+    exponential not as significant so more similar to first term
+  \end{itemize}
+\end{itemize}
+\end{example}
+
+\subsection{Inertial Forces on Earth}\label{intertial-forces-on-earth}
+
+\subsubsection{Local Coordinate System}\label{local-coordinate-system}
+
+\begin{itemize}
+\item
+  page 41
+\end{itemize}
+
+\begin{enumerate}
+\item
+  Model Earth as perfect solid sphere and require an appropriate
+  coordinate system to describe motion near a point on its surface
+  \begin{itemize}
+  \item
+    Start with Cartesian coordinates with z running through poles
+  \end{itemize}
+\item
+  Rotate coordinate system around x axis so that z emerges at a chose
+  point on Earth's surface
+  \begin{itemize}
+  \item
+    In new coordinates, looks like a rotation of \(-\theta\) about x
+  \item
+    in local frame, \(\omega\) has y and z components with trig
+    resolutions
+  \end{itemize}
+
+\[
+    \underline{\omega} = \begin{pmatrix} 0 \\ \omega\sin\theta \\ \omega\cos\theta \end{pmatrix}
+\]
+
+\item
+  Displace origin of coordinate system by \(\underline{R}\) to the point
+  where the local z emerges from the Earth's surface
+\end{enumerate}
+
+\subsection{Inertial Forces}\label{intertial-forces}
+
+\begin{itemize}
+\item
+  need to substitute in
+  \(\underline{r} = \underline{r}' + \underline{R}\)
+\end{itemize}
+
+\subsection{Forces}\label{forces}
+
+\subsubsection{Centrifugal Forces}\label{centrifugal-forces}
+
+\begin{itemize}
+\item
+  \(-m\underline{\omega} \times (\underline{\omega} \times \underline{r})\)
+\item
+  must be perpendicular to all terms above
+\item
+  points directly away from the axis of rotation
+\item
+  page 42 for diagrams
+\item
+  largest at equator, decreases smoothly as a trig function towards
+  poles
+\item
+  adding gravity and centrifugal together gives almost standard gravity
+  map but decreased
+  \begin{itemize}
+  \item
+    centrifugal is not acting radially
+  \item
+    effect of gravity is shifted slightly from exactly in the middle
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{The Deviation of a Plumb Bob}\label{the-deviation-of-a-plumb-bob}
+
+\begin{itemize}
+\item
+  Set \(\underline{r}' = (0, 0, 0)\) and \(\underline{R} = (0,0,R)\),
+  where R is radius of Earth
+\item
+  use
+\end{itemize}
+
+\[
+    \underline{\omega} = \begin{pmatrix} 0 \\ \omega\sin\theta \\ \omega\cos\theta \end{pmatrix}
+\]
+
+\begin{itemize}
+\item
+  obtain centrifugal force on plumb bob of mass m:
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \underline{F}_{c} &= -m\underline{\omega} \times [\underline{\omega} \times (\underline{r}' + \underline{R})] \\
+    &= -m\omega\underline{\omega} \times \begin{vmatrix} \underline{i} & \underline{j} & \underline{k} \\
+    0 & \sin\theta & \cos\theta \\
+    0 & 0 & R \end{vmatrix} \\
+    &= -m\omega^2 \begin{vmatrix} \underline{i} & \underline{j} & \underline{k} \\ 0 & \sin\theta & \cos\theta \\ R\sin\theta & 0 & 0\end{vmatrix} \\
+    &= -m\omega^2R(0, \sin\theta\cos\theta, -\sin^2\theta)
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Incorporating the effect of gravity, one obtains
+\end{itemize}
+
+\[
+    m\underline{\ddot{r}}' = -m(0, \omega^2R\sin\theta\cos\theta, g - \omega^2R\sin^2\theta)
+\]
+
+\begin{itemize}
+\item
+  Now consider the deflection angle, \(\phi_d\), defined through
+\end{itemize}
+
+\[
+    \tan\phi_d = \frac{\omega^2R\sin\theta\cos\theta}{g - \omega^2R\sin^2\theta} \approx \underbrace{\frac{\omega^2R\sin\theta\cos\theta}{g}}_{g >> \omega^2R\sin^2\theta}
+\]
+
+\begin{itemize}
+\item
+  For \(\theta = \frac{\pi}{4}, \frac{3\pi}{4},~ \phi_d\) is maximised
+  at 1.7 milliradians
+\item
+  Buildings at colatitude \(\frac{\pi}{4}\) are therefore tilted by this
+  amount from the true vertical if aligned with a plumb bob, or a spirit
+  level
+\item
+  Note that \(\omega = \frac{2\pi}{86400} \text{rad }s^{-1}\),
+  \(R \approx 6400\,km \implies \frac{\omega^2 r}{g} = 0.003\)
+\end{itemize}
+
+\subsubsection{Coriolis Force}\label{coriolis-force}
+
+\begin{itemize}
+\item
+  page 43
+\item
+  Coriolis force is given by
+\end{itemize}
+
+\[
+    -2m\underline{\omega} \times \underline{\dot{r}}' = -2m\omega(\dot{z}\sin\theta - \dot{y}\cos\theta, \dot{x}\cos\theta, -\dot{x}\sin\theta)
+\]
+
+\begin{itemize}
+\item
+  only affects moving systems, depends on velocities
+\item
+  often considered to be constrained in a plane, so ignore z dimension
+  and simplify equation
+\end{itemize}
+
+\begin{example}[Coriolis Force]
+\begin{itemize}
+\item
+  particle with mass, m, moves with constant relative speed, v, around
+  the rim of a wheel of radius, b
+\item
+  wheel rolls along a fixed straight line with uniform velocity, u
+\item
+  taking wheel as frame of reference, find centrifugal and Coriolis
+  forces
+\item
+  relative to the inertial frame, moving right with speed, u, and has
+  its origin at O, the rotating wheel frame has angular velocity,
+  \(\underline{\omega}\):
+\end{itemize}
+
+\[
+    \underline{\omega} = \frac{u}{b} \text{ - into the page} \] \[
+    \begin{aligned}
+    \underline{F}_c &= -m\underline{\omega} \times (\underline{\omega} \times \underline{r}) \\
+    &= m\omega^2b \underline{\hat{r}} \\
+    &= \frac{mu^2}{b}\underline{\hat{r}}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Coriolis force:
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \underline{F}_{cor} &= -2m\underline{\omega} \times \overbrace{\underline{\dot{r}}}^{= \underline{v}} \\
+    &= 2m\frac{uv}{b}\underline{\hat{r}} \\
+    &= \frac{2v}{u}\underline{F}_c
+    \end{aligned}
+\]
+\end{example}
+
+\subsubsection{Loose Ends}\label{loose-ends}
+
+\begin{itemize}
+\item
+  Euler force is not zero on Earth, but tends to be negligible
+\item
+  In rotating reference frame that is also accelerating translationally,
+  \(\underline{\ddot{R}}\), general EoM given by:
+\end{itemize}
+
+\[
+    m\underline{\ddot{r}} = \underline{F} - 2m\underline{\omega} \times \underline{\dot{r}} - m\underline{\omega} \times (\underline{\omega} \times \underline{r}) - m\underline{\dot{\omega}} \times \underline{r} - m\underline{\ddot{R}}
+\]
+
+\section{}\label{lecture-15}
+
+\subsection{Examples in the Coriolis Force}\label{examples-in-the-coriolis-force}
+
+\[
+    \underline{F}_{cor} = -2m\underline{\omega} \times \underline{\dot{r}}
+\]
+
+\subsubsection{Weather Systems}\label{weather-systems}
+
+\begin{itemize}
+\item
+  Storm rotating clockwise is a cyclone, in the southern hemisphere
+  \begin{itemize}
+  \item
+    Coriolis force pushes to the left
+  \end{itemize}
+\item
+  \(\underline{\omega} \times \underline{\dot{r}}\) is West, so
+  \(-\underline{\omega} \times \underline{\dot{r}}\) is East
+\item
+  As pressure gradient pushes air north towards the centre of low
+  pressure, the coriolis force deflects it East.
+\item
+  In the northern hemisphere, coriolis force acts to the right of the motion; in the southern, it acts to the left of the motion.
+\end{itemize}
+
+\subsubsection{Foucault's Pendulum}\label{foucaults-pendulum}
+
+\begin{itemize}
+\item
+  Local coordinate frame:
+  \begin{itemize}
+  \item
+    \(\underline{i}\) corresponding to east,
+  \item
+    \(\underline{j}\) is north,
+  \item
+    \(\underline{k}\) is radially outwards
+  \end{itemize}
+\item
+  In local frame,
+\end{itemize}
+
+\[
+    \underline{\omega} = \omega\sin\theta\underline{j} + \omega\cos\theta\underline{k}
+\]
+
+\begin{itemize}
+\item
+  \(\theta\) is the colatitude
+\item
+  \(\underline{\dot{\omega}} \approx 0\) for Earth and
+\end{itemize}
+
+\[
+    \omega^2 \ll \omega_0^2 = \frac{g}{l}
+\]
+
+\begin{itemize}
+\item
+  Will neglect the Euler and centrifugal forces respectively
+\item
+  For the coriolis force:
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \underline{F}_{cor} &= -2m\underline{\omega} \times \underline{\dot{r}} \\
+    \underline{\omega} \times \underline{\dot{r}} &= \begin{vmatrix} \underline{i} & \underline{j} & \underline{k} \\ 0 & \omega\sin\theta & \omega\cos\theta \\ \dot{x} & \dot{y} & \dot{z} \end{vmatrix} \\
+    &= \omega\begin{pmatrix} \dot{z}\sin\theta - \dot{y}\cos\theta \\ \dot{x}\cos\theta \\ -\dot{x}\sin\theta \end{pmatrix}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Motion is largely in \(\underline{i}-\underline{j}\) plane for small
+  angle oscillations, \(\therefore \dot{z} \approx 0\)
+\item
+  Include force due to gravity:
+\end{itemize}
+
+\[
+    \underline{F} = -m\omega_0^2 (x\underline{i} + y\underline{j})
+\]
+
+\begin{itemize}
+\item
+  Then, ignoring vertical motion,
+\end{itemize}
+
+\[
+    \begin{aligned}
+    m\underline{\ddot{r}} = -m\omega_0^2 (x\underline{i} &+ y\underline{j}) - 2m\omega(-\dot{y}\cos\theta\underline{i} - \dot{x}\cos\theta\underline{j}) \\
+    \begin{pmatrix} \ddot{x} \\ \ddot{y} \end{pmatrix} &= \begin{pmatrix} 2\omega\dot{y}\cos\theta - \omega_0^2 x \\ -2\omega\dot{x}\cos\theta - \omega_0^2 y \end{pmatrix}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Set \(\zeta(t) = x(t) + iy(t)\), then
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \ddot{\zeta} &= \ddot{x} + i\ddot{y} \\
+    &= 2\omega\cos\theta\underbrace{(-i\dot{x} + \dot{y})}_{-i\dot{\zeta}} - \omega_0^2\underbrace{(x + iy)}_{\zeta} \\
+    &= -2i\omega\cos\theta \dot{\zeta} - \omega_0^2 \zeta \\
+    \ddot{\zeta} &+ 2i\omega\cos\theta\dot{\zeta} + \omega_0^2 \zeta = 0
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  This looks like a damped oscillator with complex damping.
+\item
+  Try a solution, \(\zeta = e^{\lambda t}\)
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \lambda^2 &+ 2i\omega\cos\theta\lambda + \omega_0^2 = 0 \\
+    \implies \lambda &= -i\omega\cos\theta \pm \sqrt{-\omega^2\cos^2\theta - \omega_0^2} \\
+    &= i\bigg(-\omega\cos\theta \pm \sqrt{\omega^2\cos^2\theta + \omega_0^2}\bigg) \\
+    &= i\bigg(-\hat{\omega} \pm \sqrt{\hat{\omega} + \omega_0^2}\bigg),~ \hat{\omega} = \omega\cos\theta \ll \omega_0 \\
+    &\approx i(-\hat{\omega} \pm \omega_0) \\
+    \therefore \zeta = x + iy &= \underbrace{e^{-i\hat{\omega}t}}_{\text{\shortstack{precession of the \\ plane of oscillation}}}\underbrace{(\alpha e^{i\omega_0 t} + \beta e^{-i\omega_0 t})}_{\text{normal pendulum motion}} \\
+    \text{Precession rate } &= \hat{\omega} = \omega\cos\theta = \omega\underbrace{\sin\lambda}_{\text{latitude}}
+    \end{aligned}
+\]
+
+\subsection{The Euler Force}\label{the-euler-force}
+
+\begin{itemize}
+\item
+  The moon moves away by about 4 cm a year by taking orbital angular
+  momentum from the spin angular momentum of the earth
+  \begin{itemize}
+  \item
+    Earth's days are slowing down due to this
+  \item
+    In 100 years, days on Earth will be about 2 ms longer
+  \item
+    \(\underline{\dot{\omega}} < 0\) - difference between two \(\omega\)
+    vectors, points out the south pole
+  \end{itemize}
+\end{itemize}
+
+\section{}\label{lecture-16}
+
+\subsection{Rotational Inertia, Angular Momentum, and Kinetic Energy}\label{rotational-inertia-angular-momentum-and-kinetic-energy}
+
+\begin{itemize}
+\item
+  See pages 44-46
+\end{itemize}
+
+\[
+    I = \sum_{k = 1}^N m_k|(\underline{r}_k \cdot \underline{n})\underline{n} - \underline{r}_k|^2 = \sum_{k = 1}^\infty m_k [r_k^2 - (\underline{r}_k \cdot \underline{n})^2]
+\]
+
+\subsubsection{\texorpdfstring{Defining the Inertia Tensor,
+\(\hat{I}\)}{Defining the Inertia Tensor, \textbackslash{}hat\{I\}}}\label{defining-the-inertia-tensor-hati}
+
+\[
+    \begin{aligned}
+    \underline{J} &= \sum_{k = 1}^N m_k [r_k^2\underline{\omega} - (\underline{r}_k\cdot \underline{\omega})\underline{r}_k] \\
+    J_x &= \sum_{k = 1}^N m_k (r_k^2 - x_k^2)\omega_x - m_kx_ky_k\omega_y - m_kx_kz_k\omega_z \\
+    J_x &= \sum_{k = 1}^N m_k (r_k^2 - y_k^2)\omega_y - m_kx_ky_k\omega_x - m_ky_kz_k\omega_z \\
+    J_x &= \sum_{k = 1}^N m_k (r_k^2 - z_k^2)\omega_z - m_kx_kz_k\omega_x - m_ky_kz_k\omega_y \\
+    \underbrace{\begin{pmatrix} J_x \\ J_y \\ J_z \end{pmatrix}}_{\underline{J}} &= \underbrace{\begin{pmatrix} I_{xx} & I_{xy} & I_{xz} \\ I_{yx} & I_{yy} & I_{yz} \\ I_{zx} & I_{zy} & I_{zz} \end{pmatrix}}_{\hat{I}}\underbrace{\begin{pmatrix} \omega_x \\ \omega_y \\ \omega_z \end{pmatrix}}_{\underline{\omega}} \\
+    I_{\alpha\beta} &= \sum_k^N m_k(r_k^2 \delta_{\alpha\beta} - r_{k\alpha}r_{k\beta})
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  A ratio of vectors is called a Tensor
+\item
+  The Inertial tensor is the ratio of \(\underline{J}\) to
+  \(\underline{\omega}\)
+\item
+  For continuous rigid bodies:
+\end{itemize}
+
+\[
+    I_{\alpha\beta} = \int_V dx\;dy\;dz\;\rho(x,y,z)(r^2\delta_{\alpha\beta} - r_\alpha r_\beta)
+\]
+
+\begin{example}[Example of Inertia Tensor]
+
+\begin{itemize}
+\item
+  Consider the Inertia tensor for a uniform cube of length a, mass m,
+  with origin at the centre of mass
+\item
+  This is a uniform cube so it has a density
+\end{itemize}
+
+\[
+    \rho = \frac{M}{a^3}
+\]
+
+\[
+    \begin{aligned}
+    I_{xx} &= \int_{-\frac{a}{2}}^{\frac{a}{2}} dx \int_{-\frac{a}{2}}^{\frac{a}{2}} dy \int_{-\frac{a}{2}}^{\frac{a}{2}} dz\; \rho\underbrace{(r^2 \cdot 1 - x^2)}_{y^2 + z^2} \\
+    &= \frac{M}{a^3}a = \int_{-\frac{a}{2}}^{\frac{a}{2}} dy \Bigg[y^2z + \frac{z^3}{3}\Bigg]_{-\frac{a}{2}}^{\frac{a}{2}} \\
+    &= \frac{M_{}}{a^2} \int_{-\frac{a}{2}}^{\frac{a}{2}} dy \cdot 2 \Bigg(\frac{y^2 a}{2} + \frac{a^3}{24}\Bigg) \\
+    &= \frac{M}{a^2} \Bigg[\frac{y^3 a}{3} + \frac{a^3 y}{12} \Bigg]_{-\frac{a}{2}}^{\frac{a}{2}} \\
+    &= \frac{2M_{}}{a^3} \Bigg[\frac{a^4}{24} + \frac{a^4}{24}\Bigg] = \frac{Ma^4}{6}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  From symmetry, \(I_{xx} = I_{yy} = I_{zz}\)
+\end{itemize}
+
+\[
+    \begin{aligned}
+    I_{xy} &= \int_{-\frac{a}{2}}^{\frac{a}{2}} dx \int_{-\frac{a}{2}}^{\frac{a}{2}} dy \int_{-\frac{a}{2}}^{\frac{a}{2}} dz\;\rho(r^2 \cdot 0 - xy) \\
+    &= -\rho a \int_{-\frac{a}{2}}^{\frac{a}{2}} dx \; \underbrace{\Bigg[\frac{xy^2}{2}\Bigg]_{-\frac{a}{2}}^{\frac{a}{2}}}_{\text{even fn of y}} = 0
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  From symmetry, all off-diagonal elements are zero.
+\item
+  Hence,
+\end{itemize}
+
+\[
+    \hat{I} = \frac{Ma^2}{6}\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+\]
+
+\begin{itemize}
+\item
+  If origin of coordinates is at one corner of the cube, then
+\end{itemize}
+
+\[
+    \begin{aligned}
+    I_{xx} = I_{yy} = I_{zz} &= \rho \int_0^a dx \int_0^a dy \int_0^a dz \;(y^2 + z^2) \\
+    &= \frac{M}{a^2} \int_0^a dy \; \Bigg[y^2 a + \frac{a^3}{3}\Bigg] \\
+    &= \frac{M}{a^2} \Bigg[\frac{y^3 a}{3} + \frac{a^3 y}{3}\Bigg]_{0}^{a_{}} = \frac{2Ma^2}{3} \\
+    I_{xy} &= -\rho \int_0^a dx \int_0^a dy \int_0^a dz \cdot xy \\
+    &= -\rho a \int_0^a dx \; \Bigg[\frac{xa^2}{2}\Bigg] = -\frac{M}{a^2}\frac{a^2}{2}\frac{a^2}{2} \\
+    &= -\frac{Ma^2}{2}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Hence,
+\end{itemize}
+
+\[
+    \hat{I} = \frac{Ma^2}{12 }\begin{pmatrix} 8 & -3 & -3 \\ -3 & 8 & -3 \\ -3 & -3 & 8 \end{pmatrix}
+\]
+
+\begin{itemize}
+\item
+  The inertia tensor of an object is with respect to rotations about a
+  particular point
+\item
+  Inertia tensors will always be symmetric
+\end{itemize}
+\end{example}
+
+\subsection{Rotational Kinetic Energy}\label{rotational-kinetic-energy}
+
+\[
+    T = \frac{1}{2}\underline{\omega} \cdot \underbrace{\underline{J}}_{\hat{I}\underline{\omega}}
+\]
+
+\[
+    T = \frac{\omega^2}{2}\underline{n}^T \hat{I} \underline{n}
+\]
+
+\begin{itemize}
+\item
+  \(\underline{n}^T \hat{I} \underline{n}\) is the moment of the
+  inertia, \(I\) about the axis defined by \(\underline{n}\)
+\end{itemize}
+
+\section{}\label{lecture-17}
+
+\subsection{Angular Momentum and KE}\label{angular-momentum-and-ke}
+
+\begin{itemize}
+\item
+  page 46 - 47
+\item
+  Define CoM position and time derivative
+\item
+  Total Momentum \(P = \sum_{k = 1}^N m_k\underline{\dot{r}}_k\)
+\item
+  Use
+\end{itemize}
+
+\[
+    \underline{J} = \sum_{k = 1}^N m_k(\underline{r}_k \times \underline{\dot{r}}_k)
+\]
+
+\begin{itemize}
+\item
+  follow derivations in notes
+\end{itemize}
+
+\subsection{Parallel and Principal Axis Theorems}\label{parallel-and-principal-axis-theorems}
+
+\subsubsection{Displaced Axis Theorem}\label{displaced-axis-theorem}
+
+\begin{itemize}
+\item
+  Can convert Inertia Tensor into other form using CoM position:
+\end{itemize}
+
+\[
+    I_{\alpha\beta} = \sum_{k = 1}^N m_k(r_{k}'\delta_{\alpha\beta} - r_{k,\alpha}'r_{k,\beta}') + M(R_C^2\delta_{\alpha\beta} - R_{C,\alpha}R_{C,\beta})
+\]
+
+\begin{itemize}
+\item
+  full derivation on page 48
+\end{itemize}
+
+\[
+    \hat{I} = \hat{I}_{CoM} + M\hat{A}
+\]
+
+\begin{itemize}
+\item
+  \(\hat{A}\) can be represented as a matrix, the elements of which are
+  determined by the elements of the CoM position vector
+\end{itemize}
+
+\[
+    A_{\alpha\beta} = R_C^2\delta_{\alpha\beta} - R_{C,\alpha}R_{C,\beta}
+\]
+
+\begin{example}[1]
+
+\[
+    \begin{aligned}
+    A_{xx} &= R_C^2 - x_C^2 = y_C^2 + z_C^2 \\
+    A_{xy} &= -x_Cy_C \\
+    \hat{A} &= \begin{pmatrix} y_C^2 + z_C^2 & -y_Cx_C & -z_Cx_C \\ -x_Cy_C & z_C^2 + x_C^2 & -z_Cy_C \\ -x_Cz_C & -y_Cz_C & x_C^2 + y_C^2 \end{pmatrix}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  The moment of inertia for rotations about the z axis through the
+  centre of mass:
+\end{itemize}
+
+\[
+    I_z = \underline{\hat{z}}^T \hat{I}_{CoM} \underline{\hat{z}}
+\]
+
+\begin{itemize}
+\item
+  \(\underline{\hat{z}}\) is a unit vector in the z direction
+\item
+  For a parallel axis is a distance \(d = \sqrt{x_C^2 + y_C^2}\) away,
+  the moment of inertia is \(I_d\), where
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \underline{\hat{z}}^T \hat{I}_{d} \underline{\hat{z}} &= \underline{\hat{z}}^T \hat{I}_{CoM} \underline{\hat{z}} + M\underline{\hat{z}}^T \hat{A} \underline{\hat{z}} \\
+    I_d &= I_z + M\underline{\hat{z}}^T \hat{A} \underline{\hat{z}} \\
+    &= I_z + M \begin{pmatrix} 0 & 0 & 1 \end{pmatrix}\begin{pmatrix} & \hat{A} & \\ & & \\ \end{pmatrix}\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \\
+    &= I_z + M \begin{pmatrix} 0 & 0 & 1 \end{pmatrix}\begin{pmatrix} -z_cx_C \\ -z_Cy_C \\ x_C^2 + y_C^2 \end{pmatrix} \\
+    &= I_z + M(x_C^2 + y_C^2) \\
+    &= I_z + Md^2
+    \end{aligned}
+\]
+\end{example}
+
+\begin{example}[2]
+\begin{itemize}
+\item
+  Calculate \(\hat{I}\) about the centre of mass for the 3 mass point
+  system shown.
+\item
+  Triangular system, two masses of mass \(m_1\) and one of \(m_2\)
+\item
+  First fine \(\hat{I}\) for the two masses at \(m_1\) about their CoM,
+  a point X
+\item
+  Choice of axes takes advantage of symmetry, hence
+\end{itemize}
+
+\[
+    \begin{aligned}
+    I_{xx} &= \sum_{k = 1}^2 m_k (x_k^2 - x_k^2) = 0 \\
+    I_{yy} &= \sum_{k = 1}^2 m_k (\overbrace{x_k^2}^{\pm a/2} - \overbrace{y_k^2}^{0}) = \frac{m_1 a^2}{2} \\
+    \implies & I_{zz} = I_{yy}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  All of-diagonal elements will be 0
+  \begin{itemize}
+  \item
+    they involve the product of two different components and only
+    \(x_k\) is non-zero
+  \end{itemize}
+\end{itemize}
+
+\[
+    \hat{I}_{2m_1,X} = \frac{m_1 a^2}{2} \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+\]
+
+\begin{itemize}
+\item
+  CoM of triangle is at \(x = 0, z= 0, y = \frac{m_2 h}{m_2 + 2m_1}\)
+\end{itemize}
+
+\[
+    \underline{R}_C = \begin{pmatrix} 0 \\ \frac{m_2 h}{m_2 + 2m_1} \\ 0 \end{pmatrix}
+\]
+
+\begin{itemize}
+\item
+  Therefore, the inertia tensor defined wrt CoM of the triangle for
+  these 2 masses is
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \hat{I}_{2m_1} &= \frac{m_1 a^2}{2} \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} + 2m_1 \begin{pmatrix} R_C^2 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & R_C^2 \end{pmatrix} \\
+    &= m_2 \begin{pmatrix} 2R_C^2 & 0 & 0 \\ 0 & \frac{a^2}{2} & 0 \\ 0 & 0 & \frac{a^2}{2} + 2R_C^2 \end{pmatrix}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Inertia Tensor wrt CoM of triangle:
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \hat{I}_{m_2} &= m_2 \begin{pmatrix} (h - R_C)^2 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & (h - R_C)^2 \end{pmatrix} \\
+    h - R_C &= \frac{h(m_2 + 2m_1) - m_2h}{m_2 + m_1} = \frac{2m_1 h}{m_2 + 2m_1} \\
+    R_C^2 &= \frac{(m_1 h)^2}{(m_2 + 2m_1)^2} \\
+    \therefore \hat{I} = \hat{I}_{2m_1} + \hat{I}_{m_2} &= \begin{pmatrix} 2m_1R_C^2 + m_2(h - R_C)^2 & 0 & 0 \\ 0 & \frac{m_1 a^2}{2} & 0 \\ 0 & 0 & \frac{m_1 a^2}{2} + 2m_1R_C^2 + m_2(h - R_C)^2 \end{pmatrix} \\
+    &= \begin{pmatrix} \frac{2m_1m_2 h^2}{m_2 + 2m_1} & 0 & 0 \\ 0 & \frac{m_1 a^2}{2} & 0 \\ 0 & 0 & \frac{2m_1m_2 h^2}{m_2 + 2m_1} + \frac{m_1 a^2}{2} \end{pmatrix}
+    \end{aligned}
+\]
+\end{example}
+
+\section{}\label{lecture-18}
+
+\subsection{Symmetry of Inertia Tensor}\label{symmetry-of-inertia-tensor}
+
+\begin{itemize}
+\item
+  \(I_{\alpha\beta} = I_{\beta\alpha}\)
+\end{itemize}
+
+\subsection{Orthogonal Matrices}\label{orthogal-matrices}
+\begin{itemize}
+\item
+  page 49
+\item
+  Orthogonal matrices have the transpose as their inverse:
+  \begin{itemize}
+  \item
+    \(A^{-1} = A^T\)
+  \end{itemize}
+\item
+  2D rotation matrix is orthogonal
+\end{itemize}
+
+\subsection{Principal Axis Theorem}\label{principal-axis-theorem}
+
+\begin{itemize}
+\item
+  \(\hat{I}\) is represented by a 3x3 matrix so has three eigenvalues.
+  \begin{itemize}
+  \item
+    These are the principal moments of inertia
+  \end{itemize}
+\item
+  The eigenvectors from this form the principal axes
+\end{itemize}
+
+\subsubsection{\texorpdfstring{Transforming \(\hat{I}\) under rotations}{Transforming \textbackslash{}hat\{I\} under rotations}}\label{transforming-hati-under-rotations}
+
+\begin{itemize}
+\item
+  The rotational KE is invariant under rotations
+  \begin{itemize}
+  \item
+    prime indicates rotated coordinates
+  \end{itemize}
+\end{itemize}
+
+\[
+    \begin{aligned}
+    T_{rot} &= \frac{1}{2}\underline{\omega}^T \hat{I}\underline{\omega} = \frac{1}{2}\underline{\omega}'^T \hat{I}' \underline{\omega}' \\
+    \underline{\omega}' = \hat{U} \underline{\omega}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  \(\hat{U}\) is an orthogonal matrix representing a general rotation
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \underline{\omega}'^T &= \underline{\omega}^T \hat{U}^T \\
+    T_{rot} &= \frac{1}{2} (\underline{\omega}^T \hat{U}^T) \hat{I}' (\hat{U} \underline{\omega}) \\
+    &= \frac{1}{2}\underline{\omega}^T (\hat{U}^T \hat{I}' \hat{U}) \underline{\omega} \\
+    \implies \hat{I} &= \hat{U}^T \hat{I}' \hat{U} \\
+    \implies \hat{I}' &= \hat{U}\hat{I}\hat{U}^T
+    \end{aligned}
+\]
+
+\subsection{Inertia Tensor of a Dumbbell}\label{inertia-tensor-of-a-dumbbell}
+
+\begin{itemize}
+\item
+  Find the inertia tensor for a dumbbell
+  \begin{itemize}
+  \item
+    two uniform spheres of mass \(m_1\) and \(m_2\) with radii a and b
+    respectively, separated by a massless rigid rod of length R
+  \end{itemize}
+\item
+  From the symmetry of the dumbbell, one of the principal axes lies
+  along the line connecting the masses
+  \begin{itemize}
+  \item
+    choose one axis lying along this direction
+  \end{itemize}
+\item
+  Place origin at CoM
+\item
+  Then the centres of \(m_1\) and \(m_2\) respectively are at
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \frac{m_2 R}{m_1 + m_2}\hat{k} ~;~ \frac{-m_1 R}{m_1 + m_2}\hat{k}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  First calculate the inertia tensor for a sphere of mass
+  \(m_1 = \frac{4}{3}\pi a^3 \rho\), which by symmetry has
+  \(I_1 = I_2 = I_3\)
+\item
+  take u to be distance to axis of rotation of mass dm
+\end{itemize}
+
+\[
+    \begin{aligned}
+    dI_{3,a} &= u^2\,dm \\
+    dm &= \rho\,dV = \rho (r^2 \sin\theta \;dr\,d\theta\,d\phi) \\
+    u &= r\sin\theta \\
+    I_{3,a} &= \int_0^{2\pi} d\phi \int_0^\pi \int_0^a r^4\sin\theta (1 - \cos^2\theta) \rho\;d\theta\,dr \\
+    &= \frac{8}{15}\rho \pi a^5 = \frac{2}{5}m_1 a^2
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Similarly for the other sphere,
+\end{itemize}
+
+\[
+    I_{3, b} = \frac{2}{5}m_2 b^2
+\]
+
+\begin{itemize}
+\item
+  To find the inertia tensor fore the dumbbell, use the displaced axis
+  theorem:
+\end{itemize}
+
+\[
+    \begin{aligned}
+    I_1 = I_2 &= \frac{2}{5}m_1 a^2 + m_1 \frac{m_2 R}{m_1 + m_2} + \frac{2}{5}m_2 b^2 + m_2 \frac{m_1 R}{m_1 + m_2} \\
+    I_3 &= \frac{2}{5}m_1 a^2 + \frac{2}{5}m_2 b^2
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Now that we have the inertia tensor for the principal axis frame, we
+  can find it for any other rotated frame by applying the transformation
+  \(\hat{I}' = \hat{P}\hat{I}\hat{P}^T\)
+\item
+  For instance, the inertia tensor for a dumbbell in a set of axes
+  rotated through an angle \(\theta\) about the 1 axis can be found
+  using the rotation matrix
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \hat{P}_x &= \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta \end{pmatrix} \\
+    \hat{I}' = \hat{P}_x \hat{I} \hat{P}^T &= \hat{P}_x \begin{pmatrix} I_1 & 0 & 0 \\ 0 & I_2 & 0 \\ 0 & 0 & I_3 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos\theta & -\sin\theta \\ 0 & \sin\theta & \cos\theta \end{pmatrix} \\
+    &= \cdots = \begin{pmatrix} I_1 & 0 & 0 \\ 0 & I_1\cos^2\theta + I_3\sin^2\theta & (I_3 - I_1)\sin\theta\cos\theta \\ 0 & (I_3 - I_1)\sin\theta\cos\theta & I_1\sin^2\theta + I_3\cos^2\theta \end{pmatrix}
+    \end{aligned}
+\]
+
+\section{}\label{lecture-19}
+
+\subsection{Rigid Body Dynamics}\label{rigid-body-dynamics}
+
+\subsubsection{Euler's Equations of Motion}\label{eulers-equations-of-motion}
+
+\begin{itemize}
+\item
+  page 51
+\item
+  take time derivative of angular momentum, \(\underline{J}\)
+  \begin{itemize}
+  \item
+    gives torque, \(\underline{N}\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \Big(\frac{d\underline{J}}{dt}\Big)_{B} + \underline{\omega_{}} \times \underline{J} &= \underline{N} \\
+    I_1\dot{\omega}_1 - \omega_2\omega_3(I_2 - I_3) &= N_1 \\
+    I_2\dot{\omega}_2 - \omega_3\omega_1(I_3 - I_1) &= N_2 \\
+    I_3\dot{\omega}_3 - \omega_1\omega_2(I_1 - I_2) &= N_3
+    \end{aligned}
+\]
+
+\subsubsection{Torque-Free Motion}\label{torque-free-motion}
+
+\begin{itemize}
+\item
+  If there are no external torques, then set Ns to 0
+  \begin{itemize}
+  \item
+    no torques when force is all through centre of rotation
+  \end{itemize}
+\item
+  Diagram on page 52
+  \begin{itemize}
+  \item
+    contour lines map kinetic energy
+  \item
+    away from 1-2 equator, higher KE; closer to, smaller KE
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Motion of a Torque-free symmetric top}\label{motion-of-a-torque-free-symmetric-top}
+
+\begin{itemize}
+\item
+  Consider a symmetric top with \(I_1 = I_2 \neq I_3\)
+  \begin{itemize}
+  \item
+    Isolated from external torques
+  \item
+    Spinning freely
+  \end{itemize}
+\item
+  As \(\underline{N} = 0\), the total angular momentum and rotational KE
+  are conserved as viewed from an inertial frame.
+\item
+  However, in the frame fixed with the principal axes of the top,
+\end{itemize}
+
+\[
+    \begin{aligned}
+    I_1 \dot{\omega}_1 &= (I_1 - I_3)\omega_2\omega_3 \\
+    I_1\dot{\omega}_2 &= (I_3 - I_1)\omega_1\omega_3 \\
+    I_3\dot{\omega}_3 &= 0
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Evidently, \(\omega_3\) is a constant
+\item
+  Differentiating the other equations wrt time leads to
+\end{itemize}
+
+\[
+    \begin{aligned}
+    I_1\ddot{\omega}_1 &= (I_1 - I_3)\omega_3\dot{\omega}_2 \\
+    \implies I_1\ddot{\omega}_1 &= -\frac{(I_1 - I_3)^2}{I_1} \omega_3^2 \omega_1 \\
+    \therefore \ddot{\omega}_1 &= -\Bigg[\frac{I_1 - I_3}{I_1}\omega_3 \Bigg]^2 \omega_1
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Therefore, \(\omega_{1/2}\) undergoes SHM with an angular frequency
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \Omega_b &= \frac{|I_1 - I_3|}{I_1}\omega_3
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Thus, in the non-inertial frame attached to the principal axes of the
+  top, the angular velocity, \(\underline{\omega}\), traces out a
+  circular path around the 3 axis, at fixed \(\omega_3\)
+\item
+  The rate of this precession of \(\underline{\omega}\) is given by
+  \(\Omega_b\)
+\item
+  In an inertial (`space'-coordinates) frame, without loss of
+  generality, can assume that the angular momentum, \(\underline{J}\),
+  lies in the plane of body axes 2 and 3.
+\end{itemize}
+
+\begin{example}
+\begin{itemize}
+\item
+  Now assume a prolate symmetric top such that \(I_1, I_2 > I_3\)
+\item
+  Choice of axes implies that \(\phi_1(t = 0) = 0\)
+\item
+  Hence, Euler's equations imply
+\end{itemize}
+
+\[
+    \begin{aligned}
+    I_1\dot{\omega}_1 &= (I_1 - I_3)\omega_2\omega_3 \\
+    I_1\dot{\omega}_2 = 0
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  The instantaneous change in \(\underline{\omega}\) is entirely in one
+  direction
+\item
+  If we consider \(d\underline{\omega}(t = 0) = d\omega_1\) in the plane
+  perpendicular to \(\underline{J}\)
+
+  \begin{itemize}
+
+  \item
+    i.e. looking down the \(\underline{J}\) axis
+  \item
+    call the angle between the \(\omega\) and \(\underline{J}\)
+    directions \(\theta_S\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \Omega_Sdt &= \frac{d\omega_1}{\omega\sin\theta_S}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Therefore, as viewed in the inertial frame, the 3 axis precesses
+  around the angular momentum vector, \(\underline{J}\), with angular
+  frequency
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \Omega_S &= \frac{\dot{\omega}_1}{\Big(\frac{|\underline{\omega} \times \underline{J}}{|\underline{J}|} \Big)} \\
+    \underline{\omega} \times \underline{J} &= \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ 0 & \omega_2 & \omega_3 \\ 0 & I_1\omega_2 & I_3\omega_3 \end{vmatrix} = \begin{pmatrix} I_3\omega_2\omega_3 - I_1\omega_2\omega_3 \\ 0 \\ 0 \end{pmatrix} \\
+    |\underline{\omega} \times \underline{J}| &= (I_1 - I_3)\omega_2\omega_3,~ (I_1 > I_3) \\
+    \implies \Omega_S &= \frac{I_1 - I_3}{I_1}\omega_2\omega_3 \Bigg/ \Bigg[\frac{(I_1 - I_3)\omega_2\omega_3}{J}\Bigg] \\
+    &= \frac{J}{I_1}
+    \end{aligned}
+\]
+\end{example}
+
+\end{document}

@@ -1,0 +1,2477 @@
+\documentclass[a4paper,11pt,normalem]{article}
+\usepackage{../../../LaTeX-Templates/Notes}
+
+\rhead{}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+{\centering
+{\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Michaelmas 2017}}\\[1.5cm]
+{\LARGE\bfseries Foundations of Physics 2A}\\[0.5cm]
+\HRule \\[0.3cm]
+{\huge\bfseries Quantum Mechanics}\\[0.1cm]
+\HRule \\[1cm]}
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+    \begin{flushleft} \large
+        \emph{Author:} \\ Matthew Rossetter
+    \end{flushleft}
+\end{minipage}~
+\begin{minipage}{0.4\textwidth}
+    \begin{flushright} \large
+        \emph{Lecturer:} \\ Prof. Shaun Cole
+    \end{flushright}
+\end{minipage}
+\end{center}
+\section{Basics of QM}\label{basics-of-qm}
+
+\begin{itemize}
+\item
+  Useless so just read notes
+\item
+  Particles described by wave functions, psi
+\item
+  \(P(x) dx = \psi^2 dx = \psi^* \psi dx\)
+  \begin{itemize}
+  \item
+    \(\int_{-\infty}^{\infty} = 1\)
+  \end{itemize}
+\end{itemize}
+
+\section{Operators and Expectation Values}\label{operators-and-expectation-values}
+
+\begin{itemize}
+\item
+  Expectation value is average value
+  \begin{itemize}
+  \item
+    \(\langle x \rangle = \int_{-\infty}^{\infty} xP(x) dx\)
+  \item
+    Doesn't always mean most expected value, just average
+  \item
+    page 7
+  \end{itemize}
+\item
+  \(\hat{p}\) now means \(-i\hbar \frac{\partial}{\partial x}\)
+  \begin{itemize}
+  \item
+    page 8
+  \end{itemize}
+\item
+  Hamiltonian
+  \begin{itemize}
+  \item
+    sum of potential and kinetic energy
+  \item
+    use \(-\frac{\hat{p}^2}{2m} \frac{\partial^2}{\partial x^2} + V\)
+    for the operator version
+  \item
+    \(\hat{H} \psi = E \psi\)
+    \begin{itemize}
+    \item
+      alternate form of Schrodinger
+    \end{itemize}
+  \item
+    page 8
+  \end{itemize}
+\item
+  Klein-Gordon for relativistic electrons
+  \begin{itemize}
+  \item
+    probably won't need it
+  \item
+    page 9
+  \end{itemize}
+\end{itemize}
+
+\section{The Origin Of Uncertainty}\label{the-origin-of-uncertainty}
+
+\begin{itemize}
+\item
+  Page 10
+\item
+  Complex conjugate operators of position, momentum, etc operate on the
+  function immediately to the right
+\item
+  Hermitian -- the complex conjugate of the integral for the expectation
+  value is equivalent
+  \begin{itemize}
+  \item
+    Swapping positions of variables and taking cplx conjugate
+  \end{itemize}
+\item
+  Any dynamical quantity can be an operator
+\item
+  Expectation value only real if it is Hermitian
+\item
+  Can use Hermitian to show uncertainty principle
+  \begin{itemize}
+  \item
+    try finding \(\langle xp\rangle\)
+  \item
+    will not get the complex conjugate
+  \end{itemize}
+\item
+  \(\hat{x}\hat{p} \neq \hat{p}\hat{x}\)
+  \begin{itemize}
+  \item
+    they do not commute
+  \end{itemize}
+\item
+  Page 11
+\item
+  Square bracket notation for commutator
+  \begin{itemize}
+  \item
+    \([\hat{a},\hat{b}] = \hat{a}\hat{b} - \hat{b}\hat{a}\)
+  \end{itemize}
+\item
+  The x and p operators don't commute so aren't real and can't be
+  measured
+  \begin{itemize}
+  \item
+    can be a test for other operators too to find relations for
+    uncertainty
+  \item
+    the difference between the two double commutators for x and p is
+    $i\hbar$ which is where the $\hbar/2$ comes from for uncertainty
+  \end{itemize}
+\item
+  Use a Gaussian function and find EVs for
+  \(\langle x \rangle , \langle p \rangle , \langle x^2 \rangle , \langle p^2 \rangle\)
+  to get minimum Heisenberg values
+\item
+  Ehrenfest's Theorem fulfils Newton's second law with EVs
+\end{itemize}
+
+\section{Schrodinger Equation and Eigenfunctions}\label{schrodinger-equation-and-eigenfunctions}
+
+\begin{itemize}
+\item
+  page 14
+\item
+  \(ln T = \frac{E}{i\hbar}t + K\)
+\item
+  \(T = e^{-it\frac{E}{\hbar}}\)
+\item
+  Can covert from time-dep to time-indep if \(V = V(x)\), separable fns
+\item
+  Kronecker delta fn from Maths
+  \begin{itemize}
+  \item
+    for distinct eigenfns and orthogonality
+  \end{itemize}
+\item
+  Bra-ket notation for eigen stuff
+  \begin{itemize}
+  \item
+    \(\langle\) \textbar{} for cplx conjugate
+  \item
+    \textbar{} \(\rangle\) for normal
+  \item
+    \(\langle\) \textbar{} \(\rangle\) = \(\int\)
+  \end{itemize}
+\item
+  Eigenfns of the Hamiltonian are stationary
+\end{itemize}
+
+\section{Eigenfunctions versus Superpositions}\label{eigenfunctions-versus-superpositions}
+
+\begin{itemize}
+\item
+  page 17
+\item
+  \(\Psi(x,t) = \Psi_{E}(x,t)e^{-\frac{iE}{\hbar}t}\)
+\item
+  \(\Psi(x,t) = C_{1}\Psi_{E_{1}}(x,t)e^{-\frac{iE_{1}}{\hbar}t} + C_{2}\Psi_{E_{2}}(x,t)e^{-\frac{iE_{2}}{\hbar}t}\)
+\item
+  Certain harmonics for standing waves
+  \begin{itemize}
+  \item
+    only certain wavelengths and energies for these systems
+  \end{itemize}
+\item
+  Infinite square well example
+  \begin{itemize}
+  \item
+    see last year's notes
+  \item
+    normal SHO
+    \begin{itemize}
+    \item
+      sin and cos solns
+    \item
+      \(\cos = 0\)
+    \item
+      \(\Psi(x) = A\sin(kx)\)
+    \item
+      \(k = \frac{\sqrt{2mE}}{\hbar}\)
+    \item
+      \(A = \sqrt{\frac{2}{L}}\)
+    \item
+      all usual maths from last year, find \(\Psi\) and integrate for
+      constants
+    \end{itemize}
+  \item
+    can make this into a full energy eigenfn: \[
+    \Psi_{n}(x,t) = \sqrt{\frac{2}{L}}\sin\Big(\frac{n\pi x}{L}\Big)e^{-\frac{iE_{n}t}{\hbar}}
+    \]
+  \end{itemize}
+\item
+  Mixture of states leads to time dep
+\item
+  For any single eigenfn, probability is not time dep
+  \begin{itemize}
+  \item
+    we say these are stationary states
+  \item
+    expectation values are not time dep
+  \end{itemize}
+\item
+  General solution to time dep Schrodinger eqn is superposition of
+  eigenstates: \[
+  \Psi(x,t) = \sum_{n} c_{n}\Psi_{n}(x,t) = \sum_{n}c_{n}\sqrt{\frac{2}{L}}\sin\Big(\frac{n\pi x}{L}\Big)e^{-\frac{iE_{n}t}{\hbar}}
+  \]
+\item
+  \(c_{n}\) must be chosen so as to normalise total wavefn
+  \begin{itemize}
+  \item
+    must equate to one as usual
+  \end{itemize}
+\end{itemize}
+
+\subsection{Orthogonality}\label{orthogonality}
+
+\begin{itemize}
+\item
+  Form an overlap integral of two states n and m:
+  \begin{itemize}
+  \item
+    \(\langle\Psi_{n}|\Psi_{m}\rangle\)
+  \item
+    use \href{www.wolframalpha.com}{!wa} as usual for indefinite
+    integral
+  \end{itemize}
+\item
+  when \(n \neq m\) both sin terms are for integer \(\pi\) and so both
+  are zero
+\item
+  when \(n = m\), the denominator on the first term goes to zero and the
+  rest tends to 1 as the inside tends to zero
+  \begin{itemize}
+  \item
+    this shows it is orthonormal
+  \item
+    like dot product
+  \end{itemize}
+\item
+  Span the space known from Fourier analysis for expressed as sum of sin
+  waves
+\end{itemize}
+
+\subsection{Wavefns in Superposition of Eigenstates}\label{wavefns-in-superposition-of-eigenstates}
+
+\begin{itemize}
+\item
+  \textbf{this is much more thorough in the notes}
+\item
+  General solution for superpositions: \[
+  \Psi(x) = \sum_{n} c_{n}\Psi_{n}(x) \\
+  |\Psi\rangle  = \sum_{n} c_{n}|\Psi_{n}\rangle
+  \]
+\item
+  Normalisation condition for two states:
+  \begin{itemize}
+  \item
+    \(|c_{1}|^{2} + |c_{2}|^{2} = 1\)
+  \item
+    for general,
+    \begin{itemize}
+    \item
+      use Kronecker delta fn to simplify integrals to get down to:
+    \item
+      \(\sum_{m}|c_{m}|^{2}\)
+    \item
+      \textbf{always adds up to 1}
+    \end{itemize}
+  \end{itemize}
+\item
+  For average energy,
+  \begin{itemize}
+  \item
+    using Kronecker delta again \[
+    \langle E \rangle = \sum_{n}|c_{n}|^{2}E_{n}
+    \]
+  \end{itemize}
+\item
+  Only works if \(|c_{n}|^{2}\) is probability of being in state
+  \(\Psi_{n}\) and measuring energy \(E_{n}\)
+\item
+  QM predicts only the probability of measuring particular energies
+  \begin{itemize}
+  \item
+    non-deterministic
+  \end{itemize}
+\end{itemize}
+
+\subsection{Expectation for Energy and Time dep}\label{expectation-for-energy-and-time-dep}
+
+\begin{itemize}
+\item
+  Expectation value of energy is probability weighted sum of energies
+  associated with each state
+\item
+  A superposed states probability of being in any particular state is \[
+  \Psi(x,t) = \sum_{n} c_{n}\Psi_{n}e^{-\frac{iE_{n}t}{\hbar}}
+  \]
+\item
+  it oscillates with time
+\item
+  Looking at the probability for a two state system:
+  \begin{itemize}
+  \item
+    last two terms contain \(e^{\pm\frac{i(E_{2} - E_{1})t}{\hbar}}\)
+  \item
+    write this as \(e^{\pm i\omega t}\)
+  \item
+    \(\hbar\omega = E_{2} - E_{1}\) \[
+    P(x,t) = |c_{1}|^{2}|\Psi_{1}|^2 + |c_{2}|^{2}|\Psi_{2}|^{2} + c_{1}^{*}c_{2}\Psi_{1}^{*}\Psi_{2}e^{-i\omega t} + c_{1}c_{2}^{*}\Psi_{1}\Psi_{2}^{*}e^{i\omega t}
+    \]
+  \end{itemize}
+\item
+  This is real as last two terms are cplx conjugate of each other and
+  so, when added together, their imaginary parts cancel.
+\item
+  Notes that this probability varies with time
+\item
+  \textbf{Superposed states are not stationary states}
+\item
+  It is still normalised, \(\int P(x,t) = 1\), as orthogonality of
+  eigenfns makes last two terms zero when integrated over x
+\end{itemize}
+
+\section{Superposition of eigenstates and transitions}\label{superposition-of-eigenstates-and-transitions}
+
+\begin{itemize}
+\item
+  page 21
+\item
+  All expectation values are constant in time for single eigenfn
+  \begin{itemize}
+  \item
+    A general soln which contains multiple is not
+  \end{itemize}
+\item
+  For two terms in the infinite square well, the probability density
+  oscillates with
+  \begin{itemize}
+  \item
+    \(\omega = \frac{E_2 - E_1}{\hbar}\)
+  \end{itemize}
+\item
+  For an electron in ground state of an atom,
+  \begin{itemize}
+  \item
+    it can be said it is a single eigenfn so it is not dep on time
+  \item
+    standing wave
+  \end{itemize}
+\item
+  QM probability distributions solve radiation problem
+  \begin{itemize}
+  \item
+    probability density is stationary so the charge is not `moving' and
+    it doesn't radiate
+  \item
+    otherwise everything crashes into nucleus
+  \end{itemize}
+\item
+  The mixture of two or more different states, say \(n = 1, 2\) then it
+  has a chance of decaying down
+  \begin{itemize}
+  \item
+    can't happen at ground state as no lower state to mix with
+  \end{itemize}
+\end{itemize}
+
+\subsection{How to find the cm}\label{how-to-find-the-cm}
+
+\begin{itemize}
+\item
+  Going from particular soln to general assume that energy eigenfns span
+  the entire space
+  \begin{itemize}
+  \item
+    complete set of basis fns
+  \item
+    any arbitrary fn can be expanded as sum of these
+  \end{itemize}
+\item
+  For any functional form \(f(x)\), can decompose it into a weighted sum
+  of energy eigenfns \(c_n \Psi_n\) by calculating each
+  \(c_n = \int \Psi_{n}^{*}f(x)dx*\)
+  \begin{itemize}
+  \item
+    find the overlap of f with the wavefn
+  \item
+    \(\sum_{n} c_n \delta_{nm} = c_m\)
+  \end{itemize}
+\end{itemize}
+
+\section{Eigenfunctions of various potentials}\label{eigenfunctions-of-various-potentials}
+
+\begin{itemize}
+\item
+  page 22
+\item
+  Consider infinite square well, symmetric about the origin
+\end{itemize}
+
+\subsection{Infinite Square Well}\label{infinite-square-well}
+\begin{itemize}
+\item
+  For
+  \(0 < x < L,~ \Psi_{n}(x,t) = \Psi_{n}e^{-i\frac{E_{n}t}{\hbar}}\): \[
+  \Psi_{n}(x) = \sqrt{\frac{2}{L}}\sin(\frac{n\pi x}{L}) ~;~ E_n = \frac{n^{2}\pi^{2}\hbar^2}{2mL^2}
+  \]
+\item
+  Can make this symmetric about origin by using a change of variable:
+  \begin{itemize}
+  \item
+    \(x' = x - \frac{L}{2}\)
+  \item
+    Energy levels are unchanged but solns for odd n will become cos
+    \begin{itemize}
+    \item
+      seen by drawing a diagram
+    \end{itemize}
+  \item
+    This gives \[
+    \Psi_{n}(x)' = \sqrt{\frac{2}{L}}\sin(\frac{n\pi x'}{L} + \frac{n\pi}{2}) = \sqrt{\frac{2}{L}}\sin(\frac{n\pi x'}{L})\cos(\frac{n\pi}{2}) + \cos(\frac{n\pi x'}{L}\sin(\frac{n\pi}{2}))
+    \]
+  \end{itemize}
+\item
+  Depends on n
+  \begin{itemize}
+  \item
+    odd n wavefns are even fns
+    \begin{itemize}
+    \item
+      \(\Psi(x') = \Psi(-x')\)
+    \end{itemize}
+  \item
+    even n wavefns are odd fns
+    \begin{itemize}
+    \item
+      \(\Psi(x') = \Psi(-x')\)
+    \end{itemize}
+  \item
+    Note that in either case the probability distribution
+    \(P(x) = |\Psi(x)|^2\) is symmetric about \(x' = 0\)
+  \end{itemize}
+\end{itemize}
+
+\subsection{Finite Square Well}\label{finite-square-well}
+
+\begin{itemize}
+\item
+  Potential is now V instead of infinity
+\item
+  Expect bound wavefns to be similar to infinite square well but broader
+  and leak out slightly
+\item
+  Solve Schrodinger for three regions:
+  \begin{itemize}
+  \item
+    \(x < -\frac{L}{2}\)
+  \item
+    \(-\frac{L}{2} < x < \frac{L}{2}\)
+  \item
+    \(x > \frac{L}{2}\)
+  \end{itemize}
+\item
+  For central region, \(V = 0\): \[
+  -\frac{\hbar^2}{2m} \frac{d^2 \Psi}{dx^2} = E\Psi \\
+  \Psi = A\cos{ks} + B\sin(kx) ~;~ k^2 = \frac{2mE}{\hbar^2}
+  \]
+\item
+  For \(x > \frac{L}{2}\): \[
+  -\frac{\hbar^2}{2m} \frac{d^2 \Psi}{dx^2} + V_0 \Psi = E\Psi \\
+  \frac{d^2 \Psi}{dx^2} = \frac{2m}{\hbar^2}(V_0 - E)\Psi = \alpha^2 \Psi ~;~ \alpha^2 = \frac{2m}{\hbar^2}(V_0 - E)
+  \]
+\item
+  Here we have used that for bound states \(V_0 > E\)
+  \begin{itemize}
+  \item
+    \(-\alpha^2 < 0\)
+  \item
+    General soln is \(\Psi(x) = Ce^{\alpha x} + De^{-\alpha x}\)
+  \item
+    For soln to be normalisable, \(C = 0\), or exponent just increases
+    \[
+    \Psi(x) = De^{-\alpha x} ~;~ x > \frac{L}{2}
+    \]
+  \end{itemize}
+\item
+  Similarly for \(x < -\frac{L}{2}\): \[
+  \Psi(x) = Fe^{\alpha x}
+  \]
+\item
+  Not an infinite discontinuity in V, then
+  \(\frac{\partial \Psi}{\partial x}\) as well as \(\Psi\) must be
+  continuous at \(x = \pm \frac{L}{2}\)
+  \begin{itemize}
+  \item
+    In principle, this is all wee need for solns
+  \item
+    solns will either be odd or even - \(\Psi(x) = \pm \Psi(-x)\)
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Even Solns}
+\begin{itemize}
+\item
+  page 24
+\item
+  Only need to consider the join at \(x = \frac{L}{2}\) as it's the same
+  at \(x = -\frac{L}{2}\) by symmetry
+\item
+  Applying continuity:
+  \begin{itemize}
+  \item
+    In \(\Psi\): \(A\cos{\frac{kL}{2}} = De^{-\frac{\alpha L}{2}}\)
+  \item
+    In \(\frac{\partial \Psi}{\partial x}\):
+    \(-kA\sin{\frac{kL}{2}} = -\alpha De^{-\frac{\alpha L}{2}}\)
+  \end{itemize}
+\item
+  We find that: \[
+  (\frac{kL}{2}\tan{\frac{kL}{2}} = \frac{\alpha L}{2})
+  \]
+\item
+  Meanwhile for defns of k and \(\alpha\), in terms of energy we also
+  have: \[
+  \Big(\frac{\alpha L}{2}\Big)^2 + \Big(\frac{kL}{2} \Big)^2 = \frac{2mV_0}{\hbar^2}\Big(\frac{L}{2} \Big)^2
+  \]
+\item
+  Solving for simultaneous eqns finds allowed values for k, energy
+  levels and wavefns
+  \begin{itemize}
+  \item
+    Isn't trivial, but can find informative graphical soln by setting \[
+    X = \frac{kL}{2} ~;~ Y = \frac{\alpha L}{2}
+    \]
+  \end{itemize}
+\item
+  Two eqns become: \[
+  Y = X\tan X ~;~ X^2 + Y^2 = \frac{2mV_0}{\hbar^2}\Big(\frac{L}{2} \Big)^2
+  \]
+\item
+  Plot Y(X) for both eqns and where they intersect are allowed solns
+\end{itemize}
+
+\subsubsection{Odd Solns}
+\begin{itemize}
+\item
+  Follow same method for odd solns, so sin instead of cos \[
+  Y = -X\cot X ~;~ X^2 + Y^2 = \frac{2mV_0}{\hbar^2}\Big(\frac{L}{2} \Big)^2
+  \]
+\item
+  Look at plot on page 24:
+  \begin{enumerate}
+  \item
+    There is always at least one bound state
+    \begin{itemize}
+    \item
+      if \(R < \frac{\pi}{2} \to V_0 < \frac{\hbar^{2}\pi^2}{2mL^2}\)
+      then this is the only state
+    \end{itemize}
+  \item
+    For intermediate circle, there are 4 allowed states corresponding to four points of intersection
+    \begin{itemize}
+    \item
+      Reading X and Y values determines k and \(\alpha\)
+    \item
+      Plugging back into eqns above gives D and F (for symmetry) in
+      terms of A
+    \item
+      To get value for A, use normalisation
+      \begin{itemize}
+      \item
+        split into bounds \(-\infty \leq x \leq -\frac{L}{2}\),
+        \(-\frac{L}{2} \leq x \leq \frac{L}{2}\),
+        \(\frac{L}{2} \leq x \leq \infty\)
+      \end{itemize}
+    \end{itemize}
+  \item
+    In lim as \(V_0 \to \infty\), radius of circle becomes very large
+    and intersections occur at
+    \begin{itemize}
+    \item
+      \(X(= \frac{kL}{2}) = \frac{n\pi}{2}\)
+    \item
+      energy values are same as in infinite square well
+      \begin{itemize}
+      \item
+        \(E_n = \frac{n^{2}\hbar^{2}k^2}{2m} = \frac{\pi^{2}\hbar^{2}}{2mL^2}\)
+      \end{itemize}
+    \end{itemize}
+  \end{enumerate}
+\end{itemize}
+
+\subsection{Commutator Algebra}\label{commutator-algebra}
+
+\begin{itemize}
+\item
+  \([A, B] = AB - BA = -[B, A]\)
+  \begin{itemize}
+  \item
+    not necessarily zero
+  \item
+    operators do not have to commute
+  \item
+    E.g. \([x, p] = i\hbar\)
+  \end{itemize}
+\item
+  \textbf{See page 25 for commutator identity proofs} \[
+  \begin{aligned}
+  [A,A] = AA - AA = 0 \\
+  [A + B, C] = [A, C] + [B, C] \\
+  [AB, C] = A[B, C] + [A,C]B \\
+  [A,BC] = [A,B]C + B[A,C]
+  \end{aligned}
+  \]
+\end{itemize}
+
+\subsection{Consequences of non-commutation}\label{consequences-of-non-commutation}
+
+\begin{itemize}
+\item
+  All operators which commute share a common set of eigenfns
+  \begin{itemize}
+  \item
+    page 26 for proof
+  \end{itemize}
+\item
+  Tells a bit more about uncertainty principle
+  \begin{itemize}
+  \item
+    measuring an operator does not disturb wavefn for measurement of
+    next
+  \item
+    if they don't commute, then in measuring A, we change the wavefn to
+    be one of the eigenfns of A
+    \begin{itemize}
+    \item
+      if not eigenfns of B, can still expand f in terms of eigenfns of B
+      \[
+      f_n = \sum_{m} c_{m}g_m ~;~ c_{m} = \int g_{m}^{*}f_{n}\,dx*
+      \]
+    \end{itemize}
+  \end{itemize}
+\item
+  Now if we measure B, don't get a deterministic value of B
+  \begin{itemize}
+  \item
+    measure value \(b_m\) with probability \(|c_{m}|^2\)
+  \end{itemize}
+\item
+  Non-commutation means the two associated variables cannot
+  simultaneously have deterministic values
+  \begin{itemize}
+  \item
+    this implies the uncertainty principle
+  \end{itemize}
+\end{itemize}
+
+\subsection{The linear harmonic oscillator}\label{the-linear-harmonic-oscillator}
+
+\begin{itemize}
+\item
+  Potential, \(V(x) = \frac{1}{2}kx^2\)
+  \begin{itemize}
+  \item
+    oscillates with \(\omega = \sqrt{\frac{k}{m}}\)
+  \item
+    \(V(x) = \frac{1}{2}m\omega^{2}x^2\)
+  \end{itemize}
+\item
+  There are wide applications as about equilibrium position, \(x_0\), any arbitrary continuous potential V(x) is harmonic to leading order \[
+  V(x) \approx V(x_{0}) + \Bigg[\frac{dV}{dx}\Big|_{x_{0}} (x - x_{0}) \Bigg]^{= 0} + \frac{1}{2}\frac{d^{2}V}{dx^2}\Big|_{x_{0}} (x - x_{0})^2 + \cdots
+  \]
+\item
+  Time Indep Schrodinger eqn is: \[
+  \Big(\frac{\hat{p}^2}{2m} + V\Big)\Psi = E\Psi
+  \] \[
+  \frac{1}{2m}(\hat{p}^2 + (m\omega x)^2)\Psi = E\Psi
+  \]
+\end{itemize}
+
+\subsubsection{Ladder Operators}
+\begin{itemize}
+\item
+  Can't do this factorisation: \[
+  (a^2 + b^2) = (-ib + a)(-b + a)
+  \]
+\item
+  These are operators and they don't commute, so this doesn't work
+\item
+  Consider: \[
+  a_{\pm} = \frac{1}{\sqrt{2\hbar m\omega}}(\mp ip + m\omega x)
+  \]
+\item
+  The prefactor is chosen to make things neater later on \[
+  a_{+}a_{-} = \Big(\frac{1}{\hbar\omega}H - \frac{1}{2} \Big)
+  \] \[
+  a_{-}a_{+} = \Big(\frac{1}{\hbar\omega}H + \frac{1}{2} \Big)
+  \]
+\item
+  \emph{full derivation on page 27} \[
+  H = \hbar\omega (a_{+}a_{-} + \tfrac{1}{2})
+  \] \[
+  H = \hbar\omega (a_{-}a_{+} - \tfrac{1}{2})
+  \]
+\item
+  Hamiltonian does not quite factor properly and we have \[
+  \hbar\omega (a_{\pm}a_{\mp} \pm \tfrac{1}{2})\Psi = E\Psi
+  \]
+\item
+  Suppose could find soln \(\Psi_n\), with associated energy, \(E_n\)
+  \begin{itemize}
+  \item
+    operate on this with \(a_+\) for \(a_{+}\Psi_n\) which is also a
+    soln \[
+    H(a_{+}\Psi_n) = \hbar\omega (a_{+}a_{-} + \tfrac{1}{2})a_{+}\Psi_n
+    \] \[
+    H(a_{+}\Psi_{n}) = (E_n + \hbar\omega)a_{+}\Psi_n
+    \]
+  \end{itemize}
+\item
+  If \(\Psi_n\) satisfies Schrodinger with energy, \(E_n\), then
+  \(a_{+}\Psi_n\) satisfies it with energy, \(E_n + \hbar \omega\)
+  \begin{itemize}
+  \item
+    This works similarly with \(a_{-}\)
+  \end{itemize}
+\item
+  Need one energy to get started and find the rest of them with this
+  method
+  \begin{itemize}
+  \item
+    must be a bottom rung \[
+    a_{-}\Psi_{0} = 0 \\
+    \frac{1}{\sqrt{2\hbar m\omega}}(\hbar\frac{d}{dx} + m\omega x)\Psi_0 = 0
+    \] \[
+    \frac{d\Psi_0}{dx} = -\frac{m\omega}{\hbar}x\Psi_0
+    \] \[
+    \Psi_0 = Ne^{-\tfrac{m\omega x^2}{2\hbar}}
+    \] \[
+    \Psi_{0}(x) = \Big(\frac{m\omega}{\pi\hbar} \Big)^{\tfrac{1}{4}} e^{-\tfrac{m\omega x^2}{2\hbar}}
+    \]
+  \end{itemize}
+\item
+  This solution is the Gaussian wavefn used in the first few sections
+  \begin{itemize}
+  \item
+    \(a = \frac{m\omega}{\hbar}\)
+  \item
+    associated energy is easy to find from
+    \(H\Psi = \hbar\omega(a_{+}a_{-} + \tfrac{1}{2})\Psi = E\Psi\) \[
+    a_{-}\Psi_{0} = 0
+    \] \[
+    \frac{1}{2}\hbar\omega\Psi_0 = E_{0}\Psi_{0}
+    \] \[
+    \therefore E_0 = \frac{\hbar\omega}{2}
+    \]
+  \end{itemize}
+\item
+  Call this state \(n = 0\), then all other states follow: \[
+  \Psi_n = A_{n}a_{+}^{n}\Psi_{0}
+  \] \[
+  E_n = (n + \tfrac{1}{2})\hbar\omega
+  \]
+\item
+  \(n = 0\) is the ground state for SHO
+\end{itemize}
+
+\subsubsection{Brute Force Solution}
+\begin{itemize}
+\item
+  lots of maths - see page 28
+\item
+  Can be solved using the Frobenius/Power series technique
+\item
+  Polynomial solns known as Hermite polynomials \(H_{n}(\zeta)\)
+  \begin{itemize}
+  \item
+    n denotes order of polynomial
+  \item
+    will get lots of other terms involved \[
+    H_{n + 2}(\zeta) - 2\zeta H_{n + 1}(\zeta) + 2(n + 1)H_{n}(\zeta) = 0
+    \]
+  \end{itemize}
+\item
+  Above eqn fixes this
+\item
+  Swap between even and odd fns as you go up in n
+\end{itemize}
+
+\subsection{Properties of Harmonic Potential}\label{properties-of-harmonic-potential}
+
+\begin{itemize}
+\item
+  Wavefns for ISW, FSW, and SHO have similar properties \[
+  E_n = (n + \tfrac{1}{2})\hbar\omega
+  \]
+\item
+  Runs from n = 0
+\item
+  System has zero point energy which is non-zero
+  \begin{itemize}
+  \item
+    due to Heisenberg uncertainty
+  \item
+    can't sit motionless at the bottom of well as then psn and momentum
+    are both known
+  \item
+    ground state of system must satisfy Heisenberg
+  \item
+    implies energy is greater than the minimum of the pot well
+  \end{itemize}
+\end{itemize}
+
+\section{The 3-D Schrodinger Equation}\label{the-3-d-schrodinger-equation}
+
+\begin{itemize}
+\item
+  page 30
+\end{itemize}
+\[
+    i\hbar\frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m}\Big(\frac{\partial^2 \Psi}{\partial x^2} + \frac{\partial^2 \Psi}{\partial y^2} + \frac{\partial^2 \Psi}{\partial z^2} \Big) + V(x, y, z, t)\Psi
+\] \[
+    i\hbar\frac{\partial \Psi}{\partial t} -\frac{\hbar^2}{2m}\nabla^{2}\Psi(\vec{r}, t) + V(\vec{r}, t)\Psi(\vec{r}, t)
+\] \[
+    -\frac{\hbar^2}{2m}\nabla^{2}\Psi_{n}(\vec{r}) + V\Psi_{n}(\vec{r}) = E_{n}\Psi_{n}(\vec{r})
+\]
+
+\begin{itemize}
+\item
+  This is separable over space \[
+  \Psi_n(x, y,  z) = X(x)Y(y)Z(z) \text{ if } V(x,y,z) = V_{x}(x) + V_{y}(y) + V_{z}(z)
+  \]
+\item
+  Can separate into three equations for dimensions \[
+  -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial x^2} + V_{x}X(x) = E_{x}X(x)
+  \] \[
+  -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial y^2} + V_{y}Y(y) = E_{y}Y(y)
+  \] \[
+  -\frac{\hbar^2}{2m}\frac{\partial^2 \Psi}{\partial z^2} + V_{z}Z(z) = E_{z}Z(z)
+  \] \[
+  E_x + E_y + E_z = E
+  \]
+\item
+  Not many useful potentials can be split up like this
+
+  \begin{itemize}
+  \item
+    Harmonic Oscillator can be though
+  \end{itemize}
+\end{itemize}
+
+\subsection{ISW Potential}\label{isw-potential}
+
+\begin{itemize}
+\item
+  Inside the well, we have explicit eqns as above
+\item
+  Soln is just the same as 1D case in each direction
+\item
+  Full wavefn and energy level: \[
+  \Psi(x,y,z) = X(x)Y(y)Z(z) = \sqrt{\frac{8}{L_{x}L_{y}L_{z}}}\sin(\frac{n_x \pi x}{L_x})\sin(\frac{n_y \pi y}{L_y})\sin(\frac{n_z \pi z}{L_z})
+  \] \[
+  E = E_x + E_y + E_z + \frac{\pi^2 \hbar^2}{2m} \Big(\frac{n_{x}^2}{L_{x}^2} + \frac{n_{y}^2}{L_{y}^2} + \frac{n_{z}^2}{L_{z}^2} \Big)
+  \]
+\item
+  Things simplify a bit for a cube, see notes page 31
+\item
+  Only one way to get ground state, (1, 1, 1), so it is non-degenerate
+  \begin{itemize}
+  \item
+    next energy level can be (1, 1, 2), (1, 2, 1), (2, 1, 1), so it is
+    three-fold degenerate
+  \item
+    get degeneracies because of symmetries of the potential
+  \end{itemize}
+\end{itemize}
+
+\subsection{Schrodinger in Spherical Polars}\label{schrodinger-in-spherical-polars}
+
+\begin{itemize}
+\item
+  page 32 \[
+  x = r\sin\theta\cos\phi
+  \] \[
+  y = r\sin\theta\sin\phi
+  \] \[
+  z = r\cos\theta
+  \]
+\item
+  Usual stuff for integration in sphericals
+\item
+  Usual conversion for everything else too \[
+  \nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\Big(r^2 \frac{\partial}{\partial r} \Big) + \frac{1}{r^2 \sin\theta}\frac{\partial}{\partial \theta} \Big(\sin\theta \frac{\partial}{\partial\theta} \Big) + \frac{1}{r^2 \sin^2\theta} \frac{\partial^2}{\partial \phi^2}
+  \]
+\item
+  Solutions are called Spherical Harmonics, \(Y(\theta, \phi)\)
+\item
+  Related to angular momentum
+\end{itemize}
+
+\section{Angular Momentum}\label{angular-momentum}
+
+\begin{itemize}
+\item
+  \(\underline{L} = \underline{r} \times \underline{p}\)
+\item
+  The angular momentum operators: \[
+  \hat{L}_x = -i\hbar \Big(y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y} \Big)
+  \] \[
+  \hat{L}_y = -i\hbar \Big(z\frac{\partial}{\partial x} - x\frac{\partial}{\partial z} \Big)
+  \] \[
+  \hat{L}_z = -i\hbar \Big(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x} \Big)
+  \]
+\item
+  Angular momentum operators are Hermitian
+\item
+  Heisenberg doesn't apply across these operators, if measuring in
+  different directions
+\end{itemize}
+
+\subsection{Combinations}
+\begin{itemize}
+\item
+  \(L_x, L_y, L_z\) do not commute \[
+  [L_x, L_y] = i\hbar L_z
+  \]
+\item
+  Same cycle for other permutations
+\item
+  Non-commutation means can't measure all components at once
+\item
+  Can't know a pair of the angular momentums
+\item
+  Uncertainty for this: \[
+  \sigma_{L_x}\sigma_{L_y} \geq \frac{1}{2}\Bigg| \Big\langle[L_x, L_y]\Big\rangle\Bigg| = \frac{\hbar}{2}\Bigg|\Big\langle L_z \Big \rangle \Bigg|
+  \]
+\end{itemize}
+
+\subsection{Total Angular momentums}
+\begin{itemize}
+\item
+  \(L^2 = L_{x}^2 + L_{y}^2 + L_{z}^2\)
+\item
+  \(L^2\) commutes with each of the components, i.e.
+  \([L^2, L_{i}] = 0, ~i = x,y,z\)
+\item
+  So can measure a single component of angular momentum alongside total
+  magnitude of angular momentum
+  \begin{itemize}
+  \item
+    Use \(L_z\) as t is the simplest
+  \item
+    \(L_z\) and \(L^2\) commute, so they share a common set of enfns
+  \end{itemize}
+\end{itemize}
+
+\subsection{Spatial Symmetry and L}\label{spatial-symmetry-and-l}
+\begin{itemize}
+\item
+  page 35
+\item
+  Angular momentum is zero for any spherically symmetric wavefn
+\item
+  L about the z-axis is related to angular dependence
+  \begin{itemize}
+  \item
+    oscillations between real and imaginary in x-y plane
+  \item
+    \(x + iy = re^{i\theta}\)
+  \end{itemize}
+\end{itemize}
+
+\section{Angular Momentum and Spherical Harmonics}\label{angular-momentum-and-spherical-harmonics}
+
+\subsection{Angular momentum Operators in Spherical Polars}\label{angular-momentum-operators-in-spherical-polars}
+
+\begin{itemize}
+\item
+  Use angular momentum operators in polar form: \[
+  L_z = -i\hbar \frac{\partial}{\partial\phi}
+  \] \[
+  L^2 = -\hbar^2 \Big(\frac{1}{\sin\theta}\frac{\partial}{\partial \theta} \big(\sin\theta \frac{\partial}{\partial \theta} \big) + \frac{1}{\sin^2 \theta}\frac{\partial^2}{\partial \phi^2} \Big)
+  \]
+\item
+  All of these can be obtained using the chain rule
+\item
+  \(L^2\) is essentially the angular part of the Laplacian
+  \begin{itemize}
+  \item
+    use this to rewrite Schrodinger
+  \end{itemize}
+\item
+  Angular dependence of wavefn is related to angular momentum
+\end{itemize}
+
+\subsection{Eigenfunctions of $L_z$}\label{eigenfunctions-of-l_z}
+
+\begin{itemize}
+\item
+  Want to solve
+\end{itemize}
+
+\[
+    L_z \Phi_m = m\hbar\Phi_m
+\]
+
+\begin{itemize}
+\item
+  for eigenvalues m and eigenfunctions \(\Phi_m\)
+\end{itemize}
+
+\[
+    \Phi_m = \frac{1}{\sqrt{2\pi}}e^{im\phi}
+\]
+
+\begin{itemize}
+\item
+  The equation is satisfied for any value of m but the soln requires
+  periodicity of \(2\pi\)
+  \begin{itemize}
+  \item
+    results that m must be a integer
+  \end{itemize}
+\item
+  Eigenvalues of \(L_z\) are \(0, \pm n\hbar,~ n \in \mathbb{R}\)
+  \begin{itemize}
+  \item
+    z-axis could be chosen in any arbitrary direction then the orbital
+    angular momentum about any axis is quantised
+  \item
+    m is the magnetic quantum number in atoms
+    \begin{itemize}
+    \item
+      response to magnetic fields
+    \end{itemize}
+  \end{itemize}
+\item
+  These eigenfunctions are orthonormal
+\end{itemize}
+
+\[
+    \int_{0}^{2\pi} \Phi_{n}^{*} \Phi_{m} d\phi = \delta_{nm}*
+\]
+
+\begin{itemize}
+\item
+  Can expand any angular function:
+\end{itemize}
+
+\[
+    f(\phi) = \sum c_m \Phi_m
+\]
+
+\subsection{\texorpdfstring{Eigenfunctions of
+\(L^2\)}{Eigenfunctions of L\^{}2}}\label{eigenfunctions-of-l2}
+
+\begin{itemize}
+\item
+  There is a common set of eigenfunctions for \(L_z\) and \(L^2\)
+  \begin{itemize}
+  \item
+    Call these \(Y_{lm}(\theta, \phi)\) \[
+    L_z Y_{lm}(\theta, \phi) = m\hbar Y_{lm}(\theta, \phi)
+    \] \[
+    L^2 Y_{lm}(\theta, \phi) = l(l + 1)\hbar^2 Y_{lm}(\theta, \phi)
+    \]
+  \end{itemize}
+\item
+  Set the constant to \(l(l + 1)\)
+  \begin{itemize}
+  \item
+    will be explained later
+  \end{itemize}
+\item
+  \(Y_{lm}\) is separable, otherwise it wouldn't share eigenfunctions
+  with \(L_z\)
+  \(Y_{lm}(\theta, \phi) = \Theta_{lm}(\theta)\Phi_{m}(\theta)\)
+\item
+  derivation on page 38
+  \begin{itemize}
+  \item
+    will solve this in maths lectures
+  \end{itemize}
+\item
+  When \(m = 0\), solutions are called \textbf{Legendre polynomials},
+  \(P_{l}(\cos\theta)\)
+  \begin{itemize}
+  \item
+    l is the order of the polynomial
+  \end{itemize}
+\item
+  For \(m \neq 0\), the solutions are \textbf{associated Legendre
+  polynomials}
+  \begin{itemize}
+  \item
+    related to the \(|m|^{th}\) derivative of the \(P_l\)
+  \item
+    page 39
+  \end{itemize}
+\item
+  Since \(P_l\) is a polynomial of degree l, then its \(l + 1\)
+  derivative vanishes
+  \begin{itemize}
+  \item
+    for a fixed value of l, we require \(|m| \leq l\)
+  \item
+    \(2l + 1\) values of m for every l
+  \end{itemize}
+\item
+  Normalise all of this to get \(\Theta_{lm}(\theta)\)
+\end{itemize}
+
+\[
+    \Theta_{lm} = (-1)^m \Big(\frac{2l + 1}{2} \frac{(l - m)!}{(l + m)!} \Big)^{1/2} P_{l}^{m}(\cos\theta)
+\]
+
+\subsection{\texorpdfstring{Spherical Harmonics of
+\(Y_{lm}\)}{Spherical Harmonics of Y\_\{lm\}}}\label{spherical-harmonics-of-y_lm}
+
+\begin{itemize}
+\item
+  Eigenfunctions common to \(L_z\) and \(L^2\) are given by:
+  \begin{itemize}
+  \item
+    with \(l \geq 0\) and \(-l \leq m \leq l\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    Y_{lm}(\theta, \phi) = \Theta_{lm}\Phi_m = (-1)^m \Big(\frac{2l + 1}{2} \frac{(l - m)!}{(l + m)!} \Big)^{1/2} P_{l}^{m}(\cos\theta)e^{im\phi}
+\]
+
+\begin{itemize}
+\item
+  Convention of:
+\end{itemize}
+\[
+    Y_{lm}^{*}(\theta, \phi )* = (-1)^m Y_{l,-m}(\theta, \phi)
+\]
+\begin{itemize}
+\item
+  page 39 for proof of values of m
+\item
+  Start with this:
+\end{itemize}
+\[
+    \langle L^2 \rangle = \langle L_{x}^2 + L_{y}^2 + L_{z}^2 \rangle = \langle L_{x}^2\rangle + \langle L_{y}^2 \rangle + \langle L_{z}^2 \rangle
+\]
+\begin{itemize}
+\item
+  Operators are all Hermitian and real and non-negative
+\end{itemize}
+\[
+    \langle L^2 \rangle \geq \langle L_{z}^2 \rangle
+\]
+\begin{itemize}
+\item
+  Continue from there to get
+\end{itemize}
+\[
+    l(l + 1) \geq m^2
+\]
+\begin{itemize}
+\item
+  This implies the physical limit of \(|m| \leq l\)
+\item
+  Specifying \(L_z\) means that \(L_x\) and \(L_y\) can't have defined
+  values
+  \begin{itemize}
+  \item
+    measuring them will get a quantised level,
+    \(\pm n\hbar,~~ 0 \leq n \leq l\)
+  \item
+    probability varies
+  \end{itemize}
+\item
+  Can explicitly evaluate expectation values of \(\langle L_x \rangle\)
+  and \(\langle L_y \rangle\)
+  \begin{itemize}
+  \item
+    both turn out to be zero
+  \item
+    the probability of \(\pm \hbar\) etc are equal
+  \end{itemize}
+\item
+  page 40
+\item
+  A semi-classical vector model helps understand this behaviour
+  \begin{itemize}
+  \item
+    set magnitude to \(\sqrt{l(l + 1)}\hbar\)
+  \item
+    spherical harmonics as well
+  \item
+    can deduce m from the length etc
+  \item
+    dipole patterns of `heat'
+  \end{itemize}
+\item
+  page 41 for probability distributions
+  \begin{itemize}
+  \item
+    more interesting than the wavefunctions
+  \end{itemize}
+\end{itemize}
+\[
+    P(\theta, \phi) \sin\theta d\theta d\phi = Y_{lm}^* Y_{lm} \sin\theta d\theta d\phi
+\] \[
+    P(\theta, \phi) d\Omega = Y_{lm}^* Y_{lm} d\Omega
+\]
+\begin{itemize}
+\item
+  \(d\Omega\) is the element of solid angle
+  \begin{itemize}
+  \item
+    \(\sin\theta d\theta d\phi\)
+  \end{itemize}
+\item
+  Easier to visualise as exponents in \(Y_{lm}\) cancel out
+\item
+  To get \(\theta\) dependence, integrate over \(\phi\)
+\end{itemize}
+\[
+    P(\theta) d\theta = \int_{\phi = 0}^{2\pi} |Y_{lm}(\theta, \phi)|^2 d\phi \sin\theta d\theta
+\]
+\section{Finding the Hydrogen Wavefunction}\label{finding-the-hydrogen-wavefunction}
+
+\subsection{Radial Equation for Spherical Potential}\label{radial-equation-for-spherical-potential}
+
+\[
+    \frac{1}{R}\frac{\partial}{\partial r} \Big(r^2 \frac{\partial R}{\partial r} \Big) - \frac{2mr^2}{\hbar^2}(V(r) - E) = \frac{L^2 Y}{\hbar^2 Y} \]
+\[
+    L^2 Y = l(l + 1)\hbar^2 Y \] \[
+    \frac{1}{R}\frac{\partial}{\partial r} \Big(r^2 \frac{\partial R}{\partial r} \Big) - \frac{2mr^2}{\hbar^2}(V(r) - E) - l(l + 1) = 0
+\]
+
+\begin{itemize}
+\item
+  This is equation for the eigenfunctions, \(R(r)\)
+  \begin{itemize}
+  \item
+    depends on l but not m
+  \item
+    for each l, different eigenfunctions
+    \begin{itemize}
+    \item
+      can label with index n
+    \end{itemize}
+  \item
+    denote \(R_{nl}(r)\)
+  \end{itemize}
+\item
+  page 42
+  \begin{itemize}
+  \item
+    lots of simplifications to equation
+  \item
+    \(rR(r) = U_{nl}\)
+  \end{itemize}
+\item
+  Radial equation:
+\end{itemize}
+\[
+    -\frac{\hbar^2}{2m}\frac{d^2 U_{nl}}{dr^2} + \Bigg[V(r) + \frac{\hbar^2}{2m}\frac{l(l + 1)}{r^2} \Bigg]U_{nl} = EU_{nl}
+\]
+\begin{itemize}
+\item
+  Identical to 1D Schrodinger
+  \begin{itemize}
+  \item
+    normal potential replaced with effective potential in square
+    brackets
+  \item
+    extra term behaves like potential:
+    \begin{itemize}
+    \item
+      Centripetal force: \(F = \frac{mv^2}{r}\)
+    \item
+      \(F = \frac{L^2}{mr^3} ~;~ L = mvr\)
+    \item
+      integrate from this to get the term
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{The Hydrogen Atom}\label{the-hydrogen-atom}
+\begin{itemize}
+\item
+  Hydrogen atom
+  \begin{itemize}
+  \item
+    electron and proton instead of just one particle
+  \item
+    replace electron mass with the reduced mass:
+  \item
+    \(\mu = \frac{M_p m_e}{(M_p + m_e)}\)
+  \end{itemize}
+\item
+  Use Coulomb potential
+\end{itemize}
+\[
+    -\frac{\hbar^2}{2\mu}\frac{d^2 U_{nl}}{dr^2} + \frac{l(l + 1)\hbar^2}{2\mu r^2}U_{nl} - \frac{Ze^2}{4\pi\epsilon_{0} r}U_{nl} = EU_{nl}
+\]
+\begin{itemize}
+\item
+  Solve this for the eigenfunctions
+\item
+  Multiply by spherical harmonics for total
+\end{itemize}
+\[
+    R_{nl} \propto \rho^{l} e^{-\rho} L_{n - l - 1}^{2l + 1}(2\rho) \]
+\[
+    \rho = kr \] \[
+    \Psi_{nlm}(r,\theta,\phi) = R_{nl}(r)Y_{lm}(\theta,\phi) \] \[
+    E = -13.6\frac{Z^2}{n^2}\frac{\mu}{\mu_{H}}\,eV
+\]
+\begin{itemize}
+\item
+  This only depends on n
+\item
+  Properties of Laguerre polynomials require \(n \geq l + 1\) so
+  \(l \leq n - 1\)
+  \begin{itemize}
+  \item
+    only features for \(1/r\) potential
+  \item
+    all have energies dep on m
+  \end{itemize}
+\item
+  Degeneracy
+  \begin{itemize}
+  \item
+    For given n, n values of l which have same energy so the level is n
+    degenerate
+  \item
+    for each l, \(2l + 1\) values of m, so in fact each level is
+  \item
+    \(\sum_{l = 0}^{n} (2l + 1)\) degenerate
+  \item
+    \(2n^2\) degenerate later on once spin is added
+  \end{itemize}
+\end{itemize}
+\[
+    \rho = kr = \frac{\mu Ze^2}{2\pi\epsilon_{0}\hbar^2\rho_{0}}r = \frac{\mu Ze^2}{4\pi\epsilon_{0}\hbar^2 n}r \]
+\[
+    a = \frac{4\pi\epsilon_{0}\hbar^2}{\mu Ze^2}
+\]
+\begin{itemize}
+\item
+  a is the Bohr radius for hydrogen of \(5.29 \times 10^{-11} \,m^{-1}\)
+\end{itemize}
+\[
+    \Psi_{nlm} \propto \Big(\frac{r}{2a} \Big)^{l}e^{-\frac{r}{an}}L_{n - l - 1}^{2l + 1} \Big(\frac{2r}{an} \Big) Y_{lm}(\theta, \phi)
+\]
+\begin{itemize}
+\item
+  Get the normalisation constant by
+\end{itemize}
+\[
+    \int_{r = 0}^{\infty} \int_{\phi = 0}^{2\pi} \int_{\theta = 0}^{\pi} \psi^* (r,\theta,\phi)\psi(r,\theta,\phi)r^2 \sin\theta \,d\theta\, d\phi\, dr = 1 \]
+\[
+    E = -\frac{\mu}{2\hbar^2}\Big(\frac{Ze^2}{4\pi\epsilon_0}\Big)^2 \frac{1}{n^2}
+\]
+\subsection{Transitions Between Energy Levels}\label{transitions-between-energy-levels}
+
+\begin{itemize}
+\item
+  If Hydrogen is some stationary state, \(\psi_{nlm}\), it should be
+  stable, but perturbations can cause the electron to transition to
+  another stationary state
+  \begin{itemize}
+  \item
+    collision with atom/photon/electron
+  \item
+    either by absorbing energy or emitting it
+  \item
+    perturbations are always present so transitions - quantum jumps -
+    are constantly occurring
+  \item
+    transitions are between discrete energy levels of n difference
+  \end{itemize}
+\end{itemize}
+\[
+    E_{\gamma} = E_{i} - E_f = 13.6 \Big(\frac{1}{n_{f}^2} - \frac{1}{n_{i}^2} \Big)eV
+\]
+\begin{itemize}
+\item
+  Transitions to ground state give rise to Lyman series of emissions
+  lines with wavelengths given by
+\end{itemize}
+\[
+    E = \frac{hc}{\lambda} = 13.6\Big(1 - \frac{1}{n^2} \Big) eV ~;~ n \geq 2
+\]
+\begin{itemize}
+\item
+  page 45 for table of Lyman series
+  \begin{itemize}
+  \item
+    tend to a limit for shortest wavelength possible
+  \end{itemize}
+\end{itemize}
+
+\section{Generalising Angular Momentum}\label{generalising-angular-momentum}
+
+\subsection{Preview of Spin Concept}\label{preview-of-spin-concept}
+
+\begin{itemize}
+\item
+  Spin is the spinning of particles around own axis
+  \begin{itemize}
+  \item
+    electron doesn't have internal structure though
+  \item
+    spin is \emph{intrinsic} angular momentum
+  \end{itemize}
+\end{itemize}
+
+\subsection{Review of Angular Momentum}\label{review-of-angular-momentum}
+\begin{itemize}
+\item
+  Two components of \(\underline{L}\) cannot be measured simultaneously
+  \begin{itemize}
+  \item
+    one component can be measured with \(L^2\) however
+  \item
+    Share a common set of eigenstates
+  \end{itemize}
+\end{itemize}
+
+\subsection{Angular Momentum Ladder Operators}\label{angular-momentum-ladder-operators}
+
+\begin{itemize}
+\item
+  page 47
+\end{itemize}
+\[
+    \begin{aligned}
+    L_{\pm} = L_x \pm iL_y \\
+    [L^2, L_+] = 0
+    \end{aligned}
+\]
+\begin{itemize}
+\item
+  same principle as other ladder operators
+\end{itemize}
+\[
+    \hbar L_+ f_{\lambda, \mu} \implies L_z (L_+ f_{\lambda, \mu}) = (\mu + 1)\hbar L_+ f_{\lambda, \mu}
+\]
+
+\subsubsection{Properties}\label{properties}
+
+\begin{itemize}
+\item
+  Must be a top and bottom rung
+  \begin{itemize}
+  \item
+    max and min values for \(\mu\)
+  \item
+    \(L_+ f_{\lambda, \mu_{max}} = 0\)
+  \end{itemize}
+\item
+  \(\lambda = \mu_{max} (\mu_{max} + 1)\)
+  \begin{itemize}
+  \item
+    Legendre polynomial approach
+  \item
+    \(\mu_{min} = -\mu_{max}\)
+  \item
+    this leads to the range of values for \(m\)
+  \end{itemize}
+\item
+  \(\mu\) can take half-integer values
+  \begin{itemize}
+  \item
+    comes from addition of intrinsic and extrinsic
+  \end{itemize}
+\end{itemize}
+
+\subsection{Overview of general angular momentum, J}\label{overview-of-general-angular-momentum-j}
+
+\begin{itemize}
+\item
+  \(\underline{J}\) is angular momentum if its operator components,
+  \(J_x, J_y, J_z\) satisfy
+\end{itemize}
+\[
+    \begin{aligned}
+    [J_x, J_y] &= i\hbar J_z ~;~ [J_z, J_x] = i\hbar J_y \\
+    J^2 &= J_{x}^2 + J_{y}^2 + J_{z}^2 \\
+    [J^2, J_x] &= 0
+    \end{aligned}
+\]
+\begin{itemize}
+\item
+  Common eigenfunctions of \(J^2\) and \(J_z\)
+  \begin{itemize}
+  \item
+    eigenvalues of \(j(j + 1)\hbar^2\) and \(m_j \hbar\) respectively
+  \end{itemize}
+\item
+  Ladder operators
+  \begin{itemize}
+  \item
+    \(J_zJ_{+}f_{j,m_j} = (m_j + 1)\hbar J_+ f_{j,m_j}\)
+  \end{itemize}
+\item
+  Can't go on forever so top and bottom values for \(m\)
+  \begin{itemize}
+  \item
+    \(m_{max} - m_{min} \in \mathbb{N}\)
+  \item
+    \(j = \frac{\mathbb{N}}{2}\)
+  \end{itemize}
+\item
+  page 49
+\end{itemize}
+\[
+    \underline{J} = \underline{L} + \underline{S}
+\]
+
+\section{Spin}\label{spin}
+
+\begin{itemize}
+\item
+  \(\underline{S}\) as angular momentum spin operator
+  \begin{itemize}
+  \item
+    \(S^2\) eigenvalues, \(s(s + 1)\hbar^2\)
+  \item
+    do not have spherical harmonic eigenfunctions
+  \item
+    eigenstates not functions of spatial coordinates
+  \end{itemize}
+\item
+  intrinsic property of particle
+\end{itemize}
+
+\subsection{Electron Orbiting Magnetic Field}\label{electron-orbiting-magnetic-field}
+
+\[
+    \mu_l = IA = -\frac{evr}{2} = -\frac{e}{2m_e}m_e vr = -\frac{e}{2m_e}L \]
+\[
+    \underline{\mu}_l = -\frac{e}{2m_e}\underline{L} = -\frac{\mu_B}{\hbar}\underline{L} \]
+\[
+    \mu_B = \frac{e\hbar}{2m_e}
+\]
+
+\begin{itemize}
+\item
+  \(\mu_B\) is the Bohr magneton, natural unit of microscopic magnetic
+  moment
+  \begin{itemize}
+  \item
+    \(= 9.27 \times 10^{-24} J\,T^{-1}\)
+  \item
+    \(= 5.79 \times 10^{-5} eV \, T^{-1}\)
+  \end{itemize}
+\item
+  \(-\frac{\mu_B}{\hbar}\underline{L}\) is quantum mechanical magnetic
+  moment
+  \begin{itemize}
+  \item
+    \((\mu_l)_{z} = -\frac{\mu_{B}}{\hbar}\underline{L}_z\)
+  \end{itemize}
+\item
+  For a hydrogen atom,
+  \begin{itemize}
+  \item
+    \((\mu_l)_{z} = -m_{l}\mu_B,~ -l \leq m_l \leq +l, \in \mathbb{N}\)
+  \end{itemize}
+\end{itemize}
+
+\subsection{Dirac Notation}\label{dirac-notation}
+\[
+    |\chi_+ \rangle \to \begin{pmatrix} 1 \\ 0 \end{pmatrix} ~;~ |\chi_- \rangle \to \begin{pmatrix} 0 \\ 1 \end{pmatrix} \]
+\[
+    \langle \chi_+ | \to \begin{pmatrix} 1 & 0 \end{pmatrix} ~;~ \langle \chi_- | \to \begin{pmatrix} 0 & 1 \end{pmatrix}
+\]
+
+\begin{itemize}
+\item
+  kets are equivalent ti column vectors
+\item
+  bras to row vectors
+\item
+  operators to square matrices
+\item
+  taking complex conjugate of inner product can be seen as taking
+  Hermitian conjugate of three matrices:
+  \begin{itemize}
+  \item
+    \((ABC)^{\dagger} = C^\dagger B^\dagger A^\dagger\)
+  \item
+    \(\langle \psi_n | A | \psi_m \rangle* = \langle \psi_m | A^\dagger | \psi_n \rangle\)
+  \item
+    \(\langle \psi_n | A | \psi_m \rangle* = \langle \psi_m | A | \psi_n \rangle\),
+    if A is Hermitian
+  \end{itemize}
+\item
+  Bra-Ket inner products were introduced earlier as shorthand for
+  integrals
+  \begin{itemize}
+  \item
+    more general than this for when there are no spatial coordinates to
+    integrate over
+    \begin{itemize}
+    \item
+      i.e. spin
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\section{Time-dependent Perturbation Theory}\label{time-dependent-perturbation-theory}
+
+\subsection{Small Modification to Hamiltonian}\label{small-modification-to-hamiltonian}
+
+\begin{itemize}
+
+\item
+  Solved time-dependent Schrodinger for some Hamiltonian, \(H^0\)
+  \begin{itemize}
+  \item
+    Get eigenfunctions, \(\psi_{n}^0\) for each energy level
+  \item
+    \(H^0 \psi_{n}^0 = E_{n}^0 \psi_{n}^0\)
+  \item
+    orthonormal
+  \end{itemize}
+\item
+  Perturb the system slightly
+  \begin{itemize}
+  \item
+    a small bump in the square well
+  \item
+    want to find eigenfunctions and eigenvalues for new Hamiltonian
+  \item
+    can't solve this exactly but can use \emph{perturbation theory} for
+    approx solution
+    \begin{itemize}
+    \item
+      build on known solutions of unperturbed system
+    \end{itemize}
+  \end{itemize}
+\item
+  Write new Hamiltonian as
+  \begin{itemize}
+  \item
+    \(H = H^0 + \lambda H'\)
+    \begin{itemize}
+    \item
+      H' is the perturbation
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Power expansion}\label{power-expansion}
+
+\begin{itemize}
+\item
+  Want to write \(E_n\) and \(\psi_n\) as power series in \(\lambda\)
+\end{itemize}
+
+\[
+    E_n = E_{n}^0 + \lambda E_{n}^1 + \lambda^2 E_{n}^2 + \cdots \] \[
+    \psi_n = \psi_{n}^0 + \lambda \psi_{n}^1 + \lambda^2 \psi_{n}^2 + \cdots
+\]
+
+\begin{itemize}
+\item
+  \(E_{n}^1\) and \(\psi_{n}^1\) refer to the first order corrections
+  for the nth eigenfunctions
+  \begin{itemize}
+  \item
+    superscript 2 is second order correction etc
+  \end{itemize}
+\end{itemize}
+
+\[
+    H\psi_n = E_{n}\psi_n \] \[
+    (H = H^0 + \lambda H')(\psi_{0} + \lambda \psi_{n}^1 + \lambda^2 \psi_{n}^2 + \cdots) = ( E_{n}^0 + \lambda E_{n}^1 + \lambda^2 E_{n}^2 + \cdots)(\psi_0 + \lambda \psi_{n}^1 + \lambda^2 \psi_{n}^2 + \cdots)
+\]
+
+\begin{itemize}
+\item
+  collect powers of lambda together
+\end{itemize}
+
+\[
+    H^0\psi_0 + \lambda(H^0\psi_{n}^1 + H'\psi_{n}^0) + \lambda^2 (H^0 \psi_{n}^2 + H'\psi_{n}^1) + \cdots = E_{n}^0\psi_{n}^0 + \lambda(E_{n}^0\psi_{n}^1 + E_{n}^1\psi_{n}^0) + \lambda^2(E_{n}^0\psi_{n}^2 + E_{n}^1\psi_{n}^1 + E_{n}^2\psi_{n}^0) + \cdots
+\]
+
+\subsection{First Order correction}\label{first-order-correction}
+
+\begin{itemize}
+\item
+  Zeroth order expansion is just no perturbation
+\item
+  Look at first order in \(\lambda\):
+\end{itemize}
+
+\[
+    H^0\psi_{n}^1 + H'\psi_{n}^0 = E_{n}^0\psi_{n}^1 + E_{n}^1\psi_{n}^0
+\]
+
+\begin{itemize}
+\item
+  Take an inner product with \(\psi_{n}^0\)
+  \begin{itemize}
+  \item
+    use Dirac notation for maximum generality
+  \item
+    some terms from this will cancel so:
+  \end{itemize}
+\end{itemize}
+
+\[
+    E_{n}^1 = \langle \psi_{n}^1 | H' | \psi_{n}^0 \rangle
+\]
+
+\begin{itemize}
+\item
+  Expressing this with integrals instead yields the same result:
+\end{itemize}
+
+\[
+    E_{n}^1 = \int (\psi_{n}^0)^* H' \psi_{n}^0 \,dx
+\]
+
+\begin{itemize}
+\item
+  Either way, the first order correction to an energy eigenvalues is the
+  \textbf{expectation value} of the perturbation using the unperturbed
+  eigenfunctions
+\end{itemize}
+
+\subsection{1D Square Well with Delta Function}\label{d-square-well-with-delta-function}
+
+\begin{itemize}
+\item
+  With Kronecker delta, \(\delta_{nm} = 1\) if \(n = m\), or 0 otherwise
+  \begin{itemize}
+  \item
+    The \textbf{Dirac Delta} is the continuum version:
+  \end{itemize}
+\end{itemize}
+
+\[
+    \int f(x)\delta(x - x_0) \,dx = f(x_0)
+\]
+
+\begin{itemize}
+\item
+  collapses any integral to the point marked out by the function
+  \begin{itemize}
+  \item
+    \(\int \delta(x - x_0)\,dx = 1\)
+  \end{itemize}
+\item
+  So if we have \(H' = \lambda\delta(x - \frac{a}{2})\) then
+\end{itemize}
+
+\[
+    E_{n}^1 = \int \int (\psi_{n}^0)^* H' \psi_{n}^0 \,dx \] \[
+    E_{n}^1 = \frac{2}{a}\int_{0}^{a} \sin\Big(\frac{n\pi x}{a}\Big)\lambda\delta(x - \frac{a}{2})\sin\Big(\frac{n\pi x}{a}\Big)\,dx = \frac{2\lambda}{a}\sin^2 \Big(\frac{n\pi}{2}\Big)
+\]
+
+\begin{itemize}
+\item
+  This is 0 if n is even
+  \begin{itemize}
+  \item
+    no correction to even \(E_{n}^0\)
+  \item
+    but \(E_{n}^1 = \frac{2\lambda}{a}\) for odd n
+  \item
+    perturbation has no effect for even n
+  \item
+    odd n gets a peak and energies are shifted
+  \end{itemize}
+\end{itemize}
+
+\subsection{First Order Correction to Wavefunction}\label{first-order-correction-to-wavefunction}
+
+\begin{itemize}
+\item
+  Calc by writing \(\psi_{n}^1 = \sum_{n \neq 1} c_{nl}\psi_{l}^0\)
+  \begin{itemize}
+  \item
+    substitute this into the first order correction
+  \item
+    take inner product with \(\psi_{l}^0\)
+  \end{itemize}
+\end{itemize}
+
+\[
+    c_{nl} = -\frac{\langle \psi_{l}^0 | H' | \psi_{n}^0 \rangle}{(E_{n}^0 - E_{l}^0)}
+\]
+
+\begin{itemize}
+\item
+  To first order, \(\psi_n \approx \psi_{n}^0 + \lambda\psi_{n}^1\)
+\end{itemize}
+
+\section{Degenerate Perturbation Theory}\label{degenerate-perturbation-theory}
+
+\begin{itemize}
+\item
+  \(E_n - E_m \neq 0\) isn't always the case
+\end{itemize}
+
+\paragraph{Twofold Degeneracy}\label{twofold-degeneracy}
+
+\begin{itemize}
+\item
+  Suppose energy level with exactly two states, \(\psi_{a}^0\) and
+  \(\psi_{b}^0\), giving same energy of \(E^0\)
+
+  \begin{itemize}
+
+  \item
+    any linear combination of these gives \(E^0\)
+  \item
+    e.g.~in Hydrogen, \(l = 0,\, m = 0,\, m_s = \pm \frac{1}{2}\)
+  \end{itemize}
+\item
+  The perturbation \(\lambda H'\) breaks the degeneracy, we want to find
+  these unperturbed states
+\item
+  Same first order correction:
+\end{itemize}
+
+\[
+    H^0 \psi^1 + \lambda H'\psi^0 = E^0 \psi^1 + \lambda E^1 \psi^0
+\]
+
+\begin{itemize}
+\item
+  multiply by conjugate of one of the states, \(\psi_{a}^{0*}\), or
+  \(\langle \psi_{a}^0|\), and integrate
+\end{itemize}
+
+\[
+    \langle \psi_{a}^0 | H' | \psi^0 \rangle  = E^1 \langle \psi_{a}^0 | \psi^0 \rangle
+\]
+
+\begin{itemize}
+\item
+  full derivation on page 55
+\item
+  use \(\psi^0 = \alpha \psi_{a}^0 + \beta \psi_{b}^0\):
+\end{itemize}
+
+\[
+    \alpha \langle \psi_{a}^0 | H' | \psi_{a}^0 \rangle + \beta \langle \psi_{a}^0 | H' | \psi_{b}^0 = E^1 \alpha \]
+\[
+    \alpha W_{aa} + \beta W_{ab} = \alpha E^1 \] \[
+    W_{ij} = \langle \psi_{i}^0 | H' | \psi_{j}^0 \rangle = \int \psi_{i}^{0*} H' \psi_{j}^0 dx
+\]
+
+\begin{itemize}
+\item
+  can assemble this into eigenvalue matrix equation:
+\end{itemize}
+
+\[
+    \begin{pmatrix} W_{aa} & W_{ab} \\ W_{ba} & W_{bb} \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \end{pmatrix} = E^1 \begin{pmatrix} \alpha \\ \beta \end{pmatrix} \]
+\[
+    \implies (W_{aa} - E^1)(W_{bb} - E^1) - W_{ab}W_{ba} = 0 \] \[
+    \implies (E^1)^2 - (W_{aa} + W_{bb})E^1 + (W_{aa}W_{bb} - |W_{ab}|^2) = 0 \because W_{ab} = W_{ba}^* \]
+\[
+    E_{\pm}^1 = \frac{1}{2} \Bigg[W_{aa} + W_{bb} \pm \sqrt{(W_{aa} - W_{bb})^2 + 4|W_{ab}|^2}\Bigg]
+\]
+
+\begin{itemize}
+\item
+  If two states are degenerate, both having the same energy, any linear
+  combination also has the same energy
+\item
+  A small perturbation \(H'\) cause a small change in energy and the
+  first order approximation for this, \(E^1\) is given by the solution
+  of a matrix equation
+\item
+  \emph{see pages 56 \& 57 for examples on this}
+\end{itemize}
+
+\section{Degenerate Perturbation Theory II}\label{degenerate-perturbation-theory-ii}
+
+\subsection{Link to non-degenerate perturbation theory}\label{link-to-non-degenerate-perturbation-theory}
+
+\begin{itemize}
+\item
+  page 58
+\end{itemize}
+
+\subsection{Higher-order degeneracy}\label{higher-order-degeneracy}
+
+\begin{itemize}
+\item
+  For n-fold degeneracy, get \(n \times n\) matrix, with n roots
+  \begin{itemize}
+  \item
+    some roots may be zero
+  \end{itemize}
+\end{itemize}
+
+\subsection{Example in 3D Square Well}\label{example-in-3d-square-well}
+
+\begin{itemize}
+\item
+  page 58 and 59
+\item
+  integration n stuff
+\end{itemize}
+
+\[
+    \begin{pmatrix} 1 - \omega & \kappa & 0 \\ \kappa & 1 - \omega & 0 \\ 0 & 0 & 1 - \omega \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \\ \gamma \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}, \omega = \frac{4E^1}{V_0}
+\]
+
+\subsection{Meaning of Vector components}\label{meaning-of-vector-components}
+
+\begin{itemize}
+\item
+  \(\alpha, \beta, \gamma\) are the amplitudes of the states
+  \(\psi_{211}, \psi_{121}, \psi_{112}\) in a general superposition
+  state
+\item
+  page 60 has eigenvector stuff
+\end{itemize}
+
+\section{Degenerate Perturbation Theory and Hydrogen}\label{degenerate-perturbation-theory-and-hydrogen}
+
+\subsection{Spin-Orbit Coupling}\label{spin-orbit-coupling}
+
+\begin{itemize}
+\item
+  Perturbation from magnetic dipole moment generated by electron spin,
+  \(\mu_s\) is
+\end{itemize}
+
+\[
+    H_{so}' = -\underline{\mu}_s \cdot \underline{B} \] \[
+    \underline{\mu}_s = -g_s \Big(\frac{e}{2m_e}\Big)\underline{S},~ g_s \approx 2 \]
+\[
+    \underline{\mu}_s = \frac{-e}{m_e}\underline{S}
+\]
+
+\begin{itemize}
+\item
+  From electron's PoV, can see a current loop from the nucleus
+  `orbiting' it
+\end{itemize}
+
+\[
+    L = \frac{4\pi m_er^3 B}{\mu_0 e} \] \[
+    \underline{L} = \frac{4\pi epsilon_0 c^2 mr^3}{e}\underline{B} \] \[
+    H_{so}' = \frac{e^2}{4\pi c^2 m^2 r^3}\underline{S}\cdot\underline{L}
+\]
+
+\begin{itemize}
+\item
+  Factor of 0.5 due to special relativity as well:
+\end{itemize}
+
+\[
+    H_{so}' = \frac{e^2}{8\pi c^2 m^2 r^3}\underline{S}\cdot\underline{L}
+\]
+
+\subsection{Commutation Properties}\label{commutation-properties}
+
+\begin{itemize}
+\item
+  pages 61 - 62
+\item
+  use total angular momentum, \(J^2\)
+\end{itemize}
+
+\[
+    [J^2, \underline{L}\cdot\underline{S}] = 0
+\]
+
+\begin{itemize}
+\item
+  as all of the components of these commute with each other
+\item
+  think about joint eigenfunctions of the operators
+  \(H^0, L^2, J^2, S^2, J_z\)
+  \begin{itemize}
+  \item
+    since \(J\) is conserved
+  \end{itemize}
+\end{itemize}
+
+\subsection{Adding Angular Momenta}\label{adding-angular-momenta}
+
+\begin{itemize}
+\item
+  max value of \(J_z = l + s\)
+  \begin{itemize}
+  \item
+    \(-l - s \leq J_z \leq l + s\), in integer steps
+  \item
+    correspond to value \(j = l + s\)
+    \begin{itemize}
+    \item
+      from \(j(j+ 1)\hbar^2\) in \(J^2\)
+    \end{itemize}
+  \end{itemize}
+\item
+  see page 62 for visualisation and tables
+\end{itemize}
+
+\section{Degenerate Perturbation Theory and Hydrogen II}\label{degenerate-perturbation-theory-and-hydrogen-ii}
+
+\subsection{Spin Orbit}\label{spin-orbit}
+
+\[
+    J^2 = (\underline{L} + \underline{S})\cdot(\underline{L} + \underline{S}) + L^2 + S^2 + 2\underline{L}\cdot\underline{S} \]
+\[
+    \underline{J}\cdot\underline{S} = \frac{1}{2}(J^2 - L^2 - S^2)
+\]
+
+\begin{itemize}
+\item
+  Eigenvalues of \(\underline{L}\cdot\underline{S}\) are eigenvalues of
+  above:
+\end{itemize}
+
+\[
+    \frac{\hbar^2}{2}[j(j+1) - l(l+1) - s(s + 1)] = \frac{\hbar^2}{2}\bigg[j(j+1) - l(l+1) - \frac{3}{4}\bigg]
+\]
+
+\begin{itemize}
+\item
+  Spin is \(\frac{1}{2}\)
+\item
+  Can plug this into the first order correction to the energy
+  eigenvalues
+  \begin{itemize}
+  \item
+    page 64
+  \item
+    can then be pulled outside the expression as just numbers
+  \end{itemize}
+\item
+  Spin-orbit coupling typically leads to
+  \(\frac{E_n^1}{E_n^0} \approx \frac{E_n^0}{mc^2}\)
+\end{itemize}
+
+\subsection{Correction to electron-proton potential (Darwin Term)}\label{correction-to-electron-proton-potential-darwin-term}
+
+\begin{itemize}
+
+\item
+  Must correct the assumption that these are point particles
+\item
+  Position certain only to its Compton wavelength
+\end{itemize}
+
+\[
+    \lambda_C = \frac{\hbar}{mc}
+\]
+
+\begin{itemize}
+\item
+  Charge of the electron is therefore smeared out over this volume
+  \begin{itemize}
+  \item
+    smearing for the proton is smaller by a factor of the mass ratios so
+    is negligible
+  \end{itemize}
+\item
+  The correction made to the potential if the electron is at the same
+  position as the proton is the Darwin term:
+\end{itemize}
+
+\[
+    H_D^1 = \frac{\pi\hbar^2}{2m^2c^2}\frac{e^2}{4\pi\epsilon_0}\delta(\underline{r})
+\]
+
+\begin{itemize}
+\item
+  \textbf{See footnotes on page 65 for explanation on 3D delta function}
+\item
+  Independent of spin
+\item
+  Commutes with all angular momentum operators
+  \begin{itemize}
+  \item
+    can use non-degenerate perturbation theory
+  \end{itemize}
+\end{itemize}
+
+\[
+    E_n^1 = \frac{\pi\hbar^2}{2m^2c^2}\frac{e^2}{4\pi\epsilon_0}\int_V \psi^* _{nlm} \delta(\underline{r}) \psi_{nlm}\,dV
+\]
+
+\begin{itemize}
+\item
+  Only acts at the origin
+  \begin{itemize}
+  \item
+    therefore only on states which are non-zero at the origin
+  \item
+    this is only for \(l, m = 0\)
+  \end{itemize}
+\item
+  Laguerre polynomials for \(l = 0\) are \(L_{n-1}^1 (0)\) so just a
+  constant term in the polynomial
+\item
+  \emph{simplification maths on page 65}
+\end{itemize}
+
+\[
+    E_n^1 = \frac{2}{mc^2}(E_n^0)^2 n
+\]
+
+\subsection{Relativistic corrections to kinetic energy}\label{relativistic-corrections-to-kinetic-energy}
+
+\begin{itemize}
+\item
+  Special relativity KE is given by
+\end{itemize}
+
+\[
+    \begin{aligned}
+    E^2 = (T + mc^2)^2& = p^2c^2 + m^2c^4 \\
+    T + mc^2 &= mc^2\sqrt{1 + \frac{p^2}{m^2c^2}} \\
+    \implies T &\approx \frac{p^2}{2m} - \frac{1}{8}\frac{p^4}{m^3c^2} \\
+    &= T^0 - \frac{1}{2mc^2}(T^0)^2
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Using a Taylor expansion on the square root
+\item
+  \(T^0\) is the non-relativistic KE, and the other therm is the lowest
+  order correction for relativity
+\item
+  Commutation here allows for non-degenerate perturbation theory again
+\end{itemize}
+
+\[
+    \begin{aligned}
+    E_n^1 &= -\frac{1}{2mc^2}\int \psi_n^{0*}[H - V(r)]^2 \psi_n^0\,dV \\
+    \implies &= -\frac{1}{2mc^2}[(E_n^0)^2 - 2E_n^0 \langle V(r)\rangle + \langle V(r)^2\rangle]
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  \emph{Full derivations for this on page 66}
+\end{itemize}
+
+\[
+    E^1 = -\frac{(E_n^0)^2}{2mc^2}\Bigg[\frac{4n}{(l + \frac{1}{2})} - 3 \Bigg]
+\]
+
+\section{Hydrogen Fine Structure}\label{hydrogen-fine-structure}
+
+\subsection{Total First Order Correction}\label{total-first-order-correction}
+
+\begin{itemize}
+\item
+  Cann add all the first order correction terms together to get final:
+\[
+    E_{nj}^1 = \frac{(E_n^0)^2}{2mc^2}\Bigg(3 - \frac{4n}{j + \frac{1}{2}}\Bigg)
+\]
+\item Also written as:
+\[
+    E_n^0 = -\alpha^2\frac{mc^2}{2n^2} \] \[
+    \alpha = \frac{e^2}{4\pi\epsilon_0 \hbar c} \approx \frac{1}{137}
+\]
+\item
+  \(\alpha\) is a dimensionless fine structure constant
+\item
+  see page 67
+\item
+  Collectively, all the extra terms got from expanding \(E_{nj}^1\), and
+  the additional level of structure they reveal, are known as the fine
+  structure.
+\end{itemize}
+
+\subsection{Ground State of Hydrogen}\label{ground-state-of-hydrogen}
+
+\begin{itemize}
+\item
+  Only one value for \(j\) as \(l = 0\)
+  \begin{itemize}
+  \item
+    \(j = \frac{1}{2}\), from the spin
+  \item
+    gives a relative correction to the ground state
+    \begin{itemize}
+    \item
+      page 67
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\[
+    \frac{\Delta E_1}{E_1^0} = \frac{\alpha^2}{4}
+\]
+
+\begin{itemize}
+\item
+  This means the ground state is slightly lower than \(-13.6\)eV
+\end{itemize}
+
+\subsection{Quantum Number Sets and Balmer Series}\label{quantum-number-sets-and-balmer-series}
+
+\begin{itemize}
+\item
+  page 68 - 69
+\end{itemize}
+
+\subsection{Lamb Splitting}\label{lamb-splitting}
+
+\begin{itemize}
+\item
+  There is a difference between \(2s_{1/2}\) and \(2p_{1/2}\) not
+  noticed on pages 68 - 69
+  \begin{itemize}
+  \item
+    called Lamb shift, of order \(\alpha^5\)
+  \item
+    comes from interaction between electron and vacuum fluctuations of
+    quantised EM field
+  \item
+    difference for between states of same \(n, j\) and different \(l\)
+  \end{itemize}
+\end{itemize}
+
+\subsection{Hyperfine Splitting}\label{hyperfine-splitting}
+
+\begin{itemize}
+\item
+  Another energy shift
+  \begin{itemize}
+  \item
+    \(\times 10\) smaller than Lamb
+  \end{itemize}
+\item
+  Arises from proton's spin
+  \begin{itemize}
+  \item
+    interaction with electron's magnetic dipole changes potential
+  \item
+    page 70
+  \end{itemize}
+\end{itemize}
+
+\section{Formalities and the Correspondence Principle}\label{formalities-and-the-correspondence-principle}
+
+\subsection{Marginal Probability Distributions}\label{marginal-probability-distributions}
+
+\begin{itemize}
+\item
+  Recap of probability distributions for 1D and 3D wavefunctions on page
+  71
+\item
+  For wavefunctions split into radial wavefunctions and spherical
+  harmonics, \(\psi(r,\theta, \phi) = R(r)Y(\theta,\phi)\)
+  \begin{itemize}
+  \item
+    The probability distributions for the radial wavefunction and for
+    the spherical harmonic can be separated entirely
+  \end{itemize}
+\end{itemize}
+
+\subsection{Time-energy uncertainty principle}\label{time-energy-uncertainty-principle}
+
+\[
+    \begin{aligned}
+    \Delta t = \frac{\Delta x}{v} &= \frac{m\Delta x}{p} \\
+    E = \frac{p^2}{2m} &\therefore \Delta E = \frac{2p\Delta p}{2m} \\
+    \Delta t \Delta E = \frac{m\Delta x}{p}\frac{2p\Delta p}{2m} &= \Delta x \Delta p \geq \frac{\hbar}{2}
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  Note that position, momentum, and energy are all dynamical variables
+  \begin{itemize}
+  \item
+    i.e. measurable characteristics of the system
+  \end{itemize}
+\item
+  Time is not a dynamical variable
+  \begin{itemize}
+  \item
+    \(\Delta t\) is the time it takes for the system to change
+    substantially
+  \item
+    \textbf{Time is not an operator belonging to the particle, it is a
+    parameter describing the evolution of the system}
+  \end{itemize}
+\item
+  A state existing for a short time cannot have a definite energy
+  \begin{itemize}
+  \item
+    \(E = \hbar\omega\), so the frequency of the system must be
+    accurately known for the energy to be definite
+  \item
+    accurately-known frequency requires the system to be around for a
+    long period of time
+  \item
+    short time \(\implies\) unknown frequency \(\implies\) high error in
+    energy
+  \end{itemize}
+\item
+  This is essentially
+\end{itemize}
+
+\[
+    \Delta t = \Delta \langle B \rangle \Big/\Big(\frac{dB}{dt}\Big)
+\]
+
+\begin{itemize}
+\item
+  where B is some dynamical operator
+\end{itemize}
+
+\subsection{The time evolution of expectation values}\label{the-time-evolution-of-expectation-values}
+
+\begin{itemize}
+\item
+  Will use Dirac Notation here as:
+  \begin{itemize}
+  \item
+    a ket, \(|\psi\rangle\), can be thought of as a column vector;
+  \item
+    a bra, \(\langle \psi | = (|\psi\rangle)^\dagger\), as the Hermitian
+    conjugate of a ket, i.e.~a row vector;
+  \item
+    Hermitian operators as square Hermitian matrices
+  \end{itemize}
+\item
+  Take the time derivative of the expectation value of a Hermitian
+  operator, Q, in general:
+\end{itemize}
+
+\[
+    \frac{d\langle Q \rangle}{dt} = \frac{d}{dt}\langle\psi |Q|\psi\rangle = \bigg(\frac{\partial \langle\psi |}{\partial t}\bigg)Q|\psi\rangle + \langle\psi | \frac{\partial Q}{\partial t}|\psi\rangle + \langle\psi |Q \bigg(\frac{\partial |\psi\rangle}{\partial t}\bigg)
+\]
+
+\begin{itemize}
+\item
+  Full derivation on page 72, using
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \frac{\partial |\psi\rangle}{\partial t} &= \bigg(-\frac{iH}{\hbar}\bigg)|\psi\rangle ~;~ \frac{\partial \langle \psi |}{\partial t} = \langle\psi |\bigg(\frac{iH}{\hbar}\bigg) \\
+    \implies \frac{d\langle Q \rangle}{dt} &= \frac{i}{\hbar}\langle[H, Q]\rangle + \bigg\langle \frac{\partial Q}{\partial t}\bigg\rangle
+    \end{aligned}
+\]
+
+\subsection{Formalism}\label{formalism}
+
+\subsubsection{Ehrenfest Theorems}\label{ehrenfest-theorems}
+
+\begin{itemize}
+\item
+  If \(Q = x\), then
+\end{itemize}
+
+\[
+    \frac{d\langle x \rangle}{dt} = \frac{i}{\hbar}\langle[H, x]\rangle + \bigg\langle \frac{\partial x}{\partial t}\bigg\rangle
+\]
+
+\begin{itemize}
+\item
+  \(H = \frac{p^2}{2m} + V(x)\) so \([H, x] = -i\hbar\frac{p}{m}\)
+\item
+  The operator has no explicit time dependence, similarly to a
+  coordinate system, as it is not the actual location of the particle
+\item
+  Hence, the First Ehrenfest Theorem:
+\end{itemize}
+
+\[
+    \frac{d\langle x \rangle}{dt} = \frac{i}{\hbar}\bigg\langle -i\hbar\frac{p}{m}\bigg\rangle = \frac{\langle p \rangle}{m}
+\]
+
+\begin{itemize}
+\item
+  The second Ehrenfest Theorem can be proven similarly to get:
+\end{itemize}
+
+\[
+    \frac{d\langle p \rangle}{dt} = -\bigg\langle\frac{dV}{dx}\bigg\rangle
+\]
+
+\begin{itemize}
+\item
+  Can combine these two together to get a correspondence to the
+  classical \(F = ma\):
+\end{itemize}
+
+\[
+    m\frac{d^2 \langle x \rangle}{dt^2} = \langle F \rangle
+\]
+
+\subsubsection{Virial Theorem}\label{virial-theorem}
+
+\begin{itemize}
+\item
+  Let \(Q = xp\):
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \frac{d\langle xp\rangle}{dt} &= \frac{i}{\hbar}\langle[H, xp]\rangle + \bigg\langle\frac{\partial \langle xp \rangle}{\partial t}\bigg\rangle \\
+    [H, p] = i\hbar\frac{dV}{dx} \implies& [H, xp] = [H, x]p + x[H, p] = [-\frac{i\hbar}{m}p]p + x[i\hbar\frac{dV}{dx}] \\
+    &= \frac{i}{\hbar}\bigg\langle -\frac{i\hbar}{m}p^2 + i\hbar x \frac{dV}{dx}\bigg\rangle \\
+    &= \bigg\langle \frac{p^2}{m} - x\frac{dV}{dx}\bigg\rangle
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  In equilibrium, i.e.~for a stationary state, expectation values do not
+  change with time
+  \begin{itemize}
+  \item
+    the time derivative is zero
+  \end{itemize}
+\end{itemize}
+
+\[
+    \bigg\langle \frac{p^2}{m} \bigg\rangle = \bigg\langle x\frac{dV}{dx}\bigg\rangle \iff \langle T \rangle = \frac{1}{2}\bigg\langle x \frac{dV}{dx}\bigg\rangle
+\]
+
+\subsection{The Correspondence Principle}\label{the-correspondence-principle}
+
+The correspondence principle states that the behaviour of systems
+described by the theory of quantum mechanics reproduces classical
+physics in the limit of large quantum numbers.
+
+In other words, it says that for large orbits and for large energies,
+quantum calculations must agree with classical calculations.
+
+Classical quantities appear in quantum mechanics in the form of expected
+values of observables, and as such the Ehrenfest theorems (which predict
+the time evolution of the expected values) is an example of the
+correspondence principle.
+\end{document}

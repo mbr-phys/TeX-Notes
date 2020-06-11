@@ -11,7 +11,6 @@
 \newcommand\hi{\hat{i}}
 \newcommand\hj{\hat{j}}
 \newcommand\hk{\hat{k}}
-\newcommand\vk{\unl{k}}
 \newcommand\J{\unl{J}}
 \newcommand\M{\unl{M}}
 \newcommand\er{\epsilon_r}
@@ -23,11 +22,30 @@
 \title{Foundations of Physics 2A \\ Electromagnetism \vspace{-20pt}}
 \author{Professor D P Hampshire}
 \date{\vspace{-15pt}Epiphany Term 2018}
-\rhead{\hyperlink{page.1}{\color{black} Contents}}
+\rhead{}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2018}}\\[2.5cm]
+    {\LARGE\bfseries Foundations of Physics 2A}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Electromagnetism}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. D. P. Hampshire
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+\end{titlepage}
 \tableofcontents
 
 \chapter{}
@@ -570,7 +588,7 @@ For Observer P, there is a Lorentz contraction of the moving negative charges:
     \lam_{-ve} = -\gamma n_2e
 \end{equation}
 where $\lam$ is the charge per unit length, $\gamma = \frac{1}{\sqrt{1 - \tfrac{v^2}{c^2}}}$. \\
-Observer P also says that given there is charge neutralily for Observer N,
+Observer P also says that given there is charge neutrality for Observer N,
 \begin{align}
     \lam_{+ve} &= \frac{n_1 e}{\gamma} \\
     \implies \lam_{total} &= -\gamma n_2e \left(1 - \frac{1}{\gamma^2}\right) = -\gamma n_2e\frac{v^2}{c^2}
@@ -589,11 +607,11 @@ Observer N is in the non-accelerating rest frame:
     F_p &= \frac{\p P_p}{\p t_p} ~;~ F_N = \frac{\p P_N}{\p t_N} \\
     \implies \delta P_p &= \delta P_N
 \end{align}
-The two observers agreees that the change in momentum is the same in the direction orthogonal to the motion, as required by relativity.
+The two observers agrees that the change in momentum is the same in the direction orthogonal to the motion, as required by relativity.
 
 There are parallels between the roles of the charges and the battery with Einstein's twin paradox.
 Observer N is in the rest frame of the battery.
-This is analagous to the twin that stays at home.
+This is analogous to the twin that stays at home.
 
 Coulomb's law can be regarded as fundamental with magnetic forces and induced EMF being relativistic corrections to this.
 
@@ -650,7 +668,7 @@ This can be compared to the inverse frequency for light - $3\times10^{-15}\,s$
         \item Increasing the $\uE$-field causes separation of positive and negative charges.
     \end{itemize}
 \end{enumerate}
-Dielectrics produce their own electric field, with the fundamental response of a dialectric:
+Dielectrics produce their own electric field, with the fundamental response of a dielectric:
 \begin{equation}
     p = q\unl{d}
 \end{equation}
@@ -660,9 +678,9 @@ This is the definition of the elementary dipole moment, $\unl{p}$
 \end{equation}
 This is the definition of polarisation ($C\,m^{-2}$), where $N$ is the number of dipole moments per unit volume.
 
-How we characterise bulk dialectric materials is a matter of taste:
+How we characterise bulk dielectric materials is a matter of taste:
 \begin{enumerate}
-    \item Definition of relative dialectric constant, $\er$ (dimensionless)
+    \item Definition of relative dielectric constant, $\er$ (dimensionless)
     \begin{equation}
         \unl{P} = \eno(\er - 1)\uE
     \end{equation}
@@ -683,7 +701,7 @@ The positive in the sheet at $(x+\delta x, y, z)$ is:
 \begin{equation}
     Q_{+ve} = \underbrace{Nq}_{C/V} \cdot \underbrace{Sd}_{V \text{ of }+ve}
 \end{equation}
-which can be written in terms of surgave charge density, $\sigma$:
+which can be written in terms of surface charge density, $\sigma$:
 \begin{equation}
     \sigma = \frac{Q_{+ve}}{S} = Nqd = \unl{P}
 \end{equation}
@@ -937,7 +955,7 @@ The wave-vector is the real part of $k$, $2.59\times10^7m^{-1}$ and wavelength, 
 The decay length is the distance for $\uE$ to decrease by $\frac{1}{e} \implies \delta = \frac{1}{k_{imag}} = 66\,nm$
 \end{example}
 
-\section{Advanced Microscopic Descriptions of Normal Conductors, Superconductors, and Dielectrics}
+\section{Advanced Microscopic Descriptions of Conductors, Superconductors, and Dielectrics}
 \subsection{Conducting Materials - Metal and Plasma}
 We use a stable one-dimensional, scalar, Drude model to describe the scattering of charge carriers.
 In the Drude model, the charge carriers accelerate for an average time, $\tau$.
@@ -949,7 +967,7 @@ Hence, the momentum of the charge carriers at time $t+\delta t$ is given by:
 \end{equation}
 Three terms:
 \begin{enumerate}
-    \item Initial momentum at time $t$ of the the charge are not scattered
+    \item Initial momentum at time $t$ of the charge are not scattered
     \item Increase in momentum during the time interval of $\delta t$ of the unscattered carriers
     \item An upper bound for the momentum of the carriers scattered at some point in time during $\delta t$
 \end{enumerate}
@@ -982,7 +1000,7 @@ where $\delta$ is the phase shift between $\uE$ and $\J$. The differential equat
 \begin{equation}
     \J = \frac{Nq^2}{m(\tau^{-1} - i\omega)}\uE
 \end{equation}
-Comaparing this expression to the definition for conductivity: $\J = \sigma_N\uE$, gives a complex conductivity:
+Comparing this expression to the definition for conductivity: $\J = \sigma_N\uE$, gives a complex conductivity:
 \begin{equation}
     \sigma_N = \frac{Nq^2}{m(\tau^{-1} - i\omega)}
 \end{equation}
@@ -1016,7 +1034,7 @@ Comaparing this expression to the definition for conductivity: $\J = \sigma_N\uE
         \end{align}
         The dispersion relation has two regimes:
         \begin{enumerate}
-            \item $\omega > \omega_p$: $k$ is real and the electromagnetic waves propagate without attentuation through the plasma
+            \item $\omega > \omega_p$: $k$ is real and the electromagnetic waves propagate without attenuation through the plasma
                 \begin{equation}
                     v_{phase} = \frac{c}{\sqrt{1 - \left(\frac{\omega_p}{\omega}\right)^2}} > c
                 \end{equation}
@@ -1057,11 +1075,11 @@ They are motivated by the two fundamental properties:
 	\begin{equation}
 		m\unl{a} = m\frac{d\unl{v}}{dt}
 	\end{equation}
-	Using $\unl{F} = q\uE$ amd $\J = Nq\unl{v}$, we find the first London equation:
+	Using $\unl{F} = q\uE$ and $\J = Nq\unl{v}$, we find the first London equation:
 	\begin{equation}
 		\uE = \mu_0\lambda_L^2\frac{\p \J}{dt}
 	\end{equation}
-	where the London penetration depth, $\pen = \sqrt{\frac{m_e}{\mu_0N_se^2}}$, $N_s$ is the denisty of superelectrons
+	where the London penetration depth, $\pen = \sqrt{\frac{m_e}{\mu_0N_se^2}}$, $N_s$ is the density of superelectrons
 	\item The Meissner state - exclusion of magnetic flux \\
 	The second London equation is given by
 	\begin{equation}
@@ -1076,8 +1094,8 @@ They are motivated by the two fundamental properties:
 	\end{align}
 	for a semi-infinite slab.
 \end{enumerate}
-Zero resistance implies that low energy EM waves cannot travel through the bulk of superconductors. \\
-Microscopically, superelectrons are paired, so very high energy photons can pass through the superconductor if the photon energy is high enough to destroy the superconductivity.
+Zero resistance implies that low energy EM waves cannot travel through the bulk of superconductors.
+Microscopically, superelectrons are paired, so very high energy photons pass through the superconductor if the photon energy is high enough to destroy the superconductivity.
 
 \section{Dielectrics}
 To describe how the bound charges in a dielectric behave as a function of time, we add a restoring force ($-m\om_0^2x$) associated with simple harmonic vibrations to the equation of motion  used for conductors.
@@ -1196,7 +1214,7 @@ From Maxwell's equations
 The interpretation of the equation for $P_{rad}$ is:
 \begin{itemize}
 	\item The reduction in the potential energy stored in the electric and magnetic fields per unit time is equal to the net flow of power out through the surface plus the power dissipated as heat within the volume.
-	\item The deivation is a self-consistent statement of the conservation of energy, so $\unl{N}$ correctly represents the instantaneous power per unit area.
+	\item The deviation is a self-consistent statement of the conservation of energy, so $\unl{N}$ correctly represents the instantaneous power per unit area.
 \end{itemize}
 
 \chapter{}
@@ -1276,7 +1294,7 @@ There is a 'near-field' term that dominates close to the dipole and a 'far-field
 \end{align}
 \begin{itemize}
 	\item The near-field part originates from the quasi-static field produced by the moving charges.
-	\item The far-field comes from changing current, asscoiated with the acceleration of the charges, and cause the radiation.
+	\item The far-field comes from changing current, associated with the acceleration of the charges, and cause the radiation.
 \end{itemize}
 Writing down Maxwell \RN{4} for the regions where there is no charge or current, we have $\del\times\uB = \mu_0\J + \mu_0\eno\frac{\p\uE}{\p t}$ which leads to:
 \begin{align}
@@ -1291,7 +1309,7 @@ Some notes:
 \begin{itemize}
 	\item $\uB_{near}$ and $\uE_{near}$ are $\frac{\pi}{2}$ out of phase with each other because the current reaches a maximum as the charges cross each other at maximum velocity.
 	\item The electric field reaches a maximum when the electric dipole is at a maximum and the charges have a maximum separation.
-	\item In constrast, $\uB_{far}$ and $\uE_{far}$ are in phase with each other - distant from the Hertzian dipole, we have plane waves. $\uE$ is vertically polarised when $\theta = \frac{\pi}{2}$, and $\uB$ is horizontally polarised.
+	\item In contrast, $\uB_{far}$ and $\uE_{far}$ are in phase with each other - distant from the Hertzian dipole, we have plane waves. $\uE$ is vertically polarised when $\theta = \frac{\pi}{2}$, and $\uB$ is horizontally polarised.
 \end{itemize}
 
 \section{Production of a wave}
@@ -1349,7 +1367,7 @@ The angular dependence of the time-averaged power unit area is:
 This is from the far-field limit for $\uB_{far}$ and $\uE_{far}$. \\
 $\sin^2 > 0$ so the time average is $\frac{1}{2}$ from $1 = \cos^2x + \sin^2x$ when time-averaged.
 
-The power peaks in the equitorial plane ($\theta = \frac{\pi}{2}$).
+The power peaks in the equatorial plane ($\theta = \frac{\pi}{2}$).
 No power is radiated along the axis of the dipole ($\theta = 0,\pi$).
 
 \chapter{}
@@ -1441,7 +1459,7 @@ $\vec{k}$ can in principle be complex, to incorporate phase information and deca
 	\includegraphics[scale=0.4]{geolaw2.png}
 \end{figure}
 
-Across the interfacial plane, the geneal condition for the continuity of $\E_{\parallel}$ (i.e. $\E$ parallel to the interfacial plane) requires:
+Across the interfacial plane, the general condition for the continuity of $\E_{\parallel}$ (i.e. $\E$ parallel to the interfacial plane) requires:
 \begin{equation}
 	\E_{i\parallel} (\vr,t) + \E_{r\parallel} = \E_{t\parallel}(\vr,t)
 \end{equation}
@@ -1457,7 +1475,7 @@ For simplicity, we assume the origin of the coordinate system is in the interfac
 	where $\E_{0i\parallel},\E_{0r\parallel},\E_{0t\parallel}$ are all constants
 
 	An argand diagram showing these arbitrary complex vectors where at $t=1$, $r_1e^{i\theta_1t} + r_2e^{i\theta_2t} = r_3e^{i\theta_3t}$.
-	Also shown are the three complex vectors at a later time where the magnitude of the vecotrs has remained constant but the phase of each complex vector has doubled (i.e. $t=2$).
+	Also shown are the three complex vectors at a later time where the magnitude of the vectors has remained constant but the phase of each complex vector has doubled (i.e. $t=2$).
 	\begin{itemize}
 		\item LHS - At the later time the vector addition identity is still valid because $\theta_1 = \theta_2 = \theta+3$ and remains true at all times.
 		\item RHS - At the later $t=2$, the vector addition identity is no longer true.
@@ -1466,7 +1484,7 @@ For simplicity, we assume the origin of the coordinate system is in the interfac
 	\begin{equation}
 		\om_i = \om_r = \om_t
 	\end{equation}
-	(i.e. the indicent, transmitted, and reflected waves all have the same angular frequency)
+	(i.e. the incident, transmitted, and reflected waves all have the same angular frequency)
 
 	\begin{figure}[H]
 		\centering
@@ -1527,7 +1545,7 @@ $\uE$-field normal to the plane of incidence.
 	\includegraphics[scale=0.4]{normfres.png}
 \end{figure}
 
-Assume $\E$ doesn't change direction broadly in transmission and relection - use $\uE \times \unl{H} \implies \vk$
+Assume $\E$ doesn't change direction broadly in transmission and reflection - use $\uE \times \unl{H} \implies \vk$
 
 An electromagnetic wave close to the interfacial plane incident to an interfacial plane where $\uE$ is normal to the plane of incidence.
 The incident and reflective waves superimpose in medium 1, only the transmitted wave is in medium 2.
@@ -1555,7 +1573,7 @@ Using $\uB = \mu_0\mu_r\unl{H} = \mu\unl{H}$
 \begin{equation}
 	\unl{H} = \frac{n\uE}{c\mu}
 \end{equation}
-Substituting Eq. 20.7 into Ep. 20.5, and assuming the media are non-magnetic (i.e. $\mu = \mu_0$):
+Substituting Eq. 20.7 into Eq. 20.5, and assuming the media are non-magnetic (i.e. $\mu = \mu_0$):
 \begin{equation}
 	(n_i\E_{0i} - n_r\E_{0r})\cos\theta_i = n_t\E_{0t}\cos\theta_t
 \end{equation}
@@ -1609,7 +1627,7 @@ The average power per unit time per unit area incident on the interface (perpend
 \end{equation}
 
 \chapter{}
-\section{Coefficients of relection and transmission}
+\section{Coefficients of reflection and transmission}
 Incident:
 \begin{align}
 	\unl{N} &= \uE \times \unl{H} \\
@@ -1628,7 +1646,7 @@ and the transmission coefficient is defined as:
 \begin{equation}
 	T = \frac{N_t}{N_i} = \left(\frac{\e_2}{\e_1}\right)^{\frac{1}{2}}\frac{\E_{0t}^2}{\E_{0i}^2} \frac{\cos\theta_t}{\cos\theta_i} = \frac{n_2}{n_1}\frac{\E_{0t}^2}{\E_{0i}^2} \frac{\cos\theta_t}{\cos\theta_i}
 \end{equation}
-Using Fresnel's eqiations in either polarisation gives:
+Using Fresnel's equations in either polarisation gives:
 \begin{equation}
 	R + T = 1
 \end{equation}
@@ -1665,13 +1683,13 @@ The solution must satisfy the wave equation:
 \end{align}
 This is the dispersion relation for EM waves in a waveguide. \\
 $k^2 > 0$ for steady state, if $k$ is complex, leads to decay. \\
-Similar tp a plasma, we have a cut off for angular frequency (where $k = 0$) given by
+Similar to a plasma, we have a cut off for angular frequency (where $k = 0$) given by
 \begin{equation}
 	\om_c = \frac{\pi c}{a}
 \end{equation}
 We can identify two regions:
 \begin{enumerate}
-	\item $\om > \om_c$ - $k$ is real, wave can propagate without attentuation
+	\item $\om > \om_c$ - $k$ is real, wave can propagate without attenuation
 	\item $\om < \om_c$ - $k$ is imaginary, there is an attenuated solution
 \end{enumerate}
 

@@ -8,12 +8,29 @@
 \title{Mathematical Methods \\ In Physics \vspace{-20pt}}
 \author{Dr Cristina Zambon and Fabrizio Caola}
 \date{\vspace{-15pt}Michaelmas Term 2017 - Epiphany Term 2018}
-\rhead{\hyperlink{page.1}{Contents}}
+\rhead{}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries \shortstack{Michaelmas 2017 \\ - Epiphany 2018}}}\\[4cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Mathematical Methods in Physics}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
-\tableofcontents
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Cristina Zambon \\ Prof. Fabrizio Caola
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+\end{titlepage}
 
 \part{}
 \chapter{}
@@ -41,7 +58,7 @@
     \iff
     \vec{b} = b_{1}\hat{i} + b_{2}\hat{j} + b_{3}\hat{k}
 \end{gather*}
-We consider a cartesian system:
+We consider a Cartesian system:
 
 $\{\hat{i}, \hat{j}, \hat{k}\} = $ 'standard basis'
 
@@ -152,7 +169,7 @@ The summed-over subscripts are called dummy subscripts and the others, free subs
     a_{ij}b_{jk}c_{k} = \sum_{j = 1}^{3} \sum_{k = 1}^{3} a_{ij}b_{jk}c_{k} ~~~ \text{(Gives 9 terms)}
 \end{gather*}
 
-\section{Kronacker Delta in R3}
+\section{Kronecker Delta in R3}
 \begin{gather*}
     \delta_{ij} =
     \begin{cases}
@@ -311,7 +328,7 @@ in this case, we have \emph{complex vector spaces}
             \item $p(x)\frac{d^{2}f}{dx^2} + q(x)\frac{df}{dx} + r(x)f = 0$
             \item p, q, and r are fixed functions
         \end{itemize}
-        The space of the solutions of such an equatino forms a vector space under the usual addition and scalar multiplication
+        The space of the solutions of such an equation forms a vector space under the usual addition and scalar multiplication
 \end{enumerate}
 
 \chapter{}
@@ -777,7 +794,7 @@ Eigenvectors are mutually orthogonal in special cases
 
 If a $(n \times n)$ matrix, $\mathbf{A}$, has n distinct eigenvalues, then the set of corresponding eigenvectors represent a basis in the vector space on which the matrix acts
 
-If the eigenvectors are not all distint (i.e. degenerate), the basis may or may not exist
+If the eigenvectors are not all distinct (i.e. degenerate), the basis may or may not exist
 
 If $\mathbf{A}$ has zero eigenvalues, then $\mathbf{A}$ must be singular $\implies |\mathbf{A} - \lambda\mathbf{I}| = |\mathbf{A}| = 0$
 
@@ -962,7 +979,7 @@ If the new basis is chosen to be a set of eigenvectors of $\mathbf{A}$, then the
     \mathbf{|A|} = 6 = \mathbf{|D|}
 \end{gather*}
 Consider special matrices \\
-Since it is always possible to find a basis of eigenvectors, then these matrices are always diagonisable
+Since it is always possible to find a basis of eigenvectors, then these matrices are always diagonisable.
 
 Since the eigenvectors can be chosen to be an orthonormal set then the matrix $\mathbf{S}$ becomes unitary, i.e. $\mathbf{D} = \mathbf{S^{-1}AS}$ becomes $\mathbf{D} = \mathbf{S^{\dagger}AS} ~ (S^{-1} = S^{\dagger})$
 
@@ -1202,7 +1219,7 @@ f(x) is odd so $a_r = 0$
 \end{align*}
 Function at $x = n\pi$ is discontinuous - the value of the FS at these values is zero
 
-The sum of the FS at a jump (discontinuity), $x_0$, is equal to the avergae of the two function values on either side, i.e.
+The sum of the FS at a jump (discontinuity), $x_0$, is equal to the average of the two function values on either side, i.e.
 \begin{equation*}
     \frac{1}{2}\big[f(x_{0}^-) + f(x_{0}^+) \big]
 \end{equation*}
@@ -1518,7 +1535,7 @@ If we take the duration of the pulse to decrease while at the same time retainin
     \lim_{n \to \infty} \ifnt \delta_n (x)\,dx &= \ifnt \delta(x)\,dx = 1 \\
     \lim_{n \to \infty} \ifnt \delta_n (x) f(x)\,dx &= \ifnt \delta(x)f(x)\,dx = f(0)
 \end{align*}
-$\delta$-function is not a standard function. It is a generalised function ditribution. \\
+$\delta$-function is not a standard function. It is a generalised function distribution. \\
 It is defined as the limit of a sequence of functions (not a unique sequence)
 
 Its defining properties are:
@@ -1698,7 +1715,7 @@ Can choose for integration:
 \end{equation*}
 The general method requires complex analysis, however, it is possible to perform the inverse of a LT by:
 \begin{enumerate}
-    \item Inspection - use partial fraction decomposition and LT properties and table of tansforms
+    \item Inspection - use partial fraction decomposition and LT properties and table of transforms
     \item Convolution Theorem
 \end{enumerate}
 
@@ -2233,7 +2250,7 @@ Need to compute $d\vec{S}$:
 
 \subsection{Observations}
 \begin{enumerate}
-    \item $\int \vec{a} \cdot d\vec{S}$ depends on the orientation of S. Changing the orientation implies that the sign of the unit vector $\hat{n}$ changes, which is equivalent to changing the order of u and v in the defintion of S, which is equivalent to change the sign of the integral.
+    \item $\int \vec{a} \cdot d\vec{S}$ depends on the orientation of S. Changing the orientation implies that the sign of the unit vector $\hat{n}$ changes, which is equivalent to changing the order of u and v in the definition of S, which is equivalent to change the sign of the integral.
 
     If the surface is closed, the convention is that $d\vec{S}$ is pointing outwards - the volume is enclosed.
     \item Other kinds of integrals:
@@ -2265,7 +2282,7 @@ Need to compute $d\vec{S}$:
 \end{enumerate}
 
 \section{Volume Integrals}
-Let V be a volume described by $\vec{r}(u, v, w)$ with V being the appropriate region in the paramtere space D.
+Let V be a volume described by $\vec{r}(u, v, w)$ with V being the appropriate region in the parameter space D.
 The volume integral of a function $\phi$ is:
 \begin{equation*}
     \int_V \phi\,dV = \int_V \phi(\vec{r}(u, v, w)) \Bigg| \frac{\p \vec{r}}{\p u} \cdot \Big(\frac{\p \vec{r}}{\p v} \times \frac{\vec{r}}{\p w}\Big)\Bigg|\;du\,dv\,dw

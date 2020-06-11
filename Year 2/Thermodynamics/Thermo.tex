@@ -11,13 +11,30 @@
 \title{Foundations of Physics 2B \\ Thermodynamics \vspace{-20pt}}
 \author{Dr Peter Swift}
 \date{\vspace{-15pt}Michaelmas Term 2017}
-\rhead{\hyperlink{page.1}{Go to TOC}}
+\rhead{}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Michaelmas 2017}}\\[2.5cm]
+    {\LARGE\bfseries Foundations of Physics 2B}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Thermodynamics}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
-\thispagestyle{fancy}
-
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Peter Swift
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+\end{titlepage}
 \tableofcontents
 
 \chapter{}
@@ -30,7 +47,7 @@ Laws:
   \item First is a statement of energy conservation [we can only break even]
   \item Second defines entropy -- why things do or do not happen
   \begin{itemize}
-    \item[--] Entropy measures energy quality [you can only break even at 0 K]
+    \item Entropy measures energy quality [you can only break even at 0 K]
   \end{itemize}
   \item Third doesn't define thermodynamic property; tells us we can't get to 0 K
 \end{itemize}
@@ -42,7 +59,7 @@ When it emerged, atoms were unknown -- considered average properties of bulk mat
 There was no attention paid to what was inside \\
 Macroscopic approach to look at 'black box':
 \begin{itemize}
-  \item[--] This approach is general and difficult to 'see the point' \\
+  \item This approach is general and difficult to 'see the point' \\
   All good having relationships about heat capacities and expansicities but tells us nothing about the physics
   \item[e.g.] why a material has a certain temperature dependence for its heat capacity
 \end{itemize}
@@ -51,8 +68,8 @@ Opening the black box gets microscopic picture (atomic) but this can be very det
 Statistical mechanics instead looks at average properties of all atoms in the thermodynamic limit
 
 \subsection{Counting Molecules -- simpler than recording position and motion  as fewer DoFs}
-Lecture theatre has $10^29$ molecules ($3 \times 10^6$ litres of air) \\
-A 10GhZ processor can count $10^17$ molecules per year (each cycle counts one) $\approx 3 \times 10^11$ years to count all molecules \\
+Lecture theatre has $10^{29}$ molecules ($3 \times 10^6$ litres of air) \\
+A 10GHz processor can count $10^17$ molecules per year (each cycle counts one) $\approx 3 \times 10^11$ years to count all molecules \\
 Thermodynamic limit -- things tend to the average (to infinity)
 
 \subsection{Rains drops hit small and large roof:}
@@ -61,16 +78,18 @@ Consider pressure, $p = \frac{F}{A}$, same in both cases if you consider the ave
 Thermodynamic limit -- $A \to \infty$
 
 \section{Thermo Systems and States}
-\begin{tabular}{c|c|c}
-     & Extensive -- System Extent & Intensive -- Independent \\
-     \hline
-     \multirow{2}{7em}{\answerbox} & Volume, V & Temp, T \\
-     & Energy, U & Pressure, P \\
-     \hline
-     \multirow{2}{7em}{\halfbox \halfbox} & $V = V_A = V_B = \frac{V}{2}$ & $T^* = T_A = T_B = T$ \\
-     & $U = U_A = U_B = \frac{U}{2}$ & $p^* = p_A = p_B = p$
-\end{tabular}
-
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c}
+         & Extensive -- System Extent & Intensive -- Independent \\
+         \hline
+         \multirow{2}{7em}{\answerbox} & Volume, V & Temp, T \\
+         & Energy, U & Pressure, P \\
+         \hline
+         \multirow{2}{7em}{\halfbox \halfbox} & $V = V_A = V_B = \frac{V}{2}$ & $T^* = T_A = T_B = T$ \\
+         & $U = U_A = U_B = \frac{U}{2}$ & $p^* = p_A = p_B = p$
+    \end{tabular}
+\end{table}
 Relate properties by equation of state, $f(p,V,T) = 0$ \\
 Most well known as the ideal gas law: $pV = nRT$
 
@@ -87,7 +106,7 @@ Addition/subtraction of heat changes temperature \\
 If two objects have the same temperature, they're in TE
 
 Heat capacity -- $\Delta Q = mc\Delta T$ \\
-More rigorously, a small change, dT, in a substance's temperature, requires the addition/subtraction of a differention and of heat,  $\delta Q$:
+More rigorously, a small change, dT, in a substance's temperature, requires the addition/subtraction of a differentiation and of heat,  $\delta Q$:
 \begin{equation*}
     \delta Q = mcdT
 \end{equation*}
@@ -123,8 +142,6 @@ Always denote what is held constant explicitly
 \begin{equation*}
     C_p = \Big(\frac{\p Q}{\p T}\Big)_p \neq \Big(\frac{\p Q}{\p T}\Big)_V = C_V
 \end{equation*}
-
-\subsection{}
 Kinetic energy in gases: $U = \frac{1}{2}m<v>^2 = \frac{3}{2}Nk_{b}T$ \\
 Look at ideal gases for simplification:
 \begin{gather*}
@@ -147,6 +164,7 @@ This has two independent variables
     \begin{center}
         \includegraphics[scale=0.35]{Surface.png}
     \end{center}
+    \vspace{-80pt}
 \end{wrapfigure}
 Infinitesimal change in z resulting from infinitesimal changes in x and y \\
 Z represents a surface
@@ -155,7 +173,6 @@ Consider an intersection of the surface in the x-z plane at some y
 
 Rather than consider the value of z, we look at the shape at any point of the lines of intersection with planes constant x or y
 
-\subsection{}
 For $p = p(V,\,T)$:
 \begin{gather*}
     dp = \Big(\frac{\p p}{\p V}\Big)_T dV + \Big(\frac{\p p}{\p T}\Big)_V dT \\
@@ -167,7 +184,6 @@ For $p = p(V,\,T)$:
     d(\ln{p}) = -d(\ln{V}) + d(\ln{T})~~ \Big[\frac{d(\ln{x})}{dx} = \frac{1}{x} \Big]
 \end{gather*}
 
-\textbf{Proof 2.2.2.1:}\\
 x, y, and z related via $f(x,\,y,\,z)$
 \begin{gather*}
     x = X(y,\,z)~;~ y = Y(x,\,z) \\
@@ -222,11 +238,11 @@ The work between two states is path dependent:
 \end{equation*}
 \begin{wrapfigure}{l}{0.4\textwidth}
     \begin{center}
-        \includegraphics[scale=0.6]{WorkPV.png}
+        \includegraphics[scale=0.6]{WorkPV.png}\\
+        \includegraphics[scale=0.5]{XYCord.png}
     \end{center}
-    \vspace{-120pt}
+    \vspace{-40pt}
 \end{wrapfigure}
-
 Differential works along the path are added.
 \begin{gather*}
 \left.\begin{aligned}
@@ -237,14 +253,6 @@ Differential works along the path are added.
     \quad \text{exact dV, path independent} \\
     W_1 \neq W_2 ~ \text{ -- areas are different, so inexact } \delta W
 \end{gather*}
-
-\newpage
-\subsection{}
-\begin{wrapfigure}{r}{0.4\textwidth}
-    \begin{center}
-        \includegraphics[scale=0.5]{XYCord.png}
-    \end{center}
-\end{wrapfigure}
 Consider $\delta F = x\,dx + x\,dy$ (inexact) with two paths for $(0,\,0) \to (X,\,Y)$
 
 Path A: $(0,\,0) \to (X,\,0) \to (X,\,Y)$ \\
@@ -364,7 +372,7 @@ All physical laws are reversible \\
 e.g. molecules bouncing off a container forwards or backwards
 
 In the real world, certain outcomes are much more likely - can always find ways to convert energy to heat than anything else. \\
-This heat is hotter than surroundings so disspiates and tends to TE
+This heat is hotter than surroundings so dissipates and tends to TE
 
 Thermodynamics reversibility is when we can change the direction by making some infinitesimal change to a system property
 
@@ -373,10 +381,10 @@ Things are reversible if they quasi-static - happen really slowly
 \chapter{}
 Processes are quasi-static (no shock waves) - very slow and also have finite temperature differences
 \begin{itemize}
-    \item[] isobaric - constant pressure
-    \item[] isothermal - constant temperature
-    \item[] isochoric - constant volume
-    \item[] adiabatic - thermally isolated
+    \item isobaric - constant pressure
+    \item isothermal - constant temperature
+    \item isochoric - constant volume
+    \item adiabatic - thermally isolated
 \end{itemize}
 Isobaric heating, supply energy to raise at constant pressure:
 \begin{equation*}
@@ -433,9 +441,9 @@ We know turning work to heat is easy but the reverse is more difficult \\
 Use a heat engine to produce work from temperature difference between reservoirs \\
 Heat is taken in at high temperature, some heat is converted to work, and remaining heat is rejected at low temperature (not always obvious - could be to the environment)
 
-Circular path in pV diagram: Path in some thermodynamic states undergoes work interactions, changing thermodynamic conditions (p, V, T) as it state moves round path, and it reutns to its initial states
+Circular path in pV diagram: Path in some thermodynamic states undergoes work interactions, changing thermodynamic conditions (p, V, T) as it state moves round path, and it returns to its initial states
 
-Steam power plant is best desciption of 'work device'
+Steam power plant is best description of 'work device'
 
 \section{The Second Law}
 This is quite important for all of science - underpins whole understanding of why change happens
@@ -447,7 +455,7 @@ The Second Law places direction on a process and likelihood it will happen \\
     \underbrace{\oint \delta W > 0 \implies \Delta Q < 0}_{\text{Work produces heat}} \\
     \underbrace{\oint \delta W < 0 \implies \Delta Q > 0}_{\text{Heat produces work}}
 \end{gather*}
-Introduce entropy later on to explain inadequecy of first law \\
+Introduce entropy later on to explain inadequacy of first law \\
 Tells us energy quality: the higher the energy quality, the more potential is has.
 
 \section{Clausius Statement}
@@ -528,7 +536,7 @@ The first law is a cycle
 Second law told us $|Q_L| > 0$ always must have a cold sink
 $$\eta \neq 1$$
 This allows us to define a thermodynamic temperature \\
-Relate reservoir heat ineractions to the temperature, T, in Kelvin
+Relate reservoir heat interactions to the temperature, T, in Kelvin
 
 Fridge takes heat cold to hot:
 \begin{equation*}
@@ -590,7 +598,7 @@ Look at adiabatics for cancelling of logs:
 \section{Carnot Cycles}
 Ideal model of an engine in abstract form and it is used to determine the maximum amount of heat that can be converted to work
 
-Until this point, people tried to increase engine efficiency by changin the working fluid or increasing the pressure, but Carnot's result showed that efficiency is independent of the above and onlu depends on the temperature of the reservoirs. \\
+Until this point, people tried to increase engine efficiency by changing the working fluid or increasing the pressure, but Carnot's result showed that efficiency is independent of the above and only depends on the temperature of the reservoirs. \\
 He showed that
 \begin{gather*}
     \frac{Q_H}{|Q_L|} = \frac{T_H}{T_L} \\
@@ -670,9 +678,9 @@ This engine has lower efficiency so more heat is rejected - $Q_L'$ is more negat
     \end{center}
 \end{wrapfigure}
 
-This engine is not quasi-static \\
-Heat is added at various points - assume it comes from several heat reservoirs \\
-Heat reservoirs have infinite heat capacity and their temperature doesn't change
+This engine is not quasi-static.
+Heat is added at various points - assume it comes from several heat reservoirs.
+Heat reservoirs have infinite heat capacity and their temperature doesn't change.
 
 From the First Law, the engine is cycle so $dU = 0$
 \begin{gather*}
@@ -760,7 +768,7 @@ Sum in the limit of Carnots going to zero size:
 \end{equation*}
 
 \subsection{Principle of increase of Entropy}
-\emph{In every process taking place in an indeal system, the entropy change of the system either increases of remains constant \\
+\emph{In every process taking place in an ideal system, the entropy change of the system either increases of remains constant \\
 This is equivalent to Kelvin and Clausius statements}
 
 \begin{wrapfigure}{r}{0.4\textwidth}
@@ -905,8 +913,8 @@ Enthalpy, H, is useful for considering constant pressure processes (open to the 
 
 Tends to be much easier to measure and design experiments for
 
-As constant pressure, it behaves like the internal energy would do at constant volume \\
-{[}Burning fuel in atmosphere, atmosphere needs pushing out the way; enthalpy takes care of the atmosphere work (invisible){]}
+As constant pressure, it behaves like the internal energy would do at constant volume.
+Burning fuel in atmosphere, atmosphere needs pushing out the way; enthalpy takes care of the atmosphere work (invisible).
 
 \subsection{Finding Enthalpy}
 \begin{align*}
@@ -925,7 +933,7 @@ At constant pressure, $dp = 0 \implies dH = T\,dS = \delta Q$
 In an isobaric process, the enthalpy is the heat absorbed/rejected
 
 Internal Energy and Enthalpy have Entropy as a natural variable \\
-This is diffcult to understand; it is more useful to have temperature
+This is difficult to understand; it is more useful to have temperature
 
 \section{Free Energies}
 \begin{align*}
@@ -1005,7 +1013,7 @@ Compressibility: fractional volume change with pressure
 \begin{equation*}
     \kappa_T = -\frac{dV}{V} \times \frac{1}{\Delta p} \to \kappa_T = -\frac{1}{V} \Big(\frac{\p V}{\p p}\Big)_T ~;~ \kappa_S = -\frac{1}{V} \Big(\frac{\p V}{\p p}\Big)_S
 \end{equation*}
-As you increase the pressure on a solud, it gets smaller, so the negative sign gives a positive coefficient
+As you increase the pressure on a solid, it gets smaller, so the negative sign gives a positive coefficient
 
 \section{TdS Equations}
 Help us to look at material behaviour, $\delta Q = T\,dS$, e.g. heat transfer
@@ -1096,7 +1104,7 @@ $C_p \geq C_V$: $\kappa_T$ is always positive; $\beta_p$ is squared so ignore th
 The heat capacities don't depend on the internal energy \\
 As $T \to 0,~ C_p \to C_V$
 
-\subsection{Heat Transfered to VDW gas expanding isothermally at T0}
+\subsection{Heat Transferred to VDW gas expanding isothermally at T0}
 (VDW - Van Der Waal's)
 
 Use TdS (1)
@@ -1122,7 +1130,7 @@ The cold sink is thermodynamically the most important.
 
 We know that $\eta = \frac{|Work|}{Heat\,In}$, but how effective is an engine?
 
-Real engines will always do less work than a reversible engine operating between the same two temperatures.
+Real engines will always do less work than a reversible engine operating between the same two temps.
 \begin{equation*}
     \eta_{rev} = \frac{|\text{Best Possible Work Out}|}{\text{Heat In}},~ \eta_{rev} \geq \eta
 \end{equation*}
@@ -1180,16 +1188,16 @@ If $dV = 0$ at $T_0$ for environment temperature:
 \end{align*}
 Now $F = U - T_0 S$ at constant T, so $\Delta F = \Delta U - T_0 \Delta S$
 
-The two right hand sides are identical \\
+The two right hand sides are identical.
 The Helmholtz function is a 'disguised form' of the entropy change of the Universe at constant temperature and volume.
 
 If $\Delta S_U$ spontaneously increase, $\Delta F$ must decrease \\
 So if we minimise F, we get the most work out and the system reaches equilibrium
 
 $T_0 dS$ is really the energy the system provides to the surroundings as it does work.
-The environement entropy increases to compensate for the system energy decrease
+The environment entropy increases to compensate for the system energy decrease
 
-The Gibbbs function does the same job at constant pressure
+The Gibbs function does the same job at constant pressure
 \begin{equation*}
     dG = dU - T_0 dS + p_0 dV = dA,~ dp = dT = 0
 \end{equation*}
@@ -1290,7 +1298,7 @@ Should be able to sketch any engine cycle given a good starting point (thermo pr
     & CoP_H = \frac{Heat\,to\,hot}{Work} = \frac{Q_H}{Q_H - |Q_L|} = \frac{T_H}{T_H - T_L}
 \end{align*}
 Model real if the complexities are manageable \\
-In workshop 2, we showed that the adiabatic works cancelled for a Carnot cycle, so the total work was the difference in the isotherm works. Constructing isothermal heat transfer is diffcult - takes a long time to complete.
+In workshop 2, we showed that the adiabatic works cancelled for a Carnot cycle, so the total work was the difference in the isotherm works. Constructing isothermal heat transfer is difficult - takes a long time to complete.
 
 In practice, construct engines that are only internally reversible. \\
 Constructed a cycle from reversible processes, but the heat is added across a temperature difference.
@@ -1311,12 +1319,15 @@ External combustion engines - supply heat from external source
 \end{figure}
 
 \chapter{}
-Gas cycles are modelled using 'air standard' assumptions - to make things simple we have an enclosed ideal gas as the working fluid, heat added from external source.
-No exhaust - constant volume heat rejection. \\
+Gas cycles are modelled using `air standard' assumptions - to make things simple we have an enclosed ideal gas as the working fluid, heat added from external source.
+No exhaust - constant volume heat rejection. 
+
 The 4-stroke petrol engine can be modelled by the Otto cycle using internally reversible processes.
 This is similar to the Diesel cycle.
-In both cases, only internally reversible as adding heat isochorically/isobarically $[\Delta Q = \int C_V dT]$ - quickly added across temperature difference. \\
-Efficiency is lower than for totally reversible (Carnot) cycle between same two temperatures, isothermal heat interactions. \\
+In both cases, only internally reversible as adding heat isochorically or isobarically $[\Delta Q = \int C_V dT]$ - quickly added across temperature difference. 
+
+Efficiency is lower than for totally reversible (Carnot) cycle between same two temperatures, isothermal heat interactions. 
+
 The Stirling and Ericsson cycles have same efficiency as a Carnot cycle.
 They use regeneration where isochoric/isobaric heat doesn't leave the confines of the engine.
 
@@ -1641,7 +1652,7 @@ Separate variables and integrate:
 \end{align*}
 What is $S(T_0)$?
 \begin{itemize}
-    \item[-] We can define this statiscally using $S = k_B \ln(\Omega)$
+    \item[-] We can define this statistically using $S = k_B \ln(\Omega)$
     \item[-] Define at a fixed temperature, $S(T = 0)$
 \end{itemize}
 Nernst examined experimental data:
@@ -1863,13 +1874,13 @@ Each molecule can now be arranged in twice the number of ways. For one mole, we 
     \Delta S &= k_B N_A \ln2 = R\ln2
 \end{align*}
 For even small systems, there are lots of microstates and factorials of large numbers. $\Omega$ has factorials of $N_A!$ \\
-Striling Approximation:
+Stirling Approximation:
 \begin{equation*}
     \ln(X)! \approx X\ln(X) - X
 \end{equation*}
 
 \section{Boltzmann Distribution}
-Boltzmann is a probability distribution telling us the probability of finding particle with $\epsilon_j$ at temperature T
+Boltzmann is a probability distribution telling us the probability of finding particle with $\epsilon_j$ at temp T
 \begin{equation*}
     P(\epsilon_j) \propto \exp\Big(\frac{-\epsilon_j}{k_B T}\Big) = \frac{\exp\big(\tfrac{-\epsilon_j}{k_B T}\big)}{\sum_{j} \exp\big(\tfrac{-\epsilon_j}{k_B T}\big)}
 \end{equation*}
@@ -1927,7 +1938,7 @@ This tells us that
 From Quantum mechanics, we have two types of indistinguishable particle, bosons and fermions.
 Look at their wavefunctions where swapping particles either leaves the wavefunction unchanged, or introduces an overall minus sign.
 In both cases, the probability of state occupation doesn't change. Considering the two particle wavefunction $\psi(1,2)$ where 1, 2 represent the coordinates of each particle.
-If the particles are indistinguishable, changing the patticle labels will not result in a change to the physical oberservables.
+If the particles are indistinguishable, changing the particle labels will not result in a change to the physical observables.
 The solution of the Schrodinger for the two particles can be written as the product of the one-particle wavefunctions, $\psi(1,2) = \psi_{a}(1)\psi_{b}(2)$, where $a$ and $b$ are the values of state label.
 
 Symmetry in Bosons, any number in a quantum state:
@@ -1949,7 +1960,7 @@ The Maxwell Boltzmann distribution for a classical gas:
 \begin{equation*}
     f_{MB}(\epsilon) = A\exp\Big(\frac{-\epsilon}{k_B T}\Big)
 \end{equation*}
-We have many more energy levels, so $\epsilon$ is now continious \\
+We have many more energy levels, so $\epsilon$ is now continuous \\
 $f(\epsilon)$ - distribution function, probability a state having energy $\epsilon$ is occupied \\
 $g(\epsilon)d\epsilon$ - density of states, how many energy levels are in the range, $d\epsilon$ \\
 $n(\epsilon)d\epsilon = f(\epsilon)g(\epsilon)d\epsilon$ - number of particles in the energy interval $d\epsilon$
@@ -1981,7 +1992,7 @@ All particles migrate to the lowest energy state. \\
 \end{equation*}
 $\epsilon_F$ is the Fermi energy \\
 At $T = 0$K all states are occupied to the Fermi energy \\
-Raise T moves particlea above $\epsilon_F$ \\
+Raise T moves particles above $\epsilon_F$ \\
 At $T = 0$K:
 \begin{equation*}
     f_{FD}(\epsilon) =
@@ -1995,5 +2006,5 @@ At $T = 0$K:
 
 Low probability of state occupation - many more states than particles, so quantum effects are irrelevant
 
-Fermi-Dirac $\propto$ Bose-Einstein tend towards Maxwell-Boltzmann
+Fermi-Dirac is proportional to Bose-Einstein tend towards Maxwell-Boltzmann
 \end{document}

@@ -1,0 +1,1935 @@
+\documentclass[a4paper,11pt,normalem]{article}
+\usepackage{../../../LaTeX-Templates/Notes}
+
+\titlecontents{section}
+    [0pt]
+    {}
+    {Lecture \thecontentslabel\quad}
+    {}
+    {\dotfill\contentspage}
+    \titleformat{\section}{\fontsize{12}{15}\normalfont}{\underline{\textbf{Lecture \thesection}}}{1em}{}
+
+\rhead{}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+{\centering
+{\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2018}}\\[1.5cm]
+{\LARGE\bfseries Theoretical Physics 3}\\[0.5cm]
+\HRule \\[0.3cm]
+{\huge\bfseries Quantum Theory 2}\\[0.1cm]
+\HRule \\[1cm]}
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+    \begin{flushleft} \large
+        \emph{Author:} \\ Matthew Rossetter
+    \end{flushleft}
+\end{minipage}~
+\begin{minipage}{0.4\textwidth}
+    \begin{flushright} \large
+        \emph{Lecturer:} \\ Prof. Robert Potvliege
+    \end{flushright}
+\end{minipage}
+\end{center}
+
+\section{}\label{lecture-1}
+
+\emph{Course notes and audio recordings of the lectures can be found on
+DUO}
+
+\section{}\label{lecture-2}
+
+\subsection{Vector Spaces}\label{vector-spaces}
+
+\subsubsection{Examples in Vector Spaces}\label{examples-in-vector-spaces}
+
+\paragraph{A. Geometric vectors}\label{a.-geometric-vectors}
+
+Summing vectors (\emph{only valid for addition of vectors}):
+
+\begin{enumerate}
+\item
+  If \(\vec{v}_1\) and \(\vec{v}_2\) are vectors, then
+  \(\vec{v}_1 + \vec{v}_2\) is also a vector
+  \begin{itemize}
+  \item
+    The plane bounded by \(\vec{v}_1\) and \(\vec{v}_2\) is a closed
+    vector space under vector addition.
+  \end{itemize}
+\item
+  \[(\vec{v}_1 + \vec{v}_2) + \vec{v}_3 = \vec{v}_1 + (\vec{v}_2 + \vec{v}_3)\]
+\item
+  There is a zero vector \(\vec{0}\) (vector of zero length) such that
+  \(\vec{v} + \vec{0} = \vec{v}\).
+\item
+  Each vector has an inverse \(-\vec{v}\) such that
+  \(\vec{v} + (-\vec{v}) = \vec{0}\).
+\item
+  \[\vec{v}_1 + \vec{v}_2 = \vec{v}_2 + \vec{v}_1\]
+\item
+  \(\alpha\vec{v}\) is the vector whose length is \(\alpha\) times
+  \(|\vec{v}|\) in the same direction as \(\vec{v}\) for any real
+  \(\alpha\). This is scalar multiplication.
+\item
+  \[\begin{aligned}(\alpha_1 + \alpha_2)\vec{v} = \alpha_1 \vec{v} + \alpha_2\vec{v} \\ \alpha(\vec{v}_1 + \vec{v}_2) = \alpha\vec{v}_1 + \alpha\vec{v}_2\end{aligned}\]
+\item
+  \[(\alpha\beta)\vec{v} = \alpha(\beta\vec{v})\]
+\item
+  \[1\cdot\vec{v} = \vec{v}\]
+\item
+  Dot product:
+  \[\vec{v}_1 \cdot \vec{v}_2 = |\vec{v}_1||\vec{v}_2|\cos\theta_{12}\]
+\item
+  \[\vec{v}_1\cdot\vec{v}_2 = (\vec{v}_2\cdot\vec{v}_1)^* \]
+\item
+  Linear combinations:
+  \[(\alpha\vec{v}_1 + \beta\vec{v}_2)\cdot\vec{w} = \alpha^{*}(\vec{v}_1\cdot\vec{w}) + \beta^{*}(\vec{v}_2\cdot\vec{w})\]
+\item
+  \[\vec{v}\cdot\vec{v} = |\vec{v}|^2 \geq 0\]
+\end{enumerate}
+
+These are the axioms of the inner product.
+A vector space with inner product \(\equiv\) an inner product space
+
+\paragraph{B. 2-component complex column vectors}\label{b.-2-component-complex-column-vectors}
+
+\[
+    V = \begin{pmatrix} a \\ b \end{pmatrix}
+\]
+where \(a\) and \(b\) are complex numbers
+
+\begin{enumerate}
+\item
+  Addition of two vectors: \[
+  \begin{aligned}
+  V = \begin{pmatrix} a \\ b \end{pmatrix} ~&;~ W = \begin{pmatrix} a' \\ b' \end{pmatrix} \\
+  V + W &= \begin{pmatrix} a + a' \\ b + b' \end{pmatrix}
+  \end{aligned}
+  \]
+\item
+  \[(v_1 + v_2) + v_3 = v_1 + (v_2 + v_3)\]
+\item
+  \[\begin{pmatrix} a \\ b\end{pmatrix} + \begin{pmatrix} 0 \\ 0 \end{pmatrix} = \begin{pmatrix} a \\ b \end{pmatrix}\]
+\item
+  \[\begin{pmatrix} a \\ b\end{pmatrix} + \begin{pmatrix} -a \\ -b \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}\]
+\item
+  \[\alpha\begin{pmatrix} a \\ b\end{pmatrix} = \begin{pmatrix} \alpha a \\ \alpha b \end{pmatrix}\]
+\item
+  Inner product of \(v\),\(w\) is: \[
+  (v,w) = \begin{pmatrix} a^* & b^* \end{pmatrix}\begin{pmatrix} a' \\ b' \end{pmatrix} = a^* a' + b^* b'
+  \]
+\end{enumerate}
+
+\paragraph{C. Functions of x}\label{c.-functions-of-x}
+
+\[
+    f(x), \psi(x)
+\]
+These functions form a vector space.
+
+\begin{enumerate}
+\item
+  \[(f + g)(x) = f(x) + g(x)\]
+\item
+  \[(\alpha f)(x) = \alpha f(x)\]
+\item
+  Inner product: \[
+  (f, g) = \int_{-\infty}^{\infty} f^* (x)g(x)\,dx
+  \]
+\end{enumerate}
+
+\subsection{Norm of a vector}\label{norm-of-a-vector}
+
+The norm of a vector is defined as:
+
+\[
+    ||v|| = \sqrt{(v,v)}
+\]
+
+\begin{itemize}
+\item
+  Two vectors are said to be orthogonal if \((v,w) = 0\)
+  \begin{itemize}
+  \item
+    orthonormal if there are orthogonal and have a unit norm
+    \((||v|| = ||w|| = 1)\)
+  \end{itemize}
+\end{itemize}
+
+\section{}\label{lecture-3}
+
+\subsection{Hilbert Spaces}\label{hilbert-spaces}
+
+Wave function of a harmonic oscillator:
+\[
+    \int_{-\infty}^\infty |\psi(x)|^2dx = 1
+\]
+Wave function of atomic hydrogen:
+\[
+    \int_{-\infty}^\infty r^2dr \int_{0}^\pi \sin\theta\,d\theta \int_0^{2\pi} d\phi \; |\psi(r,\theta,\phi)|^2 = 1
+\]
+
+\begin{itemize}
+\item
+  Wave functions must be square-integrable
+\item
+  The set of all functions forms a vector space
+  \begin{itemize}
+  \item
+    The set of all square-integrable functions also forms a vector
+    space, a subset of the above space (a subspace)
+  \item
+    A subspace is a vector space which is a subset of another vector
+    space
+  \end{itemize}
+\item
+  A square-integrable function refers to using the Leberque integration
+\end{itemize}
+Hilbert space: a complete vector space with an inner product, e.g.~the
+vector space of square-integrable functions on \((-\infty, \infty)\).
+The inner product is:
+\[
+    (\phi, \psi) = \int_{-\infty}^\infty \phi^* (x)\psi(x)dx
+\]
+
+\subsection{Bases}\label{bases}
+
+\begin{enumerate}
+\item
+  Span of a set of vectors: the set of all linear combinations of these
+  vectors, e.g. the span of
+\[
+    \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}
+\]
+is the set of linear combinations,
+\[
+    a\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + b\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + c\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} a \\ b \\ c \end{pmatrix}
+\]
+The span of those three vectors is the set of all 3-component column
+vectors, were \(a, b, c \in \mathbb{C}\)
+\item
+  A set of N vectors is said to be linearly independent if it is not
+  possible to write a vector from that set as a linear combination of
+  the other vectors.
+\end{enumerate}
+\[
+    \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}
+\]
+is a linearly independent set since it is not possible to find
+\(\alpha\) and \(\beta\) such that
+\[
+    \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \alpha\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + \beta\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+\]
+Orthogonal vectors are always linearly independent.
+The dimension of a finite-dimensional vector space is the max number of
+vectors forming a linearly-independent set.
+An infinite-dimensional vector space is one in which there is no upper
+bound on the size of the linearly-independent sets.
+
+\begin{example}[Functions of the form \(e^{inx}, n \in \mathbb{N}\)]
+These functions form a linearly-independent set since any two such
+functions are orthogonal.
+\[
+    \int_0^{2\pi} \left(e^{inx}\right)^* e^{imx} dx = 0, n \neq m
+\]
+\end{example}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item
+  A basis is a set of linearly-independent vectors spanning the whole
+  vector space.
+  An orthonormal basis is a basis whose vectors are orthonormal.
+\end{enumerate}
+
+\section{}\label{lecture-4}
+
+\subsection{Operators I}\label{operators-i}
+
+Examples:
+\begin{enumerate}
+    \item energy operator \(\to H\) 
+    \item angular momentum operator \(\to \vec{L} = L_x\hat{x} + L_y\hat{y} + L_z\hat{z}\) 
+    \item linear momentum operator \(\to \vec{p} = -i\hbar\vec{\nabla},~ p_x = -i\hbar\frac{\partial}{\partial x} = -i\hbar\frac{d}{dx}\)
+    \item position operator \(\to x\) (in 1D)
+\end{enumerate}
+
+\begin{itemize}
+\item
+  operators deal with \emph{dynamical variables}
+\item
+  they transform wavefunctions:
+\end{itemize}
+
+\[
+    p_x e^{-\frac{x^2}{a^2}} = -i\hbar\frac{d}{dx}e^{-\frac{x^2}{a^2}} = 2i\hbar\frac{x}{a^2}e^{-\frac{x^2}{a^2}}
+\]
+
+\begin{itemize}
+\item
+  linear operators are ones that act linearly:
+  \(A(c_1v_1 + c_2v_2) = c_1Av_1 + c_2Av_2\)
+\item
+  non-linear operators do exist:
+\end{itemize}
+
+\[
+    \begin{aligned}
+    Av &= v||v|| \\
+    Acv &= cv||cv|| = c|c|v||v|| \\
+    &= c|c|Av \neq cAv
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  many operators are \emph{unbounded}
+\item
+  identity operator, \(I\) such that \(Iv = v\)
+\end{itemize}
+
+\subsection{Using Linear Operators}\label{using-linear-operators}
+
+\begin{enumerate}
+\item
+  adding operators:
+\[
+    (A + B)v = Av + Bv
+\]
+\item
+  multiplying an operator by a scalar:
+\[
+    (cA)v = A(cv)
+\]
+\item
+  product of two operators, i.e.~act on v with B first then act on the
+  result with A:
+\[
+    (AB)v = A(Bv), ~ [AB \neq BA]
+\]
+\item
+  invertible operator, an operator which has an inverse: \(A^{-1}\)\\
+  \(A^{-1}\) being such that \[AA^{-1} = A^{-1}A = I\]\\
+  singular operators are defined as non-invertible operators \[
+  \begin{aligned}
+  (AB)^{-1} &= B^{-1}A^{-1} \\
+  (A^{-1})^{-1} &= A
+  \end{aligned}
+  \]
+\item
+  any operator \(A\) has a unique adjoint, \(A^\dagger\)\\
+  \(A^\dagger\) is the operator such that for any \(v,w\) \[
+  \begin{aligned}
+  (v,Aw) &= (w,A^\dagger v)^* \\
+  (AB)^\dagger &= B^\dagger A^\dagger \\
+  (A^\dagger)^\dagger &= A \\
+  (A + B)^\dagger &= A^\dagger + B^\dagger \\
+  (cA)^\dagger &= c^* A^\dagger
+  \end{aligned}
+  \]
+\end{enumerate}
+
+\subsection{Representation by a matrix}\label{representation-by-a-matrix}
+For an orthonormal basis: \(\{u_1,u_2,\cdots,u_n\}\) \[
+    \begin{aligned}
+    (u_i,u_j) &= \delta_{ij} = \begin{cases} 1 & i = j \\ 0 & i \neq j \end{cases} \\
+    v&= c_1u_1 + c_2u_2 + \cdots + c_nu_n \\
+    w &= Av \\
+    w &= d_1u_1 + \cdots + d_nu_n \\
+    \vec{c} &= \begin{pmatrix} c_1 \\ c_2 \\ \vdots \\ c_n \end{pmatrix} ~;~ \vec{d} = \begin{pmatrix} d_1 \\ d_2 \\ \vdots \\ d_n \end{pmatrix} \\
+    \vec{d} &= \hat{A}\vec{c} \\
+    \hat{A} &= \begin{pmatrix} A_{11} & A_{12} & \cdots & A_{1n} \\ \vdots & & & \\ A_{n1} & A_{n2} & \cdots & A_{nn} \end{pmatrix} \\
+    A_{ij} &= (u_i, Au_j)
+    \end{aligned}
+\] 
+This matrix represents the operator \(A\) in the basis \(\{u_1,u_2,\cdots,u_n\}\)
+
+Example:
+\[\left\{\frac{1}{\sqrt{2}}, \sqrt{\frac{3}{2}}x\right\}\] is an
+orthonormal basis in the space of all functions of the form
+\(f(x) = a_0 + a_1x\)
+
+\[
+    \begin{aligned}
+    (u_i,u_j) &= \delta_{ij} \\
+    \int_{-1}^1 u_{i}^{*}(x)u_j(x)&\,dx = \delta_{ij}*
+    \end{aligned}
+\]
+
+\section{}\label{lecture-5}
+
+\begin{itemize}
+\item
+  \textbf{Note:} \emph{order of presenting the basis matters, flipping
+  the order of a 2 base basis transverses the matrix}
+\item
+  For a function, \(f = a + bx = c_1u_1(x) + c_2u_2(x)\), calculate the
+  constants using the inner product
+\item
+  One says that the vector space spanned by \(u_1(x)\) and \(u_2(x)\) is
+  isomorphic to the vector space of 2-component column vectors
+\end{itemize}
+
+\subsection{Dirac Notation}\label{dirac-notation}
+
+\[
+    \begin{aligned}
+    u_1(x) &= \begin{pmatrix} 1 \\ 0 \end{pmatrix} = |1\rangle \\
+    u_2(x) &= \begin{pmatrix} 0 \\ 1 \end{pmatrix} = |2\rangle \\
+    f &= a + bx = \begin{pmatrix} a\sqrt{2} \\ b\sqrt{\frac{2}{3}} \end{pmatrix} = |f\rangle
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  denote inner product of g and f as \((g,f) = \langle g | f \rangle\)
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \frac{d}{dx}f &= Df = \hat{D}|f\rangle \\
+    \left(g,\frac{df}{dx}\right) &= \langle g | \hat{D} | f \rangle
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  The inner product of \(c|g\rangle\) and \(|f\rangle\) is
+  \(c^* \langle g|f\rangle\)
+\item
+  Ket vectors are vectors in their own right, forming a Hilbert space
+\end{itemize}
+
+\subsection{Dual Space}\label{dual-space}
+
+\begin{itemize}
+\item
+  Each state of a quantum system can be described by a vector belonging
+  to a Hilbert space
+\end{itemize}
+
+\section{}\label{lecture-6}
+
+\subsection{Degenerate Eigenvalues of an Operator}\label{degenerate-eigenvalues-of-an-operator}
+
+\[
+    \begin{aligned}
+    \hat{A}|\psi\rangle &= \lambda|\psi\rangle \\
+    c|\psi\rangle &= |c\psi\rangle \\
+    \hat{A}|c\psi\rangle &= \hat{A}c|\psi\rangle \\
+    &= c\hat{A}|\psi\rangle \\
+    &= c\lambda|\psi\rangle \\
+    &= \lambda c|\psi\rangle = \lambda|c\psi\rangle
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  \(\lambda\) always corresponds to infinitely many different
+  eigenvectors
+\item
+  It happens that:
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \hat{A}|\psi_1\rangle &= \lambda_1|\psi_1\rangle \\
+    \hat{A}|\psi_2\rangle &= \lambda_1|\psi_2\rangle \\
+    |\psi_2\rangle &\neq |\psi_1\rangle
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  i.e., \(|\psi_1\rangle\) and \(|\psi_2\rangle\) are linearly
+  independent, but correspond to the same eigenvalues
+  \begin{itemize}
+  \item
+    If so, \(\lambda\) is said to be degenerate
+  \item
+    e.g. for hydrogen, the \(2s\), \(2p_{m=0}\), and \(2p_{m=\pm1}\)
+    states all have the same energy, \(E_2\)
+  \end{itemize}
+\item
+  These states are orthogonal, and hence, linearly independent:
+\[
+    \begin{aligned}
+    \int \psi_{nlm}^* (r,\phi,\theta)\,\psi_{n'l'm'}(r,\phi,\theta)\,d'r = 0
+    \end{aligned}
+\]
+\emph{unless \(n = n'\), \(l = l'\), and \(m = m'\)}
+\item
+  The \(E_2\) eigenvalues of hydrogen are degenerate
+\item
+  The span of all the eigenvectors belonging to a degenerate eigenvalue
+  is a vector space.
+\item
+  The degree of degeneracy of that eigenvalue is the dimension of that
+  space.
+  \begin{itemize}
+  \item
+    e.g. the degree of degeneracy of \(E_2\) is 4 - ``\(E_2\) is 4-fold
+    degenerate''
+  \end{itemize}
+\item
+  If an operator \(\hat{A}\) is represented by a matrix,
+  \(\underline{\underline{A}}\), then the eigenvalues of \(\hat{A}\) are
+  the same as those of \(\underline{\underline{A}}\)
+  \begin{itemize}
+  \item
+    The eigenvectors of \(\hat{A}\) are \(\iff\) in correspondence with
+    those of the matrix
+  \end{itemize}
+\item
+  Spectrum of an operator: The set of all its eigenvalues (physicist's
+  definition)
+  \begin{itemize}
+  \item
+    \(\hat{A} - \lambda\hat{I}\)
+  \item
+    \(\hat{A}|\psi\rangle = \lambda|\psi\rangle\)
+  \end{itemize}
+\item
+  Momentum operator: \(p = -i\hbar\frac{d}{dx}\)
+\[
+    \begin{aligned}
+    p\psi(x) &= \lambda\psi(x) \\
+    -i\hbar\frac{d\psi}{dx} &= \lambda\psi(x) \\
+    \psi(x) &= Ce^{i\frac{\lambda}{\hbar}x} \\
+    \lambda = a + ib \implies e^{i\frac{\lambda}{\hbar}x} &= e^{\frac{1}{\hbar}(ai - b)x}
+    \end{aligned}
+\]
+\emph{for any constant C}
+\[
+    \begin{aligned}
+    e^{-bx} \to \begin{cases} 0 & fn \to \infty \\ \infty & fn \to -\infty \end{cases}
+    \end{aligned}
+\]
+\emph{for positive b}
+\item
+  \(\psi(x)\) is not square integrable if \(b \neq 0\)
+\item
+  If \(b = 0\), then \(e^{i\frac{a}{\hbar}x}\) remains of modulus 1, but
+\[
+    \int_{-\infty}^{\infty} |\psi(x)|^2dx = \int^{-\infty}_{\infty} |C|^2dx
+\]
+\emph{this diverges}
+\item
+  None of these eigenfunctions are square-integrable
+\item
+  \(p\) has no eigenfunctions in the Hilbert space of square-integrable
+  functions
+\item
+  In physics, functions like \(e^{\pm ikx}\) where k is real, are also
+  ``eigenfunctions'' (i.e. pseudo-eigenfunctions or generalised
+  eigenfunctions)
+\end{itemize}
+
+\subsection{Dynamical Variables and Operators}\label{dynamical-variables-and-operators}
+
+\begin{itemize}
+\item
+  Each state of a quantum system can be represented by a vector
+  belonging to a Hilbert space, \(\mathcal{H}\)
+\item
+  With every dynamical variable is associated a linear operator acting
+  in \(\mathcal{H}\)
+  \begin{itemize}
+  \item
+    e.g. position, momentum, angular momentum, spin, energy
+  \item
+    i.e. physical quantities that may vary in time
+  \end{itemize}
+\item
+  quantities that are constant in time are not dynamical variables
+  \begin{itemize}
+  \item
+    e.g. the charge of the electron, etc
+  \item
+    therefore, they do not correspond to an operator in quantum
+    mechanics
+  \end{itemize}
+\item
+  The only values a dynamical variable can be found to have in a
+  measurement are the eigenvalues of the operator associated with that
+  variable
+\end{itemize}
+
+Suppose that \(|\psi\rangle\) represents a state of a quantum system,
+and \(\hat{A}\) represents a dynamical variable:
+\[
+    \hat{A}|\psi_n\rangle = \lambda_n|\psi_n\rangle
+\]
+then the probability to find the result \(\lambda_n\) in an experiment is
+\[
+    P(\lambda_n) = \frac{|\langle\psi_n|\psi|\rangle|^2}{\langle\psi_n|\psi_n\rangle\langle\psi|\psi\rangle}
+\]
+Usually one takes
+\[
+    \begin{aligned}
+    \langle{\psi|\psi\rangle} &= 1 \\
+    \& \; \langle\psi_n|\psi_n\rangle &= 1 \\
+    \implies P(\lambda_n) &= |\langle\psi_n|\psi\rangle|^2
+    \end{aligned}
+\]
+
+\section{}\label{lecture-7}
+
+\begin{enumerate}
+\item
+  Experiment
+  \begin{itemize}
+  \item
+    System is prepared in a certain state
+  \item
+    measurement
+  \item
+    results
+  \end{itemize}
+\item
+  Theory
+  \begin{itemize}
+  \item
+    state of system is represented by a state vector, \(|\psi\rangle\)
+  \item
+    we have a theoretical description in which what is measured is described in
+    terms of operators associated to dynamical variables
+  \item
+    probabilistic ``prediction''
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Consequences of the Probability Rule}\label{consequences-of-the-probability-rule}
+
+\begin{itemize}
+\item
+  All the predictions of the theory are based on the state vector,
+  \(|\psi\rangle\), representing the system
+\item
+  All one can say about the state of a quantum system is what can be
+  deduced from the state vector
+\item
+  the state vector constrains all the information that can be known about
+  the system
+\item
+  \(|\phi_n\rangle\) is an eigenvector
+  \(\to \langle \phi_n|\phi_n\rangle \neq 0\)
+\item
+  the zero vector never represents a quantum state
+  \(\to \langle\psi|\psi\rangle \neq 0\)
+\item
+  if the probability of a result, \(\lambda\), is zero, then finding
+  this result is impossible (within the theoretical model used)
+  \begin{itemize}
+  \item
+    if the probability is one, then the result will be obtained with
+    certainty
+  \end{itemize}
+\end{itemize}
+
+\subsection{The Principle of Superposition}\label{the-principle-of-superposition}
+
+\begin{itemize}
+\item
+  if \(|\psi_1\rangle\) and \(|\psi_2\rangle\) represents a possible
+  state of a system, then any linear combination of \(|\psi_1\rangle\)
+  and \(|\psi_2\rangle\) also represents a possible state of the system
+  \[
+  \begin{aligned}
+  \Psi_{100}(\vec{r},t) &= \psi_{100}(\vec{r}\exp\left[-i\left(\frac{E_1t}{\hbar}\right)\right] \\
+  \Psi_{200}(\vec{r},t) &= \psi_{200}(\vec{r}\exp\left[-i\left(\frac{E_2t}{\hbar}\right)\right] \\
+  \Psi(\vec{r},t) &= c_1\Psi_{100} + c_2\Psi_{200} \text{ is also a possible state}
+  \end{aligned}
+  \]
+If \(\langle\phi_n|\phi_n\rangle = 1\), then \[
+    P(\lambda_n) = \frac{|\langle|\phi_n|\psi\rangle|^2}{\langle\psi|\psi\rangle}
+\]
+\item
+  multiplying the state vector by a non-zero complex number gives the
+  same probability
+\item
+  the ket vectors \(c|\psi\rangle, c \in \mathbb{C}\) all represent the
+  same state, regardless of the value of \(c\)
+\item
+  however, a linear combination of state vectors will be different
+  dependent on the value of \(c\) for each state vector
+\end{itemize}
+
+\subsection{Hermitian Operators}\label{hermitian-operators}
+
+Definition: an operator, \(\hat{A}\), is Hermitian if \[
+    \langle\phi|\hat{A}|\psi\rangle = \langle\psi|\hat{A}|\phi\rangle^*
+\] for any \(|\psi\rangle\), \(|\phi\rangle\)
+
+\begin{itemize}
+\item
+  the eigenvalues of Hermitian operators are always real
+\item
+  the eigenvectors of Hermitian operators corresponding to different
+  eigenvalues are orthogonal
+\item
+  matrices representing Hermitian operators are always Hermitian,
+  i.e. equal to their conjugate transpose
+\end{itemize}
+
+\section{}\label{lecture-8}
+
+\begin{itemize}
+\item
+  An operator \(\hat{A}\) is said to be Hermitian if
+  \(\langle\phi|\hat{A}|\psi\rangle = \langle\psi|\hat{A}|\phi\rangle^{*}\)
+  for any \(|\psi\rangle\), \(|\phi\rangle\) on which \(\hat{A}\) may
+  act.
+\end{itemize}
+
+\subsection{Proof of the Orthogonality of Eigenvectors}\label{proof-of-the-orthogonality-of-eigenvectors}
+
+\begin{itemize}
+\item
+  \(\hat{A}\): Hermitian such that
+  \begin{itemize}
+  \item
+    \(\hat{A}|\psi_1\rangle = \lambda_1|\psi_1\rangle\)
+  \item
+    \(\hat{A}|\psi_2\rangle = \lambda_2|\psi_2\rangle\)
+  \item
+    \(\lambda_1 \neq \lambda_2\)
+  \item
+    both \(\lambda_1\) and \(\lambda_2\) are real since \(\hat{A}\) is
+    Hermitian
+\[
+    \begin{aligned}
+    \langle\psi_1|\hat{A}|\psi_2\rangle &= \lambda_2\langle\psi_1|\psi_2\rangle \\
+    \langle\psi_2|\hat{A}|\psi_1\rangle * &= \lambda_2^* \langle\psi_2|\psi_1\rangle * \\
+    \langle\psi_2|\hat{A}|\psi_1\rangle &= \lambda_2\langle\psi_2|\psi_1\rangle \\
+    \langle\psi_2|\hat{A}|\psi_1\rangle &= \lambda_1\langle\psi_2|\psi_1\rangle \\
+    0 &= \underbrace{(\lambda_1 - \lambda_2)}_{\neq 0}\underbrace{\langle\psi_2|\psi_1\rangle}_{=0}
+    \end{aligned}
+\]
+  \end{itemize}
+\item
+  If \(\hat{A}\) is a Hermitian operator acting in a finite-dimensional
+  Hilbert space, then it is always possible to form an orthonormal basis
+  of eigenvectors of \(\hat{A}\) and this basis is complete.
+\item
+  A complete set of vectors is a set of vectors spanning the whole
+  space.
+  \begin{itemize}
+  \item
+    A basis is always a complete set, by definition.
+  \end{itemize}
+\end{itemize}
+
+\begin{example}[1st Workshop]
+\[
+    \begin{aligned}
+    \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \\
+    \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}
+    \end{aligned}
+\]
+\begin{itemize}
+\item
+  The first matrix above is Hermitian, and the eigenvectors from a
+  complete set.
+\item
+  The second matrix above is not Hermitian, and the eigenvectors do not
+  form a complete set.
+\end{itemize}
+For infinite-dimensional spaces, there are different possibilities: 1.
+Infinite square well: \[
+    H = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}
+\] This acts on \([-a,a]\) such that \(\psi(x=\pm a) = 0\) * There are
+infinitely many eigenvalues (eigenenergies) for this 2. Free particle:
+Same operator as above on \((-\infty, +\infty)\), acting on a
+square-integrable function in that bound \[
+    -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi = E\psi
+\]
+\begin{itemize}
+\item
+  This has no solution that is square-integrable
+\item
+  SHM \[
+  \begin{aligned}
+  H &= -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + \frac{1}{2}m\omega^2x^2,~ (-\infty,+\infty) \\
+  H\psi_n &= E\psi_n \\
+  E_n &= \hbar\omega\left(n + \frac{1}{2}\right) \\
+  \psi(x) &= \sum_n c_n\psi_n(x)
+  \end{aligned}
+  \]
+\end{itemize}
+\end{example}
+
+\subsection{Probability of Obtaining an eigenvalue}\label{probability-of-obtaining-an-eigenvalue}
+
+\[
+    \begin{aligned}
+    P_i &= |\langle\phi_i|\psi\rangle|^2 \iff \\
+    \langle\phi_i|\phi_1\rangle &= 1 = \langle\psi|\psi\rangle \& \\
+    \hat{A}|\phi_i\rangle &= \lambda_i|\phi_i\rangle
+    \end{aligned}
+\]
+If \(\lambda_i\) is degenerate:
+\[
+    \begin{aligned}
+    \hat{A}|\psi_n\rangle &= \underbrace{\lambda}_{\forall n}|\psi_n\rangle \\
+    \langle\phi_i|\phi_j\rangle &= \delta_{ij}
+    \end{aligned}
+\]
+Probability of finding \(\lambda\) is:
+\[
+    P(\lambda) = \sum_n |\langle\phi_n|\psi\rangle|^2
+\]
+\begin{itemize}
+\item
+  This is the sum over all the eigenvectors corresponding to \(\lambda\)
+\item
+  ``Observable'' - a Hermitian operator with a complete set of
+  eigenvectors
+\end{itemize}
+\[
+    \begin{aligned}
+    P_i(|\psi\rangle) &= |\langle\phi_i|\psi\rangle|^2 \\
+    P_i(|\phi_j\rangle) &= |\langle\phi_i|\phi_j\rangle|^2 = \begin{cases} 1 & i = j \\ 0 & i \neq j \end{cases}
+    \end{aligned}
+\]
+\begin{itemize}
+\item
+  Finding \(\lambda_i\) or \(\lambda_j\) is mutually exclusive:
+\end{itemize}
+\[
+    \begin{aligned}
+    \sum_i P_i(|\psi\rangle) &= 1 \\
+    \sum_i |\langle\phi_i|\psi\rangle|^2 &= 1 \\
+    \sum_i \langle\phi_i|\psi\rangle * \langle\phi_i|\psi\rangle &= 1 \\
+    \sum_i \langle\psi|\phi_i\rangle \langle\phi_i|\psi\rangle &= 1
+    \end{aligned}
+\]
+\begin{itemize}
+\item
+  One must have this, or any \(|\psi\rangle\)
+\end{itemize}
+\[
+    \sum_i |\phi_i\rangle\langle\phi_i| = \hat{I}
+\]
+\begin{itemize}
+\item
+  The is the completeness relation
+\end{itemize}
+
+\subsection{Variance of the distribution of probability}\label{variance-of-the-distribution-of-probability}
+\[
+    (\Delta A)^2 = \langle\psi|\hat{A}^2|\psi\rangle - \langle\psi|\hat{A}|\psi\rangle^2
+\]
+
+\section{}\label{lecture-9}
+
+\[
+    (\Delta A)^2(\Delta B)^2 \geq -\frac{1}{4}(\langle\psi|[\hat{A},\hat{B}]|\psi\rangle)^2
+\]
+
+\begin{itemize}
+\item
+  system is represented by \(|\psi\rangle, \langle\psi|\psi\rangle = 1\)
+\item
+  two dynamical variables, \(A\) and \(B\), represented by two
+  observables, \(\hat{A}\) and \(\hat{B}\)
+  \begin{itemize}
+  \item
+    these are Hermitian operators with a complete set of eigenvalues
+  \end{itemize}
+\end{itemize}
+\[
+    [\hat{A},\hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A}
+\]
+\begin{itemize}
+\item
+  the commutator of \(\hat{A}\) and \(\hat{B}\) if
+\[
+    [\hat{A},\hat{B}] = 0
+\]
+one would say that \(\hat{A}\) and \(\hat{B}\) commute, i.e.~for any
+\(|\psi\rangle \to [\hat{A},\hat{B}]|\psi\rangle = 0\)
+\[
+    [\hat{Q},\hat{P}] = i\hbar\hat{I}
+\]
+\item
+  \(\hat{I}\) is the identity vector and is usually not indicated for
+  simplicity
+  \begin{itemize}
+  \item
+    \([\hat{A},\hat{I}] = 0\)
+  \end{itemize}
+\item
+  \([\hat{A},\hat{A}] = 0\)
+\item
+  \([\hat{A},\hat{B}] = -[\hat{B},\hat{A}]\)
+\item
+  \([\hat{A},f(\hat{A})] = 0\), where \(f(\hat{A})\) can be any function
+  of \(\hat{A}\)
+\item
+  if \([\hat{A},\hat{B}] = 0\) and \(|\phi_n\rangle\) is an eigenvector
+  of \(\hat{A}\), then \(\hat{B}|\phi_n\rangle\) is also an eigenvector
+  of \(\hat{A}\) corresponding to the same eigenvalue.
+\item
+  Proof:
+\[
+    \begin{aligned}
+    \hat{A}|\phi_n\rangle &= \lambda_n|\phi_n\rangle \\
+    \hat{A}\hat{B}|\phi_n\rangle &= \hat{B}\hat{A}|\phi_n\rangle = \lambda_n\hat{B}|\phi_n\rangle
+    \end{aligned}
+\]
+\item
+  If \(\lambda_n\) is not a degenerate eigenvalue of \(\hat{A}\), then
+  \(\hat{B}|\phi_n\rangle = \mu_n|\phi_n\rangle\)
+  \begin{itemize}
+  \item
+    \(|\phi_n\rangle\) is also an eigenvector of \(\hat{B}\)
+  \end{itemize}
+\item
+  Proof:
+  \begin{itemize}
+  \item
+    If \(\lambda_n\) were degenerate, then (and only then) could one
+    have several linearly independent eigenvectors of \(\hat{A}\) all
+    corresponding to \(\lambda_n\)
+  \item
+    Since we assume that \(\lambda_n\) is not degenerate,
+    \(\hat{B}|\phi_n\rangle\) and \(|\phi_n\rangle\) cannot be linearly
+    independent, therefore
+    \(\hat{B}|\phi_n\rangle = \mu_n|\phi_n\rangle\) for some non-zero
+    value of \(\mu_n\)
+  \item
+    If \([\hat{A},\hat{B}] = 0\), then one can find a basis of the
+    Hilbert space constructed from eigenvectors common to \(\hat{A}\)
+    and \(\hat{B}\), and reciprocally
+  \end{itemize}
+\end{itemize}
+
+\begin{example}
+For atomic hydrogen, 
+\begin{itemize}
+    \item \(H\) - Hamiltonian 
+    \item \(\vec{L}^2\) and \(L_z\)
+    \item angular momentum operators
+\[
+    [H,\vec{L}^2] = [H,L_z] = [\vec{L}^2,L_z] = 0
+\]
+\end{itemize}
+One can find functions that are eigenfunctions of all these three
+operators:
+\[
+    \begin{aligned}
+    \psi_{nlm}(r,\theta,\phi) \\
+    H\psi_{nlm} &= E_n\psi_{nlm} \\
+    \vec{L}^2\psi_{nlm} &= \hbar^2l(l+1)\psi_{nlm} \\
+    L_z\psi_{nlm} &= \hbar m\psi_{nlm}
+    \end{aligned}
+\]
+\begin{itemize}
+\item
+  \(H,\vec{L}^2,L_z\) from a ``complete set of commuting observables''
+  in the sense that specifying their eigenvalues (e.g. by specifying the
+  corresponding quantum numbers) define their common eigenvectors
+  unambiguously
+\end{itemize}
+\[
+    (\Delta A)^2(\Delta B)^2 \geq -\frac{1}{4}(\langle\psi|[\hat{A},\hat{B}]|\psi\rangle)^2
+\]
+\begin{itemize}
+\item
+  if \(\hat{A},\hat{B}\) are Hermitian, \([\hat{A},\hat{B}] = i\hat{C}\)
+  where \(\hat{C}\) is Hermitian
+\end{itemize}
+\[
+    \langle\psi|\hat{C}|\psi\rangle = \langle\psi|\hat{C}|\psi\rangle^{ * }
+\]
+\begin{itemize}
+\item
+  the right hand-side is greater than zero
+\item
+  \((\Delta A)^2\) is the variance of the probability distribution
+  formed by the \(P(\lambda_n)\)
+\end{itemize}
+\[
+    \begin{aligned}
+    \hat{A}|\phi_n\rangle &= \lambda_n|\phi_n\rangle \\
+    \langle\phi_n|\phi_n\rangle &= 1
+    \end{aligned}
+\]
+Probability of finding \(\lambda_n\) in the measurement is
+\[
+    P(\lambda_n) = |\langle\phi_n|\psi\rangle|^2
+\]
+\begin{itemize}
+\item
+  inside is the probability amplitude for finding \(\lambda_n\)
+\item
+  See last lecture for generalisation to degenerate eigenvalues
+\end{itemize}
+\[
+    \langle\psi|\hat{A}|\psi\rangle = \langle A\rangle
+\]
+This is the expectation value of \(\hat{A}\)
+\[
+    \sum_n \lambda_n P(\lambda_n)
+\]
+\begin{itemize}
+\item
+  If \(|\psi\rangle\) is such that
+  \(\hat{A}|\psi\rangle = \lambda|\psi\rangle\), then
+  \(\langle\psi|\hat{A}|\psi\rangle = \lambda\)
+\end{itemize}
+\[
+    \begin{aligned}
+    (\Delta A)^2 &= \langle\psi|(\hat{A} - \langle A\rangle\hat{I})^2|\psi\rangle \\
+    &= \langle\psi|\hat{A}^2|\psi\rangle - \langle\psi|\hat{A}|\psi\rangle^2
+    \end{aligned}
+\]
+\(\Delta A\) is the uncertainty on \(A\)
+\begin{itemize}
+\item
+  If we perform a measurement and get \(\lambda^{(1)}\) then again and
+  get \(\lambda^{(2)}\) etc, after preparing the system to be back in
+  the unmeasured state
+\end{itemize}
+\[
+    \begin{aligned}
+    \bar{\lambda} &= \frac{1}{n} \sum_j \lambda^{(j)} \\
+    (\Delta A)^2 &= \langle A^2\rangle - \langle A\rangle^2 \\
+    (\Delta A)^2 &\implies \sigma^2 = \frac{1}{n-1} \sum_j (\lambda^{(j)} - \bar{\lambda})^2
+    \end{aligned}
+\]
+\end{example}
+
+\section{}\label{lecture-10}
+
+\begin{itemize}
+\item
+  If \(\Delta A = 0\), there is no dispersion
+\item
+  \(\Delta A = 0\) if \(|\psi\rangle\) is an eigenvector of \(\hat{A}\)
+\item
+  \(\hat{A}|\psi\rangle = \lambda|\psi\rangle\)
+\[
+    \begin{aligned}
+    \hat{A}^2|\psi\rangle &= \lambda^2|\psi\rangle = \hat{A}(\hat{A}|\psi\rangle) \\
+    &= \hat{A}(\lambda|\psi\rangle) - \lambda\hat{A}|\psi\rangle = \lambda^2|\psi\rangle \\
+    \langle\psi|\hat{A}^2|\psi\rangle - \langle\psi|\hat{A}|\psi\rangle^2 &= \lambda^2\langle\psi|\psi\rangle - (\lambda\langle\psi|\psi\rangle)^2 \\
+    &= \lambda^2 = \bar{\lambda}^2 = 0
+    \end{aligned}
+\]
+\item
+  For finite dimensional spaces, if \(|\psi\rangle\) is an eigenvector
+  of \(\hat{A}\), then \(\rangle\psi|[\hat{A},\hat{B}]|\psi\rangle = 0\)
+  too
+\[
+    \begin{aligned}
+    \langle\psi|\hat{A}\hat{B} - \hat{B}\hat{A}|\psi\rangle &= \lambda^* \langle\psi|\hat{B}|\psi\rangle - \lambda\langle\psi|\hat{B}|\psi\rangle \\
+    &= (\lambda - \lambda)\langle\psi|\hat{B}|\psi\rangle = 0
+    \end{aligned}
+\]
+\emph{complex conjugate goes away since \(\hat{A}\) is Hermitian}
+\item
+  If \([\hat{A},\hat{B}] = 0\), then it is possible for
+  \((\Delta A)^2(\Delta B)^2 = 0\)
+\item
+  For \(\hat{P}\) as the momentum operator,
+\[
+    \begin{aligned}
+    \hat{P}|\phi\rangle &= p|\phi\rangle \\
+    -i\hbar \frac{d}{dx} \phi(x) &= p\phi(x) \\
+    \phi_p(x) &= Ce^{i\frac{px}{\hbar}}
+    \end{aligned}
+\]
+\emph{not square summable, therefore not an element of the Hilbert
+space}
+\item
+  For \(\hat{Q}\) as the position operator,
+\[
+    Q\phi(x) = x\phi(x) = a\phi(x)
+\]
+\emph{impossible unless \(\phi(x) = 0\), which does not qualify as an
+eigenfunction}
+\item
+  Take \(\phi_p(x)\) as generalised eigenfunction of the momentum
+  operator
+\end{itemize}
+
+\subsection{Measurement of P}\label{measurement-of-p}
+
+\begin{itemize}
+\item
+  What is the probability of finding a certain value, \(p\)?
+\item
+  \(p\) is distributed continuously, not quantised
+\item
+  Better to ask for the probability of finding \(p\) between \(p_1\) and
+  \(p_2\)?
+\[
+    P[(p_1,p_2)] = \int_{p_1}^{p_2} P(p)\,dp
+\]
+\item
+  \(P(p)\) is the density of probability, \(P(p)\,dp\) is the probability
+  to find a momentum between \(p\) and \(p+dp\)
+\item
+  \(P(p)\) has no physical dimensions
+  \begin{itemize}
+  \item
+    those of the inverse of a momentum, so that \(P[(p_1,p_2)]\) is a
+    pure number
+\[
+    P(p) = \Bigg|\int_{-\infty}^{\infty} \phi_p^{* }(x) \phi(x)\,dx\Bigg|^2 = \Bigg|C\int_{-\infty}^{\infty} e^{-i\frac{px}{\hbar}}\psi(x)\,dx\Bigg|^2
+\]
+  \end{itemize}
+\item
+  This is the Fourier transform of \(\psi(x)\)
+\end{itemize}
+\[
+    \begin{aligned}
+    \phi(k) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{i\frac{px}{\hbar}}\psi(x)\,dx \\
+    \psi(x) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{ikx}\phi(k)\,dk \\
+    &= \frac{1}{2\pi}\int_{-\infty}^{\infty} e^{ikx}dk \int_{-\infty}^{\infty} e^{-ikx'}\psi(x')\,dx' \\
+    &= \frac{1}{2\pi}\int_{-\infty}^{\infty} \psi(x)\,dx  \int_{-\infty}^{\infty} e^{ik(x-x')} dx
+    \end{aligned}
+\]
+
+\section{}\label{lecture-11}
+
+\begin{itemize}
+\item
+  Momentum operator: \(p = -i\hbar\frac{d}{dx}\)
+\item
+  Position operator: \(Q = x\)
+\[
+    \begin{aligned}
+    P\phi_k(x) &= P\left[Ce^{ikx}\right] = \hbar k\phi_k(x) \\
+    \phi(k) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \psi(x)e^{-ikx}dx \\
+    \psi(x) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \phi(k)e^{ikx}dk \\
+    \delta(x-x') &= \frac{1}{2\pi}\int_{-\infty}^{\infty}e^{ik(x-x')}dk
+    f(x') &= \int_{-\infty}^{\infty} \delta(x-x')f(x)\,dx
+    \end{aligned}
+\]
+\item
+  This is true for any function \(f(x)\) that is continuous at \(x=x'\)
+\[
+    \begin{aligned}
+    \delta(x-x') &= \delta(x'-x) \\
+    \int_{-\infty}^{\infty} P(k)\,dk &= 1 \implies \int_{-\infty}^{\infty} |\psi(x)|^2dx = 1 \\
+    P(k) &= |\phi(k)|^2|C|^2 \\
+    \phi_k(x) &= Ce^{ikx} \\
+    |C|^2\int_{-\infty}^{\infty} dk&\left[\int_{-\infty}^{\infty} \psi(x)e^{-ikx}dx\right]^{ * } \cdot \left[\int_{-\infty}^{\infty}\psi(x')e^{-ikx'}dx'\right] = 1 \\
+    |C|^2\int_{-\infty}^{\infty} dx&\int_{-\infty}^{\infty} \psi^* (x)\psi(x') dx' \cdot \int_{-\infty}^{\infty} e^{ik(x-x')}dk = 1 \\
+    2\pi|C|^2 \int_{-\infty}^{\infty} dx& \int_{-\infty}^{\infty} \psi^* (x)\psi(x')\delta(x-x')\,dx' = 1 \\
+    2\pi|C|^2 \int_{-\infty}^{\infty} dx& \psi^* (x)\psi(x) = 1 \\
+    \implies 2\pi|C|^2 &= 1 \to C = \frac{1}{\sqrt{2\pi}}
+    \end{aligned}
+\]
+\item The normalised eigenfunctions of \(P\) are:
+\[
+    \begin{aligned}
+    \phi_k(x) &= \frac{1}{\sqrt{2\pi}}e^{ikx} \\
+    \phi_p(x) &= \frac{1}{\sqrt{2\pi\hbar}}e^{ip\frac{x}{\hbar}}
+    \end{aligned}
+\]
+\item
+  Orthonormality condition here is
+\end{itemize}
+\[
+    \begin{aligned}
+    \int_{-\infty}^{\infty} \phi_k^* (x)\phi_{k'}(x)\,dx &= \frac{1}{2\pi}\int_{-\infty}^{\infty} e^{i(k-k')x}dx = \delta(k'-k) \\
+    \int_{-\infty}^{\infty} \phi_n(x)\phi_{n'}(x)\,dx &= \delta_{nn'}
+    \end{aligned}
+\]
+
+\subsection{Eigenfunctions of the position operator}\label{eigenfunctions-of-the-position-operator}
+
+\[
+    Q\psi(x) = x\psi(x)
+\]
+An eigenfunction of \(Q\) would be such that
+\[
+    Q\phi_q(x) \equiv q\phi_k(x) \equiv x\phi_k(x)
+\]
+Finally, one can take:
+\[
+    \begin{aligned}
+    \phi_k(x) &= \delta(x-q) \\
+    P[(q_1,q_2)] &= \int_{q_1}^{q_2} P(q)\,dq \\
+    P(q) &= \Bigg|\int_{-\infty}^{\infty} \phi_q^* (x)\psi(x)\,dx\Bigg|^2 \\
+    &= \Bigg|\int_{-\infty}^{\infty} \delta(q-x)\psi(x)\,dx\Bigg|^2 \\
+    &= |\psi(q)|^2
+    \end{aligned}
+\]
+This is the Born Rule
+
+\begin{itemize}
+\item
+  Normalisation:
+\[
+    \int_{-\infty}^{\infty} \delta^* (x-q)\delta(x-q')\,dx = \delta(q-q')
+\]
+\item Discrete case: \(|\psi\rangle = \sum_n c_n|\phi_n\rangle\) if
+\(\{|\phi_n\rangle\}\) is an orthonormal basis
+\[
+    \begin{aligned}
+    c_n &= \langle\phi_n|\psi\rangle \\
+    \psi(x) &= \int_{-\infty}^{\infty} \phi(p)\phi_p(x)\,dp,~ \phi(p) = \langle p|\psi\rangle \\
+    \hat{Q}|x\rangle &= x|x\rangle \\
+    \hat{p}|p\rangle &= p|p\rangle \\
+    \psi(x) &= \langle x|\psi\rangle
+    \end{aligned}
+\]
+\item
+  \(\psi(x) = \langle x|\psi\rangle\) - wave function in position
+  representation in position space
+\item
+  \(\phi(p) = \langle p|\psi\rangle\) - wave function in the momentum
+  representation in momentum space
+\end{itemize}
+The last two statements are equivalent
+\[
+    \begin{aligned}
+    |\psi\rangle &\leftrightarrow \psi(x) \\
+    |x\rangle &\leftrightarrow \begin{pmatrix} a \\ b \end{pmatrix} \\
+    |\psi\rangle &\leftrightarrow \phi(p) \\
+    \langle x|p\rangle &= \frac{1}{\sqrt{2\pi\hbar}}e^{ip\frac{x}{\hbar}} \\
+    \langle p|x\rangle &= \frac{1}{\sqrt{2\pi\hbar}}e^{-ix\frac{p}{\hbar}} \\
+    \hat{Q} &\leftrightarrow x \\
+    \hat{p} &\leftrightarrow -i\hbar\frac{d}{dx} \\
+    \hat{p} &\leftrightarrow p \\
+    \hat{Q} &\leftrightarrow -i\hbar\frac{d}{dp}
+    \end{aligned}
+\]
+In 3D position representation:
+\[
+    \begin{aligned}
+    P_x &= -i\hbar\frac{\partial}{\partial x} \\
+    P_y &= -i\hbar\frac{\partial}{\partial y} \\
+    P_z &= -i\hbar\frac{\partial}{\partial z} \\
+    [x,P_x] &= [y,P_y] = [z,P_z] = i\hbar \\
+    [x,y] &= [x,z] = [y,z] = 0 \\
+    [x,P_y] &= [x,P_z] = \cdots = 0 \\
+    [P_x,P_y] &= [P_x,P_y] = 0 \\
+    [x,P_y]\psi(x,y,z) &= -i\hbar\left[x\frac{\partial}{\partial y}\psi - \frac{\partial}{\partial y}x\psi\right] = 0 \\
+    \vec{P} &= P_x\hat{x} + P_y\hat{y} + P_z\hat{z} \\
+    \vec{P}\phi_{\vec{p}}(\vec{r}) &= \vec{P}\phi_{\vec{p}}(\vec{r}) \\
+    \vec{p} &= \hbar\vec{k} \\
+    \phi_{\vec{p}}(\vec{r}) &= \frac{1}{\sqrt{2\pi\hbar}}e^{i\vec{p}\cdot\frac{\vec{r}}{\hbar}} \\
+    \phi_{\vec{k}}(\vec{r}) &= \frac{1}{\sqrt{2\pi}}e^{i\hbar\vec{r}} \\
+    \int \phi_k^* (\vec{r})\phi_{k'}(\vec{r})\,d^3r &= \delta^3(\vec{k} - \vec{k}') = \delta(k_x - k_{x}')\delta(k_y - k_y')\delta(k_z - k_z')
+    \end{aligned}
+\]
+
+\section{}\label{lecture-12}
+
+\begin{itemize}
+\item
+  Infinite square well:
+  \begin{itemize}
+  \item
+    The Hamiltonian has infinite many discrete energy levels
+  \end{itemize}
+\item
+  Linear harmonic oscillator:
+  \begin{itemize}
+  \item
+    Also has infinite many discrete energy levels
+  \end{itemize}
+\item
+  Free particle in 1D:
+  \begin{itemize}
+  \item
+    continuum of energy levels, \(0 < E < \infty\)
+  \[
+      H = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}
+  \]
+  \end{itemize}
+\item
+  atom of hydrogen
+  \begin{itemize}
+  \item
+    infinitely many discrete energy levels, corresponding to bound
+    states
+  \item
+    and a continuum of energy levels corresponding to unbound states
+  \item
+    \(-13.6\,eV = T + V\)
+  \item
+    \(r\) must be such that \(-13.6\,eV > V(r)\)
+  \item
+    an electron with positive energy is in an unbound state
+  \end{itemize}
+\item
+  in general, we have two classes - discrete and bound
+\end{itemize}
+
+\begin{enumerate}
+\item
+  discrete energy levels:
+\[
+    \begin{aligned}
+    H\phi_j &= E_j\phi_j \\
+    \int \phi_i^* \phi_j d^3r &= \delta_{ij}
+    \end{aligned}
+\]
+\item
+  continuum of energy levels \[
+  \begin{aligned}
+  H\phi_{\vec{k}} &= E_{\vec{k}}\phi_{\vec{k}} \\
+  \int \phi_{\vec{k}}^*(\vec{r})\phi_{\vec{k}'}\,d^3r &= \delta(\vec{k} - \vec{k}') \\
+  \int \phi_i(\vec{r})\phi_{\vec{k}}(\vec{r})\,d^3r &= 0
+  \end{aligned}
+  \]
+\end{enumerate}
+
+\begin{itemize}
+\item
+  A complete set of eigenfunctions of \(H\) necessarily include a
+  continuum eigenfunctions if \(H\) has a continuous spectrum:
+\[
+    \psi(\vec{r}) = \sum_j c_j\phi_j(\vec{r}) + \int c_{\vec{k}}\phi_{\vec{k}}(\vec{r})\,d^3k
+\]
+\item
+  Since the \(\phi_j\) and \(\phi_{\vec{k_{}}}\) are orthonormal
+\[
+    \begin{aligned}
+    c_j &= \int \phi_j^*(\vec{r}')\psi(\vec{r}')\,d^3r' \\
+    c_{\vec{k}} &= \int \phi_{\vec{k}}^*(\vec{r})\psi(\vec{r}')\,d^3r' \\
+    \psi(\vec{r}) &= \int d^3r' \underbrace{\left[\sum_j \phi_j(\vec{r})\phi_j^*(\vec{r}') + \int d^3k \phi_{\vec{k}}(\vec{r})\phi_{\vec{k}}(\vec{r}')\right]}_{=\delta(\vec{r}-\vec{r}')}\psi(\vec{r})
+    \end{aligned}
+\]
+\item
+  Must be true for any \(\vec{r}\), and any \(\psi\)
+\item
+  completeness relation from lecture 8
+\item
+  In Dirac notation:
+\[
+    \langle\vec{r}|\sum_j|\phi_j\rangle\langle\phi_j| + \int d^3k |\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}| = \hat{I}|\vec{r}'\rangle|\phi_j\rangle \\
+    \langle\phi_j|\psi\rangle
+\]
+\item
+  In position representation:
+\[
+    \begin{aligned}
+    \langle\vec{r}|\phi_j\rangle &= \phi_j(\vec{r}) = \rangle\phi_j|\vec{r}\rangle^* \\
+    \langle\phi_j|\vec{r}'\rangle &= \phi_j^*(\vec{r}') \\
+    \langle\vec{r}|\hat{I}|\vec{r}'\rangle &= \delta(\vec{r}-\vec{r}')
+    \end{aligned}
+\]
+\item
+  About bra vectors
+\[
+    \begin{aligned}
+    |A\psi\rangle &= \hat{A}|\psi\rangle \\
+    \langle A\psi| &= \langle\psi|\hat{A}^\dagger,~ \langle A\psi|\phi\rangle = \langle\psi|\hat{A}^\dagger|\phi\rangle \\
+    \langle A\psi|\phi\rangle &= \langle\phi|A\psi\rangle^* = \langle\phi|\hat{A}|\psi\rangle^* = \langle\psi|\hat{A}^\dagger|\phi\rangle
+    \end{aligned}
+\]
+\end{itemize}
+
+\subsection{Unitary Transformations}\label{unitary-transformations}
+
+\begin{itemize}
+\item
+  2 orientations for \(2p_m = 0\)
+\item
+  Relate the two by:
+\[
+    \begin{aligned}
+    |\psi'\rangle &= \hat{R}_x(\theta)|\psi\rangle \\
+    |\phi'\rangle &= \hat{R}_x(\theta)|\phi\rangle \\
+    \langle\phi'|\psi'\rangle &= \langle\phi|\psi\rangle
+    \end{aligned}
+\]
+\item
+  The transformation is an isometry
+\item
+  In fact, it is also a unitary transformation
+\end{itemize}
+
+\section{}\label{lecture-13}
+
+\subsection{Unitary Operators}\label{unitary-operators}
+
+\begin{itemize}
+\item
+  If \(\hat{A}^\dagger = \hat{U}^{-1}\), then \(\hat{U}\) is a unitary
+  operator
+  \begin{itemize}
+  \item
+    \(\hat{U}^\dagger\hat{U} = \hat{I} = \hat{U}\hat{U}^\dagger\)
+  \item
+    \(\hat{U}^{-1}\hat{U} = \hat{I} = \hat{U}\hat{U}^{-1}\)
+  \end{itemize}
+\item
+  \(\hat{U}\) is the same for all vectors of the Hilbert space
+\[
+    \begin{aligned}
+    |\psi'\rangle &= \hat{U}|\psi\rangle \\
+    |\psi\rangle &= \hat{U}^{-1}|\psi'\rangle = \hat{U}^\dagger|\psi'\rangle \\
+    |\phi'\rangle &= \hat{U}|\phi\rangle \\
+    |\eta\rangle &= \hat{A}|\psi\rangle \\
+    |\eta'\rangle &= \hat{U}|eta\rangle = \hat{U}\hat{A}|\psi\rangle = \hat{U}\hat{A}\hat{U}^\dagger|\psi'\rangle \\
+    |\eta'\rangle &= \hat{A}'|\psi'\rangle,~ \hat{A}' = \hat{U}\hat{A}\hat{U}^\dagger
+    \end{aligned}
+\]
+\item
+  Line four and seven are of the same form - but latter is written in
+  terms of the transformed vectors and operators.
+\item
+  \(\hat{U}\) transforms:
+  \begin{itemize}
+  \item
+    vectors \(|\psi\rangle\) into \(\hat{U}|\psi\rangle\)
+  \item
+    operators \(\hat{A}\) into \(\hat{U}\hat{A}\hat{U}^\dagger\)
+  \end{itemize}
+\item
+  \(\hat{A}' = \hat{U}\hat{A}\hat{U}^\dagger\) has all the same
+  properties of untransformed operator \(\hat{A}\)
+\item
+  If \(\hat{A}\) is Hermitian, then \(\hat{A}'\) is also Hermitian
+\item
+  If \(\hat{A} = \alpha\hat{B} + \beta\hat{C}\hat{D}\), then
+  \(\hat{A}' = \alpha\hat{B}' + \beta\hat{C}'\hat{D}'\)
+\item
+  Proof:
+\[
+    \begin{aligned}
+    \hat{A} &= \alpha\hat{B} + \beta\hat{C}\hat{D} \\
+    \hat{U}\hat{A}\hat{U}^\dagger &= \alpha\hat{U}\hat{B}\hat{U}^\dagger + \beta\hat{U}\hat{C}\hat{I}\hat{D}\hat{U}^\dagger \\
+    \hat{A}' &= \alpha\hat{B}' + \beta\hat{C}'\hat{D}'
+    \end{aligned}
+\]
+\item
+  \([\hat{A},\hat{B}] = [\hat{A}', \hat{B}']\)
+\item
+  \(\hat{A}\) and \(\hat{A}'\) have the same eigenvalues
+\item
+  \(\langle\phi|\hat{A}|\psi\rangle = \langle\phi'|\hat{A}'|\psi'\rangle\)
+  for any \(|\psi\rangle,|\phi\rangle\)
+\item
+  In particular, \(\langle\phi|\psi\rangle = \langle\phi'|\psi'\rangle\)
+  \begin{itemize}
+  \item
+    inner products are not changed by unitary transformations
+  \end{itemize}
+\item
+  Proof:
+\[
+    \begin{aligned}
+    |\psi'\rangle &= \hat{U}|\psi\rangle \\
+    |\phi'\rangle &= \hat{U}|\phi\rangle \\
+    \implies \langle\phi'| &= \langle\phi|\hat{U}^\dagger \\
+    \implies \langle\phi'|\psi'\rangle &= \langle\phi|\hat{U}^\dagger\hat{U}|\psi\rangle \\
+    &= \langle\phi|\psi\rangle
+    \end{aligned}
+\]
+\item
+  In particular, unitary transformations do not change the norm of the
+  vector: \(\langle\psi|\psi\rangle = \langle\psi'|\psi'\rangle\)
+\end{itemize}
+
+\subsection{Time evolution of quantum systems}\label{time-evolution-of-quantum-systems}
+
+\begin{itemize}
+\item
+  Time-dependent Schrodinger equation:
+\[
+    \begin{aligned}
+    i\hbar\frac{d}{dt}|\Psi(t)\rangle &= \hat{H}|\Psi(t)\rangle \\
+    |\Psi(t)\rangle &= \hat{U}(t,t_0)|\Psi(t_0)\rangle \\
+    \hat{U}(t,t_0) &= \hat{U}(t,t_1)\hat{U}(t_1,t_0) \\
+    \hat{U}^\dagger(t,t_0) &= \hat{U}^{-1}(t,t_0) = \hat{U}(t_0,t) \\
+    \hat{U}(t_0,t_0) &= \hat{I} = \hat{U}(t_0,t)\hat{U}(t,t_0) \\
+    \implies i\hbar\frac{d}{dt}\hat{U}(t,t_0) &= \hat{H}\hat{U}(t,t_0)
+    \end{aligned}
+\]
+\item
+  \(\hat{U}(t,t_0)\) is the time-evolution operator
+  \begin{itemize}
+  \item
+    it is unitary
+  \end{itemize}
+\item
+  If \(\hat{H}\) is time-independent, then
+\[
+    \begin{aligned}
+    \hat{U}(t,t_0) &= \exp\left[\frac{-i\hat{H}(t-t_0)}{\hbar}\right] \\
+    e^{\hat{A}} &= \hat{I} + \hat{A} + \frac{1}{2!}\hat{A}^2 + \frac{1}{3!}\hat{A}^3 + \cdots
+    \end{aligned}
+\]
+\item
+  The exponential of an operator is the Taylor expansion of that
+  operator
+\end{itemize}
+
+\subsection{Expectation values of observables}\label{expectation-values-of-observables}
+
+\[
+    \begin{aligned}
+    \langle\hat{A}(t)\rangle &= \langle\Psi(t)|\hat{A}|\Psi(t)\rangle \\
+    &= \langle\Psi(t_0)|\underbrace{\hat{U}^\dagger(t,t_0)\hat{A}\hat{U}(t,t_0)}_{\hat{A}_H(t)}|\Psi(t_0)\rangle \\
+    \hat{A}_H(t) &= \hat{U}^\dagger(t,t_0)\hat{A}\hat{U}(t,t_0) \\
+    &= \hat{U}(t_0,t)\hat{A}\hat{U}^\dagger(t_0,t) \\
+    \langle\hat{A}(t)\rangle &= \langle\Psi(t_0)|\hat{A}_H(t)|\Psi(t_0)\rangle
+    \end{aligned}
+\]
+
+\begin{enumerate}
+\item
+  State vector changes in time, \(\hat{A}\) doesn't - Schrodinger
+  picture
+\item
+  State vectors do not change in time, \(\hat{A}_H(t_{})\) does -
+  Heisenberg picture
+\end{enumerate}
+
+\begin{itemize}
+\item
+  These two formulations are completely equivalent
+\item
+  Heisenberg equation of motion:
+\[
+    i\hbar\frac{d\hat{A}_H(t)}{dt} = [\hat{A}_H,\hat{H}] = [\hat{A},\hat{H}]
+\]
+if \(\hat{A}\) is time-independent.
+\end{itemize}
+
+\section{}\label{lecture-14}
+
+\[
+    \begin{aligned}
+    \hat{U}^\dagger &= \hat{U}^{-1} \\
+    |\psi'\rangle &= \hat{U}|\psi\rangle \\
+    \hat{A}' &= \hat{U}\hat{A}\hat{U}^\dagger
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  The eigenvalues of a unitary operator are real or complex numbers of
+  modulus 1
+\item
+  The eigenvectors of a unitary operator corresponding to different
+  eigenvalues are orthogonal to each other
+\end{itemize}
+
+\[
+    \begin{aligned}
+    \langle A\rangle(t) &= \langle\Psi(t)|\hat{A}|\Psi(t)\rangle \\
+    &= \langle\Psi(t_0)|\hat{A}_H(t)|\Psi(t_0)\rangle \\
+    \hat{A}_H(t) &= \hat{U}(t_0,t)\hat{A}\hat{U}^\dagger(t_0,t) \\
+    i\hbar\frac{d\hat{A}_H}dt &= [\hat{A}_H,\hat{H}_H] = \hat{U}(t_0,t)[\hat{A},\hat{H}]\hat{U}^\dagger(t_0,t)
+    \end{aligned}
+\]
+
+\begin{itemize}
+\item
+  If \([\hat{A},\hat{H}] = 0\), then \(\hat{A}_{H_{}}\) is constant in
+  time
+  \begin{itemize}
+  \item
+    \(\langle A\rangle(t)\) is also constant for any \(|\Psi\rangle\)
+  \item
+    \(A\) is a ``constant of motion''
+\[
+    \begin{aligned}
+    |\psi'\rangle &= \hat{R}_x(\theta)|\psi\rangle \\
+    \langle\psi'|H|\psi'\rangle &= \langle\psi|\hat{H}|\psi\rangle \\
+    \langle\psi|\hat{R}_x(-\theta)\hat{H}\hat{R}_x(\theta)|\psi\rangle &= \langle\psi|\hat{H}|\psi\rangle \\
+    \hat{R}_x^\dagger(theta) &= \hat{R}_x^{-1}(\theta = \hat{R}_x(-\theta) \\
+    \langle\psi'| &= \langle\psi|\hat{R}_x^\dagger (\theta) \\
+    &= \langle\psi|\hat{R}_x(-\theta)
+    \end{aligned}
+\]
+  \end{itemize}
+\item
+  Now look at the limit when \(\theta \to \epsilon\), where \(\epsilon\)
+  is near zero
+\[
+    \begin{aligned}
+    \hat{R}_x(\pm\epsilon) &= \hat{I} \mp i\epsilon\frac{\hat{J}_x}{\hbar} \\
+    \langle\psi|\left(\hat{I} + i\frac{\epsilon}{\hbar}\hat{J}_x\right)\hat{H}\left(\hat{I} - \frac{i\epsilon}{\hbar}\hat{J}_x\right)|\psi\rangle &= \langle\psi|\hat{H}|\psi\rangle \\
+    \langle\psi|\hat{H}|\psi\rangle + \langle\psi|\frac{i\epsilon}{\hbar}\hat{J}_x\hat{H}|\psi\rangle + \langle\psi|\frac{-i\epsilon}{\hbar}\hat{H}\hat{J}_x|\psi\rangle &= \langle\psi|\hat{H}|\psi\rangle + \frac{i\epsilon}{\hbar}\langle\psi|[\hat{J}_x,\hat{H}]|\psi\rangle \\
+    &= \langle\psi|\hat{H}|\psi\rangle \text{ for any } \psi \\
+    \implies [\hat{J}_x,\hat{H}] &= 0
+    \end{aligned}
+\]
+\item
+  The requirement that the state of the atom is invariant under a
+  rotation means that \(\vec{J}\) is a constant
+\end{itemize}
+
+\subsection{unitary transformations and change of bases}\label{unitary-transformations-and-change-of-bases}
+
+\begin{itemize}
+\item
+  dimension of the Hilbert space, \(N\)
+\item
+  Consider two different orthonormal bases for that space:
+\[
+    \begin{aligned}
+    \{|\phi_1\rangle,|\phi_2\rangle,&\cdots,|\phi_N\rangle\} \\
+    \{|\psi_1\rangle,|\psi_2\rangle,&\cdots,|\psi_N\rangle\} \\
+    \langle\phi_i|\phi_j\rangle &= \delta_{ij},~ \langle\psi_i,\psi_j\rangle = \delta_{ij}
+    \sum_{i=1}^N |\phi_i\rangle\langle\phi_i| &= \hat{I},~ \sum_{i=1}^N |\psi_i\rangle\langle\psi_i| = \hat{I}
+    \end{aligned}
+\]
+\item
+  The last line is the Completeness relation
+\item
+  An operator \(\hat{A}\) is represented by a matrix
+  \(\underline{\underline{A}}\) in the \(\{|\phi\rangle\}\) basis,
+  \(\underline{\underline{A}}'\) in the \(\{|\psi\rangle\}\) basis
+\[
+    \begin{aligned}
+    A_{ij} &= \langle\phi_i|\hat{A}|\phi_j\rangle \\
+    A'_{ij} &= \langle\psi_i|\hat{A}\\psi_j\rangle
+    \end{aligned}
+\]
+\item
+  Because the \(\{|\phi\rangle\}\) vectors are a basis, one can always
+  write each of the \(|\psi_j\rangle\) vectors as a linear combination
+  of the \(|\phi_i\rangle\) vectors:
+\end{itemize}
+
+\[
+    \begin{aligned}
+    |\psi_j\rangle &= \sum_i U_{ji}^* |\phi_i\rangle \\
+    U_{ji}^\dagger &= \langle\phi_i|\psi_j\rangle = \langle\psi_j|\phi_i\rangle^* \\
+    U_{ji} &= \langle\psi_j|\phi_i\rangle \\
+    \underline{\underline{U}} &= \begin{pmatrix} U_{11} & U_{12} & \cdots & U_{1N} \\ \vdots & \ddots & & \vdots \\ U_{N1} & \cdots & \cdots & U_{NN} \end{pmatrix} \\
+    \underline{\underline{U}}\underline{\underline{U}}^\dagger &= \underline{\underline{I}} \\
+    (\underline{\underline{U}}\underline{\underline{U}}^\dagger)_{ij} &= \sum_k U_{ik}U_{kj}^\dagger \\
+    &= \sum_k \langle\psi_i|\phi_k\rangle\langle\phi_k|\psi_j\rangle \\
+    &= \langle\psi|\underbrace{\sum_k |\phi_k\rangle\langle\phi_k|}_{\hat{I}}|\psi_j\rangle \\
+    &= \langle\psi_i|\psi_j\rangle = \delta_{ij}
+    \end{aligned}
+\]
+
+\[
+    \begin{aligned}
+    \hat{A}' &= \hat{U}\hat{A}\hat{U}^\dagger & |\chi\rangle &= \sum_i c_i|\phi_i\rangle \\
+    \hat{c}' &= \hat{U}\hat{c} & &= \sum_i c_i'|\psi_i\rangle
+    \end{aligned}
+\]
+
+\section{}\label{lecture-15}
+
+\subsection{Spectral Decomposition}\label{spectral-decomposition}
+Recall that
+\(\sum_n |\phi_n\rangle\langle\phi_n| + \int d^3k |\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}| = \hat{I}\)
+if and only if \(\{|\phi_n,|\phi_{\vec{k}_{}}\rangle\}\) is complete.
+\[
+    \begin{aligned}
+    \hat{A}|\phi_n\rangle &= a_n|\phi_n\rangle & \langle\phi_i|\phi_j\rangle &= \delta_{ij} \\
+    \hat{A}|\phi_{\vec{k}}\rangle &= a_{\vec{k}}|\phi_{\vec{k}}\rangle & \langle \phi_{\vec{k}}|\phi_{\vec{k}'}\rangle &= \delta(\vec{k}-\vec{k}')
+    \end{aligned}
+\]
+\begin{itemize}
+\item
+  \(\hat{A}\) is a Hermitian operator
+\[
+    \begin{aligned}
+    \hat{A} &= \hat{A}\hat{I} \\
+            &= \sum_n \hat{A}|\phi_n\rangle\langle\phi_n| + \int d^3k \hat{A}|\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}| \\
+            &= \sum_n a_n|\phi_n\rangle\langle\phi_n| + \int d^3k a_{\vec{k}}|\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}|
+    \end{aligned}
+\]
+\item
+  This is the spectral decomposition of \(\hat{A}\)
+\end{itemize}
+
+\subsection{Projectors}\label{projectors}
+
+For example,
+\[
+    \begin{aligned}
+    \hat{\mathcal{P}}_{\phi} &= |\phi\rangle\langle\phi| \text{ with } \langle\phi|\phi\rangle = 1 \\
+    \hat{\mathcal{P}}_{\phi}|\psi\rangle &= |\phi\rangle\langle\phi|\psi\rangle = \langle\phi|\psi\rangle|\phi\rangle
+    \end{aligned}
+\]
+In position representation:
+\[
+    \begin{aligned}
+    \mathcal{P}_{\phi}\psi(\vec{r}) &= \left[\int \phi^*(\vec{r}')\psi(\vec{r}') d^3r\right]\phi(\vec{r}) \\
+    \mathcal{P}_{\phi} &\equiv \phi^*(\vec{r}')\phi(\vec{r}')
+    \end{aligned}
+\]
+in the sense that when \(\mathcal{P}_{\phi_{}}\) acts on a wave
+function, \(\psi(\vec{r})\), the result is as above
+\[
+    \begin{aligned}
+    \hat{\mathcal{P}}_\phi &= |\phi\rangle\langle\phi| \\
+    \hat{\mathcal{P}}^2_\phi &= \hat{\mathcal{P}}_\phi\hat{\mathcal{P}}_\phi = |\phi\rangle\langle\phi|\phi\rangle\langle\phi| \\
+    &= \phi\rangle\langle\phi| = \hat{\mathcal{P}}_\phi
+    \end{aligned}
+\]
+\begin{itemize}
+\item
+  \(\hat{\mathcal{P}}_{\phi_{}}\) is idempotent
+  \begin{itemize}
+  \item
+    operators \(\hat{A}\) such that \(\hat{A}^2 = \hat{A}\) are said to
+    be idempotent
+  \end{itemize}
+\item
+  \(\hat{\mathcal{P}}_{\phi_{}}\) is also Hermitian:
+\[
+    \begin{aligned}
+    \langle\psi'|\hat{\mathcal{P}}_{\phi}|\psi\rangle &= \langle\psi|\hat{\mathcal{P}}_{\phi}|\psi'\rangle^{ * } \\
+    &= \langle\psi'|\phi\rangle\langle\phi|\psi\rangle \\
+    &= \langle\phi|\psi\rangle\langle\psi'|\phi\rangle \\
+    &= \langle\psi|\phi\rangle^{ * }\langle\phi|\phi'\rangle^{ * } \\
+    &= [\langle\psi|\phi\rangle\langle\phi|\psi'\rangle]^{ * }
+    \end{aligned}
+\]
+\end{itemize}
+
+More generally, any operator which is both idempotent and Hermitian is a
+projector.
+Consider a vector, \(\vec{v}\) in 3D space:
+\begin{itemize}
+    \item \(\vec{v} = v_x\hat{x} + v_y\hat{y} + v_z\hat{z}\) 
+    \item \(\vec{w} = v_x\hat{x} + v_y\hat{y}\) - this is the projection of \(\vec{v}\) in the x-y plane 
+    \item \(\vec{w} = (\hat{x}\hat{x} + \hat{y}\hat{y})\cdot\vec{v} = \hat{x}\cdot\vec{v} \hat{x} + \hat{y}\cdot\vec{v} \hat{y}\)
+    \item \((\hat{x}\cdot\vec{v}\) is the same as \(|\hat{x}\rangle\langle\hat{x}|\vec{v}\rangle\)
+    \item The projection in the plane is affected by \(|\hat{x}\rangle\langle\hat{x} + |\hat{y}\rangle\langle\hat{y}|\) 
+    \item If \(|\phi\rangle\) and \(|\psi\rangle\) are linearly independent, \(\langle\phi|\psi\rangle = 0, \langle\phi|\phi\rangle = \langle\psi|\psi\rangle = 1\)
+    \item \(|\psi\rangle\langle\phi| + |\psi\rangle\langle\psi|\) projectors in the subspace spanned by \(|\phi\rangle\) and \(|\psi\rangle\)
+\[
+    \sum_n |\phi_n\rangle\langle\phi_n| + \int d^3k |\phi_{\vec{k}}\rangle\langle\phi_{\vec{k}}| = \hat{I}
+\]
+\item
+  \(\hat{\mathcal{P}}_{\phi} = |\phi\rangle\langle\phi_{}|\) is
+  Hermitian
+\item
+  \(|\langle\phi|\psi\rangle|^2\) is the probability of finding the
+  system in a state \(|\phi\rangle\) if it was in the state
+  \(|\psi\rangle\) before measurement
+\item
+  If \(|\eta\rangle\) is an eigenvector of \(\hat{\mathcal{P}}_{\phi}\)
+  with eigenvalue \(\eta_{}\):
+\[
+    \begin{aligned}
+    \hat{\mathcal{P}}_{\phi}|\eta\rangle &= \eta|\eta\rangle \\
+    |\phi\rangle\langle\phi|\eta\rangle &= \eta|\eta\rangle \\
+    \langle\phi|\eta\rangle|\phi\rangle &= \eta|\eta\rangle \\
+    \implies |\phi\rangle &= |\eta\rangle,~ \eta = 0,\langle\phi|\eta\rangle = 0,1
+    \end{aligned}
+\]
+\end{itemize}
+The eigenvalues of \(\hat{\mathcal{P}}_{\phi_{}}\) are 0 and 1
+\begin{itemize}
+    \item For \(\eta =1\) - \(|\eta\rangle = |\phi\rangle\) 
+    \item For \(\eta = 0\) - \(|\eta\rangle\) can be any vector orthogonal to \(|\phi\rangle\)
+\item
+  Observable here - \(\hat{\mathcal{P}}_{\phi_{}}\)
+\item
+  Possible outcomes - \(\eta = 0,1\)
+\item
+  Probability of finding \(\eta = 1\) - \(|\langle\phi|\psi\rangle|^2\)
+\end{itemize}
+
+\subsection{Revision of ladder operator}\label{revision-of-ladder-operator}
+
+\begin{itemize}
+\item
+  \(\hat{a}_{-} = \hat{a}\), and \(\hat{a}_{+} = \hat{a}^\dagger\)
+\item
+  subscript with dimension being used in - x,y,z
+\end{itemize}
+
+\[
+    \begin{aligned}
+    [\hat{a}_i,\hat{a}_i^\dagger] &= 1 \\
+    [\hat{a}_i,\hat{a}_j^\dagger] &= 0
+    \end{aligned}
+\]
+
+\section{}\label{lecture-16}
+
+\subsection{Comments on Homework}\label{comments-on-homework}
+
+\begin{itemize}
+\item
+  \([\hat{H}.\hat{U}(t,t_0)] = 0\) because if \(\hat{H}\) is
+  time-independent, \(\hat{U}(t,t_0) = \exp[-i\hat{H}(t-t_0)/\hbar]\)
+\end{itemize}
+
+\subsection{Operators and Spin States}\label{operators-and-spin-states}
+
+\begin{itemize}
+\item
+  Consider operators belonging to orthogonal directions, i.e. ladder
+  operators
+\item
+  We then define the Hamiltonian,
+  \(\hat{H} = \hbar\omega(\hat{a}_{x}^\dagger\hat{a}_{} + \frac{1}{2})\)
+\item
+  This then leads to
+  \(E_n = \hbar\omega(n + \frac{1}{2}), n = 0,1,2 \implies \hat{a}_{x_{}}|\phi_n\rangle = \sqrt{n}|\phi_{n-1_{}}\rangle, \hat{a}_{x_{}}|\phi_0\rangle = 0\)
+\item
+  \(\hat{a}_{x_{}}^\dagger|\phi_n\rangle = \sqrt{n+1}|\phi_{n+1_{}}\)
+\end{itemize}
+
+\subsection{Angular Momentum}\label{angular-momentum}
+
+\begin{itemize}
+\item
+  The orbital angular momentum operator is
+  \(\vec{L} = \hat{L}_{x}\hat{i} + \hat{L}_{y}\hat{j} + \hat{L}_z\hat{k}_{}\)
+\[
+    \begin{aligned}
+    \vec{L} &= \vec{r} \times \vec{p},~ \vec{r} = \hat{x}\hat{i} + \hat{y}\hat{j} + \hat{z}\hat{k},~ \hat{p} = \hat{p}_x\hat{i} + \hat{p}_y\hat{j} + \hat{p}_z\hat{k} \\
+    \vec{L} &= \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ \hat{x} & \hat{y} & \hat{z} \\ \hat{p}_x & \hat{p}_y & \hat{p}_z \end{vmatrix} \\
+    \implies \hat{L}_x &= \hat{y}\hat{p}_z - \hat{z}\hat{p}_y \\
+    \implies \hat{L}_y &= \hat{z}\hat{p}_x - \hat{x}\hat{p}_z \\
+    \implies \hat{L}_z &= \hat{x}\hat{p}_y - \hat{y}\hat{p}_x \\
+    \implies \hat{L}_z &= -i\hbar\left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}\right) = -i\hbar\frac{\partial}{\partial \phi}
+    \end{aligned}
+\]
+\item
+  Another example is the spin operator, i.e.
+  \(\vec{s} = \hat{s}_x\hat{i} + \hat{s}_y\hat{j} + \hat{s}_z\hat{k}_{}\)
+\item
+  An operator \(\vec{J}\) is an angular momentum operator if
+  \(\hat{J}_x,\hat{J}_y,\hat{J}_{z_{}}\) are Hermitian and
+  \([J_x,J_y] = i\hbar J_z\), etc
+\item
+  The \(J_i\)s all commute with
+  \(\vec{J}^2 = \vec{J}\cdot\vec{J} = J_x^2 + J_y^2 + J_z^2\)
+\item
+  \(J_n = \hat{n}\cdot\vec{J}\) where \(\hat{n}\) is a unit vector in a
+  given direction
+\item
+  \([J_n,J_n] \neq 0\) is \(\hat{n} \neq \hat{n}\),
+  \([J_n,\vec{J}^2] = 0 \forall \hat{n}\)
+\end{itemize}
+
+Consider the Hilbert space \(\mathcal{H}\) spanned by the eigenvector of
+\(\vec{J}^2\). Since \(\vec{J}^2\) and \(J_n\) commute, one can always
+construct a basis of \(\mathcal{H}\) with simultaneous eigenvectors of
+these two operators. However, since \([J_n,J_m] \neq 0\) if
+\(\hat{n} \neq \hat{m}\), there is no basis of simultaneous eigenvectors
+of \(\vec{J}^2, J_n, J_m\). The simultaneous eigenvectors of
+\(\vec{J}^2\) and \(J_z\) are \(|jm\rangle\)
+
+Consider the ladder operators
+\(J_{+} = J_x + iJ_y,~ J_{-} = J_x - iJ_y,~ J_{+} = I_{-}^\dagger\),
+\([J_{\pm},\vec{J_{}}^2] = 0\) but \([J_{+},J_{-}] \neq 0\). We find
+through algebraic methods,
+\begin{enumerate}
+\item
+  \[\begin{aligned}
+   J_{+}|j,m\rangle &\propto \hbar|j,m+1\rangle,~ J_{+}|jj\rangle = 0 \\
+   J_{-}|j,m\rangle &\propto \hbar|j,m-1\rangle,~ J_{-}|j-j\rangle = 0
+   \end{aligned}\]
+\item
+  The eigenvalues for \(\vec{J}^2\) are \(j(j+1)\hbar^2\) with
+  \(j = 0,\frac{1}{2},1,\frac{3}{2},\cdots\)
+\item
+  The eigenvectors of \(J_z\) are \(m\hbar\) with
+  \(m = 0,\pm\frac{1}{2},\pm 1,\pm\frac{3}{2},\cdots\)
+\item
+  For simultaneous eigenvector \(|jm\rangle\) of \(\vec{J}^2\) and
+  \(J_z\), the values of \(m\) and \(j\) are restricted by the
+  requirement that \(m\) in the range \(-j \leq m \leq j\)
+\end{enumerate}
+
+\begin{itemize}
+\item
+  The eigenvectors \(|jm\rangle\) are orthonormal,
+  \(\langle j'm'|jm\rangle = \delta_{jj'}\delta_{mm'}\)
+\item
+  \(\langle jm|jm\rangle\) has been chosen to equal 1 by choice of
+  normalisation
+\item
+  For orbital angular momentum, \(\vec{L}\):
+  \begin{itemize}
+  \item
+    The joint eigenfunctions of \(\vec{L}^2\) and \(L_z\) are
+    \(Y_{lm}(\theta_{},\phi)\)
+  \item
+    \(L_zf(\phi) = -i\hbar\partial_{\phi}(f_{}(\phi)) = m\hbar f(\phi) \to f(\phi) \propto e^{im\phi}\)
+  \item
+    Because \(\phi\) is a position angle,
+    \(e^{im(\phi + 2\pi)} = e^{im\phi}\) therefore m must be an integer
+  \item
+    \(\vec{L}^2Y_{lm} = \hbar^2_{}l(l+1)Y_{lm_{}}\) and
+    \(L_zY_{lm_{}} = \hbar mY_{lm_{}}\) for \(-l \leq m \leq l\)
+  \end{itemize}
+\end{itemize}
+
+\section{}\label{lecture-17}
+
+Consider \([J_n,\vec{J}^2] = 0\). \(J_n\) transforms any eigenvector of
+\(\vec{J}^2\) into an eigenvector of \(\vec{J}^2\) belonging to the same
+value of \(j\), i.e. \(J^2\) is invariant under \(J_n\). 
+Similarly consider a rotation about an axis \(\hat{n}\) by an angle \(\theta i\):
+\begin{itemize}
+    \item \(|jm\rangle \to \hat{R}_n(\theta_{})|jm\rangle\) 
+    \item For an infinitesimal transformation - \(\hat{R}_n(\epsilon_{}) = \hat{I} - i\epsilon\frac{\hat{J}_n}{\hbar_{}}\)
+    \item For a finite rotation - \(\hat{R}_n(\theta_{}) = \exp[-i\theta\hat{J}_{n_{}}/\hbar]\) * Under a rotation, an eigenstate \(|jm\rangle\) transforms into a superposition of \(|j'm'\rangle\) with \(j=j'\) * \(\langle j'm'|J_n|jm\rangle = 0\) when \(j \neq j'\)
+\end{itemize}
+
+What is the matrix representation of an angular momentum operator?
+
+The \(\{|jm\rangle\}\) vectors form an orthonormal basis. For a given
+value of j, \(J_n\) is represented by a \((2j+1)\times(2j+1)\) matrix,
+since for a given j, m can take \(2j + 1\) different values and \(J_n\)
+does not couple states of different values of j.
+
+E.g. for \(j = \frac{1}{2}\), all the angular momentum operators are
+represented by a \(2\times 2\) matrix. Usually, the basis is chosen to
+be
+\(\left\{|-\frac{1}{2},\frac{1}{2}\rangle,|\frac{1}{2},-\frac{1}{2}\rangle\right\}\)
+which can be represented by \(|+\rangle,|-\rangle\)
+\begin{itemize}
+    \item \(J_z|+\rangle = \frac{\hbar}{2}|+\rangle\) where \(m = +\frac{1}{2}\)
+and its state is spin up * \(J_z|-\rangle = -\frac{\hbar}{2}|-\rangle\)
+where \(m = -\frac{1}{2}\) and its state is spin down
+\end{itemize}
+
+In this basis, \(J_z\) is represented by the matrix:
+\[
+    \frac{\hbar}{2}\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\]
+Similarly,
+\[
+    J_x \to \frac{\hbar}{2}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix};~ J_y \to \frac{\hbar}{2}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+\]
+These can be represented using the Pauli Matrices, i.e.
+\(\sigma_x,\sigma_y,\sigma_z\), so \(J_i = \frac{\hbar}{2}\sigma_i\)
+\begin{itemize}
+    \item \(|+\rangle\) is represented by
+\[
+    \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+\]
+\item and \(|-\rangle\) is represented by
+\[
+    \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\]
+\item so an arbitrary spin state can be expressed as
+\[
+    \alpha|+\rangle + \beta|-\rangle = \begin{pmatrix} \alpha \\ \beta \end{pmatrix}
+\]
+\end{itemize}
+
+\subsection{2 Electron System}\label{electron-system}
+Consider 2 electrons \(|+\rangle_1\) and \(|-\rangle_2\). The system is
+expressed as
+\(\alpha|+\rangle_1|+\rangle + \beta|+\rangle_1|-\rangle_2 + \gamma|-\rangle_1|+\rangle_2 + \delta|-\rangle_1|-\rangle_2 = |\psi\rangle_{12_{}}\),
+where \(\alpha,\beta,\gamma,\delta\) are complex numbers. More
+generally, the joint angular momentum state of two particles 1 and is:
+
+\[
+    \begin{aligned}
+    |\psi\rangle_{12} &= \sum_{j_1,m_1,j_2,m_2} c_{j_1m_1j_2m_2}|j_1m_1\rangle_1|j_2m_2\rangle_2 \\
+    \vec{J}_1 &= (J_{1x},J_{1y},J_{1z}) \text{ acts only on } |j_1m_1\rangle_1 \\
+    \vec{J}_2 &= (J_{2x},J_{2y},J_{2z}) \text{ acts only on } |j_2m_2\rangle_2
+    \end{aligned}
+\]
+\end{document}
