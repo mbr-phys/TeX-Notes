@@ -6,21 +6,37 @@
 \title{Condensed Matter Physics \vspace{-20pt}}
 \author{Prof Hatton and Dr Mendis}
 \date{\vspace{-15pt}Epiphany Term 2019}
-\rhead{\hyperlink{page.1}{Contents}}
+\rhead{}
 
 \begin{document}
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    {\includegraphics[scale=0.5]{../../logo0.png}\hfill{\Large\bfseries Epiphany 2019}}\\[2.5cm]
+    {\LARGE\bfseries Foundations of Physics 3B}\\[1.5cm]
+    \HRule \\[0.7cm]
+    {\huge\bfseries Condensed Matter Physics Part I}\\[0.4cm]
+    \HRule \\[1.5cm]
 
-\maketitle
-\tableofcontents
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            \emph{Author:} \\ Matthew Rossetter
+        \end{flushleft}
+    \end{minipage}~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            \emph{Lecturer:} \\ Prof. Peter Hatton
+        \end{flushright}
+    \end{minipage}\\[2cm]
+    \vfill
+\end{titlepage}
 
-\part{}
-%Hatton
 \chapter{Free and Nearly Free Electrons}
 \begin{wrapfigure}{r}{0.4\textwidth}
     \centering
     \includegraphics[width=0.4\textwidth]{fd.png}
 \end{wrapfigure}
-Given that electrons are fermions, we will use the Fermi-Dirac distribution. 
+Given that electrons are fermions, we will use the Fermi- Dirac distribution. 
 \begin{equation}
     n_F = \frac{1}{(e^{E-\mu/k_BT)}+1}
 \end{equation}
@@ -110,7 +126,10 @@ We can form 2 different standing waves,
 \end{align}
 The two standing waves $\Psi(+)$ and $\Psi(-)$ pile up electorn density in different regions, and have different energies. 
 The probability density $P$ is $\Psi^*\Psi = |\Psi|^2$.
-For a traveling plane wave, $P = \exp(-ikx)\exp(ikx) = 1$.
+For a traveling plane wave, 
+\begin{equation}
+    P = \exp(-ikx)\exp(ikx) = 1,
+\end{equation}
 But $\Psi(+)$ has a density, 
 \begin{equation}
     P(+) = |\Psi(x)|^2 \propto \cos^2\left(\frac{\pi x}{a}\right)
@@ -556,16 +575,15 @@ where $\mu$ is the magnetic permeability.
 
 \section{Magnetic moments and Magnetisation}
 \subsection{The Classical Model - A review of Electromagnetism}
-\begin{wrapfigure}{r}{0.4\textwidth}
-    \centering
-    \includegraphics[width=0.35\textwidth]{induct.png}
-\end{wrapfigure}
 Let us start by considering a current, $I$, running through a rectangular loop of wire suspended on two sides. 
 The metallic loop is placed in the presence of a magnetic induction, $\B$, directed perpendicular to the axis of suspension, around which the coil is free to rotate. 
 The force on the side 1-2 will be $F_{12} = I\unl{b}\times\B$ where $\unl{B}$ is the 'vector length' of 1-2 (or 3-4). 
 Similarly, $F_{14} = I\unl{a}\times\B$.
 Now $F_{12} = -F_{34}$ and $F_{14} = -F_{23}$ so there is no net force on the loop, but $F_{12}$ and $F_{34}$ produce a torque, $\tau = I\unl{s}\times\B$ where $\unl{s}$ is the area vector ($|\unl{s}|$ is the area of the loop).
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{induct.png}
+\end{figure}
 We define the magnetic moment of the current loop as
 \begin{equation}
     \unl{m} = I\unl{s}
@@ -789,8 +807,8 @@ When a sample is introduced into the field of one magnet, that magnet experience
 \end{figure}
 
 \chapter{Diamagnetism}
-Diamagnetism is present in all matter, but often masked by paramagnetism or ferromagnetism. 
-Diamagnetic materials display a temperature-independent negative magnetic susceptibility. 
+Diamagnetism is present in all matter, but often masked by paramagnetism or ferromagnetism. \\
+Diamagnetic materials display a temperature-independent negative magnetic susceptibility. \\
 Diamagnetism does not require the atoms to have a non-zero magnetic moment in the absence of a magnetic field. 
 It is associated with the tendency of electrical charges to partially shield the interior from an applied magnetic field. 
 It is very similar to Lenz's law: \emph{when the flux through an electrical circuit is changed, an induced current is set up to oppose the flux change.}
@@ -1177,8 +1195,7 @@ We might expect that as free electrons are excited into unfilled states to get a
 \begin{equation}
     M = \frac{N\mu_B^2B}{k_BT}
 \end{equation}
-The probability of an electron being line up parallel to B exceeds the probability of anti-parallel orientation by $\approx \frac{\mu_BB}{k_BT}$, thus (8.7).
-But Pauli paramagnetism is very small and independent of temperature.
+The probability of an electron being lined up parallel to B exceeds the probability of anti-parallel orientation by $\approx \frac{\mu_BB}{k_BT}$, thus (8.7), but Pauli paramagnetism is very small and independent of temp.
 Neglecting the orbital contribution, taking $g=2$, we also ignore the thermal smearing of the Fermi surface at finite temperatures. 
 As shown in a magnetic field, the electron band is spin-split into two spin sub-bands separated by $g\mu_BB = 2\mu_BB$.
 We willassume that this energy difference is small. 
@@ -1311,14 +1328,14 @@ The data fits well for Gd ($J=8$) and varies with the angular momentum of the pa
     \centering
     \includegraphics[scale=0.5]{nick.png}
 \end{figure}
-The data fits quite well for Iron, Cobalt, Nickel, but does not fit at very low temperatures. 
+The data fits quite well for Iron, Cobalt, Nickel, but does not fit at very low temperatures. \\
 Experimentally, it is found that the best fit is
 \begin{equation}
     \frac{\Delta M}{M(0)} = AT^{3/2}
 \end{equation}
 where $A$ is a sample-dependent constant. 
 The reason for this discrepancy is that the Weiss model considers only the ground state.
-It does not include low-energy excitations which reduce the magnetisation by forming \textbf{spin waves.}
+It does not include, however, low-energy excitations which reduce the magnetisation by forming \textbf{spin waves.}
 
 \section{Spin Waves}
 The ground state of a simple ferromagnet has all the spins parallel at $T=0$ as shown below. 
@@ -1579,7 +1596,7 @@ For cubic systems,
 \end{equation}
 where $\alpha_1 = \cos\theta_1$, $\alpha_2=\cos\theta_2$, $\alpha_3=\cos\theta_3$ are the direction cosines of the magnetisation direction with respect to the edges of the cubic unit cell, and $K_1$ and $K_2$ are the anisotropy constants.
 When $K_1>0$ (e.g. iron), the easy axis is along $\langle 100\rangle$ and other directions, $\langle 111\rangle$ are hard.
-When $K_1<0$ (e.g. nickel), the easy axis is $\langle111\rangle$ and $\langle100\rangle$ is hard.\\
+When $K_1<0$ (e.g. nickel), the easy axis is $\langle111\rangle$ and $\langle100\rangle$ is hard.
 Magnetocrystalline anisotropy is a consequence of a combination of spin-orbit coupling and the interaction of the orbits with the crystal field.
 \begin{figure}[H]
     \centering
@@ -1655,9 +1672,9 @@ The figure shows a typical hysteresis loop found when measuring the magnetisatio
     \centering
     \includegraphics[scale=0.5]{process.png}
 \end{figure}
-\begin{wrapfigure}{r}{0.4\textwidth}
+\begin{wrapfigure}{r}{0.36\textwidth}
     \centering
-    \includegraphics[scale=0.4]{incmag.png}
+    \includegraphics[scale=0.35]{incmag.png}
 \end{wrapfigure}
 If the sample is magnetised to $M_S$ by an applied field then when the applied field is reduced to zero, the magnetisation is reduced to the remnant magnetisation, $M_r$.
 A magnetic field equal to the coercive field $H_c$ is needed to switch the magnetisation. 
