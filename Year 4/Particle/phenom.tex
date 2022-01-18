@@ -4,6 +4,7 @@
 \usepackage{subfiles}
 \usepackage{tensor}
 
+\pgfplotsset{compat=1.17}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{arrows.meta}
@@ -368,8 +369,8 @@ In these lectures, we will only use these up to spin 1.
     \langle0|\psi(x)|\psi,\vec{p},s\rangle &= u(\vec{p},s)e^{-ipx} & \langle\psi,\vec{p},s|\bar{\psi}(x)|0\rangle &= \bar{u}(\vec{p},s)e^{ipx} \\
     \langle0|\bar{\psi}(x)|\text{anti-}\psi,\vec{p},s\rangle &= \bar{v}(\vec{p},s)e^{-ipx} & \langle\text{anti-}\psi,\vec{p},s|\psi(x)|0\rangle &= v(\vec{p},s)e^{ipx} \\
     \langle0|A_\mu(x)|\vec{p},\lambda\rangle &= \e_\mu(\vec{p},\lambda)e^{-ipx} & \langle\vec{p},\lambda|A^\mu(x)|0\rangle &= \e_\mu^*(\vec{p},\lambda)e^{ipx} \\
-    \langle0|W_\mu^+(x)|W^+,\vec{p},\lambda\rangle&\e_\mu(\vec{p},\lambda)e^{-ipx} & \langle W^+,\vec{p},\lambda|W_\mu^-(x)|0\rangle &= \e_\mu^*(\vec{p},\lambda)e^{ipx} \\
-    \langle0|W_\mu^-(x)|W^-,\vec{p},\lambda\rangle&\e_\mu(\vec{p},\lambda)e^{-ipx} & \langle W^-,\vec{p},\lambda|W_\mu^+(x)|0\rangle &= \e_\mu^*(\vec{p},\lambda)e^{ipx}
+    \langle0|W_\mu^+(x)|W^+,\vec{p},\lambda\rangle &= \e_\mu(\vec{p},\lambda)e^{-ipx} & \langle W^+,\vec{p},\lambda|W_\mu^-(x)|0\rangle &= \e_\mu^*(\vec{p},\lambda)e^{ipx} \\
+    \langle0|W_\mu^-(x)|W^-,\vec{p},\lambda\rangle &= \e_\mu(\vec{p},\lambda)e^{-ipx} & \langle W^-,\vec{p},\lambda|W_\mu^+(x)|0\rangle &= \e_\mu^*(\vec{p},\lambda)e^{ipx}
 \end{align}
 The simplicity of these spinors hints at a shortcut to the result which is simply a collection of rules which we can gather to skip all of the maths we have done above.
 These are the \textbf{Feynman rules:}
@@ -922,7 +923,7 @@ Although there are quarks and antiquarks in the proton, they are predominantly t
         \caption{Gluon Fusion}
     \end{subfigure}
     \begin{subfigure}[b]{0.24\textwidth}
-        \imagebox{3.5cm}{\includegraphics[width=\textwidth]{higgs1.pdf}}
+        \imagebox{3.5cm}{\includegraphics[width=0.9\textwidth]{higgs1.pdf}}
         \caption{Vector Boson Fusion}
     \end{subfigure}
     \begin{subfigure}[b]{0.24\textwidth}
